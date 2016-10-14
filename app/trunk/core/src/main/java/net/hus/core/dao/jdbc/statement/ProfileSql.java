@@ -12,7 +12,6 @@ import org.springframework.jdbc.object.MappingSqlQuery;
 public class ProfileSql extends AbstractSqlJdbc
 {
   private BatchSqlUpdate mBatchUpsert;
-
   private MappingSqlQuery<String> mSelect;
 
   public ProfileSql(DataSource inDataSource)
