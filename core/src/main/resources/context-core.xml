@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<import resource="contextDs-core.xml" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:core.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+
+	<!-- DAOS -->
+
+	<bean id="CoreDao" class="net.hus.core.dao.jdbc.CoreJdbc">
+		<property name="dataSource" ref="CoreDs" />
+	</bean>
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject">
+			<ref local="CoreDao" />
+		</property>
+		<property name="targetMethod">
+			<value>upload</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<value>${app.name}</value>
+				<value>${app.name}</value>
+				<value>vanderbilt/mc/medrecon/server/dao/AppProfile.xml</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
