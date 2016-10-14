@@ -38,5 +38,4 @@ public class ProfileSqlTest extends MySqlCoreDsTest
     String results = mSql.select(org, name);
     Assert.assertEquals(text, results);
   }
-
 }
