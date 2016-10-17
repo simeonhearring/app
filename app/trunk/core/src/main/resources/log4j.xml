@@ -2,16 +2,7 @@
 <!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 	<appender name="DEFAULT" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="/app001/jas/applogs/medrecon/mr-default.log" />
-		<param name="Append" value="true" />
-		<param name="MaxBackupIndex" value="10" />
-		<param name="MaxFileSize" value="10MB" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{ISO8601} %p %c %x - %m%n" />
-		</layout>
-	</appender>
-	<appender name="USAGE" class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="/app001/jas/applogs/medrecon/mr-usage.log" />
+		<param name="File" value="${user.home}/jvm/apache-tomcat-7.0.23/logs/hus-net.log" />
 		<param name="Append" value="true" />
 		<param name="MaxBackupIndex" value="10" />
 		<param name="MaxFileSize" value="10MB" />
@@ -23,21 +14,9 @@
 		<level value="INFO" />
 		<appender-ref ref="DEFAULT" />
 	</logger>
-	<logger name="vanderbilt.mc.medrecon" additivity="false">
+	<logger name="net.hus" additivity="false">
 		<level value="INFO" />
 		<appender-ref ref="DEFAULT" />
-	</logger>
-	<logger name="vanderbilt.mc.fdb" additivity="false">
-		<level value="INFO" />
-		<appender-ref ref="DEFAULT" />
-	</logger>
-	<logger name="vanderbilt.mc.ticket" additivity="false">
-		<level value="INFO" />
-		<appender-ref ref="DEFAULT" />
-	</logger>
-	<logger name="vanderbilt.mc.usage" additivity="false">
-		<level value="INFO" />
-		<appender-ref ref="USAGE" />
 	</logger>
 	<root>
 		<priority value="INFO" />
