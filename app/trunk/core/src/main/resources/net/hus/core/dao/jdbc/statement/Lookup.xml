@@ -1,0 +1,16 @@
+<Statements>
+	<Statement>
+		<Key>UPSERT</Key>
+		<Types>VARCHAR,VARCHAR,VARCHAR,NUMERIC,VARCHAR,NUMERIC</Types>
+		<Sql>INSERT INTO LOOKUP (mUpdated,mGroup,mName,mAbbreviation,mSort)
+			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
+			UPDATE mAbbreviation=?,mSort=?,mUpdated=CURRENT_TIMESTAMP
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT</Key>
+		<Types>VARCHAR</Types>
+		<Sql>select * from LOOKUP where mGroup=?</Sql>
+	</Statement>
+</Statements>
+ 

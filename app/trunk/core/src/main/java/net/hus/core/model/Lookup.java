@@ -2,6 +2,15 @@ package net.hus.core.model;
 
 public class Lookup extends Model
 {
+  public enum Group
+  {
+    UNKNOWN,
+    DAYSOFWEEK,
+    MONTHSOFYEAR,
+    YESNO,
+    GENDER,
+  }
+
   private String mGroup;
   private String mName;
   private String mAbbreviation;
@@ -15,6 +24,11 @@ public class Lookup extends Model
   public void setGroup(String inGroup)
   {
     mGroup = inGroup;
+  }
+
+  public void setGroup(Group inGroup)
+  {
+    mGroup = inGroup.name();
   }
 
   public String getName()

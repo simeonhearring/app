@@ -15,16 +15,42 @@ public class Field extends Model
 
   public static class Properties
   {
-    private String mDisplay;
+    private Display mDisplay;
 
-    public String getDisplay()
+    public Display getDisplay()
     {
       return mDisplay;
     }
 
-    public void setDisplay(String inDisplay)
+    public void setDisplay(Display inDisplay)
     {
       mDisplay = inDisplay;
+    }
+  }
+
+  public static class Display
+  {
+    private String mLong;
+    private String mShort;
+
+    public String getLong()
+    {
+      return mLong;
+    }
+
+    public void setLong(String inLong)
+    {
+      mLong = inLong;
+    }
+
+    public void setShort(String inShort)
+    {
+      mShort = inShort;
+    }
+
+    public String getShort()
+    {
+      return mShort;
     }
   }
 

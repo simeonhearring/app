@@ -9,6 +9,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.model.Field;
+import net.hus.core.model.Field.Display;
 import net.hus.core.model.Field.Properties;
 import net.hus.core.model.Field.Type;
 import net.hus.core.model.Fields;
@@ -26,32 +27,32 @@ public class FieldSqlTest extends MySqlCoreDsTest
   @Test
   public void testUpsertAndSelectField()
   {
-    Field f1 = new Field();
-    f1.setName("FIRST_NAME");
-    f1.setType(Type.STRING);
-    f1.setProperties(new Properties());
-
-    Field f2 = new Field();
-    f2.setName("LAST_NAME");
-    f2.setType(Type.STRING);
-    f2.setProperties(new Properties());
-
-    Field f3 = new Field();
-    f3.setName("MIDDLE_NAME");
-    f3.setType(Type.STRING);
-    f3.setProperties(new Properties());
+    Field f1 = newField(Type.STRING, "FIRST_NAME", "First name", "First");
+    Field f2 = newField(Type.STRING, "LAST_NAME", "Last name", "Last");
+    Field f3 = newField(Type.STRING, "MIDDLE_NAME", "Middle name", "Middle");
+    Field f4 = newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob");
+    Field f5 = newField(Type.DATE, "BAPTIZED_DATE", "Date Baptized", "Bap");
 
     List<Field> list = new ArrayList<>();
     list.add(f1);
     list.add(f2);
     list.add(f3);
+    list.add(f4);
+    list.add(f5);
+
+    list.add(newField(Type.NUMBER, "PLACEMENTS", "Placements", "Place"));
+    list.add(newField(Type.NUMBER, "VIDEO_SHOWINGS", "Video Showings", "Video"));
+    list.add(newField(Type.NUMBER, "HOURS", "Hours", "Hrs"));
+    list.add(newField(Type.NUMBER, "RETURN_VISITS", "Return Visits", "R.V."));
+    list.add(newField(Type.NUMBER, "BIBLE_STUDIES", "Bible Studies", "BiSt"));
+    list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
 
     mSql.upsert(list);
 
     Field field = mSql.select("FIRST_NAME", Type.STRING);
 
     Assert.assertEquals(true, field.getProperties() != null);
-    Assert.assertEquals(null, field.getProperties().getDisplay());
+    Assert.assertEquals("First name", field.getProperties().getDisplay().getLong());
   }
 
   @Test
@@ -79,5 +80,17 @@ public class FieldSqlTest extends MySqlCoreDsTest
 
     Fields ret = mSql.select("SAMPLE");
     Assert.assertEquals(3, ret.getFields().size());
+  }
+
+  private Field newField(Type inType, String inName, String inLong, String inShort)
+  {
+    Field ret = new Field();
+    ret.setName(inName);
+    ret.setType(inType);
+    ret.setProperties(new Properties());
+    ret.getProperties().setDisplay(new Display());
+    ret.getProperties().getDisplay().setLong(inLong);
+    ret.getProperties().getDisplay().setShort(inShort);
+    return ret;
   }
 }

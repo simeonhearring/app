@@ -15,8 +15,6 @@ import net.hus.core.parser.FieldProperties;
 
 public class FieldsSql extends AbstractSqlJdbc
 {
-  private Statements mStmts;
-
   private BatchSqlUpdate mFieldUpsert;
   private MappingSqlQuery<Field> mFieldSelect;
   private BatchSqlUpdate mFieldsUpsert;
@@ -31,9 +29,8 @@ public class FieldsSql extends AbstractSqlJdbc
   {
     this();
 
-    Statement upsert = mStmts.getStatement("UPSERT");
-    mFieldUpsert = new BatchSqlUpdate(inDataSource, upsert.getSql(), upsert.types());
-    mFieldUpsert.compile();
+    mFieldUpsert = newBatchUpdate(inDataSource, "UPSERT");
+    mFieldsUpsert = newBatchUpdate(inDataSource, "UPSERT_FIELDS");
 
     Statement select = mStmts.getStatement("SELECT");
     mFieldSelect = new MappingSqlQuery<Field>(inDataSource, select.getSql())
@@ -47,12 +44,8 @@ public class FieldsSql extends AbstractSqlJdbc
     mFieldSelect.setTypes(select.types());
     mFieldSelect.compile();
 
-    Statement ufs = mStmts.getStatement("UPSERT_FIELDS");
-    mFieldsUpsert = new BatchSqlUpdate(inDataSource, ufs.getSql(), ufs.types());
-    mFieldsUpsert.compile();
-
-    Statement sfs = mStmts.getStatement("SELECT_FIELDS");
-    mFieldsSelect = new MappingSqlQuery<Field>(inDataSource, sfs.getSql())
+    Statement selectFields = mStmts.getStatement("SELECT_FIELDS");
+    mFieldsSelect = new MappingSqlQuery<Field>(inDataSource, selectFields.getSql())
     {
       @Override
       protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -60,7 +53,7 @@ public class FieldsSql extends AbstractSqlJdbc
         return mapFields(new Field(), inRs);
       }
     };
-    mFieldsSelect.setTypes(sfs.types());
+    mFieldsSelect.setTypes(selectFields.types());
     mFieldsSelect.compile();
   }
 
@@ -85,25 +78,6 @@ public class FieldsSql extends AbstractSqlJdbc
     mFieldUpsert.reset();
   }
 
-  private Field mapField(Field inOutField, ResultSet inRs) throws SQLException
-  {
-    mapModel(inOutField, inRs);
-    inOutField.setName(inRs.getString("mName"));
-    inOutField.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
-    inOutField.setProperties(valueOf(inRs.getString("mProperties"), new FieldProperties()));
-    return inOutField;
-  }
-
-  private Field mapFields(Field inOutField, ResultSet inRs) throws SQLException
-  {
-    mapField(inOutField, inRs);
-
-    inOutField.setDisplay(inRs.getString("mDisplay"));
-    inOutField.setSort((Integer) inRs.getObject("mSort"));
-
-    return inOutField;
-  }
-
   public void upsert(Fields inFields)
   {
     mFieldsUpsert.reset();
@@ -126,5 +100,26 @@ public class FieldsSql extends AbstractSqlJdbc
     ret.setGroup(inGroup);
     ret.setFields(mFieldsSelect.execute(params(inGroup)));
     return ret;
+  }
+
+  private Field mapField(Field inOutField, ResultSet inRs) throws SQLException
+  {
+    mapModel(inOutField, inRs);
+
+    inOutField.setName(inRs.getString("mName"));
+    inOutField.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
+    inOutField.setProperties(valueOf(inRs.getString("mProperties"), new FieldProperties()));
+
+    return inOutField;
+  }
+
+  private Field mapFields(Field inOutField, ResultSet inRs) throws SQLException
+  {
+    mapField(inOutField, inRs);
+
+    inOutField.setDisplay(inRs.getString("mDisplay"));
+    inOutField.setSort((Integer) inRs.getObject("mSort"));
+
+    return inOutField;
   }
 }
