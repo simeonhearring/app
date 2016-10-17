@@ -1,6 +1,5 @@
 package net.hus.core.client;
 
-import net.hus.core.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -16,6 +15,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
+import net.hus.core.shared.FieldVerifier;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -38,12 +39,15 @@ public class Web_ui implements EntryPoint
   /**
    * This is the entry point method.
    */
+  @Override
   public void onModuleLoad()
   {
     final Button sendButton = new Button("Send");
     final TextBox nameField = new TextBox();
     nameField.setText("GWT User");
     final Label errorLabel = new Label();
+
+    // Field field = new Field();
 
     // We can add style names to widgets
     sendButton.addStyleName("sendButton");
@@ -80,6 +84,7 @@ public class Web_ui implements EntryPoint
     // Add a handler to close the DialogBox
     closeButton.addClickHandler(new ClickHandler()
     {
+      @Override
       public void onClick(ClickEvent event)
       {
         dialogBox.hide();
@@ -94,6 +99,7 @@ public class Web_ui implements EntryPoint
       /**
        * Fired when the user clicks on the sendButton.
        */
+      @Override
       public void onClick(ClickEvent event)
       {
         sendNameToServer();
@@ -102,6 +108,7 @@ public class Web_ui implements EntryPoint
       /**
        * Fired when the user types in the nameField.
        */
+      @Override
       public void onKeyUp(KeyUpEvent event)
       {
         if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER)
@@ -130,6 +137,7 @@ public class Web_ui implements EntryPoint
         serverResponseLabel.setText("");
         greetingService.greetServer(textToServer, new AsyncCallback<String>()
         {
+          @Override
           public void onFailure(Throwable caught)
           {
             // Show the RPC error message to the user
@@ -140,6 +148,7 @@ public class Web_ui implements EntryPoint
             closeButton.setFocus(true);
           }
 
+          @Override
           public void onSuccess(String result)
           {
             dialogBox.setText("Remote Procedure Call");

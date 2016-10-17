@@ -26,6 +26,8 @@
 	<inherits name='org.gwtbootstrap3.extras.slider.Slider' />
  -->
 
+	<inherits name='net.hus.core.Core' />
+
 	<entry-point class='net.hus.core.client.Web_ui' />
 
 	<source path='client' />

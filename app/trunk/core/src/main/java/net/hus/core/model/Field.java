@@ -1,7 +1,11 @@
 package net.hus.core.model;
 
-public class Field extends Model
+import java.io.Serializable;
+
+public class Field extends Model implements Serializable
 {
+  private static final long serialVersionUID = -961088994106006040L;
+
   public enum Type
   {
     STRING,
