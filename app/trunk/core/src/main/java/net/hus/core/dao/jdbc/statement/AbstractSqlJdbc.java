@@ -10,7 +10,6 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.util.EnumUtil;
 import net.hus.core.util.ResourceUtil;
-import net.hus.core.xstream.XStreamOmitMissingFields;
 
 public abstract class AbstractSqlJdbc
 {
@@ -26,17 +25,11 @@ public abstract class AbstractSqlJdbc
     return getSql(this.getClass());
   }
 
-  public String getSql(String inName)
+  public String fileContent(String inFileName)
   {
     String s = this.getClass().getName().replaceAll("\\.", "/");
-    s = s.replaceAll(this.getClass().getSimpleName(), inName);
+    s = s.replaceAll(this.getClass().getSimpleName(), inFileName);
     return ResourceUtil.contents(s);
-  }
-
-  public Sql getSqlObj(String inXmlName)
-  {
-    String sql = getSql(inXmlName);
-    return fromXml(sql);
   }
 
   public static <T> T first(List<T> inList)
@@ -94,36 +87,40 @@ public abstract class AbstractSqlJdbc
     return ret;
   }
 
-  protected static Sql fromXml(String inXml)
+  public Statements getStatements(String inXmlName)
   {
-    XStream xStream = new XStreamOmitMissingFields();
-    xStream.alias("Sql", Sql.class);
+    String fileContent = fileContent(inXmlName);
+    return fromXml(fileContent);
+  }
 
-    Sql ret = (Sql) xStream.fromXML(inXml);
+  protected static Statements fromXml(String inXml)
+  {
+    XStream xs = xStream();
 
-    convertTypes(ret);
+    Statements ret = (Statements) xs.fromXML(inXml);
 
     return ret;
   }
 
-  private static void convertTypes(Sql inSql)
+  private static XStream xStream()
   {
-    if (inSql.mTypesText != null)
-    {
-      String[] types = inSql.mTypesText.split(",");
-      int[] ret = new int[types.length];
-      for (int i = 0; i < types.length; i++)
-      {
-        ret[i] = MAP.get(types[i]);
-      }
-      inSql.mTypes = ret;
-    }
+    XStream ret = new XStream();
+
+    ret.alias("Statements", Statements.class);
+    ret.addImplicitMap(Statements.class, "mStmt", null, Statement.class, "mKey");
+
+    ret.alias("Statement", Statement.class);
+    ret.aliasField("Key", Statement.class, "mKey");
+    ret.aliasField("Types", Statement.class, "mTypes");
+    ret.aliasField("Types", Statement.class, "mTypes");
+    ret.aliasField("Sql", Statement.class, "mSql");
+
+    return ret;
   }
 
   private static Map<String, Integer> getJdbcTypeName()
   {
     Map<String, Integer> ret = new HashMap<>();
-
     try
     {
       Field[] fields = java.sql.Types.class.getFields();
@@ -141,21 +138,41 @@ public abstract class AbstractSqlJdbc
     return ret;
   }
 
-  public static class Sql
+  public static class Statements
   {
-    private int[] mTypes;
-    private String mSql;
+    private Map<String, Statement> mStmt;
 
-    private String mTypesText;
+    public Statement getStatement(String inKey)
+    {
+      return mStmt.get(inKey);
+    }
+  }
+
+  public static class Statement
+  {
+    public String mKey;
+
+    private String mTypes;
+    private String mSql;
 
     public String getSql()
     {
       return mSql;
     }
 
-    public int[] getTypes()
+    public int[] types()
     {
-      return mTypes;
+      int[] ret = null;
+      if (mTypes != null && mTypes.length() > 0)
+      {
+        String[] types = mTypes.split(",");
+        ret = new int[types.length];
+        for (int i = 0; i < types.length; i++)
+        {
+          ret[i] = MAP.get(types[i]);
+        }
+      }
+      return ret;
     }
   }
 }
