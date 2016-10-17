@@ -8,6 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.object.BatchSqlUpdate;
+
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.model.Model;
@@ -18,6 +22,8 @@ import net.hus.core.util.ResourceUtil;
 public abstract class AbstractSqlJdbc
 {
   private static final Map<String, Integer> MAP = getJdbcTypeName();
+
+  protected Statements mStmts;
 
   public void mapModel(Model inModel, ResultSet inResultSet) throws SQLException
   {
@@ -195,5 +201,13 @@ public abstract class AbstractSqlJdbc
       }
       return ret;
     }
+  }
+
+  protected BatchSqlUpdate newBatchUpdate(DataSource inDataSource, String inKey)
+  {
+    Statement stmt = mStmts.getStatement(inKey);
+    BatchSqlUpdate ret = new BatchSqlUpdate(inDataSource, stmt.getSql(), stmt.types());
+    ret.compile();
+    return ret;
   }
 }

@@ -11,6 +11,10 @@ public class FieldProperties extends XStream implements Parser<Field.Properties>
   {
     alias("Field.Properties", Field.Properties.class);
     aliasField("Display", Field.Properties.class, "mDisplay");
+
+    alias("Display", Field.Display.class);
+    aliasAttribute(Field.Display.class, "mShort", "short");
+    aliasAttribute(Field.Display.class, "mLong", "long");
   }
 
   @Override
