@@ -11,17 +11,24 @@ import org.springframework.jdbc.object.MappingSqlQuery;
 
 public class ProfileSql extends AbstractSqlJdbc
 {
+  private Statements mStmts;
+
   private BatchSqlUpdate mBatchUpsert;
   private MappingSqlQuery<String> mSelect;
 
+  public ProfileSql()
+  {
+    mStmts = getStatements("Profile.xml");
+  }
+
   public ProfileSql(DataSource inDataSource)
   {
-    Sql upsert = getSqlObj("ProfileUpsert.xml");
-    Sql select = getSqlObj("ProfileSelect.xml");
 
-    mBatchUpsert = new BatchSqlUpdate(inDataSource, upsert.getSql(), upsert.getTypes());
+    Statement upsert = mStmts.getStatement("UPSERT");
+    mBatchUpsert = new BatchSqlUpdate(inDataSource, upsert.getSql(), upsert.types());
     mBatchUpsert.compile();
 
+    Statement select = mStmts.getStatement("SELECT");
     mSelect = new MappingSqlQuery<String>(inDataSource, select.getSql())
     {
       @Override
@@ -30,7 +37,7 @@ public class ProfileSql extends AbstractSqlJdbc
         return inRs.getString("mText");
       }
     };
-    mSelect.setTypes(select.getTypes());
+    mSelect.setTypes(select.types());
     mSelect.compile();
   }
 
