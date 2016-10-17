@@ -1,4 +1,4 @@
-package net.hus.core.client;
+package net.hus.web.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 import net.hus.core.model.Field;
-import net.hus.core.shared.FieldVerifier;
+import net.hus.web.shared.FieldVerifier;
 
 public class Web_ui implements EntryPoint
 {
