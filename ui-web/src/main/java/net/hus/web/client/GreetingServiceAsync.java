@@ -1,4 +1,4 @@
-package net.hus.core.client;
+package net.hus.web.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

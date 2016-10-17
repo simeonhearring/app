@@ -1,7 +1,8 @@
-package net.hus.core.server;
+package net.hus.web.server;
 
-import net.hus.core.client.GreetingService;
-import net.hus.core.shared.FieldVerifier;
+import net.hus.web.client.GreetingService;
+import net.hus.web.shared.FieldVerifier;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**

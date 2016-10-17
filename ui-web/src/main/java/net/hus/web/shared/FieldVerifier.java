@@ -1,4 +1,4 @@
-package net.hus.core.shared;
+package net.hus.web.shared;
 
 /**
  * <p>

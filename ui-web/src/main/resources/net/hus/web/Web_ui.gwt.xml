@@ -29,7 +29,7 @@
 
 	<inherits name='net.hus.core.Core' />
 
-	<entry-point class='net.hus.core.client.Web_ui' />
+	<entry-point class='net.hus.web.client.Web_ui' />
 
 	<source path='client' />
 	<source path='shared' />
