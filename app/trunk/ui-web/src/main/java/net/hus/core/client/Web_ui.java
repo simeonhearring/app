@@ -16,29 +16,17 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import net.hus.core.model.Field;
 import net.hus.core.shared.FieldVerifier;
 
-/**
- * Entry point classes define <code>onModuleLoad()</code>.
- */
 public class Web_ui implements EntryPoint
 {
-  /**
-   * The message displayed to the user when the server cannot be reached or
-   * returns an error.
-   */
   private static final String SERVER_ERROR =
       "An error occurred while " + "attempting to contact the server. Please check your network "
           + "connection and try again.";
 
-  /**
-   * Create a remote service proxy to talk to the server-side Greeting service.
-   */
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
-  /**
-   * This is the entry point method.
-   */
   @Override
   public void onModuleLoad()
   {
@@ -47,7 +35,7 @@ public class Web_ui implements EntryPoint
     nameField.setText("GWT User");
     final Label errorLabel = new Label();
 
-    // Field field = new Field();
+    Field field = new Field();
 
     // We can add style names to widgets
     sendButton.addStyleName("sendButton");
@@ -96,18 +84,12 @@ public class Web_ui implements EntryPoint
     // Create a handler for the sendButton and nameField
     class MyHandler implements ClickHandler, KeyUpHandler
     {
-      /**
-       * Fired when the user clicks on the sendButton.
-       */
       @Override
       public void onClick(ClickEvent event)
       {
         sendNameToServer();
       }
 
-      /**
-       * Fired when the user types in the nameField.
-       */
       @Override
       public void onKeyUp(KeyUpEvent event)
       {
@@ -117,9 +99,6 @@ public class Web_ui implements EntryPoint
         }
       }
 
-      /**
-       * Send the name from the nameField to the server and wait for a response.
-       */
       private void sendNameToServer()
       {
         // First, we validate the input.
