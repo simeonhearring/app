@@ -5,5 +5,5 @@
 		<artifactId>app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>app</artifactId>
+	<artifactId>core</artifactId>
 </project>
