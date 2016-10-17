@@ -1,4 +1,0 @@
-<Sql>
-	<mTypesText>VARCHAR,VARCHAR</mTypesText>
-	<mSql>select * from PROFILE where mOrg=? and mName=?</mSql>
-</Sql>
