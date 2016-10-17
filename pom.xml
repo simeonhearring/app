@@ -100,22 +100,6 @@
 					<doUpdate>false</doUpdate>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>${gwtmavenplugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<style>${gwt.style}</style>
-							<draftCompile>false</draftCompile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
  -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -4,7 +4,7 @@
 <module rename-to='web_ui'>
 
 	<inherits name='com.google.gwt.user.User' />
-<!-- 
+
 	<inherits name='org.gwtbootstrap3.GwtBootstrap3' />
 
 	<inherits name='org.gwtbootstrap3.extras.select.Select' />
@@ -24,7 +24,8 @@
 	<inherits name='org.gwtbootstrap3.extras.animate.Animate' />
 
 	<inherits name='org.gwtbootstrap3.extras.slider.Slider' />
- -->
+<!-- 
+	-->
 
 	<inherits name='net.hus.core.Core' />
 
