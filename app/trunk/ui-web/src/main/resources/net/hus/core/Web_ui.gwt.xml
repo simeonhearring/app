@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0-rc3//EN"
+  "http://gwtproject.org/doctype/2.8.0-rc3/gwt-module.dtd">
+<module rename-to='web_ui'>
+
+	<inherits name='com.google.gwt.user.User' />
+<!-- 
+	<inherits name='org.gwtbootstrap3.GwtBootstrap3' />
+
+	<inherits name='org.gwtbootstrap3.extras.select.Select' />
+
+	<inherits name='org.gwtbootstrap3.extras.datepicker.DatePicker' />
+
+	<inherits name='org.gwtbootstrap3.extras.datetimepicker.DateTimePicker' />
+
+	<inherits name='org.gwtbootstrap3.extras.summernote.Summernote' />
+
+	<inherits name='org.gwtbootstrap3.extras.toggleswitch.ToggleSwitch' />
+
+	<inherits name='org.gwtbootstrap3.extras.notify.Notify' />
+
+	<inherits name='org.gwtbootstrap3.extras.bootbox.Bootbox' />
+
+	<inherits name='org.gwtbootstrap3.extras.animate.Animate' />
+
+	<inherits name='org.gwtbootstrap3.extras.slider.Slider' />
+ -->
+
+	<entry-point class='net.hus.core.client.Web_ui' />
+
+	<source path='client' />
+	<source path='shared' />
+
+	<add-linker name="xsiframe" />
+</module>
