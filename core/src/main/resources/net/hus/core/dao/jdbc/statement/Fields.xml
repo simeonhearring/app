@@ -1,0 +1,28 @@
+<Statements>
+	<Statement>
+		<Key>UPSERT</Key>
+		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
+		<Sql>INSERT INTO FIELD (mUpdated,mName,mType,mProperties)
+			VALUES (CURRENT_TIMESTAMP,?,?,?) ON DUPLICATE KEY
+			UPDATE mProperties=?,mUpdated=CURRENT_TIMESTAMP
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT</Key>
+		<Types>VARCHAR,VARCHAR</Types>
+		<Sql>select * from FIELD where mName=? and mType=?</Sql>
+	</Statement>
+	<Statement>
+		<Key>UPSERT_FIELDS</Key>
+		<Types>VARCHAR,NUMERIC,VARCHAR,NUMERIC,VARCHAR,NUMERIC</Types>
+		<Sql>INSERT INTO FIELDS (mUpdated,mGroup,mFieldId,mDisplay,mSort)
+			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
+			UPDATE mDisplay=?,mSort=?,mUpdated=CURRENT_TIMESTAMP
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT_FIELDS</Key>
+		<Types>VARCHAR</Types>
+		<Sql>select f.*,s.mDisplay,s.mSort from FIELD f, FIELDS s where f.mId=s.mFieldId and s.mGroup=?</Sql>
+	</Statement>
+</Statements> 
