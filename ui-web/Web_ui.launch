@@ -20,7 +20,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gdt.eclipse.maven.mavenClasspathProvider"/>
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-war /Users/simeonhearring/workspace/4.5.0/app/ui-web/src/main/webapp -remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -codeServerPort 9997 -superDevMode net.hus.core.Web_ui"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-startupUrl Web_ui.html -logLevel INFO -port 8888 -war /Users/simeonhearring/workspace/4.5.0/app/ui-web/src/main/webapp -remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -codeServerPort 9997 net.hus.core.Web_ui"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ui-web"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -XstartOnFirstThread"/>
 </launchConfiguration>
