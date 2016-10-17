@@ -23,7 +23,7 @@ public class ProfileSql extends AbstractSqlJdbc
 
   public ProfileSql(DataSource inDataSource)
   {
-
+    this();
     Statement upsert = mStmts.getStatement("UPSERT");
     mBatchUpsert = new BatchSqlUpdate(inDataSource, upsert.getSql(), upsert.types());
     mBatchUpsert.compile();

@@ -1,6 +1,8 @@
 package net.hus.core.dao.jdbc.statement;
 
 import java.lang.reflect.Field;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
 import java.util.List;
@@ -8,12 +10,21 @@ import java.util.Map;
 
 import com.thoughtworks.xstream.XStream;
 
+import net.hus.core.model.Model;
+import net.hus.core.parser.Parser;
 import net.hus.core.util.EnumUtil;
 import net.hus.core.util.ResourceUtil;
 
 public abstract class AbstractSqlJdbc
 {
   private static final Map<String, Integer> MAP = getJdbcTypeName();
+
+  public void mapModel(Model inModel, ResultSet inResultSet) throws SQLException
+  {
+    inModel.setId(inResultSet.getLong("mId"));
+    inModel.setCreated(inResultSet.getTimestamp("mCreated"));
+    inModel.setUpdated(inResultSet.getTimestamp("mUpdated"));
+  }
 
   public String getSql(Class<?> inClass)
   {
@@ -45,6 +56,16 @@ public abstract class AbstractSqlJdbc
   public static <T extends Enum<?>> T valueOf(String inValue, T[] inValues)
   {
     return EnumUtil.valueOf(inValue, inValues);
+  }
+
+  public static <T> T valueOf(String inValue, Parser<T> inParser)
+  {
+    return inParser.fromXml(inValue);
+  }
+
+  public static <T> String valueOf(T inObj, Parser<T> inParser)
+  {
+    return inParser.toXml(inObj);
   }
 
   protected static int[] types(int... inTypes)
