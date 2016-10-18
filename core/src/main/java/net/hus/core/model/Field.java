@@ -1,8 +1,6 @@
 package net.hus.core.model;
 
-import java.io.Serializable;
-
-public class Field extends Model implements Serializable
+public class Field extends AbstractModel
 {
   private static final long serialVersionUID = -961088994106006040L;
 

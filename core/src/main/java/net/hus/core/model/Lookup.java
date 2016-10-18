@@ -1,7 +1,9 @@
 package net.hus.core.model;
 
-public class Lookup extends Model
+public class Lookup extends AbstractModel
 {
+  private static final long serialVersionUID = 6439569552175264944L;
+
   public enum Group
   {
     UNKNOWN,
