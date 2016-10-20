@@ -5,31 +5,31 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
+		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+
 		<junit.version>4.8.1</junit.version>
 		<jar.scope>provided</jar.scope>
+
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 
 		<gwt.style>OBF</gwt.style>
-		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 		<gwt.version>2.7.0</gwt.version>
+
 		<gwtmavenplugin.version>2.7.0</gwtmavenplugin.version>
-		<mr.style.version>2.1.3</mr.style.version>
-		<db.config.loc>src/main/config/env</db.config.loc>
+		<gwtbootstrap.version>0.9.3</gwtbootstrap.version>
+
 		<jasperreports.version>4.6.0</jasperreports.version>
 	</properties>
 	<scm>
-		<connection>scm:svn://husoftware.net/app/trunk</connection>
-		<developerConnection>scm:svn://husoftware.net/app/trunk</developerConnection>
-		<url>https://husoftware.net/</url>
+		<connection>scm:svn:https://simeon@husoftware.net/app/trunk</connection>
+		<developerConnection>scm:svn:https://husoftware.net/app/trunk</developerConnection>
+		<url>https://husoftware.net/app/trunk</url>
 	</scm>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
+	
+		<!-- SPRING -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -48,10 +48,22 @@
 			<version>4.3.3.RELEASE</version>
 			<scope>${jar.scope}</scope>
 		</dependency>
+
+		<!-- DB -->
+
 		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.4.1</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.18</version>
+			<scope>${jar.scope}</scope>
+		</dependency>
+
+		<!-- COMMON / UTIL-->
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
 			<scope>${jar.scope}</scope>
 		</dependency>
 		<dependency>
@@ -67,20 +79,36 @@
 			<scope>${jar.scope}</scope>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.18</version>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.1</version>
+			<scope>${jar.scope}</scope>
+		</dependency>
+		
+		<!-- TEST -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- GWT -->
+
+		<dependency>
+			<groupId>org.gwtbootstrap3</groupId>
+			<artifactId>gwtbootstrap3</artifactId>
+			<version>${gwtbootstrap.version}</version>
 			<scope>${jar.scope}</scope>
 		</dependency>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<groupId>org.gwtbootstrap3</groupId>
+			<artifactId>gwtbootstrap3-extras</artifactId>
+			<version>${gwtbootstrap.version}</version>
 			<scope>${jar.scope}</scope>
 		</dependency>
 
-
-		<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/gwt-maven-plugin -->
 		<dependency>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>gwt-maven-plugin</artifactId>
@@ -91,18 +119,6 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
 			<version>${gwt.version}</version>
-			<scope>${jar.scope}</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtbootstrap3</groupId>
-			<artifactId>gwtbootstrap3</artifactId>
-			<version>0.9.3</version>
-			<scope>${jar.scope}</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.gwtbootstrap3</groupId>
-			<artifactId>gwtbootstrap3-extras</artifactId>
-			<version>0.9.3</version>
 			<scope>${jar.scope}</scope>
 		</dependency>
 		<dependency>
@@ -117,6 +133,7 @@
 			<version>${gwt.version}</version>
 			<scope>${jar.scope}</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-oauth2</artifactId>
@@ -132,17 +149,11 @@
 
 	</dependencies>
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-			</resource>
-		</resources>
 		<plugins>
-<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.2</version>
+				<version>1.3</version>
 				<executions>
 					<execution>
 						<phase>pre-clean</phase>
@@ -160,22 +171,7 @@
 					<doUpdate>false</doUpdate>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>${gwtmavenplugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<style>${gwt.style}</style>
-							<draftCompile>false</draftCompile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 
  -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
