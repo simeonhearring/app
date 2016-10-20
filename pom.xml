@@ -6,6 +6,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+		<war.finalName>app</war.finalName>
 
 		<junit.version>4.8.1</junit.version>
 		<jar.scope>provided</jar.scope>
