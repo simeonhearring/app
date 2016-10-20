@@ -1,0 +1,16 @@
+<Statements>
+	<Statement>
+		<Key>UPSERT</Key>
+		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
+		<Sql>INSERT INTO PROFILE (mUpdated,mOrg,mName,mText)
+			VALUES (CURRENT_TIMESTAMP,?,?,?) ON DUPLICATE KEY
+			UPDATE mText=?,mUpdated=CURRENT_TIMESTAMP
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT</Key>
+		<Types>VARCHAR,VARCHAR</Types>
+		<Sql>select * from PROFILE where mOrg=? and mName=?</Sql>
+	</Statement>
+</Statements>
+ 
