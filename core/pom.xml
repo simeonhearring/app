@@ -26,4 +26,11 @@
 			</testResource>
 		</testResources>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.gwtbootstrap3</groupId>
+			<artifactId>gwtbootstrap3</artifactId>
+			<version>0.9.3</version>
+		</dependency>
+	</dependencies>
 </project>
