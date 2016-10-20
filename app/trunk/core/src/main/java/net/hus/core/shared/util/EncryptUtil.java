@@ -4,8 +4,6 @@ import java.util.Date;
 
 import com.googlecode.gwt.crypto.client.TripleDesCipher;
 
-import net.hus.core.util.EnumUtil;
-
 public class EncryptUtil
 {
   public static final byte[] GWT_DES_KEY = new byte[]
