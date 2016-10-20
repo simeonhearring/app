@@ -18,6 +18,7 @@
 	<bean id="CoreDao" class="net.hus.core.dao.jdbc.CoreJdbc">
 		<property name="dataSource" ref="CoreDs" />
 	</bean>
+
 <!-- 
 	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
 		<property name="targetObject">
