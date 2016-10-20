@@ -24,12 +24,14 @@
 	<inherits name='org.gwtbootstrap3.extras.animate.Animate' />
 
 	<inherits name='org.gwtbootstrap3.extras.slider.Slider' />
-<!-- 
-	-->
+
+	<inherits name='com.googlecode.gwt.crypto.Crypto'/>
+
+	<inherits name="com.google.gwt.json.JSON" />
 
 	<inherits name='net.hus.core.Core' />
 
-	<entry-point class='net.hus.web.client.Web_ui' />
+	<entry-point class='net.hus.web.client.MyEntryPoint' />
 
 	<source path='client' />
 	<source path='shared' />
