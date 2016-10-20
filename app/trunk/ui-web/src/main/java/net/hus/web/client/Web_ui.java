@@ -30,12 +30,14 @@ public class Web_ui implements EntryPoint
   @Override
   public void onModuleLoad()
   {
+    Field field = new Field();
+    field.setName("Gwt User");
+
     final Button sendButton = new Button("Send");
     final TextBox nameField = new TextBox();
-    nameField.setText("GWT User");
+    nameField.setText(field.getName());
     final Label errorLabel = new Label();
 
-    Field field = new Field();
 
     // We can add style names to widgets
     sendButton.addStyleName("sendButton");

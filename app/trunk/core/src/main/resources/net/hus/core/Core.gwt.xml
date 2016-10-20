@@ -4,6 +4,7 @@
 	<inherits name='com.google.gwt.user.User' />
 
 	<source path='model' />
-	<source path='ui' />
+	<source path='client' />
+	<source path='shared' />
 
 </module>
