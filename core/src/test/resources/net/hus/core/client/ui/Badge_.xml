@@ -1,0 +1,4 @@
+<Badge visible="true" height="20px" width="10px" stylePrimaryName="primary style">
+	<Title>Title</Title>
+	<Text>Hello</Text>
+</Badge>

@@ -1,0 +1,4 @@
+<Alert visible="true" height="20px" width="10px" styleName="alert" stylePrimaryName="primary style" type="WARNING" dismissable="false" fade="false">
+	<Title>Title</Title>
+	<Text>Hello</Text>
+</Alert>

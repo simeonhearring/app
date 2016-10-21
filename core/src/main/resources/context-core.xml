@@ -39,4 +39,6 @@
 
 	<bean id="LoggerCommand" class="net.hus.core.server.command.LoggerCommandBean" />
 
+	<bean id="UIObjectCommand" class="net.hus.core.server.command.UIObjectCommandBean" />
+
 </beans>

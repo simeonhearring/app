@@ -1,26 +1,34 @@
 package net.hus.web.client;
 
-import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+import org.gwtbootstrap3.client.ui.Badge;
+
+import com.google.gwt.user.client.ui.RootPanel;
 
 import net.hus.core.client.AbstractEntryPoint;
 import net.hus.core.client.common.Global;
 import net.hus.core.client.service.common.RpcCallback;
+import net.hus.core.client.ui.Badge_;
+import net.hus.core.client.ui.Convert;
 import net.hus.core.client.ui.event.LoadMainEvent;
-import net.hus.core.shared.command.LoggerCommand;
-import net.hus.core.shared.command.LoggerCommand.Level;
+import net.hus.core.shared.command.UIObjectCommand;
 
 public class MyEntryPoint extends AbstractEntryPoint
 {
   @Override
   public void dispatch(LoadMainEvent inEvent)
   {
-    Notify.notify("Alert");
-    Global.fire(new LoggerCommand(Level.DEBUG, ""), new RpcCallback<LoggerCommand>()
+    Badge badge = new Badge("Hello");
+
+    RootPanel.get().add(badge);
+
+    Global.fire(new UIObjectCommand<Badge_>(), new RpcCallback<UIObjectCommand<Badge_>>()
     {
       @Override
-      public void onRpcSuccess(LoggerCommand inResult)
+      public void onRpcSuccess(UIObjectCommand<Badge_> inResult)
       {
-        Notify.notify("Back");
+        Badge uiobject = new Convert().convert(inResult.getUIObject());
+
+        RootPanel.get().add(uiobject);
       }
     });
   }
