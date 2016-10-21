@@ -17,8 +17,8 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 
 import com.google.gwt.user.client.ui.ComplexPanel;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
-import com.google.gwt.user.client.ui.Widget;
 
 public class Convert
 {
@@ -254,9 +254,9 @@ public class Convert
     }
   }
 
-  private Widget match(UIObject_ inUiO)
+  private IsWidget match(UIObject_ inUiO)
   {
-    Widget ret = null;
+    IsWidget ret = null;
 
     if (inUiO instanceof Alert_)
     {
