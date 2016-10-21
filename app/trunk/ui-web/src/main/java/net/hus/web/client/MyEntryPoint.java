@@ -1,14 +1,16 @@
 package net.hus.web.client;
 
-import org.gwtbootstrap3.client.ui.Badge;
+import org.gwtbootstrap3.client.ui.FieldSet;
+import org.gwtbootstrap3.client.ui.Input;
+import org.gwtbootstrap3.client.ui.constants.InputType;
 
 import com.google.gwt.user.client.ui.RootPanel;
 
 import net.hus.core.client.AbstractEntryPoint;
 import net.hus.core.client.common.Global;
 import net.hus.core.client.service.common.RpcCallback;
-import net.hus.core.client.ui.Badge_;
 import net.hus.core.client.ui.Convert;
+import net.hus.core.client.ui.FieldSet_;
 import net.hus.core.client.ui.event.LoadMainEvent;
 import net.hus.core.shared.command.UIObjectCommand;
 
@@ -17,18 +19,21 @@ public class MyEntryPoint extends AbstractEntryPoint
   @Override
   public void dispatch(LoadMainEvent inEvent)
   {
-    Badge badge = new Badge("Hello");
+    Input input = new Input(InputType.TEXT);
+    input.setValue("Hello");
 
-    RootPanel.get().add(badge);
+    RootPanel.get().add(input);
 
-    Global.fire(new UIObjectCommand<Badge_>(), new RpcCallback<UIObjectCommand<Badge_>>()
+    Global.fire(new UIObjectCommand<FieldSet_>(), new RpcCallback<UIObjectCommand<FieldSet_>>()
     {
       @Override
-      public void onRpcSuccess(UIObjectCommand<Badge_> inResult)
+      public void onRpcSuccess(UIObjectCommand<FieldSet_> inResult)
       {
-        Badge uiobject = new Convert().convert(inResult.getUIObject());
+        Convert convert = new Convert();
+        FieldSet_ uiObject_ = inResult.getUIObject();
+        FieldSet uiObject = convert.convert(uiObject_);
 
-        RootPanel.get().add(uiobject);
+        RootPanel.get().add(uiObject);
       }
     });
   }
