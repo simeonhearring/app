@@ -52,7 +52,7 @@ public class Web_ui implements EntryPoint
     nameField.setFocus(true);
     nameField.selectAll();
 
-    // Create the popup dialog box
+    // Convert the popup dialog box
     final DialogBox dialogBox = new DialogBox();
     dialogBox.setText("Remote Procedure Call");
     dialogBox.setAnimationEnabled(true);
@@ -83,7 +83,7 @@ public class Web_ui implements EntryPoint
       }
     });
 
-    // Create a handler for the sendButton and nameField
+    // Convert a handler for the sendButton and nameField
     class MyHandler implements ClickHandler, KeyUpHandler
     {
       @Override

@@ -7,6 +7,9 @@
 
 	<inherits name='org.gwtbootstrap3.GwtBootstrap3' />
 
+	<inherits name='org.gwtbootstrap3.extras.notify.Notify' />
+
+	<!-- 
 	<inherits name='org.gwtbootstrap3.extras.select.Select' />
 
 	<inherits name='org.gwtbootstrap3.extras.datepicker.DatePicker' />
@@ -17,19 +20,21 @@
 
 	<inherits name='org.gwtbootstrap3.extras.toggleswitch.ToggleSwitch' />
 
-	<inherits name='org.gwtbootstrap3.extras.notify.Notify' />
-
 	<inherits name='org.gwtbootstrap3.extras.bootbox.Bootbox' />
 
 	<inherits name='org.gwtbootstrap3.extras.animate.Animate' />
 
 	<inherits name='org.gwtbootstrap3.extras.slider.Slider' />
 
+	 -->
+
 	<inherits name='com.googlecode.gwt.crypto.Crypto'/>
 
 	<inherits name="com.google.gwt.json.JSON" />
 
 	<inherits name='net.hus.core.Core' />
+
+	<stylesheet src='css/bootstrap-3.3.6.min.cache.css' />
 
 	<entry-point class='net.hus.web.client.MyEntryPoint' />
 
