@@ -1,15 +1,15 @@
-<ListBox visible="true" height="20px" width="10px">
+<ListBox height="20px" width="10px">
 	<Title>Title</Title>
 	<LookupParams>
 		<string>A:abc</string>
 		<string>1:123</string>
 	</LookupParams>
 	<Items>
-		<Item visible="true" selected="true">
+		<Item selected="true">
 			<Text>text1</Text>
 			<Value>value1</Value>
 		</Item>
-		<Item visible="true" selected="false">
+		<Item selected="false">
 			<Text>text2</Text>
 			<Value>value2</Value>
 		</Item>

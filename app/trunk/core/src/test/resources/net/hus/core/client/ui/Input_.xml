@@ -1,4 +1,4 @@
-<Input visible="true" height="20px" width="10px" size="LARGE" type="TEXT">
+<Input height="20px" width="10px" size="LARGE" type="TEXT">
 	<Title>Title</Title>
 	<Value>Hello</Value>
 </Input>

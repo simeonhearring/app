@@ -1,4 +1,4 @@
-<TextBox visible="true" height="20px" width="10px" size="LARGE">
+<TextBox height="20px" width="10px" size="LARGE">
 	<Title>Title</Title>
 	<Value>Hello</Value>
 </TextBox>

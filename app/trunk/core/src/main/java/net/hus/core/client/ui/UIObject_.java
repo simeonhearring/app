@@ -6,7 +6,8 @@ public class UIObject_ implements Serializable
 {
   private static final long serialVersionUID = 4099428684832729483L;
 
-  private boolean mVisible = true;
+  private String mId;
+  private Boolean mVisible;
   private String mHeight;
   private String mWidth;
   private String mTitle;
@@ -33,7 +34,7 @@ public class UIObject_ implements Serializable
     return mStylePrimaryName;
   }
 
-  public boolean isVisible()
+  public Boolean getVisible()
   {
     return mVisible;
   }
@@ -83,7 +84,7 @@ public class UIObject_ implements Serializable
     mTitle = inTitle;
   }
 
-  public void setVisible(boolean inVisible)
+  public void setVisible(Boolean inVisible)
   {
     mVisible = inVisible;
   }
@@ -91,5 +92,15 @@ public class UIObject_ implements Serializable
   public void setWidth(String inWidth)
   {
     mWidth = inWidth;
+  }
+
+  public String getId()
+  {
+    return mId;
+  }
+
+  public void setId(String inId)
+  {
+    mId = inId;
   }
 }
