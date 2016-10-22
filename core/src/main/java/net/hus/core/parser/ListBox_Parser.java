@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.ListBox_;
 
-public class ListBoxParser extends FocusWidgetParser<ListBox_>
+public class ListBox_Parser extends FocusWidget_Parser<ListBox_>
 {
-  public ListBoxParser()
+  public ListBox_Parser()
   {
     super();
     xs(this);

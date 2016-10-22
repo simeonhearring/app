@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.Container_;
 
-public class ContainerParser extends ComplexWidgetParser
+public class Container_Parser extends ComplexWidget_Parser
 {
-  public ContainerParser()
+  public Container_Parser()
   {
     super();
     xs(this);

@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.FieldSet_;
 
-public class FieldSetParser extends ComplexWidgetParser
+public class FieldSet_Parser extends ComplexWidget_Parser
 {
-  public FieldSetParser()
+  public FieldSet_Parser()
   {
     super();
     xs(this);

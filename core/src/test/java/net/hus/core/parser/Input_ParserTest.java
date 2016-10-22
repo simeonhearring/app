@@ -8,12 +8,12 @@ import junit.framework.Assert;
 import net.hus.core.client.ui.Input_;
 import net.hus.core.util.ResourceUtil;
 
-public class InputParserTest
+public class Input_ParserTest
 {
   @Test
   public void test()
   {
-    InputParser parser = new InputParser();
+    Input_Parser parser = new Input_Parser();
 
     Input_ model = new Input_();
     model.setType(InputType.TEXT);

@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.ValueBoxBase_;
 
-public class ValueBoxBaseParser extends FocusWidgetParser<ValueBoxBase_>
+public class ValueBoxBase_Parser extends FocusWidget_Parser<ValueBoxBase_>
 {
-  public ValueBoxBaseParser()
+  public ValueBoxBase_Parser()
   {
     super();
     xs(this);

@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.UIObject_;
 
-public class UIObjectParser<T> extends XStream implements Parser<T>
+public class UIObject_Parser<T> extends XStream implements Parser<T>
 {
-  public UIObjectParser()
+  public UIObject_Parser()
   {
     alias("UIObject", UIObject_.class);
     aliasField("Title", UIObject_.class, "mTitle");

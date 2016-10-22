@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.Alert_;
 
-public class AlertParser extends UIObjectParser<Alert_>
+public class Alert_Parser extends UIObject_Parser<Alert_>
 {
-  public AlertParser()
+  public Alert_Parser()
   {
     super();
     xs(this);

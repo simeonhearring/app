@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.ComplexWidget_;
 
-public class ComplexWidgetParser extends ComplexPanelParser
+public class ComplexWidget_Parser extends ComplexPanel_Parser
 {
-  public ComplexWidgetParser()
+  public ComplexWidget_Parser()
   {
     super();
     xs(this);

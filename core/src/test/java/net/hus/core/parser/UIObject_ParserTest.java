@@ -7,12 +7,12 @@ import net.hus.core.client.ui.UIObject_;
 import net.hus.core.client.ui.UIObject_Test;
 import net.hus.core.util.ResourceUtil;
 
-public class UIObjectParserTest
+public class UIObject_ParserTest
 {
   @Test
   public void test()
   {
-    UIObjectParser<UIObject_> parser = new UIObjectParser<>();
+    UIObject_Parser<UIObject_> parser = new UIObject_Parser<>();
 
     UIObject_ model = UIObject_Test.newUIObject();
 

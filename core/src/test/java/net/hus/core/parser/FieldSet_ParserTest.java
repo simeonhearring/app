@@ -10,13 +10,13 @@ import net.hus.core.client.ui.FormLabel_;
 import net.hus.core.client.ui.Input_;
 import net.hus.core.util.ResourceUtil;
 
-public class FieldSetParserTest
+public class FieldSet_ParserTest
 {
 
   @Test
   public void test()
   {
-    FieldSetParser parser = new FieldSetParser();
+    FieldSet_Parser parser = new FieldSet_Parser();
 
     FieldSet_ model = new FieldSet_();
 

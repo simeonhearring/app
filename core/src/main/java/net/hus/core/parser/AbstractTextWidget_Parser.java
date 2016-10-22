@@ -5,9 +5,9 @@ import com.thoughtworks.xstream.XStream;
 import net.hus.core.client.ui.AbstractTextWidget_;
 import net.hus.core.client.ui.UIObject_;
 
-public class AbstractTextWidgetParser extends UIObjectParser<UIObject_>
+public class AbstractTextWidget_Parser extends UIObject_Parser<UIObject_>
 {
-  public AbstractTextWidgetParser()
+  public AbstractTextWidget_Parser()
   {
     super();
     xs(this);

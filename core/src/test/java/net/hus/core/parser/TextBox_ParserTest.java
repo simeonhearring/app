@@ -7,12 +7,12 @@ import org.junit.Test;
 import net.hus.core.client.ui.TextBox_;
 import net.hus.core.util.ResourceUtil;
 
-public class TextBoxParserTest
+public class TextBox_ParserTest
 {
   @Test
   public void test()
   {
-    TextBoxParser parser = new TextBoxParser();
+    TextBox_Parser parser = new TextBox_Parser();
 
     TextBox_ model = new TextBox_();
     model.setValue("Hello");
