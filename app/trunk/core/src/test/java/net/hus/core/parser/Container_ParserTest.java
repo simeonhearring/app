@@ -11,13 +11,13 @@ import net.hus.core.client.ui.FormLabel_;
 import net.hus.core.client.ui.Input_;
 import net.hus.core.util.ResourceUtil;
 
-public class ContainerParserTest
+public class Container_ParserTest
 {
 
   @Test
   public void test()
   {
-    ContainerParser parser = new ContainerParser();
+    Container_Parser parser = new Container_Parser();
 
     Container_ model = new Container_();
     model.setFluid(true);

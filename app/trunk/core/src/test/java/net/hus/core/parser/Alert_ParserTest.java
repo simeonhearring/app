@@ -7,12 +7,12 @@ import net.hus.core.client.ui.Alert_;
 import net.hus.core.client.ui.Alert_Test;
 import net.hus.core.util.ResourceUtil;
 
-public class AlertParserTest
+public class Alert_ParserTest
 {
   @Test
   public void test()
   {
-    AlertParser parser = new AlertParser();
+    Alert_Parser parser = new Alert_Parser();
 
     Alert_ model = Alert_Test.newAlert();
 

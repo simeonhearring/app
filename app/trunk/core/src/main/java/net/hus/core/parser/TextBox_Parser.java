@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.TextBox_;
 
-public class TextBoxParser extends ValueBoxBaseParser
+public class TextBox_Parser extends ValueBoxBase_Parser
 {
-  public TextBoxParser()
+  public TextBox_Parser()
   {
     super();
     xs(this);

@@ -7,12 +7,12 @@ import net.hus.core.client.ui.CheckBox_;
 import net.hus.core.client.ui.CheckBox_Test;
 import net.hus.core.util.ResourceUtil;
 
-public class CheckBoxParserTest
+public class CheckBox_ParserTest
 {
   @Test
   public void test()
   {
-    CheckBoxParser parser = new CheckBoxParser();
+    CheckBox_Parser parser = new CheckBox_Parser();
 
     CheckBox_ model = CheckBox_Test.newCheckBox();
 

@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.FormLabel_;
 
-public class FormLabelParser extends AbstractTextWidgetParser
+public class FormLabel_Parser extends AbstractTextWidget_Parser
 {
-  public FormLabelParser()
+  public FormLabel_Parser()
   {
     super();
     xs(this);
@@ -14,7 +14,7 @@ public class FormLabelParser extends AbstractTextWidgetParser
 
   public static void xs(XStream inXs)
   {
-    AbstractTextWidgetParser.xs(inXs);
+    AbstractTextWidget_Parser.xs(inXs);
     inXs.alias("FormLabel", FormLabel_.class);
     inXs.aliasAttribute(FormLabel_.class, "mShowRequiredIndicator", "showRequiredIndicator");
   }

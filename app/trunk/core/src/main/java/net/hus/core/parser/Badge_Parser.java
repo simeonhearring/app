@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.Badge_;
 
-public class BadgeParser extends UIObjectParser<Badge_>
+public class Badge_Parser extends UIObject_Parser<Badge_>
 {
-  public BadgeParser()
+  public Badge_Parser()
   {
     super();
     xs(this);

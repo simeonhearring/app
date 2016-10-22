@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.FormGroup_;
 
-public class FormGroupParser extends ComplexPanelParser
+public class FormGroup_Parser extends ComplexPanel_Parser
 {
-  public FormGroupParser()
+  public FormGroup_Parser()
   {
     super();
     xs(this);

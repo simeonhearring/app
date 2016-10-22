@@ -6,12 +6,12 @@ import junit.framework.Assert;
 import net.hus.core.client.ui.ListBox_;
 import net.hus.core.util.ResourceUtil;
 
-public class ListBoxParserTest
+public class ListBox_ParserTest
 {
   @Test
   public void test()
   {
-    ListBoxParser parser = new ListBoxParser();
+    ListBox_Parser parser = new ListBox_Parser();
 
     ListBox_ model = new ListBox_();
 

@@ -7,12 +7,12 @@ import net.hus.core.client.ui.Badge_;
 import net.hus.core.client.ui.Badge_Test;
 import net.hus.core.util.ResourceUtil;
 
-public class BadgeParserTest
+public class Badge_ParserTest
 {
   @Test
   public void test()
   {
-    BadgeParser parser = new BadgeParser();
+    Badge_Parser parser = new Badge_Parser();
 
     Badge_ model = Badge_Test.newBadge();
 

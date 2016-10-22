@@ -7,12 +7,12 @@ import net.hus.core.client.ui.FormGroup_;
 import net.hus.core.client.ui.FormGroup_Test;
 import net.hus.core.util.ResourceUtil;
 
-public class FormGroupParserTest
+public class FormGroup_ParserTest
 {
   @Test
   public void test()
   {
-    FormGroupParser parser = new FormGroupParser();
+    FormGroup_Parser parser = new FormGroup_Parser();
 
     FormGroup_ model = FormGroup_Test.newFormGroup();
 
