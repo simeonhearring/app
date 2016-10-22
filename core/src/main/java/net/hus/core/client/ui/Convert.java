@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.gwtbootstrap3.client.ui.Alert;
 import org.gwtbootstrap3.client.ui.Badge;
+import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.FieldSet;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Input;
+import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.base.AbstractTextWidget;
 import org.gwtbootstrap3.client.ui.base.ComplexWidget;
 import org.gwtbootstrap3.client.ui.base.ValueBoxBase;
@@ -15,13 +18,72 @@ import org.gwtbootstrap3.client.ui.constants.FormGroupSize;
 import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
+import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
 
 import com.google.gwt.user.client.ui.ComplexPanel;
+import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
+import net.hus.core.client.ui.ListBox_.Item;
+
 public class Convert
 {
+  public CheckBox convert(CheckBox_ inUiO)
+  {
+    CheckBox ret = new CheckBox();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create((FocusWidget) ret, (FocusWidget_) inUiO);
+    create(ret, inUiO);
+
+    Boolean value = inUiO.getValue();
+    if (value != null)
+    {
+      ret.setValue(value);
+    }
+
+    return ret;
+  }
+
+  public ListBox convert(ListBox_ inUiO)
+  {
+    ListBox ret = new ListBox();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    if (inUiO.getMultipleSelect() != null)
+    {
+      ret.setMultipleSelect(inUiO.getMultipleSelect());
+    }
+
+    int i = 0;
+    for (Item value : inUiO.getItems())
+    {
+      ret.addItem(value.getText(), value.getValue());
+      ret.setItemSelected(i++, value.isSelected());
+    }
+
+    return ret;
+  }
+
+  public TextBox convert(TextBox_ inUiO)
+  {
+    TextBox ret = new TextBox();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    String value = inUiO.getValue();
+    if (value != null)
+    {
+      ret.setValue(value);
+    }
+
+    return ret;
+  }
+
   public FormLabel convert(FormLabel_ inUiO)
   {
     FormLabel ret = new FormLabel();
@@ -81,6 +143,11 @@ public class Convert
 
     ret.setType(inUiO.getType());
     String min = inUiO.getMin();
+    String value = inUiO.getValue();
+    if (value != null)
+    {
+      ret.setValue(value);
+    }
     if (min != null)
     {
       ret.setMin(min);
@@ -117,6 +184,26 @@ public class Convert
     ret.setFade(inUiO.isFade());
 
     return ret;
+  }
+
+  private void create(FocusWidget inUiO, FocusWidget_ inUiO_)
+  {
+  }
+
+  private void create(ButtonBase inUiO, ButtonBase_ inUiO_)
+  {
+    String text = inUiO_.getText();
+    if (text != null)
+    {
+      if (inUiO_.isHtml())
+      {
+        inUiO.setHTML(text);
+      }
+      else
+      {
+        inUiO.setText(text);
+      }
+    }
   }
 
   private void create(ComplexWidget inUiO, ComplexWidget_ inUiO_)
@@ -282,6 +369,18 @@ public class Convert
     {
       ret = convert((Input_) inUiO);
     }
+    else if (inUiO instanceof ListBox_)
+    {
+      ret = convert((ListBox_) inUiO);
+    }
+    else if (inUiO instanceof TextBox_)
+    {
+      ret = convert((TextBox_) inUiO);
+    }
+    else if (inUiO instanceof CheckBox_)
+    {
+      ret = convert((CheckBox_) inUiO);
+    }
     else
     {
       throw new RuntimeException("Missing Widget convert type");
@@ -290,14 +389,13 @@ public class Convert
     return ret;
   }
 
-  private <T> void create(ValueBoxBase<T> inUiO, ValueBoxBase_<T> inUiO_)
+  private <T> void create(ValueBoxBase<T> inUiO, ValueBoxBase_ inUiO_)
   {
     Boolean allowBlank = inUiO_.getAllowBlank();
     Boolean autoComplete = inUiO_.getAutoComplete();
     Integer maxLength = inUiO_.getMaxLength();
     String placeholder = inUiO_.getPlaceholder();
     InputSize size = inUiO_.getSize();
-    T value = inUiO_.getValue();
 
     if (allowBlank != null)
     {
@@ -318,10 +416,6 @@ public class Convert
     if (size != null)
     {
       inUiO.setSize(size);
-    }
-    if (value != null)
-    {
-      inUiO.setValue(value);
     }
   }
 

@@ -4,7 +4,6 @@ import net.hus.core.client.ui.AbstractTextWidget_;
 import net.hus.core.client.ui.ComplexPanel_;
 import net.hus.core.client.ui.FormGroup_;
 import net.hus.core.client.ui.FormLabel_;
-import net.hus.core.client.ui.Input_;
 import net.hus.core.client.ui.UIObject_;
 
 public class ComplexPanelParser extends UIObjectParser<UIObject_>
@@ -35,9 +34,12 @@ public class ComplexPanelParser extends UIObjectParser<UIObject_>
     aliasAttribute(AbstractTextWidget_.class, "mPaddingTop", "paddingTop");
     aliasAttribute(AbstractTextWidget_.class, "mPull", "pull");
 
-    alias("Input", Input_.class);
-    aliasField("Value", Input_.class, "mValue");
-    aliasAttribute(Input_.class, "mType", "type");
-    aliasSystemAttribute(null, "class");
+    TextBoxParser.xs(this);
+
+    InputParser.xs(this);
+
+    ListBoxParser.xs(this);
+
+    CheckBoxParser.xs(this);
   }
 }

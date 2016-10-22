@@ -2,7 +2,7 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.constants.InputSize;
 
-public class ValueBoxBase_<V> extends UIObject_
+public class ValueBoxBase_ extends FocusWidget_
 {
   private static final long serialVersionUID = -8953529567451561818L;
 
@@ -11,7 +11,6 @@ public class ValueBoxBase_<V> extends UIObject_
   private Integer mMaxLength;
   private String mPlaceholder;
   private InputSize mSize;
-  private V mValue;
 
   public Boolean getAllowBlank()
   {
@@ -61,15 +60,5 @@ public class ValueBoxBase_<V> extends UIObject_
   public void setSize(InputSize inSize)
   {
     mSize = inSize;
-  }
-
-  public V getValue()
-  {
-    return mValue;
-  }
-
-  public void setValue(V inValue)
-  {
-    mValue = inValue;
   }
 }

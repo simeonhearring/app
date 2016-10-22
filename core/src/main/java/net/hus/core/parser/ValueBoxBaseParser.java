@@ -1,18 +1,23 @@
 package net.hus.core.parser;
 
+import com.thoughtworks.xstream.XStream;
+
 import net.hus.core.client.ui.ValueBoxBase_;
 
-public class ValueBoxBaseParser<V> extends UIObjectParser<ValueBoxBase_<V>>
+public class ValueBoxBaseParser extends FocusWidgetParser<ValueBoxBase_>
 {
   public ValueBoxBaseParser()
   {
     super();
+    xs(this);
+  }
 
-    alias("ValueBoxBase", ValueBoxBase_.class);
-    aliasField("Value", ValueBoxBase_.class, "mValue");
-    aliasAttribute(ValueBoxBase_.class, "mAllowBlank", "allowBlank");
-    aliasAttribute(ValueBoxBase_.class, "mAutoComplete", "autoComplete");
-    aliasAttribute(ValueBoxBase_.class, "mMaxLength", "maxLength");
-    aliasAttribute(ValueBoxBase_.class, "mSize", "size");
+  public static void xs(XStream inXs)
+  {
+    inXs.alias("ValueBoxBase", ValueBoxBase_.class);
+    inXs.aliasAttribute(ValueBoxBase_.class, "mAllowBlank", "allowBlank");
+    inXs.aliasAttribute(ValueBoxBase_.class, "mAutoComplete", "autoComplete");
+    inXs.aliasAttribute(ValueBoxBase_.class, "mMaxLength", "maxLength");
+    inXs.aliasAttribute(ValueBoxBase_.class, "mSize", "size");
   }
 }
