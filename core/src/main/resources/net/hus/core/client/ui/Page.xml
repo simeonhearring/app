@@ -1,4 +1,4 @@
-<Container fluid="false">
+<Container fluid="true">
 	<Collection>
 		<FieldSet enabled="true">
 			<Collection>
