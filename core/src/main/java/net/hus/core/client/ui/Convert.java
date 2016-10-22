@@ -5,6 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.Alert;
 import org.gwtbootstrap3.client.ui.Badge;
 import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.Container;
 import org.gwtbootstrap3.client.ui.FieldSet;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.FormLabel;
@@ -29,6 +30,21 @@ import net.hus.core.client.ui.ListBox_.Item;
 
 public class Convert
 {
+  public Container convert(Container_ inUiO)
+  {
+    Container ret = new Container();
+
+    create(ret, inUiO);
+
+    Boolean fluid = inUiO.getFluid();
+    if (fluid != null)
+    {
+      ret.setFluid(fluid);
+    }
+
+    return ret;
+  }
+
   public CheckBox convert(CheckBox_ inUiO)
   {
     CheckBox ret = new CheckBox();
@@ -380,6 +396,10 @@ public class Convert
     else if (inUiO instanceof CheckBox_)
     {
       ret = convert((CheckBox_) inUiO);
+    }
+    else if (inUiO instanceof Container_)
+    {
+      ret = convert((Container_) inUiO);
     }
     else
     {

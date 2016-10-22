@@ -1,0 +1,18 @@
+<Container visible="true" fluid="true">
+	<Collection>
+		<FieldSet visible="true" enabled="true">
+			<Collection>
+				<FormGroup visible="true">
+					<Collection>
+						<FormLabel visible="true" isHtml="false">
+							<Text>Field1:</Text>
+						</FormLabel>
+						<Input visible="true" type="TEXT">
+							<Value>Hello</Value>
+						</Input>
+					</Collection>
+				</FormGroup>
+			</Collection>
+		</FieldSet>
+	</Collection>
+</Container>

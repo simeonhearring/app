@@ -34,6 +34,8 @@ public class ComplexPanelParser extends UIObjectParser<UIObject_>
     aliasAttribute(AbstractTextWidget_.class, "mPaddingTop", "paddingTop");
     aliasAttribute(AbstractTextWidget_.class, "mPull", "pull");
 
+    FieldSetParser.xs(this);
+
     TextBoxParser.xs(this);
 
     InputParser.xs(this);
