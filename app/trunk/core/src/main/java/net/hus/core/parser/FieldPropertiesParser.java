@@ -5,9 +5,9 @@ import com.thoughtworks.xstream.XStream;
 import net.hus.core.model.Field;
 import net.hus.core.model.Field.Properties;
 
-public class FieldProperties extends XStream implements Parser<Field.Properties>
+public class FieldPropertiesParser extends XStream implements Parser<Field.Properties>
 {
-  public FieldProperties()
+  public FieldPropertiesParser()
   {
     alias("Field.Properties", Field.Properties.class);
     aliasField("Display", Field.Properties.class, "mDisplay");

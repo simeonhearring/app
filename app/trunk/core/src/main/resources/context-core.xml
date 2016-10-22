@@ -41,4 +41,5 @@
 
 	<bean id="UIObjectCommand" class="net.hus.core.server.command.UIObjectCommandBean" />
 
+	<bean id="TemplateCommand" class="net.hus.core.server.command.TemplateCommandBean" />
 </beans>
