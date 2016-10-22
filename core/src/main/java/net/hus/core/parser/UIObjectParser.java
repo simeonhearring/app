@@ -10,6 +10,7 @@ public abstract class UIObjectParser<T> extends XStream implements Parser<T>
   {
     alias("UIObject", UIObject_.class);
     aliasField("Title", UIObject_.class, "mTitle");
+    aliasAttribute(UIObject_.class, "mId", "id");
     aliasAttribute(UIObject_.class, "mVisible", "visible");
     aliasAttribute(UIObject_.class, "mHeight", "height");
     aliasAttribute(UIObject_.class, "mWidth", "width");

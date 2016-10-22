@@ -1,21 +1,21 @@
-<FieldSet visible="true" enabled="true">
+<FieldSet enabled="true">
 	<Collection>
-		<FormGroup visible="true">
+		<FormGroup>
 			<Collection>
-				<FormLabel visible="true" isHtml="false">
+				<FormLabel isHtml="false">
 					<Text>Field1:</Text>
 				</FormLabel>
-				<Input visible="true" type="TEXT">
+				<Input type="TEXT">
 					<Value>Hello</Value>
 				</Input>
 			</Collection>
 		</FormGroup>
-		<FormGroup visible="true">
+		<FormGroup>
 			<Collection>
-				<FormLabel visible="true" isHtml="false">
+				<FormLabel isHtml="false">
 					<Text>Field2:</Text>
 				</FormLabel>
-				<Input visible="true" type="NUMBER">
+				<Input type="NUMBER">
 					<Value>1234</Value>
 				</Input>
 			</Collection>

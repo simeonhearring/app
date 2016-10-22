@@ -441,12 +441,22 @@ public class Convert
 
   private void create(UIObject inUiO, UIObject_ inUiO_)
   {
+    String id = inUiO_.getId();
     String height = inUiO_.getHeight();
     String width = inUiO_.getWidth();
     String title = inUiO_.getTitle();
     String stylePrimaryName = inUiO_.getStylePrimaryName();
     String styleName = inUiO_.getStyleName();
+    Boolean visible = inUiO_.getVisible();
 
+    if (id != null)
+    {
+      inUiO.getElement().setId(id);
+    }
+    if (visible != null)
+    {
+      inUiO.setVisible(visible);
+    }
     if (height != null)
     {
       inUiO.setHeight(height);
