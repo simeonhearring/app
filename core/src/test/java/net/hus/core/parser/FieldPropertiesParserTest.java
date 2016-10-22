@@ -6,12 +6,12 @@ import junit.framework.Assert;
 import net.hus.core.model.Field;
 import net.hus.core.model.Field.Display;
 
-public class FieldPropertiesTest
+public class FieldPropertiesParserTest
 {
   @Test
   public void testParsing()
   {
-    FieldProperties parser = new FieldProperties();
+    FieldPropertiesParser parser = new FieldPropertiesParser();
 
     Field.Properties prop = new Field.Properties();
     prop.setDisplay(new Display());

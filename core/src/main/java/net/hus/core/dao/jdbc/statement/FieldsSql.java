@@ -11,7 +11,7 @@ import org.springframework.jdbc.object.MappingSqlQuery;
 
 import net.hus.core.model.Field;
 import net.hus.core.model.Fields;
-import net.hus.core.parser.FieldProperties;
+import net.hus.core.parser.FieldPropertiesParser;
 
 public class FieldsSql extends AbstractSqlJdbc
 {
@@ -70,7 +70,7 @@ public class FieldsSql extends AbstractSqlJdbc
     {
       String name = value.getName();
       String type = value.getType().name();
-      String properties = valueOf(value.getProperties(), new FieldProperties());
+      String properties = valueOf(value.getProperties(), new FieldPropertiesParser());
 
       mFieldUpsert.update(params(name, type, properties, properties));
     }
@@ -108,7 +108,7 @@ public class FieldsSql extends AbstractSqlJdbc
 
     inOutField.setName(inRs.getString("mName"));
     inOutField.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
-    inOutField.setProperties(valueOf(inRs.getString("mProperties"), new FieldProperties()));
+    inOutField.setProperties(valueOf(inRs.getString("mProperties"), new FieldPropertiesParser()));
 
     return inOutField;
   }
