@@ -1,7 +1,7 @@
 package net.hus.core.server.command;
 
-import net.hus.core.client.ui.FieldSet_;
-import net.hus.core.parser.FieldSetParser;
+import net.hus.core.client.ui.Container_;
+import net.hus.core.parser.ContainerParser;
 import net.hus.core.shared.command.UIObjectCommand;
 import net.hus.core.shared.rpc.common.RpcResponse;
 import net.hus.core.util.ResourceUtil;
@@ -13,11 +13,11 @@ public class UIObjectCommandBean extends AbstractCommandBean<UIObjectCommand<?>>
   {
     String xml = ResourceUtil.contents("net/hus/core/client/ui/Page.xml");
 
-    FieldSetParser parser = new FieldSetParser();
+    ContainerParser parser = new ContainerParser();
 
-    FieldSet_ set = (FieldSet_) parser.fromXml(xml);
+    Container_ container = (Container_) parser.fromXml(xml);
 
-    inCommand.setData(set);
+    inCommand.setData(container);
 
     return inCommand;
   }

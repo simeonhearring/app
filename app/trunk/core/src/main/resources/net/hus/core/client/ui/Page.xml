@@ -1,67 +1,71 @@
-<FieldSet visible="true" enabled="true">
+<Container visible="true" fluid="true">
 	<Collection>
-		<FormGroup visible="true">
+		<FieldSet visible="true" enabled="true">
 			<Collection>
-				<FormLabel visible="true" isHtml="false">
-					<Text>Field1:</Text>
-				</FormLabel>
-				<Input visible="true" type="TEXT">
-					<Value>Hello</Value>
-				</Input>
+				<FormGroup visible="true">
+					<Collection>
+						<FormLabel visible="true" isHtml="false">
+							<Text>Field1:</Text>
+						</FormLabel>
+						<Input visible="true" type="TEXT">
+							<Value>Hello</Value>
+						</Input>
+					</Collection>
+				</FormGroup>
+				<FormGroup visible="true">
+					<Collection>
+						<FormLabel visible="true" isHtml="false">
+							<Text>Field2:</Text>
+						</FormLabel>
+						<Input visible="true" type="TEXT">
+							<Value>World</Value>
+						</Input>
+					</Collection>
+				</FormGroup>
+				<FormGroup visible="true">
+					<Collection>
+						<FormLabel visible="true" isHtml="false">
+							<Text>Field3:</Text>
+						</FormLabel>
+						<TextBox visible="true">
+							<Value>textbox</Value>
+						</TextBox>
+					</Collection>
+				</FormGroup>
+				<FormGroup visible="true">
+					<Collection>
+						<FormLabel visible="true" isHtml="false">
+							<Text>Field4:</Text>
+						</FormLabel>
+						<ListBox visible="true" multipleSelect="true">
+							<Items>
+								<Item visible="true" selected="false">
+									<Text></Text>
+								</Item>
+								<Item visible="true" selected="true">
+									<Text>value1</Text>
+								</Item>
+								<Item visible="true" selected="true">
+									<Text>value2</Text>
+								</Item>
+								<Item visible="true" selected="false">
+									<Text>value3</Text>
+								</Item>
+							</Items>
+						</ListBox>
+					</Collection>
+				</FormGroup>
+				<FormGroup visible="true">
+					<Collection>
+						<FormLabel visible="true" isHtml="false">
+							<Text>Field5:</Text>
+						</FormLabel>
+						<CheckBox visible="true" mHtml="false" value="true">
+							<Text>checkbox</Text>
+						</CheckBox>
+					</Collection>
+				</FormGroup>
 			</Collection>
-		</FormGroup>
-		<FormGroup visible="true">
-			<Collection>
-				<FormLabel visible="true" isHtml="false">
-					<Text>Field2:</Text>
-				</FormLabel>
-				<Input visible="true" type="TEXT">
-					<Value>World</Value>
-				</Input>
-			</Collection>
-		</FormGroup>
-		<FormGroup visible="true">
-			<Collection>
-				<FormLabel visible="true" isHtml="false">
-					<Text>Field3:</Text>
-				</FormLabel>
-				<TextBox visible="true">
-					<Value>textbox</Value>
-				</TextBox>
-			</Collection>
-		</FormGroup>
-		<FormGroup visible="true">
-			<Collection>
-				<FormLabel visible="true" isHtml="false">
-					<Text>Field4:</Text>
-				</FormLabel>
-				<ListBox visible="true" multipleSelect="true">
-					<Items>
-						<Item visible="true" selected="false">
-							<Text></Text>
-						</Item>
-						<Item visible="true" selected="true">
-							<Text>value1</Text>
-						</Item>
-						<Item visible="true" selected="true">
-							<Text>value2</Text>
-						</Item>
-						<Item visible="true" selected="false">
-							<Text>value3</Text>
-						</Item>
-					</Items>
-				</ListBox>
-			</Collection>
-		</FormGroup>
-		<FormGroup visible="true">
-			<Collection>
-				<FormLabel visible="true" isHtml="false">
-					<Text>Field5:</Text>
-				</FormLabel>
-				<CheckBox visible="true" mHtml="false" value="true">
-					<Text>checkbox</Text>
-				</CheckBox>
-			</Collection>
-		</FormGroup>
+		</FieldSet>
 	</Collection>
-</FieldSet>
+</Container>
