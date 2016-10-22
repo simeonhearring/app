@@ -1,4 +1,4 @@
 <Input visible="true" height="20px" width="10px" size="LARGE" type="TEXT">
 	<Title>Title</Title>
-	<Value class="string">Hello</Value>
+	<Value>Hello</Value>
 </Input>
