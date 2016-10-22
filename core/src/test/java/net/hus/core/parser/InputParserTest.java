@@ -22,9 +22,9 @@ public class InputParserTest
     model.setPixelSize(10, 20);
     model.setSize(InputSize.LARGE);
 
-    String xml = ResourceUtil.contents("net/hus/core/client/ui/Input_.xml");
-    xml = xml.replaceAll("\t", "  ");
+    String expected = ResourceUtil.contents("net/hus/core/client/ui/Input_.xml");
+    expected = expected.replaceAll("\t", "  ");
 
-    Assert.assertEquals(xml, parser.toXml(model));
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 }
