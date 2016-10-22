@@ -1,4 +1,4 @@
-<Alert height="20px" width="10px" styleName="alert" stylePrimaryName="primary style" type="WARNING" dismissable="false" fade="false">
+<Alert id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" type="WARNING" dismissable="true" fade="true">
 	<Title>Title</Title>
-	<Text>Hello</Text>
+	<Text>Text</Text>
 </Alert>

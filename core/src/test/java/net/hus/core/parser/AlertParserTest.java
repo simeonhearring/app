@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.client.ui.Alert_;
+import net.hus.core.client.ui.Alert_Test;
 import net.hus.core.util.ResourceUtil;
 
 public class AlertParserTest
@@ -13,14 +14,11 @@ public class AlertParserTest
   {
     AlertParser parser = new AlertParser();
 
-    Alert_ model = new Alert_("Hello");
-    model.setTitle("Title");
-    model.setStylePrimaryName("primary style");
-    model.setPixelSize(10, 20);
+    Alert_ model = Alert_Test.newAlert();
 
-    String xml = ResourceUtil.contents("net/hus/core/client/ui/Alert_.xml");
-    xml = xml.replaceAll("\t", "  ");
+    String expected = ResourceUtil.contents("net/hus/core/client/ui/Alert_.xml");
+    expected = expected.replaceAll("\t", "  ");
 
-    Assert.assertEquals(xml, parser.toXml(model));
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 }

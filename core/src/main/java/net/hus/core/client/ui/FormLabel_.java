@@ -2,7 +2,7 @@ package net.hus.core.client.ui;
 
 public class FormLabel_ extends AbstractTextWidget_
 {
-  private static final long serialVersionUID = -295153082845890271L;
+  private static final long serialVersionUID = 4179924023334732030L;
 
   private Boolean mShowRequiredIndicator;
 

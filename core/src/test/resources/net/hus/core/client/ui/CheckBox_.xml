@@ -1,0 +1,4 @@
+<CheckBox id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" mHtml="false" value="true">
+	<Title>Title</Title>
+	<Text>Text</Text>
+</CheckBox>

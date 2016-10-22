@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.client.ui.Badge_;
+import net.hus.core.client.ui.Badge_Test;
 import net.hus.core.util.ResourceUtil;
 
 public class BadgeParserTest
@@ -13,14 +14,11 @@ public class BadgeParserTest
   {
     BadgeParser parser = new BadgeParser();
 
-    Badge_ model = new Badge_("Hello");
-    model.setTitle("Title");
-    model.setStylePrimaryName("primary style");
-    model.setPixelSize(10, 20);
+    Badge_ model = Badge_Test.newBadge();
 
-    String xml = ResourceUtil.contents("net/hus/core/client/ui/Badge_.xml");
-    xml = xml.replaceAll("\t", "  ");
+    String expected = ResourceUtil.contents("net/hus/core/client/ui/Badge_.xml");
+    expected = expected.replaceAll("\t", "  ");
 
-    Assert.assertEquals(xml, parser.toXml(model));
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 }

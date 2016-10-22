@@ -4,7 +4,7 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 
 public class AbstractTextWidget_ extends UIObject_
 {
-  private static final long serialVersionUID = -8211130621080766239L;
+  private static final long serialVersionUID = -2196387944056044191L;
 
   private String mText;
   private boolean mHtml;

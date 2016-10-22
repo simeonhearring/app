@@ -4,7 +4,7 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.client.ui.UIObject_;
 
-public abstract class UIObjectParser<T> extends XStream implements Parser<T>
+public class UIObjectParser<T> extends XStream implements Parser<T>
 {
   public UIObjectParser()
   {
