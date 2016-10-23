@@ -41,6 +41,18 @@ public class Template implements Serializable
 
     public enum Name
     {
+      MARR1L01,
+      MARR1C01,
+      MARR201,
+      MARR202,
+      MARR203,
+      MARR204,
+      MARR301,
+      MARR302,
+      MARR303,
+      MARR304,
+      MARR305,
+      MARR306,
       BLOGL01,
       BLOGC01,
       WEBL01,

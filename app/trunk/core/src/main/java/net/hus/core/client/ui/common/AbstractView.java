@@ -6,16 +6,20 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class AbstractView extends Composite
 {
-  public static Widget find(String inId, IndexedPanel inPanel)
+  public static Widget find(String inId, IndexedPanel... inPanel)
   {
     Widget ret = null;
-    for (int i = 0; i < inPanel.getWidgetCount(); i++)
+    for (IndexedPanel panel : inPanel)
     {
-      Widget widget = inPanel.getWidget(i);
-      String id = widget.getElement().getId();
-      if (inId.equals(id))
+      for (int i = 0; i < panel.getWidgetCount(); i++)
       {
-        ret = widget;
+        Widget widget = panel.getWidget(i);
+        String id = widget.getElement().getId();
+        if (inId.equals(id))
+        {
+          ret = widget;
+          break;
+        }
       }
     }
     return ret;

@@ -1,4 +1,5 @@
-<Input height="20px" width="10px" size="LARGE" type="TEXT">
-	<Title>Title</Title>
-	<Value>Hello</Value>
+<Input KEY="KEYLOCATER" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE" min="MIN" max="MAX" type="TEXT">
+  <Title>Title</Title>
+  <Placeholder>placeholder</Placeholder>
+  <Value>Value</Value>
 </Input>

@@ -2,17 +2,18 @@ package net.hus.core.client.ui;
 
 import java.io.IOException;
 
+import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Container_Test
+public class Input_Test
 {
   private UIObject_ mObject;
 
   @Before
   public void before()
   {
-    mObject = newContainer();
+    mObject = newInput();
   }
 
   @Test
@@ -21,12 +22,15 @@ public class Container_Test
     SerializationTest.canSerializeObj(mObject);
   }
 
-  public static Container_ newContainer()
+  public static Input_ newInput()
   {
-    Container_ ret = new Container_();
-    ret.setFluid(true);
+    Input_ ret = new Input_();
+    ret.setType(InputType.TEXT);
+    ret.setMin("MIN");
+    ret.setMax("MAX");
+    ret.setValue("Value");
 
-    ComplexWidget_Test.initComplexWidget(ret);
+    ValueBoxBase_Test.initValueBoxBase(ret);
 
     return ret;
   }

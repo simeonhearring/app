@@ -5,14 +5,14 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Container_Test
+public class FieldSet_Test
 {
   private UIObject_ mObject;
 
   @Before
   public void before()
   {
-    mObject = newContainer();
+    mObject = newFieldSet();
   }
 
   @Test
@@ -21,10 +21,9 @@ public class Container_Test
     SerializationTest.canSerializeObj(mObject);
   }
 
-  public static Container_ newContainer()
+  public static FieldSet_ newFieldSet()
   {
-    Container_ ret = new Container_();
-    ret.setFluid(true);
+    FieldSet_ ret = new FieldSet_();
 
     ComplexWidget_Test.initComplexWidget(ret);
 

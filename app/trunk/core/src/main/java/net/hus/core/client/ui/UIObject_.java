@@ -6,6 +6,8 @@ public class UIObject_ implements Serializable
 {
   private static final long serialVersionUID = 4099428684832729483L;
 
+  private String mKey;
+
   private String mId;
   private Boolean mVisible;
   private String mHeight;
@@ -102,5 +104,15 @@ public class UIObject_ implements Serializable
   public void setId(String inId)
   {
     mId = inId;
+  }
+
+  public String getKey()
+  {
+    return mKey;
+  }
+
+  public void setKey(String inKey)
+  {
+    mKey = inKey;
   }
 }
