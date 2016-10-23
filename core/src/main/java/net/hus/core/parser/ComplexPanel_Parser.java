@@ -12,6 +12,10 @@ public class ComplexPanel_Parser extends UIObject_Parser<UIObject_>
     alias("ComplexPanel", ComplexPanel_.class);
     aliasField("Collection", ComplexPanel_.class, "mCollection");
 
+    Badge_Parser.xs(this);
+
+    Icon_Parser.xs(this);
+
     FormGroup_Parser.xs(this);
 
     FormLabel_Parser.xs(this);

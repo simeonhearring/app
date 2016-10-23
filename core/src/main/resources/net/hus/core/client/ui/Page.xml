@@ -54,6 +54,10 @@
 								</Item>
 							</Items>
 						</ListBox>
+						<Icon pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
+							<Title>Title</Title>
+							<Collection />
+						</Icon>
 					</Collection>
 				</FormGroup>
 				<FormGroup>
@@ -68,5 +72,15 @@
 				</FormGroup>
 			</Collection>
 		</FieldSet>
+
+		<Icon pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
+			<Title>Title</Title>
+			<Collection />
+		</Icon>
+
+		<Badge>
+			<Title>Title</Title>
+			<Text>Text</Text>
+		</Badge>
 	</Collection>
 </Container>
