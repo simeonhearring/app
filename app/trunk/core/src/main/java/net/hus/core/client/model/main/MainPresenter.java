@@ -1,16 +1,16 @@
 package net.hus.core.client.model.main;
 
-import com.google.gwt.user.client.ui.UIObject;
+import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.Global;
 import net.hus.core.client.common.Template;
-import net.hus.core.client.service.common.RpcCallback;
-import net.hus.core.client.ui.Container_;
 import net.hus.core.client.ui.UiConverter;
 import net.hus.core.client.ui.UiManager;
+import net.hus.core.client.ui.common.Global;
+import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.model.Template.Section;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.command.UIObjectCommand;
+import net.hus.core.shared.model.Container_;
 
 public class MainPresenter implements UiManager
 {
@@ -82,7 +82,7 @@ public class MainPresenter implements UiManager
   }
 
   @Override
-  public void add(String inKey, UIObject inUiO)
+  public void add(String inKey, IsWidget inUiO)
   {
   }
 }

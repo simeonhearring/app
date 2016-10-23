@@ -3,8 +3,8 @@ package net.hus.core.parser;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.client.ui.Badge_;
-import net.hus.core.client.ui.Badge_Test;
+import net.hus.core.shared.model.Badge_;
+import net.hus.core.shared.model.Badge_Test;
 import net.hus.core.util.ResourceUtil;
 
 public class Badge_ParserTest
@@ -16,7 +16,7 @@ public class Badge_ParserTest
 
     Badge_ model = Badge_Test.newBadge();
 
-    String expected = ResourceUtil.contents("net/hus/core/client/ui/Badge_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/Badge_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

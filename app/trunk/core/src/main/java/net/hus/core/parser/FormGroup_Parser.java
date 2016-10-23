@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.FormGroup_;
+import net.hus.core.shared.model.FormGroup_;
 
 public class FormGroup_Parser extends ComplexPanel_Parser
 {

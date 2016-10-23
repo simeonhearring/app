@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 
 public class UIObject_Parser<T> extends XStream implements Parser<T>
 {

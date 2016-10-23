@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.ComplexWidget_;
+import net.hus.core.shared.model.ComplexWidget_;
 
 public class ComplexWidget_Parser extends ComplexPanel_Parser
 {

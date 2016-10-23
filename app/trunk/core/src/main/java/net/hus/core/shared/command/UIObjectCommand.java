@@ -1,6 +1,6 @@
 package net.hus.core.shared.command;
 
-import net.hus.core.client.ui.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("UIObjectCommand")

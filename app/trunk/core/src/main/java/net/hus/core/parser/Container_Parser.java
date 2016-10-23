@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.Container_;
+import net.hus.core.shared.model.Container_;
 
 public class Container_Parser extends ComplexWidget_Parser
 {

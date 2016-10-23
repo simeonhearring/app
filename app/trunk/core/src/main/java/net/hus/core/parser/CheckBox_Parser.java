@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.CheckBox_;
+import net.hus.core.shared.model.CheckBox_;
 
 public class CheckBox_Parser extends FocusWidget_Parser<CheckBox_>
 {

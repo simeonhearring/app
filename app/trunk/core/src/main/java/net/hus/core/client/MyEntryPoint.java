@@ -12,10 +12,10 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-import net.hus.core.client.common.Global;
-import net.hus.core.client.service.common.RpcCallback;
 import net.hus.core.client.service.rpc.RpcService;
 import net.hus.core.client.service.rpc.RpcServiceAsync;
+import net.hus.core.client.ui.common.Global;
+import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.AlertEvent;
 import net.hus.core.client.ui.service.bus.GwtEventBus;
 import net.hus.core.shared.command.LoggerCommand;

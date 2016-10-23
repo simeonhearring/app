@@ -3,7 +3,7 @@ package net.hus.core.parser;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.client.ui.ListBox_;
+import net.hus.core.shared.model.ListBox_;
 import net.hus.core.util.ResourceUtil;
 
 public class ListBox_ParserTest
@@ -22,9 +22,9 @@ public class ListBox_ParserTest
     model.setTitle("Title");
     model.setPixelSize(10, 20);
 
-    String xml = ResourceUtil.contents("net/hus/core/client/ui/ListBox_.xml");
-    xml = xml.replaceAll("\t", "  ");
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/ListBox_.xml");
+    expected = expected.replaceAll("\t", "  ");
 
-    Assert.assertEquals(xml, parser.toXml(model));
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 }
