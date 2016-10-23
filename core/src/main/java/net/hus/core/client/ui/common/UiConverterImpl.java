@@ -1,4 +1,4 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.ui.common;
 
 import java.util.List;
 
@@ -32,6 +32,7 @@ import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
+import net.hus.core.client.model.UiConverter;
 import net.hus.core.shared.model.AbstractTextWidget_;
 import net.hus.core.shared.model.Alert_;
 import net.hus.core.shared.model.Badge_;
@@ -47,21 +48,15 @@ import net.hus.core.shared.model.FormGroup_;
 import net.hus.core.shared.model.FormLabel_;
 import net.hus.core.shared.model.Input_;
 import net.hus.core.shared.model.ListBox_;
+import net.hus.core.shared.model.ListBox_.Item;
 import net.hus.core.shared.model.Row_;
 import net.hus.core.shared.model.TextBox_;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.ValueBoxBase_;
-import net.hus.core.shared.model.ListBox_.Item;
 
-public class UiConverter
+public abstract class UiConverterImpl implements UiConverter
 {
-  private UiManager mUiManager;
-
-  public UiConverter(UiManager inUiManager)
-  {
-    mUiManager = inUiManager;
-  }
-
+  @Override
   public Column convert(Column_ inUiO)
   {
     Column ret = new Column(inUiO.getSize());
@@ -94,6 +89,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public Row convert(Row_ inUiO)
   {
     Row ret = new Row();
@@ -104,6 +100,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public Container convert(Container_ inUiO)
   {
     Container ret = new Container();
@@ -120,6 +117,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public CheckBox convert(CheckBox_ inUiO)
   {
     CheckBox ret = new CheckBox();
@@ -137,6 +135,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public ListBox convert(ListBox_ inUiO)
   {
     ListBox ret = new ListBox();
@@ -159,6 +158,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public TextBox convert(TextBox_ inUiO)
   {
     TextBox ret = new TextBox();
@@ -175,6 +175,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public FormLabel convert(FormLabel_ inUiO)
   {
     FormLabel ret = new FormLabel();
@@ -191,6 +192,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public FormGroup convert(FormGroup_ inUiO)
   {
     FormGroup ret = new FormGroup();
@@ -213,6 +215,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public FieldSet convert(FieldSet_ inUiO)
   {
     FieldSet ret = new FieldSet();
@@ -225,6 +228,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public Input convert(Input_ inUiO)
   {
     Input ret = new Input();
@@ -252,6 +256,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public Badge convert(Badge_ inUiO)
   {
     Badge ret = new Badge();
@@ -263,6 +268,7 @@ public class UiConverter
     return ret;
   }
 
+  @Override
   public Alert convert(Alert_ inUiO)
   {
     Alert ret = new Alert();
@@ -464,7 +470,7 @@ public class UiConverter
 
   private void create(UIObject inUiO, UIObject_ inUiO_)
   {
-    mUiManager.add(inUiO_.getKey(), (IsWidget) inUiO);
+    add(inUiO_.getKey(), (IsWidget) inUiO);
 
     String id = inUiO_.getId();
     String height = inUiO_.getHeight();
@@ -503,6 +509,8 @@ public class UiConverter
       inUiO.setStyleName(styleName);
     }
   }
+
+  abstract void add(String inKey, IsWidget inUiO);
 
   private IsWidget match(UIObject_ inUiO)
   {

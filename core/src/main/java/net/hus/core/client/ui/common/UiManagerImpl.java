@@ -1,11 +1,13 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.ui.common;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-public class UiManagerImpl implements UiManager
+import net.hus.core.client.model.UiManager;
+
+public class UiManagerImpl extends UiConverterImpl implements UiManager
 {
   private Map<String, IsWidget> mContent = new HashMap<>();
 
