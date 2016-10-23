@@ -10,6 +10,7 @@ import org.gwtbootstrap3.client.ui.Container;
 import org.gwtbootstrap3.client.ui.FieldSet;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.FormLabel;
+import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.Row;
@@ -21,7 +22,12 @@ import org.gwtbootstrap3.client.ui.constants.ColumnOffset;
 import org.gwtbootstrap3.client.ui.constants.ColumnPull;
 import org.gwtbootstrap3.client.ui.constants.ColumnPush;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
+import org.gwtbootstrap3.client.ui.constants.Emphasis;
 import org.gwtbootstrap3.client.ui.constants.FormGroupSize;
+import org.gwtbootstrap3.client.ui.constants.IconFlip;
+import org.gwtbootstrap3.client.ui.constants.IconRotate;
+import org.gwtbootstrap3.client.ui.constants.IconSize;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
@@ -46,6 +52,7 @@ import net.hus.core.shared.model.FieldSet_;
 import net.hus.core.shared.model.FocusWidget_;
 import net.hus.core.shared.model.FormGroup_;
 import net.hus.core.shared.model.FormLabel_;
+import net.hus.core.shared.model.Icon_;
 import net.hus.core.shared.model.Input_;
 import net.hus.core.shared.model.ListBox_;
 import net.hus.core.shared.model.ListBox_.Item;
@@ -56,6 +63,77 @@ import net.hus.core.shared.model.ValueBoxBase_;
 
 public abstract class UiConverterImpl implements UiConverter
 {
+  @Override
+  public Icon convert(Icon_ inUiO)
+  {
+    Icon ret = new Icon();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    IconType type = inUiO.getType();
+    IconSize size = inUiO.getSize();
+    IconRotate rotate = inUiO.getRotate();
+    IconFlip flip = inUiO.getFlip();
+    Emphasis emphasis = inUiO.getEmphasis();
+    Boolean border = inUiO.getBorder();
+    Boolean spin = inUiO.getSpin();
+    Boolean pulse = inUiO.getPulse();
+    Boolean inverse = inUiO.getInverse();
+    Boolean stackTop = inUiO.getStackTop();
+    Boolean stackBase = inUiO.getStackBase();
+    Boolean fixedWidth = inUiO.getFixedWidth();
+
+    ret.setType(type);
+
+    if (size != null)
+    {
+      ret.setSize(size);
+    }
+    if (rotate != null)
+    {
+      ret.setRotate(rotate);
+    }
+    if (flip != null)
+    {
+      ret.setFlip(flip);
+    }
+    if (emphasis != null)
+    {
+      ret.setEmphasis(emphasis);
+    }
+    if (border != null)
+    {
+      ret.setBorder(border);
+    }
+    if (spin != null)
+    {
+      ret.setSpin(spin);
+    }
+    if (pulse != null)
+    {
+      ret.setPulse(pulse);
+    }
+    if (inverse != null)
+    {
+      ret.setInverse(inverse);
+    }
+    if (stackTop != null)
+    {
+      ret.setStackTop(stackTop);
+    }
+    if (stackBase != null)
+    {
+      ret.setStackBase(stackBase);
+    }
+    if (fixedWidth != null)
+    {
+      ret.setFixedWidth(fixedWidth);
+    }
+
+    return ret;
+  }
+
   @Override
   public Column convert(Column_ inUiO)
   {
@@ -510,7 +588,6 @@ public abstract class UiConverterImpl implements UiConverter
     }
   }
 
-  abstract void add(String inKey, IsWidget inUiO);
 
   private IsWidget match(UIObject_ inUiO)
   {
@@ -564,6 +641,10 @@ public abstract class UiConverterImpl implements UiConverter
     {
       ret = convert((Column_) inUiO);
     }
+    else if (inUiO instanceof Icon_)
+    {
+      ret = convert((Icon_) inUiO);
+    }
     else
     {
       throw new RuntimeException("Missing widget convert type");
@@ -571,4 +652,6 @@ public abstract class UiConverterImpl implements UiConverter
 
     return ret;
   }
+
+  abstract void add(String inKey, IsWidget inUiO);
 }

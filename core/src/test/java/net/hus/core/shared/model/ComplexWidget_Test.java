@@ -6,8 +6,9 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.hus.core.shared.model.ComplexWidget_;
-import net.hus.core.shared.model.UIObject_;
+import junit.framework.Assert;
+import net.hus.core.parser.ComplexWidget_Parser;
+import net.hus.core.util.ResourceUtil;
 
 public class ComplexWidget_Test
 {
@@ -23,6 +24,19 @@ public class ComplexWidget_Test
   public void canSerialize() throws IOException, ClassNotFoundException
   {
     SerializationTest.canSerializeObj(mObject);
+  }
+
+  @Test
+  public void canParse()
+  {
+    ComplexWidget_Parser parser = new ComplexWidget_Parser();
+
+    ComplexWidget_ model = ComplexWidget_Test.newComplexWidget();
+
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/ComplexWidget_.xml");
+    expected = expected.replaceAll("\t", "  ");
+
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 
   public static ComplexWidget_ newComplexWidget()

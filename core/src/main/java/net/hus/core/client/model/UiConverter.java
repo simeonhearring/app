@@ -10,6 +10,7 @@ import net.hus.core.shared.model.Container_;
 import net.hus.core.shared.model.FieldSet_;
 import net.hus.core.shared.model.FormGroup_;
 import net.hus.core.shared.model.FormLabel_;
+import net.hus.core.shared.model.Icon_;
 import net.hus.core.shared.model.Input_;
 import net.hus.core.shared.model.ListBox_;
 import net.hus.core.shared.model.Row_;
@@ -40,4 +41,6 @@ public interface UiConverter
   IsWidget convert(Row_ inUiO);
 
   IsWidget convert(TextBox_ inUiO);
+
+  IsWidget convert(Icon_ inUiO);
 }

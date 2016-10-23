@@ -5,8 +5,9 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.hus.core.shared.model.Container_;
-import net.hus.core.shared.model.UIObject_;
+import junit.framework.Assert;
+import net.hus.core.parser.Container_Parser;
+import net.hus.core.util.ResourceUtil;
 
 public class Container_Test
 {
@@ -22,6 +23,19 @@ public class Container_Test
   public void canSerialize() throws IOException, ClassNotFoundException
   {
     SerializationTest.canSerializeObj(mObject);
+  }
+
+  @Test
+  public void canParse()
+  {
+    Container_Parser parser = new Container_Parser();
+
+    Container_ model = Container_Test.newContainer();
+
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/Container_.xml");
+    expected = expected.replaceAll("\t", "  ");
+
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 
   public static Container_ newContainer()
