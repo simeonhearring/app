@@ -1,8 +1,8 @@
-<ListBox height="20px" width="10px">
+<ListBox KEY="KEYLOCATER" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" multipleSelect="true">
 	<Title>Title</Title>
 	<LookupParams>
-		<string>A:abc</string>
-		<string>1:123</string>
+		<string>a:123</string>
+		<string>b:456</string>
 	</LookupParams>
 	<Items>
 		<Item selected="true">

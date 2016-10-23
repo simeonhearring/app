@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 
 import org.junit.Assert;
 
-import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ServerErrorUtil;
 
 public class SerializationTest
@@ -29,6 +28,7 @@ public class SerializationTest
 
     String expected = ServerErrorUtil.objectToString(inObject, true);
     String actual = ServerErrorUtil.objectToString(o, true);
+    // System.out.println(actual);
     Assert.assertEquals(expected, actual);
   }
 }
