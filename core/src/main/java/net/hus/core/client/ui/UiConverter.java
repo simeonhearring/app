@@ -32,7 +32,26 @@ import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
-import net.hus.core.client.ui.ListBox_.Item;
+import net.hus.core.shared.model.AbstractTextWidget_;
+import net.hus.core.shared.model.Alert_;
+import net.hus.core.shared.model.Badge_;
+import net.hus.core.shared.model.ButtonBase_;
+import net.hus.core.shared.model.CheckBox_;
+import net.hus.core.shared.model.Column_;
+import net.hus.core.shared.model.ComplexPanel_;
+import net.hus.core.shared.model.ComplexWidget_;
+import net.hus.core.shared.model.Container_;
+import net.hus.core.shared.model.FieldSet_;
+import net.hus.core.shared.model.FocusWidget_;
+import net.hus.core.shared.model.FormGroup_;
+import net.hus.core.shared.model.FormLabel_;
+import net.hus.core.shared.model.Input_;
+import net.hus.core.shared.model.ListBox_;
+import net.hus.core.shared.model.Row_;
+import net.hus.core.shared.model.TextBox_;
+import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.model.ValueBoxBase_;
+import net.hus.core.shared.model.ListBox_.Item;
 
 public class UiConverter
 {
@@ -445,7 +464,7 @@ public class UiConverter
 
   private void create(UIObject inUiO, UIObject_ inUiO_)
   {
-    mUiManager.add(inUiO_.getKey(), inUiO);
+    mUiManager.add(inUiO_.getKey(), (IsWidget) inUiO);
 
     String id = inUiO_.getId();
     String height = inUiO_.getHeight();

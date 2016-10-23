@@ -1,0 +1,52 @@
+package net.hus.core.shared.model;
+
+import java.io.IOException;
+
+import org.gwtbootstrap3.client.ui.constants.Pull;
+import org.junit.Before;
+import org.junit.Test;
+
+import net.hus.core.shared.model.ComplexWidget_;
+import net.hus.core.shared.model.UIObject_;
+
+public class ComplexWidget_Test
+{
+  private UIObject_ mObject;
+
+  @Before
+  public void before()
+  {
+    mObject = newComplexWidget();
+  }
+
+  @Test
+  public void canSerialize() throws IOException, ClassNotFoundException
+  {
+    SerializationTest.canSerializeObj(mObject);
+  }
+
+  public static ComplexWidget_ newComplexWidget()
+  {
+    ComplexWidget_ ret = new ComplexWidget_();
+
+    initComplexWidget(ret);
+
+    return ret;
+  }
+
+  public static void initComplexWidget(ComplexWidget_ inObj)
+  {
+    inObj.setColor("red");
+    inObj.setMarginBottom(10.0);
+    inObj.setMarginLeft(10.0);
+    inObj.setMarginRight(10.0);
+    inObj.setMarginTop(10.0);
+    inObj.setPaddingBottom(10.0);
+    inObj.setPaddingLeft(10.0);
+    inObj.setPaddingRight(10.0);
+    inObj.setPaddingTop(10.0);
+    inObj.setPull(Pull.LEFT);
+
+    UIObject_Test.initUIObject(inObj);
+  }
+}

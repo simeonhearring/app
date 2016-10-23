@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.Alert_;
+import net.hus.core.shared.model.Alert_;
 
 public class Alert_Parser extends UIObject_Parser<Alert_>
 {

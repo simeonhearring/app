@@ -2,8 +2,8 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.AbstractTextWidget_;
-import net.hus.core.client.ui.UIObject_;
+import net.hus.core.shared.model.AbstractTextWidget_;
+import net.hus.core.shared.model.UIObject_;
 
 public class AbstractTextWidget_Parser extends UIObject_Parser<UIObject_>
 {

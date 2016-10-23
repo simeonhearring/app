@@ -8,9 +8,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.Window;
 
-import net.hus.core.client.common.Global;
 import net.hus.core.client.service.rpc.RpcService;
 import net.hus.core.client.service.rpc.RpcServiceAsync;
+import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.event.AlertEvent;
 import net.hus.core.client.ui.event.LoadMainEvent;
 import net.hus.core.client.ui.event.ReportEvent;

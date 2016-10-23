@@ -1,7 +1,7 @@
 package net.hus.core.parser;
 
-import net.hus.core.client.ui.ComplexPanel_;
-import net.hus.core.client.ui.UIObject_;
+import net.hus.core.shared.model.ComplexPanel_;
+import net.hus.core.shared.model.UIObject_;
 
 public class ComplexPanel_Parser extends UIObject_Parser<UIObject_>
 {

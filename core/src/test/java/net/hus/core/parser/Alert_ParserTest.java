@@ -3,8 +3,8 @@ package net.hus.core.parser;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.client.ui.Alert_;
-import net.hus.core.client.ui.Alert_Test;
+import net.hus.core.shared.model.Alert_;
+import net.hus.core.shared.model.Alert_Test;
 import net.hus.core.util.ResourceUtil;
 
 public class Alert_ParserTest
@@ -16,7 +16,7 @@ public class Alert_ParserTest
 
     Alert_ model = Alert_Test.newAlert();
 
-    String expected = ResourceUtil.contents("net/hus/core/client/ui/Alert_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/Alert_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

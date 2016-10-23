@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.client.ui.FieldSet_;
+import net.hus.core.shared.model.FieldSet_;
 
 public class FieldSet_Parser extends ComplexWidget_Parser
 {
