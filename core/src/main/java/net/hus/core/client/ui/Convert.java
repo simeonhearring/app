@@ -5,16 +5,22 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.Alert;
 import org.gwtbootstrap3.client.ui.Badge;
 import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.Container;
 import org.gwtbootstrap3.client.ui.FieldSet;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.base.AbstractTextWidget;
 import org.gwtbootstrap3.client.ui.base.ComplexWidget;
 import org.gwtbootstrap3.client.ui.base.ValueBoxBase;
+import org.gwtbootstrap3.client.ui.constants.ColumnOffset;
+import org.gwtbootstrap3.client.ui.constants.ColumnPull;
+import org.gwtbootstrap3.client.ui.constants.ColumnPush;
+import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.FormGroupSize;
 import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.gwtbootstrap3.client.ui.constants.Pull;
@@ -30,6 +36,46 @@ import net.hus.core.client.ui.ListBox_.Item;
 
 public class Convert
 {
+  public Column convert(Column_ inUiO)
+  {
+    Column ret = new Column(inUiO.getSize());
+
+    create(ret, inUiO);
+
+    ColumnSize[] other = inUiO.getOtherSize();
+    ColumnPull[] pull = inUiO.getPulls();
+    ColumnPush[] push = inUiO.getPush();
+    ColumnOffset[] offset = inUiO.getOffset();
+
+    if (other != null)
+    {
+      ret.addSize(other);
+    }
+    if (pull != null)
+    {
+      ret.addPull(pull);
+    }
+    if (push != null)
+    {
+      ret.addPush(push);
+    }
+    if (offset != null)
+    {
+      ret.addOffset(offset);
+    }
+
+    return ret;
+  }
+
+  public Row convert(Row_ inUiO)
+  {
+    Row ret = new Row();
+
+    create(ret, inUiO);
+
+    return ret;
+  }
+
   public Container convert(Container_ inUiO)
   {
     Container ret = new Container();

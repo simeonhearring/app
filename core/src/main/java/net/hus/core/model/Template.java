@@ -15,6 +15,7 @@ public class Template implements Serializable
     MARKET;
   }
 
+
   private String mName;
 
   private List<Section> mSections = new ArrayList<>();
@@ -37,5 +38,14 @@ public class Template implements Serializable
   public static class Section implements Serializable
   {
     private static final long serialVersionUID = 6166844602372421962L;
+
+    public enum Name
+    {
+      BLOGL01,
+      BLOGC01,
+      WEBL01,
+      WEBC01,
+      WEBR01
+    }
   }
 }

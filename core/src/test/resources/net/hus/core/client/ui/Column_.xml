@@ -1,0 +1,12 @@
+<Column id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT" columnsize="SM_1">
+  <Title>Title</Title>
+  <Collection/>
+  <Size>SM_5</Size>
+  <Size>MD_5</Size>
+  <Pull>SM_5</Pull>
+  <Pull>MD_5</Pull>
+  <Push>SM_5</Push>
+  <Push>MD_5</Push>
+  <Offset>SM_5</Offset>
+  <Offset>MD_5</Offset>
+</Column>

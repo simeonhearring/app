@@ -5,12 +5,15 @@ import net.hus.core.client.common.Template;
 import net.hus.core.client.service.common.RpcCallback;
 import net.hus.core.client.ui.Container_;
 import net.hus.core.client.ui.Convert;
+import net.hus.core.model.Template.Section;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.command.UIObjectCommand;
 
 public class MainPresenter
 {
   private MainDisplay mDisplay;
+
+  private Template mTemplate;
 
   public MainPresenter(MainDisplay inDisplay)
   {
@@ -51,10 +54,12 @@ public class MainPresenter
   {
     Global.fire(new TemplateCommand(), new RpcCallback<TemplateCommand>()
     {
+
       @Override
       public void onRpcSuccess(TemplateCommand inResult)
       {
-        mDisplay.add(template(inResult.getData().getName()));
+        mTemplate = template(inResult.getData().getName());
+        mDisplay.add(mTemplate);
         uiObject();
       }
     });
@@ -68,7 +73,7 @@ public class MainPresenter
       public void onRpcSuccess(UIObjectCommand<Container_> inResult)
       {
         Container_ uiObject_ = inResult.getUIObject();
-        mDisplay.add(new Convert().convert(uiObject_));
+        mTemplate.add(Section.Name.WEBC01, new Convert().convert(uiObject_));
       }
     });
   }

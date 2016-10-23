@@ -10,15 +10,17 @@
 		height: 100%;
 	}
 
-	footer {
-		background-color: #555;
-		color: white;
-		padding: 15px;
-	}
-	
 	</ui:style>
 
+	<b:Container fluid="true" addStyleNames="text-Center">
+		<b:Row ui:field="mRow" addStyleNames="content {style.row}">
+			<b:Column ui:field="mBlogL01" size="SM_3" addStyleNames="{style.sidenav}" />
+			<b:Column ui:field="mBlogC01" size="SM_9" />
+		</b:Row>
+	</b:Container>
+	<!-- 
 	<g:HTMLPanel>
+
 
 		<div class="container-fluid">
 			<div class="row content">
@@ -155,4 +157,5 @@
 		</div>
 
 	</g:HTMLPanel>
+	 -->
 </ui:UiBinder>
