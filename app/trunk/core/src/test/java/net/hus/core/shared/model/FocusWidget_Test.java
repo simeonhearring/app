@@ -15,7 +15,7 @@ public class FocusWidget_Test
   @Before
   public void before()
   {
-    mObject = newValueBoxBase();
+    mObject = newFocusWidget();
   }
 
   @Test
@@ -24,7 +24,7 @@ public class FocusWidget_Test
     SerializationTest.canSerializeObj(mObject);
   }
 
-  public static FocusWidget_ newValueBoxBase()
+  public static FocusWidget_ newFocusWidget()
   {
     FocusWidget_ ret = new FocusWidget_();
 

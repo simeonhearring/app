@@ -5,8 +5,9 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.hus.core.shared.model.Row_;
-import net.hus.core.shared.model.UIObject_;
+import junit.framework.Assert;
+import net.hus.core.parser.Row_Parser;
+import net.hus.core.util.ResourceUtil;
 
 public class Row_Test
 {
@@ -22,6 +23,19 @@ public class Row_Test
   public void canSerialize() throws IOException, ClassNotFoundException
   {
     SerializationTest.canSerializeObj(mObject);
+  }
+
+  @Test
+  public void canParse()
+  {
+    Row_Parser parser = new Row_Parser();
+
+    Row_ model = Row_Test.newRow();
+
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/Row_.xml");
+    expected = expected.replaceAll("\t", "  ");
+
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 
   public static Row_ newRow()

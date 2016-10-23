@@ -9,8 +9,9 @@ import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.hus.core.shared.model.Column_;
-import net.hus.core.shared.model.UIObject_;
+import junit.framework.Assert;
+import net.hus.core.parser.Column_Parser;
+import net.hus.core.util.ResourceUtil;
 
 public class Column_Test
 {
@@ -26,6 +27,19 @@ public class Column_Test
   public void canSerialize() throws IOException, ClassNotFoundException
   {
     SerializationTest.canSerializeObj(mObject);
+  }
+
+  @Test
+  public void canParse()
+  {
+    Column_Parser parser = new Column_Parser();
+
+    Column_ model = Column_Test.newColumn();
+
+    String expected = ResourceUtil.contents("net/hus/core/shared/model/Column_.xml");
+    expected = expected.replaceAll("\t", "  ");
+
+    Assert.assertEquals(expected, parser.toXml(model));
   }
 
   public static Column_ newColumn()
