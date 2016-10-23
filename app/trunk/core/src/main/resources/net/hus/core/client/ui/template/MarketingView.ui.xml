@@ -17,6 +17,33 @@
 
 	<g:HTMLPanel>
 
+	<b:Container fluid="true" addStyleNames="text-Center">
+		<b:Row ui:field="mRow1" addStyleNames="content">
+			<b:Column ui:field="mMarR1L01" size="SM_8" />
+			<b:Column ui:field="mMarR1C01" size="SM_4" />
+		</b:Row>
+	</b:Container>
+
+	<b:Container fluid="true" addStyleNames="text-Center">
+		<b:Row ui:field="mRow2" addStyleNames="content">
+			<b:Column ui:field="mMarR201" size="SM_3" />
+			<b:Column ui:field="mMarR202" size="SM_3" />
+			<b:Column ui:field="mMarR203" size="SM_3" />
+			<b:Column ui:field="mMarR204" size="SM_3" />
+		</b:Row>
+	</b:Container>
+
+	<b:Container fluid="true" addStyleNames="text-Center">
+		<b:Row ui:field="mRow3" addStyleNames="content">
+			<b:Column ui:field="mMarR301" size="SM_2" />
+			<b:Column ui:field="mMarR302" size="SM_2" />
+			<b:Column ui:field="mMarR303" size="SM_2" />
+			<b:Column ui:field="mMarR304" size="SM_2" />
+			<b:Column ui:field="mMarR305" size="SM_2" />
+			<b:Column ui:field="mMarR306" size="SM_2" />
+		</b:Row>
+	</b:Container>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">

@@ -17,6 +17,6 @@ public class TemplateParserTest
 
     Template model = parser.fromXml(xml);
 
-    Assert.assertEquals("Hello", model.getName());
+    Assert.assertEquals("WEB", model.getName());
   }
 }

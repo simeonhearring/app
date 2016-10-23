@@ -11,7 +11,7 @@ public class ServerErrorUtil
 
   private static final String[] PACKAGE_INCLUDE =
     {
-      "net.hus"
+        "net.hus"
     };
 
   private ServerErrorUtil()
@@ -39,6 +39,13 @@ public class ServerErrorUtil
           if (inDeeper && goDeeper(objname))
           {
             ret.append(" [").append(objectToString(object, inDeeper)).append("]");
+          }
+          else if (object instanceof Object[])
+          {
+            for (Object arrayValue : (Object[]) object)
+            {
+              ret.append(" [").append(objectToString(arrayValue, inDeeper)).append("]");
+            }
           }
           else
           {
