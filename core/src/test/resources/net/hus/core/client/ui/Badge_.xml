@@ -1,4 +1,4 @@
-<Badge id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+<Badge KEY="KEYLOCATER" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
 	<Title>Title</Title>
 	<Text>Text</Text>
 </Badge>

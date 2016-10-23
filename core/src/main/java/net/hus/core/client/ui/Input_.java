@@ -9,7 +9,6 @@ public class Input_ extends ValueBoxBase_
   private String mMin;
   private String mMax;
   private InputType mType;
-
   private String mValue;
 
   public String getValue()

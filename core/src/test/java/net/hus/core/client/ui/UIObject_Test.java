@@ -30,6 +30,7 @@ public class UIObject_Test
 
   public static void initUIObject(UIObject_ inOut)
   {
+    inOut.setKey("KEYLOCATER");
     inOut.setVisible(true);
     inOut.setTitle("Title");
     inOut.setStylePrimaryName("primaryStyle");

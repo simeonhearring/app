@@ -5,14 +5,14 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Container_Test
+public class FocusWidget_Test
 {
   private UIObject_ mObject;
 
   @Before
   public void before()
   {
-    mObject = newContainer();
+    mObject = newValueBoxBase();
   }
 
   @Test
@@ -21,13 +21,17 @@ public class Container_Test
     SerializationTest.canSerializeObj(mObject);
   }
 
-  public static Container_ newContainer()
+  public static FocusWidget_ newValueBoxBase()
   {
-    Container_ ret = new Container_();
-    ret.setFluid(true);
+    FocusWidget_ ret = new FocusWidget_();
 
-    ComplexWidget_Test.initComplexWidget(ret);
+    initFocusWidget(ret);
 
     return ret;
+  }
+
+  public static void initFocusWidget(FocusWidget_ inOut)
+  {
+    UIObject_Test.initUIObject(inOut);
   }
 }

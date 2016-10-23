@@ -1,15 +1,18 @@
 package net.hus.core.client.model.main;
 
+import com.google.gwt.user.client.ui.UIObject;
+
 import net.hus.core.client.common.Global;
 import net.hus.core.client.common.Template;
 import net.hus.core.client.service.common.RpcCallback;
 import net.hus.core.client.ui.Container_;
-import net.hus.core.client.ui.Convert;
+import net.hus.core.client.ui.UiConverter;
+import net.hus.core.client.ui.UiManager;
 import net.hus.core.model.Template.Section;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.command.UIObjectCommand;
 
-public class MainPresenter
+public class MainPresenter implements UiManager
 {
   private MainDisplay mDisplay;
 
@@ -73,8 +76,13 @@ public class MainPresenter
       public void onRpcSuccess(UIObjectCommand<Container_> inResult)
       {
         Container_ uiObject_ = inResult.getUIObject();
-        mTemplate.add(Section.Name.WEBC01, new Convert().convert(uiObject_));
+        mTemplate.add(Section.Name.WEBC01, new UiConverter(MainPresenter.this).convert(uiObject_));
       }
     });
+  }
+
+  @Override
+  public void add(String inKey, UIObject inUiO)
+  {
   }
 }

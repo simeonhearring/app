@@ -11,7 +11,7 @@ public class UIObjectCommandBean extends AbstractCommandBean<UIObjectCommand<?>>
   @Override
   public RpcResponse execute(UIObjectCommand<?> inCommand)
   {
-    String xml = ResourceUtil.contents("net/hus/core/client/ui/Page.xml");
+    String xml = ResourceUtil.contents("net/hus/core/client/ui/UiManager.xml");
 
     Container_Parser parser = new Container_Parser();
 

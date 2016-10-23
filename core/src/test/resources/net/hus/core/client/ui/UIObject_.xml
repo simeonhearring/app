@@ -1,3 +1,3 @@
-<UIObject id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+<UIObject KEY="KEYLOCATER" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
 	<Title>Title</Title>
 </UIObject>

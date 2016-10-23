@@ -34,12 +34,20 @@ import com.google.gwt.user.client.ui.UIObject;
 
 import net.hus.core.client.ui.ListBox_.Item;
 
-public class Convert
+public class UiConverter
 {
+  private UiManager mUiManager;
+
+  public UiConverter(UiManager inUiManager)
+  {
+    mUiManager = inUiManager;
+  }
+
   public Column convert(Column_ inUiO)
   {
     Column ret = new Column(inUiO.getSize());
 
+    create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
 
     ColumnSize[] other = inUiO.getOtherSize();
@@ -71,6 +79,7 @@ public class Convert
   {
     Row ret = new Row();
 
+    create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
 
     return ret;
@@ -80,6 +89,7 @@ public class Convert
   {
     Container ret = new Container();
 
+    create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
 
     Boolean fluid = inUiO.getFluid();
@@ -403,6 +413,78 @@ public class Convert
     }
   }
 
+  private <T> void create(ValueBoxBase<T> inUiO, ValueBoxBase_ inUiO_)
+  {
+    Boolean allowBlank = inUiO_.getAllowBlank();
+    Boolean autoComplete = inUiO_.getAutoComplete();
+    Integer maxLength = inUiO_.getMaxLength();
+    String placeholder = inUiO_.getPlaceholder();
+    InputSize size = inUiO_.getSize();
+
+    if (allowBlank != null)
+    {
+      inUiO.setAllowBlank(allowBlank);
+    }
+    if (autoComplete != null)
+    {
+      inUiO.setAutoComplete(autoComplete);
+    }
+    if (maxLength != null)
+    {
+      inUiO.setMaxLength(maxLength);
+    }
+    if (placeholder != null)
+    {
+      inUiO.setPlaceholder(placeholder);
+    }
+    if (size != null)
+    {
+      inUiO.setSize(size);
+    }
+  }
+
+  private void create(UIObject inUiO, UIObject_ inUiO_)
+  {
+    mUiManager.add(inUiO_.getKey(), inUiO);
+
+    String id = inUiO_.getId();
+    String height = inUiO_.getHeight();
+    String width = inUiO_.getWidth();
+    String title = inUiO_.getTitle();
+    String stylePrimaryName = inUiO_.getStylePrimaryName();
+    String styleName = inUiO_.getStyleName();
+    Boolean visible = inUiO_.getVisible();
+
+    if (id != null)
+    {
+      inUiO.getElement().setId(id);
+    }
+    if (visible != null)
+    {
+      inUiO.setVisible(visible);
+    }
+    if (height != null)
+    {
+      inUiO.setHeight(height);
+    }
+    if (width != null)
+    {
+      inUiO.setWidth(width);
+    }
+    if (title != null)
+    {
+      inUiO.setTitle(title);
+    }
+    if (stylePrimaryName != null)
+    {
+      inUiO.setStylePrimaryName(stylePrimaryName);
+    }
+    if (styleName != null)
+    {
+      inUiO.setStyleName(styleName);
+    }
+  }
+
   private IsWidget match(UIObject_ inUiO)
   {
     IsWidget ret = null;
@@ -447,81 +529,19 @@ public class Convert
     {
       ret = convert((Container_) inUiO);
     }
+    else if (inUiO instanceof Row_)
+    {
+      ret = convert((Row_) inUiO);
+    }
+    else if (inUiO instanceof Column_)
+    {
+      ret = convert((Column_) inUiO);
+    }
     else
     {
-      throw new RuntimeException("Missing Widget convert type");
+      throw new RuntimeException("Missing widget convert type");
     }
 
     return ret;
-  }
-
-  private <T> void create(ValueBoxBase<T> inUiO, ValueBoxBase_ inUiO_)
-  {
-    Boolean allowBlank = inUiO_.getAllowBlank();
-    Boolean autoComplete = inUiO_.getAutoComplete();
-    Integer maxLength = inUiO_.getMaxLength();
-    String placeholder = inUiO_.getPlaceholder();
-    InputSize size = inUiO_.getSize();
-
-    if (allowBlank != null)
-    {
-      inUiO.setAllowBlank(allowBlank);
-    }
-    if (autoComplete != null)
-    {
-      inUiO.setAutoComplete(autoComplete);
-    }
-    if (maxLength != null)
-    {
-      inUiO.setMaxLength(maxLength);
-    }
-    if (placeholder != null)
-    {
-      inUiO.setPlaceholder(placeholder);
-    }
-    if (size != null)
-    {
-      inUiO.setSize(size);
-    }
-  }
-
-  private void create(UIObject inUiO, UIObject_ inUiO_)
-  {
-    String id = inUiO_.getId();
-    String height = inUiO_.getHeight();
-    String width = inUiO_.getWidth();
-    String title = inUiO_.getTitle();
-    String stylePrimaryName = inUiO_.getStylePrimaryName();
-    String styleName = inUiO_.getStyleName();
-    Boolean visible = inUiO_.getVisible();
-
-    if (id != null)
-    {
-      inUiO.getElement().setId(id);
-    }
-    if (visible != null)
-    {
-      inUiO.setVisible(visible);
-    }
-    if (height != null)
-    {
-      inUiO.setHeight(height);
-    }
-    if (width != null)
-    {
-      inUiO.setWidth(width);
-    }
-    if (title != null)
-    {
-      inUiO.setTitle(title);
-    }
-    if (stylePrimaryName != null)
-    {
-      inUiO.setStylePrimaryName(stylePrimaryName);
-    }
-    if (styleName != null)
-    {
-      inUiO.setStyleName(styleName);
-    }
   }
 }

@@ -1,4 +1,4 @@
-<Row id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT">
+<Row KEY="KEYLOCATER" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT">
   <Title>Title</Title>
   <Collection/>
 </Row>
