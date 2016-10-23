@@ -17,5 +17,4 @@ public class Label_ extends AbstractTextWidget_
   {
     mLabelType = inLabelType;
   }
-
 }

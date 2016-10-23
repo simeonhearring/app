@@ -1,4 +1,5 @@
-<TextBox height="20px" width="10px" size="LARGE">
+<TextBox KEY="KEYLOCATER" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE">
 	<Title>Title</Title>
-	<Value>Hello</Value>
+	<Placeholder>placeholder</Placeholder>
+	<Value>Value</Value>
 </TextBox>

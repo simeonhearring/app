@@ -2,6 +2,7 @@ package net.hus.core.util;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -29,7 +30,8 @@ public class ServerErrorUtil
     {
       String name = value.getName();
       if (Modifier.PUBLIC == value.getModifiers() && value.getParameterTypes().length == 0
-          && name != null && (name.startsWith("get") || name.startsWith("is")))
+          && name != null && (name.startsWith("get") || name.startsWith("is"))
+          && !name.startsWith("getBytes"))
       {
         ret.append(name).append(": [");
         try
@@ -39,6 +41,13 @@ public class ServerErrorUtil
           if (inDeeper && goDeeper(objname))
           {
             ret.append(" [").append(objectToString(object, inDeeper)).append("]");
+          }
+          else if (object instanceof ArrayList<?>)
+          {
+            for (Object arrayValue : (ArrayList<?>) object)
+            {
+              ret.append(" [").append(objectToString(arrayValue, inDeeper)).append("]");
+            }
           }
           else if (object instanceof Object[])
           {
