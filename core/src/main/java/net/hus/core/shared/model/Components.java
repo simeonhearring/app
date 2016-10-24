@@ -6,11 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.model.Value;
+
 public class Components implements Serializable
 {
   private static final long serialVersionUID = 1058892144882503748L;
 
   private List<UIObject_> mList = new ArrayList<>();
+
+  private List<Value> mValues;
 
   public void add(UIObject_ inUiO)
   {
@@ -33,5 +37,15 @@ public class Components implements Serializable
       }
     }
     return ret;
+  }
+
+  public void setValues(List<Value> inValues)
+  {
+    mValues = inValues;
+  }
+
+  public List<Value> getValues()
+  {
+    return mValues;
   }
 }

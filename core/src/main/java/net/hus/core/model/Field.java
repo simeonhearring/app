@@ -1,5 +1,7 @@
 package net.hus.core.model;
 
+import java.io.Serializable;
+
 public class Field extends AbstractModel
 {
   private static final long serialVersionUID = -961088994106006040L;
@@ -61,6 +63,12 @@ public class Field extends AbstractModel
     mDisplay = inDisplay;
   }
 
+  public enum Component
+  {
+    FL00_,
+    FV00_
+  }
+
   public enum Type
   {
     STRING,
@@ -72,8 +80,10 @@ public class Field extends AbstractModel
     LOOKUP
   }
 
-  public static class Properties
+  public static class Properties implements Serializable
   {
+    private static final long serialVersionUID = 4839256266085591075L;
+
     private Display mDisplay;
 
     public Display getDisplay()
@@ -87,8 +97,10 @@ public class Field extends AbstractModel
     }
   }
 
-  public static class Display
+  public static class Display implements Serializable
   {
+    private static final long serialVersionUID = 2627664336015710030L;
+
     private String mLong;
     private String mShort;
 

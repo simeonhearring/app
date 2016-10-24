@@ -50,4 +50,9 @@ public class Value extends AbstractModel
   {
     mField = inField;
   }
+
+  public String getLabel()
+  {
+    return getField().getProperties().getDisplay().getLong();
+  }
 }

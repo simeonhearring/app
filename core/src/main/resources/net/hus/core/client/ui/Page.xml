@@ -4,29 +4,29 @@
 		<Collection>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="C10000001" isHtml="false">
-						<Text>Field1:</Text>
+					<FormLabel KEY="FL00_1" isHtml="false">
+						<Text>first name:</Text>
 					</FormLabel>
-					<Input KEY="C10000002" type="TEXT">
+					<Input KEY="FV00_1" type="TEXT">
 						<Value>Hello</Value>
 					</Input>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="C10000003" isHtml="false">
-						<Text>Field2:</Text>
+					<FormLabel KEY="FL00_2" isHtml="false">
+						<Text>last name:</Text>
 					</FormLabel>
-					<Input KEY="C10000004" type="TEXT">
+					<Input KEY="FV00_2" type="TEXT">
 					</Input>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="C10000005" isHtml="false">
-						<Text>Field3:</Text>
+					<FormLabel KEY="FL00_3" isHtml="false">
+						<Text>middle name:</Text>
 					</FormLabel>
-					<TextBox KEY="C10000006">
+					<TextBox KEY="FV00_3">
 						<Value>textbox</Value>
 					</TextBox>
 				</Collection>

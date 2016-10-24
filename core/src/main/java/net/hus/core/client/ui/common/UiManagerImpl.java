@@ -1,6 +1,7 @@
 package net.hus.core.client.ui.common;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.gwtbootstrap3.client.ui.TextBox;
@@ -10,6 +11,8 @@ import com.google.gwt.user.client.ui.IsWidget;
 import net.hus.core.client.common.View;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.client.ui.TextBox_View;
+import net.hus.core.model.Field;
+import net.hus.core.model.Value;
 
 public class UiManagerImpl extends UiConverterImpl implements UiManager
 {
@@ -42,5 +45,19 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
       }
     }
     return ret;
+  }
+
+  @Override
+  public void update(List<Value> inValues)
+  {
+    for (Value value : inValues)
+    {
+      Long fieldId = value.getField().getId();
+      String labelKey = Field.Component.FL00_.name() + fieldId;
+      String valueKey = Field.Component.FV00_.name() + fieldId;
+
+      get(labelKey).setViews(value.getLabel());
+      get(valueKey).setViews(value.getValue());
+    }
   }
 }
