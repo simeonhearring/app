@@ -35,7 +35,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
       }
     }
 
-    container.setValues(mCoreDao.values().selectLast("JUNIT"));
+    container.setValues(mCoreDao.values().selectLast("JUNIT")); // TODO
 
     inCommand.setData(container);
 

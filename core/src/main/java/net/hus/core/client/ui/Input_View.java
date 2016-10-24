@@ -2,21 +2,19 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.Input;
 
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
-
-public class Input_View implements View
+public class Input_View extends Abstract_View implements ValueChangeHandler<String>
 {
   private Input mView;
 
-  Input_View()
+  public Input_View(String inKey, Input inView)
   {
-  }
-
-  public Input_View(Input inView)
-  {
+    super(inKey);
     mView = inView;
+    mView.addValueChangeHandler(this);
   }
 
   @Override
@@ -29,5 +27,11 @@ public class Input_View implements View
   public Widget asWidget()
   {
     return mView;
+  }
+
+  @Override
+  public void onValueChange(ValueChangeEvent<String> inEvent)
+  {
+    save(mView.getValue(), mView.getValue());
   }
 }

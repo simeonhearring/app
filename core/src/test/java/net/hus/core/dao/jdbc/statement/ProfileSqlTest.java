@@ -23,7 +23,7 @@ public class ProfileSqlTest extends MySqlCoreDsTest
   public void testUpsertAndSelect()
   {
     String org = "HUS";
-    String name = "JUNIT";
+    String name = VALUE_KEY;
     String text = "PROFILE_" + System.currentTimeMillis();
 
     List<String[]> profile = new ArrayList<>();

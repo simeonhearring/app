@@ -14,6 +14,16 @@ public class Field extends AbstractModel
 
   private String mDisplay;
 
+  public Field()
+  {
+  }
+
+  /* DB QUICK SAVE */
+  public Field(Long inFieldId)
+  {
+    setId(inFieldId);
+  }
+
   public String getName()
   {
     return mName;
