@@ -30,8 +30,17 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
   }
 
   @Override
-  public View get(String inKey)
+  public Views get(String... inKey)
   {
-    return (View) mContent.get(inKey);
+    Views ret = new Views();
+    for (String key : inKey)
+    {
+      IsWidget uiobject = mContent.get(key);
+      if (uiobject != null && uiobject instanceof View)
+      {
+        ret.add((View) uiobject);
+      }
+    }
+    return ret;
   }
 }

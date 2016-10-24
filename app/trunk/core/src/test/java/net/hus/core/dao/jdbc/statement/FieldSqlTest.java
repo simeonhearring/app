@@ -71,14 +71,14 @@ public class FieldSqlTest extends MySqlCoreDsTest
     f3.setId(3L);
     f3.setSort(3);
 
-    fields.setGroup("SAMPLE");
+    fields.setGroup("JUNIT");
     fields.add(f1);
     fields.add(f2);
     fields.add(f3);
 
     mSql.upsert(fields);
 
-    Fields ret = mSql.select("SAMPLE");
+    Fields ret = mSql.select("JUNIT");
     Assert.assertEquals(3, ret.getFields().size());
   }
 

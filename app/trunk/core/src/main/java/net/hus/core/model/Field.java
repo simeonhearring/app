@@ -4,58 +4,6 @@ public class Field extends AbstractModel
 {
   private static final long serialVersionUID = -961088994106006040L;
 
-  public enum Type
-  {
-    STRING,
-    NUMBER,
-    DATE,
-    TIME,
-    TIMESTAMP,
-    ARRAY,
-    LOOKUP
-  }
-
-  public static class Properties
-  {
-    private Display mDisplay;
-
-    public Display getDisplay()
-    {
-      return mDisplay;
-    }
-
-    public void setDisplay(Display inDisplay)
-    {
-      mDisplay = inDisplay;
-    }
-  }
-
-  public static class Display
-  {
-    private String mLong;
-    private String mShort;
-
-    public String getLong()
-    {
-      return mLong;
-    }
-
-    public void setLong(String inLong)
-    {
-      mLong = inLong;
-    }
-
-    public void setShort(String inShort)
-    {
-      mShort = inShort;
-    }
-
-    public String getShort()
-    {
-      return mShort;
-    }
-  }
-
   private String mName;
   private Type mType;
   private Properties mProperties;
@@ -111,5 +59,57 @@ public class Field extends AbstractModel
   public void setDisplay(String inDisplay)
   {
     mDisplay = inDisplay;
+  }
+
+  public enum Type
+  {
+    STRING,
+    NUMBER,
+    DATE,
+    TIME,
+    TIMESTAMP,
+    ARRAY,
+    LOOKUP
+  }
+
+  public static class Properties
+  {
+    private Display mDisplay;
+
+    public Display getDisplay()
+    {
+      return mDisplay;
+    }
+
+    public void setDisplay(Display inDisplay)
+    {
+      mDisplay = inDisplay;
+    }
+  }
+
+  public static class Display
+  {
+    private String mLong;
+    private String mShort;
+
+    public String getLong()
+    {
+      return mLong;
+    }
+
+    public void setLong(String inLong)
+    {
+      mLong = inLong;
+    }
+
+    public void setShort(String inShort)
+    {
+      mShort = inShort;
+    }
+
+    public String getShort()
+    {
+      return mShort;
+    }
   }
 }

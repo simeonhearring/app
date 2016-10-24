@@ -102,24 +102,35 @@ public class FieldsSql extends AbstractSqlJdbc
     return ret;
   }
 
-  private Field mapField(Field inOutField, ResultSet inRs) throws SQLException
+  private Field mapField(Field inOut, ResultSet inRs) throws SQLException
   {
-    mapModel(inOutField, inRs);
+    mapModel(inOut, inRs);
 
-    inOutField.setName(inRs.getString("mName"));
-    inOutField.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
-    inOutField.setProperties(valueOf(inRs.getString("mProperties"), new FieldPropertiesParser()));
+    mapField_(inOut, inRs);
 
-    return inOutField;
+    return inOut;
   }
 
-  private Field mapFields(Field inOutField, ResultSet inRs) throws SQLException
+  private Field mapFields(Field inOut, ResultSet inRs) throws SQLException
   {
-    mapField(inOutField, inRs);
+    mapField(inOut, inRs);
 
-    inOutField.setDisplay(inRs.getString("mDisplay"));
-    inOutField.setSort((Integer) inRs.getObject("mSort"));
+    mapFields_(inOut, inRs);
 
-    return inOutField;
+    return inOut;
+  }
+
+  public static void mapField_(Field inOut, ResultSet inRs) throws SQLException
+  {
+    inOut.setName(inRs.getString("mName"));
+    inOut.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
+    inOut.setProperties(valueOf(inRs.getString("mProperties"), new FieldPropertiesParser()));
+  }
+
+
+  public static void mapFields_(Field inOut, ResultSet inRs) throws SQLException
+  {
+    inOut.setDisplay(inRs.getString("mDisplay"));
+    inOut.setSort((Integer) inRs.getObject("mSort"));
   }
 }

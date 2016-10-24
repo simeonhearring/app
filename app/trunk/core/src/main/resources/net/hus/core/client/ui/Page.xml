@@ -18,7 +18,6 @@
 						<Text>Field2:</Text>
 					</FormLabel>
 					<Input KEY="C10000004" type="TEXT">
-						<Value>World</Value>
 					</Input>
 				</Collection>
 			</FormGroup>
