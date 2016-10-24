@@ -53,10 +53,6 @@
 							</Item>
 						</Items>
 					</ListBox>
-					<Icon KEY="C10000008" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
-						<Title>Title</Title>
-						<Collection />
-					</Icon>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
@@ -64,9 +60,8 @@
 					<FormLabel KEY="C10000010" isHtml="false">
 						<Text>Field5:</Text>
 					</FormLabel>
-					<Icon KEY="C10000011" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
+					<Icon KEY="C10000011" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
 						<Title>Title</Title>
-						<Collection />
 					</Icon>
 				</Collection>
 			</FormGroup>
@@ -74,9 +69,12 @@
 	</FieldSet>
 	<Icon KEY="C20000000" SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
 		<Title>Title</Title>
-		<Collection />
 	</Icon>
-	<Badge KEY="C30000000" SECTION="WEBR01" >
+	<Badge KEY="C30000000" SECTION="WEBR01">
+		<Title>Title</Title>
+		<Text>Text</Text>
+	</Badge>
+	<Badge KEY="C30000001" SECTION="WEBR01">
 		<Title>Title</Title>
 		<Text>Text</Text>
 	</Badge>

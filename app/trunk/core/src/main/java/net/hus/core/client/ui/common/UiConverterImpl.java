@@ -497,9 +497,12 @@ public abstract class UiConverterImpl implements UiConverter
   {
     List<UIObject_> collection = inUiO_.getCollection();
 
-    for (UIObject_ uiObject_ : collection)
+    if (collection != null)
     {
-      inUiO.add(match(uiObject_));
+      for (UIObject_ uiObject_ : collection)
+      {
+        inUiO.add(match(uiObject_));
+      }
     }
   }
 

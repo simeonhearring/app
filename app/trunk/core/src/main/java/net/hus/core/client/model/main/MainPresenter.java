@@ -7,8 +7,8 @@ import net.hus.core.client.common.Template;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
+import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.TemplateCommand;
-import net.hus.core.shared.command.UIObjectCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
 
@@ -74,10 +74,10 @@ public class MainPresenter
 
   public void uiObject()
   {
-    Global.fire(new UIObjectCommand(), new RpcCallback<UIObjectCommand>()
+    Global.fire(new ComponentsCommand(), new RpcCallback<ComponentsCommand>()
     {
       @Override
-      public void onRpcSuccess(UIObjectCommand inResult)
+      public void onRpcSuccess(ComponentsCommand inResult)
       {
         Components components = inResult.getComponents();
 
@@ -88,6 +88,8 @@ public class MainPresenter
             mTemplate.add(value.getKey(), mManager.match(uivalue));
           }
         }
+
+        mManager.get("C10000006").setValue("World!!!");
       }
     });
   }
