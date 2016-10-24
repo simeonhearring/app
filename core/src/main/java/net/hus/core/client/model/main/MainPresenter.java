@@ -89,7 +89,7 @@ public class MainPresenter
           }
         }
 
-        mManager.get("C10000006").setValue("World!!!");
+        mManager.get("C10000006").setView("World!!!");
       }
     });
   }

@@ -39,6 +39,11 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
 import net.hus.core.client.model.UiConverter;
+import net.hus.core.client.ui.Alert_View;
+import net.hus.core.client.ui.Badge_View;
+import net.hus.core.client.ui.FormLabel_View;
+import net.hus.core.client.ui.Input_View;
+import net.hus.core.client.ui.TextBox_View;
 import net.hus.core.shared.model.AbstractTextWidget_;
 import net.hus.core.shared.model.Alert_;
 import net.hus.core.shared.model.Badge_;
@@ -243,6 +248,8 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setValue(value);
     }
 
+    add(inUiO.getKey(), new TextBox_View(ret));
+
     return ret;
   }
 
@@ -258,6 +265,8 @@ public abstract class UiConverterImpl implements UiConverter
     {
       ret.setShowRequiredIndicator(showRequiredIndicator);
     }
+
+    add(inUiO.getKey(), new FormLabel_View(ret));
 
     return ret;
   }
@@ -320,6 +329,8 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setMax(max);
     }
 
+    add(inUiO.getKey(), new Input_View(ret));
+
     return ret;
   }
 
@@ -330,6 +341,8 @@ public abstract class UiConverterImpl implements UiConverter
     create(ret, inUiO);
 
     ret.setText(inUiO.getText());
+
+    add(inUiO.getKey(), new Badge_View(ret));
 
     return ret;
   }
@@ -344,6 +357,8 @@ public abstract class UiConverterImpl implements UiConverter
     ret.setType(inUiO.getType());
     ret.setDismissable(inUiO.isDismissable());
     ret.setFade(inUiO.isFade());
+
+    add(inUiO.getKey(), new Alert_View(ret));
 
     return ret;
   }
@@ -538,8 +553,6 @@ public abstract class UiConverterImpl implements UiConverter
 
   private void create(UIObject inUiO, UIObject_ inUiO_)
   {
-    add(inUiO_.getKey(), (IsWidget) inUiO);
-
     String id = inUiO_.getId();
     String height = inUiO_.getHeight();
     String width = inUiO_.getWidth();

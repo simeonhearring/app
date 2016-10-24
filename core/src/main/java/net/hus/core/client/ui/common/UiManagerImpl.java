@@ -7,9 +7,9 @@ import org.gwtbootstrap3.client.ui.TextBox;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
+import net.hus.core.client.common.View;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.client.ui.TextBox_View;
-import net.hus.core.client.ui.View;
 
 public class UiManagerImpl extends UiConverterImpl implements UiManager
 {

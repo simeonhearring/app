@@ -1,20 +1,20 @@
 package net.hus.core.client.ui;
 
-import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.Badge;
 
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.View;
 
-public class TextBox_View implements View
+public class Badge_View implements View
 {
-  private TextBox mView;
+  private Badge mView;
 
-  TextBox_View()
+  Badge_View()
   {
   }
 
-  public TextBox_View(TextBox inView)
+  public Badge_View(Badge inView)
   {
     mView = inView;
   }
@@ -22,7 +22,7 @@ public class TextBox_View implements View
   @Override
   public void setView(String inValue)
   {
-    mView.setValue(inValue);
+    mView.setText(inValue);
   }
 
   @Override
