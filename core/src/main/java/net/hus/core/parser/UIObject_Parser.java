@@ -8,7 +8,26 @@ public class UIObject_Parser<T> extends XStream implements Parser<T>
 {
   public UIObject_Parser()
   {
-    xs(this);
+    xs((Parser<T>) this);
+  }
+
+  @Override
+  public void xs(Parser<T> inParser)
+  {
+    xs((XStream) inParser);
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public T fromXml(String inValue)
+  {
+    return (T) super.fromXML(inValue);
+  }
+
+  @Override
+  public String toXml(T inObj)
+  {
+    return super.toXML(inObj);
   }
 
   public static void xs(XStream inXs)
@@ -23,18 +42,5 @@ public class UIObject_Parser<T> extends XStream implements Parser<T>
     inXs.aliasAttribute(UIObject_.class, "mWidth", "width");
     inXs.aliasAttribute(UIObject_.class, "mStyleName", "styleName");
     inXs.aliasAttribute(UIObject_.class, "mStylePrimaryName", "stylePrimaryName");
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public T fromXml(String inValue)
-  {
-    return (T) super.fromXML(inValue);
-  }
-
-  @Override
-  public String toXml(T inObj)
-  {
-    return super.toXML(inObj);
   }
 }

@@ -8,8 +8,14 @@ public class ListBox_Parser extends FocusWidget_Parser<ListBox_>
 {
   public ListBox_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<ListBox_>) this);
+  }
+
+  @Override
+  public void xs(Parser<ListBox_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

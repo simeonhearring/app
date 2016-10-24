@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components>
-	<FieldSet KEY="C10000000" SECTION="WEBL01" enabled="true">
+	<FieldSet KEY="C10000000" SECTION="WEBC01" enabled="true">
 		<Collection>
 			<FormGroup>
 				<Collection>
@@ -72,7 +72,7 @@
 			</FormGroup>
 		</Collection>
 	</FieldSet>
-	<Icon KEY="C20000000" SECTION="WEBC01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
+	<Icon KEY="C20000000" SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
 		<Title>Title</Title>
 		<Collection />
 	</Icon>

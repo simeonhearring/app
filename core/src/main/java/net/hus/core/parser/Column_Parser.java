@@ -9,12 +9,18 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.Column_;
 
-public class Column_Parser extends ComplexWidget_Parser
+public class Column_Parser extends ComplexWidget_Parser<Column_>
 {
   public Column_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<Column_>) this);
+  }
+
+  @Override
+  public void xs(Parser<Column_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

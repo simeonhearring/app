@@ -8,8 +8,14 @@ public class Badge_Parser extends UIObject_Parser<Badge_>
 {
   public Badge_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<Badge_>) this);
+  }
+
+  @Override
+  public void xs(Parser<Badge_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

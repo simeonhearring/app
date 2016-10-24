@@ -4,12 +4,19 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.FormGroup_;
 
-public class FormGroup_Parser extends ComplexPanel_Parser
+public class FormGroup_Parser extends ComplexPanel_Parser<FormGroup_>
 {
   public FormGroup_Parser()
   {
     super();
-    xs(this);
+    xs((Parser<FormGroup_>) this);
+  }
+
+  @Override
+  public void xs(Parser<FormGroup_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

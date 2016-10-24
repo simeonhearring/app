@@ -4,12 +4,18 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.Icon_;
 
-public class Icon_Parser extends ComplexWidget_Parser
+public class Icon_Parser extends ComplexWidget_Parser<Icon_>
 {
   public Icon_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<Icon_>) this);
+  }
+
+  @Override
+  public void xs(Parser<Icon_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

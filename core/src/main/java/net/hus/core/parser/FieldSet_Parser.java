@@ -4,12 +4,18 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.FieldSet_;
 
-public class FieldSet_Parser extends ComplexWidget_Parser
+public class FieldSet_Parser extends ComplexWidget_Parser<FieldSet_>
 {
   public FieldSet_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<FieldSet_>) this);
+  }
+
+  @Override
+  public void xs(Parser<FieldSet_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

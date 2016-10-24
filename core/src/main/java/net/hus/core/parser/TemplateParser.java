@@ -8,13 +8,7 @@ public class TemplateParser extends XStream implements Parser<Template>
 {
   public TemplateParser()
   {
-    alias("Template", Template.class);
-    aliasAttribute(Template.class, "mName", "name");
-    aliasField("Sections", Template.class, "mSections");
-
-    alias("Template.Section", Template.Section.class);
-    // alias("Display", Field.Display.class);
-    // aliasAttribute(Field.Display.class, "mLong", "long");
+    xs(this);
   }
 
   @Override
@@ -27,5 +21,17 @@ public class TemplateParser extends XStream implements Parser<Template>
   public String toXml(Template inObj)
   {
     return super.toXML(inObj);
+  }
+
+  @Override
+  public void xs(Parser<Template> inParser)
+  {
+    alias("Template", Template.class);
+    aliasAttribute(Template.class, "mName", "name");
+    aliasField("Sections", Template.class, "mSections");
+
+    alias("Template.Section", Template.Section.class);
+    // alias("Display", Field.Display.class);
+    // aliasAttribute(Field.Display.class, "mLong", "long");
   }
 }

@@ -3,13 +3,20 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.Input_;
+import net.hus.core.shared.model.ValueBoxBase_;
 
 public class Input_Parser extends ValueBoxBase_Parser
 {
   public Input_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<ValueBoxBase_>) this);
+  }
+
+  @Override
+  public void xs(Parser<ValueBoxBase_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

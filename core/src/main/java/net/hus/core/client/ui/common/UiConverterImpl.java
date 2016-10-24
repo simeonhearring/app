@@ -63,7 +63,6 @@ import net.hus.core.shared.model.ValueBoxBase_;
 
 public abstract class UiConverterImpl implements UiConverter
 {
-  @Override
   public Icon convert(Icon_ inUiO)
   {
     Icon ret = new Icon();
@@ -134,7 +133,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public Column convert(Column_ inUiO)
   {
     Column ret = new Column(inUiO.getSize());
@@ -167,7 +165,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public Row convert(Row_ inUiO)
   {
     Row ret = new Row();
@@ -178,7 +175,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public Container convert(Container_ inUiO)
   {
     Container ret = new Container();
@@ -195,7 +191,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public CheckBox convert(CheckBox_ inUiO)
   {
     CheckBox ret = new CheckBox();
@@ -213,7 +208,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public ListBox convert(ListBox_ inUiO)
   {
     ListBox ret = new ListBox();
@@ -236,7 +230,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public TextBox convert(TextBox_ inUiO)
   {
     TextBox ret = new TextBox();
@@ -253,7 +246,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public FormLabel convert(FormLabel_ inUiO)
   {
     FormLabel ret = new FormLabel();
@@ -270,7 +262,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public FormGroup convert(FormGroup_ inUiO)
   {
     FormGroup ret = new FormGroup();
@@ -293,7 +284,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public FieldSet convert(FieldSet_ inUiO)
   {
     FieldSet ret = new FieldSet();
@@ -306,7 +296,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public Input convert(Input_ inUiO)
   {
     Input ret = new Input();
@@ -334,7 +323,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public Badge convert(Badge_ inUiO)
   {
     Badge ret = new Badge();
@@ -346,7 +334,6 @@ public abstract class UiConverterImpl implements UiConverter
     return ret;
   }
 
-  @Override
   public Alert convert(Alert_ inUiO)
   {
     Alert ret = new Alert();
@@ -588,8 +575,8 @@ public abstract class UiConverterImpl implements UiConverter
     }
   }
 
-
-  private IsWidget match(UIObject_ inUiO)
+  @Override
+  public IsWidget match(UIObject_ inUiO)
   {
     IsWidget ret = null;
 

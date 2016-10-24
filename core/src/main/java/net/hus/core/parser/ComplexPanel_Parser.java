@@ -1,33 +1,46 @@
 package net.hus.core.parser;
 
-import net.hus.core.shared.model.ComplexPanel_;
-import net.hus.core.shared.model.UIObject_;
+import com.thoughtworks.xstream.XStream;
 
-public class ComplexPanel_Parser extends UIObject_Parser<UIObject_>
+import net.hus.core.shared.model.ComplexPanel_;
+
+public class ComplexPanel_Parser<T> extends UIObject_Parser<T>
 {
   public ComplexPanel_Parser()
   {
-    super();
+    xs((Parser<T>) this);
+  }
 
-    alias("ComplexPanel", ComplexPanel_.class);
-    aliasField("Collection", ComplexPanel_.class, "mCollection");
+  @Override
+  public void xs(Parser<T> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
+  }
 
-    Badge_Parser.xs(this);
+  public static void xs(XStream inXs)
+  {
+    inXs.alias("ComplexPanel", ComplexPanel_.class);
+    inXs.aliasField("Collection", ComplexPanel_.class, "mCollection");
 
-    Icon_Parser.xs(this);
+    AbstractTextWidget_Parser.xs(inXs);
 
-    FormGroup_Parser.xs(this);
+    Badge_Parser.xs(inXs);
 
-    FormLabel_Parser.xs(this);
+    Icon_Parser.xs(inXs);
 
-    FieldSet_Parser.xs(this);
+    FormGroup_Parser.xs(inXs);
 
-    TextBox_Parser.xs(this);
+    FormLabel_Parser.xs(inXs);
 
-    Input_Parser.xs(this);
+    FieldSet_Parser.xs(inXs);
 
-    ListBox_Parser.xs(this);
+    TextBox_Parser.xs(inXs);
 
-    CheckBox_Parser.xs(this);
+    Input_Parser.xs(inXs);
+
+    ListBox_Parser.xs(inXs);
+
+    CheckBox_Parser.xs(inXs);
   }
 }

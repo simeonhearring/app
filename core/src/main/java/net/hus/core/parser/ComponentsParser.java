@@ -12,8 +12,11 @@ public class ComponentsParser extends XStream implements Parser<Components>
     alias("Components", Components.class);
     addImplicitCollection(Components.class, "mList", null, UIObject_.class);
 
-    Badge_Parser.xs(this);
-    UIObject_Parser.xs(this);
+    ComplexWidget_Parser.xs((XStream) this);
+
+    ComplexPanel_Parser.xs((XStream) this);
+
+    UIObject_Parser.xs((XStream) this);
   }
 
   @Override
@@ -26,5 +29,10 @@ public class ComponentsParser extends XStream implements Parser<Components>
   public String toXml(Components inObj)
   {
     return super.toXML(inObj);
+  }
+
+  @Override
+  public void xs(Parser<Components> inParser)
+  {
   }
 }
