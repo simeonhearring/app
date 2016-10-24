@@ -14,7 +14,6 @@ import net.hus.core.model.Value;
 
 public class ValuesSqlTest extends MySqlCoreDsTest
 {
-  private static final String JUNIT = "JUNIT";
   private ValuesSql mSql;
 
   @Before
@@ -26,23 +25,23 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   @Test
   public void testSelectKey()
   {
-    List<Value> i = mSql.select(JUNIT);
-    Assert.assertEquals(JUNIT, i.get(0).getKey());
+    List<Value> i = mSql.select(VALUE_KEY);
+    Assert.assertEquals(VALUE_KEY, i.get(0).getKey());
   }
 
   @Test
   public void testSelectKeyField()
   {
-    List<Value> i = mSql.select(JUNIT, 1L);
-    Assert.assertEquals(JUNIT, i.get(0).getKey());
+    List<Value> i = mSql.select(VALUE_KEY, 1L);
+    Assert.assertEquals(VALUE_KEY, i.get(0).getKey());
   }
 
   @Test
   public void testSelectLastKey()
   {
-    List<Value> i = mSql.selectLast(JUNIT);
+    List<Value> i = mSql.selectLast(VALUE_KEY);
     Assert.assertEquals(3, i.size());
-    Assert.assertEquals(JUNIT, i.get(0).getKey());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getKey());
   }
 
   @Test
@@ -51,7 +50,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     List<Value> list = new ArrayList<>();
 
     Value value = new Value();
-    value.setKey(JUNIT);
+    value.setKey(VALUE_KEY);
     value.setValue("1");
     value.setField(new Field());
     value.getField().setId(1L);
@@ -62,7 +61,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
 
     mSql.insert(list);
 
-    List<Value> results = mSql.select(JUNIT, 1L);
+    List<Value> results = mSql.select(VALUE_KEY, 1L);
     String expected = String.valueOf(asOf.getTime()).substring(0, 10);
     String actual = String.valueOf(results.get(0).getAsOf().getTime()).substring(0, 10);
     Assert.assertEquals(expected, actual);

@@ -21,6 +21,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class MySqlCoreDsTest
 {
+  public static final String VALUE_KEY = "JUNIT";
+
   private static final String CONTEXT = "contextDs-core.xml";
   private static final String CORE_DS = "CoreDs";
 

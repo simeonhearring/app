@@ -43,6 +43,7 @@ public class ListBox_Test
   public static ListBox_ newListBox()
   {
     ListBox_ ret = new ListBox_();
+    ret.clearItems();
     ret.setMultipleSelect(true);
     ret.add(true, "text1", "value1");
     ret.add(false, "text2", "value2");

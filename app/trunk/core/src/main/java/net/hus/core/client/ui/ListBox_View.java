@@ -2,21 +2,19 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.ListBox;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
-
-public class ListBox_View implements View
+public class ListBox_View extends Abstract_View implements ChangeHandler
 {
   private ListBox mView;
 
-  ListBox_View()
+  public ListBox_View(String inKey, ListBox inView)
   {
-  }
-
-  public ListBox_View(ListBox inView)
-  {
+    super(inKey);
     mView = inView;
+    mView.addChangeHandler(this);
   }
 
   @Override
@@ -36,5 +34,11 @@ public class ListBox_View implements View
   public Widget asWidget()
   {
     return mView;
+  }
+
+  @Override
+  public void onChange(ChangeEvent inEvent)
+  {
+    save(mView.getSelectedValue(), mView.getSelectedItemText());
   }
 }
