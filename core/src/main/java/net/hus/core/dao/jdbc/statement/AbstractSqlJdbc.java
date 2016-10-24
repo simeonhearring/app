@@ -25,51 +25,51 @@ public abstract class AbstractSqlJdbc
 
   protected Statements mStmts;
 
-  public void mapModel(Model inModel, ResultSet inResultSet) throws SQLException
+  protected void mapModel(Model inModel, ResultSet inResultSet) throws SQLException
   {
     inModel.setId(inResultSet.getLong("mId"));
     inModel.setCreated(inResultSet.getTimestamp("mCreated"));
     inModel.setUpdated(inResultSet.getTimestamp("mUpdated"));
   }
 
-  public String getSql(Class<?> inClass)
+  protected String getSql(Class<?> inClass)
   {
     return ResourceUtil.getSql(inClass);
   }
 
-  public String sqlFile()
+  protected String sqlFile()
   {
     return getSql(this.getClass());
   }
 
-  public String fileContent(String inFileName)
+  protected String fileContent(String inFileName)
   {
     String s = this.getClass().getName().replaceAll("\\.", "/");
     s = s.replaceAll(this.getClass().getSimpleName(), inFileName);
     return ResourceUtil.contents(s);
   }
 
-  public static <T> T first(List<T> inList)
+  protected static <T> T first(List<T> inList)
   {
-    return (inList != null) && (inList.size() > 0) ? inList.get(0) : null;
+    return inList != null && inList.size() > 0 ? inList.get(0) : null;
   }
 
-  public static <T> T only(List<T> inList)
+  protected static <T> T only(List<T> inList)
   {
-    return (inList != null) && (inList.size() == 1) ? inList.get(0) : null;
+    return inList != null && inList.size() == 1 ? inList.get(0) : null;
   }
 
-  public static <T extends Enum<?>> T valueOf(String inValue, T[] inValues)
+  protected static <T extends Enum<?>> T valueOf(String inValue, T[] inValues)
   {
     return EnumUtil.valueOf(inValue, inValues);
   }
 
-  public static <T> T valueOf(String inValue, Parser<T> inParser)
+  protected static <T> T valueOf(String inValue, Parser<T> inParser)
   {
     return inParser.fromXml(inValue);
   }
 
-  public static <T> String valueOf(T inObj, Parser<T> inParser)
+  protected static <T> String valueOf(T inObj, Parser<T> inParser)
   {
     return inParser.toXml(inObj);
   }
@@ -79,12 +79,12 @@ public abstract class AbstractSqlJdbc
     return inTypes;
   }
 
-  public static String replaceIn(String inSql, int inLength)
+  protected static String replaceIn(String inSql, int inLength)
   {
     return inSql.replaceAll("=\\?", replaceIn(inLength));
   }
 
-  public static String replaceIn(int inLength)
+  protected static String replaceIn(int inLength)
   {
     StringBuilder sb = new StringBuilder(" in (");
     for (int i = 0; i < inLength; i++)
@@ -114,7 +114,7 @@ public abstract class AbstractSqlJdbc
     return ret;
   }
 
-  public Statements getStatements(String inXmlName)
+  protected Statements getStatements(String inXmlName)
   {
     String fileContent = fileContent(inXmlName);
     return fromXml(fileContent);

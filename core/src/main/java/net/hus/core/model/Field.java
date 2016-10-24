@@ -85,6 +85,7 @@ public class Field extends AbstractModel
     private static final long serialVersionUID = 4839256266085591075L;
 
     private Display mDisplay;
+    private Lookup mLookup;
 
     public Display getDisplay()
     {
@@ -94,6 +95,50 @@ public class Field extends AbstractModel
     public void setDisplay(Display inDisplay)
     {
       mDisplay = inDisplay;
+    }
+
+    public Lookup getLookupGroup()
+    {
+      return mLookup;
+    }
+
+    public void setLookupGroup(Lookup inLookup)
+    {
+      mLookup = inLookup;
+    }
+  }
+
+  public static class Lookup implements Serializable
+  {
+    private static final long serialVersionUID = -5683793682523488618L;
+
+    private Location mLocation;
+    private String mParameters;
+
+    public enum Location
+    {
+      TABLE,
+      RPC
+    }
+
+    public Location getLocation()
+    {
+      return mLocation;
+    }
+
+    public void setLocation(Location inLocation)
+    {
+      mLocation = inLocation;
+    }
+
+    public String getParameters()
+    {
+      return mParameters;
+    }
+
+    public void setParameters(String inParameters)
+    {
+      mParameters = inParameters;
     }
   }
 

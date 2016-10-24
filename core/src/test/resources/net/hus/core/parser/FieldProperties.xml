@@ -1,0 +1,4 @@
+<Field.Properties>
+  <Display long="Name" short="Nme"/>
+  <Lookup loc="TABLE" params="GENDER"/>
+</Field.Properties>
