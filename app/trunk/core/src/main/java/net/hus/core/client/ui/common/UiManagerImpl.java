@@ -4,13 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.gwtbootstrap3.client.ui.TextBox;
-
 import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.common.View;
 import net.hus.core.client.model.UiManager;
-import net.hus.core.client.ui.TextBox_View;
 import net.hus.core.model.Field;
 import net.hus.core.model.Value;
 
@@ -21,15 +18,7 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
   @Override
   public void add(String inKey, IsWidget inUiO)
   {
-    if (inUiO instanceof TextBox)
-    {
-      TextBox_View uio = new TextBox_View((TextBox) inUiO);
-      mContent.put(inKey, uio);
-    }
-    else
-    {
-      mContent.put(inKey, inUiO);
-    }
+    mContent.put(inKey, inUiO);
   }
 
   @Override

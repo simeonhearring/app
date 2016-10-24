@@ -7,8 +7,6 @@ public class ListBox_ extends FocusWidget_
 {
   private static final long serialVersionUID = -5860079083731912915L;
 
-  private String[] mLookupParams;
-
   private Boolean mMultipleSelect;
   private List<Item> mItems = new ArrayList<>();
 
@@ -25,16 +23,6 @@ public class ListBox_ extends FocusWidget_
   public List<Item> getItems()
   {
     return mItems;
-  }
-
-  public String[] getLookupParams()
-  {
-    return mLookupParams;
-  }
-
-  public void setLookupParams(String[] inLookupParams)
-  {
-    mLookupParams = inLookupParams;
   }
 
   public void add(String inText)

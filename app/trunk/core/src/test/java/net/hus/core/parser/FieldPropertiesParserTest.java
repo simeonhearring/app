@@ -5,6 +5,9 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.model.Field;
 import net.hus.core.model.Field.Display;
+import net.hus.core.model.Field.Lookup;
+import net.hus.core.model.Field.Lookup.Location;
+import net.hus.core.util.ResourceUtil;
 
 public class FieldPropertiesParserTest
 {
@@ -18,11 +21,13 @@ public class FieldPropertiesParserTest
     prop.getDisplay().setLong("Name");
     prop.getDisplay().setShort("Nme");
 
-    StringBuilder sb = new StringBuilder();
-    sb.append("<Field.Properties>\n");
-    sb.append("  <Display long=\"Name\" short=\"Nme\"/>\n");
-    sb.append("</Field.Properties>");
+    Lookup loc = new Lookup();
+    loc.setLocation(Location.TABLE);
+    loc.setParameters("GENDER");
+    prop.setLookupGroup(loc);
 
-    Assert.assertEquals(sb.toString(), parser.toXml(prop));
+    String xml = ResourceUtil.contents("net/hus/core/parser/FieldProperties.xml");
+
+    Assert.assertEquals(xml, parser.toXml(prop));
   }
 }

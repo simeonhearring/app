@@ -33,10 +33,10 @@
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="C10000007" isHtml="false">
+					<FormLabel KEY="FL00_12" isHtml="false">
 						<Text>Field4:</Text>
 					</FormLabel>
-					<ListBox KEY="C10000008" multipleSelect="true">
+					<ListBox KEY="FV00_12" multipleSelect="false">
 						<Items>
 							<Item selected="false">
 								<Text></Text>

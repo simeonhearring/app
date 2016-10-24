@@ -42,7 +42,6 @@ public class ListBox_Test
   {
     ListBox_ ret = new ListBox_();
     ret.setMultipleSelect(true);
-    ret.setLookupParams("a:123,b:456".split(","));
     ret.add(true, "text1", "value1");
     ret.add(false, "text2", "value2");
 

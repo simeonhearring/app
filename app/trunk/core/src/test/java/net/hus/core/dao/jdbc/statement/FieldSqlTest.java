@@ -46,6 +46,7 @@ public class FieldSqlTest extends MySqlCoreDsTest
     list.add(newField(Type.NUMBER, "RETURN_VISITS", "Return Visits", "R.V."));
     list.add(newField(Type.NUMBER, "BIBLE_STUDIES", "Bible Studies", "BiSt"));
     list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
+    list.add(newField(Type.LOOKUP, "GENDER", "Gender", "Sex"));
 
     mSql.upsert(list);
 
