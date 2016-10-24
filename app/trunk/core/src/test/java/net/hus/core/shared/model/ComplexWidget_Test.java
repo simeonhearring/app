@@ -29,7 +29,7 @@ public class ComplexWidget_Test
   @Test
   public void canParse()
   {
-    ComplexWidget_Parser parser = new ComplexWidget_Parser();
+    ComplexWidget_Parser<ComplexWidget_> parser = new ComplexWidget_Parser<>();
 
     ComplexWidget_ model = ComplexWidget_Test.newComplexWidget();
 

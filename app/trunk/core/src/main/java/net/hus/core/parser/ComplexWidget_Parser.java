@@ -4,12 +4,18 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.ComplexWidget_;
 
-public class ComplexWidget_Parser extends ComplexPanel_Parser
+public class ComplexWidget_Parser<T> extends ComplexPanel_Parser<T>
 {
   public ComplexWidget_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<T>) this);
+  }
+
+  @Override
+  public void xs(Parser<T> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

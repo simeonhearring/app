@@ -9,8 +9,14 @@ public class AbstractTextWidget_Parser extends UIObject_Parser<UIObject_>
 {
   public AbstractTextWidget_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<UIObject_>) this);
+  }
+
+  @Override
+  public void xs(Parser<UIObject_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

@@ -55,7 +55,13 @@ public class MarketingView extends AbstractView implements MarketingDisplay
   @Override
   public void add(Section.Name inSection, IsWidget inWidget)
   {
-    Column column = (Column) find(inSection.name(), mRow1, mRow2, mRow3);
+    add(inSection.name(), inWidget);
+  }
+
+  @Override
+  public void add(String inSection, IsWidget inWidget)
+  {
+    Column column = (Column) find(inSection, mRow1, mRow2, mRow3);
     column.add(inWidget);
   }
 }

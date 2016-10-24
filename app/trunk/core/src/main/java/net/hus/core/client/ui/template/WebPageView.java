@@ -39,7 +39,13 @@ public class WebPageView extends AbstractView implements WebPageDisplay
   @Override
   public void add(Section.Name inSection, IsWidget inWidget)
   {
-    Column column = (Column) find(inSection.name(), mRow);
+    add(inSection.name(), inWidget);
+  }
+
+  @Override
+  public void add(String inSection, IsWidget inWidget)
+  {
+    Column column = (Column) find(inSection, mRow);
     column.add(inWidget);
   }
 }

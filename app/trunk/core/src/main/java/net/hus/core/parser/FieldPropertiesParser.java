@@ -9,12 +9,7 @@ public class FieldPropertiesParser extends XStream implements Parser<Field.Prope
 {
   public FieldPropertiesParser()
   {
-    alias("Field.Properties", Field.Properties.class);
-    aliasField("Display", Field.Properties.class, "mDisplay");
-
-    alias("Display", Field.Display.class);
-    aliasAttribute(Field.Display.class, "mShort", "short");
-    aliasAttribute(Field.Display.class, "mLong", "long");
+    xs(this);
   }
 
   @Override
@@ -27,5 +22,16 @@ public class FieldPropertiesParser extends XStream implements Parser<Field.Prope
   public String toXml(Properties inObj)
   {
     return super.toXML(inObj);
+  }
+
+  @Override
+  public void xs(Parser<Properties> inParser)
+  {
+    alias("Field.Properties", Field.Properties.class);
+    aliasField("Display", Field.Properties.class, "mDisplay");
+
+    alias("Display", Field.Display.class);
+    aliasAttribute(Field.Display.class, "mShort", "short");
+    aliasAttribute(Field.Display.class, "mLong", "long");
   }
 }

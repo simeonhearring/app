@@ -8,8 +8,14 @@ public class Alert_Parser extends UIObject_Parser<Alert_>
 {
   public Alert_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<Alert_>) this);
+  }
+
+  @Override
+  public void xs(Parser<Alert_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

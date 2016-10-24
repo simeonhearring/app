@@ -3,18 +3,24 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.FormLabel_;
+import net.hus.core.shared.model.UIObject_;
 
 public class FormLabel_Parser extends AbstractTextWidget_Parser
 {
   public FormLabel_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<UIObject_>) this);
+  }
+
+  @Override
+  public void xs(Parser<UIObject_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)
   {
-    AbstractTextWidget_Parser.xs(inXs);
     inXs.alias("FormLabel", FormLabel_.class);
     inXs.aliasAttribute(FormLabel_.class, "mShowRequiredIndicator", "showRequiredIndicator");
   }

@@ -1,13 +1,16 @@
 package net.hus.core.client.model.main;
 
+import java.util.List;
+import java.util.Map.Entry;
+
 import net.hus.core.client.common.Template;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
-import net.hus.core.model.Template.Section;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.command.UIObjectCommand;
-import net.hus.core.shared.model.Container_;
+import net.hus.core.shared.model.Components;
+import net.hus.core.shared.model.UIObject_;
 
 public class MainPresenter
 {
@@ -71,13 +74,20 @@ public class MainPresenter
 
   public void uiObject()
   {
-    Global.fire(new UIObjectCommand<Container_>(), new RpcCallback<UIObjectCommand<Container_>>()
+    Global.fire(new UIObjectCommand(), new RpcCallback<UIObjectCommand>()
     {
       @Override
-      public void onRpcSuccess(UIObjectCommand<Container_> inResult)
+      public void onRpcSuccess(UIObjectCommand inResult)
       {
-        Container_ uiObject_ = inResult.getUIObject();
-        mTemplate.add(Section.Name.WEBC01, mManager.convert(uiObject_));
+        Components components = inResult.getComponents();
+
+        for (Entry<String, List<UIObject_>> value : components.components().entrySet())
+        {
+          for (UIObject_ uivalue : value.getValue())
+          {
+            mTemplate.add(value.getKey(), mManager.match(uivalue));
+          }
+        }
       }
     });
   }

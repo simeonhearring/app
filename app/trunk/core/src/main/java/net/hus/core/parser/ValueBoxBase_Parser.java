@@ -8,8 +8,14 @@ public class ValueBoxBase_Parser extends FocusWidget_Parser<ValueBoxBase_>
 {
   public ValueBoxBase_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<ValueBoxBase_>) this);
+  }
+
+  @Override
+  public void xs(Parser<ValueBoxBase_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

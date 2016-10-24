@@ -8,8 +8,14 @@ public class ButtonBase_Parser<T> extends FocusWidget_Parser<T>
 {
   public ButtonBase_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<T>) this);
+  }
+
+  @Override
+  public void xs(Parser<T> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

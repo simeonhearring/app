@@ -1,21 +1,21 @@
 package net.hus.core.server.command;
 
-import net.hus.core.parser.Container_Parser;
+import net.hus.core.parser.ComponentsParser;
 import net.hus.core.shared.command.UIObjectCommand;
-import net.hus.core.shared.model.Container_;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.rpc.common.RpcResponse;
 import net.hus.core.util.ResourceUtil;
 
-public class UIObjectCommandBean extends AbstractCommandBean<UIObjectCommand<?>>
+public class UIObjectCommandBean extends AbstractCommandBean<UIObjectCommand>
 {
   @Override
-  public RpcResponse execute(UIObjectCommand<?> inCommand)
+  public RpcResponse execute(UIObjectCommand inCommand)
   {
     String xml = ResourceUtil.contents("net/hus/core/client/ui/Page.xml");
 
-    Container_Parser parser = new Container_Parser();
+    ComponentsParser parser = new ComponentsParser();
 
-    Container_ container = (Container_) parser.fromXml(xml);
+    Components container = parser.fromXml(xml);
 
     inCommand.setData(container);
 

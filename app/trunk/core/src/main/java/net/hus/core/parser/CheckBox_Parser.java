@@ -8,8 +8,14 @@ public class CheckBox_Parser extends ButtonBase_Parser<CheckBox_>
 {
   public CheckBox_Parser()
   {
-    super();
-    xs(this);
+    xs((Parser<CheckBox_>) this);
+  }
+
+  @Override
+  public void xs(Parser<CheckBox_> inParser)
+  {
+    super.xs(inParser);
+    xs((XStream) inParser);
   }
 
   public static void xs(XStream inXs)

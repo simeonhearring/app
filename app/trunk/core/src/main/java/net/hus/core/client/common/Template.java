@@ -7,4 +7,6 @@ import net.hus.core.model.Template.Section;
 public interface Template extends Display
 {
   void add(Section.Name inSection, IsWidget inWidget);
+
+  void add(String inSection, IsWidget inWidget);
 }
