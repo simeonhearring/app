@@ -48,4 +48,29 @@ public class Components implements Serializable
   {
     return mValues;
   }
+
+  public List<ListBox_> getListBoxes()
+  {
+    List<ListBox_> ret = new ArrayList<>();
+    find(ret, mList);
+    return ret;
+  }
+
+  private void find(List<ListBox_> inListBoxes, List<UIObject_> inSearching)
+  {
+    if (inSearching != null)
+    {
+      for (UIObject_ value : inSearching)
+      {
+        if (value instanceof ComplexPanel_)
+        {
+          find(inListBoxes, ((ComplexPanel_) value).getCollection());
+        }
+        else if (value instanceof ListBox_)
+        {
+          inListBoxes.add((ListBox_) value);
+        }
+      }
+    }
+  }
 }

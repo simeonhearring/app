@@ -9,6 +9,7 @@ public class Field extends AbstractModel
   private String mName;
   private Type mType;
   private Properties mProperties;
+  @Deprecated
   private Integer mSort;
 
   private String mDisplay;

@@ -10,7 +10,7 @@
 	<Statement>
 		<Key>SELECT</Key>
 		<Types>VARCHAR</Types>
-		<Sql>select * from LOOKUP where mGroup=?</Sql>
+		<Sql>select * from LOOKUP where mGroup=? order by mSort</Sql>
 	</Statement>
 </Statements>
  
