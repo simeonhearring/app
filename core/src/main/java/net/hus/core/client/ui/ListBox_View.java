@@ -22,7 +22,14 @@ public class ListBox_View implements View
   @Override
   public void setView(String inValue)
   {
-    // TODO
+    for (int i = 0; i < mView.getItemCount(); i++)
+    {
+      if (inValue.equals(mView.getValue(i)))
+      {
+        mView.setSelectedIndex(i);
+        break;
+      }
+    }
   }
 
   @Override

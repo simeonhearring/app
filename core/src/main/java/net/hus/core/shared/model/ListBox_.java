@@ -3,12 +3,15 @@ package net.hus.core.shared.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.hus.core.model.Field;
+
 public class ListBox_ extends FocusWidget_
 {
   private static final long serialVersionUID = -5860079083731912915L;
 
+  private Field.Lookup mLookup;
   private Boolean mMultipleSelect;
-  private List<Item> mItems = new ArrayList<>();
+  private List<Item> mItems;
 
   public Boolean getMultipleSelect()
   {
@@ -25,6 +28,15 @@ public class ListBox_ extends FocusWidget_
     return mItems;
   }
 
+  public void clearItems()
+  {
+    if (mItems == null)
+    {
+      mItems = new ArrayList<>();
+    }
+    mItems.clear();
+  }
+
   public void add(String inText)
   {
     mItems.add(new Item(inText));
@@ -38,6 +50,16 @@ public class ListBox_ extends FocusWidget_
   public void add(boolean inSelected, String inText, String inValue)
   {
     mItems.add(new Item(inSelected, inText, inValue));
+  }
+
+  public Field.Lookup getLookup()
+  {
+    return mLookup;
+  }
+
+  public void setLookup(Field.Lookup inLookup)
+  {
+    mLookup = inLookup;
   }
 
   public static class Item extends UIObject_

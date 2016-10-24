@@ -1,5 +1,6 @@
 <ListBox KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" multipleSelect="true">
 	<Title>Title</Title>
+	<Lookup loc="TABLE" params="GENDER,UNKNOWN"/>
 	<Items>
 		<Item selected="true">
 			<Text>text1</Text>

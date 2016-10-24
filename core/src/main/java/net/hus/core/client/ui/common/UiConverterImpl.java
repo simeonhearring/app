@@ -41,8 +41,10 @@ import com.google.gwt.user.client.ui.UIObject;
 import net.hus.core.client.model.UiConverter;
 import net.hus.core.client.ui.Alert_View;
 import net.hus.core.client.ui.Badge_View;
+import net.hus.core.client.ui.CheckBox_View;
 import net.hus.core.client.ui.FormLabel_View;
 import net.hus.core.client.ui.Input_View;
+import net.hus.core.client.ui.ListBox_View;
 import net.hus.core.client.ui.TextBox_View;
 import net.hus.core.shared.model.AbstractTextWidget_;
 import net.hus.core.shared.model.Alert_;
@@ -210,6 +212,8 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setValue(value);
     }
 
+    add(inUiO.getKey(), new CheckBox_View(ret));
+
     return ret;
   }
 
@@ -225,12 +229,17 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setMultipleSelect(inUiO.getMultipleSelect());
     }
 
-    int i = 0;
-    for (Item value : inUiO.getItems())
+    if (inUiO.getItems() != null)
     {
-      ret.addItem(value.getText(), value.getValue());
-      ret.setItemSelected(i++, value.isSelected());
+      int i = 0;
+      for (Item value : inUiO.getItems())
+      {
+        ret.addItem(value.getText(), value.getValue());
+        ret.setItemSelected(i++, value.isSelected());
+      }
     }
+
+    add(inUiO.getKey(), new ListBox_View(ret));
 
     return ret;
   }

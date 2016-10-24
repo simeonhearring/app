@@ -37,31 +37,8 @@
 						<Text>Field4:</Text>
 					</FormLabel>
 					<ListBox KEY="FV00_12" multipleSelect="false">
-						<Items>
-							<Item selected="false">
-								<Text></Text>
-							</Item>
-							<Item selected="true">
-								<Text>value1</Text>
-							</Item>
-							<Item selected="true">
-								<Text>value2</Text>
-							</Item>
-							<Item selected="false">
-								<Text>value3</Text>
-							</Item>
-						</Items>
+						<Lookup loc="TABLE" params="GENDER,UNKNOWN"/>
 					</ListBox>
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="C10000010" isHtml="false">
-						<Text>Field5:</Text>
-					</FormLabel>
-					<Icon KEY="C10000011" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
-						<Title>Title</Title>
-					</Icon>
 				</Collection>
 			</FormGroup>
 		</Collection>

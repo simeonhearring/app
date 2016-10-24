@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
+import net.hus.core.model.Field.Lookup;
+import net.hus.core.model.Field.Lookup.Location;
 import net.hus.core.parser.ListBox_Parser;
 import net.hus.core.util.ResourceUtil;
 
@@ -44,6 +46,10 @@ public class ListBox_Test
     ret.setMultipleSelect(true);
     ret.add(true, "text1", "value1");
     ret.add(false, "text2", "value2");
+    Lookup lookup = new Lookup();
+    lookup.setLocation(Location.TABLE);
+    lookup.setParameters("GENDER,UNKNOWN");
+    ret.setLookup(lookup);
 
     FocusWidget_Test.initFocusWidget(ret);
 
