@@ -18,6 +18,7 @@ public class ValuesSql extends AbstractSqlJdbc
   private BatchSqlUpdate mBatchInsert;
   private MappingSqlQuery<Value> mSelectKey;
   private MappingSqlQuery<Value> mSelectKeyField;
+  private MappingSqlQuery<Value> mSelectLastKey;
 
   public ValuesSql()
   {
@@ -43,6 +44,18 @@ public class ValuesSql extends AbstractSqlJdbc
     };
     mSelectKey.setTypes(key.types());
     mSelectKey.compile();
+
+    Statement lastKey = mStmts.getStatement("SELECT_LAST_KEY");
+    mSelectLastKey = new MappingSqlQuery<Value>(inDataSource, lastKey.getSql())
+    {
+      @Override
+      protected Value mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapValue(new Value(), inRs);
+      }
+    };
+    mSelectLastKey.setTypes(lastKey.types());
+    mSelectLastKey.compile();
 
     Statement keyField = mStmts.getStatement("SELECT_KEY_FIELD");
     mSelectKeyField = new MappingSqlQuery<Value>(inDataSource, keyField.getSql())
@@ -75,6 +88,12 @@ public class ValuesSql extends AbstractSqlJdbc
   public List<Value> select(String inKey)
   {
     List<Value> ret = mSelectKey.execute(params(inKey));
+    return ret;
+  }
+
+  public List<Value> selectLast(String inKey)
+  {
+    List<Value> ret = mSelectLastKey.execute(params(inKey));
     return ret;
   }
 

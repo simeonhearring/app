@@ -37,13 +37,21 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void testSelectLastKey()
+  {
+    List<Value> i = mSql.selectLast("JUNIT");
+    Assert.assertEquals(2, i.size());
+    Assert.assertEquals("JUNIT", i.get(0).getKey());
+  }
+
+  @Test
   public void testInsert()
   {
     List<Value> list = new ArrayList<>();
 
     Value value = new Value();
     value.setKey("JUNIT");
-    value.setValue("Simeon");
+    value.setValue("SIMEON");
     value.setField(new Field());
     value.getField().setId(1L);
     Date asOf = new Date();
