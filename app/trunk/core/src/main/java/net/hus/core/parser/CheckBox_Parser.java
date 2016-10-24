@@ -4,7 +4,7 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.CheckBox_;
 
-public class CheckBox_Parser extends FocusWidget_Parser<CheckBox_>
+public class CheckBox_Parser extends ButtonBase_Parser<CheckBox_>
 {
   public CheckBox_Parser()
   {

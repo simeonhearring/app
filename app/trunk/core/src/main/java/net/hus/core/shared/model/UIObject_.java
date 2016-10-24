@@ -7,6 +7,7 @@ public class UIObject_ implements Serializable
   private static final long serialVersionUID = 4099428684832729483L;
 
   private String mKey;
+  private String mSection;
 
   private String mId;
   private Boolean mVisible;
@@ -114,5 +115,15 @@ public class UIObject_ implements Serializable
   public void setKey(String inKey)
   {
     mKey = inKey;
+  }
+
+  public String getSection()
+  {
+    return mSection;
+  }
+
+  public void setSection(String inSection)
+  {
+    mSection = inSection;
   }
 }

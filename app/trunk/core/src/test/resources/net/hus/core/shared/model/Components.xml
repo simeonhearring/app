@@ -1,0 +1,18 @@
+<Components>
+	<Badge KEY="KEYLOCATER" SECTION="SEC1" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+		<Title>Title</Title>
+		<Text>Text</Text>
+	</Badge>
+	<Badge KEY="KEYLOCATER" SECTION="SEC1" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+		<Title>Title</Title>
+		<Text>Text</Text>
+	</Badge>
+	<Badge KEY="KEYLOCATER" SECTION="SEC2" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+		<Title>Title</Title>
+		<Text>Text</Text>
+	</Badge>
+	<Badge KEY="KEYLOCATER" SECTION="SEC2" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+		<Title>Title</Title>
+		<Text>Text</Text>
+	</Badge>
+</Components>

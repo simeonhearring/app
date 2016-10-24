@@ -47,6 +47,7 @@ public class UIObject_Test
 
   public static void initUIObject(UIObject_ inOut)
   {
+    inOut.setSection("WEB01");
     inOut.setKey("KEYLOCATER");
     inOut.setVisible(true);
     inOut.setTitle("Title");
