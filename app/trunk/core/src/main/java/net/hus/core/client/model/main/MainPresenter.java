@@ -61,7 +61,6 @@ public class MainPresenter
   {
     Global.fire(new TemplateCommand(), new RpcCallback<TemplateCommand>()
     {
-
       @Override
       public void onRpcSuccess(TemplateCommand inResult)
       {
@@ -81,6 +80,7 @@ public class MainPresenter
       {
         Components components = inResult.getComponents();
 
+        // add components
         for (Entry<String, List<UIObject_>> value : components.components().entrySet())
         {
           for (UIObject_ uivalue : value.getValue())
@@ -89,7 +89,8 @@ public class MainPresenter
           }
         }
 
-        mManager.get("C10000002", "C10000010", "C10000006").setViews("!!World!!!");
+        // update labels & fields
+        mManager.update(components.getValues());
       }
     });
   }

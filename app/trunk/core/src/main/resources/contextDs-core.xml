@@ -12,9 +12,16 @@
 
 	<bean id="CoreDs" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<!-- 
 		<property name="url" value="${ds.app.url}" />
 		<property name="username" value="${ds.app.user}" />
 		<property name="password" value="${ds.app.pass}" />
+		 -->
+
+
+		<property name="url" value="jdbc:mysql://cpanel.husoftware.net:3306/simeon_app?autoReconnect=true" />
+		<property name="username" value="simeon_app" />
+		<property name="password" value="Mt2pWCaStI32lKV10k" />
 	</bean>
 
 </beans>

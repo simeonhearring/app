@@ -17,6 +17,8 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
     Components container = parser.fromXml(xml);
 
+    container.setValues(mCoreDao.values().select("JUNIT"));
+
     inCommand.setData(container);
 
     return inCommand;
