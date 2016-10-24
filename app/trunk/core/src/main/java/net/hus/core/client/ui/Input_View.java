@@ -1,20 +1,20 @@
 package net.hus.core.client.ui;
 
-import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.Input;
 
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.View;
 
-public class TextBox_View implements View
+public class Input_View implements View
 {
-  private TextBox mView;
+  private Input mView;
 
-  TextBox_View()
+  Input_View()
   {
   }
 
-  public TextBox_View(TextBox inView)
+  public Input_View(Input inView)
   {
     mView = inView;
   }

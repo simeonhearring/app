@@ -1,20 +1,20 @@
 package net.hus.core.client.ui;
 
-import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.FormLabel;
 
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.View;
 
-public class TextBox_View implements View
+public class FormLabel_View implements View
 {
-  private TextBox mView;
+  private FormLabel mView;
 
-  TextBox_View()
+  FormLabel_View()
   {
   }
 
-  public TextBox_View(TextBox inView)
+  public FormLabel_View(FormLabel inView)
   {
     mView = inView;
   }
@@ -22,7 +22,7 @@ public class TextBox_View implements View
   @Override
   public void setView(String inValue)
   {
-    mView.setValue(inValue);
+    mView.setText(inValue);
   }
 
   @Override

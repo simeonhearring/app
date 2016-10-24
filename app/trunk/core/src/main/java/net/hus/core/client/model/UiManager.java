@@ -2,7 +2,7 @@ package net.hus.core.client.model;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.ui.View;
+import net.hus.core.client.common.View;
 
 public interface UiManager extends UiConverter
 {

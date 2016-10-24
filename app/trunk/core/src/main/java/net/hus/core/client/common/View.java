@@ -1,8 +1,8 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.common;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
 public interface View extends IsWidget
 {
-  void setValue(String inValue);
+  void setView(String inView);
 }
