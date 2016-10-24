@@ -15,7 +15,7 @@
 	<Statement>
 		<Key>UPSERT_FIELDS</Key>
 		<Types>VARCHAR,NUMERIC,VARCHAR,NUMERIC,VARCHAR,NUMERIC</Types>
-		<Sql>INSERT INTO FIELDS (mUpdated,mGroup,mFieldId,mDisplay,mSort)
+		<Sql>INSERT INTO FIELD_GROUP (mUpdated,mGroup,mFieldId,mDisplay,mSort)
 			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
 			UPDATE mDisplay=?,mSort=?,mUpdated=CURRENT_TIMESTAMP
 		</Sql>
@@ -23,6 +23,6 @@
 	<Statement>
 		<Key>SELECT_FIELDS</Key>
 		<Types>VARCHAR</Types>
-		<Sql>select f.*,s.mDisplay,s.mSort from FIELD f, FIELDS s where f.mId=s.mFieldId and s.mGroup=?</Sql>
+		<Sql>select f.*,g.mDisplay,g.mSort from FIELD f, FIELD_GROUP g where f.mId=g.mFieldId and g.mGroup=?</Sql>
 	</Statement>
 </Statements> 

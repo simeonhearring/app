@@ -1,21 +1,23 @@
 <Statements>
 	<Statement>
-		<Key>UPSERT</Key>
-		<Types>VARCHAR,VARCHAR,VARCHAR,NUMERIC,VARCHAR,NUMERIC</Types>
-		<Sql>INSERT INTO LOOKUP (mUpdated,mGroup,mName,mAbbreviation,mSort)
-			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
-			UPDATE mAbbreviation=?,mSort=?,mUpdated=CURRENT_TIMESTAMP
-		</Sql>
+		<Key>INSERT</Key>
+		<Types>VARCHAR,VARCHAR,NUMERIC,TIMESTAMP</Types>
+		<Sql>INSERT INTO FIELD_VALUE (mUpdated,mKey,mValue,mFieldId,mAsOf) VALUES (CURRENT_TIMESTAMP,?,?,?,?)</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_RECORD</Key>
+		<Key>SELECT_KEY</Key>
 		<Types>VARCHAR</Types>
-		<Sql>select * from VALUES v, FIELD f where f.mId=v.mFieldId and mRecord=?</Sql>
+		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort 
+			from FIELD_VALUE v, FIELD f, FIELD_GROUP g 
+			where f.mId=v.mFieldId and f.mId=g.mFieldId and mKey=? 
+			order by v.mCreated desc</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_RECORD_FIELD</Key>
+		<Key>SELECT_KEY_FIELD</Key>
 		<Types>VARCHAR,NUMERIC</Types>
-		<Sql>select v.*,f.*,s.mDisplay,s.mSort from VALUES v, FIELD f, FIELDS s where f.mId=v.mFieldId and f.mId=s.mFieldId and mRecord=? and mFieldId=?</Sql>
+		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort 
+			from FIELD_VALUE v, FIELD f, FIELD_GROUP g 
+			where f.mId=v.mFieldId and f.mId=g.mFieldId and mKey=? and v.mFieldId=? 
+			order by v.mCreated desc</Sql>
 	</Statement>
 </Statements>
- 
