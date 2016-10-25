@@ -95,8 +95,10 @@ public class Field extends AbstractModel
   {
     private static final long serialVersionUID = 4839256266085591075L;
 
+    private Type mType;
     private Display mDisplay;
     private Lookup mLookup;
+    private Array mArray;
 
     public Display getDisplay()
     {
@@ -116,6 +118,54 @@ public class Field extends AbstractModel
     public void setLookupGroup(Lookup inLookup)
     {
       mLookup = inLookup;
+    }
+
+    public Array getArray()
+    {
+      return mArray;
+    }
+
+    public void setArray(Array inArray)
+    {
+      mArray = inArray;
+    }
+
+    public Type getType()
+    {
+      return mType;
+    }
+
+    public void setType(Type inType)
+    {
+      mType = inType;
+    }
+  }
+
+  public static class Array implements Serializable
+  {
+    private static final long serialVersionUID = 7715620771565891829L;
+
+    private Integer mSize;
+    private String[] mLabels;
+
+    public Integer getSize()
+    {
+      return mSize;
+    }
+
+    public void setSize(Integer inSize)
+    {
+      mSize = inSize;
+    }
+
+    public String[] getLabels()
+    {
+      return mLabels;
+    }
+
+    public void setLabels(String[] inLabel)
+    {
+      mLabels = inLabel;
     }
   }
 

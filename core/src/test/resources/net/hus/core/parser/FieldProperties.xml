@@ -1,4 +1,14 @@
 <Field.Properties>
+  <Type>NUMBER</Type>
   <Display long="Name" short="Nme"/>
   <Lookup loc="TABLE" params="GENDER"/>
+  <Array size="5">
+    <Labels>
+      <string>Street 1</string>
+      <string>Street 2</string>
+      <string>City</string>
+      <string>State</string>
+      <string>Zip</string>
+    </Labels>
+  </Array>
 </Field.Properties>

@@ -1,0 +1,6 @@
+<Heading KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT" size="H1" emphasis="INFO" alignment="LEFT">
+  <Title>Title</Title>
+  <Collection/>
+  <Text>Text</Text>
+  <SubText>SubText</SubText>
+</Heading>
