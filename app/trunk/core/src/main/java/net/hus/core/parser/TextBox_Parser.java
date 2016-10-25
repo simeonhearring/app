@@ -23,6 +23,5 @@ public class TextBox_Parser extends ValueBoxBase_Parser
   {
     inXs.alias("TextBox", TextBox_.class);
     inXs.aliasField("Value", TextBox_.class, "mValue");
-    // inXs.aliasSystemAttribute(null, "class");
   }
 }
