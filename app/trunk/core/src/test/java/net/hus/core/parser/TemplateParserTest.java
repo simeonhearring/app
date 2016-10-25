@@ -13,7 +13,7 @@ public class TemplateParserTest
   {
     TemplateParser parser = new TemplateParser();
 
-    String xml = ResourceUtil.contents("net/hus/core/client/ui/Template.xml");
+    String xml = ResourceUtil.contents("Template.xml");
 
     Template model = parser.fromXml(xml);
 
