@@ -56,8 +56,4 @@
 		<Title>Title</Title>
 		<Text>Text</Text>
 	</Badge>
-	<Badge KEY="C30000001" SECTION="WEBR01">
-		<Title>Title</Title>
-		<Text>Text</Text>
-	</Badge>
 </Components>
