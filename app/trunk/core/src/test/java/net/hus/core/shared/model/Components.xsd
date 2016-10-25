@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Components" type="Components_Type"></xs:element>
+	<xs:complexType name="Components_Type">
+		<xs:sequence>
+			<xs:element name="Badge" type="Badge_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="FieldSet" type="FieldSet_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="FormGroup" type="FormGroup_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="FormLabel" type="FormLabel_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="Heading" type="Heading_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="Icon" type="Icon_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="Input" type="Input_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="ListBox" type="ListBox_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="TextBox" type="TextBox_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Heading_Type">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string"></xs:element>
+			<xs:element name="Collection" type="Components_Type">
+			</xs:element>
+			<xs:element name="Text" type="xs:string"></xs:element>
+			<xs:element name="SubText" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Heading"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="FieldSet_Type">
+		<xs:sequence>
+			<xs:element name="Collection" type="Components_Type">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="enabled" type="xs:string"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="Icon_Type">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="Badge_Type">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string"></xs:element>
+			<xs:element name="Text" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="FormGroup_Type">
+		<xs:sequence>
+			<xs:element name="Collection" type="Components_Type">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FormLabel_Type">
+		<xs:sequence>
+			<xs:element name="Text" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attribute use="optional" name="KEY" type="xs:string"></xs:attribute>
+		<xs:attribute use="optional" name="isHtml" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Input_Type" mixed="true">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Value" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Input"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="TextBox_Type">
+		<xs:sequence>
+			<xs:element name="Value" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="KEY" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ListBox_Type">
+		<xs:sequence>
+			<xs:element name="Lookup">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="loc" type="xs:string"></xs:attribute>
+							<xs:attribute name="params" type="xs:string"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="KEY" type="xs:string"></xs:attribute>
+		<xs:attribute name="multipleSelect" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	<xs:attributeGroup name="attr_UIObject">
+		<xs:attribute name="KEY" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="SECTION" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="id" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="visible" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="height" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="width" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="style" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="stylePrimary" type="xs:string" use="optional"></xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_Input">
+		<xs:attribute name="type" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="min" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="max" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_Heading">
+		<xs:attribute name="size" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="emphasis" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="alignment" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_Icon">
+		<xs:attribute name="type" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="size" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="rotate" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="flip" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="emphasis" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="border" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="spin" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="pulse" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="inverse" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="stackTop" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="stackBase" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="fixedWidth" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_ComplexWidget">
+		<xs:attribute name="color" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="marginBottom" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="marginLeft" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="marginRight" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="marginTop" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="paddingBottom" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="paddingLeft" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="paddingRight" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="paddingTop" type="xs:double" use="optional"></xs:attribute>
+		<xs:attribute name="pull" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="NONE"></xs:enumeration>
+					<xs:enumeration value="LEFT"></xs:enumeration>
+					<xs:enumeration value="RIGHT"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
+</xs:schema>

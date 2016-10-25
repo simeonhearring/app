@@ -10,6 +10,7 @@ import org.gwtbootstrap3.client.ui.Container;
 import org.gwtbootstrap3.client.ui.FieldSet;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.FormLabel;
+import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
@@ -18,6 +19,7 @@ import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.base.AbstractTextWidget;
 import org.gwtbootstrap3.client.ui.base.ComplexWidget;
 import org.gwtbootstrap3.client.ui.base.ValueBoxBase;
+import org.gwtbootstrap3.client.ui.constants.Alignment;
 import org.gwtbootstrap3.client.ui.constants.ColumnOffset;
 import org.gwtbootstrap3.client.ui.constants.ColumnPull;
 import org.gwtbootstrap3.client.ui.constants.ColumnPush;
@@ -32,6 +34,7 @@ import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
+import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.FocusWidget;
@@ -59,6 +62,7 @@ import net.hus.core.shared.model.FieldSet_;
 import net.hus.core.shared.model.FocusWidget_;
 import net.hus.core.shared.model.FormGroup_;
 import net.hus.core.shared.model.FormLabel_;
+import net.hus.core.shared.model.Heading_;
 import net.hus.core.shared.model.Icon_;
 import net.hus.core.shared.model.Input_;
 import net.hus.core.shared.model.ListBox_;
@@ -70,6 +74,33 @@ import net.hus.core.shared.model.ValueBoxBase_;
 
 public abstract class UiConverterImpl implements UiConverter
 {
+  public Heading convert(Heading_ inUiO)
+  {
+    Heading ret = new Heading(inUiO.getSize(), inUiO.getText());
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    String subText = inUiO.getSubText();
+    Alignment alignment = inUiO.getAlignment();
+    Emphasis emphasis = inUiO.getEmphasis();
+
+    if (subText != null)
+    {
+      ret.setSubText(subText);
+    }
+    if (alignment != null)
+    {
+      ret.setAlignment(alignment);
+    }
+    if (emphasis != null)
+    {
+      ret.setEmphasis(emphasis);
+    }
+
+    return ret;
+  }
+
   public Icon convert(Icon_ inUiO)
   {
     Icon ret = new Icon();
@@ -657,8 +688,13 @@ public abstract class UiConverterImpl implements UiConverter
     {
       ret = convert((Icon_) inUiO);
     }
+    else if (inUiO instanceof Heading_)
+    {
+      ret = convert((Heading_) inUiO);
+    }
     else
     {
+      Notify.notify("Missing widget convert type");
       throw new RuntimeException("Missing widget convert type");
     }
 
