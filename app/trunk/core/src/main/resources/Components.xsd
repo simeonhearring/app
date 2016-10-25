@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	<xs:element name="Components" type="Components_Type"></xs:element>
 	<xs:complexType name="Components_Type">
-		<xs:sequence>
-			<xs:element name="Badge" type="Badge_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="FieldSet" type="FieldSet_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="FormGroup" type="FormGroup_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="FormLabel" type="FormLabel_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="Heading" type="Heading_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="Icon" type="Icon_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="Input" type="Input_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="ListBox" type="ListBox_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-			<xs:element name="TextBox" type="TextBox_Type" maxOccurs="unbounded" minOccurs="0"></xs:element>
-		</xs:sequence>
+		<xs:all>
+			<xs:element name="Heading" type="Heading_Type" minOccurs="0"></xs:element>
+			<xs:element name="Badge" type="Badge_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Some documentation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FieldSet" type="FieldSet_Type" minOccurs="0"></xs:element>
+			<xs:element name="FormGroup" type="FormGroup_Type" minOccurs="0"></xs:element>
+			<xs:element name="FormLabel" type="FormLabel_Type" minOccurs="0"></xs:element>
+			<xs:element name="Icon" type="Icon_Type" minOccurs="0"></xs:element>
+			<xs:element name="Input" type="Input_Type" minOccurs="0"></xs:element>
+			<xs:element name="ListBox" type="ListBox_Type" minOccurs="0"></xs:element>
+			<xs:element name="TextBox" type="TextBox_Type" minOccurs="0"></xs:element>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Heading_Type">
 		<xs:sequence>
 			<xs:element name="Title" type="xs:string"></xs:element>
-			<xs:element name="Collection" type="Components_Type">
-			</xs:element>
+			<xs:element name="Collection" type="Components_Type"></xs:element>
 			<xs:element name="Text" type="xs:string"></xs:element>
 			<xs:element name="SubText" type="xs:string"></xs:element>
 		</xs:sequence>
@@ -26,17 +29,16 @@
 	</xs:complexType>
 	<xs:complexType name="FieldSet_Type">
 		<xs:sequence>
-			<xs:element name="Collection" type="Components_Type">
-			</xs:element>
+			<xs:element name="Collection" type="FormGroup_Type" minOccurs="0" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 		<xs:attribute name="enabled" type="xs:string"></xs:attribute>
-		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Icon_Type">
 		<xs:sequence>
 			<xs:element name="Title" type="xs:string"></xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_Icon"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Badge_Type">
 		<xs:sequence>
@@ -46,10 +48,9 @@
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="FormGroup_Type">
-		<xs:sequence>
-			<xs:element name="Collection" type="Components_Type">
-			</xs:element>
-		</xs:sequence>
+		<xs:all>
+			<xs:element name="Collection" type="Components_Type"></xs:element>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="FormLabel_Type">
 		<xs:sequence>
@@ -106,7 +107,7 @@
 		<xs:attribute name="size" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="emphasis" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="alignment" type="xs:string" use="optional"></xs:attribute>
-		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Icon">
 		<xs:attribute name="type" type="xs:string" use="optional"></xs:attribute>
@@ -121,7 +122,7 @@
 		<xs:attribute name="stackTop" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="stackBase" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="fixedWidth" type="xs:string" use="optional"></xs:attribute>
-		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_ComplexWidget">
 		<xs:attribute name="color" type="xs:string" use="optional"></xs:attribute>
