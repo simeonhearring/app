@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Components>
+<Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
 	<Heading KEY="C10000000" SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Collection />
