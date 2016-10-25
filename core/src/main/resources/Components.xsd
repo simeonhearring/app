@@ -18,6 +18,12 @@
 			<xs:element name="TextBox" type="TextBox_Type" minOccurs="0"></xs:element>
 		</xs:all>
 	</xs:complexType>
+	<xs:complexType name="ValueBoxBase_Type">
+		<xs:sequence>
+			<xs:element name="Placeholder" type="xs:string"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
+	</xs:complexType>
 	<xs:complexType name="Heading_Type">
 		<xs:sequence>
 			<xs:element name="Title" type="xs:string"></xs:element>
@@ -61,8 +67,8 @@
 		<xs:sequence>
 			<xs:element name="Text" type="xs:string"></xs:element>
 		</xs:sequence>
-		<xs:attribute use="optional" name="KEY" type="xs:string"></xs:attribute>
-		<xs:attribute use="optional" name="isHtml" type="xs:string"></xs:attribute>
+		<xs:attribute use="optional" name="showRequiredIndicator" type="xs:string"></xs:attribute>
+		<xs:attributeGroup ref="attr_AbstractTextWidget"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Input_Type" mixed="true">
 		<xs:sequence>
@@ -74,7 +80,7 @@
 		<xs:sequence>
 			<xs:element name="Value" type="xs:string"></xs:element>
 		</xs:sequence>
-		<xs:attribute name="KEY" type="xs:string"></xs:attribute>
+		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="ListBox_Type">
 		<xs:sequence>
@@ -102,10 +108,30 @@
 		<xs:attribute name="style" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="stylePrimary" type="xs:string" use="optional"></xs:attribute>
 	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_ValueBoxBase">
+		<xs:attribute name="allowBlank" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="autoComplete" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="maxLength" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="size" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Input">
 		<xs:attribute name="type" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="min" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="max" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_AbstractTextWidget">
+		<xs:attribute name="isHtml" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="color" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="marginLeft" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="marginRight" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="marginTop" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="paddingBottom" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="paddingLeft" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="paddingRight" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="paddingTop" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="pull" type="xs:string" use="optional"></xs:attribute>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Heading">
@@ -150,4 +176,11 @@
 		</xs:attribute>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:attributeGroup>
+
+	<xs:group name="grp_UIObject">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string"></xs:element>
+			<xs:element name="Placeholder" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:group>
 </xs:schema>
