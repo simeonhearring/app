@@ -6,7 +6,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Input_View extends Abstract_View implements ValueChangeHandler<String>
+public class Input_View extends Abstract_View<String> implements ValueChangeHandler<String>
 {
   private Input mView;
 

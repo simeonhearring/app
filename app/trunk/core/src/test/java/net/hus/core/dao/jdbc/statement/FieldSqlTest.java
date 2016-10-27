@@ -9,7 +9,10 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.model.Field;
+import net.hus.core.model.Field.Array;
 import net.hus.core.model.Field.Display;
+import net.hus.core.model.Field.Lookup;
+import net.hus.core.model.Field.Lookup.Location;
 import net.hus.core.model.Field.Properties;
 import net.hus.core.model.Field.Type;
 import net.hus.core.model.Fields;
@@ -46,7 +49,10 @@ public class FieldSqlTest extends MySqlCoreDsTest
     list.add(newField(Type.NUMBER, "RETURN_VISITS", "Return Visits", "R.V."));
     list.add(newField(Type.NUMBER, "BIBLE_STUDIES", "Bible Studies", "BiSt"));
     list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
-    list.add(newField(Type.LOOKUP, "GENDER", "Gender", "Sex"));
+    list.add(newField(Type.LOOKUP, "GENDER", "Gender", "Sex",
+        new Lookup(Location.TABLE, "GENDER,UNKNOWN")));
+    list.add(newField(Type.ARRAY, "ADDRESS", "Address", "Addr.",
+        new Array(6, "Type", "Street 1", "Street 2", "City", "State", "Zip")));
 
     mSql.upsert(list);
 
@@ -80,7 +86,7 @@ public class FieldSqlTest extends MySqlCoreDsTest
     mSql.upsert(fields);
 
     Fields ret = mSql.select(VALUE_KEY);
-    Assert.assertEquals(3, ret.getFields().size());
+    Assert.assertEquals(4, ret.getFields().size());
   }
 
   private Field newField(Type inType, String inName, String inLong, String inShort)
@@ -89,9 +95,24 @@ public class FieldSqlTest extends MySqlCoreDsTest
     ret.setName(inName);
     ret.setType(inType);
     ret.setProperties(new Properties());
+    ret.getProperties().setType(inType);
     ret.getProperties().setDisplay(new Display());
     ret.getProperties().getDisplay().setLong(inLong);
     ret.getProperties().getDisplay().setShort(inShort);
+    return ret;
+  }
+
+  private Field newField(Type inType, String inName, String inLong, String inShort, Array inArray)
+  {
+    Field ret = newField(inType, inName, inLong, inShort);
+    ret.getProperties().setArray(inArray);
+    return ret;
+  }
+
+  private Field newField(Type inType, String inName, String inLong, String inShort, Lookup inLookup)
+  {
+    Field ret = newField(inType, inName, inLong, inShort);
+    ret.getProperties().setLookupGroup(inLookup);
     return ret;
   }
 }

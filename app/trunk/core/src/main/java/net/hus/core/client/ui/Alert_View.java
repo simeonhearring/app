@@ -4,9 +4,9 @@ import org.gwtbootstrap3.client.ui.Alert;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
+import net.hus.core.client.common.StringView;
 
-public class Alert_View implements View
+public class Alert_View implements StringView
 {
   private Alert mView;
 

@@ -37,6 +37,7 @@ import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.user.client.ui.ComplexPanel;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
@@ -45,6 +46,7 @@ import net.hus.core.client.model.UiConverter;
 import net.hus.core.client.ui.Alert_View;
 import net.hus.core.client.ui.Badge_View;
 import net.hus.core.client.ui.CheckBox_View;
+import net.hus.core.client.ui.FlexTable_View;
 import net.hus.core.client.ui.FormLabel_View;
 import net.hus.core.client.ui.Input_View;
 import net.hus.core.client.ui.ListBox_View;
@@ -59,6 +61,7 @@ import net.hus.core.shared.model.ComplexPanel_;
 import net.hus.core.shared.model.ComplexWidget_;
 import net.hus.core.shared.model.Container_;
 import net.hus.core.shared.model.FieldSet_;
+import net.hus.core.shared.model.FlexTable_;
 import net.hus.core.shared.model.FocusWidget_;
 import net.hus.core.shared.model.FormGroup_;
 import net.hus.core.shared.model.FormLabel_;
@@ -74,6 +77,23 @@ import net.hus.core.shared.model.ValueBoxBase_;
 
 public abstract class UiConverterImpl implements UiConverter
 {
+  public FlexTable convert(FlexTable_ inUiO)
+  {
+    FlexTable ret = new FlexTable();
+
+    create(ret, inUiO);
+
+    int col = 0;
+    for (String value : inUiO.getHeaders())
+    {
+      ret.setWidget(0, col++, new Heading(inUiO.getHeadSize(), value));
+    }
+
+    add(inUiO.getKey(), new FlexTable_View(inUiO.getKey(), ret, inUiO.getTable()));
+
+    return ret;
+  }
+
   public Heading convert(Heading_ inUiO)
   {
     Heading ret = new Heading(inUiO.getSize(), inUiO.getText());
@@ -691,6 +711,10 @@ public abstract class UiConverterImpl implements UiConverter
     else if (inUiO instanceof Heading_)
     {
       ret = convert((Heading_) inUiO);
+    }
+    else if (inUiO instanceof FlexTable_)
+    {
+      ret = convert((FlexTable_) inUiO);
     }
     else
     {

@@ -88,7 +88,8 @@ public class Field extends AbstractModel
     TIME,
     TIMESTAMP,
     ARRAY,
-    LOOKUP
+    LOOKUP,
+    TABLE
   }
 
   public static class Properties implements Serializable
@@ -148,6 +149,16 @@ public class Field extends AbstractModel
     private Integer mSize;
     private String[] mLabels;
 
+    public Array()
+    {
+    }
+
+    public Array(Integer inSize, String... inLabels)
+    {
+      mSize = inSize;
+      mLabels = inLabels;
+    }
+
     public Integer getSize()
     {
       return mSize;
@@ -175,6 +186,16 @@ public class Field extends AbstractModel
 
     private Location mLocation;
     private String mParameters;
+
+    public Lookup()
+    {
+    }
+
+    public Lookup(Location inLocation, String inParameters)
+    {
+      mLocation = inLocation;
+      mParameters = inParameters;
+    }
 
     public enum Location
     {

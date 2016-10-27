@@ -6,7 +6,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TextBox_View extends Abstract_View implements ValueChangeHandler<String>
+public class TextBox_View extends Abstract_View<String> implements ValueChangeHandler<String>
 {
   private TextBox mView;
 
@@ -14,7 +14,7 @@ public class TextBox_View extends Abstract_View implements ValueChangeHandler<St
   {
     super(inKey);
     mView = inView;
-    mView.addValueChangeHandler(TextBox_View.this);
+    mView.addValueChangeHandler(this);
   }
 
   @Override

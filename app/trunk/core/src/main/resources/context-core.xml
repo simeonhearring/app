@@ -49,4 +49,8 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
+	<bean id="TableInsertCommand" class="net.hus.core.server.command.TableInsertCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
+
 </beans>

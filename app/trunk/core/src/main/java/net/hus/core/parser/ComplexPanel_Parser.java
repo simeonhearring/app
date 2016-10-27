@@ -23,6 +23,8 @@ public class ComplexPanel_Parser<T> extends UIObject_Parser<T>
     inXs.alias("ComplexPanel", ComplexPanel_.class);
     inXs.aliasField("Collection", ComplexPanel_.class, "mCollection");
 
+    FlexTable_Parser.xs(inXs);
+
     Heading_Parser.xs(inXs);
 
     AbstractTextWidget_Parser.xs(inXs);
