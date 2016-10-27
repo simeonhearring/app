@@ -1,8 +1,12 @@
 package net.hus.core.server.command;
 
+import java.util.List;
+
 import net.hus.core.model.Field;
 import net.hus.core.model.Lookup;
+import net.hus.core.model.Value;
 import net.hus.core.parser.ComponentsParser;
+import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.ListBox_;
@@ -35,10 +39,23 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
       }
     }
 
-    container.setValues(mCoreDao.values().selectLast("JUNIT")); // TODO
+    container.setValues(checkForArrays(mCoreDao.values().selectLast("JUNIT")));
 
     inCommand.setData(container);
 
     return inCommand;
+  }
+
+  public List<Value> checkForArrays(List<Value> inOut)
+  {
+    Table_Parser parser = new Table_Parser();
+    for (Value value : inOut)
+    {
+      if (value.getField().isArray())
+      {
+        value.setTable(parser.fromXml(value.getValue()));
+      }
+    }
+    return inOut;
   }
 }

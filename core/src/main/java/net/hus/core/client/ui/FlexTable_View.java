@@ -1,7 +1,6 @@
 package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.html.Span;
-import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -29,19 +28,22 @@ implements ClickHandler
   }
 
   @Override
-  public void setView(Table inValue)
+  public void setView(Table inView)
   {
-    for (String[] object : inValue.getTable())
+    if (inView != null && inView.getTable() != null)
     {
-      int col = 0;
-      int row = mView.getRowCount();
-
-      for (String val : object)
+      for (String[] object : inView.getTable())
       {
-        Span span = new Span();
-        span.setText(val);
-        span.getElement().setAttribute("contenteditable", "true");
-        mView.setWidget(row, col++, span);
+        int col = 0;
+        int row = mView.getRowCount();
+
+        for (String val : object)
+        {
+          Span span = new Span();
+          span.setText(val);
+          span.getElement().setAttribute("contenteditable", "true");
+          mView.setWidget(row, col++, span);
+        }
       }
     }
   }
@@ -55,7 +57,7 @@ implements ClickHandler
   @Override
   public void onClick(ClickEvent inEvent)
   {
-    save(values(), "Table"); // TODO
+    save(values());
   }
 
   private Table values()

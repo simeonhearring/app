@@ -11,7 +11,7 @@ public interface UiManager extends UiConverter
 {
   void add(String inKey, IsWidget inUiO);
 
-  Views get(String... inKey);
+  Views<?> get(String... inKey);
 
   void update(List<Value> inValues);
 }

@@ -3,22 +3,30 @@ package net.hus.core.client.ui.common;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hus.core.client.common.StringView;
+import net.hus.core.client.common.View;
 
-public class Views
+public class Views<T>
 {
-  private List<StringView> mViews = new ArrayList<>();
+  private List<View<T>> mViews = new ArrayList<>();
 
-  public void add(StringView inView)
+  public void add(View<T> inView)
   {
     mViews.add(inView);
   }
 
-  public void setViews(String inValue)
+  public void setViews(T inValue)
   {
-    for (StringView value : mViews)
+    for (View<T> value : mViews)
     {
       value.setView(inValue);
+    }
+  }
+
+  public void setName(String inValue)
+  {
+    for (View<T> value : mViews)
+    {
+      value.setFieldName(inValue);
     }
   }
 }

@@ -89,7 +89,12 @@ public class Field extends AbstractModel
     TIMESTAMP,
     ARRAY,
     LOOKUP,
-    TABLE
+    TABLE;
+
+    public static boolean isArray(Type inType)
+    {
+      return Type.ARRAY.equals(inType) || Type.TABLE.equals(inType);
+    }
   }
 
   public static class Properties implements Serializable
@@ -250,5 +255,10 @@ public class Field extends AbstractModel
     {
       return mShort;
     }
+  }
+
+  public boolean isArray()
+  {
+    return Type.isArray(getType());
   }
 }

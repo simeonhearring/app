@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.StringView;
+import net.hus.core.client.common.View;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.model.Field;
 import net.hus.core.model.Value;
@@ -21,16 +21,17 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
     mContent.put(inKey, inUiO);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
-  public Views get(String... inKey)
+  public Views<Object> get(String... inKey)
   {
-    Views ret = new Views();
+    Views<Object> ret = new Views<>();
     for (String key : inKey)
     {
       IsWidget uiobject = mContent.get(key);
-      if (uiobject != null && uiobject instanceof StringView)
+      if (uiobject != null && uiobject instanceof View<?>)
       {
-        ret.add((StringView) uiobject);
+        ret.add((View<Object>) uiobject);
       }
     }
     return ret;
@@ -46,7 +47,15 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
       String valueKey = Field.Component.FV00_.name() + fieldId;
 
       get(labelKey).setViews(value.getLabel());
-      get(valueKey).setViews(value.getValue());
+      get(valueKey).setName(value.getLabel());
+      if (value.getField().isArray())
+      {
+        get(valueKey).setViews(value.getTable());
+      }
+      else
+      {
+        get(valueKey).setViews(value.getValue());
+      }
     }
   }
 }
