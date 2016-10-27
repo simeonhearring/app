@@ -4,9 +4,9 @@ import org.gwtbootstrap3.client.ui.FormLabel;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
+import net.hus.core.client.common.StringView;
 
-public class FormLabel_View implements View
+public class FormLabel_View implements StringView
 {
   private FormLabel mView;
 

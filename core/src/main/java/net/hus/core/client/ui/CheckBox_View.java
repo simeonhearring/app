@@ -4,9 +4,9 @@ import org.gwtbootstrap3.client.ui.CheckBox;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
+import net.hus.core.client.common.StringView;
 
-public class CheckBox_View implements View
+public class CheckBox_View implements StringView
 {
   private CheckBox mView;
 

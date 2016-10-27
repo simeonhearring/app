@@ -4,9 +4,9 @@ import org.gwtbootstrap3.client.ui.Label;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
+import net.hus.core.client.common.StringView;
 
-public class Label_View implements View
+public class Label_View implements StringView
 {
   private Label mView;
 

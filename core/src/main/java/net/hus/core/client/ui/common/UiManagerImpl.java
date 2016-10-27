@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.View;
+import net.hus.core.client.common.StringView;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.model.Field;
 import net.hus.core.model.Value;
@@ -28,9 +28,9 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
     for (String key : inKey)
     {
       IsWidget uiobject = mContent.get(key);
-      if (uiobject != null && uiobject instanceof View)
+      if (uiobject != null && uiobject instanceof StringView)
       {
-        ret.add((View) uiobject);
+        ret.add((StringView) uiobject);
       }
     }
     return ret;

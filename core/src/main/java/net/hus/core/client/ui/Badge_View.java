@@ -4,9 +4,9 @@ import org.gwtbootstrap3.client.ui.Badge;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.View;
+import net.hus.core.client.common.StringView;
 
-public class Badge_View implements View
+public class Badge_View implements StringView
 {
   private Badge mView;
 
