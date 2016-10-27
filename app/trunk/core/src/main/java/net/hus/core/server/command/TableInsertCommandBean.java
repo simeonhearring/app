@@ -14,7 +14,7 @@ public class TableInsertCommandBean extends AbstractCommandBean<TableInsertComma
   public RpcResponse execute(TableInsertCommand inCommand)
   {
     Value value = inCommand.getValue();
-    value.setValue(new Table_Parser().toXml(inCommand.getTable()));
+    value.setValue(new Table_Parser().toXml(value.getTable()));
 
     List<Value> list = new ArrayList<>();
     list.add(value);

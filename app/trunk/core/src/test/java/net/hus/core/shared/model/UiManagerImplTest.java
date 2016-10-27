@@ -25,7 +25,6 @@ public class UiManagerImplTest
       @Override
       public UiManager getManager()
       {
-        // TODO Auto-generated method stub
         return null;
       }
     });

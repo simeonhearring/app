@@ -17,6 +17,7 @@ import net.hus.core.shared.util.NumberUtil;
 public abstract class Abstract_View<T> implements View<T>
 {
   private Long mFieldId;
+  private String mFieldName;
 
   public Abstract_View(String inKey)
   {
@@ -29,6 +30,12 @@ public abstract class Abstract_View<T> implements View<T>
     return NumberUtil.toLong(id);
   }
 
+  @Override
+  public void setFieldName(String inFieldName)
+  {
+    mFieldName = inFieldName;
+  }
+
   private Value newValue(String inValue)
   {
     Value value = new Value();
@@ -36,6 +43,13 @@ public abstract class Abstract_View<T> implements View<T>
     value.setKey("JUNIT"); // TODO
     value.setAsOf(new Date());
     value.setField(new Field(mFieldId));
+    return value;
+  }
+
+  private Value newValue(Table inValue)
+  {
+    Value value = newValue((String) null);
+    value.setTable(inValue);
     return value;
   }
 
@@ -48,21 +62,22 @@ public abstract class Abstract_View<T> implements View<T>
       @Override
       public void onRpcSuccess(ValueInsertCommand inResult)
       {
-        Notify.notify("Saved... " + inDisplay);
+        Notify.notify("Saved... '" + mFieldName + "' to " + inDisplay);
       }
     });
   }
 
-  public void save(Table inTable, final String inDisplay)
+  protected void save(Table inTable)
   {
-    Global.fire(new TableInsertCommand(newValue(null), inTable),
-        new RpcCallback<TableInsertCommand>()
-        {
-          @Override
-          public void onRpcSuccess(TableInsertCommand inResult)
-          {
-            Notify.notify("Saved... " + inDisplay);
-          }
-        });
+    Value value = newValue(inTable);
+
+    Global.fire(new TableInsertCommand(value), new RpcCallback<TableInsertCommand>()
+    {
+      @Override
+      public void onRpcSuccess(TableInsertCommand inResult)
+      {
+        Notify.notify("Saved... " + mFieldName);
+      }
+    });
   }
 }

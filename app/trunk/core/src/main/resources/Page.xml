@@ -47,31 +47,20 @@
 					</ListBox>
 				</Collection>
 			</FormGroup>
-			<FlexTable KEY="FV00_13" cols="2" maxrows="4" headingSize="H5">
-				<Title>Title</Title>
-				<Headers>
-					<string>Head1</string>
-					<string>Head2</string>
-				</Headers>
-				<Types>
-					<Type>STRING</Type>
-					<Type>DATE</Type>
-				</Types>
-				<Table>
-					<string-array>
-						<string>R1 Col 1</string>
-						<string>R1 Col 2</string>
-					</string-array>
-					<string-array>
-						<string>R2 Col 1</string>
-						<string>R2 Col 2</string>
-					</string-array>
-					<string-array>
-						<string>R3 Col 1</string>
-						<string>R3 Col 2</string>
-					</string-array>
-				</Table>
-			</FlexTable>
+			<FormGroup>
+				<Collection>
+					<FormLabel KEY="FL00_13" isHtml="false">
+						<Text>Field4:</Text>
+					</FormLabel>
+					<FlexTable KEY="FV00_13" cols="2" maxrows="4" width="100%" headingSize="H5">
+						<Title>Title</Title>
+						<Headers>
+							<string>Head1</string>
+							<string>Head2</string>
+						</Headers>
+					</FlexTable>
+				</Collection>
+			</FormGroup>
 		</Collection>
 	</FieldSet>
 	<Icon KEY="C20000000" SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">

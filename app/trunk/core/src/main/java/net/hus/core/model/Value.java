@@ -2,6 +2,8 @@ package net.hus.core.model;
 
 import java.util.Date;
 
+import net.hus.core.shared.model.FlexTable_.Table;
+
 public class Value extends AbstractModel
 {
   private static final long serialVersionUID = -8854640642880299189L;
@@ -10,6 +12,8 @@ public class Value extends AbstractModel
   private String mValue;
   private Date mAsOf;
   private Field mField;
+
+  private Table mTable;
 
   public String getKey()
   {
@@ -54,5 +58,15 @@ public class Value extends AbstractModel
   public String getLabel()
   {
     return getField().getProperties().getDisplay().getLong();
+  }
+
+  public void setTable(Table inTable)
+  {
+    mTable = inTable;
+  }
+
+  public Table getTable()
+  {
+    return mTable;
   }
 }
