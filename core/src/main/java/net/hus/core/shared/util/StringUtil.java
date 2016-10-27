@@ -11,12 +11,12 @@ public final class StringUtil
 
   public static boolean isEmpty(String inValue)
   {
-    return ((inValue == null) || "".equals(inValue));
+    return inValue == null || "".equals(inValue);
   }
 
   public static boolean isEqual(String inString, Object inObject)
   {
-    return (inString == inObject) || ((inString != null) && inString.equals(inObject));
+    return inString == inObject || inString != null && inString.equals(inObject);
   }
 
   public static String lpad(Object inValue, String inPad, int inMaxLength)
@@ -56,7 +56,7 @@ public final class StringUtil
 
   public static String toTitleFirstWord(String inString)
   {
-    if ((inString == null) || "".equals(inString))
+    if (inString == null || "".equals(inString))
     {
       return "";
     }
@@ -73,7 +73,7 @@ public final class StringUtil
 
   public static boolean isValid(String inString)
   {
-    return (inString != null) && !"".equals(inString.trim());
+    return inString != null && !"".equals(inString.trim());
   }
 
   public static String trim(String inString, int inTrimAt)
@@ -95,7 +95,7 @@ public final class StringUtil
       inDelim = "";
     }
 
-    if ((inStrings != null) && (inStrings.length > 0))
+    if (inStrings != null && inStrings.length > 0)
     {
       for (String s : inStrings)
       {
@@ -114,7 +114,7 @@ public final class StringUtil
     StringBuilder result = new StringBuilder();
     for (String s : inStrings)
     {
-      s = (s == null) ? "" : s.trim();
+      s = s == null ? "" : s.trim();
       result.append(result.length() == 0 ? s : spacePrefixed(s));
     }
     return result.toString();
@@ -225,7 +225,7 @@ public final class StringUtil
       return null;
     }
 
-    List<String> ret = new ArrayList<String>();
+    List<String> ret = new ArrayList<>();
 
     if (inValue.indexOf(",") != -1)
     {
@@ -266,7 +266,7 @@ public final class StringUtil
     boolean ret = false;
     for (String string : inString)
     {
-      ret |= ((string == null) || "".equals(string.trim()));
+      ret |= string == null || "".equals(string.trim());
     }
     return ret;
   }
@@ -302,18 +302,18 @@ public final class StringUtil
     length = inCard.length();
 
     StringBuilder sb = new StringBuilder();
-    if ((length > 4) && (length <= 8))
+    if (length > 4 && length <= 8)
     {
       sb.append(inCard.substring(0, 4)).append(" ");
       sb.append(inCard.substring(4, length));
     }
-    else if ((length > 8) && (length <= 12))
+    else if (length > 8 && length <= 12)
     {
       sb.append(inCard.substring(0, 4)).append(" ");
       sb.append(inCard.substring(4, 8)).append(" ");
       sb.append(inCard.substring(8, length));
     }
-    else if ((length > 12) && (length <= 16))
+    else if (length > 12 && length <= 16)
     {
       sb.append(inCard.substring(0, 4)).append(" ");
       sb.append(inCard.substring(4, 8)).append(" ");
@@ -333,12 +333,12 @@ public final class StringUtil
     length = inPhone.length();
 
     StringBuilder sb = new StringBuilder();
-    if ((length > 3) && (length <= 6))
+    if (length > 3 && length <= 6)
     {
       sb.append("(").append(inPhone.substring(0, 3)).append(") ");
       sb.append(inPhone.substring(3, length));
     }
-    else if ((length > 6) && (length <= 10))
+    else if (length > 6 && length <= 10)
     {
       sb.append("(").append(inPhone.substring(0, 3)).append(") ");
       sb.append(inPhone.substring(3, 6));
@@ -375,6 +375,12 @@ public final class StringUtil
     return sb.toString();
   }
 
+  public static String nullIfEmpty(String inValue)
+  {
+    String trim = inValue.trim();
+    return "".equals(trim) ? null : trim;
+  }
+
   public static String ensure(Object inObject)
   {
     return inObject != null ? String.valueOf(inObject) : "";
@@ -392,7 +398,7 @@ public final class StringUtil
 
   private static boolean isPhone(int inLength, String inPhone)
   {
-    return inLength == 10 || (inLength == 11 && inPhone.startsWith("1"));
+    return inLength == 10 || inLength == 11 && inPhone.startsWith("1");
   }
 
   public static boolean isEmail(String inEmail)
@@ -412,13 +418,13 @@ public final class StringUtil
     {
       return "";
     }
-    int l = inValue.length(), i = (l > inIndex ? inIndex : l);
+    int l = inValue.length(), i = l > inIndex ? inIndex : l;
     return inValue.substring(0, i);
   }
 
   public static String notBlank(String inText)
   {
-    return (inText != null && "".equals(inText.trim()) ? null : inText);
+    return inText != null && "".equals(inText.trim()) ? null : inText;
   }
 
   public static String notNull(String inText)

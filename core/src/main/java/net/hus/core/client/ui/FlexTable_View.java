@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.model.FlexTable_.Table;
+import net.hus.core.shared.util.StringUtil;
 
 public class FlexTable_View extends Abstract_View<Table>
 implements ClickHandler
@@ -32,6 +33,8 @@ implements ClickHandler
   {
     if (inView != null && inView.getTable() != null)
     {
+      int headColCt = mView.getCellCount(0);
+
       for (String[] object : inView.getTable())
       {
         int col = 0;
@@ -43,6 +46,16 @@ implements ClickHandler
           span.setText(val);
           span.getElement().setAttribute("contenteditable", "true");
           mView.setWidget(row, col++, span);
+        }
+
+        if (col < headColCt)
+        {
+          for (; col < headColCt; col++)
+          {
+            Span span = new Span();
+            span.getElement().setAttribute("contenteditable", "true");
+            mView.setWidget(row, col, span);
+          }
         }
       }
     }
@@ -70,7 +83,10 @@ implements ClickHandler
       for (int c = 0; c < colCt; c++)
       {
         Span span = (Span) mView.getWidget(r, c);
-        colVals[c] = span.getText();
+        if (span != null)
+        {
+          colVals[c] = StringUtil.nullIfEmpty(span.getText());
+        }
       }
       ret.add(colVals);
     }

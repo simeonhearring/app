@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<Heading KEY="C10000000" SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
+	<Heading SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Collection />
 		<Text>Contact Information</Text>
 		<SubText>Including address</SubText>
 	</Heading>
-	<FieldSet KEY="C10000000" SECTION="WEBC01" enabled="true">
+	<FieldSet SECTION="WEBC01" enabled="true">
 		<Collection>
 			<FormGroup>
 				<Collection>
@@ -55,18 +55,22 @@
 					<FlexTable KEY="FV00_13" cols="2" maxrows="4" width="100%" headingSize="H5">
 						<Title>Title</Title>
 						<Headers>
-							<string>Head1</string>
-							<string>Head2</string>
+							<string>Type</string>
+							<string>Street 1</string>
+							<string>Street 2</string>
+							<string>City</string>
+							<string>State</string>
+							<string>Zip</string>
 						</Headers>
 					</FlexTable>
 				</Collection>
 			</FormGroup>
 		</Collection>
 	</FieldSet>
-	<Icon KEY="C20000000" SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
+	<Icon SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
 		<Title>Title</Title>
 	</Icon>
-	<Badge KEY="C30000000" SECTION="WEBR01">
+	<Badge SECTION="WEBR01">
 		<Title>Title</Title>
 		<Text>Text</Text>
 	</Badge>
