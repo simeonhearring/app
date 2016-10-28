@@ -54,8 +54,9 @@ public class LookupSql extends Mapping
       String group = value.getGroup();
       String name = value.getName();
       String abbr = value.getAbbreviation();
+      String desc = value.getDescription();
       Integer sort = value.getSort();
-      mBatchUpsert.update(params(group, name, abbr, sort, abbr, sort));
+      mBatchUpsert.update(params(group, name, abbr, desc, sort, abbr, desc, sort));
     }
     mBatchUpsert.flush();
     mBatchUpsert.reset();

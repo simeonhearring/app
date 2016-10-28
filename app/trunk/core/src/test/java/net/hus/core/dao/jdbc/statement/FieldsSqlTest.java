@@ -77,16 +77,24 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Field f3 = new Field();
     f3.setId(3L);
     f3.setSort(3);
+    Field f12 = new Field();
+    f12.setId(12L);
+    f12.setSort(3);
+    Field f13 = new Field();
+    f13.setId(13L);
+    f13.setSort(3);
 
-    fields.setGroup(VALUE_KEY);
+    fields.setGroup(FIELD_GROUP);
     fields.add(f1);
     fields.add(f2);
     fields.add(f3);
+    fields.add(f12);
+    fields.add(f13);
 
     mSql.upsert(fields);
 
-    Fields ret = mSql.select(VALUE_KEY);
-    Assert.assertEquals(4, ret.getFields().size());
+    Fields ret = mSql.select(FIELD_GROUP);
+    Assert.assertEquals(5, ret.getFields().size());
   }
 
   private Field newField(Type inType, String inName, String inLong, String inShort)

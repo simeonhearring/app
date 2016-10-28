@@ -1,5 +1,5 @@
 <Components>
-	<TableKey table="PERSON" key="JUNIT" />
+	<TableKey table="JUNIT" key="-1" />
 	<Badge KEY="KEYLOCATER" SECTION="SEC1" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
 		<Title>Title</Title>
 		<Text>Text</Text>

@@ -64,7 +64,8 @@ public class Mapping extends AbstractSqlJdbc
   {
     mapModel(inOut, inRs);
 
-    inOut.setTableKey(new TableKey(inRs.getString("mTable"), inRs.getString("mKey")));
+    inOut.setTableKey(
+        new TableKey(inRs.getString("mTable"), inRs.getString("mKey"), inRs.getString("mGroup")));
     inOut.setValue(inRs.getString("mValue"));
     inOut.setAsOf(inRs.getTimestamp("mAsOf"));
 

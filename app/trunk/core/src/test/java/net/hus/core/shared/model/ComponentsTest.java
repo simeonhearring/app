@@ -23,7 +23,7 @@ public class ComponentsTest
 
     Components model = new Components();
     List<TableKey> list = new ArrayList<>();
-    list.add(new TableKey("PERSON", "JUNIT"));
+    list.add(new TableKey("JUNIT", "-1", null));
     model.setTableKeys(list);
 
     System.out.println(parser.toXml(model));

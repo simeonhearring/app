@@ -48,7 +48,7 @@ public class UIObject_Test
 
   public static void initUIObject(UIObject_ inOut)
   {
-    inOut.setTableKey(new TableKey("PERSON", "JUNIT"));
+    inOut.setTableKey(new TableKey("JUNIT", "-1", "JGRP1"));
     inOut.setSection("WEB01");
     inOut.setKey("KEYLOCATER");
     inOut.setVisible(true);

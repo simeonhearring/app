@@ -1,5 +1,5 @@
 <FormGroup KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" size="LARGE" state="SUCCESS">
-	<TABLEKEY table="PERSON" key="JUNIT"/>
+	<TABLEKEY table="JUNIT" key="-1" group="JGRP1"/>
 	<Title>Title</Title>
 	<Collection/>
 </FormGroup>
