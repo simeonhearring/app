@@ -87,15 +87,16 @@ public class ValuesSql extends Mapping
     mBatchInsert.reset();
   }
 
-  public List<Value> select(TableKey inTk)
+  protected List<Value> select(TableKey inTk)
   {
     List<Value> ret = mSelectKey.execute(params(inTk.getTable(), inTk.getKey()));
     return ret;
   }
 
-  public List<Value> selectLast(TableKey inTk)
+  protected List<Value> selectLast(TableKey inTk)
   {
-    List<Value> ret = mSelectLastKey.execute(params(inTk.getTable(), inTk.getKey()));
+    List<Value> ret =
+        mSelectLastKey.execute(params(inTk.getTable(), inTk.getKey(), inTk.getGroup()));
     return ret;
   }
 
@@ -104,12 +105,13 @@ public class ValuesSql extends Mapping
     List<Value> ret = new ArrayList<>();
     for (TableKey value : inTks)
     {
-      ret.addAll(mSelectLastKey.execute(params(value.getTable(), value.getKey())));
+      ret.addAll(
+          mSelectLastKey.execute(params(value.getTable(), value.getKey(), value.getGroup())));
     }
     return ret;
   }
 
-  public List<Value> select(TableKey inTk, Long inFieldId)
+  protected List<Value> select(TableKey inTk, Long inFieldId)
   {
     List<Value> ret = mSelectKeyField.execute(params(inTk.getTable(), inTk.getKey(), inFieldId));
     return ret;

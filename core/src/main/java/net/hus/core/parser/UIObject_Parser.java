@@ -36,6 +36,7 @@ public class UIObject_Parser<T> extends XStream implements Parser<T>
     inXs.alias("TableKey", TableKey.class);
     inXs.aliasAttribute(TableKey.class, "mTable", "table");
     inXs.aliasAttribute(TableKey.class, "mKey", "key");
+    inXs.aliasAttribute(TableKey.class, "mGroup", "group");
 
     inXs.alias("UIObject", UIObject_.class);
     inXs.aliasField("TABLEKEY", UIObject_.class, "mTableKey");

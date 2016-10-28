@@ -26,13 +26,13 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     Group group = Group.DAYSOFWEEK;
 
-    Lookup l1 = lookup(group, "Sunday", "Sun", 2);
-    Lookup l2 = lookup(group, "Monday", "Mon", 4);
-    Lookup l3 = lookup(group, "Tuesday", "Tue", 6);
-    Lookup l4 = lookup(group, "Wednesday", "Wed", 8);
-    Lookup l5 = lookup(group, "Thursday", "Thu", 10);
-    Lookup l6 = lookup(group, "Friday", "Fri", 12);
-    Lookup l7 = lookup(group, "Saturday", "Sat", 14);
+    Lookup l1 = lookup(group, "Sunday", "Sun", 2, null);
+    Lookup l2 = lookup(group, "Monday", "Mon", 4, null);
+    Lookup l3 = lookup(group, "Tuesday", "Tue", 6, null);
+    Lookup l4 = lookup(group, "Wednesday", "Wed", 8, null);
+    Lookup l5 = lookup(group, "Thursday", "Thu", 10, null);
+    Lookup l6 = lookup(group, "Friday", "Fri", 12, null);
+    Lookup l7 = lookup(group, "Saturday", "Sat", 14, null);
 
     List<Lookup> list = new ArrayList<>();
     list.add(l1);
@@ -53,18 +53,18 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     Group group = Group.MONTHSOFYEAR;
 
-    Lookup l1 = lookup(group, "January", "Jan", 1);
-    Lookup l2 = lookup(group, "February", "Feb", 2);
-    Lookup l3 = lookup(group, "March", "Mar", 3);
-    Lookup l4 = lookup(group, "April", "Apr", 4);
-    Lookup l5 = lookup(group, "May", "May", 5);
-    Lookup l6 = lookup(group, "June", "Jun", 6);
-    Lookup l7 = lookup(group, "July", "Jul", 7);
-    Lookup l8 = lookup(group, "August", "Aug", 8);
-    Lookup l9 = lookup(group, "September", "Sep", 9);
-    Lookup l10 = lookup(group, "October", "Oct", 10);
-    Lookup l11 = lookup(group, "November", "Nov", 11);
-    Lookup l12 = lookup(group, "December", "Dec", 12);
+    Lookup l1 = lookup(group, "January", "Jan", 1, null);
+    Lookup l2 = lookup(group, "February", "Feb", 2, null);
+    Lookup l3 = lookup(group, "March", "Mar", 3, null);
+    Lookup l4 = lookup(group, "April", "Apr", 4, null);
+    Lookup l5 = lookup(group, "May", "May", 5, null);
+    Lookup l6 = lookup(group, "June", "Jun", 6, null);
+    Lookup l7 = lookup(group, "July", "Jul", 7, null);
+    Lookup l8 = lookup(group, "August", "Aug", 8, null);
+    Lookup l9 = lookup(group, "September", "Sep", 9, null);
+    Lookup l10 = lookup(group, "October", "Oct", 10, null);
+    Lookup l11 = lookup(group, "November", "Nov", 11, null);
+    Lookup l12 = lookup(group, "December", "Dec", 12, null);
 
     List<Lookup> list = new ArrayList<>();
     list.add(l1);
@@ -90,8 +90,8 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     Group group = Group.GENDER;
 
-    Lookup l1 = lookup(group, "Male", "M", 1);
-    Lookup l2 = lookup(group, "Female", "F", 2);
+    Lookup l1 = lookup(group, "Male", "M", 1, null);
+    Lookup l2 = lookup(group, "Female", "F", 2, null);
 
     List<Lookup> list = new ArrayList<>();
     list.add(l1);
@@ -107,7 +107,7 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     Group group = Group.UNKNOWN;
 
-    Lookup l1 = lookup(group, "Unknown", "U", 999);
+    Lookup l1 = lookup(group, "Unknown", "U", 999, null);
 
     List<Lookup> list = new ArrayList<>();
     list.add(l1);
@@ -122,8 +122,8 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     Group group = Group.YESNO;
 
-    Lookup l1 = lookup(group, "Yes", "Y", 1);
-    Lookup l2 = lookup(group, "No", "N", 2);
+    Lookup l1 = lookup(group, "Yes", "Y", 1, null);
+    Lookup l2 = lookup(group, "No", "N", 2, null);
 
     List<Lookup> list = new ArrayList<>();
     list.add(l1);
@@ -134,12 +134,30 @@ public class LookupSqlTest extends MySqlCoreDsTest
     Assert.assertEquals(2, mSql.select(group.name()).size());
   }
 
-  private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort)
+  @Test
+  public void setupTables()
+  {
+    Group group = Group.TABLE;
+
+    Lookup l1 = lookup(group, "JUNIT", "JT", 1, "Used for junit testing");
+    Lookup l2 = lookup(group, "PERSON", "PER", 2, "Used to store person information.");
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(l1);
+    list.add(l2);
+
+    mSql.upsert(list);
+
+    Assert.assertEquals(2, mSql.select(group.name()).size());
+  }
+
+  private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)
   {
     Lookup ret = new Lookup();
     ret.setGroup(inGroup);
     ret.setName(inName);
     ret.setAbbreviation(inAbbr);
+    ret.setDescription(inDesc);
     ret.setSort(inSort);
     return ret;
   }

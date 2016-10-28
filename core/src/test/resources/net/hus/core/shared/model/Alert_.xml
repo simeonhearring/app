@@ -1,5 +1,5 @@
 <Alert KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" type="WARNING" dismissable="true" fade="true">
-  <TABLEKEY table="PERSON" key="JUNIT"/>
+  <TABLEKEY table="JUNIT" key="-1" group="JGRP1"/>
   <Title>Title</Title>
   <Text>Text</Text>
 </Alert>

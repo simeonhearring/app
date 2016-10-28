@@ -6,6 +6,8 @@ public class Lookup extends AbstractModel
 
   public enum Group
   {
+    TABLE,
+    FIELD_GROUP,
     UNKNOWN,
     DAYSOFWEEK,
     MONTHSOFYEAR,
@@ -16,6 +18,7 @@ public class Lookup extends AbstractModel
   private String mGroup;
   private String mName;
   private String mAbbreviation;
+  private String mDescription;
   private Integer mSort;
 
   public String getGroup()
@@ -61,5 +64,15 @@ public class Lookup extends AbstractModel
   public void setSort(Integer inSort)
   {
     mSort = inSort;
+  }
+
+  public String getDescription()
+  {
+    return mDescription;
+  }
+
+  public void setDescription(String inDescription)
+  {
+    mDescription = inDescription;
   }
 }

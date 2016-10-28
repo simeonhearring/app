@@ -8,15 +8,17 @@ public class TableKey implements Serializable
 
   private String mTable;
   private String mKey;
+  private String mGroup;
 
   TableKey()
   {
   }
 
-  public TableKey(String inTable, String inKey)
+  public TableKey(String inTable, String inKey, String inGroup)
   {
     mTable = inTable;
     mKey = inKey;
+    mGroup = inGroup;
   }
 
   public String getTable()
@@ -37,5 +39,15 @@ public class TableKey implements Serializable
   public void setKey(String inKey)
   {
     mKey = inKey;
+  }
+
+  public String getGroup()
+  {
+    return mGroup;
+  }
+
+  public void setGroup(String inGroup)
+  {
+    mGroup = inGroup;
   }
 }

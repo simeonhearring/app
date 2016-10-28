@@ -10,7 +10,6 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.model.Field;
-import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 
 public class ValuesSqlTest extends MySqlCoreDsTest
@@ -43,7 +42,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   public void testSelectLastKey()
   {
     List<Value> i = mSql.selectLast(TK);
-    Assert.assertEquals(3, i.size());
+    Assert.assertEquals(5, i.size());
     Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getTable());
     Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getKey());
   }
@@ -54,7 +53,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     List<Value> list = new ArrayList<>();
 
     Value value = new Value();
-    value.setTableKey(new TableKey(VALUE_TABLE, VALUE_KEY));
+    value.setTableKey(TK);
     value.setValue("1");
     value.setField(new Field());
     value.getField().setId(1L);

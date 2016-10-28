@@ -23,9 +23,10 @@ import net.hus.core.model.TableKey;
 
 public class MySqlCoreDsTest
 {
-  public static final String VALUE_TABLE = "PERSON";
-  public static final String VALUE_KEY = "JUNIT";
-  public static final TableKey TK = new TableKey(VALUE_TABLE, VALUE_KEY);
+  public static final String VALUE_TABLE = "JUNIT";
+  public static final String VALUE_KEY = "-1";
+  public static final String FIELD_GROUP = "JGRP1";
+  public static final TableKey TK = new TableKey(VALUE_TABLE, VALUE_KEY, FIELD_GROUP);
 
   private static final String CONTEXT = "contextDs-core.xml";
   private static final String CORE_DS = "CoreDs";
