@@ -2,6 +2,7 @@ package net.hus.core.dao.jdbc.statement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,10 +11,10 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-import net.hus.core.model.Field;
+import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 
-public class ValuesSql extends AbstractSqlJdbc
+public class ValuesSql extends Mapping
 {
   private BatchSqlUpdate mBatchInsert;
   private MappingSqlQuery<Value> mSelectKey;
@@ -75,49 +76,42 @@ public class ValuesSql extends AbstractSqlJdbc
     mBatchInsert.reset();
     for (Value value : inList)
     {
-      String key = value.getKey();
-      String valueValue = value.getValue();
+      String table = value.getTableKey().getTable();
+      String key = value.getTableKey().getKey();
+      String valueText = value.getValue();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
-      mBatchInsert.update(params(key, valueValue, fieldId, asOf));
+      mBatchInsert.update(params(table, key, valueText, fieldId, asOf));
     }
     mBatchInsert.flush();
     mBatchInsert.reset();
   }
 
-  public List<Value> select(String inKey)
+  public List<Value> select(TableKey inTk)
   {
-    List<Value> ret = mSelectKey.execute(params(inKey));
+    List<Value> ret = mSelectKey.execute(params(inTk.getTable(), inTk.getKey()));
     return ret;
   }
 
-  public List<Value> selectLast(String inKey)
+  public List<Value> selectLast(TableKey inTk)
   {
-    List<Value> ret = mSelectLastKey.execute(params(inKey));
+    List<Value> ret = mSelectLastKey.execute(params(inTk.getTable(), inTk.getKey()));
     return ret;
   }
 
-  public List<Value> select(String inKey, Long inFieldId)
+  public List<Value> selectLast(List<TableKey> inTks)
   {
-    List<Value> ret = mSelectKeyField.execute(params(inKey, inFieldId));
+    List<Value> ret = new ArrayList<>();
+    for (TableKey value : inTks)
+    {
+      ret.addAll(mSelectLastKey.execute(params(value.getTable(), value.getKey())));
+    }
     return ret;
   }
 
-  private Value mapValue(Value inOut, ResultSet inRs) throws SQLException
+  public List<Value> select(TableKey inTk, Long inFieldId)
   {
-    mapModel(inOut, inRs);
-
-    inOut.setKey(inRs.getString("mKey"));
-    inOut.setValue(inRs.getString("mValue"));
-    inOut.setAsOf(inRs.getTimestamp("mAsOf"));
-
-    Field field = new Field();
-    field.setId(inRs.getLong("mFieldId"));
-    FieldsSql.mapField_(field, inRs);
-    FieldsSql.mapFields_(field, inRs);
-
-    inOut.setField(field);
-
-    return inOut;
+    List<Value> ret = mSelectKeyField.execute(params(inTk.getTable(), inTk.getKey(), inFieldId));
+    return ret;
   }
 }

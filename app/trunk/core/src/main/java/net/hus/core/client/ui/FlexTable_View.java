@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.model.TableKey;
 import net.hus.core.shared.model.FlexTable_.Table;
 import net.hus.core.shared.util.StringUtil;
 
@@ -15,16 +16,16 @@ implements ClickHandler
 {
   private FlexTable mView;
 
-  public FlexTable_View(String inKey, FlexTable inView)
+  public FlexTable_View(TableKey inTk, String inKey, FlexTable inView)
   {
-    super(inKey);
+    super(inTk, inKey);
     mView = inView;
     mView.addClickHandler(this);
   }
 
-  public FlexTable_View(String inKey, FlexTable inView, Table inTable)
+  public FlexTable_View(TableKey inTk, String inKey, FlexTable inView, Table inTable)
   {
-    this(inKey, inView);
+    this(inTk, inKey, inView);
     setView(inTable);
   }
 

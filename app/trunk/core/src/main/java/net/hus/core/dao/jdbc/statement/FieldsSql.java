@@ -13,7 +13,7 @@ import net.hus.core.model.Field;
 import net.hus.core.model.Fields;
 import net.hus.core.parser.FieldPropertiesParser;
 
-public class FieldsSql extends AbstractSqlJdbc
+public class FieldsSql extends Mapping
 {
   private BatchSqlUpdate mFieldUpsert;
   private MappingSqlQuery<Field> mFieldSelect;
@@ -100,37 +100,5 @@ public class FieldsSql extends AbstractSqlJdbc
     ret.setGroup(inGroup);
     ret.setFields(mFieldsSelect.execute(params(inGroup)));
     return ret;
-  }
-
-  private Field mapField(Field inOut, ResultSet inRs) throws SQLException
-  {
-    mapModel(inOut, inRs);
-
-    mapField_(inOut, inRs);
-
-    return inOut;
-  }
-
-  private Field mapFields(Field inOut, ResultSet inRs) throws SQLException
-  {
-    mapField(inOut, inRs);
-
-    mapFields_(inOut, inRs);
-
-    return inOut;
-  }
-
-  public static void mapField_(Field inOut, ResultSet inRs) throws SQLException
-  {
-    inOut.setName(inRs.getString("mName"));
-    inOut.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
-    inOut.setProperties(valueOf(inRs.getString("mProperties"), new FieldPropertiesParser()));
-  }
-
-
-  public static void mapFields_(Field inOut, ResultSet inRs) throws SQLException
-  {
-    inOut.setDisplay(inRs.getString("mDisplay"));
-    inOut.setSort((Integer) inRs.getObject("mSort"));
   }
 }

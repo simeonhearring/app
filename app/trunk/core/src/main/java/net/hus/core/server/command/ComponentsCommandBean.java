@@ -18,13 +18,30 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
   @Override
   public RpcResponse execute(ComponentsCommand inCommand)
   {
-    String xml = ResourceUtil.contents("Page.xml");
+    String xml = ResourceUtil.contents("Page.xml"); // TODO
 
     ComponentsParser parser = new ComponentsParser();
 
-    Components container = parser.fromXml(xml);
+    Components components = parser.fromXml(xml);
 
-    for (ListBox_ value : container.getListBoxes())
+    addLookups(components);
+
+    addValues(components);
+
+    inCommand.setData(components);
+
+    return inCommand;
+  }
+
+  private void addValues(Components inComponents)
+  {
+    inComponents
+    .setValues(checkForArrays(mCoreDao.values().selectLast(inComponents.getTableKeys())));
+  }
+
+  private void addLookups(Components inComponents)
+  {
+    for (ListBox_ value : inComponents.getListBoxes())
     {
       if (Field.Lookup.Location.TABLE.equals(value.getLookup().getLocation()))
       {
@@ -38,15 +55,9 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
         }
       }
     }
-
-    container.setValues(checkForArrays(mCoreDao.values().selectLast("JUNIT")));
-
-    inCommand.setData(container);
-
-    return inCommand;
   }
 
-  public List<Value> checkForArrays(List<Value> inOut)
+  private List<Value> checkForArrays(List<Value> inOut)
   {
     Table_Parser parser = new Table_Parser();
     for (Value value : inOut)

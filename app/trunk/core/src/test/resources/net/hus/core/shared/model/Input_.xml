@@ -1,4 +1,5 @@
 <Input KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE" min="MIN" max="MAX" type="TEXT">
+  <TABLEKEY table="PERSON" key="JUNIT"/>
   <Title>Title</Title>
   <Placeholder>placeholder</Placeholder>
   <Value>Value</Value>

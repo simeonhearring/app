@@ -8,6 +8,7 @@ import net.hus.core.client.common.View;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.model.Field;
+import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
@@ -16,11 +17,13 @@ import net.hus.core.shared.util.NumberUtil;
 
 public abstract class Abstract_View<T> implements View<T>
 {
+  private TableKey mTableKey;
   private Long mFieldId;
   private String mFieldName;
 
-  public Abstract_View(String inKey)
+  public Abstract_View(TableKey inTableKey, String inKey)
   {
+    mTableKey = inTableKey;
     mFieldId = extractFieldId(inKey);
   }
 
@@ -40,7 +43,7 @@ public abstract class Abstract_View<T> implements View<T>
   {
     Value value = new Value();
     value.setValue(inValue);
-    value.setKey("JUNIT"); // TODO
+    value.setTableKey(mTableKey);
     value.setAsOf(new Date());
     value.setField(new Field(mFieldId));
     return value;

@@ -2,9 +2,13 @@ package net.hus.core.shared.model;
 
 import java.io.Serializable;
 
+import net.hus.core.model.TableKey;
+
 public class UIObject_ implements Serializable
 {
   private static final long serialVersionUID = 4099428684832729483L;
+
+  private TableKey mTableKey;
 
   private String mKey;
   private String mSection;
@@ -125,5 +129,15 @@ public class UIObject_ implements Serializable
   public void setSection(String inSection)
   {
     mSection = inSection;
+  }
+
+  public TableKey getTableKey()
+  {
+    return mTableKey;
+  }
+
+  public void setTableKey(TableKey inTableKey)
+  {
+    mTableKey = inTableKey;
   }
 }

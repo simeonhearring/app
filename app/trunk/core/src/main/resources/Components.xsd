@@ -16,8 +16,12 @@
 			<xs:element name="Input" type="Input_Type" minOccurs="0"></xs:element>
 			<xs:element name="ListBox" type="ListBox_Type" minOccurs="0"></xs:element>
 			<xs:element name="TextBox" type="TextBox_Type" minOccurs="0"></xs:element>
-			<xs:element name="FlexTable" type="FlexTable_Type" minOccurs="0"></xs:element>
+			<xs:element name="TableKey" type="TableKey_Type" minOccurs="0"></xs:element>
 		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="TableKey_Type">
+		<xs:attribute name="table" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="key" type="xs:string" use="optional"></xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="ValueBoxBase_Type">
 		<xs:sequence>

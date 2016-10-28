@@ -1,4 +1,5 @@
 <FlexTable KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" cols="2" maxrows="4" headingSize="H5">
+  <TABLEKEY table="PERSON" key="JUNIT"/>
   <Title>Title</Title>
   <Headers>
     <string>Head1</string>

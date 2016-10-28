@@ -6,13 +6,15 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.model.TableKey;
+
 public class ListBox_View extends Abstract_View<String> implements ChangeHandler
 {
   private ListBox mView;
 
-  public ListBox_View(String inKey, ListBox inView)
+  public ListBox_View(TableKey inTk, String inKey, ListBox inView)
   {
-    super(inKey);
+    super(inTk, inKey);
     mView = inView;
     mView.addChangeHandler(this);
   }
