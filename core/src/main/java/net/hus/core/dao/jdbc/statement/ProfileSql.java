@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-public class ProfileSql extends AbstractSqlJdbc
+public class ProfileSql extends Mapping
 {
   private Statements mStmts;
 
@@ -34,7 +34,7 @@ public class ProfileSql extends AbstractSqlJdbc
       @Override
       protected String mapRow(ResultSet inRs, int inRowNum) throws SQLException
       {
-        return inRs.getString("mText");
+        return mapProfileText(inRs);
       }
     };
     mSelect.setTypes(select.types());

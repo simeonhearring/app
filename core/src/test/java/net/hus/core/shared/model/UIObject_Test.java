@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
+import net.hus.core.model.TableKey;
 import net.hus.core.parser.UIObject_Parser;
 import net.hus.core.util.ResourceUtil;
 
@@ -47,6 +48,7 @@ public class UIObject_Test
 
   public static void initUIObject(UIObject_ inOut)
   {
+    inOut.setTableKey(new TableKey("PERSON", "JUNIT"));
     inOut.setSection("WEB01");
     inOut.setKey("KEYLOCATER");
     inOut.setVisible(true);

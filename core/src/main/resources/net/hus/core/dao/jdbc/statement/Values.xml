@@ -1,33 +1,33 @@
 <Statements>
 	<Statement>
 		<Key>INSERT</Key>
-		<Types>VARCHAR,VARCHAR,NUMERIC,TIMESTAMP</Types>
-		<Sql>INSERT INTO FIELD_VALUE (mUpdated,mKey,mValue,mFieldId,mAsOf) VALUES (CURRENT_TIMESTAMP,?,?,?,?)</Sql>
+		<Types>VARCHAR,VARCHAR,VARCHAR,NUMERIC,TIMESTAMP</Types>
+		<Sql>INSERT INTO FIELD_VALUE (mUpdated,mTable,mKey,mValue,mFieldId,mAsOf) VALUES (CURRENT_TIMESTAMP,?,?,?,?,?)</Sql>
 	</Statement>
 	<Statement>
 		<Key>SELECT_KEY</Key>
-		<Types>VARCHAR</Types>
+		<Types>VARCHAR,VARCHAR</Types>
 		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort
 			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where f.mId=v.mFieldId and f.mId=g.mFieldId and mKey=?
+			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=?
 			order by v.mCreated desc
 		</Sql>
 	</Statement>
 	<Statement>
 		<Key>SELECT_KEY_FIELD</Key>
-		<Types>VARCHAR,NUMERIC</Types>
+		<Types>VARCHAR,VARCHAR,NUMERIC</Types>
 		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort
 			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where f.mId=v.mFieldId and f.mId=g.mFieldId and mKey=? and v.mFieldId=?
+			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=? and v.mFieldId=?
 			order by v.mCreated desc
 		</Sql>
 	</Statement>
 	<Statement>
 		<Key>SELECT_LAST_KEY</Key>
-		<Types>VARCHAR</Types>
+		<Types>VARCHAR,VARCHAR</Types>
 		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort
 			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where mKey=? and v.mId IN
+			where mTable=? and mKey=? and v.mId IN
 			(select max(mId) from FIELD_VALUE group by mKey,mFieldId)
 			and f.mId=v.mFieldId and f.mId=g.mFieldId
 		</Sql>

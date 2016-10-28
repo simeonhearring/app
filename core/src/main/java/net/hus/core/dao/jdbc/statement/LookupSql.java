@@ -11,7 +11,7 @@ import org.springframework.jdbc.object.MappingSqlQuery;
 
 import net.hus.core.model.Lookup;
 
-public class LookupSql extends AbstractSqlJdbc
+public class LookupSql extends Mapping
 {
   private BatchSqlUpdate mBatchUpsert;
   private MappingSqlQuery<Lookup> mSelect;
@@ -33,13 +33,7 @@ public class LookupSql extends AbstractSqlJdbc
       @Override
       protected Lookup mapRow(ResultSet inRs, int inRowNum) throws SQLException
       {
-        Lookup ret = new Lookup();
-        mapModel(ret, inRs);
-        ret.setGroup(inRs.getString("mGroup"));
-        ret.setName(inRs.getString("mName"));
-        ret.setAbbreviation(inRs.getString("mAbbreviation"));
-        ret.setSort((Integer) inRs.getObject("mSort"));
-        return ret;
+        return mapLookup(new Lookup(), inRs);
       }
     };
     mSelect.setTypes(select.types());

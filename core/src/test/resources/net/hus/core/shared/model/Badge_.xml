@@ -1,4 +1,5 @@
 <Badge KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
+	<TABLEKEY table="PERSON" key="JUNIT"/>
 	<Title>Title</Title>
 	<Text>Text</Text>
 </Badge>

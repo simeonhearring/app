@@ -89,7 +89,8 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setWidget(0, col++, new Heading(inUiO.getHeadSize(), value));
     }
 
-    add(inUiO.getKey(), new FlexTable_View(inUiO.getKey(), ret, inUiO.getTable()));
+    add(inUiO.getKey(),
+        new FlexTable_View(inUiO.getTableKey(), inUiO.getKey(), ret, inUiO.getTable()));
 
     return ret;
   }
@@ -290,7 +291,7 @@ public abstract class UiConverterImpl implements UiConverter
       }
     }
 
-    add(inUiO.getKey(), new ListBox_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new ListBox_View(inUiO.getTableKey(), inUiO.getKey(), ret));
 
     return ret;
   }
@@ -308,7 +309,7 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setValue(value);
     }
 
-    add(inUiO.getKey(), new TextBox_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new TextBox_View(inUiO.getTableKey(), inUiO.getKey(), ret));
 
     return ret;
   }
@@ -389,7 +390,7 @@ public abstract class UiConverterImpl implements UiConverter
       ret.setMax(max);
     }
 
-    add(inUiO.getKey(), new Input_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new Input_View(inUiO.getTableKey(), inUiO.getKey(), ret));
 
     return ret;
   }

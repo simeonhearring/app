@@ -19,9 +19,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import net.hus.core.model.TableKey;
+
 public class MySqlCoreDsTest
 {
+  public static final String VALUE_TABLE = "PERSON";
   public static final String VALUE_KEY = "JUNIT";
+  public static final TableKey TK = new TableKey(VALUE_TABLE, VALUE_KEY);
 
   private static final String CONTEXT = "contextDs-core.xml";
   private static final String CORE_DS = "CoreDs";

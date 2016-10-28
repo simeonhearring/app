@@ -6,13 +6,15 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.model.TableKey;
+
 public class Input_View extends Abstract_View<String> implements ValueChangeHandler<String>
 {
   private Input mView;
 
-  public Input_View(String inKey, Input inView)
+  public Input_View(TableKey inTk, String inKey, Input inView)
   {
-    super(inKey);
+    super(inTk, inKey);
     mView = inView;
     mView.addValueChangeHandler(this);
   }

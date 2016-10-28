@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 
 public class Components implements Serializable
 {
   private static final long serialVersionUID = 1058892144882503748L;
+
+  private List<TableKey> mTableKeys = new ArrayList<>();
 
   private List<UIObject_> mList = new ArrayList<>();
 
@@ -72,5 +75,15 @@ public class Components implements Serializable
         }
       }
     }
+  }
+
+  public List<TableKey> getTableKeys()
+  {
+    return mTableKeys;
+  }
+
+  public void setTableKeys(List<TableKey> inTableKeys)
+  {
+    mTableKeys = inTableKeys;
   }
 }

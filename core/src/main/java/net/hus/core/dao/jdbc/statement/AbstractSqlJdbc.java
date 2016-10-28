@@ -1,8 +1,6 @@
 package net.hus.core.dao.jdbc.statement;
 
 import java.lang.reflect.Field;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +12,6 @@ import org.springframework.jdbc.object.BatchSqlUpdate;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.Model;
 import net.hus.core.parser.Parser;
 import net.hus.core.util.EnumUtil;
 import net.hus.core.util.ResourceUtil;
@@ -24,13 +21,6 @@ public abstract class AbstractSqlJdbc
   private static final Map<String, Integer> MAP = getJdbcTypeName();
 
   protected Statements mStmts;
-
-  protected void mapModel(Model inModel, ResultSet inResultSet) throws SQLException
-  {
-    inModel.setId(inResultSet.getLong("mId"));
-    inModel.setCreated(inResultSet.getTimestamp("mCreated"));
-    inModel.setUpdated(inResultSet.getTimestamp("mUpdated"));
-  }
 
   protected String getSql(Class<?> inClass)
   {

@@ -17,7 +17,7 @@ import net.hus.core.model.Field.Properties;
 import net.hus.core.model.Field.Type;
 import net.hus.core.model.Fields;
 
-public class FieldSqlTest extends MySqlCoreDsTest
+public class FieldsSqlTest extends MySqlCoreDsTest
 {
   private FieldsSql mSql;
 
