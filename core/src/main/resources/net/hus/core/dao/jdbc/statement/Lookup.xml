@@ -12,5 +12,22 @@
 		<Types>VARCHAR</Types>
 		<Sql>select * from LOOKUP where mGroup=? order by mSort</Sql>
 	</Statement>
+	<Statement>
+		<Key>UPSERT_XL</Key>
+		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
+		<Sql>INSERT INTO LOOKUP_XL (mUpdated,mGroup,mName,mXL)
+			VALUES (CURRENT_TIMESTAMP,?,?,?) ON DUPLICATE KEY
+			UPDATE mXL=?,mUpdated=CURRENT_TIMESTAMP
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT_XL_GN</Key>
+		<Types>VARCHAR,VARCHAR</Types>
+		<Sql>select * from LOOKUP_XL where mGroup=? and mName=?</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT_XL_G</Key>
+		<Types>VARCHAR</Types>
+		<Sql>select * from LOOKUP_XL where mGroup=?</Sql>
+	</Statement>
 </Statements>
- 

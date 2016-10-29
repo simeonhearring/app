@@ -1,18 +1,41 @@
 package net.hus.core.model;
 
+import static net.hus.core.model.Lookup.Size.SM;
+import static net.hus.core.model.Lookup.Size.XL;
+
 public class Lookup extends AbstractModel
 {
   private static final long serialVersionUID = 6439569552175264944L;
 
+  public enum Size
+  {
+    SM,
+    XL
+  }
+
   public enum Group
   {
-    TABLE,
-    FIELD_GROUP,
-    UNKNOWN,
-    DAYSOFWEEK,
-    MONTHSOFYEAR,
-    YESNO,
-    GENDER,
+    TABLE(SM),
+    FIELD_GROUP(SM),
+    UNKNOWN(SM),
+    DAYSOFWEEK(SM),
+    MONTHSOFYEAR(SM),
+    YESNO(SM),
+    GENDER(SM),
+    PROFILE(XL),
+    PAGE(XL);
+
+    private Size mSize;
+
+    private Group(Size inSize)
+    {
+      mSize = inSize;
+    }
+
+    public Size getSize()
+    {
+      return mSize;
+    }
   }
 
   private String mGroup;
@@ -20,6 +43,7 @@ public class Lookup extends AbstractModel
   private String mAbbreviation;
   private String mDescription;
   private Integer mSort;
+  private String mXL;
 
   public String getGroup()
   {
@@ -74,5 +98,15 @@ public class Lookup extends AbstractModel
   public void setDescription(String inDescription)
   {
     mDescription = inDescription;
+  }
+
+  public String getXL()
+  {
+    return mXL;
+  }
+
+  public void setXL(String inXL)
+  {
+    mXL = inXL;
   }
 }

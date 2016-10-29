@@ -151,6 +151,28 @@ public class LookupSqlTest extends MySqlCoreDsTest
     Assert.assertEquals(2, mSql.select(group.name()).size());
   }
 
+  @Test
+  public void testUpsertAndSelect()
+  {
+    String text = "PROFILE_" + System.currentTimeMillis();
+
+    Lookup model = new Lookup();
+    model.setGroup(VALUE_TABLE);
+    model.setName(VALUE_KEY);
+    model.setXL(text);
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(model);
+
+    mSql.upsertXL(list);
+
+    Lookup result = mSql.selectXL(VALUE_TABLE, VALUE_KEY);
+    Assert.assertEquals(text, result.getXL());
+
+    List<Lookup> results = mSql.selectXL(VALUE_TABLE);
+    Assert.assertEquals(1, results.size());
+  }
+
   private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)
   {
     Lookup ret = new Lookup();

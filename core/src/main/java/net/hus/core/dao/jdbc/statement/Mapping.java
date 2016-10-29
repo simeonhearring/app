@@ -31,6 +31,17 @@ public class Mapping extends AbstractSqlJdbc
     return inOut;
   }
 
+  protected static Lookup mapLookupXL(Lookup inOut, ResultSet inRs) throws SQLException
+  {
+    mapModel(inOut, inRs);
+
+    inOut.setGroup(inRs.getString("mGroup"));
+    inOut.setName(inRs.getString("mName"));
+    inOut.setXL(inRs.getString("mXL"));
+
+    return inOut;
+  }
+
   protected static Field mapField(Field inOut, ResultSet inRs) throws SQLException
   {
     mapModel(inOut, inRs);
