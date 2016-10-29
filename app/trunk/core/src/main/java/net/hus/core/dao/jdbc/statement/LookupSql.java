@@ -16,6 +16,10 @@ public class LookupSql extends Mapping
   private BatchSqlUpdate mBatchUpsert;
   private MappingSqlQuery<Lookup> mSelect;
 
+  private BatchSqlUpdate mBatchUpsertXL;
+  private MappingSqlQuery<Lookup> mSelectXLgn;
+  private MappingSqlQuery<Lookup> mSelectXLg;
+
   public LookupSql()
   {
     mStmts = getStatements("Lookup.xml");
@@ -38,6 +42,32 @@ public class LookupSql extends Mapping
     };
     mSelect.setTypes(select.types());
     mSelect.compile();
+
+    mBatchUpsertXL = newBatchUpdate(inDataSource, "UPSERT_XL");
+
+    Statement selectXLgn = mStmts.getStatement("SELECT_XL_GN");
+    mSelectXLgn = new MappingSqlQuery<Lookup>(inDataSource, selectXLgn.getSql())
+    {
+      @Override
+      protected Lookup mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapLookupXL(new Lookup(), inRs);
+      }
+    };
+    mSelectXLgn.setTypes(selectXLgn.types());
+    mSelectXLgn.compile();
+
+    Statement selectXLg = mStmts.getStatement("SELECT_XL_G");
+    mSelectXLg = new MappingSqlQuery<Lookup>(inDataSource, selectXLg.getSql())
+    {
+      @Override
+      protected Lookup mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapLookupXL(new Lookup(), inRs);
+      }
+    };
+    mSelectXLg.setTypes(selectXLg.types());
+    mSelectXLg.compile();
   }
 
   public List<Lookup> select(String inGroup)
@@ -60,5 +90,31 @@ public class LookupSql extends Mapping
     }
     mBatchUpsert.flush();
     mBatchUpsert.reset();
+  }
+
+  public void upsertXL(List<Lookup> inLookup)
+  {
+    mBatchUpsertXL.reset();
+    for (Lookup value : inLookup)
+    {
+      String group = value.getGroup();
+      String name = value.getName();
+      String xl = value.getXL();
+      mBatchUpsertXL.update(params(group, name, xl, xl));
+    }
+    mBatchUpsertXL.flush();
+    mBatchUpsertXL.reset();
+  }
+
+  public List<Lookup> selectXL(String inGroup)
+  {
+    List<Lookup> ret = mSelectXLg.execute(params(inGroup));
+    return ret;
+  }
+
+  public Lookup selectXL(String inGroup, String inName)
+  {
+    List<Lookup> ret = mSelectXLgn.execute(params(inGroup, inName));
+    return only(ret);
   }
 }
