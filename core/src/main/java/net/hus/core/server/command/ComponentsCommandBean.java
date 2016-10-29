@@ -5,6 +5,7 @@ import java.util.List;
 import net.hus.core.model.Field;
 import net.hus.core.model.Lookup;
 import net.hus.core.model.Lookup.Group;
+import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Table_Parser;
@@ -25,17 +26,21 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
     addLookups(components);
 
-    addValues(components);
+    addValues(components, inCommand.getKey());
 
     inCommand.setData(components);
 
     return inCommand;
   }
 
-  private void addValues(Components inComponents)
+  private void addValues(Components inComponents, String inKey)
   {
+    for (TableKey value : inComponents.getTableKeys())
+    {
+      value.setKey(inKey);
+    }
     inComponents
-    .setValues(checkForArrays(mCoreDao.values().selectLast(inComponents.getTableKeys())));
+        .setValues(checkForArrays(mCoreDao.values().selectLast(inComponents.getTableKeys())));
   }
 
   private void addLookups(Components inComponents)

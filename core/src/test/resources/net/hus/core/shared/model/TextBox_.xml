@@ -1,5 +1,4 @@
 <TextBox KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE">
-	<TABLEKEY table="JUNIT" key="-1" group="JGRP1"/>
 	<Title>Title</Title>
 	<Placeholder>placeholder</Placeholder>
 	<Value>Value</Value>

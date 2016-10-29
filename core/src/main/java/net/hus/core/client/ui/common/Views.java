@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.hus.core.client.common.View;
+import net.hus.core.model.TableKey;
 
 public class Views<T>
 {
@@ -22,11 +23,12 @@ public class Views<T>
     }
   }
 
-  public void setName(String inValue)
+  public void setName(String inValue, TableKey inTk)
   {
     for (View<T> value : mViews)
     {
       value.setFieldName(inValue);
+      value.setTableKey(inTk);
     }
   }
 }

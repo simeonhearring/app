@@ -12,10 +12,16 @@ public class ListBox_View extends Abstract_View<String> implements ChangeHandler
 {
   private ListBox mView;
 
-  public ListBox_View(TableKey inTk, String inKey, ListBox inView)
+  public ListBox_View(String inKey, ListBox inView)
   {
-    super(inTk, inKey);
+    super(inKey);
     mView = inView;
+  }
+
+  @Override
+  public void setTableKey(TableKey inTableKey)
+  {
+    super.setTableKey(inTableKey);
     mView.addChangeHandler(this);
   }
 

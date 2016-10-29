@@ -12,10 +12,16 @@ public class TextBox_View extends Abstract_View<String> implements ValueChangeHa
 {
   private TextBox mView;
 
-  public TextBox_View(TableKey inTk, String inKey, TextBox inView)
+  public TextBox_View(String inKey, TextBox inView)
   {
-    super(inTk, inKey);
+    super(inKey);
     mView = inView;
+  }
+
+  @Override
+  public void setTableKey(TableKey inTableKey)
+  {
+    super.setTableKey(inTableKey);
     mView.addValueChangeHandler(this);
   }
 

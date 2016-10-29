@@ -9,14 +9,16 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
   private static final long serialVersionUID = -2970113047435446656L;
 
   private String mPage;
+  private String mKey;
 
   ComponentsCommand()
   {
   }
 
-  public ComponentsCommand(String inPage)
+  public ComponentsCommand(String inPage, String inKey)
   {
     mPage = inPage;
+    mKey = inKey;
   }
 
   public Components getComponents()
@@ -27,5 +29,10 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
   public String getPage()
   {
     return mPage;
+  }
+
+  public String getKey()
+  {
+    return mKey;
   }
 }
