@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import net.hus.core.client.common.View;
 import net.hus.core.client.model.UiManager;
 import net.hus.core.model.Field;
+import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 
 public class UiManagerImpl extends UiConverterImpl implements UiManager
@@ -38,7 +39,7 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
   }
 
   @Override
-  public void update(List<Value> inValues)
+  public void update(List<Value> inValues, TableKey inTk)
   {
     for (Value value : inValues)
     {
@@ -47,7 +48,7 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
       String valueKey = Field.Component.FV00_.name() + fieldId;
 
       get(labelKey).setViews(value.getLabel());
-      get(valueKey).setName(value.getLabel());
+      get(valueKey).setName(value.getLabel(), inTk);
       if (value.getField().isArray())
       {
         get(valueKey).setViews(value.getTable());

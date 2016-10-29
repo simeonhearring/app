@@ -1,5 +1,4 @@
 <CheckBox KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" isHtml="false" value="true">
-	<TABLEKEY table="JUNIT" key="-1" group="JGRP1"/>
 	<Title>Title</Title>
 	<Text>Text</Text>
 </CheckBox>

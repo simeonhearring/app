@@ -73,7 +73,7 @@ public class MainPresenter
 
   public void uiObject()
   {
-    Global.fire(new ComponentsCommand("Page1"), new RpcCallback<ComponentsCommand>()
+    Global.fire(new ComponentsCommand("Page1", "-1"), new RpcCallback<ComponentsCommand>()
     {
       @Override
       public void onRpcSuccess(ComponentsCommand inResult)
@@ -89,8 +89,8 @@ public class MainPresenter
           }
         }
 
-        // update labels & fields
-        mManager.update(components.getValues());
+        // update labels & fields & table key
+        mManager.update(components.getValues(), components.geTableKey());
       }
     });
   }

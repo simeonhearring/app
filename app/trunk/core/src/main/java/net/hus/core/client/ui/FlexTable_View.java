@@ -16,17 +16,23 @@ implements ClickHandler
 {
   private FlexTable mView;
 
-  public FlexTable_View(TableKey inTk, String inKey, FlexTable inView)
+  public FlexTable_View(String inKey, FlexTable inView)
   {
-    super(inTk, inKey);
+    super(inKey);
     mView = inView;
-    mView.addClickHandler(this);
   }
 
-  public FlexTable_View(TableKey inTk, String inKey, FlexTable inView, Table inTable)
+  public FlexTable_View(String inKey, FlexTable inView, Table inTable)
   {
-    this(inTk, inKey, inView);
+    this(inKey, inView);
     setView(inTable);
+  }
+
+  @Override
+  public void setTableKey(TableKey inTableKey)
+  {
+    super.setTableKey(inTableKey);
+    mView.addClickHandler(this);
   }
 
   @Override

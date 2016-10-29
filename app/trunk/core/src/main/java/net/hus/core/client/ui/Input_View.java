@@ -12,10 +12,16 @@ public class Input_View extends Abstract_View<String> implements ValueChangeHand
 {
   private Input mView;
 
-  public Input_View(TableKey inTk, String inKey, Input inView)
+  public Input_View(String inKey, Input inView)
   {
-    super(inTk, inKey);
+    super(inKey);
     mView = inView;
+  }
+
+  @Override
+  public void setTableKey(TableKey inTableKey)
+  {
+    super.setTableKey(inTableKey);
     mView.addValueChangeHandler(this);
   }
 

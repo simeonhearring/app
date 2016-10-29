@@ -21,10 +21,14 @@ public abstract class Abstract_View<T> implements View<T>
   private Long mFieldId;
   private String mFieldName;
 
-  public Abstract_View(TableKey inTableKey, String inKey)
+  public Abstract_View(String inKey)
+  {
+    mFieldId = extractFieldId(inKey);
+  }
+
+  public void setTableKey(TableKey inTableKey)
   {
     mTableKey = inTableKey;
-    mFieldId = extractFieldId(inKey);
   }
 
   private Long extractFieldId(String inKey)
