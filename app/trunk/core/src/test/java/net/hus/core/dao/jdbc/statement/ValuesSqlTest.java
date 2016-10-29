@@ -54,7 +54,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
 
     Value value = new Value();
     value.setTableKey(TK);
-    value.setValue("1");
+    value.setValue("Simeon-JUNIT");
     value.setField(new Field());
     value.getField().setId(1L);
     Date asOf = new Date();

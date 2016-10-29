@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.hus.core.model.Field;
 import net.hus.core.model.Lookup;
+import net.hus.core.model.Lookup.Group;
 import net.hus.core.model.Value;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Table_Parser;
@@ -11,18 +12,16 @@ import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.ListBox_;
 import net.hus.core.shared.rpc.common.RpcResponse;
-import net.hus.core.util.ResourceUtil;
 
 public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand>
 {
   @Override
   public RpcResponse execute(ComponentsCommand inCommand)
   {
-    String xml = ResourceUtil.contents("Page.xml"); // TODO
-
     ComponentsParser parser = new ComponentsParser();
 
-    Components components = parser.fromXml(xml);
+    Components components =
+        parser.fromXml(mCoreDao.lookups().selectXL(Group.PAGE, inCommand.getPage()).getXL());
 
     addLookups(components);
 

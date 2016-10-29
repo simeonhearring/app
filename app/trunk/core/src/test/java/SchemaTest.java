@@ -17,7 +17,7 @@ import junit.framework.Assert;
 
 public class SchemaTest
 {
-  private static final String XML = "Page.xml";
+  private static final String XML = "Page1.xml";
   private static final String XSD = "Components.xsd";
 
   @Test

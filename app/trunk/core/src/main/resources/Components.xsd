@@ -33,10 +33,10 @@
 	</xs:complexType>
 	<xs:complexType name="Heading_Type">
 		<xs:sequence>
-			<xs:element name="Title" type="xs:string"></xs:element>
-			<xs:element name="Collection" type="Components_Type"></xs:element>
-			<xs:element name="Text" type="xs:string"></xs:element>
-			<xs:element name="SubText" type="xs:string"></xs:element>
+			<xs:element name="Title" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="Collection" type="Components_Type" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="SubText" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Heading"></xs:attributeGroup>
 	</xs:complexType>
@@ -93,7 +93,7 @@
 	</xs:complexType>
 	<xs:complexType name="FormLabel_Type">
 		<xs:sequence>
-			<xs:element name="Text" type="xs:string"></xs:element>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
 		</xs:sequence>
 		<xs:attribute use="optional" name="showRequiredIndicator" type="xs:string"></xs:attribute>
 		<xs:attributeGroup ref="attr_AbstractTextWidget"></xs:attributeGroup>
@@ -106,7 +106,7 @@
 	</xs:complexType>
 	<xs:complexType name="TextBox_Type">
 		<xs:sequence>
-			<xs:element name="Value" type="xs:string"></xs:element>
+			<xs:element name="Value" type="xs:string" minOccurs="0"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
 	</xs:complexType>

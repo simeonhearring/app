@@ -1,6 +1,5 @@
 package net.hus.core.shared.command;
 
-import net.hus.core.model.TableKey;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.rpc.CommandName;
 
@@ -9,15 +8,15 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
 {
   private static final long serialVersionUID = -2970113047435446656L;
 
-  private TableKey mTableKey;
+  private String mPage;
 
-  public ComponentsCommand()
+  ComponentsCommand()
   {
   }
 
-  public ComponentsCommand(TableKey inTableKey)
+  public ComponentsCommand(String inPage)
   {
-    mTableKey = inTableKey;
+    mPage = inPage;
   }
 
   public Components getComponents()
@@ -25,8 +24,8 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
     return getData();
   }
 
-  public TableKey getTableKey()
+  public String getPage()
   {
-    return mTableKey;
+    return mPage;
   }
 }
