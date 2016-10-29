@@ -93,14 +93,14 @@ public class ValuesSql extends Mapping
     return ret;
   }
 
-  protected List<Value> selectLast(TableKey inTk)
+  public List<Value> selectLast(TableKey inTk)
   {
     List<Value> ret =
         mSelectLastKey.execute(params(inTk.getTable(), inTk.getKey(), inTk.getGroup()));
     return ret;
   }
 
-  public List<Value> selectLast(List<TableKey> inTks)
+  protected List<Value> selectLast(List<TableKey> inTks)
   {
     List<Value> ret = new ArrayList<>();
     for (TableKey value : inTks)

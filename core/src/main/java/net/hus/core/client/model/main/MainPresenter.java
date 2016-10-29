@@ -90,7 +90,7 @@ public class MainPresenter
         }
 
         // update labels & fields & table key
-        mManager.update(components.getValues(), components.geTableKey());
+        mManager.update(components.getValues(), components.getTableKey());
       }
     });
   }

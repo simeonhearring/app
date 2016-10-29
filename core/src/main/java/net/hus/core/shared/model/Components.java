@@ -77,7 +77,7 @@ public class Components implements Serializable
     }
   }
 
-  public TableKey geTableKey()
+  public TableKey getTableKey()
   {
     return getTableKeys().get(0);
   }
