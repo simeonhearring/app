@@ -10,6 +10,7 @@ import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
 import net.hus.core.model.Lookup;
+import net.hus.core.model.Lookup.Group;
 
 public class LookupSql extends Mapping
 {
@@ -112,7 +113,12 @@ public class LookupSql extends Mapping
     return ret;
   }
 
-  public Lookup selectXL(String inGroup, String inName)
+  public Lookup selectXL(Group inGroup, String inName)
+  {
+    return selectXL(inGroup.name(), inName);
+  }
+
+  protected Lookup selectXL(String inGroup, String inName)
   {
     List<Lookup> ret = mSelectXLgn.execute(params(inGroup, inName));
     return only(ret);

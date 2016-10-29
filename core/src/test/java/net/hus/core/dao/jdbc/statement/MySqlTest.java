@@ -14,7 +14,7 @@ public class MySqlTest
   {
     MySql mysql = new MySql();
 
-    Statements stmts = mysql.getStatements("Profile.xml");
+    Statements stmts = mysql.getStatements("Fields.xml");
 
     int[] types = stmts.getStatement("UPSERT").types();
     Assert.assertEquals(4, types.length);

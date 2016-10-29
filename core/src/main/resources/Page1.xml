@@ -3,7 +3,6 @@
 	<TableKey table="JUNIT" key="-1" group="JGRP1"/>
 	<Heading SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
-		<Collection />
 		<Text>Contact Information</Text>
 		<SubText>Including address</SubText>
 	</Heading>
@@ -11,38 +10,25 @@
 		<Collection>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_1" isHtml="false">
-						<Text>first name:</Text>
-					</FormLabel>
-					<Input KEY="FV00_1" type="TEXT">
-						<Value>Hello</Value>
-					</Input>
+					<FormLabel KEY="FL00_1" isHtml="false"/>
+					<Input KEY="FV00_1" type="TEXT"/>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_2" isHtml="false">
-						<Text>last name:</Text>
-					</FormLabel>
-					<Input KEY="FV00_2" type="TEXT">
-					</Input>
+					<FormLabel KEY="FL00_2" isHtml="false"/>
+					<Input KEY="FV00_2" type="TEXT"/>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_3" isHtml="false">
-						<Text>middle name:</Text>
-					</FormLabel>
-					<TextBox KEY="FV00_3">
-						<Value>textbox</Value>
-					</TextBox>
+					<FormLabel KEY="FL00_3" isHtml="false"/>
+					<TextBox KEY="FV00_3"/>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_12" isHtml="false">
-						<Text>Field4:</Text>
-					</FormLabel>
+					<FormLabel KEY="FL00_12" isHtml="false"/>
 					<ListBox KEY="FV00_12" multipleSelect="false">
 						<Lookup loc="TABLE" params="GENDER,UNKNOWN" />
 					</ListBox>

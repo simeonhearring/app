@@ -89,9 +89,4 @@ public class Mapping extends AbstractSqlJdbc
 
     return inOut;
   }
-
-  protected static String mapProfileText(ResultSet inRs) throws SQLException
-  {
-    return inRs.getString("mText");
-  }
 }

@@ -10,6 +10,7 @@ import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.model.Lookup;
 import net.hus.core.model.Lookup.Group;
+import net.hus.core.util.ResourceUtil;
 
 public class LookupSqlTest extends MySqlCoreDsTest
 {
@@ -171,6 +172,25 @@ public class LookupSqlTest extends MySqlCoreDsTest
 
     List<Lookup> results = mSql.selectXL(VALUE_TABLE);
     Assert.assertEquals(1, results.size());
+  }
+
+  @Test
+  public void setupPage()
+  {
+    String xl = ResourceUtil.contents("Page1.xml");
+    Lookup l1 = new Lookup();
+    l1.setGroup(Group.PAGE);
+    l1.setName("Page1");
+    l1.setXL(xl);
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(l1);
+
+    mSql.upsertXL(list);
+
+    Assert.assertEquals(1, mSql.selectXL(l1.getGroup()).size());
+    Assert.assertEquals(xl, mSql.selectXL(l1.getGroup(), l1.getName()).getXL());
+    System.out.println("Page1 Length:" + xl.length());
   }
 
   private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)
