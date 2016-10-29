@@ -35,12 +35,9 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
   private void addValues(Components inComponents, String inKey)
   {
-    for (TableKey value : inComponents.getTableKeys())
-    {
-      value.setKey(inKey);
-    }
-    inComponents
-        .setValues(checkForArrays(mCoreDao.values().selectLast(inComponents.getTableKeys())));
+    TableKey tableKey = inComponents.getTableKey();
+    tableKey.setKey(inKey);
+    inComponents.setValues(checkForArrays(mCoreDao.values().selectLast(tableKey)));
   }
 
   private void addLookups(Components inComponents)
