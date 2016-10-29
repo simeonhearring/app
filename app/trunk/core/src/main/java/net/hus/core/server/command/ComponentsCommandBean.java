@@ -66,7 +66,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     Table_Parser parser = new Table_Parser();
     for (Value value : inOut)
     {
-      if (value.getField().isArray())
+      if (value.getField().isArray() && value.getValue() != null)
       {
         value.setTable(parser.fromXml(value.getValue()));
       }
