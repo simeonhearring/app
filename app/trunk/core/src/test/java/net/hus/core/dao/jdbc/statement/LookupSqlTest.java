@@ -193,6 +193,24 @@ public class LookupSqlTest extends MySqlCoreDsTest
     System.out.println("Page1 Length:" + xl.length());
   }
 
+  @Test
+  public void setupProfile()
+  {
+    String xl = ResourceUtil.contents("Profile1.xml");
+    Lookup l1 = new Lookup();
+    l1.setGroup(Group.PROFILE);
+    l1.setName("simeonhearring");
+    l1.setXL(xl);
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(l1);
+
+    mSql.upsertXL(list);
+
+    Assert.assertEquals(1, mSql.selectXL(l1.getGroup()).size());
+    Assert.assertEquals(xl, mSql.selectXL(l1.getGroup(), l1.getName()).getXL());
+  }
+
   private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)
   {
     Lookup ret = new Lookup();
