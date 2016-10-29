@@ -7,7 +7,7 @@
 	<Statement>
 		<Key>SELECT_KEY</Key>
 		<Types>VARCHAR,VARCHAR</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup
+		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
 			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
 			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=?
 			order by v.mCreated desc
@@ -16,20 +16,21 @@
 	<Statement>
 		<Key>SELECT_KEY_FIELD</Key>
 		<Types>VARCHAR,VARCHAR,NUMERIC</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup
+		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
 			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=? and v.mFieldId=?
+			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=? and
+			v.mFieldId=?
 			order by v.mCreated desc
 		</Sql>
 	</Statement>
 	<Statement>
 		<Key>SELECT_LAST_KEY</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup
-			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where mTable=? and mKey=? and g.mGroup=? and v.mId IN
-			(select max(mId) from FIELD_VALUE group by mKey,mFieldId)
-			and f.mId=v.mFieldId and f.mId=g.mFieldId
+		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
+			from FIELD_GROUP g
+			left join FIELD_VALUE v on g.mFieldId=v.mFieldId and v.mTable=? and v.mKey=? and v.mId IN (select max(mId) from FIELD_VALUE group by mKey,mFieldId)
+			left join FIELD f on g.mFieldId=f.mId
+			where g.mGroup=?
 		</Sql>
 	</Statement>
 </Statements>

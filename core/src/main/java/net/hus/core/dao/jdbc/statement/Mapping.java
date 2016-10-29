@@ -81,7 +81,7 @@ public class Mapping extends AbstractSqlJdbc
     inOut.setAsOf(inRs.getTimestamp("mAsOf"));
 
     Field field = new Field();
-    field.setId(inRs.getLong("mFieldId"));
+    field.setId(inRs.getLong("mFId"));
     mapField_(field, inRs);
     mapFields_(field, inRs);
 
