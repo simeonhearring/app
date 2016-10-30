@@ -1,34 +1,35 @@
 package net.hus.core.client.ui;
 
-import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.model.TableKey;
 
-public class Button_View extends Abstract_View<String> implements ValueChangeHandler<String>
+public class Button_View extends Abstract_View<Void> implements ClickHandler
 {
-  private TextBox mView;
+  private Button mView;
 
-  public Button_View(String inKey, TextBox inView)
+  public Button_View(String inKey, Button inView)
   {
     super(inKey);
     mView = inView;
+    mView.addClickHandler(this);
   }
 
   @Override
   public void setTableKey(TableKey inTableKey)
   {
     super.setTableKey(inTableKey);
-    mView.addValueChangeHandler(this);
   }
 
   @Override
-  public void setView(String inValue)
+  public void setView(Void inValue)
   {
-    mView.setValue(inValue);
+    // mView.setValue(inValue);
   }
 
   @Override
@@ -38,8 +39,8 @@ public class Button_View extends Abstract_View<String> implements ValueChangeHan
   }
 
   @Override
-  public void onValueChange(ValueChangeEvent<String> inEvent)
+  public void onClick(ClickEvent inEvent)
   {
-    save(mView.getValue(), mView.getValue());
+    Notify.notify("I was clicked!!");
   }
 }
