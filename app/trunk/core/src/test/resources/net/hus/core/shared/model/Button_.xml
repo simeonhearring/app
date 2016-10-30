@@ -1,0 +1,5 @@
+<Button KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT" iconType="ADJUST" toggleCaret="true" dataToggle="BUTTON" buttonType="DANGER" iconPosition="LEFT" iconSize="LARGE" iconFlip="HORIZONTAL" iconRotate="NONE" iconBordered="true" iconInverse="true" iconSpin="true" iconPulse="true" iconFixedWidth="true" badgeText="badgeText" badgePosition="LEFT" active="true" enabled="true" buttonSize="DEFAULT">
+  <Title>Title</Title>
+  <Collection/>
+  <Text>text</Text>
+</Button>

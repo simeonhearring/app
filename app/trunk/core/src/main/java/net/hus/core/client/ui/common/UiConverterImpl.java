@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.gwtbootstrap3.client.ui.Alert;
 import org.gwtbootstrap3.client.ui.Badge;
+import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.Container;
@@ -20,6 +21,9 @@ import org.gwtbootstrap3.client.ui.base.AbstractTextWidget;
 import org.gwtbootstrap3.client.ui.base.ComplexWidget;
 import org.gwtbootstrap3.client.ui.base.ValueBoxBase;
 import org.gwtbootstrap3.client.ui.constants.Alignment;
+import org.gwtbootstrap3.client.ui.constants.BadgePosition;
+import org.gwtbootstrap3.client.ui.constants.ButtonSize;
+import org.gwtbootstrap3.client.ui.constants.ButtonType;
 import org.gwtbootstrap3.client.ui.constants.ColumnOffset;
 import org.gwtbootstrap3.client.ui.constants.ColumnPull;
 import org.gwtbootstrap3.client.ui.constants.ColumnPush;
@@ -27,11 +31,13 @@ import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.Emphasis;
 import org.gwtbootstrap3.client.ui.constants.FormGroupSize;
 import org.gwtbootstrap3.client.ui.constants.IconFlip;
+import org.gwtbootstrap3.client.ui.constants.IconPosition;
 import org.gwtbootstrap3.client.ui.constants.IconRotate;
 import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.gwtbootstrap3.client.ui.constants.Pull;
+import org.gwtbootstrap3.client.ui.constants.Toggle;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
@@ -55,6 +61,7 @@ import net.hus.core.shared.model.AbstractTextWidget_;
 import net.hus.core.shared.model.Alert_;
 import net.hus.core.shared.model.Badge_;
 import net.hus.core.shared.model.ButtonBase_;
+import net.hus.core.shared.model.Button_;
 import net.hus.core.shared.model.CheckBox_;
 import net.hus.core.shared.model.Column_;
 import net.hus.core.shared.model.ComplexPanel_;
@@ -77,6 +84,112 @@ import net.hus.core.shared.model.ValueBoxBase_;
 
 public abstract class UiConverterImpl implements UiConverter
 {
+  public Button convert(Button_ inUiO)
+  {
+    Button ret = new Button();
+
+    create(ret, inUiO);
+
+    String text = inUiO.getText();
+    IconType iconType = inUiO.getIconType();
+    Boolean toggleCaret = inUiO.getToggleCaret();
+    Toggle dataToggle = inUiO.getDataToggle();
+    ButtonType buttonType = inUiO.getButtonType();
+    IconPosition iconPosition = inUiO.getIconPosition();
+    IconSize iconSize = inUiO.getIconSize();
+    IconFlip iconFlip = inUiO.getIconFlip();
+    IconRotate iconRotate = inUiO.getIconRotate();
+    Boolean iconBordered = inUiO.getIconBordered();
+    Boolean iconInverse = inUiO.getIconInverse();
+    Boolean iconSpin = inUiO.getIconSpin();
+    Boolean iconPulse = inUiO.getIconPulse();
+    Boolean iconFixedWidth = inUiO.getIconFixedWidth();
+    String badgeText = inUiO.getBadgeText();
+    BadgePosition badgePosition = inUiO.getBadgePosition();
+    Boolean active = inUiO.getActive();
+    Boolean enabled = inUiO.getEnabled();
+    ButtonSize buttonSize = inUiO.getButtonSize();
+
+    if (text != null)
+    {
+      ret.setText(text);
+    }
+    if (iconType != null)
+    {
+      ret.setIcon(iconType);
+    }
+    if (toggleCaret != null)
+    {
+      ret.setToggleCaret(toggleCaret);
+    }
+    if (dataToggle != null)
+    {
+      ret.setDataToggle(dataToggle);
+    }
+    if (buttonType != null)
+    {
+      ret.setType(buttonType);
+    }
+    if (iconPosition != null)
+    {
+      ret.setIconPosition(iconPosition);
+    }
+    if (iconSize != null)
+    {
+      ret.setIconSize(iconSize);
+    }
+    if (iconFlip != null)
+    {
+      ret.setIconFlip(iconFlip);
+    }
+    if (iconRotate != null)
+    {
+      ret.setIconRotate(iconRotate);
+    }
+    if (iconBordered != null)
+    {
+      ret.setIconBordered(iconBordered);
+    }
+    if (iconInverse != null)
+    {
+      ret.setIconInverse(iconInverse);
+    }
+    if (iconSpin != null)
+    {
+      ret.setIconSpin(iconSpin);
+    }
+    if (iconPulse != null)
+    {
+      ret.setIconPulse(iconPulse);
+    }
+    if (iconFixedWidth != null)
+    {
+      ret.setIconFixedWidth(iconFixedWidth);
+    }
+    if (badgeText != null)
+    {
+      ret.setBadgeText(badgeText);
+    }
+    if (badgePosition != null)
+    {
+      ret.setBadgePosition(badgePosition);
+    }
+    if (active != null)
+    {
+      ret.setActive(active);
+    }
+    if (enabled != null)
+    {
+      ret.setEnabled(enabled);
+    }
+    if (buttonSize != null)
+    {
+      ret.setSize(buttonSize);
+    }
+
+    return ret;
+  }
+
   public FlexTable convert(FlexTable_ inUiO)
   {
     FlexTable ret = new FlexTable();
@@ -715,6 +828,10 @@ public abstract class UiConverterImpl implements UiConverter
     else if (inUiO instanceof FlexTable_)
     {
       ret = convert((FlexTable_) inUiO);
+    }
+    else if (inUiO instanceof Button_)
+    {
+      ret = convert((Button_) inUiO);
     }
     else
     {
