@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<TableKey table="JUNIT" group="JGRP2"/>
+	<TableKey table="JUNIT" group="JGRP2" />
 	<Heading SECTION="LOGINC01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Login</Title>
 		<Text>Login</Text>
@@ -9,14 +9,21 @@
 		<Collection>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_14" isHtml="false"/>
-					<Input KEY="FV00_14" type="TEXT"/>
+					<FormLabel KEY="FL00_14" isHtml="false" />
+					<Input KEY="FV00_14" type="TEXT" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_15" isHtml="false"/>
-					<Input KEY="FV00_15" type="TEXT"/>
+					<FormLabel KEY="FL00_15" isHtml="false" />
+					<Input KEY="FV00_15" type="TEXT" />
+				</Collection>
+			</FormGroup>
+			<FormGroup>
+				<Collection>
+					<Button KEY="BT00_2" buttonType="SUCCESS">
+						<Text>Login</Text>
+					</Button>
 				</Collection>
 			</FormGroup>
 		</Collection>

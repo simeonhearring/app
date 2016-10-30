@@ -18,6 +18,7 @@
 			<xs:element name="TextBox" type="TextBox_Type" minOccurs="0"></xs:element>
 			<xs:element name="FlexTable" type="FlexTable_Type" minOccurs="0"></xs:element>
 			<xs:element name="TableKey" type="TableKey_Type" minOccurs="0"></xs:element>
+			<xs:element name="Button" type="Button_Type" minOccurs="0"></xs:element>
 		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="TableKey_Type">
@@ -30,6 +31,13 @@
 			<xs:element name="Placeholder" type="xs:string"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="Button_Type">
+		<xs:sequence>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="Collection" type="Components_Type" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Button"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Heading_Type">
 		<xs:sequence>
@@ -187,6 +195,39 @@
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_Button">
+		<xs:attribute name="iconType" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="toggleCaret" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="dataToggle" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="buttonType" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="DEFAULT"></xs:enumeration>
+					<xs:enumeration value="PRIMARY"></xs:enumeration>
+					<xs:enumeration value="SUCCESS"></xs:enumeration>
+					<xs:enumeration value="INFO"></xs:enumeration>
+					<xs:enumeration value="WARNING"></xs:enumeration>
+					<xs:enumeration value="DANGER"></xs:enumeration>
+					<xs:enumeration value="LINK"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="iconPosition" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconFlip" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconRotate" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconBordered" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconInverse" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconSpin" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconPulse" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconFixedWidth" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="badgeText" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="badgePosition" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="active" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="enabled" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="buttonSize" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="iconSize" type="xs:string" use="optional"></xs:attribute>
 		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Icon">
