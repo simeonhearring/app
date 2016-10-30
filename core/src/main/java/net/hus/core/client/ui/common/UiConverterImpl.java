@@ -51,6 +51,7 @@ import com.google.gwt.user.client.ui.UIObject;
 import net.hus.core.client.model.UiConverter;
 import net.hus.core.client.ui.Alert_View;
 import net.hus.core.client.ui.Badge_View;
+import net.hus.core.client.ui.Button_View;
 import net.hus.core.client.ui.CheckBox_View;
 import net.hus.core.client.ui.FlexTable_View;
 import net.hus.core.client.ui.FormLabel_View;
@@ -186,6 +187,8 @@ public abstract class UiConverterImpl implements UiConverter
     {
       ret.setSize(buttonSize);
     }
+
+    add(inUiO.getKey(), new Button_View(inUiO.getKey(), ret));
 
     return ret;
   }
