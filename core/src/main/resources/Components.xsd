@@ -164,8 +164,29 @@
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Heading">
 		<xs:attribute name="size" type="xs:string" use="optional"></xs:attribute>
-		<xs:attribute name="emphasis" type="xs:string" use="optional"></xs:attribute>
-		<xs:attribute name="alignment" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="emphasis" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="DEFAULT"></xs:enumeration>
+					<xs:enumeration value="MUTED"></xs:enumeration>
+					<xs:enumeration value="PRIMARY"></xs:enumeration>
+					<xs:enumeration value="SUCCESS"></xs:enumeration>
+					<xs:enumeration value="INFO"></xs:enumeration>
+					<xs:enumeration value="WARNING"></xs:enumeration>
+					<xs:enumeration value="DANGER"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="alignment" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="DEFAULT"></xs:enumeration>
+					<xs:enumeration value="LEFT"></xs:enumeration>
+					<xs:enumeration value="CENTER"></xs:enumeration>
+					<xs:enumeration value="RIGHT"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Icon">

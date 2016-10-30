@@ -57,7 +57,10 @@ public class Template implements Serializable
       BLOGC01,
       WEBL01,
       WEBC01,
-      WEBR01
+      WEBR01,
+      LOGINL01,
+      LOGINC01,
+      LOGINR01,
     }
   }
 }

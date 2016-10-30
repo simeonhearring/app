@@ -49,9 +49,12 @@ public class MainPresenter
       case "MARKETING":
         ret = mDisplay.getMarketing();
         break;
+      case "LOGIN":
+        ret = mDisplay.getLogin();
+        break;
 
       default:
-        ret = mDisplay.getBlog();
+        ret = mDisplay.getLogin();
         break;
     }
     return ret;

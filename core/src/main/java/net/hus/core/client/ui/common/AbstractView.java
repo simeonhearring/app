@@ -6,12 +6,13 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.UiManager;
 
-public class AbstractView extends Composite
+public abstract class AbstractView extends Composite
 {
   public UiManager getManager()
   {
     return new UiManagerImpl();
   }
+
 
   public static Widget find(String inId, IndexedPanel... inPanel)
   {

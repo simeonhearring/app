@@ -6,14 +6,11 @@ import org.gwtbootstrap3.client.ui.Row;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.template.MarketingDisplay;
-import net.hus.core.client.ui.common.AbstractView;
-import net.hus.core.model.Template.Section;
 
-public class MarketingView extends AbstractView implements MarketingDisplay
+public class MarketingView extends AbstractRowView implements MarketingDisplay
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -32,7 +29,7 @@ public class MarketingView extends AbstractView implements MarketingDisplay
 
   @UiField
   Column mMarR1L01, mMarR1C01, mMarR201, mMarR202, mMarR203, mMarR204, mMarR301, mMarR302, mMarR303,
-  mMarR304, mMarR305, mMarR306;
+      mMarR304, mMarR305, mMarR306;
 
   public MarketingView()
   {
@@ -53,15 +50,13 @@ public class MarketingView extends AbstractView implements MarketingDisplay
   }
 
   @Override
-  public void add(Section.Name inSection, IsWidget inWidget)
+  public Row[] getRow()
   {
-    add(inSection.name(), inWidget);
-  }
-
-  @Override
-  public void add(String inSection, IsWidget inWidget)
-  {
-    Column column = (Column) find(inSection, mRow1, mRow2, mRow3);
-    column.add(inWidget);
+    return new Row[]
+    {
+        mRow1,
+        mRow2,
+        mRow3
+    };
   }
 }
