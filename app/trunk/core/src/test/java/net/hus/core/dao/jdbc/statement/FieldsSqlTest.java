@@ -43,16 +43,21 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     list.add(f4);
     list.add(f5);
 
-    list.add(newField(Type.NUMBER, "PLACEMENTS", "Placements", "Place"));
-    list.add(newField(Type.NUMBER, "VIDEO_SHOWINGS", "Video Showings", "Video"));
-    list.add(newField(Type.NUMBER, "HOURS", "Hours", "Hrs"));
-    list.add(newField(Type.NUMBER, "RETURN_VISITS", "Return Visits", "R.V."));
-    list.add(newField(Type.NUMBER, "BIBLE_STUDIES", "Bible Studies", "BiSt"));
+    // list.add(newField(Type.NUMBER, "PLACEMENTS", "Placements", "Place"));
+    // list.add(newField(Type.NUMBER, "VIDEO_SHOWINGS", "Video Showings",
+    // "Video"));
+    // list.add(newField(Type.NUMBER, "HOURS", "Hours", "Hrs"));
+    // list.add(newField(Type.NUMBER, "RETURN_VISITS", "Return Visits",
+    // "R.V."));
+    // list.add(newField(Type.NUMBER, "BIBLE_STUDIES", "Bible Studies",
+    // "BiSt"));
     list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
     list.add(newField(Type.LOOKUP, "GENDER", "Gender", "Sex",
         new Lookup(Location.TABLE, "GENDER,UNKNOWN")));
     list.add(newField(Type.ARRAY, "ADDRESS", "Address", "Addr.",
         new Array(6, "Type", "Street 1", "Street 2", "City", "State", "Zip")));
+    list.add(newField(Type.STRING, "USERNAME", "User Name", "UserNme"));
+    list.add(newField(Type.STRING, "PASSWORD", "Password", "Pswd"));
 
     mSql.upsert(list);
 
@@ -68,33 +73,23 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Fields fields = new Fields();
     fields.setFields(new ArrayList<Field>());
 
-    Field f1 = new Field();
-    f1.setId(1L);
-    f1.setSort(1);
-    Field f2 = new Field();
-    f2.setId(2L);
-    f2.setSort(2);
-    Field f3 = new Field();
-    f3.setId(3L);
-    f3.setSort(3);
-    Field f12 = new Field();
-    f12.setId(12L);
-    f12.setSort(3);
-    Field f13 = new Field();
-    f13.setId(13L);
-    f13.setSort(3);
-
     fields.setGroup(FIELD_GROUP);
-    fields.add(f1);
-    fields.add(f2);
-    fields.add(f3);
-    fields.add(f12);
-    fields.add(f13);
+    fields.add(new Field(1L));
+    fields.add(new Field(2L));
+    fields.add(new Field(3L));
+    fields.add(new Field(12L));
+    fields.add(new Field(13L));
 
     mSql.upsert(fields);
 
     Fields ret = mSql.select(FIELD_GROUP);
     Assert.assertEquals(5, ret.getFields().size());
+
+    fields.setGroup("JGRP2");
+    fields.clear();
+    fields.add(new Field(14L));
+    fields.add(new Field(15L));
+    mSql.upsert(fields);
   }
 
   private Field newField(Type inType, String inName, String inLong, String inShort)

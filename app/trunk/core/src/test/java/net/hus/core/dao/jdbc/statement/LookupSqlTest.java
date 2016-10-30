@@ -175,7 +175,7 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupPage()
+  public void setupPage1()
   {
     String xl = ResourceUtil.contents("Page1.xml");
     Lookup l1 = new Lookup();
@@ -188,13 +188,32 @@ public class LookupSqlTest extends MySqlCoreDsTest
 
     mSql.upsertXL(list);
 
-    Assert.assertEquals(1, mSql.selectXL(l1.getGroup()).size());
+    Assert.assertEquals(l1.getGroup(), mSql.selectXL(l1.getGroup()).get(0).getGroup());
     Assert.assertEquals(xl, mSql.selectXL(l1.getGroup(), l1.getName()).getXL());
     System.out.println("Page1 Length:" + xl.length());
   }
 
   @Test
-  public void setupProfile()
+  public void setupPage2()
+  {
+    String xl = ResourceUtil.contents("Page2.xml");
+    Lookup l1 = new Lookup();
+    l1.setGroup(Group.PAGE);
+    l1.setName("Page2");
+    l1.setXL(xl);
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(l1);
+
+    mSql.upsertXL(list);
+
+    Assert.assertEquals(l1.getGroup(), mSql.selectXL(l1.getGroup()).get(0).getGroup());
+    Assert.assertEquals(xl, mSql.selectXL(l1.getGroup(), l1.getName()).getXL());
+    System.out.println("Page2 Length:" + xl.length());
+  }
+
+  @Test
+  public void setupProfile1()
   {
     String xl = ResourceUtil.contents("Profile1.xml");
     Lookup l1 = new Lookup();

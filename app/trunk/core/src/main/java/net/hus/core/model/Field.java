@@ -59,6 +59,7 @@ public class Field extends AbstractModel
     return mSort;
   }
 
+  @Deprecated
   public void setSort(Integer inSort)
   {
     mSort = inSort;

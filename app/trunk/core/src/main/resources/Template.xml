@@ -1,4 +1,4 @@
-<Template name="WEB">
+<Template name="LOGIN">
 	<Sections>
 		<Template.Section />
 	</Sections>

@@ -1,64 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<TableKey table="JUNIT" group="JGRP1"/>
-	<Heading SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
-		<Title>Title</Title>
-		<Text>Contact Information</Text>
-		<SubText>Including address</SubText>
+	<TableKey table="JUNIT" group="JGRP2"/>
+	<Heading SECTION="LOGINC01" size="H1" emphasis="INFO" alignment="LEFT">
+		<Title>Login</Title>
+		<Text>Login</Text>
 	</Heading>
-	<FieldSet SECTION="WEBC01" enabled="true">
+	<FieldSet SECTION="LOGINC01" enabled="true">
 		<Collection>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_1" isHtml="false"/>
-					<Input KEY="FV00_1" type="TEXT"/>
+					<FormLabel KEY="FL00_14" isHtml="false"/>
+					<Input KEY="FV00_14" type="TEXT"/>
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_2" isHtml="false"/>
-					<Input KEY="FV00_2" type="TEXT"/>
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_3" isHtml="false"/>
-					<TextBox KEY="FV00_3"/>
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_12" isHtml="false"/>
-					<ListBox KEY="FV00_12" multipleSelect="false">
-						<Lookup loc="TABLE" params="GENDER,UNKNOWN" />
-					</ListBox>
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_13" isHtml="false">
-						<Text>Field4:</Text>
-					</FormLabel>
-					<FlexTable KEY="FV00_13" cols="2" maxrows="4" width="100%" headingSize="H5">
-						<Title>Title</Title>
-						<Headers>
-							<string>Type</string>
-							<string>Street 1</string>
-							<string>Street 2</string>
-							<string>City</string>
-							<string>State</string>
-							<string>Zip</string>
-						</Headers>
-					</FlexTable>
+					<FormLabel KEY="FL00_15" isHtml="false"/>
+					<Input KEY="FV00_15" type="TEXT"/>
 				</Collection>
 			</FormGroup>
 		</Collection>
 	</FieldSet>
-	<Icon SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
-		<Title>Title</Title>
-	</Icon>
-	<Badge SECTION="WEBR01">
-		<Title>Title</Title>
-		<Text>Text</Text>
-	</Badge>
 </Components>

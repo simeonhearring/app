@@ -43,20 +43,25 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
   {
     for (Value value : inValues)
     {
-      Long fieldId = value.getField().getId();
-      String labelKey = Field.Component.FL00_.name() + fieldId;
-      String valueKey = Field.Component.FV00_.name() + fieldId;
+      update(inTk, value, String.valueOf(value.getField().getId()));
+      update(inTk, value, value.getField().getName());
+    }
+  }
 
-      get(labelKey).setViews(value.getLabel());
-      get(valueKey).setName(value.getLabel(), inTk);
-      if (value.getField().isArray())
-      {
-        get(valueKey).setViews(value.getTable());
-      }
-      else
-      {
-        get(valueKey).setViews(value.getValue());
-      }
+  private void update(TableKey inTk, Value inValue, String inFieldIdOrNme)
+  {
+    String labelKey = Field.Component.FL00_.name() + inFieldIdOrNme;
+    String valueKey = Field.Component.FV00_.name() + inFieldIdOrNme;
+
+    get(labelKey).setViews(inValue.getLabel());
+    get(valueKey).setName(inValue.getLabel(), inTk);
+    if (inValue.getField().isArray())
+    {
+      get(valueKey).setViews(inValue.getTable());
+    }
+    else
+    {
+      get(valueKey).setViews(inValue.getValue());
     }
   }
 }

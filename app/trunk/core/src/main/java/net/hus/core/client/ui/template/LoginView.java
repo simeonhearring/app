@@ -8,14 +8,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.model.template.BlogDisplay;
+import net.hus.core.client.model.template.LoginDisplay;
 import net.hus.core.model.Template.Section;
 
-public class BlogView extends AbstractRowView implements BlogDisplay
+public class LoginView extends AbstractRowView implements LoginDisplay
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
-  interface Binder extends UiBinder<Widget, BlogView>
+  interface Binder extends UiBinder<Widget, LoginView>
   {
   }
 
@@ -23,14 +23,15 @@ public class BlogView extends AbstractRowView implements BlogDisplay
   Row mRow;
 
   @UiField
-  Column mBlogL01, mBlogC01;
+  Column mL01, mC01, mR01;
 
-  public BlogView()
+  public LoginView()
   {
     initWidget(BINDER.createAndBindUi(this));
 
-    mBlogL01.setId(Section.Name.BLOGL01.name());
-    mBlogC01.setId(Section.Name.BLOGC01.name());
+    mL01.setId(Section.Name.LOGINL01.name());
+    mC01.setId(Section.Name.LOGINC01.name());
+    mR01.setId(Section.Name.LOGINR01.name());
   }
 
   @Override

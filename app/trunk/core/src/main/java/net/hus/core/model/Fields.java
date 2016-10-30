@@ -33,4 +33,9 @@ public class Fields extends AbstractModel
   {
     mFields.add(inField);
   }
+
+  public void clear()
+  {
+    mFields.clear();
+  }
 }
