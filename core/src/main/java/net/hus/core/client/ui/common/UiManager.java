@@ -6,15 +6,26 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
+import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.common.View;
-import net.hus.core.client.model.UiManager;
 import net.hus.core.model.Field;
 import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 
-public class UiManagerImpl extends UiConverterImpl implements UiManager
+/**
+ * Responsible for adding and updating all UI Objects.
+ *
+ * @author simeonhearring
+ * @since October 2016
+ */
+public class UiManager extends UiConverter
 {
   private Map<String, IsWidget> mContent = new HashMap<>();
+
+  public UiManager(UiCreate inUiCreate)
+  {
+    super(inUiCreate);
+  }
 
   @Override
   public void add(String inKey, IsWidget inUiO)
@@ -23,7 +34,6 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
   }
 
   @SuppressWarnings("unchecked")
-  @Override
   public Views<Object> get(String... inKey)
   {
     Views<Object> ret = new Views<>();
@@ -38,7 +48,6 @@ public class UiManagerImpl extends UiConverterImpl implements UiManager
     return ret;
   }
 
-  @Override
   public void update(List<Value> inValues, TableKey inTk)
   {
     for (Value value : inValues)

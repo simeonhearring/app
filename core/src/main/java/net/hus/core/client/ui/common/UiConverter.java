@@ -48,7 +48,7 @@ import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
-import net.hus.core.client.model.UiConverter;
+import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.ui.Alert_View;
 import net.hus.core.client.ui.Badge_View;
 import net.hus.core.client.ui.Button_View;
@@ -83,11 +83,24 @@ import net.hus.core.shared.model.TextBox_;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.ValueBoxBase_;
 
-public abstract class UiConverterImpl implements UiConverter
+/**
+ * Responsible for creating UI Objects from Model UI Objects.
+ *
+ * @author simeonhearring
+ *
+ */
+public abstract class UiConverter
 {
+  private UiCreate mUiCreate;
+
+  public UiConverter(UiCreate inUiCreate)
+  {
+    mUiCreate = inUiCreate;
+  }
+
   public Button convert(Button_ inUiO)
   {
-    Button ret = new Button();
+    Button ret = mUiCreate.newButton();
 
     create(ret, inUiO);
 
@@ -195,7 +208,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public FlexTable convert(FlexTable_ inUiO)
   {
-    FlexTable ret = new FlexTable();
+    FlexTable ret = mUiCreate.newFlexTable();
 
     create(ret, inUiO);
 
@@ -212,7 +225,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Heading convert(Heading_ inUiO)
   {
-    Heading ret = new Heading(inUiO.getSize(), inUiO.getText());
+    Heading ret = mUiCreate.newHeading(inUiO.getSize(), inUiO.getText());
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -239,7 +252,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Icon convert(Icon_ inUiO)
   {
-    Icon ret = new Icon();
+    Icon ret = mUiCreate.newIcon();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -309,7 +322,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Column convert(Column_ inUiO)
   {
-    Column ret = new Column(inUiO.getSize());
+    Column ret = mUiCreate.newColumn(inUiO.getSize());
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -341,7 +354,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Row convert(Row_ inUiO)
   {
-    Row ret = new Row();
+    Row ret = mUiCreate.newRow();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -351,7 +364,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Container convert(Container_ inUiO)
   {
-    Container ret = new Container();
+    Container ret = mUiCreate.newContainer();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -367,7 +380,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public CheckBox convert(CheckBox_ inUiO)
   {
-    CheckBox ret = new CheckBox();
+    CheckBox ret = mUiCreate.newCheckBox();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create((FocusWidget) ret, (FocusWidget_) inUiO);
@@ -386,7 +399,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public ListBox convert(ListBox_ inUiO)
   {
-    ListBox ret = new ListBox();
+    ListBox ret = mUiCreate.newListBox();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -413,7 +426,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public TextBox convert(TextBox_ inUiO)
   {
-    TextBox ret = new TextBox();
+    TextBox ret = mUiCreate.newTextBox();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -431,7 +444,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public FormLabel convert(FormLabel_ inUiO)
   {
-    FormLabel ret = new FormLabel();
+    FormLabel ret = mUiCreate.newFormLabel();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -449,7 +462,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public FormGroup convert(FormGroup_ inUiO)
   {
-    FormGroup ret = new FormGroup();
+    FormGroup ret = mUiCreate.newFormGroup();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -471,7 +484,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public FieldSet convert(FieldSet_ inUiO)
   {
-    FieldSet ret = new FieldSet();
+    FieldSet ret = mUiCreate.newFieldSet();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -483,7 +496,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Input convert(Input_ inUiO)
   {
-    Input ret = new Input();
+    Input ret = mUiCreate.newInput();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -512,7 +525,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Badge convert(Badge_ inUiO)
   {
-    Badge ret = new Badge();
+    Badge ret = mUiCreate.newBadge();
 
     create(ret, inUiO);
 
@@ -525,7 +538,7 @@ public abstract class UiConverterImpl implements UiConverter
 
   public Alert convert(Alert_ inUiO)
   {
-    Alert ret = new Alert();
+    Alert ret = mUiCreate.newAlert();
 
     create(ret, inUiO);
 
@@ -767,7 +780,6 @@ public abstract class UiConverterImpl implements UiConverter
     }
   }
 
-  @Override
   public IsWidget match(UIObject_ inUiO)
   {
     IsWidget ret = null;

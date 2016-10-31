@@ -2,9 +2,13 @@ package net.hus.core.client.common;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.model.UiManager;
-
+/**
+ * Parent for all pages.
+ *
+ * @author simeonhearring
+ * @since October 2016
+ *
+ */
 public interface Display extends IsWidget
 {
-  UiManager getManager();
 }

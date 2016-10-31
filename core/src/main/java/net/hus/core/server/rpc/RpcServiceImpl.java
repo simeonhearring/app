@@ -14,6 +14,7 @@ import net.hus.core.server.command.CommandBean;
 import net.hus.core.shared.command.LoggerCommand;
 import net.hus.core.shared.exception.NotifyException;
 import net.hus.core.shared.rpc.CommandName;
+import net.hus.core.shared.rpc.HasCommandName;
 import net.hus.core.shared.rpc.common.NotifyResponse;
 import net.hus.core.shared.rpc.common.NotifyResponse.Type;
 import net.hus.core.shared.rpc.common.RpcCommand;
@@ -109,15 +110,22 @@ public class RpcServiceImpl extends RemoteServiceServlet implements RpcService
 
   private String getValidCommandBeanName(RpcCommand inCommand)
   {
-    CommandName annotation = inCommand.getClass().getAnnotation(CommandName.class);
+    String beanName = null;
 
-    if (annotation == null || annotation.value() == null || "".equals(annotation.value()))
+    if (inCommand instanceof HasCommandName)
     {
-      throw new IllegalArgumentException("RpcCommand class [" + inCommand.getClass().getSimpleName()
-          + "] must declare a CommandBean annotation.");
+      beanName = ((HasCommandName) inCommand).commandName();
     }
-
-    String beanName = annotation.value();
+    else
+    {
+      CommandName annotation = inCommand.getClass().getAnnotation(CommandName.class);
+      if (annotation == null || annotation.value() == null || "".equals(annotation.value()))
+      {
+        throw new IllegalArgumentException("RpcCommand class ["
+            + inCommand.getClass().getSimpleName() + "] must declare a CommandBean annotation.");
+      }
+      beanName = annotation.value();
+    }
 
     if (!mAppContext.containsBean(beanName))
     {

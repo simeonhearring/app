@@ -21,7 +21,7 @@
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<Button KEY="BT00_2" buttonType="SUCCESS">
+					<Button KEY="BT00_LoginCommand" buttonType="SUCCESS">
 						<Text>Login</Text>
 					</Button>
 				</Collection>

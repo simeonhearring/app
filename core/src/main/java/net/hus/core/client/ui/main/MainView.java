@@ -9,12 +9,14 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.Display;
+import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.model.main.MainDisplay;
 import net.hus.core.client.model.template.BlogDisplay;
 import net.hus.core.client.model.template.LoginDisplay;
 import net.hus.core.client.model.template.MarketingDisplay;
 import net.hus.core.client.model.template.WebPageDisplay;
 import net.hus.core.client.ui.common.AbstractView;
+import net.hus.core.client.ui.common.GwtUiCreate;
 import net.hus.core.client.ui.template.BlogView;
 import net.hus.core.client.ui.template.LoginView;
 import net.hus.core.client.ui.template.MarketingView;
@@ -76,5 +78,11 @@ public class MainView extends AbstractView implements MainDisplay
   public LoginDisplay getLogin()
   {
     return new LoginView();
+  }
+
+  @Override
+  public UiCreate getUiCreate()
+  {
+    return new GwtUiCreate();
   }
 }
