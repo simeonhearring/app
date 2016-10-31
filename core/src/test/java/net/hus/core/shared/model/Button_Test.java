@@ -70,6 +70,7 @@ public class Button_Test
     ret.setEnabled(true);
     ret.setButtonSize(ButtonSize.DEFAULT);
     ret.setIconSize(IconSize.LARGE);
+    ret.setCommandName("LoginCommand");
 
     ComplexWidget_Test.initComplexWidget(ret);
 

@@ -40,5 +40,6 @@ public class Button_Parser extends ComplexWidget_Parser<Button_>
     inXs.aliasAttribute(Button_.class, "mEnabled", "enabled");
     inXs.aliasAttribute(Button_.class, "mButtonSize", "buttonSize");
     inXs.aliasAttribute(Button_.class, "mIconSize", "iconSize");
+    inXs.aliasAttribute(Button_.class, "mCommandName", "command.name");
   }
 }

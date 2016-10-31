@@ -10,7 +10,9 @@ import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
-public class Button_ extends ComplexWidget_
+import net.hus.core.shared.rpc.HasCommandName;
+
+public class Button_ extends ComplexWidget_ implements HasCommandName
 {
   private static final long serialVersionUID = -7191773392942086895L;
 
@@ -37,6 +39,9 @@ public class Button_ extends ComplexWidget_
   private Boolean mActive;
   private Boolean mEnabled;
   private ButtonSize mButtonSize;
+
+  //
+  private String mCommandName;
 
   public String getText()
   {
@@ -226,5 +231,16 @@ public class Button_ extends ComplexWidget_
   public void setButtonSize(ButtonSize inButtonSize)
   {
     mButtonSize = inButtonSize;
+  }
+
+  @Override
+  public String commandName()
+  {
+    return mCommandName;
+  }
+
+  public void setCommandName(String inCommandName)
+  {
+    mCommandName = inCommandName;
   }
 }

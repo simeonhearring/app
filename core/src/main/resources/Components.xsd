@@ -229,6 +229,7 @@
 		<xs:attribute name="enabled" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="buttonSize" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="iconSize" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_CommandName"></xs:attributeGroup>
 		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Icon">
@@ -245,6 +246,15 @@
 		<xs:attribute name="stackBase" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="fixedWidth" type="xs:string" use="optional"></xs:attribute>
 		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_CommandName">
+		<xs:attribute name="command.name" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="LoginCommand"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_ComplexWidget">
 		<xs:attribute name="color" type="xs:string" use="optional"></xs:attribute>

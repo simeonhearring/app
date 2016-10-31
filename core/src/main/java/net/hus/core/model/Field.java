@@ -66,7 +66,7 @@ public class Field extends AbstractModel
   {
     FL00_,
     FV00_,
-    BT00_,
+    BTN00_,
   }
 
   public enum Type

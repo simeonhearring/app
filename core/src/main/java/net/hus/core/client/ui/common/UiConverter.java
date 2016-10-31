@@ -201,7 +201,7 @@ public abstract class UiConverter
       ret.setSize(buttonSize);
     }
 
-    add(inUiO.getKey(), new Button_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new Button_View(inUiO.getKey(), ret, inUiO.commandName()));
 
     return ret;
   }
