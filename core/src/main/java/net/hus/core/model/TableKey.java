@@ -8,6 +8,7 @@ public class TableKey implements Serializable
 
   private String mTable;
   private String mKey;
+
   private String mGroup;
 
   TableKey()

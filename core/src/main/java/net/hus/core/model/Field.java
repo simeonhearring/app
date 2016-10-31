@@ -246,6 +246,12 @@ public class Field extends AbstractModel
     }
   }
 
+  public static class Key implements Serializable
+  {
+    private static final long serialVersionUID = -6018303509603610753L;
+
+  }
+
   public boolean isArray()
   {
     return Type.isArray(getType());
