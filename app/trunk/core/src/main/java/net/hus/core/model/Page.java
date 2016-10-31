@@ -18,6 +18,7 @@ public class Page implements Serializable
 
 
   private Name mName;
+  private String mComponentsName;
 
   private List<Section> mSections = new ArrayList<>();
 
@@ -34,6 +35,16 @@ public class Page implements Serializable
   public List<Section> getSections()
   {
     return mSections;
+  }
+
+  public String getComponentsName()
+  {
+    return mComponentsName;
+  }
+
+  public void setComponentsName(String inComponentsName)
+  {
+    mComponentsName = inComponentsName;
   }
 
   public static class Section implements Serializable

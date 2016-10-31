@@ -28,6 +28,7 @@ public class PageParser extends XStream implements Parser<Page>
   {
     alias("Page", Page.class);
     aliasAttribute(Page.class, "mName", "name");
+    aliasAttribute(Page.class, "mComponentsName", "components.name");
     aliasField("Sections", Page.class, "mSections");
 
     alias("Page.Section", Page.Section.class);
