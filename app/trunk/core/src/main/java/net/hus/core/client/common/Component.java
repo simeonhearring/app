@@ -5,7 +5,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import net.hus.core.model.TableFvk;
 
 /**
- * Parent for all ui components.
+ * Parent for all Model View UI Components wrappers.
  *
  * @author simeonhearring
  * @since October 2016

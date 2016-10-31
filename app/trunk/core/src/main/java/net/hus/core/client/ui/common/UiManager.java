@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.common.Component;
+import net.hus.core.client.common.UiCreate;
 import net.hus.core.model.Field;
 import net.hus.core.model.TableFvk;
 import net.hus.core.model.Value;
