@@ -83,7 +83,7 @@ public class Components implements Serializable
     return getTableFvks().get(0);
   }
 
-  public List<TableFvk> getTableFvks()
+  private List<TableFvk> getTableFvks()
   {
     return mTableFvks;
   }

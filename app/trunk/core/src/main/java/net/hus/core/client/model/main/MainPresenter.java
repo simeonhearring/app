@@ -7,7 +7,6 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
-import net.hus.core.model.Page;
 import net.hus.core.model.Page.Section;
 import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ComponentsCommand;
@@ -19,8 +18,6 @@ public class MainPresenter
 {
   private MainDisplay mDisplay;
 
-  private PageDisplay mPage;
-
   private UiManager mManager;
 
   public MainPresenter(MainDisplay inDisplay)
@@ -31,7 +28,6 @@ public class MainPresenter
 
     profile();
   }
-
 
   private void profile()
   {
@@ -48,32 +44,44 @@ public class MainPresenter
 
   private void components(String inComponentName, String inFvk)
   {
-    Global.fire(new ComponentsCommand(inComponentName, inFvk),
-        new RpcCallback<ComponentsCommand>()
+    Global.fire(new ComponentsCommand(inComponentName, inFvk), new RpcCallback<ComponentsCommand>()
     {
       @Override
       public void onRpcSuccess(ComponentsCommand inResult)
       {
         Components components = inResult.getComponents();
 
-            // add page
-        Page.Name page = components.getTableFvk().getPage();
-        mPage = PageLocater.page(mDisplay, page);
-        mDisplay.add(mPage);
+        PageDisplay page = addPageToMain(components);
 
-        // add components
-        for (Entry<Section.Name, List<UIObject_>> value : components.components().entrySet())
-        {
-          Section.Name section = value.getKey();
-          for (UIObject_ uivalue : value.getValue())
-          {
-            mPage.add(section, mManager.match(uivalue));
-          }
-        }
+        addComponentsToPage(components, page);
 
-        // update labels & fields & table key
-        mManager.update(components.getValues(), components.getTableFvk());
+        addValuesToComponents(components);
       }
     });
+  }
+
+  private PageDisplay addPageToMain(Components inComponents)
+  {
+    PageDisplay ret = PageLocater.page(mDisplay, inComponents.getTableFvk().getPage());
+    mDisplay.clear();
+    mDisplay.add(ret);
+    return ret;
+  }
+
+  private void addComponentsToPage(Components inComponents, PageDisplay inPage)
+  {
+    for (Entry<Section.Name, List<UIObject_>> value : inComponents.components().entrySet())
+    {
+      Section.Name section = value.getKey();
+      for (UIObject_ uivalue : value.getValue())
+      {
+        inPage.add(section, mManager.match(uivalue));
+      }
+    }
+  }
+
+  private void addValuesToComponents(Components inComponents)
+  {
+    mManager.update(inComponents.getValues(), inComponents.getTableFvk());
   }
 }

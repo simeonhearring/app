@@ -2,6 +2,17 @@ package net.hus.core.model;
 
 import java.io.Serializable;
 
+/**
+ * Understands how to query FIELD_GROUP for a set of FIELDS to update
+ * Components.
+ *
+ * Understands how to update FIELD_VALUE for a FVK (FIELD_VALUE mKey).
+ *
+ * Page.Name manages which Page should be loaded for Components.
+ *
+ * @author simeonhearring
+ * @since October 2016
+ */
 public class TableFvk implements Serializable
 {
   private static final long serialVersionUID = 908199922488294162L;
