@@ -71,4 +71,9 @@ public class Profile extends AbstractModel
   {
     mPage = inPage;
   }
+
+  public String fvk()
+  {
+    return getId() + "";
+  }
 }

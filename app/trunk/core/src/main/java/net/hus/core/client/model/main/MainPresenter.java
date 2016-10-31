@@ -43,14 +43,15 @@ public class MainPresenter
         mPage = PageLocater.page(mDisplay, profile.getPage().getName());
         mDisplay.add(mPage);
 
-        components(profile.getPage().getComponentsName(), "-2");
+        components(profile.getPage().getComponentsName(), profile.fvk());
       }
     });
   }
 
-  private void components(String inComponentName, String inKey)
+  private void components(String inComponentName, String inFvk)
   {
-    Global.fire(new ComponentsCommand(inComponentName, inKey), new RpcCallback<ComponentsCommand>()
+    Global.fire(new ComponentsCommand(inComponentName, inFvk),
+        new RpcCallback<ComponentsCommand>()
     {
       @Override
       public void onRpcSuccess(ComponentsCommand inResult)

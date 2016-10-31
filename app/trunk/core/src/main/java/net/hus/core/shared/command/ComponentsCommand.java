@@ -9,16 +9,16 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
   private static final long serialVersionUID = -2970113047435446656L;
 
   private String mComponentName;
-  private String mKey;
+  private String mFvk;
 
   ComponentsCommand()
   {
   }
 
-  public ComponentsCommand(String inComponentName, String inKey)
+  public ComponentsCommand(String inComponentName, String inFvk)
   {
     mComponentName = inComponentName;
-    mKey = inKey;
+    mFvk = inFvk;
   }
 
   public Components getComponents()
@@ -31,8 +31,8 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
     return mComponentName;
   }
 
-  public String getKey()
+  public String fvk()
   {
-    return mKey;
+    return mFvk;
   }
 }
