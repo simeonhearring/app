@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import net.hus.core.client.common.Template;
-import net.hus.core.client.model.UiManager;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
+import net.hus.core.client.ui.common.UiManager;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.model.Components;
@@ -24,7 +24,7 @@ public class MainPresenter
   {
     mDisplay = inDisplay;
 
-    mManager = mDisplay.getManager();
+    mManager = new UiManager(mDisplay.getUiCreate());
 
     template();
   }
@@ -69,6 +69,7 @@ public class MainPresenter
       {
         mTemplate = template(inResult.getData().getName());
         mDisplay.add(mTemplate);
+
         uiObject();
       }
     });

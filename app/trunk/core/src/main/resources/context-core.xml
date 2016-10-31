@@ -53,4 +53,8 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
+	<bean id="LoginCommand" class="net.hus.core.server.command.LoginCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
+
 </beans>

@@ -47,4 +47,13 @@ public class TextBox_Test
 
     return ret;
   }
+
+  public static TextBox_ newTextBox(String inKey)
+  {
+    TextBox_ ret = newTextBox();
+
+    ret.setKey(inKey);
+
+    return ret;
+  }
 }

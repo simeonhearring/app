@@ -3,6 +3,7 @@ package net.hus.core.client.model.main;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.common.Display;
+import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.model.template.BlogDisplay;
 import net.hus.core.client.model.template.LoginDisplay;
 import net.hus.core.client.model.template.MarketingDisplay;
@@ -23,4 +24,6 @@ public interface MainDisplay extends Display
   WebPageDisplay getWebPage();
 
   MarketingDisplay getMarketing();
+
+  UiCreate getUiCreate();
 }

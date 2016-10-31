@@ -31,4 +31,9 @@ public class Views<T>
       value.setTableKey(inTk);
     }
   }
+
+  public List<View<T>> getViews()
+  {
+    return mViews;
+  }
 }
