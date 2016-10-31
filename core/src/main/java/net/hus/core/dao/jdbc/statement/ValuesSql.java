@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 import net.hus.core.model.Value;
 
 public class ValuesSql extends Mapping
@@ -77,7 +77,7 @@ public class ValuesSql extends Mapping
     for (Value value : inList)
     {
       String table = value.getTableKey().getTable();
-      String key = value.getTableKey().getKey();
+      String key = value.getTableKey().getFvk();
       String valueText = value.getValue();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
@@ -87,33 +87,33 @@ public class ValuesSql extends Mapping
     mBatchInsert.reset();
   }
 
-  protected List<Value> select(TableKey inTk)
+  protected List<Value> select(TableFvk inTk)
   {
-    List<Value> ret = mSelectKey.execute(params(inTk.getTable(), inTk.getKey()));
+    List<Value> ret = mSelectKey.execute(params(inTk.getTable(), inTk.getFvk()));
     return ret;
   }
 
-  public List<Value> selectLast(TableKey inTk)
+  public List<Value> selectLast(TableFvk inTk)
   {
     List<Value> ret =
-        mSelectLastKey.execute(params(inTk.getTable(), inTk.getKey(), inTk.getGroup()));
+        mSelectLastKey.execute(params(inTk.getTable(), inTk.getFvk(), inTk.getGroup()));
     return ret;
   }
 
-  protected List<Value> selectLast(List<TableKey> inTks)
+  protected List<Value> selectLast(List<TableFvk> inTks)
   {
     List<Value> ret = new ArrayList<>();
-    for (TableKey value : inTks)
+    for (TableFvk value : inTks)
     {
       ret.addAll(
-          mSelectLastKey.execute(params(value.getTable(), value.getKey(), value.getGroup())));
+          mSelectLastKey.execute(params(value.getTable(), value.getFvk(), value.getGroup())));
     }
     return ret;
   }
 
-  protected List<Value> select(TableKey inTk, Long inFieldId)
+  protected List<Value> select(TableFvk inTk, Long inFieldId)
   {
-    List<Value> ret = mSelectKeyField.execute(params(inTk.getTable(), inTk.getKey(), inFieldId));
+    List<Value> ret = mSelectKeyField.execute(params(inTk.getTable(), inTk.getFvk(), inFieldId));
     return ret;
   }
 }

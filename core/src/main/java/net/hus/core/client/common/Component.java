@@ -2,7 +2,7 @@ package net.hus.core.client.common;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 
 /**
  * Parent for all ui components.
@@ -19,5 +19,5 @@ public interface Component<V> extends IsWidget
 
   void setLabel(String inLabel);
 
-  void setTableKey(TableKey inTk);
+  void setTableKey(TableFvk inTFvk);
 }

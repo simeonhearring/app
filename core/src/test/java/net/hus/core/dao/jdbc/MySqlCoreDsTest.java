@@ -19,14 +19,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 
 public class MySqlCoreDsTest
 {
   public static final String VALUE_TABLE = "JUNIT";
   public static final String VALUE_KEY = "-1";
   public static final String FIELD_GROUP = "JGRP1";
-  public static final TableKey TK = new TableKey(VALUE_TABLE, VALUE_KEY, FIELD_GROUP);
+  public static final TableFvk TK = new TableFvk(VALUE_TABLE, VALUE_KEY, FIELD_GROUP);
 
   private static final String CONTEXT = "contextDs-core.xml";
   private static final String CORE_DS = "CoreDs";

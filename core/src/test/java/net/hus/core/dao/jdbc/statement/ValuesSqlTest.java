@@ -27,7 +27,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   {
     List<Value> i = mSql.select(TK);
     Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getTable());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getKey());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getFvk());
   }
 
   @Test
@@ -35,7 +35,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   {
     List<Value> i = mSql.select(TK, 1L);
     Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getTable());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getKey());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getFvk());
   }
 
   @Test
@@ -44,7 +44,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     List<Value> i = mSql.selectLast(TK);
     Assert.assertEquals(5, i.size());
     Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getTable());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getKey());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getFvk());
   }
 
   @Test

@@ -69,7 +69,7 @@ public class MainPresenter
         }
 
         // update labels & fields & table key
-        mManager.update(components.getValues(), components.getTableKey());
+        mManager.update(components.getValues(), components.getTableFvk());
       }
     });
   }

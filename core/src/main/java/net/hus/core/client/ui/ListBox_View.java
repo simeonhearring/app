@@ -5,7 +5,7 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 
 public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
 {
@@ -15,7 +15,7 @@ public class ListBox_View extends Abstract_View<ListBox, String> implements Chan
   }
 
   @Override
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     super.setTableKey(inTableKey);
     mComponent.addChangeHandler(this);

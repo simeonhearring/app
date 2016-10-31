@@ -6,7 +6,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlexTable;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 import net.hus.core.shared.model.FlexTable_.Table;
 import net.hus.core.shared.util.StringUtil;
 
@@ -24,7 +24,7 @@ public class FlexTable_View extends Abstract_View<FlexTable, Table> implements C
   }
 
   @Override
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     super.setTableKey(inTableKey);
     mComponent.addClickHandler(this);
