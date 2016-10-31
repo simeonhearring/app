@@ -7,6 +7,7 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
+import net.hus.core.model.Page;
 import net.hus.core.model.Page.Section;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.TemplateCommand;
@@ -30,22 +31,22 @@ public class MainPresenter
     page();
   }
 
-  private PageDisplay page(String inPage)
+  private PageDisplay page(Page.Name inPage)
   {
     PageDisplay ret = null;
 
     switch (inPage)
     {
-      case "BLOG":
+      case BLOG:
         ret = mDisplay.getBlog();
         break;
-      case "WEB":
+      case WEB:
         ret = mDisplay.getWeb();
         break;
-      case "MARKETING":
+      case MARKET:
         ret = mDisplay.getMarketing();
         break;
-      case "LOGIN":
+      case LOGIN:
         ret = mDisplay.getLogin();
         break;
 

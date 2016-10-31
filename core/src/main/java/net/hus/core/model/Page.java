@@ -17,16 +17,16 @@ public class Page implements Serializable
   }
 
 
-  private String mName;
+  private Name mName;
 
   private List<Section> mSections = new ArrayList<>();
 
-  public String getName()
+  public Name getName()
   {
     return mName;
   }
 
-  public void setName(String inName)
+  public void setName(Name inName)
   {
     mName = inName;
   }

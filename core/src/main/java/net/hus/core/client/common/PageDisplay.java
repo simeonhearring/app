@@ -13,6 +13,4 @@ import net.hus.core.model.Page.Section;
 public interface PageDisplay extends Display
 {
   void add(Section.Name inSection, IsWidget inComponent);
-
-  // void add(String inSection, IsWidget inComponent);
 }
