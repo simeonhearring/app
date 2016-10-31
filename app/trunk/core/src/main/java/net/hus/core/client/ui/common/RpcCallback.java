@@ -9,7 +9,7 @@ import net.hus.core.shared.rpc.common.NotifyResponse;
 
 public abstract class RpcCallback<T> implements AsyncCallback<T>
 {
-  public abstract void onRpcSuccess(T inResult);
+  public abstract void onRpcSuccess(T inCommand);
 
   public void onNotify(NotifyResponse inResponse)
   {
@@ -24,15 +24,15 @@ public abstract class RpcCallback<T> implements AsyncCallback<T>
   }
 
   @Override
-  public void onSuccess(T inResult)
+  public void onSuccess(T inCommand)
   {
-    if (inResult instanceof NotifyResponse)
+    if (inCommand instanceof NotifyResponse)
     {
-      onNotify((NotifyResponse) inResult);
+      onNotify((NotifyResponse) inCommand);
     }
     else
     {
-      onRpcSuccess(inResult);
+      onRpcSuccess(inCommand);
     }
   }
 }
