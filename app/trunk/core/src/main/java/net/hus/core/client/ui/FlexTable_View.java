@@ -5,54 +5,49 @@ import org.gwtbootstrap3.client.ui.html.Span;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.model.TableKey;
 import net.hus.core.shared.model.FlexTable_.Table;
 import net.hus.core.shared.util.StringUtil;
 
-public class FlexTable_View extends Abstract_View<Table>
-implements ClickHandler
+public class FlexTable_View extends Abstract_View<FlexTable, Table> implements ClickHandler
 {
-  private FlexTable mView;
-
-  public FlexTable_View(String inKey, FlexTable inView)
+  public FlexTable_View(String inKey, FlexTable inComponent)
   {
-    super(inKey);
-    mView = inView;
+    super(inKey, inComponent);
   }
 
-  public FlexTable_View(String inKey, FlexTable inView, Table inTable)
+  public FlexTable_View(String inKey, FlexTable inComponent, Table inTable)
   {
-    this(inKey, inView);
-    setView(inTable);
+    this(inKey, inComponent);
+    setValue(inTable);
   }
 
   @Override
   public void setTableKey(TableKey inTableKey)
   {
     super.setTableKey(inTableKey);
-    mView.addClickHandler(this);
+    mComponent.addClickHandler(this);
   }
 
   @Override
-  public void setView(Table inView)
+  public void setValue(Table inValue)
   {
-    if (inView != null && inView.getTable() != null)
+    if (inValue != null && inValue.getTable() != null)
     {
-      int headColCt = mView.getCellCount(0);
+      int headColCt = mComponent.getCellCount(0);
 
-      for (String[] object : inView.getTable())
+      for (String[] object : inValue.getTable())
       {
         int col = 0;
-        int row = mView.getRowCount();
+        int row = mComponent.getRowCount();
 
         for (String val : object)
         {
           Span span = new Span();
           span.setText(val);
           span.getElement().setAttribute("contenteditable", "true");
-          mView.setWidget(row, col++, span);
+          mComponent.setWidget(row, col++, span);
         }
 
         if (col < headColCt)
@@ -61,17 +56,11 @@ implements ClickHandler
           {
             Span span = new Span();
             span.getElement().setAttribute("contenteditable", "true");
-            mView.setWidget(row, col, span);
+            mComponent.setWidget(row, col, span);
           }
         }
       }
     }
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mView;
   }
 
   @Override
@@ -83,13 +72,13 @@ implements ClickHandler
   private Table values()
   {
     Table ret = new Table();
-    for (int r = 1; r < mView.getRowCount(); r++)
+    for (int r = 1; r < mComponent.getRowCount(); r++)
     {
-      int colCt = mView.getCellCount(r);
+      int colCt = mComponent.getCellCount(r);
       String[] colVals = new String[colCt];
       for (int c = 0; c < colCt; c++)
       {
-        Span span = (Span) mView.getWidget(r, c);
+        Span span = (Span) mComponent.getWidget(r, c);
         if (span != null)
         {
           colVals[c] = StringUtil.nullIfEmpty(span.getText());

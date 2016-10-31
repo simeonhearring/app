@@ -4,49 +4,39 @@ import org.gwtbootstrap3.client.ui.ListBox;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.model.TableKey;
 
-public class ListBox_View extends Abstract_View<String> implements ChangeHandler
+public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
 {
-  private ListBox mView;
-
-  public ListBox_View(String inKey, ListBox inView)
+  public ListBox_View(String inKey, ListBox inComponent)
   {
-    super(inKey);
-    mView = inView;
+    super(inKey, inComponent);
   }
 
   @Override
   public void setTableKey(TableKey inTableKey)
   {
     super.setTableKey(inTableKey);
-    mView.addChangeHandler(this);
+    mComponent.addChangeHandler(this);
   }
 
   @Override
-  public void setView(String inValue)
+  public void setValue(String inValue)
   {
-    for (int i = 0; i < mView.getItemCount(); i++)
+    for (int i = 0; i < mComponent.getItemCount(); i++)
     {
-      if (inValue.equals(mView.getValue(i)))
+      if (inValue.equals(mComponent.getValue(i)))
       {
-        mView.setSelectedIndex(i);
+        mComponent.setSelectedIndex(i);
         break;
       }
     }
   }
 
   @Override
-  public Widget asWidget()
-  {
-    return mView;
-  }
-
-  @Override
   public void onChange(ChangeEvent inEvent)
   {
-    save(mView.getSelectedValue(), mView.getSelectedItemText());
+    save(mComponent.getSelectedValue(), mComponent.getSelectedItemText());
   }
 }
