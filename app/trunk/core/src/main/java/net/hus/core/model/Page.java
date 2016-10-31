@@ -1,8 +1,6 @@
 package net.hus.core.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Page implements Serializable
 {
@@ -20,7 +18,15 @@ public class Page implements Serializable
   private Name mName;
   private String mComponentsName;
 
-  private List<Section> mSections = new ArrayList<>();
+  Page()
+  {
+  }
+
+  public Page(Name inName, String inComponentName)
+  {
+    mName = inName;
+    mComponentsName = inComponentName;
+  }
 
   public Name getName()
   {
@@ -30,11 +36,6 @@ public class Page implements Serializable
   public void setName(Name inName)
   {
     mName = inName;
-  }
-
-  public List<Section> getSections()
-  {
-    return mSections;
   }
 
   public String getComponentsName()

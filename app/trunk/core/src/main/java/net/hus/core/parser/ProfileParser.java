@@ -16,7 +16,9 @@ public class ProfileParser extends XStream implements Parser<Profile>
     aliasField("First", Profile.class, "mFirst");
     aliasField("Middle", Profile.class, "mMiddle");
     aliasField("Last", Profile.class, "mLast");
-    aliasField("LandingPage", Profile.class, "mLandingPage");
+    aliasField("Page", Profile.class, "mPage");
+
+    PageParser.xs(this);
 
     omitField(AbstractModel.class, "mDelete");
     omitField(AbstractModel.class, "mDirty");

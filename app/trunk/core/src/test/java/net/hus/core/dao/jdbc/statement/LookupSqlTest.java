@@ -217,6 +217,7 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     String xl = ResourceUtil.contents("Profile1.xml");
     Lookup l1 = new Lookup();
+    l1.setId(3L);
     l1.setGroup(Group.PROFILE);
     l1.setName("simeonhearring");
     l1.setXL(xl);

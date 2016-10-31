@@ -22,7 +22,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     ComponentsParser parser = new ComponentsParser();
 
     Components components =
-        parser.fromXml(mCoreDao.lookups().selectXL(Group.COMPONENTS, inCommand.getPage()).getXL());
+        parser.fromXml(mCoreDao.lookups().selectXL(Group.COMPONENTS, inCommand.getComponentName()).getXL());
 
     addLookups(components);
 

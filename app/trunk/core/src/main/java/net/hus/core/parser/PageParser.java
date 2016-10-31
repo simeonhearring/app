@@ -8,7 +8,7 @@ public class PageParser extends XStream implements Parser<Page>
 {
   public PageParser()
   {
-    xs(this);
+    xs((Parser<Page>) this);
   }
 
   @Override
@@ -26,11 +26,13 @@ public class PageParser extends XStream implements Parser<Page>
   @Override
   public void xs(Parser<Page> inParser)
   {
-    alias("Page", Page.class);
-    aliasAttribute(Page.class, "mName", "name");
-    aliasAttribute(Page.class, "mComponentsName", "components.name");
-    aliasField("Sections", Page.class, "mSections");
+    xs((XStream) inParser);
+  }
 
-    alias("Page.Section", Page.Section.class);
+  public static void xs(XStream inXs)
+  {
+    inXs.alias("Page", Page.class);
+    inXs.aliasAttribute(Page.class, "mName", "name");
+    inXs.aliasAttribute(Page.class, "mComponentsName", "components.name");
   }
 }

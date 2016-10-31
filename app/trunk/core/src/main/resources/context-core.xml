@@ -39,7 +39,9 @@
 
 	<bean id="LoggerCommand" class="net.hus.core.server.command.LoggerCommandBean" />
 
-	<bean id="PageCommand" class="net.hus.core.server.command.PageCommandBean" />
+	<bean id="ProfileCommand" class="net.hus.core.server.command.ProfileCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
 
 	<bean id="ComponentsCommand" class="net.hus.core.server.command.ComponentsCommandBean">
 		<property name="coreDao" ref="CoreDao" />

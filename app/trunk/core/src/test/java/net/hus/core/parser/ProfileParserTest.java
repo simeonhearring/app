@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
+import net.hus.core.model.Page;
 import net.hus.core.model.Profile;
 import net.hus.core.util.ResourceUtil;
 
@@ -25,7 +26,7 @@ public class ProfileParserTest
     model.setFirst("Simeon");
     model.setLast("Hearring");
     model.setMiddle("L");
-    model.setLandingPage("Page1.xml");
+    model.setPage(new Page(Page.Name.LOGIN, "Components1"));
     model.setUserName("simeonhearring");
     model.setPassword("abc123");
 
