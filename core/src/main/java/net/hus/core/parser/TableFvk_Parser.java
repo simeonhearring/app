@@ -35,5 +35,6 @@ public class TableFvk_Parser extends XStream implements Parser<TableFvk>
     inXs.aliasAttribute(TableFvk.class, "mFvt", "fvt");
     inXs.aliasAttribute(TableFvk.class, "mFvk", "fvk");
     inXs.aliasAttribute(TableFvk.class, "mFgg", "fgg");
+    inXs.aliasAttribute(TableFvk.class, "mPage", "page.name");
   }
 }

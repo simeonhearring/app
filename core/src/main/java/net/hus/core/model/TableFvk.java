@@ -11,6 +11,8 @@ public class TableFvk implements Serializable
 
   private String mFgg;
 
+  private Page.Name mPage;
+
   TableFvk()
   {
   }
@@ -50,5 +52,15 @@ public class TableFvk implements Serializable
   public void setFgg(String inGroup)
   {
     mFgg = inGroup;
+  }
+
+  public Page.Name getPage()
+  {
+    return mPage;
+  }
+
+  public void setPage(Page.Name inPage)
+  {
+    mPage = inPage;
   }
 }

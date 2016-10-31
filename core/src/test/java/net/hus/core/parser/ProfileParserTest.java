@@ -26,7 +26,7 @@ public class ProfileParserTest
     model.setFirst("Simeon");
     model.setLast("Hearring");
     model.setMiddle("L");
-    model.setPage(new Page(Page.Name.WEB, "Components2"));
+    model.setPage(new Page(null, "Components2"));
     model.setUserName("simeonhearring");
     model.setPassword("abc123");
 
