@@ -14,6 +14,8 @@ public class ComponentsParser extends XStream implements Parser<Components>
     addImplicitCollection(Components.class, "mList", null, UIObject_.class);
     addImplicitCollection(Components.class, "mTableFvks", null, TableFvk.class);
 
+    TableFvk_Parser.xs(this);
+
     ComplexWidget_Parser.xs((XStream) this);
 
     ComplexPanel_Parser.xs((XStream) this);

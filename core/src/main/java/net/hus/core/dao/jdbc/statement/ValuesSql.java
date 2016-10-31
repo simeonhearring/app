@@ -76,7 +76,7 @@ public class ValuesSql extends Mapping
     mBatchInsert.reset();
     for (Value value : inList)
     {
-      String table = value.getTableKey().getTable();
+      String table = value.getTableKey().getFvt();
       String key = value.getTableKey().getFvk();
       String valueText = value.getValue();
       Long fieldId = value.getField().getId();
@@ -89,14 +89,14 @@ public class ValuesSql extends Mapping
 
   protected List<Value> select(TableFvk inTk)
   {
-    List<Value> ret = mSelectKey.execute(params(inTk.getTable(), inTk.getFvk()));
+    List<Value> ret = mSelectKey.execute(params(inTk.getFvt(), inTk.getFvk()));
     return ret;
   }
 
   public List<Value> selectLast(TableFvk inTk)
   {
     List<Value> ret =
-        mSelectLastKey.execute(params(inTk.getTable(), inTk.getFvk(), inTk.getGroup()));
+        mSelectLastKey.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
     return ret;
   }
 
@@ -106,14 +106,14 @@ public class ValuesSql extends Mapping
     for (TableFvk value : inTks)
     {
       ret.addAll(
-          mSelectLastKey.execute(params(value.getTable(), value.getFvk(), value.getGroup())));
+          mSelectLastKey.execute(params(value.getFvt(), value.getFvk(), value.getFgg())));
     }
     return ret;
   }
 
   protected List<Value> select(TableFvk inTk, Long inFieldId)
   {
-    List<Value> ret = mSelectKeyField.execute(params(inTk.getTable(), inTk.getFvk(), inFieldId));
+    List<Value> ret = mSelectKeyField.execute(params(inTk.getFvt(), inTk.getFvk(), inFieldId));
     return ret;
   }
 }

@@ -6,10 +6,10 @@ public class TableFvk implements Serializable
 {
   private static final long serialVersionUID = 908199922488294162L;
 
-  private String mTable;
+  private String mFvt;
   private String mFvk;
 
-  private String mGroup;
+  private String mFgg;
 
   TableFvk()
   {
@@ -17,19 +17,19 @@ public class TableFvk implements Serializable
 
   public TableFvk(String inTable, String inFvk, String inGroup)
   {
-    mTable = inTable;
+    mFvt = inTable;
     mFvk = inFvk;
-    mGroup = inGroup;
+    mFgg = inGroup;
   }
 
-  public String getTable()
+  public String getFvt()
   {
-    return mTable;
+    return mFvt;
   }
 
-  public void setTable(String inTable)
+  public void setFvt(String inTable)
   {
-    mTable = inTable;
+    mFvt = inTable;
   }
 
   public String getFvk()
@@ -42,13 +42,13 @@ public class TableFvk implements Serializable
     mFvk = inFvk;
   }
 
-  public String getGroup()
+  public String getFgg()
   {
-    return mGroup;
+    return mFgg;
   }
 
-  public void setGroup(String inGroup)
+  public void setFgg(String inGroup)
   {
-    mGroup = inGroup;
+    mFgg = inGroup;
   }
 }

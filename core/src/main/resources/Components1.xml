@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<TableKey table="JUNIT" group="JGRP2" />
+	<TableFvk fvt="JUNIT" fgg="JGRP2" />
 	<Heading SECTION="LOGINC01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Login</Title>
 		<Text>Login</Text>
