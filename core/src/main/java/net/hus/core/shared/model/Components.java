@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.model.Page.Section;
 import net.hus.core.model.TableKey;
 import net.hus.core.model.Value;
 
@@ -24,12 +25,12 @@ public class Components implements Serializable
     mList.add(inUiO);
   }
 
-  public Map<String, List<UIObject_>> components()
+  public Map<Section.Name, List<UIObject_>> components()
   {
-    Map<String, List<UIObject_>> ret = new HashMap<>();
+    Map<Section.Name, List<UIObject_>> ret = new HashMap<>();
     for (UIObject_ value : mList)
     {
-      String section = value.getSection();
+      Section.Name section = value.getSection();
       if (section != null)
       {
         if (!ret.containsKey(section))

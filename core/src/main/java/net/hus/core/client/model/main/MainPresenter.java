@@ -7,6 +7,7 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
+import net.hus.core.model.Page.Section;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.model.Components;
@@ -16,7 +17,7 @@ public class MainPresenter
 {
   private MainDisplay mDisplay;
 
-  private PageDisplay mTemplate;
+  private PageDisplay mPage;
 
   private UiManager mManager;
 
@@ -26,25 +27,20 @@ public class MainPresenter
 
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    template();
+    page();
   }
 
-  public MainDisplay getDisplay()
-  {
-    return mDisplay;
-  }
-
-  private PageDisplay template(String inTemplate)
+  private PageDisplay page(String inPage)
   {
     PageDisplay ret = null;
 
-    switch (inTemplate)
+    switch (inPage)
     {
       case "BLOG":
         ret = mDisplay.getBlog();
         break;
       case "WEB":
-        ret = mDisplay.getWebPage();
+        ret = mDisplay.getWeb();
         break;
       case "MARKETING":
         ret = mDisplay.getMarketing();
@@ -60,22 +56,22 @@ public class MainPresenter
     return ret;
   }
 
-  public void template()
+  private void page()
   {
     Global.fire(new TemplateCommand(), new RpcCallback<TemplateCommand>()
     {
       @Override
       public void onRpcSuccess(TemplateCommand inResult)
       {
-        mTemplate = template(inResult.getData().getName());
-        mDisplay.add(mTemplate);
+        mPage = page(inResult.getData().getName());
+        mDisplay.add(mPage);
 
-        uiObject();
+        components();
       }
     });
   }
 
-  public void uiObject()
+  private void components()
   {
     Global.fire(new ComponentsCommand("Components1", "-2"), new RpcCallback<ComponentsCommand>()
     {
@@ -85,11 +81,11 @@ public class MainPresenter
         Components components = inResult.getComponents();
 
         // add components
-        for (Entry<String, List<UIObject_>> value : components.components().entrySet())
+        for (Entry<Section.Name, List<UIObject_>> value : components.components().entrySet())
         {
           for (UIObject_ uivalue : value.getValue())
           {
-            mTemplate.add(value.getKey(), mManager.match(uivalue));
+            mPage.add(value.getKey(), mManager.match(uivalue));
           }
         }
 

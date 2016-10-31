@@ -14,13 +14,13 @@ import net.hus.core.client.model.main.MainDisplay;
 import net.hus.core.client.model.page.BlogDisplay;
 import net.hus.core.client.model.page.LoginDisplay;
 import net.hus.core.client.model.page.MarketingDisplay;
-import net.hus.core.client.model.page.WebPageDisplay;
+import net.hus.core.client.model.page.WebDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.client.ui.common.GwtUiCreate;
 import net.hus.core.client.ui.page.BlogView;
 import net.hus.core.client.ui.page.LoginView;
 import net.hus.core.client.ui.page.MarketingView;
-import net.hus.core.client.ui.page.WebPageView;
+import net.hus.core.client.ui.page.WebView;
 
 public class MainView extends AbstractView implements MainDisplay
 {
@@ -63,9 +63,9 @@ public class MainView extends AbstractView implements MainDisplay
   }
 
   @Override
-  public WebPageDisplay getWebPage()
+  public WebDisplay getWeb()
   {
-    return new WebPageView();
+    return new WebView();
   }
 
   @Override

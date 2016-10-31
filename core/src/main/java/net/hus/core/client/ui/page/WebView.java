@@ -8,14 +8,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.model.page.WebPageDisplay;
+import net.hus.core.client.model.page.WebDisplay;
 import net.hus.core.model.Page.Section;
 
-public class WebPageView extends AbstractRowView implements WebPageDisplay
+public class WebView extends AbstractRowView implements WebDisplay
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
-  interface Binder extends UiBinder<Widget, WebPageView>
+  interface Binder extends UiBinder<Widget, WebView>
   {
   }
 
@@ -23,23 +23,23 @@ public class WebPageView extends AbstractRowView implements WebPageDisplay
   Row mRow;
 
   @UiField
-  Column mWebL01, mWebC01, mWebR01;
+  Column mL01, mC01, mR01;
 
-  public WebPageView()
+  public WebView()
   {
     initWidget(BINDER.createAndBindUi(this));
 
-    mWebL01.setId(Section.Name.WEBL01.name());
-    mWebC01.setId(Section.Name.WEBC01.name());
-    mWebR01.setId(Section.Name.WEBR01.name());
+    mL01.setId(Section.Name.WEBL01.name());
+    mC01.setId(Section.Name.WEBC01.name());
+    mR01.setId(Section.Name.WEBR01.name());
   }
 
   @Override
   public Row[] getRow()
   {
     return new Row[]
-    {
-        mRow
-    };
+        {
+            mRow
+        };
   }
 }

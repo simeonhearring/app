@@ -7,7 +7,7 @@ import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.model.page.BlogDisplay;
 import net.hus.core.client.model.page.LoginDisplay;
 import net.hus.core.client.model.page.MarketingDisplay;
-import net.hus.core.client.model.page.WebPageDisplay;
+import net.hus.core.client.model.page.WebDisplay;
 
 public interface MainDisplay extends Display
 {
@@ -17,13 +17,13 @@ public interface MainDisplay extends Display
 
   void clear();
 
+  UiCreate getUiCreate();
+
   LoginDisplay getLogin();
 
   BlogDisplay getBlog();
 
-  WebPageDisplay getWebPage();
+  WebDisplay getWeb();
 
   MarketingDisplay getMarketing();
-
-  UiCreate getUiCreate();
 }
