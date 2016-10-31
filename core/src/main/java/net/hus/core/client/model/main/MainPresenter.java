@@ -10,7 +10,7 @@ import net.hus.core.client.ui.common.UiManager;
 import net.hus.core.model.Page;
 import net.hus.core.model.Page.Section;
 import net.hus.core.shared.command.ComponentsCommand;
-import net.hus.core.shared.command.TemplateCommand;
+import net.hus.core.shared.command.PageCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
 
@@ -59,10 +59,10 @@ public class MainPresenter
 
   private void page()
   {
-    Global.fire(new TemplateCommand(), new RpcCallback<TemplateCommand>()
+    Global.fire(new PageCommand(), new RpcCallback<PageCommand>()
     {
       @Override
-      public void onRpcSuccess(TemplateCommand inResult)
+      public void onRpcSuccess(PageCommand inResult)
       {
         mPage = page(inResult.getData().getName());
         mDisplay.add(mPage);

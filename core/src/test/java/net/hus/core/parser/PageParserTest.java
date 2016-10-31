@@ -17,6 +17,7 @@ public class PageParserTest
 
     Page model = parser.fromXml(xml);
 
-    Assert.assertEquals("LOGIN", model.getName());
+    Assert.assertEquals(Page.Name.LOGIN, model.getName());
+    Assert.assertEquals("Components1", model.getComponentsName());
   }
 }

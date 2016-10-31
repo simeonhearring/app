@@ -1,4 +1,4 @@
-<Page name="LOGIN">
+<Page name="LOGIN" components.name="Components1">
 	<Sections>
 		<Page.Section />
 	</Sections>
