@@ -10,7 +10,7 @@ public class Profile extends AbstractModel
   private String mLast;
   private String mPassword;
 
-  private String mLandingPage;
+  private Page mPage;
 
   public String getFirst()
   {
@@ -42,16 +42,6 @@ public class Profile extends AbstractModel
     mLast = inLast;
   }
 
-  public String getLandingPage()
-  {
-    return mLandingPage;
-  }
-
-  public void setLandingPage(String inLandingPage)
-  {
-    mLandingPage = inLandingPage;
-  }
-
   public String getUserName()
   {
     return mUserName;
@@ -70,5 +60,15 @@ public class Profile extends AbstractModel
   public void setPassword(String inPassword)
   {
     mPassword = inPassword;
+  }
+
+  public Page getPage()
+  {
+    return mPage;
+  }
+
+  public void setPage(Page inPage)
+  {
+    mPage = inPage;
   }
 }

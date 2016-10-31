@@ -7,10 +7,10 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
-import net.hus.core.model.Page;
 import net.hus.core.model.Page.Section;
+import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ComponentsCommand;
-import net.hus.core.shared.command.PageCommand;
+import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
 
@@ -31,50 +31,26 @@ public class MainPresenter
     page();
   }
 
-  private PageDisplay page(Page.Name inPage)
-  {
-    PageDisplay ret = null;
-
-    switch (inPage)
-    {
-      case BLOG:
-        ret = mDisplay.getBlog();
-        break;
-      case WEB:
-        ret = mDisplay.getWeb();
-        break;
-      case MARKET:
-        ret = mDisplay.getMarketing();
-        break;
-      case LOGIN:
-        ret = mDisplay.getLogin();
-        break;
-
-      default:
-        ret = mDisplay.getLogin();
-        break;
-    }
-    return ret;
-  }
 
   private void page()
   {
-    Global.fire(new PageCommand(), new RpcCallback<PageCommand>()
+    Global.fire(new ProfileCommand("simeonhearring"), new RpcCallback<ProfileCommand>()
     {
       @Override
-      public void onRpcSuccess(PageCommand inResult)
+      public void onRpcSuccess(ProfileCommand inResult)
       {
-        mPage = page(inResult.getData().getName());
+        Profile profile = inResult.getData();
+        mPage = PageLocater.page(mDisplay, profile.getPage().getName());
         mDisplay.add(mPage);
 
-        components();
+        components(profile.getPage().getComponentsName(), "-2");
       }
     });
   }
 
-  private void components()
+  private void components(String inComponentName, String inKey)
   {
-    Global.fire(new ComponentsCommand("Components1", "-2"), new RpcCallback<ComponentsCommand>()
+    Global.fire(new ComponentsCommand(inComponentName, inKey), new RpcCallback<ComponentsCommand>()
     {
       @Override
       public void onRpcSuccess(ComponentsCommand inResult)
@@ -84,9 +60,10 @@ public class MainPresenter
         // add components
         for (Entry<Section.Name, List<UIObject_>> value : components.components().entrySet())
         {
+          Section.Name section = value.getKey();
           for (UIObject_ uivalue : value.getValue())
           {
-            mPage.add(value.getKey(), mManager.match(uivalue));
+            mPage.add(section, mManager.match(uivalue));
           }
         }
 
