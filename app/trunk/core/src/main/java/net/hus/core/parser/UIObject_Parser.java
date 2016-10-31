@@ -2,7 +2,6 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.TableFvk;
 import net.hus.core.shared.model.UIObject_;
 
 public class UIObject_Parser<T> extends XStream implements Parser<T>
@@ -33,13 +32,7 @@ public class UIObject_Parser<T> extends XStream implements Parser<T>
 
   public static void xs(XStream inXs)
   {
-    inXs.alias("TableFvk", TableFvk.class);
-    inXs.aliasAttribute(TableFvk.class, "mTable", "table");
-    inXs.aliasAttribute(TableFvk.class, "mFvk", "fvk");
-    inXs.aliasAttribute(TableFvk.class, "mGroup", "group");
-
     inXs.alias("UIObject", UIObject_.class);
-    // inXs.aliasField("TABLEKEY", UIObject_.class, "mTableKey");
     inXs.aliasField("Title", UIObject_.class, "mTitle");
     inXs.aliasAttribute(UIObject_.class, "mSection", "SECTION");
     inXs.aliasAttribute(UIObject_.class, "mKey", "KEY");
