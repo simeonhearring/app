@@ -13,7 +13,7 @@ import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.rpc.HasCommandName;
 
 public class AbstractCommand_View<C extends Widget & HasClickHandlers>
-extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
+    extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
 {
   private String mCommandName;
 
@@ -36,9 +36,9 @@ extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
     Global.fire(new RequestCommand(commandName()), new RpcCallback<RequestCommand>()
     {
       @Override
-      public void onRpcSuccess(RequestCommand inResult)
+      public void onRpcSuccess(RequestCommand inCommand)
       {
-        Notify.notify("I'm back");
+        Notify.notify("I'm back with ... " + inCommand.commandName());
       }
     });
   }
