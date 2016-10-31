@@ -10,7 +10,7 @@ import net.hus.core.client.common.Component;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.model.Field;
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 import net.hus.core.model.Value;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
@@ -19,7 +19,7 @@ import net.hus.core.shared.util.NumberUtil;
 
 public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
-  private TableKey mTableKey;
+  private TableFvk mTableKey;
   private Long mFieldId;
   private String mLabel;
 
@@ -38,7 +38,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   }
 
   @Override
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     mTableKey = inTableKey;
   }

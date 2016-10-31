@@ -22,11 +22,11 @@ public class ProfileParserTest
   public void test()
   {
     Profile model = new Profile();
-    model.setId(1L);
+    model.setId(3L);
     model.setFirst("Simeon");
     model.setLast("Hearring");
     model.setMiddle("L");
-    model.setPage(new Page(Page.Name.LOGIN, "Components1"));
+    model.setPage(new Page(Page.Name.WEB, "Components2"));
     model.setUserName("simeonhearring");
     model.setPassword("abc123");
 

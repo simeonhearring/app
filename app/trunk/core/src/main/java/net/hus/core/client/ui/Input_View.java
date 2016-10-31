@@ -5,7 +5,7 @@ import org.gwtbootstrap3.client.ui.Input;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 
 public class Input_View extends Abstract_View<Input, String> implements ValueChangeHandler<String>
 {
@@ -15,7 +15,7 @@ public class Input_View extends Abstract_View<Input, String> implements ValueCha
   }
 
   @Override
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     super.setTableKey(inTableKey);
     mComponent.addValueChangeHandler(this);

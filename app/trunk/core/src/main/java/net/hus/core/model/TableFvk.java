@@ -2,23 +2,23 @@ package net.hus.core.model;
 
 import java.io.Serializable;
 
-public class TableKey implements Serializable
+public class TableFvk implements Serializable
 {
   private static final long serialVersionUID = 908199922488294162L;
 
   private String mTable;
-  private String mKey;
+  private String mFvk;
 
   private String mGroup;
 
-  TableKey()
+  TableFvk()
   {
   }
 
-  public TableKey(String inTable, String inKey, String inGroup)
+  public TableFvk(String inTable, String inFvk, String inGroup)
   {
     mTable = inTable;
-    mKey = inKey;
+    mFvk = inFvk;
     mGroup = inGroup;
   }
 
@@ -32,14 +32,14 @@ public class TableKey implements Serializable
     mTable = inTable;
   }
 
-  public String getKey()
+  public String getFvk()
   {
-    return mKey;
+    return mFvk;
   }
 
-  public void setKey(String inKey)
+  public void setFvk(String inFvk)
   {
-    mKey = inKey;
+    mFvk = inFvk;
   }
 
   public String getGroup()

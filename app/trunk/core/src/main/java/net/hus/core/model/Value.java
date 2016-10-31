@@ -8,7 +8,7 @@ public class Value extends AbstractModel
 {
   private static final long serialVersionUID = -8854640642880299189L;
 
-  private TableKey mTableKey;
+  private TableFvk mTableKey;
   private String mValue;
   private Date mAsOf;
   private Field mField;
@@ -60,12 +60,12 @@ public class Value extends AbstractModel
     return mTable;
   }
 
-  public TableKey getTableKey()
+  public TableFvk getTableKey()
   {
     return mTableKey;
   }
 
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     mTableKey = inTableKey;
   }

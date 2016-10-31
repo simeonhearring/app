@@ -5,7 +5,7 @@ import org.gwtbootstrap3.client.ui.TextBox;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 
 public class TextBox_View extends Abstract_View<TextBox, String>
     implements ValueChangeHandler<String>
@@ -16,7 +16,7 @@ public class TextBox_View extends Abstract_View<TextBox, String>
   }
 
   @Override
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     super.setTableKey(inTableKey);
     mComponent.addValueChangeHandler(this);

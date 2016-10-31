@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import net.hus.core.model.Page.Section;
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 import net.hus.core.model.Value;
 
 public class Components implements Serializable
 {
   private static final long serialVersionUID = 1058892144882503748L;
 
-  private List<TableKey> mTableKeys = new ArrayList<>();
+  private List<TableFvk> mTableFvks = new ArrayList<>();
 
   private List<UIObject_> mList = new ArrayList<>();
 
@@ -78,18 +78,18 @@ public class Components implements Serializable
     }
   }
 
-  public TableKey getTableKey()
+  public TableFvk getTableFvk()
   {
-    return getTableKeys().get(0);
+    return getTableFvks().get(0);
   }
 
-  public List<TableKey> getTableKeys()
+  public List<TableFvk> getTableFvks()
   {
-    return mTableKeys;
+    return mTableFvks;
   }
 
-  public void setTableKeys(List<TableKey> inTableKeys)
+  public void setTableFvks(List<TableFvk> inTableKeys)
   {
-    mTableKeys = inTableKeys;
+    mTableFvks = inTableKeys;
   }
 }

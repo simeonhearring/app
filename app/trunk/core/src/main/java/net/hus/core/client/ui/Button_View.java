@@ -8,7 +8,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 import net.hus.core.shared.command.RequestCommand;
 
 public class Button_View extends Abstract_View<Button, Void> implements ClickHandler
@@ -20,7 +20,7 @@ public class Button_View extends Abstract_View<Button, Void> implements ClickHan
   }
 
   @Override
-  public void setTableKey(TableKey inTableKey)
+  public void setTableKey(TableFvk inTableKey)
   {
     super.setTableKey(inTableKey);
   }

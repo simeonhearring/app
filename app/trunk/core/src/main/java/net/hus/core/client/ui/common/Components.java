@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.hus.core.client.common.Component;
-import net.hus.core.model.TableKey;
+import net.hus.core.model.TableFvk;
 
 public class Components<V>
 {
@@ -23,7 +23,7 @@ public class Components<V>
     }
   }
 
-  public void setFieldNameTk(String inFieldName, TableKey inTk)
+  public void setFieldNameTk(String inFieldName, TableFvk inTk)
   {
     for (Component<?> value : mComponents)
     {
