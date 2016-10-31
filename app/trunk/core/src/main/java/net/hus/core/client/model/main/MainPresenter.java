@@ -7,6 +7,7 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
+import net.hus.core.model.Page;
 import net.hus.core.model.Page.Section;
 import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ComponentsCommand;
@@ -28,11 +29,11 @@ public class MainPresenter
 
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    page();
+    profile();
   }
 
 
-  private void page()
+  private void profile()
   {
     Global.fire(new ProfileCommand("simeonhearring"), new RpcCallback<ProfileCommand>()
     {
@@ -40,9 +41,6 @@ public class MainPresenter
       public void onRpcSuccess(ProfileCommand inResult)
       {
         Profile profile = inResult.getData();
-        mPage = PageLocater.page(mDisplay, profile.getPage().getName());
-        mDisplay.add(mPage);
-
         components(profile.getPage().getComponentsName(), profile.fvk());
       }
     });
@@ -57,6 +55,11 @@ public class MainPresenter
       public void onRpcSuccess(ComponentsCommand inResult)
       {
         Components components = inResult.getComponents();
+
+            // add page
+        Page.Name page = components.getTableFvk().getPage();
+        mPage = PageLocater.page(mDisplay, page);
+        mDisplay.add(mPage);
 
         // add components
         for (Entry<Section.Name, List<UIObject_>> value : components.components().entrySet())

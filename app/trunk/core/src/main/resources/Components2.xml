@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<TableFvk fvt="JUNIT" fgg="JGRP1"/>
+	<TableFvk fvt="JUNIT" fgg="JGRP1" page.name="WEB" />
 	<Heading SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Text>Contact Information</Text>
@@ -10,25 +10,25 @@
 		<Collection>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_1" isHtml="false"/>
-					<Input KEY="FV00_1" type="TEXT"/>
+					<FormLabel KEY="FL00_1" isHtml="false" />
+					<Input KEY="FV00_1" type="TEXT" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_2" isHtml="false"/>
-					<Input KEY="FV00_2" type="TEXT"/>
+					<FormLabel KEY="FL00_2" isHtml="false" />
+					<Input KEY="FV00_2" type="TEXT" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_3" isHtml="false"/>
-					<TextBox KEY="FV00_3"/>
+					<FormLabel KEY="FL00_3" isHtml="false" />
+					<TextBox KEY="FV00_3" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_12" isHtml="false"/>
+					<FormLabel KEY="FL00_12" isHtml="false" />
 					<ListBox KEY="FV00_12" multipleSelect="false">
 						<Lookup loc="TABLE" params="GENDER,UNKNOWN" />
 					</ListBox>
