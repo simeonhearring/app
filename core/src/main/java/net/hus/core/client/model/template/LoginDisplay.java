@@ -1,7 +1,7 @@
 package net.hus.core.client.model.template;
 
-import net.hus.core.client.common.Template;
+import net.hus.core.client.common.PageDisplay;
 
-public interface LoginDisplay extends Template
+public interface LoginDisplay extends PageDisplay
 {
 }

@@ -13,7 +13,7 @@ public class TemplateParserTest
   {
     TemplateParser parser = new TemplateParser();
 
-    String xml = ResourceUtil.contents("Template.xml");
+    String xml = ResourceUtil.contents("PageDisplay.xml");
 
     Template model = parser.fromXml(xml);
 

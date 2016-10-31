@@ -26,11 +26,11 @@ public class TemplateParser extends XStream implements Parser<Template>
   @Override
   public void xs(Parser<Template> inParser)
   {
-    alias("Template", Template.class);
+    alias("PageDisplay", Template.class);
     aliasAttribute(Template.class, "mName", "name");
     aliasField("Sections", Template.class, "mSections");
 
-    alias("Template.Section", Template.Section.class);
+    alias("PageDisplay.Section", Template.Section.class);
     // alias("Display", Field.Display.class);
     // aliasAttribute(Field.Display.class, "mLong", "long");
   }
