@@ -17,7 +17,7 @@ public interface Component<V> extends IsWidget
 {
   void setValue(V inValue);
 
-  void setFieldName(String inName);
+  void setLabel(String inLabel);
 
-  void setTableKey(TableKey inTableKey);
+  void setTableKey(TableKey inTk);
 }

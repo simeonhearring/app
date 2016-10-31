@@ -5,17 +5,17 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.Component;
 import net.hus.core.model.TableKey;
 
-public abstract class AbstractString_View<C extends Widget> implements Component<String>
+public abstract class AbstractStatic_View<C extends Widget> implements Component<String>
 {
   protected C mComponent;
 
-  public AbstractString_View(C inComponent)
+  public AbstractStatic_View(C inComponent)
   {
     mComponent = inComponent;
   }
 
   @Override
-  public void setFieldName(String inName)
+  public void setLabel(String inName)
   {
   }
 
@@ -25,7 +25,7 @@ public abstract class AbstractString_View<C extends Widget> implements Component
   }
 
   @Override
-  public Widget asWidget()
+  public final Widget asWidget()
   {
     return mComponent;
   }

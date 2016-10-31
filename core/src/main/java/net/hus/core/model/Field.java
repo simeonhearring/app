@@ -9,8 +9,6 @@ public class Field extends AbstractModel
   private String mName;
   private Type mType;
   private Properties mProperties;
-  @Deprecated
-  private Integer mSort;
 
   private String mDisplay;
 
@@ -52,17 +50,6 @@ public class Field extends AbstractModel
   public void setProperties(Properties inProperties)
   {
     mProperties = inProperties;
-  }
-
-  public Integer getSort()
-  {
-    return mSort;
-  }
-
-  @Deprecated
-  public void setSort(Integer inSort)
-  {
-    mSort = inSort;
   }
 
   public String getDisplay()

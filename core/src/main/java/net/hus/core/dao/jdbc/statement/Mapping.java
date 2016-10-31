@@ -68,7 +68,7 @@ public class Mapping extends AbstractSqlJdbc
   private static void mapFields_(Field inOut, ResultSet inRs) throws SQLException
   {
     inOut.setDisplay(inRs.getString("mDisplay"));
-    inOut.setSort((Integer) inRs.getObject("mSort"));
+    // inOut.setSort((Integer) inRs.getObject("mSort"));
   }
 
   protected static Value mapValue(Value inOut, ResultSet inRs) throws SQLException

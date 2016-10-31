@@ -175,12 +175,12 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupPage1()
+  public void setupComponents1()
   {
-    String xl = ResourceUtil.contents("Page1.xml");
+    String xl = ResourceUtil.contents("Components1.xml");
     Lookup l1 = new Lookup();
-    l1.setGroup(Group.PAGE);
-    l1.setName("Page1");
+    l1.setGroup(Group.COMPONENTS);
+    l1.setName("Components1");
     l1.setXL(xl);
 
     List<Lookup> list = new ArrayList<>();
@@ -194,12 +194,12 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupPage2()
+  public void setupComponents2()
   {
-    String xl = ResourceUtil.contents("Page2.xml");
+    String xl = ResourceUtil.contents("Components2.xml");
     Lookup l1 = new Lookup();
-    l1.setGroup(Group.PAGE);
-    l1.setName("Page2");
+    l1.setGroup(Group.COMPONENTS);
+    l1.setName("Components2");
     l1.setXL(xl);
 
     List<Lookup> list = new ArrayList<>();

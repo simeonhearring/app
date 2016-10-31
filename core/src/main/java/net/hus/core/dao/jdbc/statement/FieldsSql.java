@@ -86,7 +86,7 @@ public class FieldsSql extends Mapping
     {
       Long id = value.getId();
       String display = value.getDisplay();
-      Integer sort = value.getSort();
+      Integer sort = null; // value.getSort();
 
       mFieldsUpsert.update(params(group, id, display, sort, display, sort));
     }
