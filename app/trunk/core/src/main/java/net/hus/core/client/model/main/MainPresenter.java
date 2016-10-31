@@ -77,7 +77,7 @@ public class MainPresenter
 
   public void uiObject()
   {
-    Global.fire(new ComponentsCommand("Page1", "-2"), new RpcCallback<ComponentsCommand>()
+    Global.fire(new ComponentsCommand("Components1", "-2"), new RpcCallback<ComponentsCommand>()
     {
       @Override
       public void onRpcSuccess(ComponentsCommand inResult)
