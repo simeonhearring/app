@@ -2,30 +2,16 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.Label;
 
-import com.google.gwt.user.client.ui.Widget;
-
-public class Label_View extends StringView
+public class Label_View extends AbstractString_View<Label>
 {
-  private Label mView;
-
-  Label_View()
+  public Label_View(Label inComponent)
   {
-  }
-
-  public Label_View(Label inView)
-  {
-    mView = inView;
+    super(inComponent);
   }
 
   @Override
-  public void setView(String inValue)
+  public void setValue(String inValue)
   {
-    mView.setText(inValue);
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mView;
+    mComponent.setText(inValue);
   }
 }

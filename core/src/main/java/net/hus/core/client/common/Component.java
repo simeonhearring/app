@@ -7,17 +7,15 @@ import net.hus.core.model.TableKey;
 /**
  * Parent for all ui components.
  *
- * TODO consider renaming
- *
  * @author simeonhearring
  * @since October 2016
  *
- * @param <T>
- *          Type of ui object. i.e. Button, CheckBox.
+ * @param <V>
+ *          Type of value set in component. i.e. String, Integer, Array.
  */
-public interface View<T> extends IsWidget
+public interface Component<V> extends IsWidget
 {
-  void setView(T inView);
+  void setValue(V inValue);
 
   void setFieldName(String inName);
 

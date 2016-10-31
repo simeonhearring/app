@@ -2,30 +2,16 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.Badge;
 
-import com.google.gwt.user.client.ui.Widget;
-
-public class Badge_View extends StringView
+public class Badge_View extends AbstractString_View<Badge>
 {
-  private Badge mView;
-
-  Badge_View()
+  public Badge_View(Badge inComponent)
   {
-  }
-
-  public Badge_View(Badge inView)
-  {
-    mView = inView;
+    super(inComponent);
   }
 
   @Override
-  public void setView(String inValue)
+  public void setValue(String inValue)
   {
-    mView.setText(inValue);
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mView;
+    mComponent.setText(inValue);
   }
 }

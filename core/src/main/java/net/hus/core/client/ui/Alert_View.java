@@ -2,30 +2,16 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.Alert;
 
-import com.google.gwt.user.client.ui.Widget;
-
-public class Alert_View extends StringView
+public class Alert_View extends AbstractString_View<Alert>
 {
-  private Alert mView;
-
-  Alert_View()
+  public Alert_View(Alert inComponent)
   {
-  }
-
-  public Alert_View(Alert inView)
-  {
-    mView = inView;
+    super(inComponent);
   }
 
   @Override
-  public void setView(String inValue)
+  public void setValue(String inValue)
   {
-    mView.setText(inValue);
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mView;
+    mComponent.setText(inValue);
   }
 }

@@ -12,15 +12,12 @@ import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.model.TableKey;
 import net.hus.core.shared.command.RequestCommand;
 
-public class Button_View extends Abstract_View<Void> implements ClickHandler
+public class Button_View extends Abstract_View<Button, Void> implements ClickHandler
 {
-  private Button mView;
-
-  public Button_View(String inKey, Button inView)
+  public Button_View(String inKey, Button inComponent)
   {
-    super(inKey);
-    mView = inView;
-    mView.addClickHandler(this);
+    super(inKey, inComponent);
+    mComponent.addClickHandler(this);
   }
 
   @Override
@@ -30,15 +27,15 @@ public class Button_View extends Abstract_View<Void> implements ClickHandler
   }
 
   @Override
-  public void setView(Void inValue)
+  public void setValue(Void inValue)
   {
-    // mView.setValue(inValue);
+    // mComponent.setValue(inValue);
   }
 
   @Override
   public Widget asWidget()
   {
-    return mView;
+    return mComponent;
   }
 
   @Override

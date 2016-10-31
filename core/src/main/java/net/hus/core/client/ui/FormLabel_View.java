@@ -2,30 +2,16 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.FormLabel;
 
-import com.google.gwt.user.client.ui.Widget;
-
-public class FormLabel_View extends StringView
+public class FormLabel_View extends AbstractString_View<FormLabel>
 {
-  private FormLabel mView;
-
-  FormLabel_View()
+  public FormLabel_View(FormLabel inComponent)
   {
-  }
-
-  public FormLabel_View(FormLabel inView)
-  {
-    mView = inView;
+    super(inComponent);
   }
 
   @Override
-  public void setView(String inValue)
+  public void setValue(String inValue)
   {
-    mView.setText(inValue);
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mView;
+    mComponent.setText(inValue);
   }
 }

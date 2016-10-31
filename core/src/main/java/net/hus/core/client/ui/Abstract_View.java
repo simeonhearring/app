@@ -4,7 +4,9 @@ import java.util.Date;
 
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
-import net.hus.core.client.common.View;
+import com.google.gwt.user.client.ui.Widget;
+
+import net.hus.core.client.common.Component;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.model.Field;
@@ -15,15 +17,24 @@ import net.hus.core.shared.command.ValueInsertCommand;
 import net.hus.core.shared.model.FlexTable_.Table;
 import net.hus.core.shared.util.NumberUtil;
 
-public abstract class Abstract_View<T> implements View<T>
+public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
   private TableKey mTableKey;
   private Long mFieldId;
   private String mFieldName;
 
-  public Abstract_View(String inKey)
+  protected C mComponent;
+
+  public Abstract_View(String inKey, C inComponent)
   {
     mFieldId = extractFieldId(inKey);
+    mComponent = inComponent;
+  }
+
+  @Override
+  public Widget asWidget()
+  {
+    return mComponent;
   }
 
   @Override
