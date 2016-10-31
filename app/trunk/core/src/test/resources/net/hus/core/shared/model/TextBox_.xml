@@ -1,4 +1,4 @@
-<TextBox KEY="KEYLOCATER" SECTION="WEB01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE">
+<TextBox KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE">
 	<Title>Title</Title>
 	<Placeholder>placeholder</Placeholder>
 	<Value>Value</Value>

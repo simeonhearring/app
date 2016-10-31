@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
+import net.hus.core.model.Page.Section;
 import net.hus.core.parser.UIObject_Parser;
 import net.hus.core.util.ResourceUtil;
 
@@ -47,7 +48,7 @@ public class UIObject_Test
 
   public static void initUIObject(UIObject_ inOut)
   {
-    inOut.setSection("WEB01");
+    inOut.setSection(Section.Name.WEBC01);
     inOut.setKey("KEYLOCATER");
     inOut.setVisible(true);
     inOut.setTitle("Title");

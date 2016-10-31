@@ -2,12 +2,14 @@ package net.hus.core.shared.model;
 
 import java.io.Serializable;
 
+import net.hus.core.model.Page.Section;
+
 public class UIObject_ implements Serializable
 {
   private static final long serialVersionUID = 4099428684832729483L;
 
   private String mKey;
-  private String mSection;
+  private Section.Name mSection;
 
   private String mId;
   private Boolean mVisible;
@@ -117,12 +119,12 @@ public class UIObject_ implements Serializable
     mKey = inKey;
   }
 
-  public String getSection()
+  public Section.Name getSection()
   {
     return mSection;
   }
 
-  public void setSection(String inSection)
+  public void setSection(Section.Name inSection)
   {
     mSection = inSection;
   }

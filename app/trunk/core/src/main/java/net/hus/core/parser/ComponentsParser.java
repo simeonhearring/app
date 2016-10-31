@@ -19,8 +19,6 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
     ComplexPanel_Parser.xs((XStream) this);
 
-    // FlexTable_Parser.xs(this);
-
     UIObject_Parser.xs((XStream) this);
   }
 
