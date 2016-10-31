@@ -17,13 +17,21 @@ import junit.framework.Assert;
 
 public class SchemaTest
 {
-  private static final String XML = "Page1.xml";
+  private static final String XML[] =
+    {
+        "Components1.xml",
+        "Components2.xml"
+    };
+
   private static final String XSD = "Components.xsd";
 
   @Test
   public void test()
   {
-    Assert.assertEquals(true, validate(XML, XSD));
+    for (String value : XML)
+    {
+      Assert.assertEquals(true, validate(value, XSD));
+    }
   }
 
   private boolean validate(String inXmlFile, String inSchemaFile)

@@ -23,7 +23,7 @@ public class Lookup extends AbstractModel
     YESNO(SM),
     GENDER(SM),
     PROFILE(XL),
-    PAGE(XL);
+    COMPONENTS(XL);
 
     private Size mSize;
 

@@ -5,7 +5,6 @@ import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
@@ -30,12 +29,6 @@ public class Button_View extends Abstract_View<Button, Void> implements ClickHan
   public void setValue(Void inValue)
   {
     // mComponent.setValue(inValue);
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mComponent;
   }
 
   @Override

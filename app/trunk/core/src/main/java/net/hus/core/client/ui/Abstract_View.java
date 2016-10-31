@@ -21,7 +21,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
   private TableKey mTableKey;
   private Long mFieldId;
-  private String mFieldName;
+  private String mLabel;
 
   protected C mComponent;
 
@@ -32,7 +32,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   }
 
   @Override
-  public Widget asWidget()
+  public final Widget asWidget()
   {
     return mComponent;
   }
@@ -51,9 +51,9 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   }
 
   @Override
-  public void setFieldName(String inFieldName)
+  public void setLabel(String inLabel)
   {
-    mFieldName = inFieldName;
+    mLabel = inLabel;
   }
 
   private Value newValue(String inValue)
@@ -82,7 +82,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
       @Override
       public void onRpcSuccess(ValueInsertCommand inResult)
       {
-        Notify.notify("Saved... '" + mFieldName + "' to " + inDisplay);
+        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
       }
     });
   }
@@ -96,7 +96,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
       @Override
       public void onRpcSuccess(TableInsertCommand inResult)
       {
-        Notify.notify("Saved... " + mFieldName);
+        Notify.notify("Saved... " + mLabel);
       }
     });
   }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Template implements Serializable
+public class Page implements Serializable
 {
   private static final long serialVersionUID = -1612041487406778530L;
 
@@ -12,7 +12,8 @@ public class Template implements Serializable
   {
     BLOG,
     WEB,
-    MARKET;
+    MARKET,
+    LOGIN;
   }
 
 

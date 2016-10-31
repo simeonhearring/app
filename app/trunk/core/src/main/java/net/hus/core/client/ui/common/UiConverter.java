@@ -87,7 +87,7 @@ import net.hus.core.shared.model.ValueBoxBase_;
  * Responsible for creating UI Objects from Model UI Objects.
  *
  * @author simeonhearring
- *
+ * @since October 2016
  */
 public abstract class UiConverter
 {

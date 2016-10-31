@@ -23,7 +23,7 @@
 	<Statement>
 		<Key>SELECT_FIELDS</Key>
 		<Types>VARCHAR</Types>
-		<Sql>select f.*,g.mDisplay,g.mSort from FIELD f, FIELD_GROUP g
+		<Sql>select f.*,g.mDisplay from FIELD f, FIELD_GROUP g
 			where f.mId=g.mFieldId and g.mGroup=?
 		</Sql>
 	</Statement>

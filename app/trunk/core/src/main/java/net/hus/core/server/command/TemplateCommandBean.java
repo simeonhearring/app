@@ -1,7 +1,7 @@
 package net.hus.core.server.command;
 
-import net.hus.core.model.Template;
-import net.hus.core.parser.TemplateParser;
+import net.hus.core.model.Page;
+import net.hus.core.parser.PageParser;
 import net.hus.core.shared.command.TemplateCommand;
 import net.hus.core.shared.rpc.common.RpcResponse;
 import net.hus.core.util.ResourceUtil;
@@ -11,11 +11,11 @@ public class TemplateCommandBean extends AbstractCommandBean<TemplateCommand>
   @Override
   public RpcResponse execute(TemplateCommand inCommand)
   {
-    String xml = ResourceUtil.contents("PageDisplay.xml");
+    String xml = ResourceUtil.contents("Page.xml");
 
-    TemplateParser parser = new TemplateParser();
+    PageParser parser = new PageParser();
 
-    Template template = parser.fromXml(xml);
+    Page template = parser.fromXml(xml);
 
     inCommand.setData(template);
 

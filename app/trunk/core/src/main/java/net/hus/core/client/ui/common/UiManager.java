@@ -34,9 +34,9 @@ public class UiManager extends UiConverter
   }
 
   @SuppressWarnings("unchecked")
-  public Views<Object> get(String... inKey)
+  public Components<Object> get(String... inKey)
   {
-    Views<Object> ret = new Views<>();
+    Components<Object> ret = new Components<>();
     for (String key : inKey)
     {
       IsWidget uiobject = mContent.get(key);
@@ -62,15 +62,15 @@ public class UiManager extends UiConverter
     String labelKey = Field.Component.FL00_.name() + inFieldIdOrNme;
     String valueKey = Field.Component.FV00_.name() + inFieldIdOrNme;
 
-    get(labelKey).setViews(inValue.getLabel());
-    get(valueKey).setName(inValue.getLabel(), inTk);
+    get(labelKey).setValue(inValue.getLabel());
+    get(valueKey).setFieldNameTk(inValue.getLabel(), inTk);
     if (inValue.getField().isArray())
     {
-      get(valueKey).setViews(inValue.getTable());
+      get(valueKey).setValue(inValue.getTable());
     }
     else
     {
-      get(valueKey).setViews(inValue.getValue());
+      get(valueKey).setValue(inValue.getValue());
     }
   }
 }

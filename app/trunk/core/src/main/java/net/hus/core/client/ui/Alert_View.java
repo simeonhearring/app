@@ -2,7 +2,7 @@ package net.hus.core.client.ui;
 
 import org.gwtbootstrap3.client.ui.Alert;
 
-public class Alert_View extends AbstractString_View<Alert>
+public class Alert_View extends AbstractStatic_View<Alert>
 {
   public Alert_View(Alert inComponent)
   {

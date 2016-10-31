@@ -16,7 +16,7 @@ public class JavacCommandBean extends AbstractCommandBean<ComponentsCommand>
             "/temp/dynacode_classes",
             "dynacode/sample/PostmanImpl.java"
         });
-
+    System.out.println(errorCode);
     return inCommand;
   }
 }
