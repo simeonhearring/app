@@ -7,7 +7,6 @@ import com.google.gwt.user.client.ui.IsWidget;
  *
  * @author simeonhearring
  * @since October 2016
- *
  */
 public interface Display extends IsWidget
 {

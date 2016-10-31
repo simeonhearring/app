@@ -11,7 +11,7 @@ import net.hus.core.model.TableKey;
  * @since October 2016
  *
  * @param <V>
- *          Type of value set in component. i.e. String, Integer, Array.
+ *          Data type of value set in component. i.e. String, Integer, Array.
  */
 public interface Component<V> extends IsWidget
 {

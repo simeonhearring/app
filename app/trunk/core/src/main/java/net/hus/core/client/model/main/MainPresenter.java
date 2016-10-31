@@ -3,7 +3,7 @@ package net.hus.core.client.model.main;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.hus.core.client.common.Template;
+import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
@@ -16,7 +16,7 @@ public class MainPresenter
 {
   private MainDisplay mDisplay;
 
-  private Template mTemplate;
+  private PageDisplay mTemplate;
 
   private UiManager mManager;
 
@@ -34,9 +34,9 @@ public class MainPresenter
     return mDisplay;
   }
 
-  private Template template(String inTemplate)
+  private PageDisplay template(String inTemplate)
   {
-    Template ret = null;
+    PageDisplay ret = null;
 
     switch (inTemplate)
     {

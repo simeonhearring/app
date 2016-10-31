@@ -11,7 +11,7 @@ public class TemplateCommandBean extends AbstractCommandBean<TemplateCommand>
   @Override
   public RpcResponse execute(TemplateCommand inCommand)
   {
-    String xml = ResourceUtil.contents("Template.xml");
+    String xml = ResourceUtil.contents("PageDisplay.xml");
 
     TemplateParser parser = new TemplateParser();
 
