@@ -6,9 +6,9 @@ import net.hus.core.dao.jdbc.statement.ValuesSql;
 
 public interface CoreDao
 {
+  FieldsSql fields();
+
   ValuesSql values();
 
   LookupSql lookups();
-
-  FieldsSql fields();
 }
