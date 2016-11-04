@@ -14,6 +14,7 @@ import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.util.RandomUtil;
 
 public class MainPresenter implements ProfileEvent.Handler
 {
@@ -39,7 +40,8 @@ public class MainPresenter implements ProfileEvent.Handler
       public void onRpcSuccess(ProfileCommand inCommand)
       {
         Profile profile = inCommand.getData();
-        components(profile.getPage().getComponentsName(), Global.getIpAddress());
+        components(profile.getPage().getComponentsName(),
+            Global.getIpAddress() + "." + RandomUtil.random(5));
       }
     });
   }
