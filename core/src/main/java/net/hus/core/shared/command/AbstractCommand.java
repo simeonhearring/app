@@ -9,6 +9,19 @@ public abstract class AbstractCommand implements RpcCommand, RpcResponse
 {
   private String mEncryptKey;
   private String mUserInfo;
+  private String mIpAddress;
+
+  @Override
+  public String getIpAddress()
+  {
+    return mIpAddress;
+  }
+
+  @Override
+  public void setIpAddress(String inIp)
+  {
+    mIpAddress = inIp;
+  }
 
   @Override
   public String getUserInfo()

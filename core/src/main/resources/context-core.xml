@@ -37,6 +37,8 @@
 	</bean>
  -->
 
+	<bean id="ClientDataCommand" class="net.hus.core.server.command.ClientDataCommandBean" />
+
 	<bean id="LoggerCommand" class="net.hus.core.server.command.LoggerCommandBean" />
 
 	<bean id="ProfileCommand" class="net.hus.core.server.command.ProfileCommandBean">
