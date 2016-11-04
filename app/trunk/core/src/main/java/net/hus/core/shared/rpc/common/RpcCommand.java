@@ -8,6 +8,10 @@ public interface RpcCommand extends Serializable
 
   String getUserInfo();
 
+  void setIpAddress(String inIp);
+
+  String getIpAddress();
+
   void setEncryptKey(String inEncryptKey);
 
   boolean isEncryptRequired();

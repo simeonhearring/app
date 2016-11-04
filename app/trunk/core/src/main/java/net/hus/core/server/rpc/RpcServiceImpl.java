@@ -69,6 +69,7 @@ public class RpcServiceImpl extends RemoteServiceServlet implements RpcService
         inCommand.decrypt();
         inCommand.setUserInfo(StringUtil.ensure(inCommand.getUserInfo()) + " "
             + HostUtil.getRemoteAddr(getThreadLocalRequest()));
+        inCommand.setIpAddress(HostUtil.getRemoteAddr(getThreadLocalRequest()));
 
         if (allowDebug(inCommand))
         {

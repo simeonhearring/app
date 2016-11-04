@@ -15,13 +15,14 @@ import net.hus.core.client.ui.event.AlertEvent;
 import net.hus.core.client.ui.event.LoadMainEvent;
 import net.hus.core.client.ui.event.ReportEvent;
 import net.hus.core.client.ui.service.bus.GwtEventBus;
+import net.hus.core.shared.command.ClientDataCommand;
 import net.hus.core.shared.command.LoggerCommand.Level;
 import net.hus.core.shared.util.EncryptUtil;
 import net.hus.core.shared.util.EntryPointUtil;
 import net.hus.core.shared.util.JsniUtil;
 
-public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handler,
-ReportEvent.Handler, LoadMainEvent.Handler
+public abstract class AbstractEntryPoint
+    implements EntryPoint, AlertEvent.Handler, ReportEvent.Handler, LoadMainEvent.Handler
 {
   @Override
   public void onModuleLoad()
@@ -31,8 +32,8 @@ ReportEvent.Handler, LoadMainEvent.Handler
       @Override
       public void onUncaughtException(Throwable inE)
       {
-        Window
-        .alert("Opps!  We did not process your request correctly.  Please report this by using 'Contact Us'.  (How embarrassing!)");
+        Window.alert(
+            "Opps!  We did not process your request correctly.  Please report this by using 'Contact Us'.  (How embarrassing!)");
         Global.logError("UNCAUGHT EXCEPTION", inE);
       }
     });
@@ -42,6 +43,10 @@ ReportEvent.Handler, LoadMainEvent.Handler
     Global.addHandler(AlertEvent.TYPE, this);
     Global.addHandler(ReportEvent.TYPE, this);
     Global.addHandler(LoadMainEvent.TYPE, this);
+
+    ClientDataCommand command = new ClientDataCommand();
+    Global.fire(command, command);
+
     Global.fireEvent(new LoadMainEvent());
   }
 

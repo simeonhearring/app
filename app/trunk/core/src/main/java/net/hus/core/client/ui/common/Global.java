@@ -23,6 +23,8 @@ public class Global
 
   private String mNumber;
 
+  private String mIpAddress;
+
   private EventBus mEventBus;
 
   private RpcServiceAsync mRpcService;
@@ -119,6 +121,11 @@ public class Global
     INSTANCE.mNumber = inNumber;
   }
 
+  public static void setIpAddress(String inIpAddress)
+  {
+    INSTANCE.mIpAddress = inIpAddress;
+  }
+
   public static String getEncryptKey()
   {
     return StorageUtil.getEncryptKey(INSTANCE.mNumber);
@@ -160,5 +167,10 @@ public class Global
   public static String getNumber()
   {
     return INSTANCE.mNumber;
+  }
+
+  public static String getIpAddress()
+  {
+    return INSTANCE.mIpAddress;
   }
 }
