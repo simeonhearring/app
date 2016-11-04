@@ -10,6 +10,7 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
   private static final long serialVersionUID = 8712567104547510128L;
 
   private String mCommandName;
+  private String mFvk;
 
   RequestCommand()
   {
@@ -24,5 +25,10 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
   public String commandName()
   {
     return mCommandName;
+  }
+
+  public String fvk()
+  {
+    return mFvk;
   }
 }

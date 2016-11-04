@@ -29,11 +29,17 @@
 	</scm>
 	<dependencies>
 
-	<!-- https://mvnrepository.com/artifact/com.sun/tools -->
+		<!-- https://mvnrepository.com/artifact/com.sun/tools -->
 		<dependency>
 			<groupId>com.sun</groupId>
 			<artifactId>tools</artifactId>
 			<version>1.5.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
 		</dependency>
 
 		<!-- SPRING -->

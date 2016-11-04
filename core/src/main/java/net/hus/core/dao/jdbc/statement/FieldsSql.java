@@ -81,24 +81,24 @@ public class FieldsSql extends Mapping
   public void upsert(Fields inFields)
   {
     mFieldsUpsert.reset();
-    String group = inFields.getGroup();
+    String fgg = inFields.fgg();
     for (Field value : inFields.getFields())
     {
       Long id = value.getId();
       String display = value.getDisplay();
-      Integer sort = null; // value.getSort();
+      Integer sort = null;
 
-      mFieldsUpsert.update(params(group, id, display, sort, display, sort));
+      mFieldsUpsert.update(params(fgg, id, display, sort, display, sort));
     }
     mFieldsUpsert.flush();
     mFieldsUpsert.reset();
   }
 
-  public Fields select(String inGroup)
+  public Fields select(String inFgg)
   {
     Fields ret = new Fields();
-    ret.setGroup(inGroup);
-    ret.setFields(mFieldsSelect.execute(params(inGroup)));
+    ret.fgg(inFgg);
+    ret.setFields(mFieldsSelect.execute(params(inFgg)));
     return ret;
   }
 }

@@ -22,6 +22,7 @@ public class Lookup extends AbstractModel
     MONTHSOFYEAR(SM),
     YESNO(SM),
     GENDER(SM),
+    APP_PROFILE(XL),
     PROFILE(XL),
     COMPONENTS(XL);
 

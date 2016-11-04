@@ -1,6 +1,7 @@
 package net.hus.core.shared.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Response implements Serializable
 {
@@ -16,5 +17,11 @@ public class Response implements Serializable
   public void setData(String... inData)
   {
     mData = inData;
+  }
+
+  @Override
+  public String toString()
+  {
+    return "Response [mData=" + Arrays.toString(mData) + "]";
   }
 }

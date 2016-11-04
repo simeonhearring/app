@@ -73,7 +73,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Fields fields = new Fields();
     fields.setFields(new ArrayList<Field>());
 
-    fields.setGroup(FIELD_GROUP);
+    fields.fgg(FIELD_GROUP);
     fields.add(new Field(1L));
     fields.add(new Field(2L));
     fields.add(new Field(3L));
@@ -85,7 +85,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Fields ret = mSql.select(FIELD_GROUP);
     Assert.assertEquals(5, ret.getFields().size());
 
-    fields.setGroup("JGRP2");
+    fields.fgg("LOGIN");
     fields.clear();
     fields.add(new Field(14L));
     fields.add(new Field(15L));

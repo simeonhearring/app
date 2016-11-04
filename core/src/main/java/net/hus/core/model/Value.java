@@ -69,4 +69,9 @@ public class Value extends AbstractModel
   {
     mTableKey = inTableKey;
   }
+
+  public Long getFid()
+  {
+    return mField.getId();
+  }
 }

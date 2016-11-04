@@ -9,6 +9,7 @@ public class ProfileCommand extends AbstractDataCommand<Profile>
   private static final long serialVersionUID = -927684964659115829L;
 
   private String mUserName;
+  private boolean mApp;
 
   ProfileCommand()
   {
@@ -19,8 +20,19 @@ public class ProfileCommand extends AbstractDataCommand<Profile>
     mUserName = inUserName;
   }
 
+  public ProfileCommand(String inUserName, boolean inApp)
+  {
+    mUserName = inUserName;
+    mApp = inApp;
+  }
+
   public String getUserName()
   {
     return mUserName;
+  }
+
+  public boolean isApp()
+  {
+    return mApp;
   }
 }
