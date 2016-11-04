@@ -7,6 +7,7 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
+import net.hus.core.client.ui.event.ProfileEvent;
 import net.hus.core.model.Page.Section;
 import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ComponentsCommand;
@@ -14,7 +15,7 @@ import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
 
-public class MainPresenter
+public class MainPresenter implements ProfileEvent.Handler
 {
   private MainDisplay mDisplay;
 
@@ -22,21 +23,35 @@ public class MainPresenter
 
   public MainPresenter(MainDisplay inDisplay)
   {
-    mDisplay = inDisplay;
+    Global.addHandler(ProfileEvent.TYPE, this);
 
+    mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    profile();
+    login();
   }
 
-  private void profile()
+  private void login()
   {
-    Global.fire(new ProfileCommand("simeonhearring"), new RpcCallback<ProfileCommand>()
+    Global.fire(new ProfileCommand("login", true), new RpcCallback<ProfileCommand>()
     {
       @Override
-      public void onRpcSuccess(ProfileCommand inResult)
+      public void onRpcSuccess(ProfileCommand inCommand)
       {
-        Profile profile = inResult.getData();
+        Profile profile = inCommand.getData();
+        components(profile.getPage().getComponentsName(), profile.fvk());
+      }
+    });
+  }
+
+  private void profile(String inName)
+  {
+    Global.fire(new ProfileCommand(inName), new RpcCallback<ProfileCommand>()
+    {
+      @Override
+      public void onRpcSuccess(ProfileCommand inCommand)
+      {
+        Profile profile = inCommand.getData();
         components(profile.getPage().getComponentsName(), profile.fvk());
       }
     });
@@ -47,9 +62,9 @@ public class MainPresenter
     Global.fire(new ComponentsCommand(inComponentName, inFvk), new RpcCallback<ComponentsCommand>()
     {
       @Override
-      public void onRpcSuccess(ComponentsCommand inResult)
+      public void onRpcSuccess(ComponentsCommand inCommand)
       {
-        Components components = inResult.getComponents();
+        Components components = inCommand.getComponents();
 
         PageDisplay page = addPageToMain(components);
 
@@ -83,5 +98,11 @@ public class MainPresenter
   private void addValuesToComponents(Components inComponents)
   {
     mManager.update(inComponents.getValues(), inComponents.getTableFvk());
+  }
+
+  @Override
+  public void dispatch(ProfileEvent inEvent)
+  {
+    profile(inEvent.getName());
   }
 }

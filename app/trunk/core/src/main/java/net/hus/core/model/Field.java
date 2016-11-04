@@ -246,10 +246,25 @@ public class Field extends AbstractModel
     }
   }
 
-  public static class Key implements Serializable
+  public enum Fid
   {
-    private static final long serialVersionUID = -6018303509603610753L;
+    FIRST_NAME(1L),
+    LAST_NAME(2L),
+    MIDDLE_NAME(3L),
+    USERNAME(14L),
+    PASSWORD(15L);
 
+    private Long mFid;
+
+    private Fid(Long inFid)
+    {
+      mFid = inFid;
+    }
+
+    public Long fid()
+    {
+      return mFid;
+    }
   }
 
   public boolean isArray()

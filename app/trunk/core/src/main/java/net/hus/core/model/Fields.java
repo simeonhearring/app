@@ -6,17 +6,17 @@ public class Fields extends AbstractModel
 {
   private static final long serialVersionUID = -7554968452692353425L;
 
-  private String mGroup;
+  private String mGroup; // FGG
   private List<Field> mFields;
 
-  public String getGroup()
+  public String fgg()
   {
     return mGroup;
   }
 
-  public void setGroup(String inGroup)
+  public void fgg(String inFgg)
   {
-    mGroup = inGroup;
+    mGroup = inFgg;
   }
 
   public List<Field> getFields()

@@ -9,11 +9,13 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
+import net.hus.core.client.ui.event.ProfileEvent;
 import net.hus.core.shared.command.RequestCommand;
+import net.hus.core.shared.model.Response;
 import net.hus.core.shared.rpc.HasCommandName;
 
 public class AbstractCommand_View<C extends Widget & HasClickHandlers>
-    extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
+extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
 {
   private String mCommandName;
 
@@ -38,7 +40,9 @@ public class AbstractCommand_View<C extends Widget & HasClickHandlers>
       @Override
       public void onRpcSuccess(RequestCommand inCommand)
       {
-        Notify.notify("I'm back with ... " + inCommand.commandName());
+        Notify.notify("I'm back with ... " + inCommand.commandName() + " " + inCommand.getData());
+
+        fireEvent(inCommand.commandName(), inCommand.getData());
       }
     });
   }
@@ -47,5 +51,18 @@ public class AbstractCommand_View<C extends Widget & HasClickHandlers>
   public String commandName()
   {
     return mCommandName;
+  }
+
+  private void fireEvent(String inEvent, Response inResponse)
+  {
+    switch (inEvent)
+    {
+      case "LoginCommand":
+        Global.fire(new ProfileEvent(inResponse));
+        break;
+
+      default:
+        break;
+    }
   }
 }

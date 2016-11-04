@@ -213,9 +213,28 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupProfile1()
+  public void setupProfile0()
   {
-    String xl = ResourceUtil.contents("Profile1.xml");
+    String xl = ResourceUtil.contents("Profile0.xml");
+    Lookup l1 = new Lookup();
+    l1.setId(3L);
+    l1.setGroup(Group.APP_PROFILE);
+    l1.setName("login");
+    l1.setXL(xl);
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(l1);
+
+    mSql.upsertXL(list);
+
+    Assert.assertEquals(1, mSql.selectXL(l1.getGroup()).size());
+    Assert.assertEquals(xl, mSql.selectXL(l1.getGroup(), l1.getName()).getXL());
+  }
+
+  @Test
+  public void setupProfile3()
+  {
+    String xl = ResourceUtil.contents("Profile3.xml");
     Lookup l1 = new Lookup();
     l1.setId(3L);
     l1.setGroup(Group.PROFILE);

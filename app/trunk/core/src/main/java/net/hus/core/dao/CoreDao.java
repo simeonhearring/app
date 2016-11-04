@@ -3,6 +3,8 @@ package net.hus.core.dao;
 import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
+import net.hus.core.model.Profile;
+import net.hus.core.shared.model.Components;
 
 public interface CoreDao
 {
@@ -11,4 +13,10 @@ public interface CoreDao
   ValuesSql values();
 
   LookupSql lookups();
+
+  Profile profile(String inName);
+
+  Profile profile_app(String inName);
+
+  Components components(String inComponentName);
 }
