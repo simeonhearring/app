@@ -39,7 +39,7 @@ public class MainPresenter implements ProfileEvent.Handler
       public void onRpcSuccess(ProfileCommand inCommand)
       {
         Profile profile = inCommand.getData();
-        components(profile.getPage().getComponentsName(), profile.fvk());
+        components(profile.getPage().getComponentsName(), Global.getIpAddress());
       }
     });
   }
