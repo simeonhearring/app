@@ -3,7 +3,7 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.model.Field;
-import net.hus.core.shared.model.ListBox_;
+import net.hus.core.shared.components.ListBox_;
 
 public class ListBox_Parser extends FocusWidget_Parser<ListBox_>
 {

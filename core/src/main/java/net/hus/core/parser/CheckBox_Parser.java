@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.CheckBox_;
+import net.hus.core.shared.components.CheckBox_;
 
 public class CheckBox_Parser extends ButtonBase_Parser<CheckBox_>
 {

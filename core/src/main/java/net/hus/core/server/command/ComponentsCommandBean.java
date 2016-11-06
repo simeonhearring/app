@@ -8,8 +8,8 @@ import net.hus.core.model.Lookup;
 import net.hus.core.model.Value;
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
-import net.hus.core.shared.model.Components;
-import net.hus.core.shared.model.ListBox_;
+import net.hus.core.shared.components.Components;
+import net.hus.core.shared.components.ListBox_;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand>

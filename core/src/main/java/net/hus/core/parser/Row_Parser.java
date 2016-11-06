@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Row_;
+import net.hus.core.shared.components.Row_;
 
 public class Row_Parser extends ComplexWidget_Parser<Row_>
 {

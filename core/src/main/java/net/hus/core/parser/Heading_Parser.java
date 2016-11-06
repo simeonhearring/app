@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Heading_;
+import net.hus.core.shared.components.Heading_;
 
 public class Heading_Parser extends ComplexWidget_Parser<Heading_>
 {

@@ -7,7 +7,7 @@ import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Column_;
+import net.hus.core.shared.components.Column_;
 
 public class Column_Parser extends ComplexWidget_Parser<Column_>
 {

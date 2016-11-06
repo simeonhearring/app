@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Badge_;
+import net.hus.core.shared.components.Badge_;
 
 public class Badge_Parser extends UIObject_Parser<Badge_>
 {
