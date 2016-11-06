@@ -1,9 +1,12 @@
 package net.hus.core.client.ui.components;
 
+import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.Icon;
+import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.html.Span;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.TextDecoration;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -12,6 +15,9 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.components.FlexTable_.Table;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Array;
+import net.hus.core.shared.model.Field.Properties;
 import net.hus.core.shared.util.StringUtil;
 
 public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
@@ -27,6 +33,12 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
 
   @UiField
   Icon mAdd0, mSave0, mAdd1, mSave1;
+
+  private int mShowBottomAtRow = 10;
+  private boolean mAltColor = true;
+  private String mAltOdd = "FFF";
+  private String mAltEven = "#CCC";
+  private HeadingSize mHeadSize = HeadingSize.H2;
 
   public FlexTable_View()
   {
@@ -51,7 +63,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
     {
       addRow(mComponent.getCellCount(0), "--Enter info--");
     }
-    else if (mSave0.equals(inEvent.getSource()) && mSave1.equals(inEvent.getSource()))
+    else if (mSave0.equals(inEvent.getSource()) || mSave1.equals(inEvent.getSource()))
     {
       save(values());
     }
@@ -76,8 +88,8 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
     int col = 0;
     int row = mComponent.getRowCount();
 
-    mAdd1.setVisible(row > 10);
-    mSave1.setVisible(row > 10);
+    mAdd1.setVisible(row >= mShowBottomAtRow);
+    mSave1.setVisible(row >= mShowBottomAtRow);
 
     if (inValues != null)
     {
@@ -91,6 +103,16 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
     }
 
     completeRow(inHeadColCt, col, row);
+
+    if (mAltColor)
+    {
+      mComponent.getRowFormatter().getElement(row).getStyle().setBackgroundColor(altColor(row));
+    }
+  }
+
+  private String altColor(int inRow)
+  {
+    return inRow % 2 == 0 ? mAltEven : mAltOdd;
   }
 
   private void completeRow(int inHeadColCt, int inCol, int inRow)
@@ -124,5 +146,53 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
       ret.add(colVals);
     }
     return ret;
+  }
+
+  @Override
+  public void setField(Field inField)
+  {
+    super.setField(inField);
+
+    Properties properties = mField.getProperties();
+
+    Array.Properties prop = properties.getArray().getProperties();
+
+    if (prop != null)
+    {
+      Integer showBottomAtRow = prop.getShowBottomAtRow();
+      Boolean altColor = prop.getAltRow();
+      String altEven = prop.getAltEvenColor();
+      String altOdd = prop.getAltOddColor();
+      HeadingSize headSize = prop.getHeadingSize();
+
+      if (showBottomAtRow != null)
+      {
+        mShowBottomAtRow = showBottomAtRow;
+      }
+      if (altColor != null)
+      {
+        mAltColor = altColor;
+      }
+      if (altEven != null)
+      {
+        mAltEven = altEven;
+      }
+      if (altOdd != null)
+      {
+        mAltOdd = altOdd;
+      }
+      if (headSize != null)
+      {
+        mHeadSize = headSize;
+      }
+    }
+
+    int col = 0;
+    for (String value : properties.getArray().getLabels())
+    {
+      Heading heading = new Heading(mHeadSize, value);
+      heading.getElement().getStyle().setTextDecoration(TextDecoration.UNDERLINE);
+      mComponent.setWidget(0, col++, heading);
+    }
   }
 }

@@ -3,20 +3,21 @@ package net.hus.core.dao.jdbc.statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.shared.model.Field;
-import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Database;
 import net.hus.core.shared.model.Field.Display;
 import net.hus.core.shared.model.Field.Lookup;
+import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Field.Properties;
 import net.hus.core.shared.model.Field.Type;
-import net.hus.core.shared.model.Field.Lookup.Location;
+import net.hus.core.shared.model.Fields;
 
 public class FieldsSqlTest extends MySqlCoreDsTest
 {
@@ -31,34 +32,21 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   @Test
   public void testUpsertAndSelectField()
   {
-    Field f1 = newField(Type.STRING, "FIRST_NAME", "First name", "First");
-    Field f2 = newField(Type.STRING, "LAST_NAME", "Last name", "Last");
-    Field f3 = newField(Type.STRING, "MIDDLE_NAME", "Middle name", "Middle");
-    Field f4 = newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob");
-    Field f5 = newField(Type.DATE, "BAPTIZED_DATE", "Date Baptized", "Bap");
-
     List<Field> list = new ArrayList<>();
-    list.add(f1);
-    list.add(f2);
-    list.add(f3);
-    list.add(f4);
-    list.add(f5);
-
-    // list.add(newField(Type.NUMBER, "PLACEMENTS", "Placements", "Place"));
-    // list.add(newField(Type.NUMBER, "VIDEO_SHOWINGS", "Video Showings",
-    // "Video"));
-    // list.add(newField(Type.NUMBER, "HOURS", "Hours", "Hrs"));
-    // list.add(newField(Type.NUMBER, "RETURN_VISITS", "Return Visits",
-    // "R.V."));
-    // list.add(newField(Type.NUMBER, "BIBLE_STUDIES", "Bible Studies",
-    // "BiSt"));
-    list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
-    list.add(newField(Type.LOOKUP, "GENDER", "Gender", "Sex",
-        new Lookup(Location.TABLE, "GENDER,UNKNOWN")));
-    list.add(newField(Type.ARRAY, "ADDRESS", "Address", "Addr.",
-        new Array(6, "Type", "Street 1", "Street 2", "City", "State", "Zip")));
     list.add(newField(Type.STRING, "USERNAME", "User Name", "UserNme", true));
     list.add(newField(Type.STRING, "PASSWORD", "Password", "Pswd", true));
+
+    list.add(newField(Type.STRING, "FIRST_NAME", "First name", "First"));
+    list.add(newField(Type.STRING, "LAST_NAME", "Last name", "Last"));
+    list.add(newField(Type.STRING, "MIDDLE_NAME", "Middle name", "Middle"));
+    list.add(newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob"));
+    // list.add(newField(Type.DATE, "BAPTIZED_DATE", "Date Baptized", "Bap"));
+
+    list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
+    list.add(newField(Type.LOOKUP, "GENDER", "Gender", "Sex",
+        new Lookup(Location.TABLE, "BLANK,GENDER,UNKNOWN")));
+    list.add(newField(Type.ARRAY, "ADDRESS", "Address", "Addr.",
+        newArray(6, "Type", "Street A", "Street B", "City", "State", "Zip")));
 
     mSql.upsert(list);
 
@@ -66,6 +54,13 @@ public class FieldsSqlTest extends MySqlCoreDsTest
 
     Assert.assertEquals(true, field.getProperties() != null);
     Assert.assertEquals("First name", field.getProperties().getDisplay().getLong());
+  }
+
+  private Array newArray(Integer inSize, String... inLabels)
+  {
+    Array ret = new Array(inSize, inLabels);
+    ret.setProperties(new Array.Properties(10, true, "#CCC", "#FFF", HeadingSize.H5));
+    return ret;
   }
 
   @Test
