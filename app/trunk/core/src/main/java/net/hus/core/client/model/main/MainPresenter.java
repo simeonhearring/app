@@ -74,14 +74,14 @@ public class MainPresenter implements ProfileEvent.Handler
 
         addValuesToComponents(components);
 
-        addFvkToButtons(components);
+        addFieldTKGToButtons(components);
       }
     });
   }
 
   private PageDisplay addPageToMain(Components inComponents)
   {
-    PageDisplay ret = PageLocater.page(mDisplay, inComponents.getTableFvk().getPage());
+    PageDisplay ret = PageLocater.page(mDisplay, inComponents.getFieldTKG().getPage());
     mDisplay.clear();
     mDisplay.add(ret);
     return ret;
@@ -101,12 +101,12 @@ public class MainPresenter implements ProfileEvent.Handler
 
   private void addValuesToComponents(Components inComponents)
   {
-    mManager.update(inComponents.getValues(), inComponents.getTableFvk());
+    mManager.update(inComponents.getValues(), inComponents.getFieldTKG());
   }
 
-  private void addFvkToButtons(Components inComponents)
+  private void addFieldTKGToButtons(Components inComponents)
   {
-    mManager.update(inComponents.getTableFvk());
+    mManager.update(inComponents.getFieldTKG());
   }
 
   @Override

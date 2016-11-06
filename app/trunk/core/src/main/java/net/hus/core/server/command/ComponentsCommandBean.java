@@ -3,8 +3,8 @@ package net.hus.core.server.command;
 import java.util.List;
 
 import net.hus.core.model.Field;
-import net.hus.core.model.Lookup;
 import net.hus.core.model.FieldTKG;
+import net.hus.core.model.Lookup;
 import net.hus.core.model.Value;
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
@@ -17,7 +17,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
   @Override
   public RpcResponse execute(ComponentsCommand inCommand)
   {
-    Components components = mCoreDao.components(inCommand.getComponentName());
+    Components components = mCoreDao.components(inCommand.getComponentsName());
 
     addLookups(components);
 
@@ -30,9 +30,9 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
   private void addValues(Components inComponents, String inFvk)
   {
-    FieldTKG tableKey = inComponents.getTableFvk();
-    tableKey.setFvk(inFvk);
-    inComponents.setValues(checkForArrays(mCoreDao.values().selectLast(tableKey)));
+    FieldTKG fieldTKG = inComponents.getFieldTKG();
+    fieldTKG.setFvk(inFvk);
+    inComponents.setValues(checkForArrays(mCoreDao.values().selectLast(fieldTKG)));
   }
 
   private void addLookups(Components inComponents)
