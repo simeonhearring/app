@@ -10,6 +10,16 @@ import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Page.Section;
 import net.hus.core.model.Value;
 
+/**
+ * Populated from XML. Values added later.
+ *
+ * See Components on http://gwtbootstrap3.github.io/gwtbootstrap3-demo/
+ *
+ * See Lookup.Group.COMPONENTS
+ *
+ * @author simeonhearring
+ * @since October 2016
+ */
 public class Components implements Serializable
 {
   private static final long serialVersionUID = 1058892144882503748L;
@@ -17,6 +27,7 @@ public class Components implements Serializable
   private List<FieldTKG> mFieldTKGs = new ArrayList<>();
 
   private List<UIObject_> mList = new ArrayList<>();
+
 
   private List<Value> mValues;
 
@@ -78,7 +89,7 @@ public class Components implements Serializable
     }
   }
 
-  public FieldTKG getTableFvk()
+  public FieldTKG getFieldTKG()
   {
     return getFieldTKGs().get(0);
   }
@@ -86,10 +97,5 @@ public class Components implements Serializable
   private List<FieldTKG> getFieldTKGs()
   {
     return mFieldTKGs;
-  }
-
-  public void setFieldTKGs(List<FieldTKG> inFTKGs)
-  {
-    mFieldTKGs = inFTKGs;
   }
 }

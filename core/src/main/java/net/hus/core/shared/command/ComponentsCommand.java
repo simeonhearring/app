@@ -8,16 +8,16 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
 {
   private static final long serialVersionUID = -2970113047435446656L;
 
-  private String mComponentName;
+  private String mComponentsName;
   private String mFvk;
 
   ComponentsCommand()
   {
   }
 
-  public ComponentsCommand(String inComponentName, String inFvk)
+  public ComponentsCommand(String inComponentsName, String inFvk)
   {
-    mComponentName = inComponentName;
+    mComponentsName = inComponentsName;
     mFvk = inFvk;
   }
 
@@ -26,9 +26,9 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
     return getData();
   }
 
-  public String getComponentName()
+  public String getComponentsName()
   {
-    return mComponentName;
+    return mComponentsName;
   }
 
   public String fvk()
