@@ -11,7 +11,8 @@ import net.hus.core.model.Page.Section;
 import net.hus.core.model.Value;
 
 /**
- * Populated from XML. Values added later.
+ * Populated from XML (mFieldTKGs & mList). Values from database added after
+ * (mValues).
  *
  * See Components on http://gwtbootstrap3.github.io/gwtbootstrap3-demo/
  *
@@ -28,13 +29,7 @@ public class Components implements Serializable
 
   private List<UIObject_> mList = new ArrayList<>();
 
-
   private List<Value> mValues;
-
-  public void add(UIObject_ inUiO)
-  {
-    mList.add(inUiO);
-  }
 
   public Map<Section.Name, List<UIObject_>> components()
   {
@@ -71,19 +66,19 @@ public class Components implements Serializable
     return ret;
   }
 
-  private void find(List<ListBox_> inListBoxes, List<UIObject_> inSearching)
+  private static void find(List<ListBox_> inAddTo, List<UIObject_> inSearchingIn)
   {
-    if (inSearching != null)
+    if (inSearchingIn != null)
     {
-      for (UIObject_ value : inSearching)
+      for (UIObject_ value : inSearchingIn)
       {
         if (value instanceof ComplexPanel_)
         {
-          find(inListBoxes, ((ComplexPanel_) value).getCollection());
+          find(inAddTo, ((ComplexPanel_) value).getCollection());
         }
         else if (value instanceof ListBox_)
         {
-          inListBoxes.add((ListBox_) value);
+          inAddTo.add((ListBox_) value);
         }
       }
     }
