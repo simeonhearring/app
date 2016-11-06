@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.hus.core.model.Field;
 import net.hus.core.model.Lookup;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Value;
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
@@ -30,7 +30,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
   private void addValues(Components inComponents, String inFvk)
   {
-    TableFvk tableKey = inComponents.getTableFvk();
+    FieldTKG tableKey = inComponents.getTableFvk();
     tableKey.setFvk(inFvk);
     inComponents.setValues(checkForArrays(mCoreDao.values().selectLast(tableKey)));
   }

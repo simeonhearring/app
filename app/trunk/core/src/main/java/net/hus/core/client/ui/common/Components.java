@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.hus.core.client.common.Component;
 import net.hus.core.model.Field;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 
 public class Components<V>
 {
@@ -24,21 +24,21 @@ public class Components<V>
     }
   }
 
-  public void setFieldNameTk(String inFieldName, TableFvk inTk, Field inField)
+  public void setFieldNameTk(String inFieldName, FieldTKG inTk, Field inField)
   {
     for (Component<?> value : mComponents)
     {
       value.setLabel(inFieldName);
-      value.setTableFvk(inTk);
+      value.setFieldTKG(inTk);
       value.setField(inField);
     }
   }
 
-  public void setFvk(TableFvk inFvk)
+  public void setFvk(FieldTKG inFvk)
   {
     for (Component<?> value : mComponents)
     {
-      value.setTableFvk(inFvk);
+      value.setFieldTKG(inFvk);
     }
   }
 

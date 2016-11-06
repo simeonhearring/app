@@ -8,7 +8,7 @@ public class Value extends AbstractModel
 {
   private static final long serialVersionUID = -8854640642880299189L;
 
-  private TableFvk mTableFvk;
+  private FieldTKG mTableFvk;
   private String mValue;
   private Date mAsOf;
   private Field mField;
@@ -60,12 +60,12 @@ public class Value extends AbstractModel
     return mTable;
   }
 
-  public TableFvk getTableFvk()
+  public FieldTKG getTableFvk()
   {
     return mTableFvk;
   }
 
-  public void setTableFvk(TableFvk inTableFvk)
+  public void setTableFvk(FieldTKG inTableFvk)
   {
     mTableFvk = inTableFvk;
   }

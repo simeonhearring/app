@@ -1,6 +1,6 @@
 package net.hus.core.shared.command;
 
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.shared.model.Response;
 import net.hus.core.shared.rpc.CommandName;
 import net.hus.core.shared.rpc.HasCommandName;
@@ -11,7 +11,7 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
   private static final long serialVersionUID = 8712567104547510128L;
 
   private String mCommandName;
-  private TableFvk mFvk;
+  private FieldTKG mFvk;
 
   RequestCommand()
   {
@@ -22,7 +22,7 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
     mCommandName = inCommandName;
   }
 
-  public RequestCommand(String inCommandName, TableFvk inFvk)
+  public RequestCommand(String inCommandName, FieldTKG inFvk)
   {
     mCommandName = inCommandName;
     mFvk = inFvk;
@@ -34,7 +34,7 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
     return mCommandName;
   }
 
-  public TableFvk fvk()
+  public FieldTKG fvk()
   {
     return mFvk;
   }

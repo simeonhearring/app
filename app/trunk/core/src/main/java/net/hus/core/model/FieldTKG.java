@@ -3,6 +3,8 @@ package net.hus.core.model;
 import java.io.Serializable;
 
 /**
+ * Refers to database: FIELD_VALUE.mTable & mKey, FIELD_GROUP.mGroup.
+ *
  * Understands how to query FIELD_GROUP for a set of FIELDS to update
  * Components.
  *
@@ -10,12 +12,10 @@ import java.io.Serializable;
  *
  * Page.Name manages which Page should be loaded for Components.
  *
- * TODO Consider renaming. FieldTKG
- *
  * @author simeonhearring
  * @since October 2016
  */
-public class TableFvk implements Serializable
+public class FieldTKG implements Serializable
 {
   private static final long serialVersionUID = 908199922488294162L;
 
@@ -26,11 +26,11 @@ public class TableFvk implements Serializable
 
   private Page.Name mPage;
 
-  TableFvk()
+  FieldTKG()
   {
   }
 
-  public TableFvk(String inTable, String inFvk, String inGroup)
+  public FieldTKG(String inTable, String inFvk, String inGroup)
   {
     mFvt = inTable;
     mFvk = inFvk;

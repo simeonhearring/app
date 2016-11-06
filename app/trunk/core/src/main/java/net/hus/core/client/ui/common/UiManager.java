@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import net.hus.core.client.common.Component;
 import net.hus.core.client.common.UiCreate;
 import net.hus.core.model.Field;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Value;
 
 /**
@@ -48,7 +48,7 @@ public class UiManager extends UiConverter
     return ret;
   }
 
-  public void update(TableFvk inFvk)
+  public void update(FieldTKG inFvk)
   {
     for (String value : mContent.keySet())
     {
@@ -59,7 +59,7 @@ public class UiManager extends UiConverter
     }
   }
 
-  public void update(List<Value> inValues, TableFvk inFvk)
+  public void update(List<Value> inValues, FieldTKG inFvk)
   {
     for (Value value : inValues)
     {
@@ -67,7 +67,7 @@ public class UiManager extends UiConverter
     }
   }
 
-  private void update(TableFvk inFvk, Value inValue, Field inField)
+  private void update(FieldTKG inFvk, Value inValue, Field inField)
   {
     String labelKey = Field.Component.FL00_.name() + inField.getId();
     String valueKey = Field.Component.FV00_.name() + inField.getId();

@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.ProfileEvent;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.model.Response;
 import net.hus.core.shared.rpc.HasCommandName;
@@ -27,9 +27,9 @@ extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
   }
 
   @Override
-  public void setTableFvk(TableFvk inTableFvk)
+  public void setFieldTKG(FieldTKG inTableFvk)
   {
-    super.setTableFvk(inTableFvk);
+    super.setFieldTKG(inTableFvk);
     mComponent.addClickHandler(this);
   }
 
