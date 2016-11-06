@@ -14,7 +14,18 @@
 	</ui:style>
 
 	<b.gwt:FlowPanel>
-		<b:Icon type="PLUS" />
+		<b:Tooltip text="Add new row">
+			<b:Icon ui:field="mAdd0" type="PLUS" paddingRight="10" />
+		</b:Tooltip>
+		<b:Tooltip text="Save">
+			<b:Icon ui:field="mSave0" type="SAVE" />
+		</b:Tooltip>
 		<g:FlexTable ui:field="mComponent" />
+		<b:Tooltip text="Add new row">
+			<b:Icon ui:field="mAdd1" type="PLUS" paddingRight="10" visible="false" />
+		</b:Tooltip>
+		<b:Tooltip text="Save">
+			<b:Icon ui:field="mSave1" type="SAVE" visible="false" />
+		</b:Tooltip>
 	</b.gwt:FlowPanel>
 </ui:UiBinder>
