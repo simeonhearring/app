@@ -1,9 +1,12 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.ui.components;
 
 import org.gwtbootstrap3.client.ui.html.Span;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -11,17 +14,25 @@ import net.hus.core.shared.components.FlexTable_.Table;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.util.StringUtil;
 
-public class FlexTable_View extends Abstract_View<FlexTable, Table> implements ClickHandler
+public class FlexTable_View extends AbstractComposite_View<FlexTable, Table> implements ClickHandler
 {
-  public FlexTable_View(String inKey, FlexTable inComponent)
+  private static final Binder BINDER = GWT.create(Binder.class);
+
+  interface Binder extends UiBinder<Widget, FlexTable_View>
   {
-    super(inKey, inComponent);
   }
 
-  public FlexTable_View(String inKey, FlexTable inComponent, Table inTable)
+  @UiField
+  FlexTable mComponent;
+
+  public FlexTable_View()
   {
-    this(inKey, inComponent);
-    setValue(inTable);
+    initWidget(BINDER.createAndBindUi(this));
+  }
+
+  public FlexTable getComponent()
+  {
+    return mComponent;
   }
 
   @Override
@@ -88,11 +99,5 @@ public class FlexTable_View extends Abstract_View<FlexTable, Table> implements C
       ret.add(colVals);
     }
     return ret;
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return super.asWidget();
   }
 }

@@ -1,16 +1,15 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.ui.components;
 
-import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.Input;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 import net.hus.core.shared.model.FieldTKG;
 
-public class TextBox_View extends Abstract_View<TextBox, String>
-implements ValueChangeHandler<String>
+public class Input_View extends Abstract_View<Input, String> implements ValueChangeHandler<String>
 {
-  public TextBox_View(String inKey, TextBox inComponent)
+  public Input_View(String inKey, Input inComponent)
   {
     super(inKey, inComponent);
   }

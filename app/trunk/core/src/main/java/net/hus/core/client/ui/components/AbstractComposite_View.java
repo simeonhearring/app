@@ -1,9 +1,10 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.ui.components;
 
 import java.util.Date;
 
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.Component;
@@ -16,29 +17,17 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
-public abstract class Abstract_View<C extends Widget, V> implements Component<V>
+public abstract class AbstractComposite_View<C extends Widget, V> extends Composite
+    implements Component<V>
 {
   protected FieldTKG mTableFvk;
   private String mLabel;
   private Field mField;
 
-  protected C mComponent;
-
-  public Abstract_View(String inKey, C inComponent)
-  {
-    mComponent = inComponent;
-  }
-
   @Override
   public void setField(Field inField)
   {
     mField = inField;
-  }
-
-  @Override
-  public Widget asWidget()
-  {
-    return mComponent;
   }
 
   @Override

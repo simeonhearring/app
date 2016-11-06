@@ -49,15 +49,15 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
 import net.hus.core.client.common.UiCreate;
-import net.hus.core.client.ui.Alert_View;
-import net.hus.core.client.ui.Badge_View;
-import net.hus.core.client.ui.Button_View;
-import net.hus.core.client.ui.CheckBox_View;
-import net.hus.core.client.ui.FlexTable_View;
-import net.hus.core.client.ui.FormLabel_View;
-import net.hus.core.client.ui.Input_View;
-import net.hus.core.client.ui.ListBox_View;
-import net.hus.core.client.ui.TextBox_View;
+import net.hus.core.client.ui.components.Alert_View;
+import net.hus.core.client.ui.components.Badge_View;
+import net.hus.core.client.ui.components.Button_View;
+import net.hus.core.client.ui.components.CheckBox_View;
+import net.hus.core.client.ui.components.FlexTable_View;
+import net.hus.core.client.ui.components.FormLabel_View;
+import net.hus.core.client.ui.components.Input_View;
+import net.hus.core.client.ui.components.ListBox_View;
+import net.hus.core.client.ui.components.TextBox_View;
 import net.hus.core.shared.components.AbstractTextWidget_;
 import net.hus.core.shared.components.Alert_;
 import net.hus.core.shared.components.Badge_;
@@ -77,11 +77,11 @@ import net.hus.core.shared.components.Heading_;
 import net.hus.core.shared.components.Icon_;
 import net.hus.core.shared.components.Input_;
 import net.hus.core.shared.components.ListBox_;
+import net.hus.core.shared.components.ListBox_.Item;
 import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.components.TextBox_;
 import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.components.ValueBoxBase_;
-import net.hus.core.shared.components.ListBox_.Item;
 
 /**
  * Responsible for creating UI Objects from Model UI Objects.
@@ -98,7 +98,7 @@ public abstract class UiConverter
     mUiCreate = inUiCreate;
   }
 
-  public Button convert(Button_ inUiO)
+  public IsWidget convert(Button_ inUiO)
   {
     Button ret = mUiCreate.newButton();
 
@@ -206,24 +206,31 @@ public abstract class UiConverter
     return ret;
   }
 
-  public FlexTable convert(FlexTable_ inUiO)
+  /*
+   * FlexTable_View uses UI Binder. Adding FlexTable_View instead of FlexTable.
+   */
+  public IsWidget convert(FlexTable_ inUiO)
   {
-    FlexTable ret = mUiCreate.newFlexTable();
+    FlexTable_View ret = new FlexTable_View();
 
-    create(ret, inUiO);
+    FlexTable ft = ret.getComponent();
+
+    create(ft, inUiO);
 
     int col = 0;
     for (String value : inUiO.getHeaders())
     {
-      ret.setWidget(0, col++, new Heading(inUiO.getHeadSize(), value));
+      ft.setWidget(0, col++, new Heading(inUiO.getHeadSize(), value));
     }
 
-    add(inUiO.getKey(), new FlexTable_View(inUiO.getKey(), ret, inUiO.getTable()));
+    ret.setValue(inUiO.getTable());
+
+    add(inUiO.getKey(), ret);
 
     return ret;
   }
 
-  public Heading convert(Heading_ inUiO)
+  public IsWidget convert(Heading_ inUiO)
   {
     Heading ret = mUiCreate.newHeading(inUiO.getSize(), inUiO.getText());
 
@@ -250,7 +257,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Icon convert(Icon_ inUiO)
+  public IsWidget convert(Icon_ inUiO)
   {
     Icon ret = mUiCreate.newIcon();
 
@@ -320,7 +327,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Column convert(Column_ inUiO)
+  public IsWidget convert(Column_ inUiO)
   {
     Column ret = mUiCreate.newColumn(inUiO.getSize());
 
@@ -352,7 +359,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Row convert(Row_ inUiO)
+  public IsWidget convert(Row_ inUiO)
   {
     Row ret = mUiCreate.newRow();
 
@@ -362,7 +369,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Container convert(Container_ inUiO)
+  public IsWidget convert(Container_ inUiO)
   {
     Container ret = mUiCreate.newContainer();
 
@@ -378,7 +385,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public CheckBox convert(CheckBox_ inUiO)
+  public IsWidget convert(CheckBox_ inUiO)
   {
     CheckBox ret = mUiCreate.newCheckBox();
 
@@ -397,7 +404,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public ListBox convert(ListBox_ inUiO)
+  public IsWidget convert(ListBox_ inUiO)
   {
     ListBox ret = mUiCreate.newListBox();
 
@@ -424,7 +431,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public TextBox convert(TextBox_ inUiO)
+  public IsWidget convert(TextBox_ inUiO)
   {
     TextBox ret = mUiCreate.newTextBox();
 
@@ -442,7 +449,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public FormLabel convert(FormLabel_ inUiO)
+  public IsWidget convert(FormLabel_ inUiO)
   {
     FormLabel ret = mUiCreate.newFormLabel();
 
@@ -460,7 +467,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public FormGroup convert(FormGroup_ inUiO)
+  public IsWidget convert(FormGroup_ inUiO)
   {
     FormGroup ret = mUiCreate.newFormGroup();
 
@@ -482,7 +489,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public FieldSet convert(FieldSet_ inUiO)
+  public IsWidget convert(FieldSet_ inUiO)
   {
     FieldSet ret = mUiCreate.newFieldSet();
 
@@ -494,7 +501,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Input convert(Input_ inUiO)
+  public IsWidget convert(Input_ inUiO)
   {
     Input ret = mUiCreate.newInput();
 
@@ -523,7 +530,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Badge convert(Badge_ inUiO)
+  public IsWidget convert(Badge_ inUiO)
   {
     Badge ret = mUiCreate.newBadge();
 
@@ -536,7 +543,7 @@ public abstract class UiConverter
     return ret;
   }
 
-  public Alert convert(Alert_ inUiO)
+  public IsWidget convert(Alert_ inUiO)
   {
     Alert ret = mUiCreate.newAlert();
 

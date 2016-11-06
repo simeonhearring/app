@@ -1,4 +1,4 @@
-package net.hus.core.client.ui;
+package net.hus.core.client.ui.components;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
 
