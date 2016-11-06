@@ -11,4 +11,5 @@
       <string>Zip</string>
     </Labels>
   </Array>
+  <Database oneValue="true"/>
 </Field.Properties>

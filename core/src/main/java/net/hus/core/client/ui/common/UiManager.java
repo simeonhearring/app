@@ -48,22 +48,32 @@ public class UiManager extends UiConverter
     return ret;
   }
 
-  public void update(List<Value> inValues, TableFvk inTk)
+  public void update(TableFvk inFvk)
   {
-    for (Value value : inValues)
+    for (String value : mContent.keySet())
     {
-      update(inTk, value, String.valueOf(value.getField().getId()));
-      update(inTk, value, value.getField().getName());
+      if (value != null && value.startsWith(Field.Component.BTN00_.name()))
+      {
+        get(value).setFvk(inFvk);
+      }
     }
   }
 
-  private void update(TableFvk inTk, Value inValue, String inFieldIdOrNme)
+  public void update(List<Value> inValues, TableFvk inFvk)
   {
-    String labelKey = Field.Component.FL00_.name() + inFieldIdOrNme;
-    String valueKey = Field.Component.FV00_.name() + inFieldIdOrNme;
+    for (Value value : inValues)
+    {
+      update(inFvk, value, value.getField());
+    }
+  }
+
+  private void update(TableFvk inFvk, Value inValue, Field inField)
+  {
+    String labelKey = Field.Component.FL00_.name() + inField.getId();
+    String valueKey = Field.Component.FV00_.name() + inField.getId();
 
     get(labelKey).setValue(inValue.getLabel());
-    get(valueKey).setFieldNameTk(inValue.getLabel(), inTk);
+    get(valueKey).setFieldNameTk(inValue.getLabel(), inFvk, inField);
     if (inValue.getField().isArray())
     {
       get(valueKey).setValue(inValue.getTable());

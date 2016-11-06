@@ -94,6 +94,7 @@ public class Field extends AbstractModel
     private Display mDisplay;
     private Lookup mLookup;
     private Array mArray;
+    private Database mDatabase;
 
     public Display getDisplay()
     {
@@ -133,6 +134,38 @@ public class Field extends AbstractModel
     public void setType(Type inType)
     {
       mType = inType;
+    }
+
+    public Database getDatabase()
+    {
+      return mDatabase;
+    }
+
+    public void setDatabase(Database inDatabase)
+    {
+      mDatabase = inDatabase;
+    }
+  }
+
+  public static class Database implements Serializable
+  {
+    private static final long serialVersionUID = -5221208251501108527L;
+
+    private Boolean mOneValue;
+
+    public Boolean getOneValue()
+    {
+      return mOneValue;
+    }
+
+    public void setOneValue(Boolean inOneValue)
+    {
+      mOneValue = inOneValue;
+    }
+
+    public boolean isOneValue()
+    {
+      return mOneValue != null && mOneValue;
     }
   }
 
@@ -270,5 +303,10 @@ public class Field extends AbstractModel
   public boolean isArray()
   {
     return Type.isArray(getType());
+  }
+
+  public boolean isOneValue()
+  {
+    return mProperties.getDatabase().isOneValue();
   }
 }

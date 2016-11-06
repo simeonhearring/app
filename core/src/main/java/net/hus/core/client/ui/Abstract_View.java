@@ -15,20 +15,24 @@ import net.hus.core.model.Value;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
 import net.hus.core.shared.model.FlexTable_.Table;
-import net.hus.core.shared.util.NumberUtil;
 
 public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
-  private TableFvk mTableKey;
-  private Long mFieldId;
+  protected TableFvk mTableFvk;
   private String mLabel;
+  private Field mField;
 
   protected C mComponent;
 
   public Abstract_View(String inKey, C inComponent)
   {
-    mFieldId = extractFieldId(inKey);
     mComponent = inComponent;
+  }
+
+  @Override
+  public void setField(Field inField)
+  {
+    mField = inField;
   }
 
   @Override
@@ -38,16 +42,9 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   }
 
   @Override
-  public void setTableKey(TableFvk inTableKey)
+  public void setTableFvk(TableFvk inTableFvk)
   {
-    mTableKey = inTableKey;
-  }
-
-  // TODO what if it is a name
-  private Long extractFieldId(String inKey)
-  {
-    String id = inKey.replaceAll(Field.Component.FV00_.name(), "");
-    return NumberUtil.toLong(id);
+    mTableFvk = inTableFvk;
   }
 
   @Override
@@ -60,9 +57,9 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   {
     Value value = new Value();
     value.setValue(inValue);
-    value.setTableKey(mTableKey);
+    value.setTableFvk(mTableFvk);
     value.setAsOf(new Date());
-    value.setField(new Field(mFieldId));
+    value.setField(mField);
     return value;
   }
 

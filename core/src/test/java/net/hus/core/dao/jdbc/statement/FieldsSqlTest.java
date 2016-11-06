@@ -10,6 +10,7 @@ import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.model.Field;
 import net.hus.core.model.Field.Array;
+import net.hus.core.model.Field.Database;
 import net.hus.core.model.Field.Display;
 import net.hus.core.model.Field.Lookup;
 import net.hus.core.model.Field.Lookup.Location;
@@ -56,8 +57,8 @@ public class FieldsSqlTest extends MySqlCoreDsTest
         new Lookup(Location.TABLE, "GENDER,UNKNOWN")));
     list.add(newField(Type.ARRAY, "ADDRESS", "Address", "Addr.",
         new Array(6, "Type", "Street 1", "Street 2", "City", "State", "Zip")));
-    list.add(newField(Type.STRING, "USERNAME", "User Name", "UserNme"));
-    list.add(newField(Type.STRING, "PASSWORD", "Password", "Pswd"));
+    list.add(newField(Type.STRING, "USERNAME", "User Name", "UserNme", true));
+    list.add(newField(Type.STRING, "PASSWORD", "Password", "Pswd", true));
 
     mSql.upsert(list);
 
@@ -116,6 +117,16 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   {
     Field ret = newField(inType, inName, inLong, inShort);
     ret.getProperties().setLookupGroup(inLookup);
+    return ret;
+  }
+
+  private Field newField(Type inType, String inName, String inLong, String inShort,
+      boolean inOneValue)
+  {
+    Field ret = newField(inType, inName, inLong, inShort);
+    Database db = new Database();
+    db.setOneValue(inOneValue);
+    ret.getProperties().setDatabase(db);
     return ret;
   }
 }

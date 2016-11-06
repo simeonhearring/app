@@ -5,6 +5,11 @@
 		<Sql>INSERT INTO FIELD_VALUE (mUpdated,mTable,mKey,mValue,mFieldId,mAsOf) VALUES (CURRENT_TIMESTAMP,?,?,?,?,?)</Sql>
 	</Statement>
 	<Statement>
+		<Key>UPDATE</Key>
+		<Types>VARCHAR,TIMESTAMP,VARCHAR,VARCHAR,NUMERIC</Types>
+		<Sql>UPDATE FIELD_VALUE SET mUpdated=CURRENT_TIMESTAMP,mValue=?,mAsOf=? WHERE mTable=? AND mKey=? AND mFieldId=?</Sql>
+	</Statement>
+		<Statement>
 		<Key>SELECT_KEY</Key>
 		<Types>VARCHAR,VARCHAR</Types>
 		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId

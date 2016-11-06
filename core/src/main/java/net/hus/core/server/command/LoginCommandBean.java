@@ -14,8 +14,8 @@ public class LoginCommandBean extends AbstractCommandBean<RequestCommand>
   public RpcResponse execute(RequestCommand inCommand)
   {
     Values values = new Values();
-    // String fvk = inCommand.fvk(); inCommand.get
-    values.setValues(mCoreDao.values().selectLast(new TableFvk("LOGIN", "3", "LOGIN")));
+    TableFvk fvk = inCommand.fvk();
+    values.setValues(mCoreDao.values().selectLast(fvk));//new TableFvk("LOGIN", "3", "LOGIN")));
 
     String userName = values.get(Field.Fid.USERNAME).getValue();
     String password = values.get(Field.Fid.PASSWORD).getValue();
