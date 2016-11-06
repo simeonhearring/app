@@ -42,6 +42,7 @@ import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
+import com.google.gwt.dom.client.Style.TextDecoration;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
@@ -213,14 +214,16 @@ public abstract class UiConverter
   {
     FlexTable_View ret = new FlexTable_View();
 
-    FlexTable ft = ret.getComponent();
+    FlexTable gwt = ret.getComponent();
 
-    create(ft, inUiO);
+    create(gwt, inUiO);
 
     int col = 0;
     for (String value : inUiO.getHeaders())
     {
-      ft.setWidget(0, col++, new Heading(inUiO.getHeadSize(), value));
+      Heading heading = new Heading(inUiO.getHeadSize(), value);
+      heading.getElement().getStyle().setTextDecoration(TextDecoration.UNDERLINE);
+      gwt.setWidget(0, col++, heading);
     }
 
     ret.setValue(inUiO.getTable());

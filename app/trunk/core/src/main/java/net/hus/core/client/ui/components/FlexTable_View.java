@@ -1,20 +1,20 @@
 package net.hus.core.client.ui.components;
 
+import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.html.Span;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.components.FlexTable_.Table;
-import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.util.StringUtil;
 
-public class FlexTable_View extends AbstractComposite_View<FlexTable, Table> implements ClickHandler
+public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -24,6 +24,9 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table> imp
 
   @UiField
   FlexTable mComponent;
+
+  @UiField
+  Icon mAdd0, mSave0, mAdd1, mSave1;
 
   public FlexTable_View()
   {
@@ -35,11 +38,23 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table> imp
     return mComponent;
   }
 
-  @Override
-  public void setFieldTKG(FieldTKG inFTKG)
+  @UiHandler(
+      {
+        "mAdd0",
+        "mSave0",
+        "mAdd1",
+        "mSave1"
+      })
+  public void add(ClickEvent inEvent)
   {
-    super.setFieldTKG(inFTKG);
-    mComponent.addClickHandler(this);
+    if (mAdd0.equals(inEvent.getSource()) || mAdd1.equals(inEvent.getSource()))
+    {
+      addRow(mComponent.getCellCount(0), "--Enter info--");
+    }
+    else if (mSave0.equals(inEvent.getSource()) && mSave1.equals(inEvent.getSource()))
+    {
+      save(values());
+    }
   }
 
   @Override
@@ -51,34 +66,44 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table> imp
 
       for (String[] object : inValue.getTable())
       {
-        int col = 0;
-        int row = mComponent.getRowCount();
-
-        for (String val : object)
-        {
-          Span span = new Span();
-          span.setText(val);
-          span.getElement().setAttribute("contenteditable", "true");
-          mComponent.setWidget(row, col++, span);
-        }
-
-        if (col < headColCt)
-        {
-          for (; col < headColCt; col++)
-          {
-            Span span = new Span();
-            span.getElement().setAttribute("contenteditable", "true");
-            mComponent.setWidget(row, col, span);
-          }
-        }
+        addRow(headColCt, object);
       }
     }
   }
 
-  @Override
-  public void onClick(ClickEvent inEvent)
+  private void addRow(int inHeadColCt, String... inValues)
   {
-    save(values());
+    int col = 0;
+    int row = mComponent.getRowCount();
+
+    mAdd1.setVisible(row > 10);
+    mSave1.setVisible(row > 10);
+
+    if (inValues != null)
+    {
+      for (String val : inValues)
+      {
+        Span span = new Span();
+        span.setText(val);
+        span.getElement().setAttribute("contenteditable", "true");
+        mComponent.setWidget(row, col++, span);
+      }
+    }
+
+    completeRow(inHeadColCt, col, row);
+  }
+
+  private void completeRow(int inHeadColCt, int inCol, int inRow)
+  {
+    if (inCol < inHeadColCt)
+    {
+      for (; inCol < inHeadColCt; inCol++)
+      {
+        Span span = new Span();
+        span.getElement().setAttribute("contenteditable", "true");
+        mComponent.setWidget(inRow, inCol, span);
+      }
+    }
   }
 
   private Table values()
