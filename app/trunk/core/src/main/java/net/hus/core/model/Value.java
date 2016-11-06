@@ -2,7 +2,7 @@ package net.hus.core.model;
 
 import java.util.Date;
 
-import net.hus.core.shared.model.FlexTable_.Table;
+import net.hus.core.shared.components.FlexTable_.Table;
 
 public class Value extends AbstractModel
 {

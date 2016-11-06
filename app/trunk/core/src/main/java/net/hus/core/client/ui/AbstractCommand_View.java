@@ -12,7 +12,7 @@ import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.ProfileEvent;
 import net.hus.core.model.FieldTKG;
 import net.hus.core.shared.command.RequestCommand;
-import net.hus.core.shared.model.Response;
+import net.hus.core.shared.components.Response;
 import net.hus.core.shared.rpc.HasCommandName;
 
 public class AbstractCommand_View<C extends Widget & HasClickHandlers>

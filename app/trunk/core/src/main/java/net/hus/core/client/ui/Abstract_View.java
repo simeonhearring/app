@@ -14,7 +14,7 @@ import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Value;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
-import net.hus.core.shared.model.FlexTable_.Table;
+import net.hus.core.shared.components.FlexTable_.Table;
 
 public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {

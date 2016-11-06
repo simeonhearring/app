@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Button_;
+import net.hus.core.shared.components.Button_;
 
 public class Button_Parser extends ComplexWidget_Parser<Button_>
 {

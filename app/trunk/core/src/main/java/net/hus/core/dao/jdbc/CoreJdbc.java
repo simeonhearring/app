@@ -11,7 +11,7 @@ import net.hus.core.model.Profile;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
-import net.hus.core.shared.model.Components;
+import net.hus.core.shared.components.Components;
 
 public class CoreJdbc implements CoreDao
 {

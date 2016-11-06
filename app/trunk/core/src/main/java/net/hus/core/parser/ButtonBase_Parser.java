@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.ButtonBase_;
+import net.hus.core.shared.components.ButtonBase_;
 
 public class ButtonBase_Parser<T> extends FocusWidget_Parser<T>
 {

@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.ValueBoxBase_;
+import net.hus.core.shared.components.ValueBoxBase_;
 
 public class ValueBoxBase_Parser extends FocusWidget_Parser<ValueBoxBase_>
 {

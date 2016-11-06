@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.FlexTable_.Table;
+import net.hus.core.shared.components.FlexTable_.Table;
 
 public class Table_Parser extends UIObject_Parser<Table>
 {

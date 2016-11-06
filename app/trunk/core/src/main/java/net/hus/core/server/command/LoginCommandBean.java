@@ -5,7 +5,7 @@ import net.hus.core.model.Profile;
 import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Values;
 import net.hus.core.shared.command.RequestCommand;
-import net.hus.core.shared.model.Response;
+import net.hus.core.shared.components.Response;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class LoginCommandBean extends AbstractCommandBean<RequestCommand>

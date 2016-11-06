@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Icon_;
+import net.hus.core.shared.components.Icon_;
 
 public class Icon_Parser extends ComplexWidget_Parser<Icon_>
 {

@@ -1,7 +1,7 @@
 package net.hus.core.shared.command;
 
 import net.hus.core.model.FieldTKG;
-import net.hus.core.shared.model.Response;
+import net.hus.core.shared.components.Response;
 import net.hus.core.shared.rpc.CommandName;
 import net.hus.core.shared.rpc.HasCommandName;
 

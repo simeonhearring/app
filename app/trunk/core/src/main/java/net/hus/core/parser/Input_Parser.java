@@ -2,8 +2,8 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.model.Input_;
-import net.hus.core.shared.model.ValueBoxBase_;
+import net.hus.core.shared.components.Input_;
+import net.hus.core.shared.components.ValueBoxBase_;
 
 public class Input_Parser extends ValueBoxBase_Parser
 {

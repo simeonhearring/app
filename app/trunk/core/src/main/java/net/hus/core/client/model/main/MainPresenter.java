@@ -12,8 +12,8 @@ import net.hus.core.model.Page.Section;
 import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
-import net.hus.core.shared.model.Components;
-import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.components.Components;
+import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.util.RandomUtil;
 
 public class MainPresenter implements ProfileEvent.Handler

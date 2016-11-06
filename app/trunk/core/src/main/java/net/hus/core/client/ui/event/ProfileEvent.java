@@ -1,6 +1,6 @@
 package net.hus.core.client.ui.event;
 
-import net.hus.core.shared.model.Response;
+import net.hus.core.shared.components.Response;
 
 public class ProfileEvent extends Event<ProfileEvent.Handler>
 {
