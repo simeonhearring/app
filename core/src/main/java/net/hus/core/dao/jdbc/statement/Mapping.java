@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import net.hus.core.model.Field;
 import net.hus.core.model.Lookup;
 import net.hus.core.model.Model;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Value;
 import net.hus.core.parser.FieldPropertiesParser;
 
@@ -76,7 +76,7 @@ public class Mapping extends AbstractSqlJdbc
     mapModel(inOut, inRs);
 
     inOut.setTableFvk(
-        new TableFvk(inRs.getString("mTable"), inRs.getString("mKey"), inRs.getString("mGroup")));
+        new FieldTKG(inRs.getString("mTable"), inRs.getString("mKey"), inRs.getString("mGroup")));
     inOut.setValue(inRs.getString("mValue"));
     inOut.setAsOf(inRs.getTimestamp("mAsOf"));
 

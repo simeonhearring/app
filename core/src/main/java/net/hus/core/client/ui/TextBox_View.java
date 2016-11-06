@@ -5,10 +5,10 @@ import org.gwtbootstrap3.client.ui.TextBox;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 
 public class TextBox_View extends Abstract_View<TextBox, String>
-    implements ValueChangeHandler<String>
+implements ValueChangeHandler<String>
 {
   public TextBox_View(String inKey, TextBox inComponent)
   {
@@ -16,9 +16,9 @@ public class TextBox_View extends Abstract_View<TextBox, String>
   }
 
   @Override
-  public void setTableFvk(TableFvk inTableKey)
+  public void setFieldTKG(FieldTKG inFTKG)
   {
-    super.setTableFvk(inTableKey);
+    super.setFieldTKG(inFTKG);
     mComponent.addValueChangeHandler(this);
   }
 

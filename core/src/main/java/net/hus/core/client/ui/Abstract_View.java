@@ -10,7 +10,7 @@ import net.hus.core.client.common.Component;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.model.Field;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Value;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
@@ -18,7 +18,7 @@ import net.hus.core.shared.model.FlexTable_.Table;
 
 public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
-  protected TableFvk mTableFvk;
+  protected FieldTKG mTableFvk;
   private String mLabel;
   private Field mField;
 
@@ -42,7 +42,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   }
 
   @Override
-  public void setTableFvk(TableFvk inTableFvk)
+  public void setFieldTKG(FieldTKG inTableFvk)
   {
     mTableFvk = inTableFvk;
   }

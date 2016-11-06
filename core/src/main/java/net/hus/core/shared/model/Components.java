@@ -6,15 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Page.Section;
-import net.hus.core.model.TableFvk;
 import net.hus.core.model.Value;
 
 public class Components implements Serializable
 {
   private static final long serialVersionUID = 1058892144882503748L;
 
-  private List<TableFvk> mTableFvks = new ArrayList<>();
+  private List<FieldTKG> mFieldTKGs = new ArrayList<>();
 
   private List<UIObject_> mList = new ArrayList<>();
 
@@ -78,18 +78,18 @@ public class Components implements Serializable
     }
   }
 
-  public TableFvk getTableFvk()
+  public FieldTKG getTableFvk()
   {
-    return getTableFvks().get(0);
+    return getFieldTKGs().get(0);
   }
 
-  private List<TableFvk> getTableFvks()
+  private List<FieldTKG> getFieldTKGs()
   {
-    return mTableFvks;
+    return mFieldTKGs;
   }
 
-  public void setTableFvks(List<TableFvk> inTableKeys)
+  public void setFieldTKGs(List<FieldTKG> inFTKGs)
   {
-    mTableFvks = inTableKeys;
+    mFieldTKGs = inFTKGs;
   }
 }

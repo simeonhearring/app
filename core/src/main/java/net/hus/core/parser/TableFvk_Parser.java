@@ -2,39 +2,39 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 
-public class TableFvk_Parser extends XStream implements Parser<TableFvk>
+public class TableFvk_Parser extends XStream implements Parser<FieldTKG>
 {
   public TableFvk_Parser()
   {
-    xs((Parser<TableFvk>) this);
+    xs((Parser<FieldTKG>) this);
   }
 
   @Override
-  public void xs(Parser<TableFvk> inParser)
+  public void xs(Parser<FieldTKG> inParser)
   {
     xs((XStream) inParser);
   }
 
   @Override
-  public TableFvk fromXml(String inValue)
+  public FieldTKG fromXml(String inValue)
   {
-    return (TableFvk) super.fromXML(inValue);
+    return (FieldTKG) super.fromXML(inValue);
   }
 
   @Override
-  public String toXml(TableFvk inObj)
+  public String toXml(FieldTKG inObj)
   {
     return super.toXML(inObj);
   }
 
   public static void xs(XStream inXs)
   {
-    inXs.alias("TableFvk", TableFvk.class);
-    inXs.aliasAttribute(TableFvk.class, "mFvt", "fvt");
-    inXs.aliasAttribute(TableFvk.class, "mFvk", "fvk");
-    inXs.aliasAttribute(TableFvk.class, "mFgg", "fgg");
-    inXs.aliasAttribute(TableFvk.class, "mPage", "page.name");
+    inXs.alias("FieldTKG", FieldTKG.class);
+    inXs.aliasAttribute(FieldTKG.class, "mFvt", "fvt");
+    inXs.aliasAttribute(FieldTKG.class, "mFvk", "fvk");
+    inXs.aliasAttribute(FieldTKG.class, "mFgg", "fgg");
+    inXs.aliasAttribute(FieldTKG.class, "mPage", "page.name");
   }
 }

@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
 
@@ -12,7 +12,7 @@ public class ComponentsParser extends XStream implements Parser<Components>
   {
     alias("Components", Components.class);
     addImplicitCollection(Components.class, "mList", null, UIObject_.class);
-    addImplicitCollection(Components.class, "mTableFvks", null, TableFvk.class);
+    addImplicitCollection(Components.class, "mFieldTKGs", null, FieldTKG.class);
 
     TableFvk_Parser.xs(this);
 

@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.Component;
 import net.hus.core.model.Field;
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 
 public abstract class AbstractStatic_View<C extends Widget> implements Component<String>
 {
@@ -21,7 +21,7 @@ public abstract class AbstractStatic_View<C extends Widget> implements Component
   }
 
   @Override
-  public void setTableFvk(TableFvk inTableKey)
+  public void setFieldTKG(FieldTKG inFTKG)
   {
   }
 

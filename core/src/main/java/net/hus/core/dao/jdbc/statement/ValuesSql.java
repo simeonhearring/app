@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-import net.hus.core.model.TableFvk;
+import net.hus.core.model.FieldTKG;
 import net.hus.core.model.Value;
 
 public class ValuesSql extends Mapping
@@ -134,23 +134,23 @@ public class ValuesSql extends Mapping
     mBatchUpdate.reset();
   }
 
-  protected List<Value> select(TableFvk inTk)
+  protected List<Value> select(FieldTKG inTk)
   {
     List<Value> ret = mSelectKey.execute(params(inTk.getFvt(), inTk.getFvk()));
     return ret;
   }
 
-  public List<Value> selectLast(TableFvk inTk)
+  public List<Value> selectLast(FieldTKG inTk)
   {
     List<Value> ret =
         mSelectLastKey.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
     return ret;
   }
 
-  protected List<Value> selectLast(List<TableFvk> inTks)
+  protected List<Value> selectLast(List<FieldTKG> inTks)
   {
     List<Value> ret = new ArrayList<>();
-    for (TableFvk value : inTks)
+    for (FieldTKG value : inTks)
     {
       ret.addAll(
           mSelectLastKey.execute(params(value.getFvt(), value.getFvk(), value.getFgg())));
@@ -158,7 +158,7 @@ public class ValuesSql extends Mapping
     return ret;
   }
 
-  protected List<Value> select(TableFvk inTk, Long inFieldId)
+  protected List<Value> select(FieldTKG inTk, Long inFieldId)
   {
     List<Value> ret = mSelectKeyField.execute(params(inTk.getFvt(), inTk.getFvk(), inFieldId));
     return ret;
