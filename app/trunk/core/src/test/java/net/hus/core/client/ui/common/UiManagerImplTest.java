@@ -9,8 +9,8 @@ import org.mockito.Mockito;
 
 import com.google.gwtmockito.GwtMockitoTestRunner;
 
-import net.hus.core.model.Field;
 import net.hus.core.shared.components.TextBox_Test;
+import net.hus.core.shared.model.Field;
 
 @RunWith(GwtMockitoTestRunner.class)
 public class UiManagerImplTest

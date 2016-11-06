@@ -1,7 +1,7 @@
 package net.hus.core.server.command;
 
-import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ProfileCommand;
+import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class ProfileCommandBean extends AbstractCommandBean<ProfileCommand>

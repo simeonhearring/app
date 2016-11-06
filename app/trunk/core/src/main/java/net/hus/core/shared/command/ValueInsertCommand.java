@@ -3,7 +3,7 @@ package net.hus.core.shared.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hus.core.model.Value;
+import net.hus.core.shared.model.Value;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("ValueInsertCommand")

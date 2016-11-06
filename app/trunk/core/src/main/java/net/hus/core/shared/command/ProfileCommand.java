@@ -1,6 +1,6 @@
 package net.hus.core.shared.command;
 
-import net.hus.core.model.Profile;
+import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("ProfileCommand")

@@ -3,7 +3,7 @@ package net.hus.core.shared.command;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.hus.core.model.Lookups;
+import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("LookupCommand")

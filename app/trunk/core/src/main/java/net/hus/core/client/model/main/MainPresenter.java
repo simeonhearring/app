@@ -8,12 +8,12 @@ import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.common.UiManager;
 import net.hus.core.client.ui.event.ProfileEvent;
-import net.hus.core.model.Page.Section;
-import net.hus.core.model.Profile;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.components.Components;
 import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.util.RandomUtil;
 
 public class MainPresenter implements ProfileEvent.Handler

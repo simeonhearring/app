@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.hus.core.model.AbstractModel;
+import net.hus.core.shared.model.AbstractModel;
 
 @SuppressWarnings("serial")
 public abstract class AbstractSaveCommand<M extends AbstractModel> extends AbstractCommand

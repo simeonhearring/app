@@ -1,7 +1,7 @@
 package net.hus.core.client.model.main;
 
 import net.hus.core.client.common.PageDisplay;
-import net.hus.core.model.Page;
+import net.hus.core.shared.model.Page;
 
 public class PageLocater
 {

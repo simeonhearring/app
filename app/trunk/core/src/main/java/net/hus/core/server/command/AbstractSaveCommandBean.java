@@ -1,7 +1,7 @@
 package net.hus.core.server.command;
 
-import net.hus.core.model.AbstractModel;
 import net.hus.core.shared.command.AbstractSaveCommand;
+import net.hus.core.shared.model.AbstractModel;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 //import com.hus.gwttoolbox.shared.command.AbstractSaveCommand;

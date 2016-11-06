@@ -1,9 +1,9 @@
-package net.hus.core.model;
+package net.hus.core.shared.model;
 
 import java.io.Serializable;
 import java.util.List;
 
-import net.hus.core.model.Field.Fid;
+import net.hus.core.shared.model.Field.Fid;
 
 public class Values implements Serializable
 {

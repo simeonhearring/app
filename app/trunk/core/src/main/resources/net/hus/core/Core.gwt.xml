@@ -3,7 +3,6 @@
 
 	<inherits name='com.google.gwt.user.User' />
 
-	<source path='model' />
 	<source path='client' />
 	<source path='shared' />
 

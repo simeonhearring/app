@@ -8,15 +8,15 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
-import net.hus.core.model.Field;
-import net.hus.core.model.Field.Array;
-import net.hus.core.model.Field.Database;
-import net.hus.core.model.Field.Display;
-import net.hus.core.model.Field.Lookup;
-import net.hus.core.model.Field.Lookup.Location;
-import net.hus.core.model.Field.Properties;
-import net.hus.core.model.Field.Type;
-import net.hus.core.model.Fields;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Fields;
+import net.hus.core.shared.model.Field.Array;
+import net.hus.core.shared.model.Field.Database;
+import net.hus.core.shared.model.Field.Display;
+import net.hus.core.shared.model.Field.Lookup;
+import net.hus.core.shared.model.Field.Properties;
+import net.hus.core.shared.model.Field.Type;
+import net.hus.core.shared.model.Field.Lookup.Location;
 
 public class FieldsSqlTest extends MySqlCoreDsTest
 {

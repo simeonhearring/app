@@ -9,8 +9,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-import net.hus.core.model.Lookup;
-import net.hus.core.model.Lookup.Group;
+import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Lookup.Group;
 
 public class LookupSql extends Mapping
 {

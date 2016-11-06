@@ -3,7 +3,7 @@ package net.hus.core.parser;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.model.Page;
+import net.hus.core.shared.model.Page;
 import net.hus.core.util.ResourceUtil;
 
 public class PageParserTest

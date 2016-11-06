@@ -1,4 +1,4 @@
-package net.hus.core.model;
+package net.hus.core.shared.model;
 
 public class Profile extends AbstractModel
 {

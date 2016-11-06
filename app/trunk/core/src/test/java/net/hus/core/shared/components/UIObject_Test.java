@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.model.Page.Section;
 import net.hus.core.parser.UIObject_Parser;
 import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.Page.Section;
 import net.hus.core.util.ResourceUtil;
 
 public class UIObject_Test

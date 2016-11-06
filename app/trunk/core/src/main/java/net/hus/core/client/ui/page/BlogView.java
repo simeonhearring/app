@@ -9,7 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.page.BlogDisplay;
-import net.hus.core.model.Page.Section;
+import net.hus.core.shared.model.Page.Section;
 
 public class BlogView extends AbstractRowView implements BlogDisplay
 {

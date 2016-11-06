@@ -11,8 +11,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Value;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Value;
 
 public class ValuesSql extends Mapping
 {

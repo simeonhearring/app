@@ -19,7 +19,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import net.hus.core.model.FieldTKG;
+import net.hus.core.shared.model.FieldTKG;
 
 public class MySqlCoreDsTest
 {

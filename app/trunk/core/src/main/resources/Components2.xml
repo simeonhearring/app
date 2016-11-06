@@ -30,7 +30,7 @@
 				<Collection>
 					<FormLabel KEY="FL00_12" isHtml="false" />
 					<ListBox KEY="FV00_12" multipleSelect="false">
-						<Lookup loc="TABLE" params="GENDER,UNKNOWN" />
+						<Lookup loc="TABLE" params="BLANK,GENDER,UNKNOWN" />
 					</ListBox>
 				</Collection>
 			</FormGroup>

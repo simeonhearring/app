@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.hus.core.client.common.Component;
-import net.hus.core.model.Field;
-import net.hus.core.model.FieldTKG;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.FieldTKG;
 
 public class Components<V>
 {

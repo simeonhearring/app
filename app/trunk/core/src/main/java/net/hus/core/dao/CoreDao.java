@@ -3,8 +3,8 @@ package net.hus.core.dao;
 import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
-import net.hus.core.model.Profile;
 import net.hus.core.shared.components.Components;
+import net.hus.core.shared.model.Profile;
 
 public interface CoreDao
 {

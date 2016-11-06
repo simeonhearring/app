@@ -1,11 +1,11 @@
 package net.hus.core.server.command;
 
-import net.hus.core.model.Field;
-import net.hus.core.model.Profile;
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Values;
 import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.components.Response;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.model.Values;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class LoginCommandBean extends AbstractCommandBean<RequestCommand>

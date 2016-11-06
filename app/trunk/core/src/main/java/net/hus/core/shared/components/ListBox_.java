@@ -3,7 +3,7 @@ package net.hus.core.shared.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hus.core.model.Field;
+import net.hus.core.shared.model.Field;
 
 public class ListBox_ extends FocusWidget_
 {

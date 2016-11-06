@@ -10,9 +10,9 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.ProfileEvent;
-import net.hus.core.model.FieldTKG;
 import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.components.Response;
+import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.rpc.HasCommandName;
 
 public class AbstractCommand_View<C extends Widget & HasClickHandlers>

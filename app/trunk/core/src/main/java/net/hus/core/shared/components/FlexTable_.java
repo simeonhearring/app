@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 
-import net.hus.core.model.Field.Type;
+import net.hus.core.shared.model.Field.Type;
 
 public class FlexTable_ extends UIObject_
 {

@@ -3,12 +3,12 @@ package net.hus.core.dao.jdbc.statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import net.hus.core.model.Field;
-import net.hus.core.model.Lookup;
-import net.hus.core.model.Model;
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Value;
 import net.hus.core.parser.FieldPropertiesParser;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Model;
+import net.hus.core.shared.model.Value;
 
 public class Mapping extends AbstractSqlJdbc
 {

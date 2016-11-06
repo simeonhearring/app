@@ -2,14 +2,14 @@ package net.hus.core.server.command;
 
 import java.util.List;
 
-import net.hus.core.model.Field;
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Lookup;
-import net.hus.core.model.Value;
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.components.Components;
 import net.hus.core.shared.components.ListBox_;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Value;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand>

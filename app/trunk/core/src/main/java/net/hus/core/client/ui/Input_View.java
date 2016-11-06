@@ -5,7 +5,7 @@ import org.gwtbootstrap3.client.ui.Input;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
-import net.hus.core.model.FieldTKG;
+import net.hus.core.shared.model.FieldTKG;
 
 public class Input_View extends Abstract_View<Input, String> implements ValueChangeHandler<String>
 {

@@ -6,12 +6,12 @@ import net.hus.core.dao.CoreDao;
 import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
-import net.hus.core.model.Lookup.Group;
-import net.hus.core.model.Profile;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.components.Components;
+import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.model.Lookup.Group;
 
 public class CoreJdbc implements CoreDao
 {

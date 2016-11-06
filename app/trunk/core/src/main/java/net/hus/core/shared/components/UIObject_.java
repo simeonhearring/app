@@ -2,7 +2,7 @@ package net.hus.core.shared.components;
 
 import java.io.Serializable;
 
-import net.hus.core.model.Page.Section;
+import net.hus.core.shared.model.Page.Section;
 
 public class UIObject_ implements Serializable
 {

@@ -9,9 +9,9 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.jdbc.object.MappingSqlQuery;
 
-import net.hus.core.model.Field;
-import net.hus.core.model.Fields;
 import net.hus.core.parser.FieldPropertiesParser;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Fields;
 
 public class FieldsSql extends Mapping
 {

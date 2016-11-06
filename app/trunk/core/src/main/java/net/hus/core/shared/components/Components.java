@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Page.Section;
-import net.hus.core.model.Value;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Value;
+import net.hus.core.shared.model.Page.Section;
 
 /**
  * Populated from XML (mFieldTKGs & mList). Values from database added after
