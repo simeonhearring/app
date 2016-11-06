@@ -15,9 +15,9 @@ public class ListBox_View extends Abstract_View<ListBox, String> implements Chan
   }
 
   @Override
-  public void setTableKey(TableFvk inTableKey)
+  public void setTableFvk(TableFvk inTableKey)
   {
-    super.setTableKey(inTableKey);
+    super.setTableFvk(inTableKey);
     mComponent.addChangeHandler(this);
   }
 

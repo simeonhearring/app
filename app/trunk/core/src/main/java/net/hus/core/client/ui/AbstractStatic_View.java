@@ -3,6 +3,7 @@ package net.hus.core.client.ui;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.Component;
+import net.hus.core.model.Field;
 import net.hus.core.model.TableFvk;
 
 public abstract class AbstractStatic_View<C extends Widget> implements Component<String>
@@ -20,7 +21,12 @@ public abstract class AbstractStatic_View<C extends Widget> implements Component
   }
 
   @Override
-  public void setTableKey(TableFvk inTableKey)
+  public void setTableFvk(TableFvk inTableKey)
+  {
+  }
+
+  @Override
+  public void setField(Field inField)
   {
   }
 

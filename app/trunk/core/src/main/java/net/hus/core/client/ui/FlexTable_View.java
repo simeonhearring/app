@@ -24,9 +24,9 @@ public class FlexTable_View extends Abstract_View<FlexTable, Table> implements C
   }
 
   @Override
-  public void setTableKey(TableFvk inTableKey)
+  public void setTableFvk(TableFvk inTableKey)
   {
-    super.setTableKey(inTableKey);
+    super.setTableFvk(inTableKey);
     mComponent.addClickHandler(this);
   }
 

@@ -10,6 +10,8 @@ import java.io.Serializable;
  *
  * Page.Name manages which Page should be loaded for Components.
  *
+ * TODO Consider renaming. FieldTKG
+ *
  * @author simeonhearring
  * @since October 2016
  */
@@ -60,9 +62,9 @@ public class TableFvk implements Serializable
     return mFgg;
   }
 
-  public void setFgg(String inGroup)
+  public void setFgg(String inFgg)
   {
-    mFgg = inGroup;
+    mFgg = inFgg;
   }
 
   public Page.Name getPage()

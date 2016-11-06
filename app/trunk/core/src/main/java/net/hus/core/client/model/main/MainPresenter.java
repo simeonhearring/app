@@ -73,6 +73,8 @@ public class MainPresenter implements ProfileEvent.Handler
         addComponentsToPage(components, page);
 
         addValuesToComponents(components);
+
+        addFvkToButtons(components);
       }
     });
   }
@@ -100,6 +102,11 @@ public class MainPresenter implements ProfileEvent.Handler
   private void addValuesToComponents(Components inComponents)
   {
     mManager.update(inComponents.getValues(), inComponents.getTableFvk());
+  }
+
+  private void addFvkToButtons(Components inComponents)
+  {
+    mManager.update(inComponents.getTableFvk());
   }
 
   @Override

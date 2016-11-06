@@ -2,6 +2,7 @@ package net.hus.core.client.common;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
+import net.hus.core.model.Field;
 import net.hus.core.model.TableFvk;
 
 /**
@@ -19,5 +20,7 @@ public interface Component<V> extends IsWidget
 
   void setLabel(String inLabel);
 
-  void setTableKey(TableFvk inTFvk);
+  void setTableFvk(TableFvk inTFvk);
+
+  void setField(Field inField);
 }

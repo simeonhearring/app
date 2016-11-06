@@ -5,6 +5,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.model.Field;
 import net.hus.core.model.Field.Array;
+import net.hus.core.model.Field.Database;
 import net.hus.core.model.Field.Display;
 import net.hus.core.model.Field.Lookup;
 import net.hus.core.model.Field.Lookup.Location;
@@ -34,6 +35,10 @@ public class FieldPropertiesParserTest
     array.setSize(5);
     array.setLabels("Street 1,Street 2,City,State,Zip".split(","));
     prop.setArray(array);
+
+    Database database = new Database();
+    database.setOneValue(true);
+    prop.setDatabase(database);
 
     String xml = ResourceUtil.contents("net/hus/core/parser/FieldProperties.xml");
 

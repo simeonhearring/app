@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.ProfileEvent;
+import net.hus.core.model.TableFvk;
 import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.model.Response;
 import net.hus.core.shared.rpc.HasCommandName;
@@ -23,6 +24,12 @@ extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
   {
     super(inKey, inComponent);
     mCommandName = inCommandName;
+  }
+
+  @Override
+  public void setTableFvk(TableFvk inTableFvk)
+  {
+    super.setTableFvk(inTableFvk);
     mComponent.addClickHandler(this);
   }
 
@@ -35,7 +42,7 @@ extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
   public void onClick(ClickEvent inEvent)
   {
     Notify.notify("I was clicked!!");
-    Global.fire(new RequestCommand(commandName()), new RpcCallback<RequestCommand>()
+    Global.fire(new RequestCommand(commandName(), mTableFvk), new RpcCallback<RequestCommand>()
     {
       @Override
       public void onRpcSuccess(RequestCommand inCommand)

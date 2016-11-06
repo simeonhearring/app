@@ -15,9 +15,9 @@ public class Input_View extends Abstract_View<Input, String> implements ValueCha
   }
 
   @Override
-  public void setTableKey(TableFvk inTableKey)
+  public void setTableFvk(TableFvk inTableKey)
   {
-    super.setTableKey(inTableKey);
+    super.setTableFvk(inTableKey);
     mComponent.addValueChangeHandler(this);
   }
 

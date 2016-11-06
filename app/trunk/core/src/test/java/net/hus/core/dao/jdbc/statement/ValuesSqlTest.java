@@ -26,16 +26,16 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   public void testSelectKey()
   {
     List<Value> i = mSql.select(TK);
-    Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getFvt());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getFvk());
+    Assert.assertEquals(VALUE_TABLE, i.get(0).getTableFvk().getFvt());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getTableFvk().getFvk());
   }
 
   @Test
   public void testSelectKeyField()
   {
     List<Value> i = mSql.select(TK, 1L);
-    Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getFvt());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getFvk());
+    Assert.assertEquals(VALUE_TABLE, i.get(0).getTableFvk().getFvt());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getTableFvk().getFvk());
   }
 
   @Test
@@ -43,8 +43,8 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   {
     List<Value> i = mSql.selectLast(TK);
     Assert.assertEquals(5, i.size());
-    Assert.assertEquals(VALUE_TABLE, i.get(0).getTableKey().getFvt());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getTableKey().getFvk());
+    Assert.assertEquals(VALUE_TABLE, i.get(0).getTableFvk().getFvt());
+    Assert.assertEquals(VALUE_KEY, i.get(0).getTableFvk().getFvk());
   }
 
   @Test
@@ -53,7 +53,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     List<Value> list = new ArrayList<>();
 
     Value value = new Value();
-    value.setTableKey(TK);
+    value.setTableFvk(TK);
     value.setValue("Simeon-JUNIT");
     value.setField(new Field());
     value.getField().setId(1L);
@@ -68,5 +68,24 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     String expected = String.valueOf(asOf.getTime()).substring(0, 10);
     String actual = String.valueOf(results.get(0).getAsOf().getTime()).substring(0, 10);
     Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void testUpdate()
+  {
+    List<Value> list = new ArrayList<>();
+
+    Value value = new Value();
+    value.setTableFvk(TK);
+    value.setField(new Field());
+    value.getField().setId(1L);
+    Date asOf = new Date();
+    value.setAsOf(asOf);
+
+    value.setValue("Simeon-JUNIT--");
+
+    list.add(value);
+
+    mSql.update(list);
   }
 }

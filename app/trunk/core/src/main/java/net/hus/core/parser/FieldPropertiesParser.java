@@ -32,6 +32,7 @@ public class FieldPropertiesParser extends XStream implements Parser<Field.Prope
     aliasField("Display", Field.Properties.class, "mDisplay");
     aliasField("Lookup", Field.Properties.class, "mLookup");
     aliasField("Array", Field.Properties.class, "mArray");
+    aliasField("Database", Field.Properties.class, "mDatabase");
 
     alias("Display", Field.Display.class);
     aliasAttribute(Field.Display.class, "mShort", "short");
@@ -44,5 +45,8 @@ public class FieldPropertiesParser extends XStream implements Parser<Field.Prope
     alias("Array", Field.Array.class);
     aliasAttribute(Field.Array.class, "mSize", "size");
     aliasAttribute(Field.Array.class, "mLabels", "Labels");
+
+    alias("Database", Field.Database.class);
+    aliasAttribute(Field.Database.class, "mOneValue", "oneValue");
   }
 }

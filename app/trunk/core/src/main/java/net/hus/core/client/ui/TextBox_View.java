@@ -16,9 +16,9 @@ public class TextBox_View extends Abstract_View<TextBox, String>
   }
 
   @Override
-  public void setTableKey(TableFvk inTableKey)
+  public void setTableFvk(TableFvk inTableKey)
   {
-    super.setTableKey(inTableKey);
+    super.setTableFvk(inTableKey);
     mComponent.addValueChangeHandler(this);
   }
 

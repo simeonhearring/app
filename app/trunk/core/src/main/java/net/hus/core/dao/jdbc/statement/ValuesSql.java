@@ -17,6 +17,7 @@ import net.hus.core.model.Value;
 public class ValuesSql extends Mapping
 {
   private BatchSqlUpdate mBatchInsert;
+  private BatchSqlUpdate mBatchUpdate;
   private MappingSqlQuery<Value> mSelectKey;
   private MappingSqlQuery<Value> mSelectKeyField;
   private MappingSqlQuery<Value> mSelectLastKey;
@@ -30,9 +31,13 @@ public class ValuesSql extends Mapping
   {
     this();
 
-    Statement upsert = mStmts.getStatement("INSERT");
-    mBatchInsert = new BatchSqlUpdate(inDataSource, upsert.getSql(), upsert.types());
+    Statement insert = mStmts.getStatement("INSERT");
+    mBatchInsert = new BatchSqlUpdate(inDataSource, insert.getSql(), insert.types());
     mBatchInsert.compile();
+
+    Statement update = mStmts.getStatement("UPDATE");
+    mBatchUpdate = new BatchSqlUpdate(inDataSource, update.getSql(), update.types());
+    mBatchUpdate.compile();
 
     Statement key = mStmts.getStatement("SELECT_KEY");
     mSelectKey = new MappingSqlQuery<Value>(inDataSource, key.getSql())
@@ -71,13 +76,39 @@ public class ValuesSql extends Mapping
     mSelectKeyField.compile();
   }
 
+  public void insertUpdate(List<Value> inList)
+  {
+    mBatchUpdate.reset();
+    mBatchInsert.reset();
+    for (Value value : inList)
+    {
+      String table = value.getTableFvk().getFvt();
+      String key = value.getTableFvk().getFvk();
+      String valueText = value.getValue();
+      Long fieldId = value.getField().getId();
+      Date asOf = value.getAsOf();
+      if (value.getField().isOneValue())
+      {
+        mBatchUpdate.update(params(valueText, asOf, table, key, fieldId));
+      }
+      else
+      {
+        mBatchInsert.update(params(table, key, valueText, fieldId, asOf));
+      }
+    }
+    mBatchInsert.flush();
+    mBatchInsert.reset();
+    mBatchUpdate.flush();
+    mBatchUpdate.reset();
+  }
+
   public void insert(List<Value> inList)
   {
     mBatchInsert.reset();
     for (Value value : inList)
     {
-      String table = value.getTableKey().getFvt();
-      String key = value.getTableKey().getFvk();
+      String table = value.getTableFvk().getFvt();
+      String key = value.getTableFvk().getFvk();
       String valueText = value.getValue();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
@@ -85,6 +116,22 @@ public class ValuesSql extends Mapping
     }
     mBatchInsert.flush();
     mBatchInsert.reset();
+  }
+
+  public void update(List<Value> inList)
+  {
+    mBatchUpdate.reset();
+    for (Value value : inList)
+    {
+      String table = value.getTableFvk().getFvt();
+      String key = value.getTableFvk().getFvk();
+      String valueText = value.getValue();
+      Long fieldId = value.getField().getId();
+      Date asOf = value.getAsOf();
+      mBatchUpdate.update(params(valueText, asOf, table, key, fieldId));
+    }
+    mBatchUpdate.flush();
+    mBatchUpdate.reset();
   }
 
   protected List<Value> select(TableFvk inTk)
