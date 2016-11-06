@@ -30,7 +30,7 @@ public class ProfileParserTest
     model.setUserName("simeonhearring");
     model.setPassword("abc123");
 
-    String xml = ResourceUtil.contents("Profile1.xml");
+    String xml = ResourceUtil.contents("Profile3.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));

@@ -75,12 +75,7 @@
 	<xs:complexType name="FlexTable_Type">
 		<xs:sequence>
 			<xs:element name="Title" type="xs:string"></xs:element>
-			<xs:element name="Headers" type="Headers_Type"></xs:element>
-			<xs:element name="Types" type="Types_Type" minOccurs="0"></xs:element>
 		</xs:sequence>
-		<xs:attribute use="optional" name="cols" type="xs:string"></xs:attribute>
-		<xs:attribute use="optional" name="maxrows" type="xs:string"></xs:attribute>
-		<xs:attribute use="optional" name="headingSize" type="xs:string"></xs:attribute>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Badge_Type">

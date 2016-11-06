@@ -1,5 +1,5 @@
 <Components>
-  <TableFvk fvt="JUNIT" fvk="-1" page.name="WEB"/>
+  <FieldTKG fvt="JUNIT" fvk="-1" page.name="WEB"/>
   <Badge KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
     <Title>Title</Title>
     <Text>Text</Text>

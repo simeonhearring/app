@@ -39,16 +39,8 @@
 					<FormLabel KEY="FL00_13" isHtml="false">
 						<Text>Field4:</Text>
 					</FormLabel>
-					<FlexTable KEY="FV00_13" cols="2" maxrows="4" width="100%" headingSize="H5">
+					<FlexTable KEY="FV00_13">
 						<Title>Title</Title>
-						<Headers>
-							<string>Type</string>
-							<string>Street 1</string>
-							<string>Street 2</string>
-							<string>City</string>
-							<string>State</string>
-							<string>Zip</string>
-						</Headers>
 					</FlexTable>
 				</Collection>
 			</FormGroup>

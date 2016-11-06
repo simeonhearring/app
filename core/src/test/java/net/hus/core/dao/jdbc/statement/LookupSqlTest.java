@@ -108,7 +108,7 @@ public class LookupSqlTest extends MySqlCoreDsTest
   {
     Group group = Group.BLANK;
 
-    Lookup l1 = lookup(group, "", "", 0, null);
+    Lookup l1 = lookup(group, "(Select One)", "", 0, null);
 
     List<Lookup> list = new ArrayList<>();
     list.add(l1);

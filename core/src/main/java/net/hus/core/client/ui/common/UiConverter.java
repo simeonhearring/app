@@ -43,7 +43,6 @@ import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.user.client.ui.ComplexPanel;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
