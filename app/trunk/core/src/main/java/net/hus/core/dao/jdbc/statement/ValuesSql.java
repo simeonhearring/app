@@ -142,8 +142,7 @@ public class ValuesSql extends Mapping
 
   public List<Value> selectLast(FieldTKG inTk)
   {
-    List<Value> ret =
-        mSelectLastKey.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
+    List<Value> ret = mSelectLastKey.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
     return ret;
   }
 
@@ -152,8 +151,7 @@ public class ValuesSql extends Mapping
     List<Value> ret = new ArrayList<>();
     for (FieldTKG value : inTks)
     {
-      ret.addAll(
-          mSelectLastKey.execute(params(value.getFvt(), value.getFvk(), value.getFgg())));
+      ret.addAll(mSelectLastKey.execute(params(value.getFvt(), value.getFvk(), value.getFgg())));
     }
     return ret;
   }
