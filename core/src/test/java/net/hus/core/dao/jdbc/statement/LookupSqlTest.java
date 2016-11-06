@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
-import net.hus.core.model.Lookup;
-import net.hus.core.model.Lookup.Group;
+import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.util.ResourceUtil;
 
 public class LookupSqlTest extends MySqlCoreDsTest
@@ -101,6 +101,21 @@ public class LookupSqlTest extends MySqlCoreDsTest
     mSql.upsert(list);
 
     Assert.assertEquals(2, mSql.select(group.name()).size());
+  }
+
+  @Test
+  public void setupBlank()
+  {
+    Group group = Group.BLANK;
+
+    Lookup l1 = lookup(group, "", "", 0, null);
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(l1);
+
+    mSql.upsert(list);
+
+    Assert.assertEquals(1, mSql.select(group.name()).size());
   }
 
   @Test

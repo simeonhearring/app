@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.hus.core.model.Lookup;
-import net.hus.core.model.Lookups;
 import net.hus.core.shared.command.LookupCommand;
+import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class LookupCommandBean extends AbstractCommandBean<LookupCommand>

@@ -1,7 +1,7 @@
-package net.hus.core.model;
+package net.hus.core.shared.model;
 
-import static net.hus.core.model.Lookup.Size.SM;
-import static net.hus.core.model.Lookup.Size.XL;
+import static net.hus.core.shared.model.Lookup.Size.SM;
+import static net.hus.core.shared.model.Lookup.Size.XL;
 
 public class Lookup extends AbstractModel
 {
@@ -15,6 +15,7 @@ public class Lookup extends AbstractModel
 
   public enum Group
   {
+    BLANK(SM),
     TABLE(SM),
     FIELD_GROUP(SM),
     UNKNOWN(SM),

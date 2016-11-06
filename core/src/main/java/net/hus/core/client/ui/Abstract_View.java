@@ -9,12 +9,12 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.Component;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
-import net.hus.core.model.Field;
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Value;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
 import net.hus.core.shared.components.FlexTable_.Table;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Value;
 
 public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
@@ -36,7 +36,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   }
 
   @Override
-  public final Widget asWidget()
+  public Widget asWidget()
   {
     return mComponent;
   }

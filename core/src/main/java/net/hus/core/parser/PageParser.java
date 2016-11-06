@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.Page;
+import net.hus.core.shared.model.Page;
 
 public class PageParser extends XStream implements Parser<Page>
 {

@@ -5,9 +5,10 @@ import org.gwtbootstrap3.client.ui.html.Span;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.model.FieldTKG;
 import net.hus.core.shared.components.FlexTable_.Table;
+import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.util.StringUtil;
 
 public class FlexTable_View extends Abstract_View<FlexTable, Table> implements ClickHandler
@@ -87,5 +88,11 @@ public class FlexTable_View extends Abstract_View<FlexTable, Table> implements C
       ret.add(colVals);
     }
     return ret;
+  }
+
+  @Override
+  public Widget asWidget()
+  {
+    return super.asWidget();
   }
 }

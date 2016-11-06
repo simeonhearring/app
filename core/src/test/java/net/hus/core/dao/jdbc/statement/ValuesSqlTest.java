@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
-import net.hus.core.model.Field;
-import net.hus.core.model.Value;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Value;
 
 public class ValuesSqlTest extends MySqlCoreDsTest
 {

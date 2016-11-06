@@ -2,7 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.FieldTKG;
+import net.hus.core.shared.model.FieldTKG;
 
 public class TableFvk_Parser extends XStream implements Parser<FieldTKG>
 {

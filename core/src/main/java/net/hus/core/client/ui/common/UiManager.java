@@ -8,9 +8,9 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.common.Component;
 import net.hus.core.client.common.UiCreate;
-import net.hus.core.model.Field;
-import net.hus.core.model.FieldTKG;
-import net.hus.core.model.Value;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Value;
 
 /**
  * Responsible for adding and updating all UI Objects.

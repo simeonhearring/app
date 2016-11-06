@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.model.Page;
-import net.hus.core.model.Profile;
+import net.hus.core.shared.model.Page;
+import net.hus.core.shared.model.Profile;
 import net.hus.core.util.ResourceUtil;
 
 public class ProfileParserTest

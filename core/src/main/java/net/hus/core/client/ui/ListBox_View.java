@@ -5,7 +5,7 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 
-import net.hus.core.model.FieldTKG;
+import net.hus.core.shared.model.FieldTKG;
 
 public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
 {

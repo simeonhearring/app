@@ -2,7 +2,7 @@ package net.hus.core.client.common;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.model.Page.Section;
+import net.hus.core.shared.model.Page.Section;
 
 /**
  * Page layout separated by Sections to be filled with Components.

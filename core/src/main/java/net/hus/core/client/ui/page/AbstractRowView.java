@@ -6,7 +6,7 @@ import org.gwtbootstrap3.client.ui.Row;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.ui.common.AbstractView;
-import net.hus.core.model.Page.Section;
+import net.hus.core.shared.model.Page.Section;
 
 public abstract class AbstractRowView extends AbstractView
 {

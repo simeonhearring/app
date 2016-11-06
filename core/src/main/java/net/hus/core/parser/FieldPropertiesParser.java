@@ -2,8 +2,8 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.Field;
-import net.hus.core.model.Field.Properties;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Properties;
 
 public class FieldPropertiesParser extends XStream implements Parser<Field.Properties>
 {

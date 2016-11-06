@@ -2,8 +2,8 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.model.AbstractModel;
-import net.hus.core.model.Profile;
+import net.hus.core.shared.model.AbstractModel;
+import net.hus.core.shared.model.Profile;
 
 public class ProfileParser extends XStream implements Parser<Profile>
 {
