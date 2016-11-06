@@ -9,9 +9,9 @@ import net.hus.core.shared.model.FieldTKG;
 
 public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
 {
-  public ListBox_View(String inKey, ListBox inComponent)
+  public ListBox_View(ListBox inComponent)
   {
-    super(inKey, inComponent);
+    super(inComponent);
   }
 
   @Override

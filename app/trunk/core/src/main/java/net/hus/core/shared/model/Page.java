@@ -14,7 +14,6 @@ public class Page implements Serializable
     LOGIN;
   }
 
-
   private Name mName;
   private String mComponentsName;
 

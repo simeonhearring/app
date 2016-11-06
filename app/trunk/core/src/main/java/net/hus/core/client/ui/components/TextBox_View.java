@@ -10,9 +10,9 @@ import net.hus.core.shared.model.FieldTKG;
 public class TextBox_View extends Abstract_View<TextBox, String>
 implements ValueChangeHandler<String>
 {
-  public TextBox_View(String inKey, TextBox inComponent)
+  public TextBox_View(TextBox inComponent)
   {
-    super(inKey, inComponent);
+    super(inComponent);
   }
 
   @Override
