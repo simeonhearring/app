@@ -3,6 +3,7 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Properties;
 
 public class FieldPropertiesParser extends XStream implements Parser<Field.Properties>
@@ -43,10 +44,18 @@ public class FieldPropertiesParser extends XStream implements Parser<Field.Prope
     aliasAttribute(Field.Lookup.class, "mParameters", "params");
 
     alias("Array", Field.Array.class);
+    aliasField("Properties", Field.Array.class, "mProperties");
     aliasAttribute(Field.Array.class, "mSize", "size");
     aliasAttribute(Field.Array.class, "mLabels", "Labels");
 
     alias("Database", Field.Database.class);
     aliasAttribute(Field.Database.class, "mOneValue", "oneValue");
+
+    alias("Array.Properties", Array.Properties.class);
+    aliasAttribute(Array.Properties.class, "mShowBottomAtRow", "showBottomAtRow");
+    aliasAttribute(Array.Properties.class, "mAltRow", "isAltRow");
+    aliasAttribute(Array.Properties.class, "mAltEvenColor", "altEvenColor");
+    aliasAttribute(Array.Properties.class, "mAltOddColor", "altOddColor");
+    aliasAttribute(Array.Properties.class, "mHeadingSize", "headingSize");
   }
 }

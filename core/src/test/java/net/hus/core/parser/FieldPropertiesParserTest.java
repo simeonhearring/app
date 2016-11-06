@@ -1,5 +1,6 @@
 package net.hus.core.parser;
 
+import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.junit.Test;
 
 import junit.framework.Assert;
@@ -8,8 +9,8 @@ import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Database;
 import net.hus.core.shared.model.Field.Display;
 import net.hus.core.shared.model.Field.Lookup;
-import net.hus.core.shared.model.Field.Type;
 import net.hus.core.shared.model.Field.Lookup.Location;
+import net.hus.core.shared.model.Field.Type;
 import net.hus.core.util.ResourceUtil;
 
 public class FieldPropertiesParserTest
@@ -33,8 +34,10 @@ public class FieldPropertiesParserTest
 
     Array array = new Array();
     array.setSize(5);
-    array.setLabels("Street 1,Street 2,City,State,Zip".split(","));
+    array.setLabels("Street A,Street B,City,State,Zip".split(","));
     prop.setArray(array);
+
+    array.setProperties(new Array.Properties(10, true, "#CCC", "#FFF", HeadingSize.H2));
 
     Database database = new Database();
     database.setOneValue(true);

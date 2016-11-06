@@ -21,8 +21,8 @@ public abstract class AbstractComposite_View<C extends Widget, V> extends Compos
     implements Component<V>
 {
   protected FieldTKG mTableFvk;
+  protected Field mField;
   private String mLabel;
-  private Field mField;
 
   @Override
   public void setField(Field inField)

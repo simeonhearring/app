@@ -2,6 +2,8 @@ package net.hus.core.shared.model;
 
 import java.io.Serializable;
 
+import org.gwtbootstrap3.client.ui.constants.HeadingSize;
+
 public class Field extends AbstractModel
 {
   private static final long serialVersionUID = -961088994106006040L;
@@ -60,6 +62,11 @@ public class Field extends AbstractModel
   public void setDisplay(String inDisplay)
   {
     mDisplay = inDisplay;
+  }
+
+  public Array.Properties getArrayProperties()
+  {
+    return mProperties.mArray.mProperties;
   }
 
   public enum Component
@@ -175,6 +182,7 @@ public class Field extends AbstractModel
 
     private Integer mSize;
     private String[] mLabels;
+    private Properties mProperties;
 
     public Array()
     {
@@ -205,7 +213,94 @@ public class Field extends AbstractModel
     {
       mLabels = inLabel;
     }
+
+    public Properties getProperties()
+    {
+      return mProperties;
+    }
+
+    public void setProperties(Properties inProperties)
+    {
+      mProperties = inProperties;
+    }
+
+    public static class Properties implements Serializable
+    {
+      private static final long serialVersionUID = 6023117565338477729L;
+
+      private Integer mShowBottomAtRow;
+      private Boolean mAltRow;
+      private String mAltEvenColor;
+      private String mAltOddColor;
+      private HeadingSize mHeadingSize;
+
+      Properties()
+      {
+      }
+
+      public Properties(Integer inShowBottomAtRow, Boolean inAltRow, String inAltEvenColor,
+          String inAltOddColor, HeadingSize inHeadingSize)
+      {
+        mShowBottomAtRow = inShowBottomAtRow;
+        mAltRow = inAltRow;
+        mAltEvenColor = inAltEvenColor;
+        mAltOddColor = inAltOddColor;
+        mHeadingSize = inHeadingSize;
+      }
+
+      public Integer getShowBottomAtRow()
+      {
+        return mShowBottomAtRow;
+      }
+
+      public void setShowBottomAtRow(Integer inShowBottomAtRow)
+      {
+        mShowBottomAtRow = inShowBottomAtRow;
+      }
+
+      public Boolean getAltRow()
+      {
+        return mAltRow;
+      }
+
+      public void setAltRow(Boolean inAltRow)
+      {
+        mAltRow = inAltRow;
+      }
+
+      public String getAltEvenColor()
+      {
+        return mAltEvenColor;
+      }
+
+      public void setAltEvenColor(String inAltEvenColor)
+      {
+        mAltEvenColor = inAltEvenColor;
+      }
+
+      public String getAltOddColor()
+      {
+        return mAltOddColor;
+      }
+
+      public void setAltOddColor(String inAltOddColor)
+      {
+        mAltOddColor = inAltOddColor;
+      }
+
+      public HeadingSize getHeadingSize()
+      {
+        return mHeadingSize;
+      }
+
+      public void setHeadingSize(HeadingSize inHeadingSize)
+      {
+        mHeadingSize = inHeadingSize;
+      }
+    }
   }
+
+
 
   public static class Lookup implements Serializable
   {
