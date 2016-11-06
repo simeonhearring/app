@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.model.FieldTKG;
 
-public class TableFvk_Parser extends XStream implements Parser<FieldTKG>
+public class FieldTKG_Parser extends XStream implements Parser<FieldTKG>
 {
-  public TableFvk_Parser()
+  public FieldTKG_Parser()
   {
     xs((Parser<FieldTKG>) this);
   }

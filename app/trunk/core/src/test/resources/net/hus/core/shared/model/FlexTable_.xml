@@ -1,13 +1,5 @@
-<FlexTable KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" cols="2" maxrows="4" headingSize="H5">
+<FlexTable KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle">
   <Title>Title</Title>
-  <Headers>
-    <string>Head1</string>
-    <string>Head2</string>
-  </Headers>
-  <Types>
-    <Type>STRING</Type>
-    <Type>DATE</Type>
-  </Types>
   <Table>
     <string-array>
       <string>R1 Col 1</string>

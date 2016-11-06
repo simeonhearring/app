@@ -2,14 +2,12 @@ package net.hus.core.shared.components;
 
 import java.io.IOException;
 
-import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.FlexTable_Parser;
 import net.hus.core.shared.components.FlexTable_.Table;
-import net.hus.core.shared.model.Field.Type;
 import net.hus.core.util.ResourceUtil;
 
 public class FlexTable_Test
@@ -43,15 +41,11 @@ public class FlexTable_Test
 
   public static FlexTable_ newFlexTable()
   {
-    FlexTable_ ret = new FlexTable_(2, 4);
+    FlexTable_ ret = new FlexTable_();
 
     ret.setTable(new Table());
-    ret.setHeadingSize(HeadingSize.H5);
-    ret.setHeaders("Head1,Head2".split(","));
-    ret.setTypes(Type.STRING, Type.DATE);
     ret.setValue("R1 Col 1", "R1 Col 2");
     ret.setValue("R1 Col 1", "R1 Col 2");
-    // ret.setValue(1234L, new Date(1));
 
     UIObject_Test.initUIObject(ret);
 
