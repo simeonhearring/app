@@ -9,9 +9,9 @@ import net.hus.core.shared.model.FieldTKG;
 
 public class Input_View extends Abstract_View<Input, String> implements ValueChangeHandler<String>
 {
-  public Input_View(String inKey, Input inComponent)
+  public Input_View(Input inComponent)
   {
-    super(inKey, inComponent);
+    super(inComponent);
   }
 
   @Override

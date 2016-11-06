@@ -83,7 +83,7 @@ import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.components.ValueBoxBase_;
 
 /**
- * Responsible for creating UI Objects from Model UI Objects.
+ * Responsible for creating UI Objects from Model UI Objects without any values.
  *
  * @author simeonhearring
  * @since October 2016
@@ -200,13 +200,14 @@ public abstract class UiConverter
       ret.setSize(buttonSize);
     }
 
-    add(inUiO.getKey(), new Button_View(inUiO.getKey(), ret, inUiO.commandName()));
+    add(inUiO.getKey(), new Button_View(ret, inUiO.commandName()));
 
     return ret;
   }
 
   /*
-   * FlexTable_View uses UI Binder. Adding FlexTable_View instead of FlexTable.
+   * FlexTable_View uses UI Binder for additional icons on the layout. Add
+   * FlexTable_View instead of FlexTable.
    */
   public IsWidget convert(FlexTable_ inUiO)
   {
@@ -415,7 +416,7 @@ public abstract class UiConverter
       }
     }
 
-    add(inUiO.getKey(), new ListBox_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new ListBox_View(ret));
 
     return ret;
   }
@@ -433,7 +434,7 @@ public abstract class UiConverter
       ret.setValue(value);
     }
 
-    add(inUiO.getKey(), new TextBox_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new TextBox_View(ret));
 
     return ret;
   }
@@ -514,7 +515,7 @@ public abstract class UiConverter
       ret.setMax(max);
     }
 
-    add(inUiO.getKey(), new Input_View(inUiO.getKey(), ret));
+    add(inUiO.getKey(), new Input_View(ret));
 
     return ret;
   }

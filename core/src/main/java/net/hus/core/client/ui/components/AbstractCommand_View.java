@@ -20,9 +20,9 @@ extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
 {
   private String mCommandName;
 
-  public AbstractCommand_View(String inKey, C inComponent, String inCommandName)
+  public AbstractCommand_View(C inComponent, String inCommandName)
   {
-    super(inKey, inComponent);
+    super(inComponent);
     mCommandName = inCommandName;
   }
 

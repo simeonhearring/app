@@ -24,7 +24,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 
   protected C mComponent;
 
-  public Abstract_View(String inKey, C inComponent)
+  public Abstract_View(C inComponent)
   {
     mComponent = inComponent;
   }
