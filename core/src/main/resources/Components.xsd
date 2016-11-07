@@ -19,6 +19,7 @@
 			<xs:element name="TextBox" type="TextBox_Type" minOccurs="0"></xs:element>
 			<xs:element name="FlexTable" type="FlexTable_Type" minOccurs="0"></xs:element>
 			<xs:element name="DatePicker" type="DatePicker_Type" minOccurs="0"></xs:element>
+			<xs:element name="Typeahead" type="Typeahead_Type" minOccurs="0"></xs:element>
 			<xs:element name="Button" type="Button_Type" minOccurs="0"></xs:element>
 		</xs:all>
 	</xs:complexType>
@@ -115,6 +116,14 @@
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Input"></xs:attributeGroup>
 	</xs:complexType>
+	<xs:complexType name="Typeahead_Type">
+		<xs:sequence>
+			<xs:element name="Value" type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="Placeholder" type="xs:string" minOccurs="0"></xs:element>
+			<xs:element name="Lookup" type="Lookup_Type"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
+	</xs:complexType>
 	<xs:complexType name="TextBox_Type">
 		<xs:sequence>
 			<xs:element name="Value" type="xs:string" minOccurs="0"></xs:element>
@@ -123,16 +132,7 @@
 	</xs:complexType>
 	<xs:complexType name="ListBox_Type">
 		<xs:sequence>
-			<xs:element name="Lookup">
-				<xs:complexType>
-					<xs:simpleContent>
-						<xs:extension base="xs:string">
-							<xs:attribute name="loc" type="xs:string"></xs:attribute>
-							<xs:attribute name="params" type="xs:string"></xs:attribute>
-						</xs:extension>
-					</xs:simpleContent>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="Lookup" type="Lookup_Type"></xs:element>
 		</xs:sequence>
 		<xs:attribute name="KEY" type="xs:string"></xs:attribute>
 		<xs:attribute name="multipleSelect" type="xs:string"></xs:attribute>
@@ -286,4 +286,12 @@
 			<xs:element name="Placeholder" type="xs:string"></xs:element>
 		</xs:sequence>
 	</xs:group>
+	<xs:complexType name="Lookup_Type">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="loc" type="xs:string"></xs:attribute>
+				<xs:attribute name="params" type="xs:string"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>
