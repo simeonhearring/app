@@ -22,8 +22,8 @@ public class ProfileEvent extends Event<ProfileEvent.Handler>
 
   public ProfileEvent(Response inResponse)
   {
-    // 1 See LoginCommandBean.java
-    this(inResponse.getData()[1]);
+    // 0 See LoginCommandBean.java
+    this(inResponse.getData()[0]);
   }
 
   @Override

@@ -3,6 +3,8 @@ package net.hus.core.client;
 import java.util.Date;
 import java.util.Map;
 
+import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
@@ -22,7 +24,7 @@ import net.hus.core.shared.util.EntryPointUtil;
 import net.hus.core.shared.util.JsniUtil;
 
 public abstract class AbstractEntryPoint
-    implements EntryPoint, AlertEvent.Handler, ReportEvent.Handler, LoadMainEvent.Handler
+implements EntryPoint, AlertEvent.Handler, ReportEvent.Handler, LoadMainEvent.Handler
 {
   @Override
   public void onModuleLoad()
@@ -53,7 +55,7 @@ public abstract class AbstractEntryPoint
   @Override
   public void dispatch(AlertEvent inEvent)
   {
-    Window.alert(inEvent.getMessage());
+    Notify.notify(inEvent.getMessage(), inEvent.getType());
   }
 
   @Override

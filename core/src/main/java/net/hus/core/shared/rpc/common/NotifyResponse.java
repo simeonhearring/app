@@ -1,33 +1,35 @@
 package net.hus.core.shared.rpc.common;
 
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
+
 @SuppressWarnings("serial")
 public class NotifyResponse implements RpcResponse
 {
-  public enum Type
-  {
-    NO_ENCRYPT,
-    DUPLICATE
-  }
-
-  private Type mNotifyType;
-  private String mNotifyMessage;
+  private NotifyType mType;
+  private String mMessage;
 
   NotifyResponse()
   {
   }
 
-  public NotifyResponse(Type inNotifyType, String inNotifyMessage)
+  public NotifyResponse(String inMessage)
   {
-    mNotifyMessage = inNotifyMessage;
+    this(NotifyType.INFO, inMessage);
   }
 
-  public String getNotifyMessage()
+  public NotifyResponse(NotifyType inType, String inMessage)
   {
-    return mNotifyMessage;
+    mType = inType;
+    mMessage = inMessage;
   }
 
-  public Type getNotifyType()
+  public String getMessage()
   {
-    return mNotifyType;
+    return mMessage;
+  }
+
+  public NotifyType getType()
+  {
+    return mType;
   }
 }

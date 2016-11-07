@@ -1,10 +1,13 @@
 package net.hus.core.server.command;
 
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
+
 import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.components.Response;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.model.Values;
+import net.hus.core.shared.rpc.common.NotifyResponse;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class LoginCommandBean extends AbstractCommandBean<RequestCommand>
@@ -19,12 +22,14 @@ public class LoginCommandBean extends AbstractCommandBean<RequestCommand>
     String password = values.get(Field.Fid.PASSWORD).getValue();
 
     Profile profile = mCoreDao.profile(userName);
-    String authenticated = String.valueOf(profile.getPassword().equals(password));
+    boolean authenticated = profile != null && profile.getPassword().equals(password);
 
-    Response data = new Response();
-    data.setData(authenticated, userName);
+    if (!authenticated)
+    {
+      return new NotifyResponse(NotifyType.WARNING, "Sorry! That did't work out!");
+    }
 
-    inCommand.setData(data);
+    inCommand.setData(new Response(userName));
 
     return inCommand;
   }
