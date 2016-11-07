@@ -13,7 +13,7 @@ public abstract class RpcCallback<T> implements AsyncCallback<T>
 
   public void onNotify(NotifyResponse inResponse)
   {
-    Global.fireEvent(new AlertEvent(inResponse.getNotifyMessage()));
+    Global.fireEvent(new AlertEvent(inResponse.getType(), inResponse.getMessage()));
   }
 
   @Override

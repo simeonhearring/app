@@ -9,6 +9,15 @@ public class Response implements Serializable
 
   private String[] mData;
 
+  public Response()
+  {
+  }
+
+  public Response(String... inData)
+  {
+    mData = inData;
+  }
+
   public String[] getData()
   {
     return mData;

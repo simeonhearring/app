@@ -16,7 +16,6 @@ import net.hus.core.shared.exception.NotifyException;
 import net.hus.core.shared.rpc.CommandName;
 import net.hus.core.shared.rpc.HasCommandName;
 import net.hus.core.shared.rpc.common.NotifyResponse;
-import net.hus.core.shared.rpc.common.NotifyResponse.Type;
 import net.hus.core.shared.rpc.common.RpcCommand;
 import net.hus.core.shared.rpc.common.RpcCommands;
 import net.hus.core.shared.rpc.common.RpcResponse;
@@ -60,7 +59,7 @@ public class RpcServiceImpl extends RemoteServiceServlet implements RpcService
 
     if (inCommand.isEncryptRequired() && !inCommand.isEncrypted())
     {
-      ret = new NotifyResponse(Type.NO_ENCRYPT, "Required encryption key is not present!");
+      ret = new NotifyResponse("Required encryption key is not present!");
     }
     else
     {
