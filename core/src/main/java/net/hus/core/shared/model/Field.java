@@ -376,22 +376,31 @@ public class Field extends AbstractModel
 
   public enum Fid
   {
-    FIRST_NAME(1L),
-    LAST_NAME(2L),
-    MIDDLE_NAME(3L),
-    USERNAME(14L),
-    PASSWORD(15L);
+    USERNAME(14L, Type.STRING),
+    PASSWORD(15L, Type.STRING),
+    FIRST_NAME(1L, Type.STRING),
+    LAST_NAME(2L, Type.STRING),
+    MIDDLE_NAME(3L, Type.STRING),
+    ADDRESS(13L, Type.ARRAY),
+    GENDER(12L, Type.LOOKUP);
 
     private Long mFid;
+    private Type mType;
 
-    private Fid(Long inFid)
+    private Fid(Long inFid, Type inType)
     {
       mFid = inFid;
+      mType = inType;
     }
 
     public Long fid()
     {
       return mFid;
+    }
+
+    public Type type()
+    {
+      return mType;
     }
   }
 

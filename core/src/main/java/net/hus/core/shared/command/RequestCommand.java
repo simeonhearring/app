@@ -11,21 +11,16 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
   private static final long serialVersionUID = 8712567104547510128L;
 
   private String mCommandName;
-  private FieldTKG mFvk;
+  private FieldTKG mFieldTKG;
 
   RequestCommand()
   {
   }
 
-  public RequestCommand(String inCommandName)
+  public RequestCommand(String inCommandName, FieldTKG inFieldTKG)
   {
     mCommandName = inCommandName;
-  }
-
-  public RequestCommand(String inCommandName, FieldTKG inFvk)
-  {
-    mCommandName = inCommandName;
-    mFvk = inFvk;
+    mFieldTKG = inFieldTKG;
   }
 
   @Override
@@ -34,8 +29,8 @@ public class RequestCommand extends AbstractDataCommand<Response> implements Has
     return mCommandName;
   }
 
-  public FieldTKG fvk()
+  public FieldTKG tkg()
   {
-    return mFvk;
+    return mFieldTKG;
   }
 }
