@@ -27,6 +27,7 @@ public class Mapping extends AbstractSqlJdbc
     inOut.setName(inRs.getString("mName"));
     inOut.setAbbreviation(inRs.getString("mAbbreviation"));
     inOut.setSort((Integer) inRs.getObject("mSort"));
+    inOut.setAltId((Long) inRs.getObject("mAltId"));
 
     return inOut;
   }

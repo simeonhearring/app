@@ -87,7 +87,8 @@ public class LookupSql extends Mapping
       String abbr = value.getAbbreviation();
       String desc = value.getDescription();
       Integer sort = value.getSort();
-      mBatchUpsert.update(params(group, name, abbr, desc, sort, abbr, desc, sort));
+      Long altId = value.getAltId();
+      mBatchUpsert.update(params(group, name, abbr, desc, sort, altId, abbr, desc, sort, altId));
     }
     mBatchUpsert.flush();
     mBatchUpsert.reset();
