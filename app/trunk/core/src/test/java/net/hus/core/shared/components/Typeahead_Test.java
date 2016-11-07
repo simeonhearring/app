@@ -55,7 +55,7 @@ public class Typeahead_Test
     // });
     // ret.setOptions(options);
     Lookup lookup = new Lookup();
-    lookup.setLocation(Location.TABLE);
+    lookup.setLocation(Location.RPC);
     lookup.setParameters("GENDER,UNKNOWN");
     ret.setLookup(lookup);
 
