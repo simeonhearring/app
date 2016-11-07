@@ -27,6 +27,7 @@ public class MainPresenter implements ProfileEvent.Handler
 
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
+
     profile("login", true);
   }
 
