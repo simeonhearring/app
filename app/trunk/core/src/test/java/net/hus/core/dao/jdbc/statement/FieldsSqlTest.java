@@ -6,6 +6,7 @@ import static net.hus.core.shared.model.Field.Fid.GENDER;
 import static net.hus.core.shared.model.Field.Fid.LAST_NAME;
 import static net.hus.core.shared.model.Field.Fid.MIDDLE_NAME;
 import static net.hus.core.shared.model.Field.Fid.PASSWORD;
+import static net.hus.core.shared.model.Field.Fid.PROFILE;
 import static net.hus.core.shared.model.Field.Fid.USERNAME;
 
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     list.add(newField(MIDDLE_NAME.type(), MIDDLE_NAME.name(), "Middle name", "Middle", true));
     list.add(newField(GENDER.type(), GENDER.name(), "Gender", "Sex", gender()));
     list.add(newField(ADDRESS.type(), ADDRESS.name(), "Address", "Addr.", address()));
+    list.add(newField(PROFILE.type(), PROFILE.name(), "Profile", "User", profile()));
 
     list.add(newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob", newDateTime()));
     list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
@@ -75,6 +77,11 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   private Lookup gender()
   {
     return new Lookup(Location.TABLE, "BLANK,GENDER,UNKNOWN");
+  }
+
+  private Lookup profile()
+  {
+    return new Lookup(Location.RPC, "BLANK,PROFILE");
   }
 
   private Array newArray(Integer inSize, String... inLabels)
@@ -107,17 +114,21 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     fields.add(new Field(4L));
     fields.add(new Field(12L));
     fields.add(new Field(13L));
+    fields.add(new Field(16L));
 
     mSql.upsert(fields);
 
-    Fields ret = mSql.select(FIELD_GROUP);
-    Assert.assertEquals(6, ret.getFields().size());
+    Fields ret = mSql.select(fields.fgg());
+    Assert.assertEquals(fields.getFields().size(), ret.getFields().size());
 
     fields.fgg("LOGIN");
     fields.clear();
     fields.add(new Field(14L));
     fields.add(new Field(15L));
     mSql.upsert(fields);
+
+    ret = mSql.select(fields.fgg());
+    Assert.assertEquals(fields.getFields().size(), ret.getFields().size());
   }
 
   private Field newField(Type inType, String inName, String inLong, String inShort)
