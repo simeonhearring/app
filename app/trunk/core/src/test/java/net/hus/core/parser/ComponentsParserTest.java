@@ -13,10 +13,10 @@ public class ComponentsParserTest
   {
     ComponentsParser parser = new ComponentsParser();
 
-    String xml = ResourceUtil.contents("net/hus/core/shared/model/Components.xml");
+    String xml = ResourceUtil.contents("Components1.xml");
 
     Components model = parser.fromXml(xml);
-    Assert.assertEquals(2, model.components().size());
+    Assert.assertEquals(1, model.components().size());
 
     Assert.assertEquals(xml, parser.toXml(model));
   }
