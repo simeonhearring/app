@@ -4,6 +4,7 @@ import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
 import net.hus.core.shared.components.Components;
+import net.hus.core.shared.model.AppProfile;
 import net.hus.core.shared.model.Profile;
 
 public interface CoreDao
@@ -16,7 +17,7 @@ public interface CoreDao
 
   Profile profile(String inName);
 
-  Profile profile_app(String inName);
+  AppProfile profile_app(String inName);
 
   Components components(String inComponentName);
 }

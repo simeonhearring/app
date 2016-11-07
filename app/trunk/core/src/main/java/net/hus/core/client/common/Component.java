@@ -23,4 +23,6 @@ public interface Component<V> extends IsWidget
   void setFieldTKG(FieldTKG inFTKG);
 
   void setField(Field inField);
+
+  IsWidget getComponent();
 }

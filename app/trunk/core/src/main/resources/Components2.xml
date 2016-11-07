@@ -39,7 +39,7 @@
 					<FormLabel KEY="FL00_13" isHtml="false">
 						<Text>Field4:</Text>
 					</FormLabel>
-					<FlexTable KEY="FV00_13">
+					<FlexTable KEY="FV00_13" width="100%">
 						<Title>Title</Title>
 					</FlexTable>
 				</Collection>

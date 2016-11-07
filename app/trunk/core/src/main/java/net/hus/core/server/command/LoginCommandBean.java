@@ -15,7 +15,7 @@ public class LoginCommandBean extends AbstractCommandBean<RequestCommand>
   {
     Values values = new Values();
     FieldTKG fvk = inCommand.fvk();
-    values.setValues(mCoreDao.values().selectLast(fvk));//new FieldTKG("LOGIN", "3", "LOGIN")));
+    values.setValues(mCoreDao.values().selectLast(fvk));
 
     String userName = values.get(Field.Fid.USERNAME).getValue();
     String password = values.get(Field.Fid.PASSWORD).getValue();

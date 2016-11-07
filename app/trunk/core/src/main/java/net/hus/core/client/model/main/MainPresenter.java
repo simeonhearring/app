@@ -12,9 +12,8 @@ import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.components.Components;
 import net.hus.core.shared.components.UIObject_;
-import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.model.Page.Section;
-import net.hus.core.shared.util.RandomUtil;
+import net.hus.core.shared.model.Profil;
 
 public class MainPresenter implements ProfileEvent.Handler
 {
@@ -39,9 +38,8 @@ public class MainPresenter implements ProfileEvent.Handler
       @Override
       public void onRpcSuccess(ProfileCommand inCommand)
       {
-        Profile profile = inCommand.getData();
-        components(profile.getPage().getComponentsName(),
-            Global.getIpAddress() + "." + RandomUtil.random(5));
+        Profil profile = inCommand.getData();
+        components(profile.getComponentsName(), profile.fvk());
       }
     });
   }
@@ -53,8 +51,8 @@ public class MainPresenter implements ProfileEvent.Handler
       @Override
       public void onRpcSuccess(ProfileCommand inCommand)
       {
-        Profile profile = inCommand.getData();
-        components(profile.getPage().getComponentsName(), profile.fvk());
+        Profil profile = inCommand.getData();
+        components(profile.getComponentsName(), profile.fvk());
       }
     });
   }
