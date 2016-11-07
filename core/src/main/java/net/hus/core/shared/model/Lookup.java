@@ -45,6 +45,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   private String mAbbreviation;
   private String mDescription;
   private Integer mSort;
+  private Long mAltId;
   private String mXL;
 
   public String getGroup()
@@ -112,6 +113,16 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     mXL = inXL;
   }
 
+  public Long getAltId()
+  {
+    return mAltId;
+  }
+
+  public void setAltId(Long inAltId)
+  {
+    mAltId = inAltId;
+  }
+
   @Override
   public String option()
   {
@@ -121,6 +132,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   @Override
   public String fvk()
   {
-    return getId() + "";
+    Long altId = getAltId();
+    return (altId != null ? altId : getId()) + "";
   }
 }
