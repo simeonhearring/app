@@ -422,7 +422,8 @@ public class Field extends AbstractModel
     LAST_NAME(2L, Type.STRING),
     MIDDLE_NAME(3L, Type.STRING),
     ADDRESS(13L, Type.ARRAY),
-    GENDER(12L, Type.LOOKUP);
+    GENDER(12L, Type.LOOKUP),
+    PROFILE(16L, Type.LOOKUP);
 
     private Long mFid;
     private Type mType;
