@@ -5,5 +5,5 @@
 	
 	</ui:style>
 
-	<b.date:DatePicker ui:field="mComponent" autoClose="true" />
+	<b.date:DatePicker ui:field="mComponent" autoClose="true" highlightToday="true" showTodayButton="true" />
 </ui:UiBinder>
