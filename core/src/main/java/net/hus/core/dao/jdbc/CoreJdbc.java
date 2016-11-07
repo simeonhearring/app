@@ -1,5 +1,8 @@
 package net.hus.core.dao.jdbc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import net.hus.core.dao.CoreDao;
@@ -12,6 +15,7 @@ import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.components.Components;
 import net.hus.core.shared.model.AppProfile;
+import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Profile;
 
@@ -85,5 +89,27 @@ public class CoreJdbc implements CoreDao
   {
     String xml = lookups().selectXL(Group.COMPONENTS, inComponentName).getXL();
     return parse(mComponentsParser, xml);
+  }
+
+  public void profile2lookup()
+  {
+    List<Profile> profiles = new ArrayList<>();
+    for (Lookup value : lookups().selectXL(Group.PROFILE.name()))
+    {
+      profiles.add(parse(mProfileParser, value.getXL()));
+    }
+
+    List<Lookup> lookups = new ArrayList<>();
+    for (Profile value : profiles)
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.PROFILE);
+      lookup.setAltId(value.getId());
+      lookup.setName(value.getUserName());
+      lookup.setAbbreviation(value.getName());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
   }
 }

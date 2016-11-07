@@ -44,9 +44,11 @@ CREATE TABLE IF NOT EXISTS `LOOKUP` (
   `mAbbreviation` varchar(20) NOT NULL,
   `mDescription` varchar(1000) DEFAULT NULL,
   `mSort` int(11) NOT NULL,
+  `mAltId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`mId`),
   UNIQUE KEY `mGroupName` (`mGroup`,`mName`),
-  KEY `mGroup` (`mGroup`)
+  KEY `mGroup` (`mGroup`),
+  KEY `mAltId` (`mAltId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `LOOKUP_XL` (
