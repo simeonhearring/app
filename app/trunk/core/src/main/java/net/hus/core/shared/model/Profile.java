@@ -83,4 +83,9 @@ public class Profile extends AbstractModel implements ComponentsQuery
   {
     return mPage.getComponentsName();
   }
+
+  public String getName()
+  {
+    return mLast + ", " + mFirst + " " + mMiddle; // TODO
+  }
 }

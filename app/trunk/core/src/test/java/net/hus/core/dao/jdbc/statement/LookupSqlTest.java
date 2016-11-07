@@ -8,8 +8,10 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
+import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
+import net.hus.core.shared.model.Profile;
 import net.hus.core.util.ResourceUtil;
 
 public class LookupSqlTest extends MySqlCoreDsTest
@@ -247,22 +249,62 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void profileToLookup()
+  {
+  }
+
+  @Test
   public void setupProfile3()
   {
-    String xl = ResourceUtil.contents("Profile3.xml");
-    Lookup l1 = new Lookup();
-    l1.setId(3L);
-    l1.setGroup(Group.PROFILE);
-    l1.setName("simeonhearring");
-    l1.setXL(xl);
+    String xml = ResourceUtil.contents("Profile3.xml");
+    profile(xml);
+  }
+
+  @Test
+  public void setupProfile6()
+  {
+    String xml = ResourceUtil.contents("Profile6.xml");
+    profile(xml);
+  }
+
+  @Test
+  public void setupProfile7()
+  {
+    String xml = ResourceUtil.contents("Profile7.xml");
+    profile(xml);
+  }
+
+  @Test
+  public void setupProfile8()
+  {
+    String xml = ResourceUtil.contents("Profile8.xml");
+    profile(xml);
+  }
+
+  @Test
+  public void setupProfile9()
+  {
+    String xml = ResourceUtil.contents("Profile9.xml");
+    profile(xml);
+  }
+
+  private void profile(String inXml)
+  {
+    ProfileParser parser = new ProfileParser();
+    Profile p = parser.fromXml(inXml);
+    Lookup lookup = new Lookup();
+    lookup.setId(p.getId());
+    lookup.setGroup(Group.PROFILE);
+    lookup.setName(p.getUserName());
+    lookup.setXL(inXml);
 
     List<Lookup> list = new ArrayList<>();
-    list.add(l1);
+    list.add(lookup);
 
     mSql.upsertXL(list);
 
-    Assert.assertEquals(1, mSql.selectXL(l1.getGroup()).size());
-    Assert.assertEquals(xl, mSql.selectXL(l1.getGroup(), l1.getName()).getXL());
+    Assert.assertEquals(5, mSql.selectXL(lookup.getGroup()).size());
+    Assert.assertEquals(inXml, mSql.selectXL(lookup.getGroup(), lookup.getName()).getXL());
   }
 
   private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)
