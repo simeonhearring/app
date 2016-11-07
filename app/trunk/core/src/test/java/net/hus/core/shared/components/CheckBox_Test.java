@@ -34,7 +34,7 @@ public class CheckBox_Test
 
     CheckBox_ model = CheckBox_Test.newCheckBox();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/CheckBox_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/CheckBox_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

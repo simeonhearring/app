@@ -35,7 +35,7 @@ public class Label_Test
 
     Label_ model = Label_Test.newLabel();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Label_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Label_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

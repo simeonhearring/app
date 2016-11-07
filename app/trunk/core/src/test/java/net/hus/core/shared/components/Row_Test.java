@@ -34,7 +34,7 @@ public class Row_Test
 
     Row_ model = Row_Test.newRow();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Row_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Row_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

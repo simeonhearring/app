@@ -34,7 +34,7 @@ public class UIObject_Test
 
     UIObject_ model = UIObject_Test.newUIObject();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/UIObject_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/UIObject_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

@@ -18,9 +18,9 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
 public abstract class AbstractComposite_View<C extends Widget, V> extends Composite
-    implements Component<V>
+implements Component<V>
 {
-  protected FieldTKG mTableFvk;
+  protected FieldTKG mFieldTKG;
   protected Field mField;
   private String mLabel;
 
@@ -31,9 +31,9 @@ public abstract class AbstractComposite_View<C extends Widget, V> extends Compos
   }
 
   @Override
-  public void setFieldTKG(FieldTKG inTableFvk)
+  public void setFieldTKG(FieldTKG inFieldTKG)
   {
-    mTableFvk = inTableFvk;
+    mFieldTKG = inFieldTKG;
   }
 
   @Override
@@ -46,7 +46,7 @@ public abstract class AbstractComposite_View<C extends Widget, V> extends Compos
   {
     Value value = new Value();
     value.setValue(inValue);
-    value.setTableFvk(mTableFvk);
+    value.setFieldTKG(mFieldTKG);
     value.setAsOf(new Date());
     value.setField(mField);
     return value;

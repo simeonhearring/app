@@ -34,7 +34,7 @@ public class TextBox_Test
 
     TextBox_ model = TextBox_Test.newTextBox();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/TextBox_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/TextBox_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

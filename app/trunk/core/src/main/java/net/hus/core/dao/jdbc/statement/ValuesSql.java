@@ -82,8 +82,8 @@ public class ValuesSql extends Mapping
     mBatchInsert.reset();
     for (Value value : inList)
     {
-      String table = value.getTableFvk().getFvt();
-      String key = value.getTableFvk().getFvk();
+      String table = value.getFieldTKG().getFvt();
+      String key = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
@@ -107,8 +107,8 @@ public class ValuesSql extends Mapping
     mBatchInsert.reset();
     for (Value value : inList)
     {
-      String table = value.getTableFvk().getFvt();
-      String key = value.getTableFvk().getFvk();
+      String table = value.getFieldTKG().getFvt();
+      String key = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
@@ -123,8 +123,8 @@ public class ValuesSql extends Mapping
     mBatchUpdate.reset();
     for (Value value : inList)
     {
-      String table = value.getTableFvk().getFvt();
-      String key = value.getTableFvk().getFvk();
+      String table = value.getFieldTKG().getFvt();
+      String key = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();

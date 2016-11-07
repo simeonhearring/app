@@ -43,7 +43,7 @@ public class Button_Test
 
     Button_ model = Button_Test.newButton();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Button_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Button_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

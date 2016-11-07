@@ -7,6 +7,7 @@ import junit.framework.Assert;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Database;
+import net.hus.core.shared.model.Field.DateTime;
 import net.hus.core.shared.model.Field.Display;
 import net.hus.core.shared.model.Field.Lookup;
 import net.hus.core.shared.model.Field.Lookup.Location;
@@ -42,6 +43,8 @@ public class FieldPropertiesParserTest
     Database database = new Database();
     database.setOneValue(true);
     prop.setDatabase(database);
+
+    prop.setDateTime(new DateTime("yyyy-MM-dd"));
 
     String xml = ResourceUtil.contents("net/hus/core/parser/FieldProperties.xml");
 

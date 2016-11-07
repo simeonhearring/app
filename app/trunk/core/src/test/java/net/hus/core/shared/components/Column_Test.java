@@ -38,7 +38,7 @@ public class Column_Test
 
     Column_ model = Column_Test.newColumn();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Column_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Column_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

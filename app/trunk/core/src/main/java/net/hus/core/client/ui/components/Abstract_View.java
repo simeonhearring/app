@@ -64,7 +64,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   {
     Value value = new Value();
     value.setValue(inValue);
-    value.setTableFvk(mFieldTKG);
+    value.setFieldTKG(mFieldTKG);
     value.setAsOf(new Date());
     value.setField(mField);
     return value;

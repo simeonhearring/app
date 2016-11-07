@@ -6,19 +6,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.parser.FieldSet_Parser;
-import net.hus.core.shared.components.FieldSet_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.parser.DatePicker_Parser;
 import net.hus.core.util.ResourceUtil;
 
-public class FieldSet_Test
+public class DatePicker_Test
 {
   private UIObject_ mObject;
 
   @Before
   public void before()
   {
-    mObject = newFieldSet();
+    mObject = newDatePicker();
   }
 
   @Test
@@ -30,21 +28,22 @@ public class FieldSet_Test
   @Test
   public void canParse()
   {
-    FieldSet_Parser parser = new FieldSet_Parser();
+    DatePicker_Parser parser = new DatePicker_Parser();
 
-    FieldSet_ model = FieldSet_Test.newFieldSet();
+    DatePicker_ model = DatePicker_Test.newDatePicker();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/components/FieldSet_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/DatePicker_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));
   }
 
-  public static FieldSet_ newFieldSet()
+  public static DatePicker_ newDatePicker()
   {
-    FieldSet_ ret = new FieldSet_();
+    DatePicker_ ret = new DatePicker_();
 
-    ComplexWidget_Test.initComplexWidget(ret);
+
+    UIObject_Test.initUIObject(ret);
 
     return ret;
   }

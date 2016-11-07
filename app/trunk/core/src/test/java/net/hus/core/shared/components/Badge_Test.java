@@ -34,7 +34,7 @@ public class Badge_Test
 
     Badge_ model = Badge_Test.newBadge();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Badge_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Badge_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

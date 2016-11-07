@@ -33,7 +33,7 @@ public class FlexTable_Test
 
     FlexTable_ model = FlexTable_Test.newFlexTable();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/FlexTable_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/FlexTable_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

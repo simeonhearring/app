@@ -34,7 +34,7 @@ public class Container_Test
 
     Container_ model = Container_Test.newContainer();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Container_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Container_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

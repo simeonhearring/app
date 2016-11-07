@@ -3,6 +3,8 @@
 
 	<inherits name='com.google.gwt.user.User' />
 
+	<inherits name="org.gwtbootstrap3.extras.datepicker.DatePicker"/>
+
 	<source path='client' />
 	<source path='shared' />
 

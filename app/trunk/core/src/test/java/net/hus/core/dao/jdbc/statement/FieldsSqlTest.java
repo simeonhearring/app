@@ -20,6 +20,7 @@ import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Database;
+import net.hus.core.shared.model.Field.DateTime;
 import net.hus.core.shared.model.Field.Display;
 import net.hus.core.shared.model.Field.Fid;
 import net.hus.core.shared.model.Field.Lookup;
@@ -50,7 +51,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     list.add(newField(GENDER.type(), GENDER.name(), "Gender", "Sex", gender()));
     list.add(newField(ADDRESS.type(), ADDRESS.name(), "Address", "Addr.", address()));
 
-    list.add(newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob"));
+    list.add(newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob", newDateTime()));
     list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
 
     mSql.upsert(list);
@@ -59,6 +60,11 @@ public class FieldsSqlTest extends MySqlCoreDsTest
 
     Assert.assertEquals(true, field.getProperties() != null);
     Assert.assertEquals("First name", field.getProperties().getDisplay().getLong());
+  }
+
+  private DateTime newDateTime()
+  {
+    return new Field.DateTime("yyyy-MM-dd");
   }
 
   private Array address()
@@ -98,13 +104,14 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     fields.add(new Field(1L));
     fields.add(new Field(2L));
     fields.add(new Field(3L));
+    fields.add(new Field(4L));
     fields.add(new Field(12L));
     fields.add(new Field(13L));
 
     mSql.upsert(fields);
 
     Fields ret = mSql.select(FIELD_GROUP);
-    Assert.assertEquals(5, ret.getFields().size());
+    Assert.assertEquals(6, ret.getFields().size());
 
     fields.fgg("LOGIN");
     fields.clear();
@@ -130,6 +137,14 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   {
     Field ret = newField(inType, inName, inLong, inShort);
     ret.getProperties().setArray(inArray);
+    return ret;
+  }
+
+  private Field newField(Type inType, String inName, String inLong, String inShort,
+      DateTime inDateTime)
+  {
+    Field ret = newField(inType, inName, inLong, inShort);
+    ret.getProperties().setDateTime(inDateTime);
     return ret;
   }
 

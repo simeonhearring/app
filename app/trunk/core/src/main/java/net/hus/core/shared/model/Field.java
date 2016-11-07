@@ -69,6 +69,11 @@ public class Field extends AbstractModel
     return mProperties.mArray.mProperties;
   }
 
+  public String getDateFormat()
+  {
+    return mProperties.mDateTime != null ? mProperties.mDateTime.mFormat : null;
+  }
+
   public enum Component
   {
     FL00_,
@@ -101,6 +106,7 @@ public class Field extends AbstractModel
     private Display mDisplay;
     private Lookup mLookup;
     private Array mArray;
+    private DateTime mDateTime;
     private Database mDatabase;
 
     public Display getDisplay()
@@ -151,6 +157,16 @@ public class Field extends AbstractModel
     public void setDatabase(Database inDatabase)
     {
       mDatabase = inDatabase;
+    }
+
+    public DateTime getDateTime()
+    {
+      return mDateTime;
+    }
+
+    public void setDateTime(DateTime inDateTime)
+    {
+      mDateTime = inDateTime;
     }
   }
 
@@ -300,7 +316,31 @@ public class Field extends AbstractModel
     }
   }
 
+  public static class DateTime implements Serializable
+  {
+    private static final long serialVersionUID = -267396618604514196L;
 
+    private String mFormat;
+
+    public DateTime()
+    {
+    }
+
+    public DateTime(String inFormat)
+    {
+      mFormat = inFormat;
+    }
+
+    public String getFormat()
+    {
+      return mFormat;
+    }
+
+    public void setFormat(String inFormat)
+    {
+      mFormat = inFormat;
+    }
+  }
 
   public static class Lookup implements Serializable
   {

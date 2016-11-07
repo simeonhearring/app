@@ -9,6 +9,7 @@
 					<xs:documentation>Some documentation</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="FieldTKG" type="FieldTKG_Type" minOccurs="0"></xs:element>
 			<xs:element name="FieldSet" type="FieldSet_Type" minOccurs="0"></xs:element>
 			<xs:element name="FormGroup" type="Collection_Type" minOccurs="0"></xs:element>
 			<xs:element name="FormLabel" type="FormLabel_Type" minOccurs="0"></xs:element>
@@ -17,7 +18,7 @@
 			<xs:element name="ListBox" type="ListBox_Type" minOccurs="0"></xs:element>
 			<xs:element name="TextBox" type="TextBox_Type" minOccurs="0"></xs:element>
 			<xs:element name="FlexTable" type="FlexTable_Type" minOccurs="0"></xs:element>
-			<xs:element name="FieldTKG" type="FieldTKG_Type" minOccurs="0"></xs:element>
+			<xs:element name="DatePicker" type="DatePicker_Type" minOccurs="0"></xs:element>
 			<xs:element name="Button" type="Button_Type" minOccurs="0"></xs:element>
 		</xs:all>
 	</xs:complexType>
@@ -68,19 +69,25 @@
 	</xs:complexType>
 	<xs:complexType name="Icon_Type">
 		<xs:sequence>
-			<xs:element name="Title" type="xs:string"></xs:element>
+			<xs:element name="Title" type="xs:string" minOccurs="0"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Icon"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="FlexTable_Type">
 		<xs:sequence>
-			<xs:element name="Title" type="xs:string"></xs:element>
+			<xs:element name="Title" type="xs:string" minOccurs="0"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="DatePicker_Type">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string" minOccurs="0"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Badge_Type">
 		<xs:sequence>
-			<xs:element name="Title" type="xs:string"></xs:element>
+			<xs:element name="Title" type="xs:string" minOccurs="0"></xs:element>
 			<xs:element name="Text" type="xs:string"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
