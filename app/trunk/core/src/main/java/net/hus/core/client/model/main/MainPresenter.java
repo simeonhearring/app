@@ -12,8 +12,8 @@ import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.components.Components;
 import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.ComponentsQuery;
 import net.hus.core.shared.model.Page.Section;
-import net.hus.core.shared.model.Profil;
 
 public class MainPresenter implements ProfileEvent.Handler
 {
@@ -27,39 +27,24 @@ public class MainPresenter implements ProfileEvent.Handler
 
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
-
-    login();
+    profile("login", true);
   }
 
-  private void login()
+  private void profile(String inName, boolean inApp)
   {
-    Global.fire(new ProfileCommand("login", true), new RpcCallback<ProfileCommand>()
+    Global.fire(new ProfileCommand(inName, inApp), new RpcCallback<ProfileCommand>()
     {
       @Override
       public void onRpcSuccess(ProfileCommand inCommand)
       {
-        Profil profile = inCommand.getData();
-        components(profile.getComponentsName(), profile.fvk());
+        components(inCommand.getData());
       }
     });
   }
 
-  private void profile(String inName)
+  private void components(ComponentsQuery inQuery)
   {
-    Global.fire(new ProfileCommand(inName), new RpcCallback<ProfileCommand>()
-    {
-      @Override
-      public void onRpcSuccess(ProfileCommand inCommand)
-      {
-        Profil profile = inCommand.getData();
-        components(profile.getComponentsName(), profile.fvk());
-      }
-    });
-  }
-
-  private void components(String inComponentName, String inFvk)
-  {
-    Global.fire(new ComponentsCommand(inComponentName, inFvk), new RpcCallback<ComponentsCommand>()
+    Global.fire(new ComponentsCommand(inQuery), new RpcCallback<ComponentsCommand>()
     {
       @Override
       public void onRpcSuccess(ComponentsCommand inCommand)
@@ -110,6 +95,6 @@ public class MainPresenter implements ProfileEvent.Handler
   @Override
   public void dispatch(ProfileEvent inEvent)
   {
-    profile(inEvent.getName());
+    profile(inEvent.getName(), false);
   }
 }
