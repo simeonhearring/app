@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <module rename-to='core'>
 
 	<inherits name='com.google.gwt.user.User' />
 
-	<inherits name="org.gwtbootstrap3.extras.datepicker.DatePicker"/>
+	<inherits name='org.gwtbootstrap3.extras.datepicker.DatePicker'/>
+
+	<inherits name='org.gwtbootstrap3.extras.typeahead.Typeahead'/>
 
 	<source path='client' />
 	<source path='shared' />

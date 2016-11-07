@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.hus.core.parser.TextBox_Parser;
-import net.hus.core.shared.components.TextBox_;
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class TextBox_Test
@@ -43,11 +41,16 @@ public class TextBox_Test
   public static TextBox_ newTextBox()
   {
     TextBox_ ret = new TextBox_();
-    ret.setValue("Value");
 
-    ValueBoxBase_Test.initValueBoxBase(ret);
+    initTextBox(ret);
 
     return ret;
+  }
+
+  public static void initTextBox(TextBox_ inTextBox)
+  {
+    inTextBox.setValue("Value");
+    ValueBoxBase_Test.initValueBoxBase(inTextBox);
   }
 
   public static TextBox_ newTextBox(String inKey)
