@@ -22,5 +22,9 @@ public class Typeahead_Parser extends TextBox_Parser
   public static void xs(XStream inXs)
   {
     inXs.alias("Typeahead", Typeahead_.class);
+    inXs.aliasField("Value", Typeahead_.class, "mValue");
+    inXs.aliasField("Lookup", Typeahead_.class, "mLookup");
+
+    Lookup_Parser.xs(inXs);
   }
 }

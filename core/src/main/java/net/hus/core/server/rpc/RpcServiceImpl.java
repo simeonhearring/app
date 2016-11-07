@@ -4,6 +4,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
 import org.apache.log4j.Logger;
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -83,7 +84,7 @@ public class RpcServiceImpl extends RemoteServiceServlet implements RpcService
       }
       catch (NotifyException e)
       {
-        ret = new NotifyResponse(null, e.getNotifyMessage());
+        ret = new NotifyResponse(NotifyType.DANGER, e.getNotifyMessage());
         e.printStackTrace();
         LOGGER.warn("Notify Exception executing rpc ... " + bean + " " + e.getNotifyMessage());
       }

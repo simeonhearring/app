@@ -46,8 +46,8 @@ implements Component<V>
   {
     Value value = new Value();
     value.setValue(inValue);
-    value.setFieldTKG(mFieldTKG);
     value.setAsOf(new Date());
+    value.setFieldTKG(mFieldTKG);
     value.setField(mField);
     return value;
   }

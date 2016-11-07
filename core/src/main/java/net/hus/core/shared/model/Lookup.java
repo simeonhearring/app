@@ -3,7 +3,7 @@ package net.hus.core.shared.model;
 import static net.hus.core.shared.model.Lookup.Size.SM;
 import static net.hus.core.shared.model.Lookup.Size.XL;
 
-public class Lookup extends AbstractModel
+public class Lookup extends AbstractModel implements TypeaheadOption
 {
   private static final long serialVersionUID = 6439569552175264944L;
 
@@ -110,5 +110,17 @@ public class Lookup extends AbstractModel
   public void setXL(String inXL)
   {
     mXL = inXL;
+  }
+
+  @Override
+  public String option()
+  {
+    return mName;
+  }
+
+  @Override
+  public String fvk()
+  {
+    return getId() + "";
   }
 }

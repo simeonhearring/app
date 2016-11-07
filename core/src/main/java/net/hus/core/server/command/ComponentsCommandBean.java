@@ -5,10 +5,10 @@ import java.util.List;
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.components.Components;
-import net.hus.core.shared.components.ListBox_;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.LookupOptions;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
@@ -37,16 +37,15 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
   private void addLookups(Components inComponents)
   {
-    for (ListBox_ value : inComponents.getListBoxes())
+    for (LookupOptions value : inComponents.getLookupOptions())
     {
-      if (Field.Lookup.Location.TABLE.equals(value.getLookup().getLocation()))
+      if (Field.Lookup.Location.TABLE.equals(value.getLocation()))
       {
-        value.clearItems();
-        for (String group : value.getLookup().getParameters().split(","))
+        for (String group : value.getLookupGroups())
         {
           for (Lookup lookup : mCoreDao.lookups().select(group))
           {
-            value.add(lookup.getName(), lookup.getId().toString());
+            value.add(lookup);
           }
         }
       }
