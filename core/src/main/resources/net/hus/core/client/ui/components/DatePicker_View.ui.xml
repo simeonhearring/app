@@ -5,5 +5,7 @@
 	
 	</ui:style>
 
-	<b.date:DatePicker ui:field="mComponent" autoClose="true" highlightToday="true" showTodayButton="true" />
+	<b.gwt:FlowPanel>
+		<b.date:DatePicker ui:field="mComponent" autoClose="true" highlightToday="true" showTodayButton="true" />
+	</b.gwt:FlowPanel>
 </ui:UiBinder>
