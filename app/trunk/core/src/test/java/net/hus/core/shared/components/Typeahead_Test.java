@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.Typeahead_Parser;
+import net.hus.core.shared.model.Field.Lookup;
+import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.util.ResourceUtil;
 
 public class Typeahead_Test
@@ -42,7 +44,23 @@ public class Typeahead_Test
   {
     Typeahead_ ret = new Typeahead_();
 
-    TextBox_Test.initTextBox(ret);
+    // List<TypeaheadOption> options = new ArrayList<>();
+    // options.add(new TypeaheadOption()
+    // {
+    // @Override
+    // public String option()
+    // {
+    // return "Name1";
+    // }
+    // });
+    // ret.setOptions(options);
+    Lookup lookup = new Lookup();
+    lookup.setLocation(Location.TABLE);
+    lookup.setParameters("GENDER,UNKNOWN");
+    ret.setLookup(lookup);
+
+    ret.setValue("Value");
+    ValueBoxBase_Test.initValueBoxBase(ret);
 
     return ret;
   }

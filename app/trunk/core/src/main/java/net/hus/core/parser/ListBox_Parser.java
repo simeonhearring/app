@@ -3,7 +3,6 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.components.ListBox_;
-import net.hus.core.shared.model.Field;
 
 public class ListBox_Parser extends FocusWidget_Parser<ListBox_>
 {
@@ -26,9 +25,7 @@ public class ListBox_Parser extends FocusWidget_Parser<ListBox_>
     inXs.aliasField("Items", ListBox_.class, "mItems");
     inXs.aliasAttribute(ListBox_.class, "mMultipleSelect", "multipleSelect");
 
-    inXs.alias("Lookup", Field.Lookup.class);
-    inXs.aliasAttribute(Field.Lookup.class, "mLocation", "loc");
-    inXs.aliasAttribute(Field.Lookup.class, "mParameters", "params");
+    Lookup_Parser.xs(inXs);
 
     inXs.alias("Item", ListBox_.Item.class);
     inXs.aliasAttribute(ListBox_.Item.class, "mSelected", "selected");

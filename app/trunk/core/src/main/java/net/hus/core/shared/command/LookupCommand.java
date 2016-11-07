@@ -1,8 +1,5 @@
 package net.hus.core.shared.command;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.rpc.CommandName;
 
@@ -11,24 +8,26 @@ public class LookupCommand extends AbstractDataCommand<Lookups>
 {
   private static final long serialVersionUID = -414352655539735974L;
 
-  private Map<String, String[]> mMap = new HashMap<>();
+  private String mSearchText;
+  private String[] mLookupGroups;
 
-  public LookupCommand()
+  LookupCommand()
   {
   }
 
-  public LookupCommand(String inKey, String... inLookupGroup)
+  public LookupCommand(String inSearchText, String... inLookupGroups)
   {
-    add(inKey, inLookupGroup);
+    mSearchText = inSearchText;
+    mLookupGroups = inLookupGroups;
   }
 
-  public void add(String inKey, String... inLookupGroup)
+  public String getSearchText()
   {
-    mMap.put(inKey, inLookupGroup);
+    return mSearchText;
   }
 
-  public Map<String, String[]> getMap()
+  public String[] getLookupGroups()
   {
-    return mMap;
+    return mLookupGroups;
   }
 }

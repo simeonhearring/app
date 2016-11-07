@@ -23,6 +23,8 @@ public class ComplexPanel_Parser<T> extends UIObject_Parser<T>
     inXs.alias("ComplexPanel", ComplexPanel_.class);
     inXs.aliasField("Collection", ComplexPanel_.class, "mCollection");
 
+    Typeahead_Parser.xs(inXs);
+
     DatePicker_Parser.xs(inXs);
 
     Button_Parser.xs(inXs);

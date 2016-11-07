@@ -59,6 +59,7 @@ import net.hus.core.client.ui.components.FormLabel_View;
 import net.hus.core.client.ui.components.Input_View;
 import net.hus.core.client.ui.components.ListBox_View;
 import net.hus.core.client.ui.components.TextBox_View;
+import net.hus.core.client.ui.components.Typeahead_View;
 import net.hus.core.shared.components.AbstractTextWidget_;
 import net.hus.core.shared.components.Alert_;
 import net.hus.core.shared.components.Badge_;
@@ -83,8 +84,10 @@ import net.hus.core.shared.components.ListBox_;
 import net.hus.core.shared.components.ListBox_.Item;
 import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.components.TextBox_;
+import net.hus.core.shared.components.Typeahead_;
 import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.components.ValueBoxBase_;
+import net.hus.core.shared.model.Field.Lookup.Location;
 
 /**
  * Responsible for creating UI Objects from Model UI Objects without any values.
@@ -99,6 +102,28 @@ public abstract class UiConverter
   public UiConverter(UiCreate inUiCreate)
   {
     mUiCreate = inUiCreate;
+  }
+
+  public IsWidget convert(Typeahead_ inUiO)
+  {
+    Typeahead_View ret = new Typeahead_View();
+
+    create((UIObject) ret.getComponent(), (UIObject_) inUiO);
+    create(ret.getComponent(), inUiO);
+
+    Location location = inUiO.getLocation();
+    if (Location.TABLE.equals(location))
+    {
+      ret.setOptions(inUiO.getOptions());
+    }
+    else if (Location.RPC.equals(location))
+    {
+      ret.setLookupGroups(inUiO.getLookupGroups());
+    }
+
+    add(inUiO.getKey(), ret);
+
+    return ret;
   }
 
   public IsWidget convert(DatePicker_ inUiO)
@@ -424,11 +449,11 @@ public abstract class UiConverter
 
     if (inUiO.getItems() != null)
     {
-      int i = 0;
+      //      int i = 0;
       for (Item value : inUiO.getItems())
       {
         ret.addItem(value.getText(), value.getValue());
-        ret.setItemSelected(i++, value.isSelected());
+        // ret.setItemSelected(i++, value.isSelected());
       }
     }
 
@@ -828,6 +853,10 @@ public abstract class UiConverter
     else if (inUiO instanceof ListBox_)
     {
       ret = convert((ListBox_) inUiO);
+    }
+    else if (inUiO instanceof Typeahead_)
+    {
+      ret = convert((Typeahead_) inUiO);
     }
     else if (inUiO instanceof TextBox_)
     {

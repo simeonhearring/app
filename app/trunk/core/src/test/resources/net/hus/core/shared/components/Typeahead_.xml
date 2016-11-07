@@ -2,4 +2,5 @@
   <Title>Title</Title>
   <Placeholder>placeholder</Placeholder>
   <Value>Value</Value>
+  <Lookup loc="RPC" params="GENDER,UNKNOWN"/>
 </Typeahead>

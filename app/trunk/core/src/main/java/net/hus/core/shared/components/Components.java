@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.hus.core.shared.model.FieldTKG;
-import net.hus.core.shared.model.Value;
+import net.hus.core.shared.model.LookupOptions;
 import net.hus.core.shared.model.Page.Section;
+import net.hus.core.shared.model.Value;
 
 /**
  * Populated from XML (mFieldTKGs & mList). Values from database added after
@@ -59,14 +60,14 @@ public class Components implements Serializable
     return mValues;
   }
 
-  public List<ListBox_> getListBoxes()
+  public List<LookupOptions> getLookupOptions()
   {
-    List<ListBox_> ret = new ArrayList<>();
+    List<LookupOptions> ret = new ArrayList<>();
     find(ret, mList);
     return ret;
   }
 
-  private static void find(List<ListBox_> inAddTo, List<UIObject_> inSearchingIn)
+  private static void find(List<LookupOptions> inAddTo, List<UIObject_> inSearchingIn)
   {
     if (inSearchingIn != null)
     {
@@ -76,9 +77,9 @@ public class Components implements Serializable
         {
           find(inAddTo, ((ComplexPanel_) value).getCollection());
         }
-        else if (value instanceof ListBox_)
+        else if (value instanceof LookupOptions)
         {
-          inAddTo.add((ListBox_) value);
+          inAddTo.add((LookupOptions) value);
         }
       }
     }

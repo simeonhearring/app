@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Lookup.Location;
+import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.LookupOptions;
 
-public class ListBox_ extends FocusWidget_
+public class ListBox_ extends FocusWidget_ implements LookupOptions
 {
   private static final long serialVersionUID = -5860079083731912915L;
 
@@ -35,6 +38,12 @@ public class ListBox_ extends FocusWidget_
       mItems = new ArrayList<>();
     }
     mItems.clear();
+  }
+
+  @Override
+  public void add(Lookup inLookup)
+  {
+    add(inLookup.getName(), inLookup.getId().toString());
   }
 
   public void add(String inText)
@@ -121,5 +130,17 @@ public class ListBox_ extends FocusWidget_
     {
       mValue = inValue;
     }
+  }
+
+  @Override
+  public Location getLocation()
+  {
+    return mLookup.getLocation();
+  }
+
+  @Override
+  public String[] getLookupGroups()
+  {
+    return mLookup.getParameters().split(",");
   }
 }

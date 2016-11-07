@@ -32,6 +32,16 @@
 					<DatePicker KEY="FV00_4" />
 				</Collection>
 			</FormGroup>
+			<!-- 
+			<FormGroup>
+				<Collection>
+					<FormLabel KEY="FL00_12" isHtml="false" />
+					<Typeahead KEY="FV00_12">
+						<Lookup loc="RPC" params="GENDER,UNKNOWN" />
+					</Typeahead>
+				</Collection>
+			</FormGroup>
+			 -->
 			<FormGroup>
 				<Collection>
 					<FormLabel KEY="FL00_12" isHtml="false" />
@@ -43,7 +53,7 @@
 			<FormGroup>
 				<Collection>
 					<FormLabel KEY="FL00_13" isHtml="false">
-						<Text>Field4:</Text>
+						<Text>address:</Text>
 					</FormLabel>
 					<FlexTable KEY="FV00_13" width="100%">
 						<Title>Title</Title>
