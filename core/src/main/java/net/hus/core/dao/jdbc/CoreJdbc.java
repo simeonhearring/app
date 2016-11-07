@@ -6,12 +6,14 @@ import net.hus.core.dao.CoreDao;
 import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
+import net.hus.core.parser.AppProfileParser;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.components.Components;
-import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.model.AppProfile;
 import net.hus.core.shared.model.Lookup.Group;
+import net.hus.core.shared.model.Profile;
 
 public class CoreJdbc implements CoreDao
 {
@@ -20,6 +22,7 @@ public class CoreJdbc implements CoreDao
   private ValuesSql mValues;
 
   private ProfileParser mProfileParser;
+  private AppProfileParser mAppProfileParser;
   private ComponentsParser mComponentsParser;
 
   public void setDataSource(DataSource inDataSource)
@@ -28,6 +31,7 @@ public class CoreJdbc implements CoreDao
     mLookups = new LookupSql(inDataSource);
     mValues = new ValuesSql(inDataSource);
 
+    mAppProfileParser = new AppProfileParser();
     mProfileParser = new ProfileParser();
     mComponentsParser = new ComponentsParser();
   }
@@ -63,10 +67,10 @@ public class CoreJdbc implements CoreDao
   }
 
   @Override
-  public Profile profile_app(String inName)
+  public AppProfile profile_app(String inName)
   {
     String xml = lookups().selectXL(Group.APP_PROFILE, inName).getXL();
-    return parse(mProfileParser, xml);
+    return parse(mAppProfileParser, xml);
   }
 
   @Override

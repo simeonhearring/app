@@ -19,7 +19,7 @@ public class ProfileParserTest
   }
 
   @Test
-  public void test()
+  public void test3()
   {
     Profile model = new Profile();
     model.setId(3L);
@@ -34,6 +34,7 @@ public class ProfileParserTest
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));
-    System.out.println(mParser.toXml(model));
+
+    Assert.assertEquals(model, mParser.fromXml(xml));
   }
 }

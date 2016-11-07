@@ -18,15 +18,21 @@ import net.hus.core.shared.model.Value;
 
 public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 {
-  protected FieldTKG mTableFvk;
-  private String mLabel;
-  private Field mField;
-
+  protected FieldTKG mFieldTKG;
   protected C mComponent;
+  protected Field mField;
+  private String mLabel;
+
 
   public Abstract_View(C inComponent)
   {
     mComponent = inComponent;
+  }
+
+  @Override
+  public C getComponent()
+  {
+    return mComponent;
   }
 
   @Override
@@ -38,13 +44,14 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   @Override
   public final Widget asWidget()
   {
+    // not currently added to ui. here for testing.
     return mComponent;
   }
 
   @Override
-  public void setFieldTKG(FieldTKG inTableFvk)
+  public void setFieldTKG(FieldTKG inFieldTKG)
   {
-    mTableFvk = inTableFvk;
+    mFieldTKG = inFieldTKG;
   }
 
   @Override
@@ -57,7 +64,7 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
   {
     Value value = new Value();
     value.setValue(inValue);
-    value.setTableFvk(mTableFvk);
+    value.setTableFvk(mFieldTKG);
     value.setAsOf(new Date());
     value.setField(mField);
     return value;

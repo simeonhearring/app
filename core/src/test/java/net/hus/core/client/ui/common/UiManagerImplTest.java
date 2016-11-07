@@ -33,7 +33,7 @@ public class UiManagerImplTest
 
     Components<Object> views = mManager.get(key);
     Assert.assertEquals(1, views.getComponents().size());
-    Assert.assertEquals(uiobject, views.getComponents().get(0).asWidget());
+    Assert.assertEquals(uiobject, views.getComponents().get(0).getComponent());
 
     uiobject.setText("Hello");
     Assert.assertEquals("", uiobject.getText());

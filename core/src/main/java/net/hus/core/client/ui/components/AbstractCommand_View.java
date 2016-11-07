@@ -1,7 +1,5 @@
 package net.hus.core.client.ui.components;
 
-import org.gwtbootstrap3.extras.notify.client.ui.Notify;
-
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -41,14 +39,11 @@ extends Abstract_View<C, Void> implements ClickHandler, HasCommandName
   @Override
   public void onClick(ClickEvent inEvent)
   {
-    Notify.notify("I was clicked!!");
-    Global.fire(new RequestCommand(commandName(), mTableFvk), new RpcCallback<RequestCommand>()
+    Global.fire(new RequestCommand(commandName(), mFieldTKG), new RpcCallback<RequestCommand>()
     {
       @Override
       public void onRpcSuccess(RequestCommand inCommand)
       {
-        Notify.notify("I'm back with ... " + inCommand.commandName() + " " + inCommand.getData());
-
         fireEvent(inCommand.commandName(), inCommand.getData());
       }
     });

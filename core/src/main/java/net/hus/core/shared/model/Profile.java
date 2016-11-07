@@ -1,8 +1,10 @@
 package net.hus.core.shared.model;
 
-public class Profile extends AbstractModel
+public class Profile extends AbstractModel implements Profil
 {
   private static final long serialVersionUID = -2062686028848352428L;
+
+  private Page mPage;
 
   private String mUserName;
   private String mFirst;
@@ -10,7 +12,15 @@ public class Profile extends AbstractModel
   private String mLast;
   private String mPassword;
 
-  private Page mPage;
+  public Page getPage()
+  {
+    return mPage;
+  }
+
+  public void setPage(Page inPage)
+  {
+    mPage = inPage;
+  }
 
   public String getFirst()
   {
@@ -62,18 +72,15 @@ public class Profile extends AbstractModel
     mPassword = inPassword;
   }
 
-  public Page getPage()
-  {
-    return mPage;
-  }
-
-  public void setPage(Page inPage)
-  {
-    mPage = inPage;
-  }
-
+  @Override
   public String fvk()
   {
     return getId() + "";
+  }
+
+  @Override
+  public String getComponentsName()
+  {
+    return mPage.getComponentsName();
   }
 }

@@ -16,6 +16,12 @@ public abstract class AbstractStatic_View<C extends Widget> implements Component
   }
 
   @Override
+  public C getComponent()
+  {
+    return mComponent;
+  }
+
+  @Override
   public void setLabel(String inName)
   {
   }

@@ -1,6 +1,6 @@
 <Profile id="3" userName="simeonhearring" password="abc123">
+	<Page components.name="Components2"/>
 	<First>Simeon</First>
 	<Middle>L</Middle>
 	<Last>Hearring</Last>
-	<Page components.name="Components2"/>
 </Profile>
