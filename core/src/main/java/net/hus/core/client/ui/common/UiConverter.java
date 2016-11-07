@@ -40,6 +40,7 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
+import org.gwtbootstrap3.extras.datepicker.client.ui.base.DatePickerBase;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.user.client.ui.ComplexPanel;
@@ -52,6 +53,7 @@ import net.hus.core.client.ui.components.Alert_View;
 import net.hus.core.client.ui.components.Badge_View;
 import net.hus.core.client.ui.components.Button_View;
 import net.hus.core.client.ui.components.CheckBox_View;
+import net.hus.core.client.ui.components.DatePicker_View;
 import net.hus.core.client.ui.components.FlexTable_View;
 import net.hus.core.client.ui.components.FormLabel_View;
 import net.hus.core.client.ui.components.Input_View;
@@ -67,6 +69,8 @@ import net.hus.core.shared.components.Column_;
 import net.hus.core.shared.components.ComplexPanel_;
 import net.hus.core.shared.components.ComplexWidget_;
 import net.hus.core.shared.components.Container_;
+import net.hus.core.shared.components.DatePickerBase_;
+import net.hus.core.shared.components.DatePicker_;
 import net.hus.core.shared.components.FieldSet_;
 import net.hus.core.shared.components.FlexTable_;
 import net.hus.core.shared.components.FocusWidget_;
@@ -95,6 +99,18 @@ public abstract class UiConverter
   public UiConverter(UiCreate inUiCreate)
   {
     mUiCreate = inUiCreate;
+  }
+
+  public IsWidget convert(DatePicker_ inUiO)
+  {
+    DatePicker_View ret = new DatePicker_View();
+
+    create((UIObject) ret.getComponent(), (UIObject_) inUiO);
+    create(ret.getComponent(), inUiO);
+
+    add(inUiO.getKey(), ret);
+
+    return ret;
   }
 
   public IsWidget convert(Button_ inUiO)
@@ -737,6 +753,10 @@ public abstract class UiConverter
     }
   }
 
+  private void create(DatePickerBase inUiO, DatePickerBase_ inUiO_)
+  {
+  }
+
   private void create(UIObject inUiO, UIObject_ inUiO_)
   {
     String id = inUiO_.getId();
@@ -844,6 +864,10 @@ public abstract class UiConverter
     else if (inUiO instanceof Button_)
     {
       ret = convert((Button_) inUiO);
+    }
+    else if (inUiO instanceof DatePicker_)
+    {
+      ret = convert((DatePicker_) inUiO);
     }
     else
     {

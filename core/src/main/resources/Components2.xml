@@ -28,6 +28,12 @@
 			</FormGroup>
 			<FormGroup>
 				<Collection>
+					<FormLabel KEY="FL00_4" isHtml="false" />
+					<DatePicker KEY="FV00_4" />
+				</Collection>
+			</FormGroup>
+			<FormGroup>
+				<Collection>
 					<FormLabel KEY="FL00_12" isHtml="false" />
 					<ListBox KEY="FV00_12" multipleSelect="false">
 						<Lookup loc="TABLE" params="BLANK,GENDER,UNKNOWN" />

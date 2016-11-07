@@ -39,7 +39,7 @@ public class Icon_Test
 
     Icon_ model = Icon_Test.newIcon();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Icon_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Icon_.xml");
 
     Assert.assertEquals(expected, parser.toXml(model));
   }

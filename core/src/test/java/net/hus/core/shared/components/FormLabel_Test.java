@@ -34,7 +34,7 @@ public class FormLabel_Test
 
     FormLabel_ model = FormLabel_Test.newFormLabel();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/FormLabel_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/FormLabel_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

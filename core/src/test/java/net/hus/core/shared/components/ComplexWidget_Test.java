@@ -35,7 +35,7 @@ public class ComplexWidget_Test
 
     ComplexWidget_ model = ComplexWidget_Test.newComplexWidget();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/ComplexWidget_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/ComplexWidget_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

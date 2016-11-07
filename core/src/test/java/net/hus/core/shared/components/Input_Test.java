@@ -35,7 +35,7 @@ public class Input_Test
 
     Input_ model = Input_Test.newInput();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Input_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Input_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

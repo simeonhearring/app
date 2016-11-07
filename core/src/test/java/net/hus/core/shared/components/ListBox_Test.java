@@ -36,7 +36,7 @@ public class ListBox_Test
 
     ListBox_ model = ListBox_Test.newListBox();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/ListBox_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/ListBox_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

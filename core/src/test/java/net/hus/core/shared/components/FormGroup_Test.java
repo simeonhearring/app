@@ -36,7 +36,7 @@ public class FormGroup_Test
 
     FormGroup_ model = FormGroup_Test.newFormGroup();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/FormGroup_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/FormGroup_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

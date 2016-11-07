@@ -35,7 +35,7 @@ public class Alert_Test
 
     Alert_ model = Alert_Test.newAlert();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Alert_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Alert_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

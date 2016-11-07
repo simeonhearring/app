@@ -12,5 +12,6 @@
     </Labels>
     <Properties showBottomAtRow="10" isAltRow="true" altEvenColor="#CCC" altOddColor="#FFF" headingSize="H2"/>
   </Array>
+  <DateTime format="yyyy-MM-dd"/>
   <Database oneValue="true"/>
 </Field.Properties>

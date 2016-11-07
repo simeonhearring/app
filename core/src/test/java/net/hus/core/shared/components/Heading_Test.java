@@ -37,7 +37,7 @@ public class Heading_Test
 
     Heading_ model = Heading_Test.newHeading();
 
-    String expected = ResourceUtil.contents("net/hus/core/shared/model/Heading_.xml");
+    String expected = ResourceUtil.contents("net/hus/core/shared/components/Heading_.xml");
     expected = expected.replaceAll("\t", "  ");
 
     Assert.assertEquals(expected, parser.toXml(model));

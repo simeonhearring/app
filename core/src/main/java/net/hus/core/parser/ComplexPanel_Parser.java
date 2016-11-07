@@ -23,6 +23,8 @@ public class ComplexPanel_Parser<T> extends UIObject_Parser<T>
     inXs.alias("ComplexPanel", ComplexPanel_.class);
     inXs.aliasField("Collection", ComplexPanel_.class, "mCollection");
 
+    DatePicker_Parser.xs(inXs);
+
     Button_Parser.xs(inXs);
 
     FlexTable_Parser.xs(inXs);
