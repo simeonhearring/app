@@ -7,4 +7,6 @@ public interface LookupOptions
   Field.Lookup.Location getLocation();
 
   String[] getLookupGroups();
+
+  void init();
 }

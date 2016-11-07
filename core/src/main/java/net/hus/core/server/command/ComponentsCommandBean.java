@@ -41,6 +41,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     {
       if (Field.Lookup.Location.TABLE.equals(value.getLocation()))
       {
+        value.init();
         for (String group : value.getLookupGroups())
         {
           for (Lookup lookup : mCoreDao.lookups().select(group))

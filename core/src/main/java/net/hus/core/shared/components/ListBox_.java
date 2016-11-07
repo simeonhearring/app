@@ -41,6 +41,15 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
   }
 
   @Override
+  public void init()
+  {
+    if (mItems == null)
+    {
+      mItems = new ArrayList<>();
+    }
+  }
+
+  @Override
   public void add(Lookup inLookup)
   {
     add(inLookup.getName(), inLookup.getId().toString());
