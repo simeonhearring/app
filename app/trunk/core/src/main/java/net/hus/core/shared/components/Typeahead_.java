@@ -33,12 +33,17 @@ public class Typeahead_ extends ValueBoxBase_ implements LookupOptions
   }
 
   @Override
-  public void add(Lookup inLookup)
+  public void init()
   {
     if (mOptions == null)
     {
       mOptions = new ArrayList<>();
     }
+  }
+
+  @Override
+  public void add(Lookup inLookup)
+  {
     mOptions.add(inLookup);
   }
 
