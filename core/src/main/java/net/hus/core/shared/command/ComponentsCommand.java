@@ -1,6 +1,7 @@
 package net.hus.core.shared.command;
 
 import net.hus.core.shared.components.Components;
+import net.hus.core.shared.model.ComponentsQuery;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("ComponentsCommand")
@@ -15,10 +16,10 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
   {
   }
 
-  public ComponentsCommand(String inComponentsName, String inFvk)
+  public ComponentsCommand(ComponentsQuery inQuery)
   {
-    mComponentsName = inComponentsName;
-    mFvk = inFvk;
+    mComponentsName = inQuery.componentsName();
+    mFvk = inQuery.fvk();
   }
 
   public Components getComponents()

@@ -1,6 +1,6 @@
 package net.hus.core.shared.model;
 
-public class Profile extends AbstractModel implements Profil
+public class Profile extends AbstractModel implements ComponentsQuery
 {
   private static final long serialVersionUID = -2062686028848352428L;
 
@@ -79,7 +79,7 @@ public class Profile extends AbstractModel implements Profil
   }
 
   @Override
-  public String getComponentsName()
+  public String componentsName()
   {
     return mPage.getComponentsName();
   }
