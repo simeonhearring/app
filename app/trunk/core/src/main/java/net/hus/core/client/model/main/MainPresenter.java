@@ -96,6 +96,6 @@ public class MainPresenter implements ProfileEvent.Handler
   @Override
   public void dispatch(ProfileEvent inEvent)
   {
-    profile(inEvent.getName(), false);
+    profile(inEvent.getName(), inEvent.isApp());
   }
 }

@@ -3,7 +3,6 @@ package net.hus.core.server.command;
 import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.components.Response;
 import net.hus.core.shared.model.Field;
-import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.model.Values;
 import net.hus.core.shared.rpc.common.RpcResponse;
@@ -14,8 +13,7 @@ public class LoginCommandBean extends AbstractCommandBean<RequestCommand>
   public RpcResponse execute(RequestCommand inCommand)
   {
     Values values = new Values();
-    FieldTKG fvk = inCommand.fvk();
-    values.setValues(mCoreDao.values().selectLast(fvk));
+    values.setValues(mCoreDao.values().selectLast(inCommand.tkg()));
 
     String userName = values.get(Field.Fid.USERNAME).getValue();
     String password = values.get(Field.Fid.PASSWORD).getValue();
