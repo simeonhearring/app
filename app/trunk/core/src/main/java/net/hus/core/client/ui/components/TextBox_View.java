@@ -17,6 +17,7 @@ implements ValueChangeHandler<String>
   public void addChangeHandler()
   {
     mComponent.addValueChangeHandler(this);
+    mComponent.addClickHandler(this);
   }
 
   @Override
