@@ -22,6 +22,11 @@ public abstract class AbstractStatic_View<C extends Widget> implements Component
   }
 
   @Override
+  public void addChangeHandler()
+  {
+  }
+
+  @Override
   public void setLabel(String inName)
   {
   }

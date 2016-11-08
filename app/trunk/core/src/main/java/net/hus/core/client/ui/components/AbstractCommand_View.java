@@ -9,7 +9,6 @@ import net.hus.core.client.model.main.EventLocater;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.RequestCommand;
-import net.hus.core.shared.model.FieldTKG;
 
 public class AbstractCommand_View<C extends Widget & HasClickHandlers>
     extends Abstract_View<C, Void> implements ClickHandler
@@ -23,9 +22,8 @@ public class AbstractCommand_View<C extends Widget & HasClickHandlers>
   }
 
   @Override
-  public void setFieldTKG(FieldTKG inTableFvk)
+  public void addChangeHandler()
   {
-    super.setFieldTKG(inTableFvk);
     mComponent.addClickHandler(this);
   }
 

@@ -5,8 +5,6 @@ import org.gwtbootstrap3.client.ui.Input;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
-import net.hus.core.shared.model.FieldTKG;
-
 public class Input_View extends Abstract_View<Input, String> implements ValueChangeHandler<String>
 {
   public Input_View(Input inComponent)
@@ -15,9 +13,8 @@ public class Input_View extends Abstract_View<Input, String> implements ValueCha
   }
 
   @Override
-  public void setFieldTKG(FieldTKG inFTKG)
+  public void addChangeHandler()
   {
-    super.setFieldTKG(inFTKG);
     mComponent.addValueChangeHandler(this);
   }
 

@@ -45,6 +45,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
     initWidget(BINDER.createAndBindUi(this));
   }
 
+  @Override
   public FlexTable getComponent()
   {
     return mComponent;
@@ -67,6 +68,11 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
     {
       save(values());
     }
+  }
+
+  @Override
+  public void addChangeHandler()
+  {
   }
 
   @Override

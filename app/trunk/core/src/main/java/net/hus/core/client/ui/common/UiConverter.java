@@ -111,6 +111,8 @@ public abstract class UiConverter
     create((UIObject) ret.getComponent(), (UIObject_) inUiO);
     create(ret.getComponent(), inUiO);
 
+    ret.getComponent().setMinLength(3);
+
     Location location = inUiO.getLocation();
     if (Location.TABLE.equals(location))
     {
