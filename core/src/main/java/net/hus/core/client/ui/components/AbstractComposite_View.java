@@ -2,8 +2,11 @@ package net.hus.core.client.ui.components;
 
 import java.util.Date;
 
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -18,7 +21,7 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
 public abstract class AbstractComposite_View<C extends Widget, V> extends Composite
-    implements Component<V>
+    implements Component<V>, ClickHandler
 {
   protected FieldTKG mFieldTKG;
   protected Field mField;
@@ -85,5 +88,14 @@ public abstract class AbstractComposite_View<C extends Widget, V> extends Compos
         Notify.notify("Saved... " + mLabel);
       }
     });
+  }
+
+  @Override
+  public void onClick(ClickEvent inEvent)
+  {
+    if (inEvent.isAltKeyDown())
+    {
+      Notify.notify("FIELD INFO", mField.getInfo(), IconType.INFO_CIRCLE);
+    }
   }
 }

@@ -109,6 +109,19 @@ public class Field extends AbstractModel
     private DateTime mDateTime;
     private Database mDatabase;
 
+    public String getInfo()
+    {
+      StringBuilder sb = new StringBuilder();
+      sb.append(" Display: [").append(mDisplay.mLong).append(" ");
+      sb.append(mDisplay.mShort).append("]<br/>");
+      if (mLookup != null)
+      {
+        sb.append(" Lookup: [").append(mLookup.getLocation()).append(" ");
+        sb.append(mLookup.getParameters()).append("]");
+      }
+      return sb.toString();
+    }
+
     public Display getDisplay()
     {
       return mDisplay;
@@ -453,5 +466,15 @@ public class Field extends AbstractModel
   public boolean isOneValue()
   {
     return mProperties.getDatabase().isOneValue();
+  }
+
+  public String getInfo()
+  {
+    StringBuilder ret = new StringBuilder();
+    ret.append(" Name: ").append(getName());
+    ret.append(" ID: ").append(getId());
+    ret.append(" Type: ").append(getType());
+    ret.append(mProperties.getInfo());
+    return ret.toString();
   }
 }

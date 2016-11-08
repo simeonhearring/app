@@ -16,6 +16,7 @@ public class Input_View extends Abstract_View<Input, String> implements ValueCha
   public void addChangeHandler()
   {
     mComponent.addValueChangeHandler(this);
+    mComponent.addClickHandler(this);
   }
 
   @Override
