@@ -20,9 +20,11 @@ public interface Component<V> extends IsWidget
 
   void setLabel(String inLabel);
 
-  void setFieldTKG(FieldTKG inFTKG);
+  void setFieldTKG(FieldTKG inFieldTKG);
 
   void setField(Field inField);
+
+  void addChangeHandler();
 
   IsWidget getComponent();
 }

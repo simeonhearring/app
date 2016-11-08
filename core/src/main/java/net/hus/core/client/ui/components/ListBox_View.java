@@ -5,8 +5,6 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 
-import net.hus.core.shared.model.FieldTKG;
-
 public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
 {
   public ListBox_View(ListBox inComponent)
@@ -15,9 +13,8 @@ public class ListBox_View extends Abstract_View<ListBox, String> implements Chan
   }
 
   @Override
-  public void setFieldTKG(FieldTKG inFTKG)
+  public void addChangeHandler()
   {
-    super.setFieldTKG(inFTKG);
     mComponent.addChangeHandler(this);
   }
 

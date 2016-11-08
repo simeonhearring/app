@@ -18,7 +18,7 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
 public abstract class AbstractComposite_View<C extends Widget, V> extends Composite
-implements Component<V>
+    implements Component<V>
 {
   protected FieldTKG mFieldTKG;
   protected Field mField;

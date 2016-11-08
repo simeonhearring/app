@@ -11,11 +11,10 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.TypeaheadOption;
 
 public class Typeahead_View extends AbstractComposite_View<Typeahead<TypeaheadOption>, String>
-    implements TypeaheadSelectedHandler<TypeaheadOption>
+implements TypeaheadSelectedHandler<TypeaheadOption>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -31,14 +30,11 @@ public class Typeahead_View extends AbstractComposite_View<Typeahead<TypeaheadOp
   public Typeahead_View()
   {
     initWidget(BINDER.createAndBindUi(this));
-
-    mComponent.setMinLength(3);
   }
 
   @Override
-  public void setField(Field inField)
+  public void addChangeHandler()
   {
-    super.setField(inField);
     mComponent.addTypeaheadSelectedHandler(this);
   }
 

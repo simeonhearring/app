@@ -24,21 +24,23 @@ public class Components<V>
     }
   }
 
-  public void setFieldNameTk(String inFieldName, FieldTKG inTk, Field inField)
+  public void makeSaveable(String inFieldName, FieldTKG inFieldTKG, Field inField)
   {
     for (Component<?> value : mComponents)
     {
       value.setLabel(inFieldName);
-      value.setFieldTKG(inTk);
+      value.setFieldTKG(inFieldTKG);
       value.setField(inField);
+      value.addChangeHandler();
     }
   }
 
-  public void setFvk(FieldTKG inFvk)
+  public void makeClickable(FieldTKG inFieldTKG)
   {
     for (Component<?> value : mComponents)
     {
-      value.setFieldTKG(inFvk);
+      value.setFieldTKG(inFieldTKG);
+      value.addChangeHandler();
     }
   }
 

@@ -34,7 +34,7 @@ public class UiManager extends UiConverter
   }
 
   @SuppressWarnings("unchecked")
-  public Components<Object> get(String... inKey)
+  protected Components<Object> get(String... inKey)
   {
     Components<Object> ret = new Components<>();
     for (String key : inKey)
@@ -48,33 +48,40 @@ public class UiManager extends UiConverter
     return ret;
   }
 
-  public void update(FieldTKG inFvk)
+  /*
+   * updates buttons.
+   */
+  public void update(FieldTKG inFieldTKG)
   {
     for (String value : mContent.keySet())
     {
       if (value != null && value.startsWith(Field.Component.BTN00_.name()))
       {
-        get(value).setFvk(inFvk);
+        get(value).makeClickable(inFieldTKG);
       }
     }
   }
 
-  public void update(List<Value> inValues, FieldTKG inFvk)
+  /*
+   * updates field Label & field Value. add Field, TKG, & save label.
+   */
+  public void update(List<Value> inValues, FieldTKG inFieldTKG)
   {
     for (Value value : inValues)
     {
-      update(inFvk, value, value.getField());
+      update(value, inFieldTKG);
     }
   }
 
-  private void update(FieldTKG inFvk, Value inValue, Field inField)
+  private void update(Value inValue, FieldTKG inFieldTKG)
   {
-    String labelKey = Field.Component.FL00_.name() + inField.getId();
-    String valueKey = Field.Component.FV00_.name() + inField.getId();
+    Field field = inValue.getField();
+
+    String labelKey = Field.Component.FL00_.name() + field.getId();
+    String valueKey = Field.Component.FV00_.name() + field.getId();
 
     get(labelKey).setValue(inValue.getLabel());
-    get(valueKey).setFieldNameTk(inValue.getLabel(), inFvk, inField);
-    if (inValue.getField().isArray())
+    if (field.isArray())
     {
       get(valueKey).setValue(inValue.getTable());
     }
@@ -82,5 +89,6 @@ public class UiManager extends UiConverter
     {
       get(valueKey).setValue(inValue.getValue());
     }
+    get(valueKey).makeSaveable(inValue.getLabel(), inFieldTKG, field);
   }
 }
