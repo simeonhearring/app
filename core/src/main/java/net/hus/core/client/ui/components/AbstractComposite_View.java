@@ -21,7 +21,7 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
 public abstract class AbstractComposite_View<C extends Widget, V> extends Composite
-    implements Component<V>, ClickHandler
+implements Component<V>, ClickHandler
 {
   protected FieldTKG mFieldTKG;
   protected Field mField;
@@ -45,10 +45,11 @@ public abstract class AbstractComposite_View<C extends Widget, V> extends Compos
     mLabel = inLabel;
   }
 
-  private Value newValue(String inValue)
+  private Value newValue(String inValue, Long inValueId)
   {
     Value value = new Value();
     value.setValue(inValue);
+    value.setValueId(inValueId);
     value.setAsOf(new Date());
     value.setFieldTKG(mFieldTKG);
     value.setField(mField);
@@ -57,14 +58,28 @@ public abstract class AbstractComposite_View<C extends Widget, V> extends Compos
 
   private Value newValue(Table inValue)
   {
-    Value value = newValue((String) null);
+    Value value = newValue((String) null, (Long) null);
     value.setTable(inValue);
     return value;
   }
 
   protected void save(String inValue, final String inDisplay)
   {
-    Value value = newValue(inValue);
+    Value value = newValue(inValue, null);
+
+    Global.fire(new ValueInsertCommand(value), new RpcCallback<ValueInsertCommand>()
+    {
+      @Override
+      public void onRpcSuccess(ValueInsertCommand inResult)
+      {
+        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
+      }
+    });
+  }
+
+  protected void save(String inValue, Long inValueId, final String inDisplay)
+  {
+    Value value = newValue(inValue, inValueId);
 
     Global.fire(new ValueInsertCommand(value), new RpcCallback<ValueInsertCommand>()
     {
