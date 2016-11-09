@@ -9,8 +9,9 @@ import net.hus.core.client.model.main.EventLocater;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.RequestCommand;
+import net.hus.core.shared.model.Value;
 
-public class AbstractCommand_View<C extends Widget & HasClickHandlers>
+public abstract class AbstractCommand_View<C extends Widget & HasClickHandlers>
     extends Abstract_View<C, Void> implements ClickHandler
 {
   private String mCommandName;
@@ -29,6 +30,11 @@ public class AbstractCommand_View<C extends Widget & HasClickHandlers>
 
   @Override
   public void setValue(Void inValue)
+  {
+  }
+
+  @Override
+  public void setValue(Value inValue)
   {
   }
 

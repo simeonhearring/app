@@ -5,6 +5,8 @@ import org.gwtbootstrap3.client.ui.TextBox;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
+import net.hus.core.shared.model.Value;
+
 public class TextBox_View extends Abstract_View<TextBox, String>
 implements ValueChangeHandler<String>
 {
@@ -24,6 +26,12 @@ implements ValueChangeHandler<String>
   public void setValue(String inValue)
   {
     mComponent.setValue(inValue);
+  }
+
+  @Override
+  public void setValue(Value inValue)
+  {
+    mComponent.setText(inValue.getValue());
   }
 
   @Override

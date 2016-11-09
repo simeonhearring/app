@@ -5,6 +5,9 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 
+import net.hus.core.shared.model.Value;
+import net.hus.core.shared.util.NumberUtil;
+
 public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
 {
   public ListBox_View(ListBox inComponent)
@@ -32,8 +35,16 @@ public class ListBox_View extends Abstract_View<ListBox, String> implements Chan
   }
 
   @Override
+  public void setValue(Value inValue)
+  {
+    setValue(String.valueOf(inValue.getValueId()));
+  }
+
+  @Override
   public void onChange(ChangeEvent inEvent)
   {
-    save(mComponent.getSelectedValue(), mComponent.getSelectedItemText());
+    Long selectedValueId = NumberUtil.toLong(mComponent.getSelectedValue());
+    String selectedItemText = mComponent.getSelectedItemText();
+    save(selectedItemText, selectedValueId, selectedItemText);
   }
 }

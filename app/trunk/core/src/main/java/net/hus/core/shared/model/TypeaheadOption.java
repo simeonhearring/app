@@ -4,5 +4,5 @@ public interface TypeaheadOption
 {
   String option();
 
-  String fvk();
+  Long optionId();
 }

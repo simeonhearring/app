@@ -8,7 +8,7 @@ import net.hus.core.shared.model.TypeaheadOption;
 
 public class TypeaheadData
 {
-  private Map<String, TypeaheadOption> mData = new HashMap<>();
+  private Map<Long, TypeaheadOption> mData = new HashMap<>();
 
   public TypeaheadOption get(String inValue)
   {
@@ -20,7 +20,7 @@ public class TypeaheadData
     mData = new HashMap<>();
     for (T value : inOptions)
     {
-      mData.put(value.fvk(), value);
+      mData.put(value.optionId(), value);
     }
   }
 
@@ -29,7 +29,7 @@ public class TypeaheadData
     mData = new HashMap<>();
     for (TypeaheadOption value : inOptions)
     {
-      mData.put(value.fvk(), value);
+      mData.put(value.optionId(), value);
     }
   }
 }

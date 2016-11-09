@@ -4,11 +4,11 @@
 	<Items>
 		<Item selected="true">
 			<Text>text1</Text>
-			<Value>value1</Value>
+			<ValueId>1</ValueId>
 		</Item>
 		<Item selected="false">
 			<Text>text2</Text>
-			<Value>value2</Value>
+			<ValueId>2</ValueId>
 		</Item>
 	</Items>
 </ListBox>

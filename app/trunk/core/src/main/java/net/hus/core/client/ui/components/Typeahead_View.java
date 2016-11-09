@@ -12,9 +12,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.model.TypeaheadOption;
+import net.hus.core.shared.model.Value;
 
 public class Typeahead_View extends AbstractComposite_View<Typeahead<TypeaheadOption>, String>
-    implements TypeaheadSelectedHandler<TypeaheadOption>
+implements TypeaheadSelectedHandler<TypeaheadOption>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -56,10 +57,16 @@ public class Typeahead_View extends AbstractComposite_View<Typeahead<TypeaheadOp
   }
 
   @Override
+  public void setValue(Value inValue)
+  {
+    mComponent.setValue(inValue.getValue());
+  }
+
+  @Override
   public void onSelected(TypeaheadSelectedEvent<TypeaheadOption> inEvent)
   {
     TypeaheadOption option = inEvent.getSuggestion().getData();
-    save(option.fvk(), option.option());
+    save(option.option(), option.optionId(), option.option());
   }
 
   public void setOptions(List<TypeaheadOption> inOptions)

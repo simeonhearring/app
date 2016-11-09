@@ -131,9 +131,9 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   }
 
   @Override
-  public String fvk()
+  public Long optionId()
   {
     Long altId = getAltId();
-    return (altId != null ? altId : getId()) + "";
+    return altId != null ? altId : getId();
   }
 }
