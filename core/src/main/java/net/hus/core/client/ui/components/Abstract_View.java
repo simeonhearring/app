@@ -19,7 +19,7 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
-public abstract class Abstract_View<C extends Widget, V> implements Component<V>, ClickHandler
+public abstract class Abstract_View<C extends Widget> implements Component, ClickHandler
 {
   protected FieldTKG mFieldTKG;
   protected C mComponent;

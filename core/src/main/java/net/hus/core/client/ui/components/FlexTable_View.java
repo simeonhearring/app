@@ -15,13 +15,11 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.components.FlexTable_.Table;
-import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
-import net.hus.core.shared.model.Field.Properties;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.util.StringUtil;
 
-public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
+public class FlexTable_View extends AbstractComposite_View<FlexTable>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -77,23 +75,56 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
   }
 
   @Override
-  public void setValue(Table inValue)
+  public void setValue(Value inValue)
   {
-    if (inValue != null && inValue.getTable() != null)
+    mComponent.removeAllRows();
+
+    setProperties(inValue.getField().getArray().getProperties());
+    addHeaders(inValue.getField().getArray().getLabels());
+
+    Table table = inValue.getTable();
+    if (table != null && table.getTable() != null)
     {
       int headColCt = mComponent.getCellCount(0);
 
-      for (String[] object : inValue.getTable())
+      for (String[] value : table.getTable())
       {
-        addRow(headColCt, object);
+        addRow(headColCt, value);
       }
     }
   }
 
-  @Override
-  public void setValue(Value inValue)
+  private void setProperties(Array.Properties inArrayProp)
   {
-    setValue(inValue.getTable());
+    if (inArrayProp != null)
+    {
+      Integer showBottomAtRow = inArrayProp.getShowBottomAtRow();
+      Boolean altColor = inArrayProp.getAltRow();
+      String altEven = inArrayProp.getAltEvenColor();
+      String altOdd = inArrayProp.getAltOddColor();
+      HeadingSize headSize = inArrayProp.getHeadingSize();
+
+      if (showBottomAtRow != null)
+      {
+        mShowBottomAtRow = showBottomAtRow;
+      }
+      if (altColor != null)
+      {
+        mAltColor = altColor;
+      }
+      if (altEven != null)
+      {
+        mAltEven = altEven;
+      }
+      if (altOdd != null)
+      {
+        mAltOdd = altOdd;
+      }
+      if (headSize != null)
+      {
+        mHeadSize = headSize;
+      }
+    }
   }
 
   private void addRow(int inHeadColCt, String... inValues)
@@ -161,47 +192,10 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
     return ret;
   }
 
-  @Override
-  public void setField(Field inField)
+  private void addHeaders(String[] inLabels)
   {
-    super.setField(inField);
-
-    Properties properties = mField.getProperties();
-
-    Array.Properties prop = properties.getArray().getProperties();
-
-    if (prop != null)
-    {
-      Integer showBottomAtRow = prop.getShowBottomAtRow();
-      Boolean altColor = prop.getAltRow();
-      String altEven = prop.getAltEvenColor();
-      String altOdd = prop.getAltOddColor();
-      HeadingSize headSize = prop.getHeadingSize();
-
-      if (showBottomAtRow != null)
-      {
-        mShowBottomAtRow = showBottomAtRow;
-      }
-      if (altColor != null)
-      {
-        mAltColor = altColor;
-      }
-      if (altEven != null)
-      {
-        mAltEven = altEven;
-      }
-      if (altOdd != null)
-      {
-        mAltOdd = altOdd;
-      }
-      if (headSize != null)
-      {
-        mHeadSize = headSize;
-      }
-    }
-
     int col = 0;
-    for (String value : properties.getArray().getLabels())
+    for (String value : inLabels)
     {
       Heading heading = new Heading(mHeadSize, value);
       heading.getElement().getStyle().setTextDecoration(TextDecoration.UNDERLINE);

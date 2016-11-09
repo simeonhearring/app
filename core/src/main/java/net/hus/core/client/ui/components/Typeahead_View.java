@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.shared.model.TypeaheadOption;
 import net.hus.core.shared.model.Value;
 
-public class Typeahead_View extends AbstractComposite_View<Typeahead<TypeaheadOption>, String>
+public class Typeahead_View extends AbstractComposite_View<Typeahead<TypeaheadOption>>
 implements TypeaheadSelectedHandler<TypeaheadOption>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
@@ -44,16 +44,6 @@ implements TypeaheadSelectedHandler<TypeaheadOption>
   public Typeahead<TypeaheadOption> getComponent()
   {
     return mComponent;
-  }
-
-  @Override
-  public void setValue(String inValue)
-  {
-    TypeaheadOption value = mOptions.get(inValue);
-    if (value != null)
-    {
-      mComponent.setValue(value.option());
-    }
   }
 
   @Override

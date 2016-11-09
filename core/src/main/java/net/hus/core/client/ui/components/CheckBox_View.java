@@ -12,12 +12,6 @@ public class CheckBox_View extends AbstractStatic_View<CheckBox>
   }
 
   @Override
-  public void setValue(String inValue)
-  {
-    mComponent.setValue(Boolean.valueOf(inValue));
-  }
-
-  @Override
   public void setValue(Value inValue)
   {
     mComponent.setValue(Boolean.valueOf(inValue.getValue()));

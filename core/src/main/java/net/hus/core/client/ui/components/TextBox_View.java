@@ -7,8 +7,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
 import net.hus.core.shared.model.Value;
 
-public class TextBox_View extends Abstract_View<TextBox, String>
-implements ValueChangeHandler<String>
+public class TextBox_View extends Abstract_View<TextBox> implements ValueChangeHandler<String>
 {
   public TextBox_View(TextBox inComponent)
   {
@@ -23,15 +22,9 @@ implements ValueChangeHandler<String>
   }
 
   @Override
-  public void setValue(String inValue)
-  {
-    mComponent.setValue(inValue);
-  }
-
-  @Override
   public void setValue(Value inValue)
   {
-    mComponent.setText(inValue.getValue());
+    mComponent.setValue(inValue.getValue());
   }
 
   @Override

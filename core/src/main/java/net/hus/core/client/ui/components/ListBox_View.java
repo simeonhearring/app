@@ -8,7 +8,7 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.util.NumberUtil;
 
-public class ListBox_View extends Abstract_View<ListBox, String> implements ChangeHandler
+public class ListBox_View extends Abstract_View<ListBox> implements ChangeHandler
 {
   public ListBox_View(ListBox inComponent)
   {
@@ -22,22 +22,17 @@ public class ListBox_View extends Abstract_View<ListBox, String> implements Chan
   }
 
   @Override
-  public void setValue(String inValue)
+  public void setValue(Value inValue)
   {
+    String value = String.valueOf(inValue.getValueId());
     for (int i = 0; i < mComponent.getItemCount(); i++)
     {
-      if (inValue.equals(mComponent.getValue(i)))
+      if (value.equals(mComponent.getValue(i)))
       {
         mComponent.setSelectedIndex(i);
         break;
       }
     }
-  }
-
-  @Override
-  public void setValue(Value inValue)
-  {
-    setValue(String.valueOf(inValue.getValueId()));
   }
 
   @Override

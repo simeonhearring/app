@@ -12,12 +12,6 @@ public class Badge_View extends AbstractStatic_View<Badge>
   }
 
   @Override
-  public void setValue(String inValue)
-  {
-    mComponent.setText(inValue);
-  }
-
-  @Override
   public void setValue(Value inValue)
   {
     mComponent.setText(inValue.getValue());

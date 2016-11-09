@@ -33,16 +33,15 @@ public class UiManager extends UiConverter
     mContent.put(inKey, inUiO);
   }
 
-  @SuppressWarnings("unchecked")
-  protected Components<Object> get(String... inKey)
+  protected Components get(String... inKey)
   {
-    Components<Object> ret = new Components<>();
+    Components ret = new Components();
     for (String key : inKey)
     {
       IsWidget uiobject = mContent.get(key);
-      if (uiobject != null && uiobject instanceof Component<?>)
+      if (uiobject != null && uiobject instanceof Component)
       {
-        ret.add((Component<Object>) uiobject);
+        ret.add((Component) uiobject);
       }
     }
     return ret;
@@ -80,15 +79,8 @@ public class UiManager extends UiConverter
     String labelKey = Field.Component.FL00_.name() + field.getId();
     String valueKey = Field.Component.FV00_.name() + field.getId();
 
-    get(labelKey).setValue(inValue.getLabel());
-    if (field.isArray())
-    {
-      get(valueKey).setValue(inValue.getTable());
-    }
-    else
-    {
-      get(valueKey).setValue(inValue.getValue());
-    }
+    // TODO should field be set first for Array/FlexTable?
+    get(labelKey).setValue(inValue);
     get(valueKey).setValue(inValue);
     get(valueKey).makeSaveable(inValue.getLabel(), inFieldTKG, field);
   }
