@@ -85,15 +85,16 @@ public class ValuesSql extends Mapping
       String table = value.getFieldTKG().getFvt();
       String key = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
+      Long valueId = value.getValueId();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
       if (value.getField().isOneValue())
       {
-        mBatchUpdate.update(params(valueText, asOf, table, key, fieldId));
+        mBatchUpdate.update(params(valueText, valueId, asOf, table, key, fieldId));
       }
       else
       {
-        mBatchInsert.update(params(table, key, valueText, fieldId, asOf));
+        mBatchInsert.update(params(table, key, valueText, valueId, fieldId, asOf));
       }
     }
     mBatchInsert.flush();
@@ -110,9 +111,10 @@ public class ValuesSql extends Mapping
       String table = value.getFieldTKG().getFvt();
       String key = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
+      Long valueId = value.getValueId();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
-      mBatchInsert.update(params(table, key, valueText, fieldId, asOf));
+      mBatchInsert.update(params(table, key, valueText, valueId, fieldId, asOf));
     }
     mBatchInsert.flush();
     mBatchInsert.reset();
@@ -126,9 +128,10 @@ public class ValuesSql extends Mapping
       String table = value.getFieldTKG().getFvt();
       String key = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
+      Long valueId = value.getValueId();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
-      mBatchUpdate.update(params(valueText, asOf, table, key, fieldId));
+      mBatchUpdate.update(params(valueText, valueId, asOf, table, key, fieldId));
     }
     mBatchUpdate.flush();
     mBatchUpdate.reset();

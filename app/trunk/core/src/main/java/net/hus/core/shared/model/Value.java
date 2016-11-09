@@ -10,6 +10,7 @@ public class Value extends AbstractModel
 
   private FieldTKG mFieldTKG;
   private String mValue;
+  private Long mValueId;
   private Date mAsOf;
   private Field mField;
 
@@ -73,5 +74,15 @@ public class Value extends AbstractModel
   public Long getFid()
   {
     return mField.getId();
+  }
+
+  public Long getValueId()
+  {
+    return mValueId;
+  }
+
+  public void setValueId(Long inValueId)
+  {
+    mValueId = inValueId;
   }
 }
