@@ -30,6 +30,6 @@ public class ListBox_Parser extends FocusWidget_Parser<ListBox_>
     inXs.alias("Item", ListBox_.Item.class);
     inXs.aliasAttribute(ListBox_.Item.class, "mSelected", "selected");
     inXs.aliasField("Text", ListBox_.Item.class, "mText");
-    inXs.aliasField("Value", ListBox_.Item.class, "mValue");
+    inXs.aliasField("ValueId", ListBox_.Item.class, "mValueId");
   }
 }

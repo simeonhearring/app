@@ -13,9 +13,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Value;
 
 public class DatePicker_View extends AbstractComposite_View<DatePicker, String>
-    implements ValueChangeHandler<Date>
+implements ValueChangeHandler<Date>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -66,7 +67,20 @@ public class DatePicker_View extends AbstractComposite_View<DatePicker, String>
   @Override
   public void setValue(String inValue)
   {
-    mComponent.setValue(DateTimeFormat.getFormat(mDateFormat).parse(inValue));
+    if (inValue != null)
+    {
+      mComponent.setValue(DateTimeFormat.getFormat(mDateFormat).parse(inValue));
+    }
+  }
+
+  @Override
+  public void setValue(Value inValue)
+  {
+    String value = inValue.getValue();
+    if (value != null)
+    {
+      mComponent.setValue(DateTimeFormat.getFormat(mDateFormat).parse(value));
+    }
   }
 
   @Override

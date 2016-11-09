@@ -52,7 +52,7 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
   @Override
   public void add(Lookup inLookup)
   {
-    add(inLookup.getName(), inLookup.getId().toString());
+    add(inLookup.getName(), inLookup.getId());
   }
 
   public void add(String inText)
@@ -60,14 +60,14 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
     mItems.add(new Item(inText));
   }
 
-  public void add(String inText, String inValue)
+  public void add(String inText, Long inValue)
   {
     mItems.add(new Item(inText, inValue));
   }
 
-  public void add(boolean inSelected, String inText, String inValue)
+  public void add(boolean inSelected, String inText, Long inValueId)
   {
-    mItems.add(new Item(inSelected, inText, inValue));
+    mItems.add(new Item(inSelected, inText, inValueId));
   }
 
   public Field.Lookup getLookup()
@@ -86,7 +86,7 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
 
     private boolean mSelected;
     private String mText;
-    private String mValue;
+    private Long mValueId;
 
     public Item()
     {
@@ -98,15 +98,15 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
       mText = inText;
     }
 
-    public Item(String inText, String inValue)
+    public Item(String inText, Long inValueId)
     {
       this(inText);
-      mValue = inValue;
+      mValueId = inValueId;
     }
 
-    public Item(boolean inSelected, String inText, String inValue)
+    public Item(boolean inSelected, String inText, Long inValueId)
     {
-      this(inText, inValue);
+      this(inText, inValueId);
       mSelected = inSelected;
     }
 
@@ -130,14 +130,14 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
       mText = inText;
     }
 
-    public String getValue()
+    public Long getValueId()
     {
-      return mValue;
+      return mValueId;
     }
 
-    public void setValue(String inValue)
+    public void setValueId(Long inValueId)
     {
-      mValue = inValue;
+      mValueId = inValueId;
     }
   }
 

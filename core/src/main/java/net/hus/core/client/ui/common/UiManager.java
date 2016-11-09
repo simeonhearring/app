@@ -89,6 +89,7 @@ public class UiManager extends UiConverter
     {
       get(valueKey).setValue(inValue.getValue());
     }
+    get(valueKey).setValue(inValue);
     get(valueKey).makeSaveable(inValue.getLabel(), inFieldTKG, field);
   }
 }

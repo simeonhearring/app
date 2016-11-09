@@ -451,11 +451,9 @@ public abstract class UiConverter
 
     if (inUiO.getItems() != null)
     {
-      //      int i = 0;
       for (Item value : inUiO.getItems())
       {
-        ret.addItem(value.getText(), value.getValue());
-        // ret.setItemSelected(i++, value.isSelected());
+        ret.addItem(value.getText(), String.valueOf(value.getValueId()));
       }
     }
 

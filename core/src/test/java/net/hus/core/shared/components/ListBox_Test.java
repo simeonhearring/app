@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.ListBox_Parser;
-import net.hus.core.shared.components.ListBox_;
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.model.Field.Lookup;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.util.ResourceUtil;
@@ -47,8 +45,8 @@ public class ListBox_Test
     ListBox_ ret = new ListBox_();
     ret.clearItems();
     ret.setMultipleSelect(true);
-    ret.add(true, "text1", "value1");
-    ret.add(false, "text2", "value2");
+    ret.add(true, "text1", 1L);
+    ret.add(false, "text2", 2L);
     Lookup lookup = new Lookup();
     lookup.setLocation(Location.TABLE);
     lookup.setParameters("GENDER,UNKNOWN");

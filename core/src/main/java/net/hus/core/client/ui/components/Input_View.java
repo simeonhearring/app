@@ -5,6 +5,8 @@ import org.gwtbootstrap3.client.ui.Input;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
+import net.hus.core.shared.model.Value;
+
 public class Input_View extends Abstract_View<Input, String> implements ValueChangeHandler<String>
 {
   public Input_View(Input inComponent)
@@ -23,6 +25,12 @@ public class Input_View extends Abstract_View<Input, String> implements ValueCha
   public void setValue(String inValue)
   {
     mComponent.setValue(inValue);
+  }
+
+  @Override
+  public void setValue(Value inValue)
+  {
+    mComponent.setText(inValue.getValue());
   }
 
   @Override

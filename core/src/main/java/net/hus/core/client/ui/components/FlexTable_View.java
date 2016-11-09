@@ -18,6 +18,7 @@ import net.hus.core.shared.components.FlexTable_.Table;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Properties;
+import net.hus.core.shared.model.Value;
 import net.hus.core.shared.util.StringUtil;
 
 public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
@@ -87,6 +88,12 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable, Table>
         addRow(headColCt, object);
       }
     }
+  }
+
+  @Override
+  public void setValue(Value inValue)
+  {
+    setValue(inValue.getTable());
   }
 
   private void addRow(int inHeadColCt, String... inValues)

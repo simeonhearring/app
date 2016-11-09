@@ -62,10 +62,11 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
     mLabel = inLabel;
   }
 
-  private Value newValue(String inValue)
+  private Value newValue(String inValue, Long inValueId)
   {
     Value value = new Value();
     value.setValue(inValue);
+    value.setValueId(inValueId);
     value.setFieldTKG(mFieldTKG);
     value.setAsOf(new Date());
     value.setField(mField);
@@ -74,14 +75,28 @@ public abstract class Abstract_View<C extends Widget, V> implements Component<V>
 
   private Value newValue(Table inValue)
   {
-    Value value = newValue((String) null);
+    Value value = newValue((String) null, null);
     value.setTable(inValue);
     return value;
   }
 
   protected void save(String inValue, final String inDisplay)
   {
-    Value value = newValue(inValue);
+    Value value = newValue(inValue, null);
+
+    Global.fire(new ValueInsertCommand(value), new RpcCallback<ValueInsertCommand>()
+    {
+      @Override
+      public void onRpcSuccess(ValueInsertCommand inResult)
+      {
+        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
+      }
+    });
+  }
+
+  protected void save(String inValue, Long inValueId, final String inDisplay)
+  {
+    Value value = newValue(inValue, inValueId);
 
     Global.fire(new ValueInsertCommand(value), new RpcCallback<ValueInsertCommand>()
     {

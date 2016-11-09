@@ -6,6 +6,7 @@ import java.util.List;
 import net.hus.core.client.common.Component;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Value;
 
 public class Components<V>
 {
@@ -17,6 +18,14 @@ public class Components<V>
   }
 
   public void setValue(V inValue)
+  {
+    for (Component<V> value : mComponents)
+    {
+      value.setValue(inValue);
+    }
+  }
+
+  public void setValue(Value inValue)
   {
     for (Component<V> value : mComponents)
     {
