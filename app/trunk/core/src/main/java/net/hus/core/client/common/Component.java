@@ -15,13 +15,11 @@ import net.hus.core.shared.model.Value;
  * @param <V>
  *          Data type of value set in component. i.e. String, Integer, Array.
  */
-public interface Component<V> extends IsWidget
+public interface Component extends IsWidget
 {
-  void setValue(V inValue);
+  void setLabel(String inLabel);
 
   void setValue(Value inValue);
-
-  void setLabel(String inLabel);
 
   void setFieldTKG(FieldTKG inFieldTKG);
 

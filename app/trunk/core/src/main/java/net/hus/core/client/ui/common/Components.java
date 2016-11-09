@@ -8,26 +8,26 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
-public class Components<V>
+public class Components
 {
-  private List<Component<V>> mComponents = new ArrayList<>();
+  private List<Component> mComponents = new ArrayList<>();
 
-  public void add(Component<V> inComponent)
+  public void add(Component inComponent)
   {
     mComponents.add(inComponent);
   }
 
-  public void setValue(V inValue)
+  public void setLabel(String inLabel)
   {
-    for (Component<V> value : mComponents)
+    for (Component value : mComponents)
     {
-      value.setValue(inValue);
+      value.setLabel(inLabel);
     }
   }
 
   public void setValue(Value inValue)
   {
-    for (Component<V> value : mComponents)
+    for (Component value : mComponents)
     {
       value.setValue(inValue);
     }
@@ -35,7 +35,7 @@ public class Components<V>
 
   public void makeSaveable(String inFieldName, FieldTKG inFieldTKG, Field inField)
   {
-    for (Component<?> value : mComponents)
+    for (Component value : mComponents)
     {
       value.setLabel(inFieldName);
       value.setFieldTKG(inFieldTKG);
@@ -46,14 +46,14 @@ public class Components<V>
 
   public void makeClickable(FieldTKG inFieldTKG)
   {
-    for (Component<?> value : mComponents)
+    for (Component value : mComponents)
     {
       value.setFieldTKG(inFieldTKG);
       value.addChangeHandler();
     }
   }
 
-  public List<Component<V>> getComponents()
+  public List<Component> getComponents()
   {
     return mComponents;
   }

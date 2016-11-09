@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.FlexTable_Parser;
-import net.hus.core.shared.components.FlexTable_.Table;
 import net.hus.core.util.ResourceUtil;
 
 public class FlexTable_Test
@@ -42,10 +41,6 @@ public class FlexTable_Test
   public static FlexTable_ newFlexTable()
   {
     FlexTable_ ret = new FlexTable_();
-
-    ret.setTable(new Table());
-    ret.setValue("R1 Col 1", "R1 Col 2");
-    ret.setValue("R1 Col 1", "R1 Col 2");
 
     UIObject_Test.initUIObject(ret);
 

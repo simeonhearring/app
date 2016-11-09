@@ -64,9 +64,9 @@ public class Field extends AbstractModel
     mDisplay = inDisplay;
   }
 
-  public Array.Properties getArrayProperties()
+  public Array getArray()
   {
-    return mProperties.mArray.mProperties;
+    return mProperties.mArray;
   }
 
   public String getDateFormat()

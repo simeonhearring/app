@@ -12,14 +12,8 @@ public class FormLabel_View extends AbstractStatic_View<FormLabel>
   }
 
   @Override
-  public void setValue(String inValue)
-  {
-    mComponent.setText(inValue);
-  }
-
-  @Override
   public void setValue(Value inValue)
   {
-    mComponent.setText(inValue.getValue());
+    mComponent.setText(inValue.getLabel());
   }
 }
