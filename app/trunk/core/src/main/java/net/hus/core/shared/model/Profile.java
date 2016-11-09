@@ -86,6 +86,7 @@ public class Profile extends AbstractModel implements ComponentsQuery
 
   public String getName()
   {
-    return mLast + ", " + mFirst + " " + mMiddle; // TODO
+    // TODO should this format be in configurable?
+    return mLast + ", " + mFirst + " " + mMiddle;
   }
 }
