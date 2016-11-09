@@ -12,7 +12,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Value;
 
 public class DatePicker_View extends AbstractComposite_View<DatePicker>
@@ -35,27 +34,9 @@ implements ValueChangeHandler<Date>
   }
 
   @Override
-  public void setField(Field inField)
-  {
-    super.setField(inField);
-
-    // TODO should be in UiConverter
-    String format = mField.getDateFormat();
-    if (format != null)
-    {
-      setDateFormat(format);
-    }
-  }
-
-  @Override
   public void addChangeHandler()
   {
     mComponent.addValueChangeHandler(this);
-  }
-
-  public void setDateFormat(String inDateFormat)
-  {
-    mDateFormat = inDateFormat;
   }
 
   @Override
@@ -67,6 +48,12 @@ implements ValueChangeHandler<Date>
   @Override
   public void setValue(Value inValue)
   {
+    String format = inValue.getField().getDateFormat();
+    if (format != null)
+    {
+      mDateFormat = format;
+    }
+
     String value = inValue.getValue();
     if (value != null)
     {
