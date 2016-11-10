@@ -14,9 +14,9 @@ import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
-import net.hus.core.shared.components.FlexTable_.Table;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Table;
 import net.hus.core.shared.model.Value;
 
 public abstract class Abstract_View<C extends Widget> implements View, ClickHandler
