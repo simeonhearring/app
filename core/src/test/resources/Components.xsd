@@ -21,6 +21,7 @@
 			<xs:element name="DatePicker" type="DatePicker_Type" minOccurs="0"></xs:element>
 			<xs:element name="Typeahead" type="Typeahead_Type" minOccurs="0"></xs:element>
 			<xs:element name="Button" type="Button_Type" minOccurs="0"></xs:element>
+			<xs:element name="Panel" type="Panel_Type" minOccurs="0"></xs:element>
 		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="FieldTKG_Type">
@@ -41,6 +42,32 @@
 			<xs:element name="Collection" type="Components_Type" minOccurs="0" maxOccurs="1"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Button"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="Panel_Type">
+		<xs:sequence>
+			<xs:element name="PanelHeader" type="PanelHeader_Type" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="PanelBody" type="PanelBody_Type" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="PanelFooter" type="PanelFooter_Type" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="PanelHeader_Type">
+		<xs:sequence>
+			<xs:element name="Heading" type="Heading_Type" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="PanelBody_Type">
+		<xs:sequence>
+			<xs:any minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="PanelFooter_Type">
+		<xs:sequence>
+			<xs:any minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Heading_Type">
 		<xs:sequence>
@@ -152,6 +179,10 @@
 		<xs:attribute name="autoComplete" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="maxLength" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="size" type="xs:string" use="optional"></xs:attribute>
+		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="attr_Panel">
+		<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Input">
@@ -279,7 +310,6 @@
 		</xs:attribute>
 		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
 	</xs:attributeGroup>
-
 	<xs:group name="grp_UIObject">
 		<xs:sequence>
 			<xs:element name="Title" type="xs:string"></xs:element>
