@@ -14,9 +14,9 @@
 
 	<b:Container fluid="true" addStyleNames="text-Center">
 		<b:Row ui:field="mRow" addStyleNames="content {style.row}">
-			<b:Column ui:field="mL01" size="SM_2" addStyleNames="{style.sidenav}"></b:Column>
-			<b:Column ui:field="mC01" size="SM_8" addStyleNames="text-left"></b:Column>
-			<b:Column ui:field="mR01" size="SM_2" addStyleNames="{style.sidenav}"></b:Column>
+			<b:Column ui:field="mL01" size="SM_1"></b:Column>
+			<b:Column ui:field="mC01" size="SM_10" addStyleNames="text-left"></b:Column>
+			<b:Column ui:field="mR01" size="SM_1"></b:Column>
 		</b:Row>
 	</b:Container>
 </ui:UiBinder>

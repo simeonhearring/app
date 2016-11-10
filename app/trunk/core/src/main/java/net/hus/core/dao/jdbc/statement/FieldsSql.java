@@ -17,6 +17,8 @@ public class FieldsSql extends Mapping
 {
   private BatchSqlUpdate mFieldUpsert;
   private MappingSqlQuery<Field> mFieldSelect;
+  private MappingSqlQuery<Field> mFieldAllSelect;
+  private MappingSqlQuery<Object[]> mFieldsAllSelect;
   private BatchSqlUpdate mFieldsUpsert;
   private MappingSqlQuery<Field> mFieldsSelect;
 
@@ -44,6 +46,28 @@ public class FieldsSql extends Mapping
     mFieldSelect.setTypes(select.types());
     mFieldSelect.compile();
 
+    Statement selectAll = mStmts.getStatement("SELECT_ALL");
+    mFieldAllSelect = new MappingSqlQuery<Field>(inDataSource, selectAll.getSql())
+    {
+      @Override
+      protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapField(new Field(), inRs);
+      }
+    };
+    mFieldAllSelect.compile();
+
+    Statement selectfAll = mStmts.getStatement("SELECT_GROUP_ALL");
+    mFieldsAllSelect = new MappingSqlQuery<Object[]>(inDataSource, selectfAll.getSql())
+    {
+      @Override
+      protected Object[] mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapField(new Object[2], inRs);
+      }
+    };
+    mFieldsAllSelect.compile();
+
     Statement selectFields = mStmts.getStatement("SELECT_FIELDS");
     mFieldsSelect = new MappingSqlQuery<Field>(inDataSource, selectFields.getSql())
     {
@@ -61,6 +85,18 @@ public class FieldsSql extends Mapping
   {
     List<Field> ret = mFieldSelect.execute(params(inName, inType.name()));
     return only(ret);
+  }
+
+  public List<Field> select()
+  {
+    List<Field> ret = mFieldAllSelect.execute();
+    return ret;
+  }
+
+  public List<Object[]> selectGrp()
+  {
+    List<Object[]> ret = mFieldsAllSelect.execute();
+    return ret;
   }
 
   public void upsert(List<Field> inFields)

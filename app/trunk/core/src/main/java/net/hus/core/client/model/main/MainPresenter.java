@@ -81,6 +81,8 @@ public class MainPresenter implements ProfileEvent.Handler
         inPage.add(section, mManager.match(uivalue));
       }
     }
+
+    mManager.manage(inComponents.getFieldTKG(), inComponents.getValues());
   }
 
   private void addValuesToComponents(Components inComponents)
