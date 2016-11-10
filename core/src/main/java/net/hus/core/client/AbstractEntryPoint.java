@@ -80,6 +80,11 @@ public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handl
   }
 
   @Override
+  public void onFailure(Throwable inCaught)
+  {
+  }
+
+  @Override
   public void onSuccess(ClientDataCommand inCommand)
   {
     Global.setIpAddress(inCommand.getData());

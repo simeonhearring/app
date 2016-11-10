@@ -1,4 +1,4 @@
-package net.hus.core.client.ui.common;
+package net.hus.core.client.ui.manage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Map;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.common.View;
+import net.hus.core.client.ui.common.UiObjects;
 import net.hus.core.client.common.UiCreate;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
