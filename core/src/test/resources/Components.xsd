@@ -3,13 +3,13 @@
 	<xs:element name="Components" type="Components_Type"></xs:element>
 	<xs:complexType name="Components_Type">
 		<xs:all>
+			<xs:element name="FieldTKG" type="FieldTKG_Type" minOccurs="0"></xs:element>
 			<xs:element name="Heading" type="Heading_Type" minOccurs="0"></xs:element>
 			<xs:element name="Badge" type="Badge_Type" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Some documentation</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="FieldTKG" type="FieldTKG_Type" minOccurs="0"></xs:element>
 			<xs:element name="FieldSet" type="FieldSet_Type" minOccurs="0"></xs:element>
 			<xs:element name="FormGroup" type="Collection_Type" minOccurs="0"></xs:element>
 			<xs:element name="FormLabel" type="FormLabel_Type" minOccurs="0"></xs:element>

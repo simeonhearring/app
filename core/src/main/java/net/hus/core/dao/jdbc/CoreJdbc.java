@@ -1,7 +1,10 @@
 package net.hus.core.dao.jdbc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -15,6 +18,7 @@ import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.components.Components;
 import net.hus.core.shared.model.AppProfile;
+import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Profile;
@@ -107,6 +111,51 @@ public class CoreJdbc implements CoreDao
       lookup.setAltId(value.getId());
       lookup.setName(value.getUserName());
       lookup.setAbbreviation(value.getName());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
+  }
+
+  public void field2lookup()
+  {
+    List<Lookup> lookups = new ArrayList<>();
+    for (Field value : fields().select())
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.FIELD);
+      lookup.setAltId(value.getId());
+      lookup.setName(value.getName());
+      lookup.setAbbreviation(value.getType().name());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
+  }
+
+  public void fields2lookup()
+  {
+    Map<String, StringBuilder> data = new HashMap<>();
+    for (Object[] value : fields().selectGrp())
+    {
+      String grp = (String) value[0];
+      Long id = (Long) value[1];
+
+      if (!data.containsKey(grp))
+      {
+        data.put(grp, new StringBuilder());
+      }
+      data.get(grp).append(id).append(",");
+    }
+
+    List<Lookup> lookups = new ArrayList<>();
+    for (Entry<String, StringBuilder> value : data.entrySet())
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.FIELD_GROUP);
+      lookup.setAltId(null);
+      lookup.setName(value.getKey());
+      lookup.setAbbreviation(value.getValue().toString());
       lookup.setSort(0);
       lookups.add(lookup);
     }

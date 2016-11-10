@@ -43,6 +43,13 @@ public class Mapping extends AbstractSqlJdbc
     return inOut;
   }
 
+  public static Object[] mapField(Object[] inOut, ResultSet inRs) throws SQLException
+  {
+    inOut[0] = inRs.getString("mGroup");
+    inOut[1] = inRs.getLong("mFieldId");
+    return inOut;
+  }
+
   protected static Field mapField(Field inOut, ResultSet inRs) throws SQLException
   {
     mapModel(inOut, inRs);

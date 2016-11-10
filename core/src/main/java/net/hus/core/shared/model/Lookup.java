@@ -17,6 +17,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   {
     BLANK(SM),
     TABLE(SM),
+    FIELD(SM),
     FIELD_GROUP(SM),
     UNKNOWN(SM),
     DAYSOFWEEK(SM),

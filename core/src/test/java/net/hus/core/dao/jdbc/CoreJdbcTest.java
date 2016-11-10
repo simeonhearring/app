@@ -17,9 +17,23 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void test()
+  public void test0()
   {
     mJdbc.profile2lookup();
+    Assert.assertTrue(true); // no fail
+  }
+
+  @Test
+  public void test1()
+  {
+    mJdbc.field2lookup();
+    Assert.assertTrue(true); // no fail
+  }
+
+  @Test
+  public void test2()
+  {
+    mJdbc.fields2lookup();
     Assert.assertTrue(true); // no fail
   }
 }

@@ -907,5 +907,5 @@ public abstract class UiConverter
     return ret;
   }
 
-  abstract void add(String inKey, IsWidget inUiO);
+  abstract void add(String inUiObjectKey, IsWidget inUiO);
 }

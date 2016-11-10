@@ -28,23 +28,27 @@ public class UiManager extends UiConverter
   }
 
   @Override
-  public void add(String inKey, IsWidget inUiO)
+  public void add(String inUiObjectKey, IsWidget inUiO)
   {
-    mContent.put(inKey, inUiO);
+    mContent.put(inUiObjectKey, inUiO);
   }
 
-  protected UiObjects get(String... inKey)
+  protected UiObjects get(String... inUiObjectKey)
   {
     UiObjects ret = new UiObjects();
-    for (String key : inKey)
+    for (String uiobjectkey : inUiObjectKey)
     {
-      IsWidget uiobject = mContent.get(key);
+      IsWidget uiobject = mContent.get(uiobjectkey);
       if (uiobject != null && uiobject instanceof View)
       {
         ret.add((View) uiobject);
       }
     }
     return ret;
+  }
+
+  public void manage(FieldTKG inFieldTKG, List<Value> inValues)
+  {
   }
 
   /*
