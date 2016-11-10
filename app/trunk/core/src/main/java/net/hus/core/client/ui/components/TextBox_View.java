@@ -5,6 +5,7 @@ import org.gwtbootstrap3.client.ui.TextBox;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 
+import net.hus.core.client.ui.common.Abstract_View;
 import net.hus.core.shared.model.Value;
 
 public class TextBox_View extends Abstract_View<TextBox> implements ValueChangeHandler<String>

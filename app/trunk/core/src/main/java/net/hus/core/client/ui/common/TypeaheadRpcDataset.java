@@ -1,4 +1,4 @@
-package net.hus.core.client.ui.components;
+package net.hus.core.client.ui.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,8 +8,6 @@ import org.gwtbootstrap3.extras.typeahead.client.base.Dataset;
 import org.gwtbootstrap3.extras.typeahead.client.base.Suggestion;
 import org.gwtbootstrap3.extras.typeahead.client.base.SuggestionCallback;
 
-import net.hus.core.client.ui.common.Global;
-import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.LookupCommand;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.TypeaheadOption;

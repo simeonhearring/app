@@ -5,6 +5,7 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 
+import net.hus.core.client.ui.common.Abstract_View;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.util.NumberUtil;
 

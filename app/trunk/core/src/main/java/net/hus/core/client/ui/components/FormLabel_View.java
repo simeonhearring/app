@@ -2,6 +2,7 @@ package net.hus.core.client.ui.components;
 
 import org.gwtbootstrap3.client.ui.FormLabel;
 
+import net.hus.core.client.ui.common.AbstractStatic_View;
 import net.hus.core.shared.model.Value;
 
 public class FormLabel_View extends AbstractStatic_View<FormLabel>
