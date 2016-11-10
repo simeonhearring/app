@@ -18,9 +18,13 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
     ComplexWidget_Parser.xs((XStream) this);
 
+    Panel_Parser.xs(this);
+
     ComplexPanel_Parser.xs((XStream) this);
 
     UIObject_Parser.xs((XStream) this);
+
+    ComponentsParser.xs((XStream) this);
   }
 
   @Override
@@ -38,5 +42,38 @@ public class ComponentsParser extends XStream implements Parser<Components>
   @Override
   public void xs(Parser<Components> inParser)
   {
+  }
+
+  public static void xs(XStream inXs)
+  {
+    Typeahead_Parser.xs(inXs);
+
+    DatePicker_Parser.xs(inXs);
+
+    Button_Parser.xs(inXs);
+
+    FlexTable_Parser.xs(inXs);
+
+    Heading_Parser.xs(inXs);
+
+    AbstractTextWidget_Parser.xs(inXs);
+
+    Badge_Parser.xs(inXs);
+
+    Icon_Parser.xs(inXs);
+
+    FormGroup_Parser.xs(inXs);
+
+    FormLabel_Parser.xs(inXs);
+
+    FieldSet_Parser.xs(inXs);
+
+    TextBox_Parser.xs(inXs);
+
+    Input_Parser.xs(inXs);
+
+    ListBox_Parser.xs(inXs);
+
+    CheckBox_Parser.xs(inXs);
   }
 }
