@@ -6,9 +6,8 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.View;
-import net.hus.core.client.ui.common.UiObjects;
 import net.hus.core.client.common.UiCreate;
+import net.hus.core.client.common.View;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
@@ -78,10 +77,11 @@ public class UiManager extends UiConverter
     Field field = inValue.getField();
 
     String labelKey = Field.Component.FL00_.name() + field.getId();
+    get(labelKey).setValue(inValue);
+
     String valueKey = Field.Component.FV00_.name() + field.getId();
 
     // TODO should field be set first for Array/FlexTable?
-    get(labelKey).setValue(inValue);
     get(valueKey).setValue(inValue);
     get(valueKey).makeSaveable(inValue.getLabel(), inFieldTKG, field);
   }
