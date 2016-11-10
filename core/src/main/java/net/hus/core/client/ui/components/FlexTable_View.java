@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.model.Field.Array;
+import net.hus.core.client.ui.common.AbstractComposite_View;
 import net.hus.core.shared.model.Table;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.util.StringUtil;

@@ -12,6 +12,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.ui.common.AbstractComposite_View;
 import net.hus.core.shared.model.Value;
 
 public class DatePicker_View extends AbstractComposite_View<DatePicker>

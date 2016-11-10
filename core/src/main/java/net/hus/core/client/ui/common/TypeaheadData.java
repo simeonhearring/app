@@ -1,4 +1,4 @@
-package net.hus.core.client.ui.components;
+package net.hus.core.client.ui.common;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package net.hus.core.client.ui.components;
+package net.hus.core.client.ui.common;
 
 import java.util.Date;
 
@@ -7,12 +7,9 @@ import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.View;
-import net.hus.core.client.ui.common.Global;
-import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.TableInsertCommand;
 import net.hus.core.shared.command.ValueInsertCommand;
 import net.hus.core.shared.model.Field;
@@ -20,17 +17,35 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Table;
 import net.hus.core.shared.model.Value;
 
-public abstract class AbstractComposite_View<C extends Widget> extends Composite
-    implements View, ClickHandler
+public abstract class Abstract_View<C extends Widget> implements View, ClickHandler
 {
   protected FieldTKG mFieldTKG;
+  protected C mComponent;
   protected Field mField;
   private String mLabel;
+
+  public Abstract_View(C inComponent)
+  {
+    mComponent = inComponent;
+  }
+
+  @Override
+  public C getComponent()
+  {
+    return mComponent;
+  }
 
   @Override
   public void setField(Field inField)
   {
     mField = inField;
+  }
+
+  @Override
+  public final Widget asWidget()
+  {
+    // not currently added to ui. here for testing.
+    return mComponent;
   }
 
   @Override
@@ -50,15 +65,15 @@ public abstract class AbstractComposite_View<C extends Widget> extends Composite
     Value value = new Value();
     value.setValue(inValue);
     value.setValueId(inValueId);
-    value.setAsOf(new Date());
     value.setFieldTKG(mFieldTKG);
+    value.setAsOf(new Date());
     value.setField(mField);
     return value;
   }
 
   private Value newValue(Table inValue)
   {
-    Value value = newValue((String) null, (Long) null);
+    Value value = newValue((String) null, null);
     value.setTable(inValue);
     return value;
   }
