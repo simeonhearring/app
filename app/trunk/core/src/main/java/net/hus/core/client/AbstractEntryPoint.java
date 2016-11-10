@@ -9,6 +9,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import net.hus.core.client.service.rpc.RpcService;
 import net.hus.core.client.service.rpc.RpcServiceAsync;
@@ -23,8 +24,8 @@ import net.hus.core.shared.util.EncryptUtil;
 import net.hus.core.shared.util.EntryPointUtil;
 import net.hus.core.shared.util.JsniUtil;
 
-public abstract class AbstractEntryPoint
-implements EntryPoint, AlertEvent.Handler, ReportEvent.Handler, LoadMainEvent.Handler
+public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handler,
+    ReportEvent.Handler, LoadMainEvent.Handler, AsyncCallback<ClientDataCommand>
 {
   @Override
   public void onModuleLoad()
@@ -46,8 +47,7 @@ implements EntryPoint, AlertEvent.Handler, ReportEvent.Handler, LoadMainEvent.Ha
     Global.addHandler(ReportEvent.TYPE, this);
     Global.addHandler(LoadMainEvent.TYPE, this);
 
-    ClientDataCommand command = new ClientDataCommand();
-    Global.fire(command, command);
+    Global.fire(new ClientDataCommand(), this);
 
     Global.fireEvent(new LoadMainEvent());
   }
@@ -77,5 +77,12 @@ implements EntryPoint, AlertEvent.Handler, ReportEvent.Handler, LoadMainEvent.Ha
     Map<String, String> ret = EntryPointUtil.convert(JsniUtil.getUrl());
     JsniUtil.unescape(ret);
     return ret;
+  }
+
+  @Override
+  public void onSuccess(ClientDataCommand inCommand)
+  {
+    Global.setIpAddress(inCommand.getData());
+    Notify.notify(Global.getIpAddress());
   }
 }
