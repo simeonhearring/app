@@ -1,4 +1,4 @@
-package net.hus.core.client.ui.common;
+package net.hus.core.client.ui.manage;
 
 import java.util.ArrayList;
 import java.util.List;

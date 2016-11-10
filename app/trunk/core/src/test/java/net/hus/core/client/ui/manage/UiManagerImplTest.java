@@ -10,7 +10,6 @@ import org.mockito.Mockito;
 import com.google.gwtmockito.GwtMockitoTestRunner;
 
 import net.hus.core.client.ui.common.MockUiCreate;
-import net.hus.core.client.ui.common.UiObjects;
 import net.hus.core.client.ui.manage.UiManager;
 import net.hus.core.shared.components.TextBox_Test;
 import net.hus.core.shared.model.Field;
