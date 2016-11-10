@@ -2,8 +2,6 @@ package net.hus.core.shared.model;
 
 import java.util.Date;
 
-import net.hus.core.shared.components.FlexTable_.Table;
-
 public class Value extends AbstractModel
 {
   private static final long serialVersionUID = -8854640642880299189L;
