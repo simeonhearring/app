@@ -1,6 +1,5 @@
-package net.hus.core.client.model.main;
+package net.hus.core.client.ui.common;
 
-import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.event.ProfileEvent;
 import net.hus.core.shared.components.Response;
 
