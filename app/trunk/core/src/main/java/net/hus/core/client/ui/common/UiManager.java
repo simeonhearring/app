@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.Component;
+import net.hus.core.client.common.View;
 import net.hus.core.client.common.UiCreate;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
@@ -33,15 +33,15 @@ public class UiManager extends UiConverter
     mContent.put(inKey, inUiO);
   }
 
-  protected Components get(String... inKey)
+  protected UiObjects get(String... inKey)
   {
-    Components ret = new Components();
+    UiObjects ret = new UiObjects();
     for (String key : inKey)
     {
       IsWidget uiobject = mContent.get(key);
-      if (uiobject != null && uiobject instanceof Component)
+      if (uiobject != null && uiobject instanceof View)
       {
-        ret.add((Component) uiobject);
+        ret.add((View) uiobject);
       }
     }
     return ret;

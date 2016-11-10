@@ -31,8 +31,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
   private void addValues(Components inComponents, String inFvk)
   {
     FieldTKG fieldTKG = inComponents.getFieldTKG();
-    fieldTKG.setFvk(inFvk);
-    inComponents.setValues(checkForArrays(mCoreDao.values().selectLast(fieldTKG)));
+    inComponents.setValues(getValues(fieldTKG, inFvk));
   }
 
   private void addLookups(Components inComponents)
@@ -53,7 +52,13 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     }
   }
 
-  private List<Value> checkForArrays(List<Value> inOut)
+  private List<Value> getValues(FieldTKG inFieldTKG, String inFvk)
+  {
+    inFieldTKG.setFvk(inFvk);
+    return checkForArrays(mCoreDao.values().selectLast(inFieldTKG));
+  }
+
+  private static List<Value> checkForArrays(List<Value> inOut)
   {
     Table_Parser parser = new Table_Parser();
     for (Value value : inOut)

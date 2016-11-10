@@ -15,7 +15,7 @@ import net.hus.core.shared.model.Value;
  * @param <V>
  *          Data type of value set in component. i.e. String, Integer, Array.
  */
-public interface Component extends IsWidget
+public interface View extends IsWidget
 {
   void setLabel(String inLabel);
 

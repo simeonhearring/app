@@ -2,11 +2,11 @@ package net.hus.core.client.ui.components;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.Component;
+import net.hus.core.client.common.View;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 
-public abstract class AbstractStatic_View<C extends Widget> implements Component
+public abstract class AbstractStatic_View<C extends Widget> implements View
 {
   protected C mComponent;
 

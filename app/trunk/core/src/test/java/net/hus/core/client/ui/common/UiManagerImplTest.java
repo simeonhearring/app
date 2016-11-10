@@ -31,7 +31,7 @@ public class UiManagerImplTest
 
     TextBox uiobject = (TextBox) mManager.match(TextBox_Test.newTextBox(key));
 
-    Components views = mManager.get(key);
+    UiObjects views = mManager.get(key);
     Assert.assertEquals(1, views.getComponents().size());
     Assert.assertEquals(uiobject, views.getComponents().get(0).getComponent());
 
