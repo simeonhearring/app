@@ -53,7 +53,7 @@
 	</xs:complexType>
 	<xs:complexType name="PanelHeader_Type">
 		<xs:sequence>
-			<xs:element name="Heading" type="Heading_Type" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:any minOccurs="0"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
 	</xs:complexType>
