@@ -87,11 +87,6 @@ public class Components implements Serializable
 
   public FieldTKG getFieldTKG()
   {
-    return getFieldTKGs().get(0);
-  }
-
-  private List<FieldTKG> getFieldTKGs()
-  {
-    return mFieldTKGs;
+    return mFieldTKGs.get(0);
   }
 }

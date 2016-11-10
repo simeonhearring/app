@@ -10,7 +10,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.common.Component;
+import net.hus.core.client.common.View;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.TableInsertCommand;
@@ -21,7 +21,7 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
 public abstract class AbstractComposite_View<C extends Widget> extends Composite
-    implements Component, ClickHandler
+    implements View, ClickHandler
 {
   protected FieldTKG mFieldTKG;
   protected Field mField;

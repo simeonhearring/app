@@ -3,6 +3,8 @@ package net.hus.core.shared.model;
 import java.io.Serializable;
 
 /**
+ * Comes from Components XML in database.
+ *
  * Refers to database: FIELD_VALUE.mTable & mKey, FIELD_GROUP.mGroup.
  *
  * Understands how to query FIELD_GROUP for a set of FIELDS to update
