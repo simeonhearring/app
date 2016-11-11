@@ -4,7 +4,7 @@ import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.components.PanelBody_;
 
-public class PanelBody_Parser extends UIObject_Parser<PanelBody_>
+public class PanelBody_Parser extends ComplexWidget_Parser<PanelBody_>
 {
   public PanelBody_Parser()
   {
@@ -21,6 +21,5 @@ public class PanelBody_Parser extends UIObject_Parser<PanelBody_>
   public static void xs(XStream inXs)
   {
     inXs.alias("PanelBody", PanelBody_.class);
-    inXs.aliasField("Collection", PanelBody_.class, "mCollection");
   }
 }

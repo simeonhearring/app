@@ -15,6 +15,10 @@ import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Panel;
+import org.gwtbootstrap3.client.ui.PanelBody;
+import org.gwtbootstrap3.client.ui.PanelFooter;
+import org.gwtbootstrap3.client.ui.PanelHeader;
 import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.base.AbstractTextWidget;
@@ -82,6 +86,10 @@ import net.hus.core.shared.components.Icon_;
 import net.hus.core.shared.components.Input_;
 import net.hus.core.shared.components.ListBox_;
 import net.hus.core.shared.components.ListBox_.Item;
+import net.hus.core.shared.components.PanelBody_;
+import net.hus.core.shared.components.PanelFooter_;
+import net.hus.core.shared.components.PanelHeader_;
+import net.hus.core.shared.components.Panel_;
 import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.components.TextBox_;
 import net.hus.core.shared.components.Typeahead_;
@@ -104,6 +112,48 @@ public abstract class UiConverter
     mUiCreate = inUiCreate;
   }
 
+  public IsWidget convert(Panel_ inUiO)
+  {
+    Panel ret = mUiCreate.newPanel();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    ret.setType(inUiO.getType());
+
+    return ret;
+  }
+
+  public IsWidget convert(PanelHeader_ inUiO)
+  {
+    PanelHeader ret = mUiCreate.newPanelHeader();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    return ret;
+  }
+
+  public IsWidget convert(PanelBody_ inUiO)
+  {
+    PanelBody ret = mUiCreate.newPanelBody();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    return ret;
+  }
+
+  public IsWidget convert(PanelFooter_ inUiO)
+  {
+    PanelFooter ret = mUiCreate.newPanelFooter();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    return ret;
+  }
+
   public IsWidget convert(Typeahead_ inUiO)
   {
     Typeahead_View ret = new Typeahead_View();
@@ -111,7 +161,7 @@ public abstract class UiConverter
     create((UIObject) ret.getComponent(), (UIObject_) inUiO);
     create(ret.getComponent(), inUiO);
 
-    ret.getComponent().setMinLength(3);
+    ret.getComponent().setMinLength(3); // TODO
 
     Location location = inUiO.getLocation();
     if (Location.TABLE.equals(location))
@@ -897,6 +947,22 @@ public abstract class UiConverter
     else if (inUiO instanceof DatePicker_)
     {
       ret = convert((DatePicker_) inUiO);
+    }
+    else if (inUiO instanceof Panel_)
+    {
+      ret = convert((Panel_) inUiO);
+    }
+    else if (inUiO instanceof PanelHeader_)
+    {
+      ret = convert((PanelHeader_) inUiO);
+    }
+    else if (inUiO instanceof PanelBody_)
+    {
+      ret = convert((PanelBody_) inUiO);
+    }
+    else if (inUiO instanceof PanelFooter_)
+    {
+      ret = convert((PanelFooter_) inUiO);
     }
     else
     {

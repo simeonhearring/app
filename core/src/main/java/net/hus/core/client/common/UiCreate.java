@@ -13,6 +13,10 @@ import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Panel;
+import org.gwtbootstrap3.client.ui.PanelBody;
+import org.gwtbootstrap3.client.ui.PanelFooter;
+import org.gwtbootstrap3.client.ui.PanelHeader;
 import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
@@ -59,4 +63,12 @@ public interface UiCreate
   Badge newBadge();
 
   Alert newAlert();
+
+  Panel newPanel();
+
+  PanelHeader newPanelHeader();
+
+  PanelBody newPanelBody();
+
+  PanelFooter newPanelFooter();
 }

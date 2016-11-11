@@ -13,6 +13,10 @@ import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Panel;
+import org.gwtbootstrap3.client.ui.PanelBody;
+import org.gwtbootstrap3.client.ui.PanelFooter;
+import org.gwtbootstrap3.client.ui.PanelHeader;
 import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
@@ -119,5 +123,29 @@ public class MockUiCreate implements UiCreate
   public Alert newAlert()
   {
     return GWT.create(Alert.class);
+  }
+
+  @Override
+  public Panel newPanel()
+  {
+    return GWT.create(Panel.class);
+  }
+
+  @Override
+  public PanelHeader newPanelHeader()
+  {
+    return GWT.create(PanelHeader.class);
+  }
+
+  @Override
+  public PanelBody newPanelBody()
+  {
+    return GWT.create(PanelBody.class);
+  }
+
+  @Override
+  public PanelFooter newPanelFooter()
+  {
+    return GWT.create(PanelFooter.class);
   }
 }
