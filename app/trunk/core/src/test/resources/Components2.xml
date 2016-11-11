@@ -1,65 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
 	<FieldTKG fvt="JUNIT" fgg="JGRP1" page.name="WEB" />
-	<Heading SECTION="WEBC01" color="red" size="H1" emphasis="INFO" alignment="LEFT">
+	<Heading SECTION="WEBC01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Text>Contact Information</Text>
 		<SubText>Including address</SubText>
 	</Heading>
-	<FieldSet SECTION="WEBC01" enabled="true">
+	<Panel SECTION="WEBC01" type="DEFAULT">
 		<Collection>
-			<FormGroup>
+			<PanelHeader>
 				<Collection>
-					<FormLabel KEY="FL00_1" isHtml="false" />
-					<Input KEY="FV00_1" type="TEXT" />
+					<Heading size="H5" emphasis="INFO" alignment="LEFT">
+						<Text>Header Information</Text>
+					</Heading>
 				</Collection>
-			</FormGroup>
-			<FormGroup>
+			</PanelHeader>
+			<PanelBody>
 				<Collection>
-					<FormLabel KEY="FL00_2" isHtml="false" />
-					<Input KEY="FV00_2" type="TEXT" />
+					<FieldSet enabled="true">
+						<Collection>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_1" isHtml="false" />
+									<Input KEY="FV00_1" type="TEXT" />
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_2" isHtml="false" />
+									<Input KEY="FV00_2" type="TEXT" />
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_3" isHtml="false" />
+									<TextBox KEY="FV00_3" />
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_4" isHtml="false" />
+									<DatePicker KEY="FV00_4" />
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_16" isHtml="false" />
+									<Typeahead KEY="FV00_16">
+										<Lookup loc="RPC" params="BLANK,PROFILE" />
+									</Typeahead>
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_12" isHtml="false" />
+									<ListBox KEY="FV00_12" multipleSelect="false">
+										<Lookup loc="TABLE" params="BLANK,GENDER,UNKNOWN" />
+									</ListBox>
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_13" isHtml="false">
+										<Text>address:</Text>
+									</FormLabel>
+									<FlexTable KEY="FV00_13" width="100%">
+										<Title>Title</Title>
+									</FlexTable>
+								</Collection>
+							</FormGroup>
+						</Collection>
+					</FieldSet>
 				</Collection>
-			</FormGroup>
-			<FormGroup>
+			</PanelBody>
+			<PanelFooter>
 				<Collection>
-					<FormLabel KEY="FL00_3" isHtml="false" />
-					<TextBox KEY="FV00_3" />
+					<Heading color="red" size="H5" emphasis="INFO" alignment="LEFT">
+						<Text>Footer</Text>
+					</Heading>
 				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_4" isHtml="false" />
-					<DatePicker KEY="FV00_4" />
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_16" isHtml="false" />
-					<Typeahead KEY="FV00_16">
-						<Lookup loc="RPC" params="BLANK,PROFILE" />
-					</Typeahead>
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_12" isHtml="false" />
-					<ListBox KEY="FV00_12" multipleSelect="false">
-						<Lookup loc="TABLE" params="BLANK,GENDER,UNKNOWN" />
-					</ListBox>
-				</Collection>
-			</FormGroup>
-			<FormGroup>
-				<Collection>
-					<FormLabel KEY="FL00_13" isHtml="false">
-						<Text>address:</Text>
-					</FormLabel>
-					<FlexTable KEY="FV00_13" width="100%">
-						<Title>Title</Title>
-					</FlexTable>
-				</Collection>
-			</FormGroup>
+			</PanelFooter>
 		</Collection>
-	</FieldSet>
+	</Panel>
+	<Panel SECTION="WEBC01" type="DEFAULT">
+		<Collection>
+			<PanelHeader>
+				<Collection>
+					<Heading color="red" size="H5" emphasis="INFO" alignment="LEFT">
+						<Text>Header Information</Text>
+					</Heading>
+				</Collection>
+			</PanelHeader>
+			<PanelBody>
+				<Collection>
+					<FieldSet enabled="true">
+						<Collection>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_13" isHtml="false">
+										<Text>address:</Text>
+									</FormLabel>
+									<FlexTable KEY="FV00_13" width="100%">
+										<Title>Title</Title>
+									</FlexTable>
+								</Collection>
+							</FormGroup>
+						</Collection>
+					</FieldSet>
+				</Collection>
+			</PanelBody>
+			<PanelFooter>
+				<Collection>
+					<Heading color="red" size="H5" emphasis="INFO" alignment="LEFT">
+						<Text>Footer</Text>
+					</Heading>
+				</Collection>
+			</PanelFooter>
+		</Collection>
+	</Panel>
 	<Icon SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
 		<Title>Title</Title>
 	</Icon>

@@ -18,8 +18,6 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
     ComplexWidget_Parser.xs((XStream) this);
 
-    Panel_Parser.xs(this);
-
     ComplexPanel_Parser.xs((XStream) this);
 
     UIObject_Parser.xs((XStream) this);
@@ -46,6 +44,8 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
   public static void xs(XStream inXs)
   {
+    Panel_Parser.xs(inXs);
+
     Typeahead_Parser.xs(inXs);
 
     DatePicker_Parser.xs(inXs);

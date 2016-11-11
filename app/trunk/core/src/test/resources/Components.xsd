@@ -22,6 +22,11 @@
 			<xs:element name="Typeahead" type="Typeahead_Type" minOccurs="0"></xs:element>
 			<xs:element name="Button" type="Button_Type" minOccurs="0"></xs:element>
 			<xs:element name="Panel" type="Panel_Type" minOccurs="0"></xs:element>
+			<xs:element name="PanelHeader" type="PanelHeader_Type" minOccurs="0"></xs:element>
+			<xs:element name="PanelBody" type="PanelBody_Type" minOccurs="0"></xs:element>
+			<xs:element name="PanelFooter" type="PanelFooter_Type" minOccurs="0"></xs:element>
+			<xs:element name="Row" type="Row_Type" minOccurs="0"></xs:element>
+			<xs:element name="Column" type="Column_Type" minOccurs="0"></xs:element>
 		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="FieldTKG_Type">
@@ -36,6 +41,12 @@
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
 	</xs:complexType>
+	<xs:complexType name="Any_Type">
+		<xs:sequence>
+			<xs:any minOccurs="0" />
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_ValueBoxBase"></xs:attributeGroup>
+	</xs:complexType>
 	<xs:complexType name="Button_Type">
 		<xs:sequence>
 			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
@@ -43,31 +54,41 @@
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Button"></xs:attributeGroup>
 	</xs:complexType>
+	<xs:complexType name="Row_Type">
+		<xs:sequence>
+			<xs:element name="Column" type="Column_Type" minOccurs="1" maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="Column_Type">
+		<xs:sequence>
+			<xs:any minOccurs="0" />
+		</xs:sequence>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
+	</xs:complexType>
 	<xs:complexType name="Panel_Type">
 		<xs:sequence>
-			<xs:element name="PanelHeader" type="PanelHeader_Type" minOccurs="0" maxOccurs="1"></xs:element>
-			<xs:element name="PanelBody" type="PanelBody_Type" minOccurs="0" maxOccurs="1"></xs:element>
-			<xs:element name="PanelFooter" type="PanelFooter_Type" minOccurs="0" maxOccurs="1"></xs:element>
+			<xs:element name="Collection" type="Components_Type" minOccurs="0"></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="PanelHeader_Type">
 		<xs:sequence>
-			<xs:any minOccurs="0"/>
+			<xs:element name="Collection" type="Components_Type" minOccurs="0"></xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="PanelBody_Type">
 		<xs:sequence>
-			<xs:any minOccurs="0"/>
+			<xs:element name="Collection" type="Components_Type" minOccurs="0"></xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="PanelFooter_Type">
 		<xs:sequence>
-			<xs:any minOccurs="0"/>
+			<xs:element name="Collection" type="Components_Type" minOccurs="0"></xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="attr_Panel"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Heading_Type">
 		<xs:sequence>
@@ -183,7 +204,7 @@
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Panel">
 		<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
-		<xs:attributeGroup ref="attr_UIObject"></xs:attributeGroup>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_Input">
 		<xs:attribute name="type" type="xs:string" use="optional"></xs:attribute>
