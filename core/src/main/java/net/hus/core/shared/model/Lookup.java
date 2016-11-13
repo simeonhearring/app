@@ -7,42 +7,9 @@ public class Lookup extends AbstractModel implements TypeaheadOption
 {
   private static final long serialVersionUID = 6439569552175264944L;
 
-  public enum Size
-  {
-    SM,
-    XL
-  }
-
-  public enum Group
-  {
-    BLANK(SM),
-    TABLE(SM),
-    FIELD(SM),
-    FIELD_GROUP(SM),
-    UNKNOWN(SM),
-    DAYSOFWEEK(SM),
-    MONTHSOFYEAR(SM),
-    YESNO(SM),
-    GENDER(SM),
-    APP_PROFILE(XL),
-    PROFILE(XL),
-    COMPONENTS(XL);
-
-    private Size mSize;
-
-    private Group(Size inSize)
-    {
-      mSize = inSize;
-    }
-
-    public Size getSize()
-    {
-      return mSize;
-    }
-  }
-
   private String mGroup;
   private String mName;
+  private String mDisplay;
   private String mAbbreviation;
   private String mDescription;
   private Integer mSort;
@@ -82,6 +49,16 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   public void setAbbreviation(String inAbbreviation)
   {
     mAbbreviation = inAbbreviation;
+  }
+
+  public String getDisplay()
+  {
+    return mDisplay;
+  }
+
+  public void setDisplay(String inDisplay)
+  {
+    mDisplay = inDisplay;
   }
 
   public Integer getSort()
@@ -137,5 +114,40 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   {
     Long altId = getAltId();
     return altId != null ? altId : getId();
+  }
+
+  public enum Size
+  {
+    SM,
+    XL
+  }
+
+  public enum Group
+  {
+    BLANK(SM),
+    TABLE(SM),
+    FIELD(SM),
+    FIELD_GROUP(SM),
+    COMPONENT(SM),
+    UNKNOWN(SM),
+    DAYSOFWEEK(SM),
+    MONTHSOFYEAR(SM),
+    YESNO(SM),
+    GENDER(SM),
+    APP_PROFILE(XL),
+    PROFILE(XL),
+    COMPONENTS(XL);
+
+    private Size mSize;
+
+    private Group(Size inSize)
+    {
+      mSize = inSize;
+    }
+
+    public Size getSize()
+    {
+      return mSize;
+    }
   }
 }

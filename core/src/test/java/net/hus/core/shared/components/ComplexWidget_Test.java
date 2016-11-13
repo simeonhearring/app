@@ -6,10 +6,6 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
-import net.hus.core.parser.ComplexWidget_Parser;
-import net.hus.core.util.ResourceUtil;
-
 public class ComplexWidget_Test
 {
   private UIObject_ mObject;
@@ -26,20 +22,7 @@ public class ComplexWidget_Test
     SerializationTest.canSerializeObj(mObject);
   }
 
-  @Test
-  public void canParse()
-  {
-    ComplexWidget_Parser<ComplexWidget_> parser = new ComplexWidget_Parser<>();
-
-    ComplexWidget_ model = ComplexWidget_Test.newComplexWidget();
-
-    String expected = ResourceUtil.contents("net/hus/core/shared/components/ComplexWidget_.xml");
-    expected = expected.replaceAll("\t", "  ");
-
-    Assert.assertEquals(expected, parser.toXml(model));
-  }
-
-  public static ComplexWidget_ newComplexWidget()
+  private static ComplexWidget_ newComplexWidget()
   {
     ComplexWidget_ ret = new ComplexWidget_()
     {

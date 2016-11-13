@@ -17,6 +17,7 @@ import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.components.Components;
+import net.hus.core.shared.components.Components.Type;
 import net.hus.core.shared.model.AppProfile;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Lookup;
@@ -95,6 +96,21 @@ public class CoreJdbc implements CoreDao
     return parse(mComponentsParser, xml);
   }
 
+  public void component2lookup()
+  {
+    List<Lookup> lookups = new ArrayList<>();
+    for (Type value : Components.Type.values())
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.COMPONENT);
+      lookup.setAltId(null);
+      lookup.setName(value.name());
+      lookup.setAbbreviation(value.display());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
+  }
   public void profile2lookup()
   {
     List<Profile> profiles = new ArrayList<>();

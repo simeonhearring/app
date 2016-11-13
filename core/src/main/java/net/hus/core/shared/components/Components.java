@@ -114,5 +114,10 @@ public class Components implements Serializable
     ROW,
     TEXT_BOX,
     TYPEAHEAD;
+
+    public String display()
+    {
+      return null;
+    }
   }
 }

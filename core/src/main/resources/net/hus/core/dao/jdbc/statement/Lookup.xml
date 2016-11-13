@@ -1,10 +1,10 @@
 <Statements>
 	<Statement>
 		<Key>UPSERT</Key>
-		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR,NUMERIC,NUMERIC,VARCHAR,VARCHAR,NUMERIC,NUMERIC</Types>
-		<Sql>INSERT INTO LOOKUP (mUpdated,mGroup,mName,mAbbreviation,mDescription,mSort,mAltId)
-			VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?) ON DUPLICATE KEY
-			UPDATE mAbbreviation=?,mDescription=?,mSort=?,mAltId=?,mUpdated=CURRENT_TIMESTAMP
+		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR,VARCHAR,NUMERIC,NUMERIC,VARCHAR,VARCHAR,VARCHAR,NUMERIC,NUMERIC</Types>
+		<Sql>INSERT INTO LOOKUP (mUpdated,mGroup,mName,mDisplay,mAbbreviation,mDescription,mSort,mAltId)
+			VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?,?) ON DUPLICATE KEY
+			UPDATE mDisplay=?,mAbbreviation=?,mDescription=?,mSort=?,mAltId=?,mUpdated=CURRENT_TIMESTAMP
 		</Sql>
 	</Statement>
 	<Statement>
@@ -14,10 +14,10 @@
 	</Statement>
 	<Statement>
 		<Key>UPSERT_XL</Key>
-		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
-		<Sql>INSERT INTO LOOKUP_XL (mUpdated,mGroup,mName,mXL)
-			VALUES (CURRENT_TIMESTAMP,?,?,?) ON DUPLICATE KEY
-			UPDATE mXL=?,mUpdated=CURRENT_TIMESTAMP
+		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
+		<Sql>INSERT INTO LOOKUP_XL (mUpdated,mGroup,mName,mDisplay,mXL)
+			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
+			UPDATE mDisplay=?,mXL=?,mUpdated=CURRENT_TIMESTAMP
 		</Sql>
 	</Statement>
 	<Statement>
