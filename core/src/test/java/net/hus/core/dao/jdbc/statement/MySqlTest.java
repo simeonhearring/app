@@ -10,7 +10,7 @@ import net.hus.core.dao.jdbc.statement.AbstractSqlJdbc.Statements;
 public class MySqlTest
 {
   @Test
-  public void testToStatements()
+  public void testGetStatements()
   {
     MySql mysql = new MySql();
 

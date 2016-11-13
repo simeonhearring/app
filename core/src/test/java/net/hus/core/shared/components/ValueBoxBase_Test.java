@@ -6,9 +6,6 @@ import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.hus.core.shared.components.UIObject_;
-import net.hus.core.shared.components.ValueBoxBase_;
-
 public class ValueBoxBase_Test
 {
   private UIObject_ mObject;
@@ -27,7 +24,10 @@ public class ValueBoxBase_Test
 
   public static ValueBoxBase_ newValueBoxBase()
   {
-    ValueBoxBase_ ret = new ValueBoxBase_();
+    ValueBoxBase_ ret = new ValueBoxBase_()
+    {
+      private static final long serialVersionUID = -1245691938042215257L;
+    };
 
     initValueBoxBase(ret);
 

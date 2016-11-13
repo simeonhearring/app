@@ -8,8 +8,6 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.ComplexWidget_Parser;
-import net.hus.core.shared.components.ComplexWidget_;
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class ComplexWidget_Test
@@ -43,7 +41,10 @@ public class ComplexWidget_Test
 
   public static ComplexWidget_ newComplexWidget()
   {
-    ComplexWidget_ ret = new ComplexWidget_();
+    ComplexWidget_ ret = new ComplexWidget_()
+    {
+      private static final long serialVersionUID = -1800830808341304712L;
+    };
 
     initComplexWidget(ret);
 

@@ -5,9 +5,6 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.hus.core.shared.components.FocusWidget_;
-import net.hus.core.shared.components.UIObject_;
-
 public class FocusWidget_Test
 {
   private UIObject_ mObject;
@@ -26,7 +23,10 @@ public class FocusWidget_Test
 
   public static FocusWidget_ newFocusWidget()
   {
-    FocusWidget_ ret = new FocusWidget_();
+    FocusWidget_ ret = new FocusWidget_()
+    {
+      private static final long serialVersionUID = 3315647361517672673L;
+    };
 
     initFocusWidget(ret);
 

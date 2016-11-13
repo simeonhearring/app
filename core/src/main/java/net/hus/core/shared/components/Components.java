@@ -89,4 +89,30 @@ public class Components implements Serializable
   {
     return mFieldTKGs.get(0);
   }
+
+  public enum Type
+  {
+    ALERT,
+    BADGE,
+    BUTTON,
+    CHECKBOX,
+    COLUMN,
+    DATE_PICKER,
+    FIELD_SET,
+    FLEX_TABLE,
+    FORM_GROUP,
+    FORM_LABEL,
+    HEADING,
+    ICON,
+    INPUT,
+    LABEL,
+    LIST_BOX,
+    PANEL,
+    PANEL_BODY,
+    PANEL_FOOTER,
+    PANEL_HEADER,
+    ROW,
+    TEXT_BOX,
+    TYPEAHEAD;
+  }
 }
