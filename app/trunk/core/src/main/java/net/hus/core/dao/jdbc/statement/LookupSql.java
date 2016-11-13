@@ -84,11 +84,13 @@ public class LookupSql extends Mapping
     {
       String group = value.getGroup();
       String name = value.getName();
+      String display = value.getDisplay();
       String abbr = value.getAbbreviation();
       String desc = value.getDescription();
       Integer sort = value.getSort();
       Long altId = value.getAltId();
-      mBatchUpsert.update(params(group, name, abbr, desc, sort, altId, abbr, desc, sort, altId));
+      mBatchUpsert.update(
+          params(group, name, display, abbr, desc, sort, altId, display, abbr, desc, sort, altId));
     }
     mBatchUpsert.flush();
     mBatchUpsert.reset();
@@ -101,8 +103,9 @@ public class LookupSql extends Mapping
     {
       String group = value.getGroup();
       String name = value.getName();
+      String display = value.getDisplay();
       String xl = value.getXL();
-      mBatchUpsertXL.update(params(group, name, xl, xl));
+      mBatchUpsertXL.update(params(group, name, display, xl, display, xl));
     }
     mBatchUpsertXL.flush();
     mBatchUpsertXL.reset();
