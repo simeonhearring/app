@@ -2,7 +2,7 @@ package net.hus.core.shared.components;
 
 import org.gwtbootstrap3.client.ui.constants.InputSize;
 
-public class ValueBoxBase_ extends FocusWidget_
+public abstract class ValueBoxBase_ extends FocusWidget_
 {
   private static final long serialVersionUID = -8953529567451561818L;
 

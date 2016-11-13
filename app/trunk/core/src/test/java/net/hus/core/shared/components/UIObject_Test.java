@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.UIObject_Parser;
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.util.ResourceUtil;
 
@@ -42,7 +41,10 @@ public class UIObject_Test
 
   public static UIObject_ newUIObject()
   {
-    UIObject_ ret = new UIObject_();
+    UIObject_ ret = new UIObject_()
+    {
+      private static final long serialVersionUID = 245365770644359472L;
+    };
     initUIObject(ret);
     return ret;
   }

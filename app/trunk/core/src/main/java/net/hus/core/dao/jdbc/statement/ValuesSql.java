@@ -76,6 +76,7 @@ public class ValuesSql extends Mapping
     mSelectKeyField.compile();
   }
 
+  // TODO
   public void insertUpdate(List<Value> inList)
   {
     mBatchUpdate.reset();
@@ -120,18 +121,18 @@ public class ValuesSql extends Mapping
     mBatchInsert.reset();
   }
 
-  public void update(List<Value> inList)
+  public void update(List<Value> inValues)
   {
     mBatchUpdate.reset();
-    for (Value value : inList)
+    for (Value value : inValues)
     {
-      String table = value.getFieldTKG().getFvt();
-      String key = value.getFieldTKG().getFvk();
+      String fvt = value.getFieldTKG().getFvt();
+      String fvk = value.getFieldTKG().getFvk();
       String valueText = value.getValue();
       Long valueId = value.getValueId();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
-      mBatchUpdate.update(params(valueText, valueId, asOf, table, key, fieldId));
+      mBatchUpdate.update(params(valueText, valueId, asOf, fvt, fvk, fieldId));
     }
     mBatchUpdate.flush();
     mBatchUpdate.reset();

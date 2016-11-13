@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import net.hus.core.shared.model.Page.Section;
 
-public class UIObject_ implements Serializable
+public abstract class UIObject_ implements Serializable
 {
   private static final long serialVersionUID = 4099428684832729483L;
 

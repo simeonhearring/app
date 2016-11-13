@@ -2,7 +2,7 @@ package net.hus.core.shared.components;
 
 import org.gwtbootstrap3.client.ui.constants.Pull;
 
-public class ComplexWidget_ extends ComplexPanel_
+public abstract class ComplexWidget_ extends ComplexPanel_
 {
   private static final long serialVersionUID = -4806642749021223806L;
 
