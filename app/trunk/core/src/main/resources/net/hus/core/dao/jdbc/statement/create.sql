@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `FIELD` (
   `mProperties` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`mId`),
   UNIQUE KEY `mName` (`mName`,`mType`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `FIELD_GROUP` (
   `mSort` int(11) DEFAULT NULL,
   PRIMARY KEY (`mId`),
   UNIQUE KEY `mGroup` (`mGroup`,`mFieldId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `FIELD_VALUE` (
   PRIMARY KEY (`mId`),
   KEY `mKey` (`mKey`(333)),
   KEY `mTable` (`mTable`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `LOOKUP` (
   UNIQUE KEY `mGroupName` (`mGroup`,`mName`),
   KEY `mGroup` (`mGroup`),
   KEY `mAltId` (`mAltId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=77 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -95,6 +95,6 @@ CREATE TABLE IF NOT EXISTS `LOOKUP_XL` (
   UNIQUE KEY `mGroupName` (`mGroup`,`mName`),
   KEY `mGroup` (`mGroup`),
   KEY `mName` (`mName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------

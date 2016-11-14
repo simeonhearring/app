@@ -52,7 +52,7 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
   @Override
   public void add(Lookup inLookup)
   {
-    add(inLookup.getName(), inLookup.getId());
+    add(inLookup.getDisplay(), inLookup.getId());
   }
 
   public void add(String inText)
