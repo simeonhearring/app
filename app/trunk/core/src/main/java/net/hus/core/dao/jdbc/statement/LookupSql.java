@@ -122,7 +122,7 @@ public class LookupSql extends Mapping
     return selectXL(inGroup.name(), inName);
   }
 
-  protected Lookup selectXL(String inGroup, String inName)
+  public Lookup selectXL(String inGroup, String inName)
   {
     List<Lookup> ret = mSelectXLgn.execute(params(inGroup, inName));
     return only(ret);
