@@ -103,14 +103,16 @@ public class CoreJdbc implements CoreDao
     {
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.COMPONENT);
-      lookup.setAltId(null);
       lookup.setName(value.name());
-      lookup.setAbbreviation(value.display());
+
+      lookup.setAltId(null);
+      lookup.setDisplay(value.display());
       lookup.setSort(0);
       lookups.add(lookup);
     }
     lookups().upsert(lookups);
   }
+
   public void profile2lookup()
   {
     List<Profile> profiles = new ArrayList<>();
@@ -124,9 +126,10 @@ public class CoreJdbc implements CoreDao
     {
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.PROFILE);
-      lookup.setAltId(value.getId());
       lookup.setName(value.getUserName());
-      lookup.setAbbreviation(value.getName());
+
+      lookup.setAltId(value.getId());
+      lookup.setDisplay(value.getName());
       lookup.setSort(0);
       lookups.add(lookup);
     }
@@ -140,8 +143,10 @@ public class CoreJdbc implements CoreDao
     {
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.FIELD);
-      lookup.setAltId(value.getId());
       lookup.setName(value.getName());
+
+      lookup.setAltId(value.getId());
+      lookup.setDisplay(value.getProperties().getDisplay().getLong());
       lookup.setAbbreviation(value.getType().name());
       lookup.setSort(0);
       lookups.add(lookup);
@@ -169,9 +174,11 @@ public class CoreJdbc implements CoreDao
     {
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.FIELD_GROUP);
-      lookup.setAltId(null);
       lookup.setName(value.getKey());
-      lookup.setAbbreviation(value.getValue().toString());
+
+      lookup.setAltId(null);
+      lookup.setAbbreviation(null);
+      lookup.setDescription(value.getValue().toString());
       lookup.setSort(0);
       lookups.add(lookup);
     }

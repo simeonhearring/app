@@ -10,6 +10,7 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.LookupOptions;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.model.Value;
+import net.hus.core.shared.util.StringUtil;
 
 /**
  * Populated from XML (mFieldTKGs & mList). Values from database added after
@@ -95,7 +96,7 @@ public class Components implements Serializable
     ALERT,
     BADGE,
     BUTTON,
-    CHECKBOX,
+    CHECK_BOX,
     COLUMN,
     DATE_PICKER,
     FIELD_SET,
@@ -117,7 +118,7 @@ public class Components implements Serializable
 
     public String display()
     {
-      return null;
+      return StringUtil.toTitle(name().replaceAll("_", " ")).replaceAll(" ", "");
     }
   }
 }

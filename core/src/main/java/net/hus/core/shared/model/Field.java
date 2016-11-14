@@ -431,14 +431,16 @@ public class Field extends AbstractModel
   {
     USERNAME(14L, Type.STRING),
     PASSWORD(15L, Type.STRING),
+    FIELD(17L, Type.LOOKUP),
+    FIELD_GROUP(18L, Type.LOOKUP),
+    PROFILE(16L, Type.LOOKUP),
+
     FIRST_NAME(1L, Type.STRING),
     LAST_NAME(2L, Type.STRING),
     MIDDLE_NAME(3L, Type.STRING),
     ADDRESS(13L, Type.ARRAY),
     GENDER(12L, Type.LOOKUP),
-    FIELD(17L, Type.LOOKUP),
-    FIELD_GROUP(18L, Type.LOOKUP),
-    PROFILE(16L, Type.LOOKUP);
+    ;
 
     private Long mFid;
     private Type mType;
