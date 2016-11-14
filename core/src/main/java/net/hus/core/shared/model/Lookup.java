@@ -104,9 +104,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   @Override
   public String option()
   {
-    // TODO should this eval be in configurable?
-    boolean p = Group.PROFILE.name().equals(mGroup);
-    return p ? mAbbreviation : mName;
+    return mDisplay;
   }
 
   @Override
