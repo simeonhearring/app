@@ -4,6 +4,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.common.Display;
 import net.hus.core.client.common.UiCreate;
+import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.model.page.BlogDisplay;
 import net.hus.core.client.model.page.LoginDisplay;
 import net.hus.core.client.model.page.MarketingDisplay;
@@ -26,4 +27,6 @@ public interface MainDisplay extends Display
   WebDisplay getWeb();
 
   MarketingDisplay getMarketing();
+
+  FieldsDisplay getAdmin();
 }

@@ -11,6 +11,7 @@ public class Page implements Serializable
     BLOG,
     WEB,
     MARKET,
+    ADMIN,
     LOGIN;
   }
 
@@ -73,6 +74,7 @@ public class Page implements Serializable
       LOGINL01,
       LOGINC01,
       LOGINR01,
+      ADMINC01,
     }
   }
 }

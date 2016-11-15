@@ -10,11 +10,13 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.Display;
 import net.hus.core.client.common.UiCreate;
+import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.model.main.MainDisplay;
 import net.hus.core.client.model.page.BlogDisplay;
 import net.hus.core.client.model.page.LoginDisplay;
 import net.hus.core.client.model.page.MarketingDisplay;
 import net.hus.core.client.model.page.WebDisplay;
+import net.hus.core.client.ui.admin.FieldsView;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.client.ui.common.GwtUiCreate;
 import net.hus.core.client.ui.page.BlogView;
@@ -84,5 +86,11 @@ public class MainView extends AbstractView implements MainDisplay
   public UiCreate getUiCreate()
   {
     return new GwtUiCreate();
+  }
+
+  @Override
+  public FieldsDisplay getAdmin()
+  {
+    return new FieldsView();
   }
 }

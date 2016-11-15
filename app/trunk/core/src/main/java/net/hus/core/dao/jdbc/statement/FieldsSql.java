@@ -17,6 +17,7 @@ public class FieldsSql extends Mapping
 {
   private BatchSqlUpdate mFieldUpsert;
   private MappingSqlQuery<Field> mFieldSelect;
+  private MappingSqlQuery<Field> mFieldByIdSelect;
   private MappingSqlQuery<Field> mFieldAllSelect;
   private MappingSqlQuery<Object[]> mFieldsAllSelect;
   private BatchSqlUpdate mFieldsUpsert;
@@ -45,6 +46,18 @@ public class FieldsSql extends Mapping
     };
     mFieldSelect.setTypes(select.types());
     mFieldSelect.compile();
+
+    Statement selectById = mStmts.getStatement("SELECT_BY_ID");
+    mFieldByIdSelect = new MappingSqlQuery<Field>(inDataSource, selectById.getSql())
+    {
+      @Override
+      protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapField(new Field(), inRs);
+      }
+    };
+    mFieldByIdSelect.setTypes(selectById.types());
+    mFieldByIdSelect.compile();
 
     Statement selectAll = mStmts.getStatement("SELECT_ALL");
     mFieldAllSelect = new MappingSqlQuery<Field>(inDataSource, selectAll.getSql())
@@ -136,5 +149,10 @@ public class FieldsSql extends Mapping
     ret.fgg(inFgg);
     ret.setFields(mFieldsSelect.execute(params(inFgg)));
     return ret;
+  }
+
+  public Field select(Long inFieldId)
+  {
+    return only(mFieldByIdSelect.execute(params(inFieldId)));
   }
 }
