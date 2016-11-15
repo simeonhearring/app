@@ -53,6 +53,13 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void components2lookup()
+  {
+    mJdbc.components2lookup();
+    Assert.assertTrue(true); // no fail
+  }
+
+  @Test
   public void setupDaysOfWeek()
   {
     Group group = Group.DAYSOFWEEK;
@@ -152,28 +159,30 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupComponents1()
   {
-    String xl = ResourceUtil.contents("Components1.xml");
-
-    Lookup l1 = new Lookup();
-    l1.setGroup(Group.COMPONENTS);
-    l1.setName("Components1");
-
-    l1.setDisplay("Login");
-    l1.setXL(xl);
-
-    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+    component("Components1", "Login", "Components1.xml");
   }
 
   @Test
   public void setupComponents2()
   {
-    String xl = ResourceUtil.contents("Components2.xml");
+    component("Components2", "Landing page", "Components2.xml");
+  }
+
+  @Test
+  public void setupComponents3()
+  {
+    component("Components3", "Admin page", "Components3.xml");
+  }
+
+  private void component(String inName, String inDisplay, String inResource)
+  {
+    String xl = ResourceUtil.contents(inResource);
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.COMPONENTS);
-    l1.setName("Components2");
+    l1.setName(inName);
 
-    l1.setDisplay("Landing page");
+    l1.setDisplay(inDisplay);
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getName());

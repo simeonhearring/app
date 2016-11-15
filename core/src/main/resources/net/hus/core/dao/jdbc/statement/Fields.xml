@@ -13,6 +13,11 @@
 		<Sql>select * from FIELD where mName=? and mType=?</Sql>
 	</Statement>
 	<Statement>
+		<Key>SELECT_BY_ID</Key>
+		<Types>NUMERIC</Types>
+		<Sql>select * from FIELD where mId=?</Sql>
+	</Statement>
+	<Statement>
 		<Key>SELECT_ALL</Key>
 		<Sql>select * from FIELD</Sql>
 	</Statement>

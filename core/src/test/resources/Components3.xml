@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
+	<FieldTKG fvt="ADMIN" fgg="ADMIN" page.name="ADMIN" />
+	<Heading SECTION="ADMINC01" size="H1" emphasis="INFO" alignment="LEFT">
+		<Title>Admin</Title>
+		<Text>Admin</Text>
+	</Heading>
+</Components>

@@ -137,6 +137,47 @@ public class CoreJdbc implements CoreDao
     lookups().upsert(lookups);
   }
 
+  // TODO
+  public void appprofile2lookup()
+  {
+    List<Profile> profiles = new ArrayList<>();
+    for (Lookup value : lookups().selectXL(Group.APP_PROFILE.name()))
+    {
+      profiles.add(parse(mProfileParser, value.getXL()));
+    }
+
+    List<Lookup> lookups = new ArrayList<>();
+    for (Profile value : profiles)
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.APP_PROFILE);
+      lookup.setName(value.getUserName());
+
+      lookup.setAltId(value.getId());
+      lookup.setDisplay(value.getName());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
+  }
+
+  public void components2lookup()
+  {
+    List<Lookup> lookups = new ArrayList<>();
+    for (Lookup value : lookups().selectXL(Group.COMPONENTS.name()))
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.COMPONENTS);
+      lookup.setName(value.getName());
+
+      lookup.setAltId(value.getId());
+      lookup.setDisplay(value.getDisplay());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
+  }
+
   public void field2lookup()
   {
     List<Lookup> lookups = new ArrayList<>();
