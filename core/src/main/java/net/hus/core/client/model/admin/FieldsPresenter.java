@@ -26,7 +26,6 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
 
   private Field mField;
 
-
   public FieldsPresenter(FieldsDisplay inDisplay)
   {
     mDisplay = inDisplay;
@@ -42,7 +41,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     switch (inCommand.getType())
     {
       case ALL:
-        addFields(mData.data(), mData.getField());
+        addFields(mData.data(), mData.getField(), mData.getLookupGroups());
         break;
       case SINGLE:
         addField(mData.getField());
@@ -58,7 +57,8 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     mDisplay.set(mField);
   }
 
-  private void addFields(Map<String, List<Lookup>> inData, Field inField)
+  private void addFields(Map<String, List<Lookup>> inData, Field inField,
+      List<String> inLookupGroups)
   {
     mDisplay.clear();
     for (Entry<String, List<Lookup>> value : inData.entrySet())
@@ -67,8 +67,9 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     }
     mDisplay.refresh();
 
-    mDisplay.addLookup(mData.getLookupGroups());
     addField(inField);
+
+    mDisplay.addLookup(inLookupGroups);
   }
 
   @Override
