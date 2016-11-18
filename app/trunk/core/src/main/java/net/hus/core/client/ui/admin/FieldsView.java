@@ -181,8 +181,6 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
 
     String lookupParameters = inField.getLookupParameters();
 
-    notify(lookupParameters);
-
     if (lookupParameters != null)
     {
       Iterator<Widget> it = mLookupGroup.iterator();
@@ -220,7 +218,6 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
           mLookupGroupText.setText(mLookupGroupText.getText().replaceAll(value, ""));
         }
 
-        FieldsView.this.notify(mLookupGroupText.getText());
         mAction.update(DataType.LOOKUP_PARAM, mLookupGroupText.getText());
       }
     };
