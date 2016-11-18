@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 
+import net.hus.core.shared.model.Field.Lookup.Location;
+import net.hus.core.shared.util.EnumUtil;
+import net.hus.core.shared.util.StringUtil;
+
 public class Field extends AbstractModel
 {
   private static final long serialVersionUID = -961088994106006040L;
@@ -11,8 +15,6 @@ public class Field extends AbstractModel
   private String mName;
   private Type mType;
   private Properties mProperties;
-
-  private String mDisplay;
 
   public Field()
   {
@@ -22,6 +24,12 @@ public class Field extends AbstractModel
   public Field(Long inFieldId)
   {
     setId(inFieldId);
+  }
+
+  /* UI QUICK CREATE */
+  public Field(String inName, Field.Type inType)
+  {
+    setNameType(inName, inType);
   }
 
   public String getName()
@@ -46,22 +54,16 @@ public class Field extends AbstractModel
 
   public Properties getProperties()
   {
+    if (mProperties == null)
+    {
+      mProperties = new Properties();
+    }
     return mProperties;
   }
 
   public void setProperties(Properties inProperties)
   {
     mProperties = inProperties;
-  }
-
-  public String getDisplay()
-  {
-    return mDisplay;
-  }
-
-  public void setDisplay(String inDisplay)
-  {
-    mDisplay = inDisplay;
   }
 
   public Array getArray()
@@ -81,7 +83,7 @@ public class Field extends AbstractModel
     BTN00_,
   }
 
-  public enum Type
+  public enum Type implements EnumDisplay
   {
     STRING,
     NUMBER,
@@ -90,11 +92,17 @@ public class Field extends AbstractModel
     TIMESTAMP,
     ARRAY,
     LOOKUP,
-    TABLE;
+    TABLE; // do we need?
 
     public static boolean isArray(Type inType)
     {
       return Type.ARRAY.equals(inType) || Type.TABLE.equals(inType);
+    }
+
+    @Override
+    public String display()
+    {
+      return StringUtil.toTitle(name());
     }
   }
 
@@ -122,36 +130,6 @@ public class Field extends AbstractModel
       return sb.toString();
     }
 
-    public Display getDisplay()
-    {
-      return mDisplay;
-    }
-
-    public void setDisplay(Display inDisplay)
-    {
-      mDisplay = inDisplay;
-    }
-
-    public Lookup getLookupGroup()
-    {
-      return mLookup;
-    }
-
-    public void setLookupGroup(Lookup inLookup)
-    {
-      mLookup = inLookup;
-    }
-
-    public Array getArray()
-    {
-      return mArray;
-    }
-
-    public void setArray(Array inArray)
-    {
-      mArray = inArray;
-    }
-
     public Type getType()
     {
       return mType;
@@ -162,24 +140,49 @@ public class Field extends AbstractModel
       mType = inType;
     }
 
-    public Database getDatabase()
+    public Display getDisplay()
     {
-      return mDatabase;
+      if (mDisplay == null)
+      {
+        mDisplay = new Display();
+      }
+      return mDisplay;
     }
 
-    public void setDatabase(Database inDatabase)
+    public Lookup getLookup()
     {
-      mDatabase = inDatabase;
+      if (mLookup == null)
+      {
+        mLookup = new Lookup();
+      }
+      return mLookup;
+    }
+
+    public Array getArray()
+    {
+      if (mArray == null)
+      {
+        mArray = new Array();
+      }
+      return mArray;
+    }
+
+    public Database getDatabase()
+    {
+      if (mDatabase == null)
+      {
+        mDatabase = new Database();
+      }
+      return mDatabase;
     }
 
     public DateTime getDateTime()
     {
+      if (mDateTime == null)
+      {
+        mDateTime = new DateTime();
+      }
       return mDateTime;
-    }
-
-    public void setDateTime(DateTime inDateTime)
-    {
-      mDateTime = inDateTime;
     }
   }
 
@@ -335,15 +338,6 @@ public class Field extends AbstractModel
 
     private String mFormat;
 
-    public DateTime()
-    {
-    }
-
-    public DateTime(String inFormat)
-    {
-      mFormat = inFormat;
-    }
-
     public String getFormat()
     {
       return mFormat;
@@ -372,10 +366,16 @@ public class Field extends AbstractModel
       mParameters = inParameters;
     }
 
-    public enum Location
+    public enum Location implements EnumDisplay
     {
       TABLE,
-      RPC
+      RPC;
+
+      @Override
+      public String display()
+      {
+        return StringUtil.toTitle(name());
+      }
     }
 
     public Location getLocation()
@@ -462,6 +462,16 @@ public class Field extends AbstractModel
     }
   }
 
+  public boolean isDate()
+  {
+    return Field.Type.DATE.equals(mType);
+  }
+
+  public boolean isLookup()
+  {
+    return Field.Type.LOOKUP.equals(mType);
+  }
+
   public boolean isArray()
   {
     return Type.isArray(getType());
@@ -480,5 +490,101 @@ public class Field extends AbstractModel
     ret.append(" Type: ").append(getType());
     ret.append(mProperties.getInfo());
     return ret.toString();
+  }
+
+  public void update(DataType inType, String inValue)
+  {
+    switch (inType)
+    {
+      case DISPLAY_LONG:
+        mProperties.mDisplay.setLong(inValue);
+        break;
+      case DISPLAY_SHORT:
+        mProperties.mDisplay.setShort(inValue);
+        break;
+      case DATE_FORMAT:
+        mProperties.getDateTime().setFormat(inValue);
+        break;
+      case LOOKUP_PARAM:
+        mProperties.getLookup().setParameters(inValue);
+        break;
+      case LOOKUP_LOC:
+        mProperties.getLookup().setLocation(EnumUtil.valueOf(inValue, Lookup.Location.values()));
+        break;
+      default:
+        break;
+    }
+  }
+
+  public enum DataType
+  {
+    DISPLAY_LONG,
+    DISPLAY_SHORT,
+    DATE_FORMAT,
+    LOOKUP_PARAM,
+    LOOKUP_LOC
+  }
+
+  public String getDisplayLong()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mDisplay != null)
+    {
+      ret = mProperties.mDisplay.mLong;
+    }
+    return ret;
+  }
+
+  public String getDisplayShort()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mDisplay != null)
+    {
+      ret = mProperties.mDisplay.mShort;
+    }
+    return ret;
+  }
+
+  private void setNameType(String inName, Field.Type inType)
+  {
+    mName = officialName(inName);
+    mType = inType;
+    getProperties().mType = inType;
+    getProperties().getDisplay().mLong = inName;
+  }
+
+  public static String officialName(String inName)
+  {
+    return inName.toUpperCase().replaceAll(" ", "_");
+  }
+
+  public void setArray(Array inArray)
+  {
+    mProperties.mArray = inArray;
+  }
+
+  public void setLookup(Lookup inLookup)
+  {
+    mProperties.mLookup = inLookup;
+  }
+
+  public String getLookupParameters()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mLookup != null)
+    {
+      ret = mProperties.mLookup.mParameters;
+    }
+    return ret;
+  }
+
+  public Location getLookupLocation()
+  {
+    Location ret = null;
+    if (mProperties != null && mProperties.mLookup != null)
+    {
+      ret = mProperties.mLookup.mLocation;
+    }
+    return ret;
   }
 }

@@ -13,6 +13,11 @@
 		<Sql>select * from LOOKUP where mGroup=? order by mSort</Sql>
 	</Statement>
 	<Statement>
+		<Key>SELECT_GRPS</Key>
+		<Types>VARCHAR</Types>
+		<Sql>select distinct mGroup from LOOKUP order by mGroup</Sql>
+	</Statement>
+	<Statement>
 		<Key>UPSERT_XL</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
 		<Sql>INSERT INTO LOOKUP_XL (mUpdated,mGroup,mName,mDisplay,mXL)

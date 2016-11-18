@@ -37,5 +37,8 @@ public class FieldsDataCommandBean extends AbstractCommandBean<FieldsDataCommand
   private void addFields(FieldsData data)
   {
     data.setFields(mCoreDao.lookups().select(Group.FIELD.name()));
+    data.setLookupGroups(mCoreDao.lookups().selectGrps());
+    Long fieldId = data.getFields().get(0).getAltId();
+    addField(data, fieldId);
   }
 }

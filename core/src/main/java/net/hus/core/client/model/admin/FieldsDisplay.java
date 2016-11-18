@@ -2,24 +2,37 @@ package net.hus.core.client.model.admin;
 
 import java.util.List;
 
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import org.gwtbootstrap3.client.ui.constants.ValidationState;
 
 import net.hus.core.client.common.PageDisplay;
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Lookup;
 
 public interface FieldsDisplay extends PageDisplay
 {
-  void add(String inType, List<Lookup> inFields);
+  public interface Action
+  {
+    void save();
 
-  void add(Field inField);
+    void refresh();
+
+    ValidationState add(String inName, String inType);
+
+    void select(Long inFieldId);
+
+    void update(DataType inType, String inValue);
+  }
+
+  void add(String inType, List<Lookup> inFields);
 
   void refresh();
 
-  void addValueChangeHandler(ValueChangeHandler<String> inHandler);
-
-  Long getFieldId(ValueChangeEvent<String> inEvent);
-
   void clear();
+
+  void set(Field inField);
+
+  void setAction(Action inAction);
+
+  void addLookup(List<String> inLookupGroups);
 }

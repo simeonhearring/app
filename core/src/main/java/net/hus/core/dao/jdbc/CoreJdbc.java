@@ -178,6 +178,7 @@ public class CoreJdbc implements CoreDao
     lookups().upsert(lookups);
   }
 
+  @Override
   public void field2lookup()
   {
     List<Lookup> lookups = new ArrayList<>();

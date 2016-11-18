@@ -2,6 +2,7 @@ package net.hus.core.dao.jdbc.statement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -134,8 +135,8 @@ public class FieldsSql extends Mapping
     for (Field value : inFields.getFields())
     {
       Long id = value.getId();
-      String display = value.getDisplay();
-      Integer sort = null;
+      String display = null; // remove from db FIELD_GROUP table
+      Integer sort = null; // remove from db FIELD_GROUP table
 
       mFieldsUpsert.update(params(fgg, id, display, sort, display, sort));
     }
@@ -154,5 +155,12 @@ public class FieldsSql extends Mapping
   public Field select(Long inFieldId)
   {
     return only(mFieldByIdSelect.execute(params(inFieldId)));
+  }
+
+  public void upsert(Field inField)
+  {
+    List<Field> list = new ArrayList<>();
+    list.add(inField);
+    upsert(list);
   }
 }

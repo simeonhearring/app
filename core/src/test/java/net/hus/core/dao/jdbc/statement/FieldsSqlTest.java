@@ -22,12 +22,9 @@ import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Database;
-import net.hus.core.shared.model.Field.DateTime;
-import net.hus.core.shared.model.Field.Display;
 import net.hus.core.shared.model.Field.Fid;
 import net.hus.core.shared.model.Field.Lookup;
 import net.hus.core.shared.model.Field.Lookup.Location;
-import net.hus.core.shared.model.Field.Properties;
 import net.hus.core.shared.model.Field.Type;
 import net.hus.core.shared.model.Fields;
 
@@ -57,7 +54,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     list.add(
         newField(Fid.FIELD_GROUP.type(), Fid.FIELD_GROUP.name(), "Field Group", "FLDs", fields()));
 
-    list.add(newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob", newDateTime()));
+    list.add(newField(Type.DATE, "BIRTH_DATE", "Birth Date", "Dob", "yyyy-MM-dd"));
     list.add(newField(Type.STRING, "COMMENTS", "Comments", "Com"));
 
     mSql.upsert(list);
@@ -117,11 +114,6 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Assert.assertEquals(true, mSql.select().size() > 0);
   }
 
-  private DateTime newDateTime()
-  {
-    return new Field.DateTime("yyyy-MM-dd");
-  }
-
   private Array address()
   {
     return newArray(6, "Type", "Street A", "Street B", "City", "State", "Zip");
@@ -129,22 +121,22 @@ public class FieldsSqlTest extends MySqlCoreDsTest
 
   private Lookup gender()
   {
-    return new Lookup(Location.TABLE, "BLANK,GENDER,UNKNOWN");
+    return new Lookup(Location.TABLE, "BLANK,GENDER,UNKNOWN,");
   }
 
   private Lookup profile()
   {
-    return new Lookup(Location.RPC, "BLANK,PROFILE");
+    return new Lookup(Location.RPC, "BLANK,PROFILE,");
   }
 
   private Lookup field()
   {
-    return new Lookup(Location.TABLE, "BLANK,FIELD");
+    return new Lookup(Location.TABLE, "BLANK,FIELD,");
   }
 
   private Lookup fields()
   {
-    return new Lookup(Location.TABLE, "BLANK,FIELD_GROUP");
+    return new Lookup(Location.TABLE, "BLANK,FIELD_GROUP,");
   }
 
   private Array newArray(Integer inSize, String... inLabels)
@@ -159,9 +151,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Field ret = new Field();
     ret.setName(inName);
     ret.setType(inType);
-    ret.setProperties(new Properties());
     ret.getProperties().setType(inType);
-    ret.getProperties().setDisplay(new Display());
     ret.getProperties().getDisplay().setLong(inLong);
     ret.getProperties().getDisplay().setShort(inShort);
     return ret;
@@ -170,22 +160,22 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   private Field newField(Type inType, String inName, String inLong, String inShort, Array inArray)
   {
     Field ret = newField(inType, inName, inLong, inShort);
-    ret.getProperties().setArray(inArray);
+    ret.setArray(inArray);
     return ret;
   }
 
   private Field newField(Type inType, String inName, String inLong, String inShort,
-      DateTime inDateTime)
+      String inFormat)
   {
     Field ret = newField(inType, inName, inLong, inShort);
-    ret.getProperties().setDateTime(inDateTime);
+    ret.getProperties().getDateTime().setFormat(inFormat);
     return ret;
   }
 
   private Field newField(Type inType, String inName, String inLong, String inShort, Lookup inLookup)
   {
     Field ret = newField(inType, inName, inLong, inShort);
-    ret.getProperties().setLookupGroup(inLookup);
+    ret.setLookup(inLookup);
     return ret;
   }
 
@@ -195,7 +185,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     Field ret = newField(inType, inName, inLong, inShort);
     Database db = new Database();
     db.setOneValue(inOneValue);
-    ret.getProperties().setDatabase(db);
+    ret.getProperties().getDatabase().setOneValue(inOneValue);
     return ret;
   }
 }

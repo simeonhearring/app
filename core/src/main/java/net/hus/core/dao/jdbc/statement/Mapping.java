@@ -63,7 +63,6 @@ public class Mapping extends AbstractSqlJdbc
   protected static Field mapFields(Field inOut, ResultSet inRs) throws SQLException
   {
     mapField(inOut, inRs);
-    mapFields_(inOut, inRs);
 
     return inOut;
   }
@@ -73,12 +72,6 @@ public class Mapping extends AbstractSqlJdbc
     inOut.setName(inRs.getString("mName"));
     inOut.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
     inOut.setProperties(valueOf(inRs.getString("mProperties"), new FieldPropertiesParser()));
-  }
-
-  private static void mapFields_(Field inOut, ResultSet inRs) throws SQLException
-  {
-    inOut.setDisplay(inRs.getString("mDisplay"));
-    // inOut.setSort((Integer) inRs.getObject("mSort"));
   }
 
   protected static Value mapValue(Value inOut, ResultSet inRs) throws SQLException
@@ -94,7 +87,6 @@ public class Mapping extends AbstractSqlJdbc
     Field field = new Field();
     field.setId(inRs.getLong("mFId"));
     mapField_(field, inRs);
-    mapFields_(field, inRs);
 
     inOut.setField(field);
 

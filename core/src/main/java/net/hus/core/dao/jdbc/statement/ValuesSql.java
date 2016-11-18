@@ -76,7 +76,7 @@ public class ValuesSql extends Mapping
     mSelectKeyField.compile();
   }
 
-  // TODO
+  // TODO handle oneValue
   public void insertUpdate(List<Value> inList)
   {
     mBatchUpdate.reset();

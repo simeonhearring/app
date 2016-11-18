@@ -125,6 +125,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     BLANK(SM),
     TABLE(SM),
     FIELD(SM),
+    LOOKUP_GROUP(SM),
     FIELD_GROUP(SM),
     COMPONENT(SM),
     UNKNOWN(SM),

@@ -41,4 +41,11 @@ public class LookupSqlTest extends MySqlCoreDsTest
     List<Lookup> results = mSql.selectXL(VALUE_TABLE);
     Assert.assertEquals(1, results.size());
   }
+
+  @Test
+  public void testSelecGroups()
+  {
+    List<String> results = mSql.selectGrps();
+    Assert.assertEquals(true, results.size() > 5);
+  }
 }
