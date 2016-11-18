@@ -527,7 +527,7 @@ public class Field extends AbstractModel
     @Override
     public String display()
     {
-      return StringUtil.toTitle(name().replaceAll("_", ""));
+      return StringUtil.toTitle(name().replaceAll("_", " "));
     }
   }
 

@@ -128,7 +128,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   public void update(DataType inType, String inValue)
   {
     mField.update(inType, inValue);
-    mDisplay.notify("Updated... " + inType.display() + " with " + inValue + ".");
+    mDisplay.notify("Updated ... " + inType.display() + " [" + inValue + "].");
   }
 
   public FieldsDisplay getDisplay()
