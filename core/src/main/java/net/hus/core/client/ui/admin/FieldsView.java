@@ -1,5 +1,6 @@
 package net.hus.core.client.ui.admin;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,8 +24,10 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -63,7 +66,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   Span mLong, mShort;
 
   @UiField
-  Span mFormat;
+  Span mStorageFormatEx;
 
   @UiField
   Span mLookupGroupText;
@@ -72,7 +75,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   Icon mSave0, mAdd0, mRefresh0;
 
   @UiField
-  TextBox mAddName;
+  TextBox mAddName, mStorageFormat;
 
   @UiField
   ListBox mAddType, mLookupLocation;
@@ -113,7 +116,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
         "mSave0",
         "mRefresh0"
       })
-  public void clicked(ClickEvent inEvent)
+  public void onClicked(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
@@ -132,20 +135,42 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
 
   @UiHandler(
       {
-        "mSelect"
+        "mSelect",
+        "mStorageFormat"
       })
-  public void change(ValueChangeEvent<String> inEvent)
+  public void onValueChange(ValueChangeEvent<String> inEvent)
   {
-    mAction.select(toLong(inEvent.getValue()));
+    if (mSelect.equals(inEvent.getSource()))
+    {
+      mAction.select(toLong(inEvent.getValue()));
+    }
+    else if (mStorageFormat.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.DATE_STORAGE_FORMAT, mStorageFormat.getText());
+    }
   }
 
   @UiHandler(
       {
         "mLookupLocation"
       })
-  public void change(ChangeEvent inEvent)
+  public void onChange(ChangeEvent inEvent)
   {
-    mAction.update(DataType.LOOKUP_LOC, mLookupLocation.getSelectedValue());
+    mAction.update(DataType.LOOKUP_LOCATION, mLookupLocation.getSelectedValue());
+  }
+
+  @UiHandler(
+      {
+        "mStorageFormat"
+      })
+  public void onKeyUp(KeyUpEvent inEvent)
+  {
+    formatExample(mStorageFormat, mStorageFormatEx);
+  }
+
+  private void formatExample(TextBox inText, Span inExample)
+  {
+    inExample.setText(DateTimeFormat.getFormat(inText.getText()).format(new Date()));
   }
 
   @Override
@@ -173,7 +198,11 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     mShort.setText(inField.getDisplayShort());
 
     // date
+    mStorageFormat.setValue(inField.getDateFormat());
+    formatExample(mStorageFormat, mStorageFormatEx);
+
     // array
+
     // lookup
     setEnumValueToListBox(inField.getLookupLocation(), mLookupLocation);
 
@@ -192,7 +221,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
         String text = box.getText() + ",";
         if (lookupParameters.indexOf(text) != -1)
         {
-          box.setValue(true, true);
+          check(true, box);
         }
       }
     }
@@ -206,19 +235,11 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
       @Override
       public void onValueChange(ValueChangeEvent<Boolean> inEvent)
       {
+        Boolean checked = inEvent.getValue();
         CheckBox box = (CheckBox) inEvent.getSource();
-        String value = box.getText() + ",";
+        check(checked, box);
 
-        if (inEvent.getValue())
-        {
-          mLookupGroupText.setText(mLookupGroupText.getText() + value);
-        }
-        else
-        {
-          mLookupGroupText.setText(mLookupGroupText.getText().replaceAll(value, ""));
-        }
-
-        mAction.update(DataType.LOOKUP_PARAM, mLookupGroupText.getText());
+        mAction.update(DataType.LOOKUP_PARAMETERS, mLookupGroupText.getText());
       }
     };
 
@@ -297,5 +318,19 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
         {
             mRow0
         };
+  }
+
+  private void check(Boolean inChecked, CheckBox inBox)
+  {
+    inBox.setValue(inChecked);
+    String value = inBox.getText() + ",";
+    if (inChecked)
+    {
+      mLookupGroupText.setText(mLookupGroupText.getText() + value);
+    }
+    else
+    {
+      mLookupGroupText.setText(mLookupGroupText.getText().replaceAll(value, ""));
+    }
   }
 }

@@ -95,8 +95,12 @@
 							<b:TabPane fade="true" b:id="tab6">
 								<b:Well size="LARGE">
 									<b:FormGroup>
-										<b:FormLabel text="Format:" addStyleNames="{style.pad}" />
-										<b.html:Span ui:field="mFormat" />
+										<b:FormLabel text="Storage format:" addStyleNames="{style.pad}" />
+										<b:TextBox ui:field="mStorageFormat" />
+									</b:FormGroup>
+									<b:FormGroup>
+										<b:FormLabel text="Example:" addStyleNames="{style.pad}" />
+										<b.html:Span ui:field="mStorageFormatEx" />
 									</b:FormGroup>
 								</b:Well>
 							</b:TabPane>
@@ -111,7 +115,7 @@
 								<b:Well size="LARGE">
 									<b:FormGroup>
 										<b:FormLabel text="Location:" addStyleNames="{style.pad}" />
-										<b:ListBox ui:field="mLookupLocation"/>
+										<b:ListBox ui:field="mLookupLocation" />
 									</b:FormGroup>
 									<b:FormGroup>
 										<b:FormLabel text="Parameters:" addStyleNames="{style.pad}" />

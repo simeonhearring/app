@@ -502,13 +502,13 @@ public class Field extends AbstractModel
       case DISPLAY_SHORT:
         mProperties.mDisplay.setShort(inValue);
         break;
-      case DATE_FORMAT:
+      case DATE_STORAGE_FORMAT:
         mProperties.getDateTime().setFormat(inValue);
         break;
-      case LOOKUP_PARAM:
+      case LOOKUP_PARAMETERS:
         mProperties.getLookup().setParameters(inValue);
         break;
-      case LOOKUP_LOC:
+      case LOOKUP_LOCATION:
         mProperties.getLookup().setLocation(EnumUtil.valueOf(inValue, Lookup.Location.values()));
         break;
       default:
@@ -516,13 +516,19 @@ public class Field extends AbstractModel
     }
   }
 
-  public enum DataType
+  public enum DataType implements EnumDisplay
   {
     DISPLAY_LONG,
     DISPLAY_SHORT,
-    DATE_FORMAT,
-    LOOKUP_PARAM,
-    LOOKUP_LOC
+    DATE_STORAGE_FORMAT,
+    LOOKUP_PARAMETERS,
+    LOOKUP_LOCATION;
+
+    @Override
+    public String display()
+    {
+      return StringUtil.toTitle(name().replaceAll("_", ""));
+    }
   }
 
   public String getDisplayLong()
