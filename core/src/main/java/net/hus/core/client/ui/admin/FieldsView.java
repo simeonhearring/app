@@ -217,9 +217,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
       {
         CheckBox box = (CheckBox) it.next();
         box.setValue(false);
-
-        String text = box.getText() + ",";
-        if (lookupParameters.indexOf(text) != -1)
+        if (lookupParameters.indexOf(box.getText() + ",") != -1)
         {
           check(true, box);
         }
@@ -235,10 +233,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
       @Override
       public void onValueChange(ValueChangeEvent<Boolean> inEvent)
       {
-        Boolean checked = inEvent.getValue();
-        CheckBox box = (CheckBox) inEvent.getSource();
-        check(checked, box);
-
+        check(inEvent.getValue(), (CheckBox) inEvent.getSource());
         mAction.update(DataType.LOOKUP_PARAMETERS, mLookupGroupText.getText());
       }
     };
