@@ -17,6 +17,8 @@ public class LookupSql extends Mapping
   private BatchSqlUpdate mBatchUpsert;
   private MappingSqlQuery<Lookup> mSelect;
 
+  private MappingSqlQuery<String> mSelectGrps;
+
   private BatchSqlUpdate mBatchUpsertXL;
   private MappingSqlQuery<Lookup> mSelectXLgn;
   private MappingSqlQuery<Lookup> mSelectXLg;
@@ -43,6 +45,17 @@ public class LookupSql extends Mapping
     };
     mSelect.setTypes(select.types());
     mSelect.compile();
+
+    Statement selectGrps = mStmts.getStatement("SELECT_GRPS");
+    mSelectGrps = new MappingSqlQuery<String>(inDataSource, selectGrps.getSql())
+    {
+      @Override
+      protected String mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return inRs.getString("mGroup");
+      }
+    };
+    mSelectGrps.compile();
 
     mBatchUpsertXL = newBatchUpdate(inDataSource, "UPSERT_XL");
 
@@ -114,6 +127,12 @@ public class LookupSql extends Mapping
   public List<Lookup> selectXL(String inGroup)
   {
     List<Lookup> ret = mSelectXLg.execute(params(inGroup));
+    return ret;
+  }
+
+  public List<String> selectGrps()
+  {
+    List<String> ret = mSelectGrps.execute();
     return ret;
   }
 

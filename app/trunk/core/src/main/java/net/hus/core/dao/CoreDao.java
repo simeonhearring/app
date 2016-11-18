@@ -20,4 +20,6 @@ public interface CoreDao
   AppProfile profile_app(String inName);
 
   Components components(String inComponentName);
+
+  void field2lookup();
 }

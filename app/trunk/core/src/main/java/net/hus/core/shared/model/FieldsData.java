@@ -12,6 +12,10 @@ public class FieldsData implements Serializable
 
   private List<Lookup> mFields;
 
+  private List<String> mLookupGroups;
+
+  private List<String> mUnique;
+
   private Field mField;
 
   public void setFields(List<Lookup> inFields)
@@ -37,6 +41,7 @@ public class FieldsData implements Serializable
   public Map<String, List<Lookup>> data()
   {
     Map<String, List<Lookup>> ret = new HashMap<>();
+
     for (Lookup value : mFields)
     {
       String key = value.getAbbreviation();
@@ -49,4 +54,27 @@ public class FieldsData implements Serializable
     return ret;
   }
 
+  public boolean exists(String inName)
+  {
+    if (mUnique == null)
+    {
+      mUnique = new ArrayList<>();
+      for (Lookup value : mFields)
+      {
+        mUnique.add(value.getName());
+      }
+    }
+
+    return mUnique.contains(Field.officialName(inName));
+  }
+
+  public List<String> getLookupGroups()
+  {
+    return mLookupGroups;
+  }
+
+  public void setLookupGroups(List<String> inLookupGroups)
+  {
+    mLookupGroups = inLookupGroups;
+  }
 }
