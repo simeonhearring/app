@@ -16,34 +16,29 @@
 		<b:Column size="SM_12" addStyleNames="text-left">
 			<b:Row>
 				<b:Column size="SM_3">
-					<b:Tooltip text="Add New">
-						<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" />
-					</b:Tooltip>
 					<b:Well size="LARGE">
-						<b:Heading text="Add New Field" size="H6" />
+						<b.html:Paragraph emphasis="INFO" text="EDIT FIELD PROPERTIES" />
+						<b:FormGroup>
+							<b:FormLabel text="Select Field:" addStyleNames="{style.pad}" />
+							<b.select:Select ui:field="mFields" liveSearch="true" visible="true" />
+						</b:FormGroup>
+					</b:Well>
+					<b:Well size="LARGE">
+						<b.html:Paragraph emphasis="INFO" text="CREATE NEW FIELD" />
 						<b:FormGroup ui:field="mAddNameGrp">
 							<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
-							<b:TextBox ui:field="mAddName" placeholder="Enter Field Name" allowBlank="false" validateOnBlur="true" />
+							<b:Input ui:field="mAddName" placeholder="Enter Field Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 						</b:FormGroup>
 						<b:FormGroup>
 							<b:FormLabel text="Type:" addStyleNames="{style.pad}" />
 							<b:ListBox ui:field="mAddType" />
 						</b:FormGroup>
-					</b:Well>
-					<b:Well size="LARGE">
-						<b:FormGroup>
-							<b:Heading text="Edit Field Properties" size="H6" />
-							<b.select:Select ui:field="mFields" liveSearch="true" visible="true" />
-						</b:FormGroup>
+						<b:Tooltip text="Add New">
+							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
+						</b:Tooltip>
 					</b:Well>
 				</b:Column>
 				<b:Column size="SM_9">
-					<b:Tooltip text="Save">
-						<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="115" paddingRight="10" />
-					</b:Tooltip>
-					<b:Tooltip text="Refresh">
-						<b:Icon ui:field="mRefresh0" type="REFRESH" />
-					</b:Tooltip>
 					<b:TabPanel tabPosition="LEFT">
 						<b:NavTabs>
 							<b:TabListItem dataTarget="#tab4" text="Name" active="true" ui:field="mNameTab" />
@@ -55,6 +50,7 @@
 						<b:TabContent>
 							<b:TabPane fade="true" in="true" active="true" b:id="tab4">
 								<b:Well size="LARGE">
+									<b.html:Paragraph emphasis="INFO" text="FIELD NAME" />
 									<b:FormGroup>
 										<b:FormLabel text="ID:" addStyleNames="{style.pad}" />
 										<b.html:Span ui:field="mId" />
@@ -71,30 +67,45 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab5">
 								<b:Well size="LARGE">
+									<b.html:Paragraph emphasis="INFO" text="FIELD DISPLAY" />
 									<b:FormGroup>
 										<b:FormLabel text="Long:" addStyleNames="{style.pad}" />
-										<b.html:Span ui:field="mLong" styleName="{style.spanformat}" />
+										<b:Input ui:field="mLong" type="TEXT" />
 									</b:FormGroup>
 									<b:FormGroup>
 										<b:FormLabel text="Short:" addStyleNames="{style.pad}" />
-										<b.html:Span ui:field="mShort" styleName="{style.spanformat}" />
+										<b:Input ui:field="mShort" type="TEXT" />
 									</b:FormGroup>
+									<b:Tooltip text="Save">
+										<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+									</b:Tooltip>
+									<b:Tooltip text="Refresh">
+										<b:Icon ui:field="mRefresh0" type="REFRESH" addStyleNames="pull-right" />
+									</b:Tooltip>
 								</b:Well>
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab6">
 								<b:Well size="LARGE">
+									<b.html:Paragraph emphasis="INFO" text="FIELD DATE" />
 									<b:FormGroup>
 										<b:FormLabel text="Storage format:" addStyleNames="{style.pad}" />
-										<b:TextBox ui:field="mStorageFormat" />
+										<b:Input ui:field="mStorageFormat" type="TEXT" />
 									</b:FormGroup>
 									<b:FormGroup>
 										<b:FormLabel text="Example:" addStyleNames="{style.pad}" />
 										<b.html:Span ui:field="mStorageFormatEx" />
 									</b:FormGroup>
+									<b:Tooltip text="Save">
+										<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+									</b:Tooltip>
+									<b:Tooltip text="Refresh">
+										<b:Icon ui:field="mRefresh1" type="REFRESH" addStyleNames="pull-right" />
+									</b:Tooltip>
 								</b:Well>
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab7">
 								<b:Well size="LARGE">
+									<b.html:Paragraph emphasis="INFO" text="FIELD ARRAY" />
 									<b:Row>
 										<b:Column size="SM_6">
 											<b:FormGroup>
@@ -149,10 +160,17 @@
 											</b:FormGroup>
 										</b:Column>
 									</b:Row>
+									<b:Tooltip text="Save">
+										<b:Icon ui:field="mSave2" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+									</b:Tooltip>
+									<b:Tooltip text="Refresh">
+										<b:Icon ui:field="mRefresh2" type="REFRESH" addStyleNames="pull-right" />
+									</b:Tooltip>
 								</b:Well>
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab8">
 								<b:Well size="LARGE">
+									<b.html:Paragraph emphasis="INFO" text="FIELD LOOKUP" />
 									<b:FormGroup>
 										<b:FormLabel text="Location:" addStyleNames="{style.pad}" />
 										<b:ListBox ui:field="mLookupLocation" />
@@ -162,6 +180,12 @@
 										<b.html:Span ui:field="mLookupGroupText" />
 										<b.gwt:FlowPanel ui:field="mLookupGroup" />
 									</b:FormGroup>
+									<b:Tooltip text="Save">
+										<b:Icon ui:field="mSave3" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+									</b:Tooltip>
+									<b:Tooltip text="Refresh">
+										<b:Icon ui:field="mRefresh3" type="REFRESH" addStyleNames="pull-right" />
+									</b:Tooltip>
 								</b:Well>
 							</b:TabPane>
 						</b:TabContent>
