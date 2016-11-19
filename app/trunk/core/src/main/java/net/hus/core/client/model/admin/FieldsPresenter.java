@@ -66,12 +66,12 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   private void addFields(Map<String, List<Lookup>> inData, Field inField,
       List<String> inLookupGroups)
   {
-    mDisplay.clear();
+    mDisplay.clearFields();
     for (Entry<String, List<Lookup>> value : inData.entrySet())
     {
-      mDisplay.add(value.getKey(), value.getValue());
+      mDisplay.addFields(value.getKey(), value.getValue());
     }
-    mDisplay.refresh();
+    mDisplay.refreshFields();
 
     addField(inField);
 

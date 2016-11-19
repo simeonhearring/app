@@ -1,7 +1,6 @@
 package net.hus.core.client.ui.admin;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
@@ -13,6 +12,7 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TabListItem;
 import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.form.validator.BlankValidator;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
@@ -20,6 +20,7 @@ import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.extras.select.client.ui.OptGroup;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
+import org.gwtbootstrap3.extras.toggleswitch.client.ui.ToggleSwitch;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
@@ -42,10 +43,12 @@ import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.ui.page.AbstractRowView;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
+import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page.Section;
 
-public class FieldsView extends AbstractRowView implements FieldsDisplay, ScheduledCommand
+public class FieldsView extends AbstractRowView
+implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeHandler
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -60,7 +63,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   Column mL01, mC01, mR01;
 
   @UiField
-  Select mSelect;
+  Select mFields;
 
   @UiField
   Span mId, mName, mType;
@@ -81,7 +84,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   TextBox mAddName, mStorageFormat;
 
   @UiField
-  ListBox mAddType, mLookupLocation;
+  ListBox mAddType, mLookupLocation, mHeadSize;
 
   @UiField
   FormGroup mAddNameGrp;
@@ -95,6 +98,12 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   @UiField
   Span mSize;
 
+  @UiField
+  Input mBottomRow, mAltEven, mAltOdd;
+
+  @UiField
+  ToggleSwitch mAltColor;
+
   private Action mAction;
 
   public FieldsView()
@@ -102,9 +111,15 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     initWidget(BINDER.createAndBindUi(this));
     mC01.setId(Section.Name.ADMINC01.name());
 
-    addEnumToListBox(Field.Type.values(), mAddType);
+    addEnumDToListBox(Field.Type.values(), mAddType);
+
+    addEnumDToListBox(Field.Lookup.Location.values(), mLookupLocation);
+
+    addEnumToListBox(HeadingSize.values(), mHeadSize);
 
     mAddName.addValidator(new BlankValidator<String>());
+
+    mAltColor.addValueChangeHandler(this);
 
     Scheduler.get().scheduleDeferred(this);
   }
@@ -112,8 +127,8 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   @Override
   public void execute()
   {
-    addHandler(DataType.DISPLAY_LONG, mLong);
-    addHandler(DataType.DISPLAY_SHORT, mShort);
+    addSpanHandler(DataType.DISPLAY_LONG, mLong);
+    addSpanHandler(DataType.DISPLAY_SHORT, mShort);
   }
 
   @UiHandler(
@@ -124,7 +139,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
         "mPlus",
         "mMinus"
       })
-  public void onClicked(ClickEvent inEvent)
+  public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
@@ -153,12 +168,15 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
 
   @UiHandler(
       {
-        "mSelect",
-        "mStorageFormat"
+        "mFields",
+        "mStorageFormat",
+        "mAltEven",
+        "mAltOdd",
+        "mBottomRow"
       })
-  public void onValueChange(ValueChangeEvent<String> inEvent)
+  public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
-    if (mSelect.equals(inEvent.getSource()))
+    if (mFields.equals(inEvent.getSource()))
     {
       mAction.select(toLong(inEvent.getValue()));
     }
@@ -166,29 +184,44 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     {
       mAction.update(DataType.DATE_STORAGE_FORMAT, mStorageFormat.getText());
     }
+    else if (mAltEven.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.ARRAY_ALTERNATE_COLOR_EVEN, mAltEven.getText());
+    }
+    else if (mAltOdd.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.ARRAY_ALTERNATE_COLOR_ODD, mAltOdd.getText());
+    }
+    else if (mBottomRow.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.ARRAY_BOTTOM_ROW_AT, mBottomRow.getText());
+    }
   }
 
   @UiHandler(
       {
-        "mLookupLocation"
+        "mLookupLocation",
+        "mHeadSize"
       })
-  public void onChange(ChangeEvent inEvent)
+  public void onChangeBind(ChangeEvent inEvent)
   {
-    mAction.update(DataType.LOOKUP_LOCATION, mLookupLocation.getSelectedValue());
+    if (mLookupLocation.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.LOOKUP_LOCATION, mLookupLocation.getSelectedValue());
+    }
+    else if (mHeadSize.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.ARRAY_HEADING_SIZE, mHeadSize.getSelectedValue());
+    }
   }
 
   @UiHandler(
       {
         "mStorageFormat"
       })
-  public void onKeyUp(KeyUpEvent inEvent)
+  public void onKeyUpBind(KeyUpEvent inEvent)
   {
     formatExample(mStorageFormat, mStorageFormatEx);
-  }
-
-  private void formatExample(TextBox inText, Span inExample)
-  {
-    inExample.setText(DateTimeFormat.getFormat(inText.getText()).format(new Date()));
   }
 
   @Override
@@ -221,27 +254,94 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
 
     // array
     addArrayLabels(inField.getArraySize(), false);
+    setEnumValueToListBox(inField.getArrayHeadSize(), mHeadSize);
+    mAltEven.setValue(inField.getArrayAltEven());
+    mAltOdd.setValue(inField.getArrayAltOdd());
+    mAltColor.setValue(inField.isArrayAlt());
+    mBottomRow.setValue(inField.getArrayBottomRow());
 
     // lookup
-    setEnumValueToListBox(inField.getLookupLocation(), mLookupLocation);
-    mLookupGroupText.setText(null);
-    checkBoxes(inField.getLookupParameters());
+    addLookup(inField.getLookupParameters(), inField.getLookupLocation(), inField);
+  }
+
+  @Override
+  public void onChange(ChangeEvent inEvent)
+  {
+    mAction.updateArray(getArrayLabels());
+  }
+
+  @Override
+  public void onValueChange(ValueChangeEvent<Boolean> inEvent)
+  {
+    Object source = inEvent.getSource();
+    if (mAltColor.equals(source))
+    {
+      mAction.update(DataType.ARRAY_ALTERNATE_COLOR, String.valueOf(mAltColor.getValue()));
+    }
+    else if (source instanceof CheckBox)
+    {
+      CheckBox box = (CheckBox) source;
+      lookupGroup(inEvent.getValue(), box, box.getText() + ",");
+      mAction.update(DataType.LOOKUP_PARAMETERS, mLookupGroupText.getText());
+    }
+  }
+
+  @Override
+  public void addLookup(List<String> inLookupGroups)
+  {
+    mLookupGroup.clear();
+    for (String value : inLookupGroups)
+    {
+      CheckBox box = new CheckBox(value);
+      box.setWordWrap(false);
+      box.addValueChangeHandler(this);
+      mLookupGroup.add(box);
+    }
+  }
+
+  @Override
+  public void clearFields()
+  {
+    mFields.clear();
+  }
+
+  @Override
+  public void addFields(String inType, List<Lookup> inFields)
+  {
+    OptGroup type = new OptGroup();
+    type.setLabel(inType);
+
+    for (Lookup value : inFields)
+    {
+      Option field = new Option();
+      field.setText(value.getDisplay());
+      field.setValue(toString(value.getAltId()));
+      type.add(field);
+    }
+    mFields.add(type);
+  }
+
+  @Override
+  public void refreshFields()
+  {
+    mFields.refresh();
+  }
+
+  @Override
+  public Row[] getRow()
+  {
+    return new Row[]
+        {
+            mRow0
+        };
   }
 
   private void addArrayLabels(int inSize, boolean inUpdate)
   {
     mSize.setText(String.valueOf(inSize));
 
-    ChangeHandler handler = new ChangeHandler()
-    {
-      @Override
-      public void onChange(ChangeEvent inEvent)
-      {
-        mAction.updateArray(getLabels());
-      }
-    };
-
     BlankValidator<String> bv = new BlankValidator<>();
+
     mArrayLabel.clear();
     for (int i = 0; i < inSize; i++)
     {
@@ -250,42 +350,17 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
       input.addValidator(bv);
       input.setPlaceholder("Enter label");
       input.setText(mAction.arrayLabel(i));
-      input.addChangeHandler(handler);
+      input.addChangeHandler(this);
       mArrayLabel.add(input);
     }
 
     if (inUpdate)
     {
-      mAction.updateArray(getLabels());
+      mAction.updateArray(getArrayLabels());
     }
   }
 
-  @Override
-  public void addLookup(List<String> inLookupGroups)
-  {
-    ValueChangeHandler<Boolean> handler = new ValueChangeHandler<Boolean>()
-    {
-      @Override
-      public void onValueChange(ValueChangeEvent<Boolean> inEvent)
-      {
-        check(inEvent.getValue(), (CheckBox) inEvent.getSource());
-        mAction.update(DataType.LOOKUP_PARAMETERS, mLookupGroupText.getText());
-      }
-    };
-
-    mLookupGroup.clear();
-    for (String value : inLookupGroups)
-    {
-      CheckBox box = new CheckBox(value);
-      box.setWordWrap(false);
-      box.addValueChangeHandler(handler);
-      mLookupGroup.add(box);
-    }
-
-    addEnumToListBox(Field.Lookup.Location.values(), mLookupLocation);
-  }
-
-  private void addHandler(final DataType inType, final Span inSpan)
+  private void addSpanHandler(final DataType inType, final Span inSpan)
   {
     Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
     Event.setEventListener(inSpan.getElement(), new EventListener()
@@ -303,29 +378,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     inSpan.getElement().setAttribute("contenteditable", "true");
   }
 
-  @Override
-  public void clear()
-  {
-    mSelect.clear();
-  }
-
-  @Override
-  public void add(String inType, List<Lookup> inFields)
-  {
-    OptGroup type = new OptGroup();
-    type.setLabel(inType);
-
-    for (Lookup value : inFields)
-    {
-      Option field = new Option();
-      field.setText(value.getDisplay());
-      field.setValue(toString(value.getAltId()));
-      type.add(field);
-    }
-    mSelect.add(type);
-  }
-
-  private String[] getLabels()
+  private String[] getArrayLabels()
   {
     String[] ret = new String[mArrayLabel.getWidgetCount()];
     for (int i = 0; i < ret.length; i++)
@@ -333,6 +386,45 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
       ret[i] = ((Input) mArrayLabel.getWidget(i)).getText();
     }
     return ret;
+  }
+
+  private void formatExample(TextBox inText, Span inSpan)
+  {
+    inSpan.setText(DateTimeFormat.getFormat(inText.getText()).format(new Date()));
+  }
+
+  private void addLookup(String inLookupParameters, Location inLocation, Field inField)
+  {
+    setEnumValueToListBox(inLocation, mLookupLocation);
+
+    mLookupGroupText.setText(null);
+
+    if (inLookupParameters != null)
+    {
+      for (int i = 0; i < mLookupGroup.getWidgetCount(); i++)
+      {
+        CheckBox box = (CheckBox) mLookupGroup.getWidget(i);
+        box.setValue(false);
+        String option = box.getText() + ",";
+        if (inLookupParameters.indexOf(option) != -1)
+        {
+          lookupGroup(true, box, option);
+        }
+      }
+    }
+  }
+
+  private void lookupGroup(Boolean inChecked, CheckBox inBox, String inOption)
+  {
+    inBox.setValue(inChecked);
+    if (inChecked)
+    {
+      mLookupGroupText.setText(mLookupGroupText.getText() + inOption);
+    }
+    else
+    {
+      mLookupGroupText.setText(mLookupGroupText.getText().replaceAll(inOption, ""));
+    }
   }
 
   private static String toString(Long inId)
@@ -343,51 +435,5 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   private static Long toLong(String inValue)
   {
     return Long.valueOf(inValue);
-  }
-
-  @Override
-  public void refresh()
-  {
-    mSelect.refresh();
-  }
-
-  @Override
-  public Row[] getRow()
-  {
-    return new Row[]
-        {
-            mRow0
-        };
-  }
-
-  private void checkBoxes(String inLookupParameters)
-  {
-    if (inLookupParameters != null)
-    {
-      Iterator<Widget> it = mLookupGroup.iterator();
-      while (it.hasNext())
-      {
-        CheckBox box = (CheckBox) it.next();
-        box.setValue(false);
-        if (inLookupParameters.indexOf(box.getText() + ",") != -1)
-        {
-          check(true, box);
-        }
-      }
-    }
-  }
-
-  private void check(Boolean inChecked, CheckBox inBox)
-  {
-    inBox.setValue(inChecked);
-    String value = inBox.getText() + ",";
-    if (inChecked)
-    {
-      mLookupGroupText.setText(mLookupGroupText.getText() + value);
-    }
-    else
-    {
-      mLookupGroupText.setText(mLookupGroupText.getText().replaceAll(value, ""));
-    }
   }
 }

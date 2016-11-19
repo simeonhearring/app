@@ -28,11 +28,11 @@ public interface FieldsDisplay extends PageDisplay
     void updateArray(String[] inLabels);
   }
 
-  void add(String inType, List<Lookup> inFields);
+  void addFields(String inType, List<Lookup> inFields);
 
-  void refresh();
+  void refreshFields();
 
-  void clear();
+  void clearFields();
 
   void set(Field inField);
 

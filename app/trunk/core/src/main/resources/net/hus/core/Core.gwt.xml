@@ -9,6 +9,8 @@
 
 	<inherits name='org.gwtbootstrap3.extras.typeahead.Typeahead' />
 
+	<inherits name='org.gwtbootstrap3.extras.toggleswitch.ToggleSwitch' />
+
 	<inherits name='org.gwtbootstrap3.extras.select.Select' />
 
 	<source path='client' />
