@@ -1,7 +1,7 @@
 package net.hus.core.client.model.main;
 
 import net.hus.core.client.common.PageDisplay;
-import net.hus.core.client.model.admin.FieldsPresenter;
+import net.hus.core.client.model.admin.AdminPresenter;
 import net.hus.core.shared.model.Page;
 
 public class PageLocater
@@ -22,7 +22,7 @@ public class PageLocater
         ret = inDisplay.getMarketing();
         break;
       case ADMIN:
-        ret = new FieldsPresenter(inDisplay.getAdmin()).getDisplay();
+        ret = new AdminPresenter(inDisplay.getAdmin()).getDisplay();
         break;
       case LOGIN:
         ret = inDisplay.getLogin();
