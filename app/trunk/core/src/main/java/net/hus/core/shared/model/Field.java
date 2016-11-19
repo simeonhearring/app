@@ -249,6 +249,10 @@ public class Field extends AbstractModel
 
     public Properties getProperties()
     {
+      if (mProperties == null)
+      {
+        mProperties = new Properties();
+      }
       return mProperties;
     }
 
@@ -693,7 +697,7 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  public boolean isArrayAlt()
+  public Boolean isArrayAlt()
   {
     Boolean ret = null;
     if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)

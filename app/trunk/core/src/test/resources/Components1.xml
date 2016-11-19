@@ -16,7 +16,7 @@
 			<FormGroup>
 				<Collection>
 					<FormLabel KEY="FL00_15" isHtml="false" />
-					<Input KEY="FV00_15" type="TEXT" />
+					<Input KEY="FV00_15" type="PASSWORD" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>

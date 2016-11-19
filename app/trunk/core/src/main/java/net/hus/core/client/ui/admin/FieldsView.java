@@ -4,12 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
-import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
-import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TabListItem;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
@@ -37,17 +35,18 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.FieldsDisplay;
-import net.hus.core.client.ui.page.AbstractRowView;
+import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
-import net.hus.core.shared.model.Page.Section;
+import net.hus.core.shared.model.Page.Section.Name;
 
-public class FieldsView extends AbstractRowView
+public class FieldsView extends AbstractView
 implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeHandler
 {
   private static final Binder BINDER = GWT.create(Binder.class);
@@ -55,12 +54,6 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
   interface Binder extends UiBinder<Widget, FieldsView>
   {
   }
-
-  @UiField
-  Row mRow0;
-
-  @UiField
-  Column mL01, mC01, mR01;
 
   @UiField
   Select mFields;
@@ -109,7 +102,6 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
   public FieldsView()
   {
     initWidget(BINDER.createAndBindUi(this));
-    mC01.setId(Section.Name.ADMINC01.name());
 
     addEnumDToListBox(Field.Type.values(), mAddType);
 
@@ -327,15 +319,6 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
     mFields.refresh();
   }
 
-  @Override
-  public Row[] getRow()
-  {
-    return new Row[]
-        {
-            mRow0
-        };
-  }
-
   private void addArrayLabels(int inSize, boolean inUpdate)
   {
     mSize.setText(String.valueOf(inSize));
@@ -435,5 +418,12 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
   private static Long toLong(String inValue)
   {
     return Long.valueOf(inValue);
+  }
+
+  @Override
+  public void add(Name inSection, IsWidget inComponent)
+  {
+    // TODO Auto-generated method stub
+    
   }
 }
