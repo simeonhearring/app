@@ -6,6 +6,7 @@ import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.util.EnumUtil;
+import net.hus.core.shared.util.NumberUtil;
 import net.hus.core.shared.util.StringUtil;
 
 public class Field extends AbstractModel
@@ -511,6 +512,12 @@ public class Field extends AbstractModel
       case LOOKUP_LOCATION:
         mProperties.getLookup().setLocation(EnumUtil.valueOf(inValue, Lookup.Location.values()));
         break;
+      case ARRAY_LABELS:
+        mProperties.getArray().setLabels(inValue.split(","));
+        break;
+      case ARRAY_SIZE:
+        mProperties.getArray().setSize(NumberUtil.toInteger(inValue));
+        break;
       default:
         break;
     }
@@ -522,7 +529,9 @@ public class Field extends AbstractModel
     DISPLAY_SHORT,
     DATE_STORAGE_FORMAT,
     LOOKUP_PARAMETERS,
-    LOOKUP_LOCATION;
+    LOOKUP_LOCATION,
+    ARRAY_SIZE,
+    ARRAY_LABELS;
 
     @Override
     public String display()
@@ -590,6 +599,35 @@ public class Field extends AbstractModel
     if (mProperties != null && mProperties.mLookup != null)
     {
       ret = mProperties.mLookup.mLocation;
+    }
+    return ret;
+  }
+
+  public int getArraySize()
+  {
+    int ret = 1;
+    if (mProperties != null && mProperties.mArray != null)
+    {
+      ret = NumberUtil.toInt(mProperties.mArray.mSize, 1);
+    }
+    return ret;
+  }
+
+  public String getArrayLabel(int inPos)
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mLabels != null)
+    {
+      String[] labels = mProperties.mArray.mLabels;
+      if (labels.length > inPos)
+      {
+        ret = labels[inPos];
+      }
+    }
+
+    if (ret == null)
+    {
+      ret = "--enter label--";
     }
     return ret;
   }

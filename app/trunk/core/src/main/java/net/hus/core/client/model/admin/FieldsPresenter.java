@@ -57,6 +57,12 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     mDisplay.set(mField);
   }
 
+  @Override
+  public String arrayLabel(int inPos)
+  {
+    return mField.getArrayLabel(inPos);
+  }
+
   private void addFields(Map<String, List<Lookup>> inData, Field inField,
       List<String> inLookupGroups)
   {
@@ -134,5 +140,17 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   public FieldsDisplay getDisplay()
   {
     return mDisplay;
+  }
+
+  @Override
+  public void updateArray(String[] inLabels)
+  {
+    StringBuilder sb = new StringBuilder();
+    for (String value : inLabels)
+    {
+      sb.append(value).append(",");
+    }
+    update(DataType.ARRAY_LABELS, sb.toString());
+    update(DataType.ARRAY_SIZE, String.valueOf(inLabels.length));
   }
 }

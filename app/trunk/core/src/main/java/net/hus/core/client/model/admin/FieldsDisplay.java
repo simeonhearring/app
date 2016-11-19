@@ -22,6 +22,10 @@ public interface FieldsDisplay extends PageDisplay
     void select(Long inFieldId);
 
     void update(DataType inType, String inValue);
+
+    String arrayLabel(int inPos);
+
+    void updateArray(String[] inLabels);
   }
 
   void add(String inType, List<Lookup> inFields);

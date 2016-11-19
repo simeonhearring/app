@@ -107,7 +107,18 @@
 							<b:TabPane fade="true" b:id="tab7">
 								<b:Well size="LARGE">
 									<b:FormGroup>
-										<b:FormLabel text="Array:" addStyleNames="{style.pad}" />
+										<b:FormLabel text="Size:" addStyleNames="{style.pad}" />
+										<b.html:Span ui:field="mSize" />
+										<b:Tooltip text="Add">
+											<b:Icon ui:field="mPlus" type="PLUS" paddingLeft="10" paddingRight="10" />
+										</b:Tooltip>
+										<b:Tooltip text="Remove">
+											<b:Icon ui:field="mMinus" type="MINUS" />
+										</b:Tooltip>
+									</b:FormGroup>
+									<b:FormGroup>
+										<b:FormLabel text="Labels:" addStyleNames="{style.pad}" />
+										<b.gwt:FlowPanel ui:field="mArrayLabel" />
 									</b:FormGroup>
 								</b:Well>
 							</b:TabPane>

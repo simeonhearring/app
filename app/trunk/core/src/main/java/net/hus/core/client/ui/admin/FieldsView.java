@@ -8,10 +8,12 @@ import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.Icon;
+import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TabListItem;
 import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.form.validator.BlankValidator;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Span;
@@ -23,6 +25,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -72,7 +75,7 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   Span mLookupGroupText;
 
   @UiField
-  Icon mSave0, mAdd0, mRefresh0;
+  Icon mSave0, mAdd0, mRefresh0, mPlus, mMinus;
 
   @UiField
   TextBox mAddName, mStorageFormat;
@@ -87,7 +90,10 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
   TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
 
   @UiField
-  FlowPanel mLookupGroup;
+  FlowPanel mLookupGroup, mArrayLabel;
+
+  @UiField
+  Span mSize;
 
   private Action mAction;
 
@@ -114,7 +120,9 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
       {
         "mAdd0",
         "mSave0",
-        "mRefresh0"
+        "mRefresh0",
+        "mPlus",
+        "mMinus"
       })
   public void onClicked(ClickEvent inEvent)
   {
@@ -130,6 +138,16 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     else if (mRefresh0.equals(inEvent.getSource()))
     {
       mAction.refresh();
+    }
+    else if (mPlus.equals(inEvent.getSource()))
+    {
+      int size = mArrayLabel.getWidgetCount() + 1;
+      addArrayLabels(size, true);
+    }
+    else if (mMinus.equals(inEvent.getSource()))
+    {
+      int size = mArrayLabel.getWidgetCount() - 1;
+      addArrayLabels(size, true);
     }
   }
 
@@ -202,26 +220,43 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     formatExample(mStorageFormat, mStorageFormatEx);
 
     // array
+    addArrayLabels(inField.getArraySize(), false);
 
     // lookup
     setEnumValueToListBox(inField.getLookupLocation(), mLookupLocation);
-
     mLookupGroupText.setText(null);
+    checkBoxes(inField.getLookupParameters());
+  }
 
-    String lookupParameters = inField.getLookupParameters();
+  private void addArrayLabels(int inSize, boolean inUpdate)
+  {
+    mSize.setText(String.valueOf(inSize));
 
-    if (lookupParameters != null)
+    ChangeHandler handler = new ChangeHandler()
     {
-      Iterator<Widget> it = mLookupGroup.iterator();
-      while (it.hasNext())
+      @Override
+      public void onChange(ChangeEvent inEvent)
       {
-        CheckBox box = (CheckBox) it.next();
-        box.setValue(false);
-        if (lookupParameters.indexOf(box.getText() + ",") != -1)
-        {
-          check(true, box);
-        }
+        mAction.updateArray(getLabels());
       }
+    };
+
+    BlankValidator<String> bv = new BlankValidator<>();
+    mArrayLabel.clear();
+    for (int i = 0; i < inSize; i++)
+    {
+      Input input = new Input(InputType.TEXT);
+      input.setValidateOnBlur(true);
+      input.addValidator(bv);
+      input.setPlaceholder("Enter label");
+      input.setText(mAction.arrayLabel(i));
+      input.addChangeHandler(handler);
+      mArrayLabel.add(input);
+    }
+
+    if (inUpdate)
+    {
+      mAction.updateArray(getLabels());
     }
   }
 
@@ -290,6 +325,16 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
     mSelect.add(type);
   }
 
+  private String[] getLabels()
+  {
+    String[] ret = new String[mArrayLabel.getWidgetCount()];
+    for (int i = 0; i < ret.length; i++)
+    {
+      ret[i] = ((Input) mArrayLabel.getWidget(i)).getText();
+    }
+    return ret;
+  }
+
   private static String toString(Long inId)
   {
     return String.valueOf(inId);
@@ -313,6 +358,23 @@ public class FieldsView extends AbstractRowView implements FieldsDisplay, Schedu
         {
             mRow0
         };
+  }
+
+  private void checkBoxes(String inLookupParameters)
+  {
+    if (inLookupParameters != null)
+    {
+      Iterator<Widget> it = mLookupGroup.iterator();
+      while (it.hasNext())
+      {
+        CheckBox box = (CheckBox) it.next();
+        box.setValue(false);
+        if (inLookupParameters.indexOf(box.getText() + ",") != -1)
+        {
+          check(true, box);
+        }
+      }
+    }
   }
 
   private void check(Boolean inChecked, CheckBox inBox)
