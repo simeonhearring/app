@@ -13,6 +13,8 @@
 
 	<inherits name='org.gwtbootstrap3.extras.select.Select' />
 
+	<stylesheet src='css/bandtheme.css' />
+
 	<source path='client' />
 	<source path='shared' />
 

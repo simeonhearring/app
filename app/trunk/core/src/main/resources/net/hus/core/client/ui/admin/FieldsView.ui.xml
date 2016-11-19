@@ -2,40 +2,30 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui" xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt"
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui">
 	<ui:style>
-	.row {
-		
-	}
-	
-	.sidenav {
-		padding-top: 20px;
-		background-color: #f1f1f1;
-		height: 100%;
-	}
-	
 	.pad {
 		padding-right: 5px;
 	}
 	</ui:style>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow0" addStyleNames="content {style.row}">
-			<b:Column ui:field="mL01" size="SM_1" addStyleNames="{style.sidenav}"></b:Column>
-			<b:Column ui:field="mC01" size="SM_10" addStyleNames="text-center"></b:Column>
-			<b:Column ui:field="mR01" size="SM_1" addStyleNames="{style.sidenav}"></b:Column>
+		<b:Row ui:field="mRow0" addStyleNames="content">
+			<b:Column ui:field="mL01" size="SM_1" />
+			<b:Column ui:field="mC01" size="SM_10" addStyleNames="text-center" />
+			<b:Column ui:field="mR01" size="SM_1" />
 		</b:Row>
-		<b:Row ui:field="mRow1" addStyleNames="content {style.row}">
-			<b:Column size="SM_1"></b:Column>
+		<b:Row addStyleNames="content">
+			<b:Column size="SM_1" />
 			<b:Column size="SM_10" addStyleNames="text-left">
 				<b:Row>
 					<b:Column size="SM_3">
 						<b:Well size="LARGE">
 							<b:FormGroup>
-								<b:Heading text="Select Field" size="H4" />
+								<b:Heading text="Select Field" size="H6" />
 								<b.select:Select ui:field="mFields" liveSearch="true" visible="true" />
 							</b:FormGroup>
 						</b:Well>
 						<b:Well size="LARGE">
-							<b:Heading text="Add New Field" size="H4" />
+							<b:Heading text="Add New Field" size="H6" />
 							<b:FormGroup ui:field="mAddNameGrp">
 								<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
 								<b:TextBox ui:field="mAddName" placeholder="Enter Field Name" allowBlank="false" validateOnBlur="true" />
@@ -141,7 +131,7 @@
 										</b:Column>
 									</b:Row>
 									<b:Row>
-										<b:Column size="SM_2">
+										<b:Column size="SM_3">
 											<b:FormGroup>
 												<b:FormLabel text="Size:" addStyleNames="{style.pad}" />
 												<b.html:Span ui:field="mSize" />
@@ -153,7 +143,7 @@
 												</b:Tooltip>
 											</b:FormGroup>
 										</b:Column>
-										<b:Column size="SM_10">
+										<b:Column size="SM_9">
 											<b:FormGroup>
 												<b:FormLabel text="Headers:" addStyleNames="{style.pad}" />
 												<b.gwt:FlowPanel ui:field="mArrayLabel" />
@@ -179,7 +169,7 @@
 					</b:Column>
 				</b:Row>
 			</b:Column>
-			<b:Column size="SM_1"></b:Column>
+			<b:Column size="SM_1" />
 		</b:Row>
 	</b:Container>
 </ui:UiBinder>
