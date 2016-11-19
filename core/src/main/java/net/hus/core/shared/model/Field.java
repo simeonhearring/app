@@ -518,6 +518,22 @@ public class Field extends AbstractModel
       case ARRAY_SIZE:
         mProperties.getArray().setSize(NumberUtil.toInteger(inValue));
         break;
+      case ARRAY_HEADING_SIZE:
+        mProperties.getArray().getProperties()
+        .setHeadingSize(EnumUtil.valueOf(inValue, HeadingSize.values()));
+        break;
+      case ARRAY_ALTERNATE_COLOR:
+        mProperties.getArray().getProperties().setAltRow(Boolean.valueOf(inValue));
+        break;
+      case ARRAY_ALTERNATE_COLOR_EVEN:
+        mProperties.getArray().getProperties().setAltEvenColor(inValue);
+        break;
+      case ARRAY_ALTERNATE_COLOR_ODD:
+        mProperties.getArray().getProperties().setAltOddColor(inValue);
+        break;
+      case ARRAY_BOTTOM_ROW_AT:
+        mProperties.getArray().getProperties().setShowBottomAtRow(NumberUtil.toInteger(inValue));
+        break;
       default:
         break;
     }
@@ -531,7 +547,12 @@ public class Field extends AbstractModel
     LOOKUP_PARAMETERS,
     LOOKUP_LOCATION,
     ARRAY_SIZE,
-    ARRAY_LABELS;
+    ARRAY_LABELS,
+    ARRAY_HEADING_SIZE,
+    ARRAY_ALTERNATE_COLOR_ODD,
+    ARRAY_ALTERNATE_COLOR_EVEN,
+    ARRAY_ALTERNATE_COLOR,
+    ARRAY_BOTTOM_ROW_AT;
 
     @Override
     public String display()
@@ -630,5 +651,65 @@ public class Field extends AbstractModel
       ret = "--enter label--";
     }
     return ret;
+  }
+
+  public HeadingSize getArrayHeadSize()
+  {
+    HeadingSize ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)
+    {
+      ret = mProperties.mArray.mProperties.mHeadingSize;
+    }
+
+    if (ret == null)
+    {
+      ret = HeadingSize.H4;
+    }
+    return ret;
+  }
+
+  public boolean isLookupParam(String inText)
+  {
+    return mProperties.mLookup.mParameters.indexOf(inText + ",") != -1;
+  }
+
+  public String getArrayAltEven()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)
+    {
+      ret = mProperties.mArray.mProperties.mAltEvenColor;
+    }
+    return ret;
+  }
+
+  public String getArrayAltOdd()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)
+    {
+      ret = mProperties.mArray.mProperties.mAltOddColor;
+    }
+    return ret;
+  }
+
+  public boolean isArrayAlt()
+  {
+    Boolean ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)
+    {
+      ret = mProperties.mArray.mProperties.mAltRow;
+    }
+    return ret != null && ret;
+  }
+
+  public String getArrayBottomRow()
+  {
+    Integer ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)
+    {
+      ret = mProperties.mArray.mProperties.mShowBottomAtRow;
+    }
+    return StringUtil.toValue(ret);
   }
 }

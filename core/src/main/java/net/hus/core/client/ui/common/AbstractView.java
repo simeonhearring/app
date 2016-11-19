@@ -16,7 +16,7 @@ public abstract class AbstractView extends Composite
     Notify.notify(inMessage);
   }
 
-  public static void addEnumToListBox(EnumDisplay[] inValues, ListBox inListBox)
+  public static void addEnumDToListBox(EnumDisplay[] inValues, ListBox inListBox)
   {
     inListBox.clear();
     for (EnumDisplay value : inValues)
@@ -25,7 +25,16 @@ public abstract class AbstractView extends Composite
     }
   }
 
-  public static void setEnumValueToListBox(EnumDisplay inValue, ListBox inListBox)
+  public static void addEnumToListBox(Enum<?>[] inValues, ListBox inListBox)
+  {
+    inListBox.clear();
+    for (Enum<?> value : inValues)
+    {
+      inListBox.addItem(value.name(), value.name());
+    }
+  }
+
+  public static void setEnumValueToListBox(Enum<?> inValue, ListBox inListBox)
   {
     if (inValue == null)
     {
