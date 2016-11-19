@@ -1,78 +1,17 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui" xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html"
-	xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui" xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt"
+	xmlns:m="urn:import:net.hus.core.client.ui.main">
 	<ui:style>
-	.row.content {
-		height: 1500px
-	}
 	
-	.sidenav {
-		background-color: #f1f1f1;
-		height: 100%;
-	}
-	
-	.navbar {
-		margin-bottom: 0;
-		border-radius: 0;
-	}
-	
-	footer {
-		background-color: #555;
-		color: white;
-		padding: 15px;
-	}
-	
-	footer {
-		background-color: #f2f2f2;
-		padding: 25px;
-	}
 	</ui:style>
 
-	<g:HTMLPanel>
+	<b.gwt:FlowPanel>
 
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Logo</a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="#">Home</a>
-						</li>
-						<li>
-							<a href="#">About</a>
-						</li>
-						<li>
-							<a href="#">Projects</a>
-						</li>
-						<li>
-							<a href="#">Contact</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#">
-								<span class="glyphicon glyphicon-log-in"></span>
-								Login
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<m:NavbarView />
 
 		<b.gwt:FlowPanel ui:field="mMain" />
 
-		<footer class="container-fluid">
-			<p>Footer Text</p>
-		</footer>
+		<m:FooterView />
 
-
-	</g:HTMLPanel>
+	</b.gwt:FlowPanel>
 </ui:UiBinder>
