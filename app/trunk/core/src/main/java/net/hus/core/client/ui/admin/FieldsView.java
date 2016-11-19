@@ -57,10 +57,10 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   Span mId, mName, mType;
 
   @UiField
-  Input mLong, mShort, mAddName, mStorageFormat;
+  Span mSize, mStorageFormatEx, mLookupGroupText;
 
   @UiField
-  Span mStorageFormatEx, mLookupGroupText;
+  Input mLong, mShort, mAddName, mStorageFormat;
 
   @UiField
   Icon mSave0, mSave1, mSave2, mSave3, mRefresh0, mRefresh1, mRefresh2, mRefresh3;
@@ -79,9 +79,6 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 
   @UiField
   FlowPanel mLookupGroup, mArrayLabel;
-
-  @UiField
-  Span mSize;
 
   @UiField
   Input mBottomRow, mAltEven, mAltOdd;
@@ -125,25 +122,23 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     if (mAdd0.equals(inEvent.getSource()))
     {
       mAddNameGrp
-      .setValidationState(mAction.add(mAddName.getText().trim(), mAddType.getSelectedValue()));
+      .setValidationState(mAction.addField(mAddName.getText().trim(), mAddType.getSelectedValue()));
     }
     else if (isSave(inEvent.getSource()))
     {
-      mAction.save();
+      mAction.saveField();
     }
     else if (isRefresh(inEvent.getSource()))
     {
-      mAction.refresh();
+      mAction.refreshFields();
     }
     else if (mPlus.equals(inEvent.getSource()))
     {
-      int size = mArrayLabel.getWidgetCount() + 1;
-      addArrayLabels(size, true);
+      addArrayLabels(mArrayLabel.getWidgetCount() + 1, true);
     }
     else if (mMinus.equals(inEvent.getSource()))
     {
-      int size = mArrayLabel.getWidgetCount() - 1;
-      addArrayLabels(size, true);
+      addArrayLabels(mArrayLabel.getWidgetCount() - 1, true);
     }
   }
 
@@ -435,7 +430,6 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   @Override
   public void add(Name inSection, IsWidget inComponent)
   {
-    // TODO Auto-generated method stub
-
+    // do nothing
   }
 }

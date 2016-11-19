@@ -30,7 +30,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   {
     mDisplay = inDisplay;
     mDisplay.setAction(this);
-    refresh();
+    refreshFields();
   }
 
   @Override
@@ -51,35 +51,8 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     }
   }
 
-  private void addField(Field inField)
-  {
-    mField = inField;
-    mDisplay.set(mField);
-  }
-
   @Override
-  public String arrayLabel(int inPos)
-  {
-    return mField.getArrayLabel(inPos);
-  }
-
-  private void addFields(Map<String, List<Lookup>> inData, Field inField,
-      List<String> inLookupGroups)
-  {
-    mDisplay.clearFields();
-    for (Entry<String, List<Lookup>> value : inData.entrySet())
-    {
-      mDisplay.addFields(value.getKey(), value.getValue());
-    }
-    mDisplay.refreshFields();
-
-    addField(inField);
-
-    mDisplay.addLookup(inLookupGroups);
-  }
-
-  @Override
-  public void save()
+  public void saveField()
   {
     Global.fire(new FieldSaveCommand(mField), new RpcCallback<FieldSaveCommand>()
     {
@@ -92,13 +65,13 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   }
 
   @Override
-  public void refresh()
+  public void refreshFields()
   {
     Global.fire(new FieldsDataCommand(Type.ALL, null), this);
   }
 
   @Override
-  public ValidationState add(String inName, String inType)
+  public ValidationState addField(String inName, String inType)
   {
     ValidationState ret = ValidationState.NONE;
 
@@ -112,7 +85,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
       else
       {
         addField(new Field(inName, EnumUtil.valueOf(inType, Field.Type.values())));
-        save();
+        saveField();
       }
     }
     else
@@ -137,11 +110,6 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     mDisplay.notify("Updated ... " + inType.display() + " [" + inValue + "].");
   }
 
-  public FieldsDisplay getDisplay()
-  {
-    return mDisplay;
-  }
-
   @Override
   public void updateArray(String[] inLabels)
   {
@@ -152,5 +120,32 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
     }
     update(DataType.ARRAY_LABELS, sb.toString());
     update(DataType.ARRAY_SIZE, String.valueOf(inLabels.length));
+  }
+
+  @Override
+  public String arrayLabel(int inPos)
+  {
+    return mField.getArrayLabel(inPos);
+  }
+
+  private void addField(Field inField)
+  {
+    mField = inField;
+    mDisplay.set(mField);
+  }
+
+  private void addFields(Map<String, List<Lookup>> inData, Field inField,
+      List<String> inLookupGroups)
+  {
+    mDisplay.clearFields();
+    for (Entry<String, List<Lookup>> value : inData.entrySet())
+    {
+      mDisplay.addFields(value.getKey(), value.getValue());
+    }
+    mDisplay.refreshFields();
+  
+    addField(inField);
+  
+    mDisplay.addLookup(inLookupGroups);
   }
 }

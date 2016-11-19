@@ -30,8 +30,6 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   @UiField
   FieldsView mFields;
 
-  private Action mAction;
-
   public AdminView()
   {
     initWidget(BINDER.createAndBindUi(this));
@@ -39,18 +37,12 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   }
 
   @Override
-  public void setAction(Action inAction)
-  {
-    mAction = inAction;
-  }
-
-  @Override
   public Row[] getRow()
   {
     Row[] ret =
-      {
-          mRow0
-      };
+    {
+        mRow0
+    };
     return ret;
   }
 
