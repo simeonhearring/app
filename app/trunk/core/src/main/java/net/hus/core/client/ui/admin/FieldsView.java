@@ -9,7 +9,6 @@ import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.TabListItem;
-import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.form.validator.BlankValidator;
@@ -21,8 +20,6 @@ import org.gwtbootstrap3.extras.select.client.ui.Select;
 import org.gwtbootstrap3.extras.toggleswitch.client.ui.ToggleSwitch;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -33,8 +30,6 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -47,7 +42,7 @@ import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page.Section.Name;
 
 public class FieldsView extends AbstractView
-implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeHandler
+implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -62,19 +57,16 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
   Span mId, mName, mType;
 
   @UiField
-  Span mLong, mShort;
+  Input mLong, mShort, mAddName, mStorageFormat;
 
   @UiField
-  Span mStorageFormatEx;
+  Span mStorageFormatEx, mLookupGroupText;
 
   @UiField
-  Span mLookupGroupText;
+  Icon mSave0, mSave1, mSave2, mSave3, mRefresh0, mRefresh1, mRefresh2, mRefresh3;
 
   @UiField
-  Icon mSave0, mAdd0, mRefresh0, mPlus, mMinus;
-
-  @UiField
-  TextBox mAddName, mStorageFormat;
+  Icon mAdd0, mPlus, mMinus;
 
   @UiField
   ListBox mAddType, mLookupLocation, mHeadSize;
@@ -112,22 +104,19 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
     mAddName.addValidator(new BlankValidator<String>());
 
     mAltColor.addValueChangeHandler(this);
-
-    Scheduler.get().scheduleDeferred(this);
-  }
-
-  @Override
-  public void execute()
-  {
-    addSpanHandler(DataType.DISPLAY_LONG, mLong);
-    addSpanHandler(DataType.DISPLAY_SHORT, mShort);
   }
 
   @UiHandler(
       {
-        "mAdd0",
         "mSave0",
+        "mSave1",
+        "mSave2",
+        "mSave3",
         "mRefresh0",
+        "mRefresh1",
+        "mRefresh2",
+        "mRefresh3",
+        "mAdd0",
         "mPlus",
         "mMinus"
       })
@@ -138,11 +127,11 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
       mAddNameGrp
       .setValidationState(mAction.add(mAddName.getText().trim(), mAddType.getSelectedValue()));
     }
-    else if (mSave0.equals(inEvent.getSource()))
+    else if (isSave(inEvent.getSource()))
     {
       mAction.save();
     }
-    else if (mRefresh0.equals(inEvent.getSource()))
+    else if (isRefresh(inEvent.getSource()))
     {
       mAction.refresh();
     }
@@ -156,6 +145,18 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
       int size = mArrayLabel.getWidgetCount() - 1;
       addArrayLabels(size, true);
     }
+  }
+
+  private boolean isSave(Object inSource)
+  {
+    return mSave0.equals(inSource) || mSave1.equals(inSource) || mSave2.equals(inSource)
+        || mSave3.equals(inSource);
+  }
+
+  private boolean isRefresh(Object inSource)
+  {
+    return mRefresh0.equals(inSource) || mRefresh1.equals(inSource) || mRefresh2.equals(inSource)
+        || mRefresh3.equals(inSource);
   }
 
   @UiHandler(
@@ -187,6 +188,17 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
     else if (mBottomRow.equals(inEvent.getSource()))
     {
       mAction.update(DataType.ARRAY_BOTTOM_ROW_AT, mBottomRow.getText());
+    }
+    else if (mLong.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.DISPLAY_LONG, mLong.getText());
+    }
+    else if (mShort.equals(inEvent.getSource()))
+    {
+      mAction.update(DataType.DISPLAY_SHORT, mShort.getText());
+    }
+    else if (mBottomRow.equals(inEvent.getSource()))
+    {
     }
   }
 
@@ -343,23 +355,23 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
     }
   }
 
-  private void addSpanHandler(final DataType inType, final Span inSpan)
-  {
-    Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
-    Event.setEventListener(inSpan.getElement(), new EventListener()
-    {
-      @Override
-      public void onBrowserEvent(Event inEvent)
-      {
-        if (Event.ONBLUR == inEvent.getTypeInt())
-        {
-          mAction.update(inType, inSpan.getText());
-        }
-      }
-    });
-
-    inSpan.getElement().setAttribute("contenteditable", "true");
-  }
+  //  private void addSpanHandler(final DataType inType, final Span inSpan)
+  //  {
+  //    Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
+  //    Event.setEventListener(inSpan.getElement(), new EventListener()
+  //    {
+  //      @Override
+  //      public void onBrowserEvent(Event inEvent)
+  //      {
+  //        if (Event.ONBLUR == inEvent.getTypeInt())
+  //        {
+  //          mAction.update(inType, inSpan.getText());
+  //        }
+  //      }
+  //    });
+  //
+  // inSpan.getElement().setAttribute("contenteditable", "true");
+  // }
 
   private String[] getArrayLabels()
   {
@@ -371,7 +383,7 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
     return ret;
   }
 
-  private void formatExample(TextBox inText, Span inSpan)
+  private void formatExample(Input inText, Span inSpan)
   {
     inSpan.setText(DateTimeFormat.getFormat(inText.getText()).format(new Date()));
   }
@@ -424,6 +436,6 @@ implements FieldsDisplay, ScheduledCommand, ValueChangeHandler<Boolean>, ChangeH
   public void add(Name inSection, IsWidget inComponent)
   {
     // TODO Auto-generated method stub
-    
+
   }
 }
