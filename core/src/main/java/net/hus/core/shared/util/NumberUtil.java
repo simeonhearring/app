@@ -12,7 +12,7 @@ public final class NumberUtil
   {
     boolean ret = false;
 
-    if ((inValue != null) && !"".equals(inValue.trim()))
+    if (inValue != null && !"".equals(inValue.trim()))
     {
       try
       {
@@ -32,7 +32,7 @@ public final class NumberUtil
   {
     boolean ret = false;
 
-    if ((inValue != null) && !"".equals(inValue.trim()))
+    if (inValue != null && !"".equals(inValue.trim()))
     {
       try
       {
@@ -145,7 +145,7 @@ public final class NumberUtil
 
   public static boolean isGreater(Long inValue, Long inGreaterThan)
   {
-    if ((inGreaterThan == null) || (inValue == null))
+    if (inGreaterThan == null || inValue == null)
     {
       return false;
     }
@@ -155,7 +155,7 @@ public final class NumberUtil
 
   public static boolean isEqual(Integer inValueA, Integer inValueB)
   {
-    if ((inValueA == null) || (inValueB == null))
+    if (inValueA == null || inValueB == null)
     {
       return false;
     }
@@ -225,5 +225,10 @@ public final class NumberUtil
   {
     Integer value = toInteger(inValue);
     return value != null ? value : inDefault;
+  }
+
+  public static int toInt(Integer inValue, int inDefault)
+  {
+    return inValue != null ? inValue : inDefault;
   }
 }
