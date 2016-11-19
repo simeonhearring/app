@@ -13,11 +13,11 @@ public interface FieldsDisplay extends PageDisplay
 {
   public interface Action
   {
-    void save();
+    void saveField();
 
-    void refresh();
+    void refreshFields();
 
-    ValidationState add(String inName, String inType);
+    ValidationState addField(String inName, String inType);
 
     void select(Long inFieldId);
 
