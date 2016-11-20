@@ -14,9 +14,21 @@ public class FieldsData implements Serializable
 
   private List<String> mLookupGroups;
 
+  private List<Lookup> mFieldGroups;
+
   private List<String> mUnique;
 
   private Field mField;
+
+  public void setFieldGroup(List<Lookup> inFieldGroups)
+  {
+    mFieldGroups = inFieldGroups;
+  }
+
+  public List<Lookup> getFieldGroups()
+  {
+    return mFieldGroups;
+  }
 
   public void setFields(List<Lookup> inFields)
   {

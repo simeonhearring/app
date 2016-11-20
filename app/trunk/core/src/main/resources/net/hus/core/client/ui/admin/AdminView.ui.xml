@@ -30,12 +30,12 @@
 					<b:TabListItem dataTarget="#taba5" text="Pages" />
 				</b:NavTabs>
 				<b:TabContent>
-					<b:TabPane fade="true" in="true" active="true" b:id="taba0">
+					<b:TabPane fade="true" b:id="taba0" in="true" active="true">
 						<a:FieldsView ui:field="mFields" styleName="{style.padaround}" />
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba1">
 						<b:FormGroup>
-							<b:FormLabel text="Field Groups" />
+							<a:FieldGroupsView ui:field="mGroups" styleName="{style.padaround}" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba2">
