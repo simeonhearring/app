@@ -17,9 +17,9 @@
 			<b:Row>
 				<b:Column size="SM_3">
 					<b:Well size="LARGE">
-						<b.html:Paragraph emphasis="INFO" text="EDIT FIELD GROUP" />
+						<b.html:Paragraph emphasis="INFO" text="EDIT GROUP" />
 						<b:FormGroup>
-							<b:FormLabel text="Select Field Group:" addStyleNames="{style.pad}" />
+							<b:FormLabel text="Select Group:" addStyleNames="{style.pad}" />
 							<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
 						</b:FormGroup>
 					</b:Well>
@@ -45,12 +45,12 @@
 								<b:Well size="LARGE">
 									<b.html:Paragraph emphasis="INFO" text="GROUP NAME" />
 									<b:FormGroup>
-										<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
-										<b.html:Span ui:field="mName" />
+										<b:FormLabel text="FGG:" addStyleNames="{style.pad}" />
+										<b.html:Span ui:field="mFgg" />
 									</b:FormGroup>
 									<b:FormGroup>
-										<b:FormLabel text="Display" addStyleNames="{style.pad}" />
-										<b:Input ui:field="mDisplay" type="TEXT" />
+										<b:FormLabel text="Name" addStyleNames="{style.pad}" />
+										<b:Input ui:field="mName" type="TEXT" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">
 										<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
@@ -64,8 +64,8 @@
 								<b:Well size="LARGE">
 									<b.html:Paragraph emphasis="INFO" text="FIELDS IN GROUP" />
 									<b:FormGroup>
-										<b:FormLabel text="Storage format:" addStyleNames="{style.pad}" />
-										<b:Input ui:field="mStorageFormat" type="TEXT" />
+										<b:FormLabel text="Fields:" addStyleNames="{style.pad}" />
+										<b.gwt:FlowPanel ui:field="mFields" />
 									</b:FormGroup>
 									<b:FormGroup>
 										<b:FormLabel text="Example:" addStyleNames="{style.pad}" />

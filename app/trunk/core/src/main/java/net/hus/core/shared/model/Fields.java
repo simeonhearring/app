@@ -1,5 +1,6 @@
 package net.hus.core.shared.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Fields extends AbstractModel
@@ -8,6 +9,8 @@ public class Fields extends AbstractModel
 
   private String mGroup; // FGG
   private List<Field> mFields;
+
+  private List<Long> mUnique;
 
   public String fgg()
   {
@@ -37,5 +40,22 @@ public class Fields extends AbstractModel
   public void clear()
   {
     mFields.clear();
+  }
+
+  public Boolean contains(Long inId)
+  {
+    if (mUnique == null)
+    {
+      mUnique = new ArrayList<>();
+      for (Field value : mFields)
+      {
+        Long id = value.getId();
+        if (!mUnique.contains(id))
+        {
+          mUnique.add(id);
+        }
+      }
+    }
+    return mUnique.contains(inId);
   }
 }
