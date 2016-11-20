@@ -417,16 +417,6 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     }
   }
 
-  private static String toString(Long inId)
-  {
-    return String.valueOf(inId);
-  }
-
-  private static Long toLong(String inValue)
-  {
-    return Long.valueOf(inValue);
-  }
-
   @Override
   public void add(Name inSection, IsWidget inComponent)
   {

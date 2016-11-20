@@ -11,6 +11,16 @@ import net.hus.core.shared.model.EnumDisplay;
 
 public abstract class AbstractView extends Composite
 {
+  public static String toString(Long inId)
+  {
+    return String.valueOf(inId);
+  }
+
+  public static Long toLong(String inValue)
+  {
+    return Long.valueOf(inValue);
+  }
+
   public void notify(String inMessage)
   {
     Notify.notify(inMessage);
