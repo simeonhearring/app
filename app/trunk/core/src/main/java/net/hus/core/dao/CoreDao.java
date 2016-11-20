@@ -22,4 +22,6 @@ public interface CoreDao
   Components components(String inComponentName);
 
   void field2lookup();
+
+  void fields2lookup();
 }

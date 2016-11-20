@@ -1,10 +1,13 @@
 package net.hus.core.client.model.admin;
 
+import java.util.List;
+
 import net.hus.core.client.model.admin.FieldGroupsDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.FieldsDataCommand;
 import net.hus.core.shared.command.FieldsDataCommand.Type;
+import net.hus.core.shared.command.FieldsSaveCommand;
 import net.hus.core.shared.command.LookupSaveCommand;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
@@ -74,6 +77,19 @@ public class FieldGroupsPresenter extends RpcCallback<FieldsDataCommand> impleme
         mDisplay.notify("Saved ... " + inGroup);
         refresh();
         select(name, inGroup, null); // consolidate
+      }
+    });
+  }
+
+  @Override
+  public void saveFields(String inFgg, final String inName, List<Long> inFieldIds)
+  {
+    Global.fire(new FieldsSaveCommand(inFgg, inFieldIds), new RpcCallback<FieldsSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(FieldsSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + inName);
       }
     });
   }

@@ -58,4 +58,44 @@ public class Fields extends AbstractModel
     }
     return mUnique.contains(inId);
   }
+
+  public Fields upsert(String inFgg, List<Long> inFieldIds)
+  {
+    List<Long> current = new ArrayList<>();
+    for (Field value : mFields)
+    {
+      current.add(value.getId());
+    }
+
+    List<Field> change = new ArrayList<>();
+    for (Long value : inFieldIds)
+    {
+      if (!current.contains(value))
+      {
+        change.add(new Field(value));
+      }
+    }
+    Fields ret = new Fields();
+    ret.fgg(inFgg);
+    ret.setFields(change);
+
+    return ret;
+  }
+
+  public Fields delete(String inFgg, List<Long> inFieldIds)
+  {
+    List<Field> change = new ArrayList<>();
+    for (Field value : mFields)
+    {
+      if (!inFieldIds.contains(value.getId()))
+      {
+        change.add(value);
+      }
+    }
+
+    Fields ret = new Fields();
+    ret.fgg(inFgg);
+    ret.setFields(change);
+    return ret;
+  }
 }

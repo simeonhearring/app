@@ -77,4 +77,8 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
+	<bean id="FieldsSaveCommand" class="net.hus.core.server.command.FieldsSaveCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
+
 </beans>

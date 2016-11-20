@@ -13,6 +13,8 @@ public interface FieldGroupsDisplay extends PageDisplay
     void select(String inGroup, String inDisplay, Long inId);
 
     void addGroup(String inGroup);
+
+    void saveFields(String inText, String inName, List<Long> inFieldIds);
   }
 
   void setAction(Action inAction);

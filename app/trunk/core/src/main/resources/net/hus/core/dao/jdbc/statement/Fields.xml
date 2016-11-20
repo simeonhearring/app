@@ -26,6 +26,11 @@
 		<Sql>select * from FIELD_GROUP</Sql>
 	</Statement>
 	<Statement>
+		<Key>DELETE_FIELDS</Key>
+		<Types>VARCHAR,NUMERIC</Types>
+		<Sql>delete from FIELD_GROUP where mGroup=? and mFieldId=?</Sql>
+	</Statement>
+	<Statement>
 		<Key>UPSERT_FIELDS</Key>
 		<Types>VARCHAR,NUMERIC,VARCHAR,NUMERIC,VARCHAR,NUMERIC</Types>
 		<Sql>INSERT INTO FIELD_GROUP (mUpdated,mGroup,mFieldId,mDisplay,mSort)

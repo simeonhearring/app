@@ -22,6 +22,7 @@ public class FieldsSql extends Mapping
   private MappingSqlQuery<Field> mFieldAllSelect;
   private MappingSqlQuery<Object[]> mFieldsAllSelect;
   private BatchSqlUpdate mFieldsUpsert;
+  private BatchSqlUpdate mFieldsDelete;
   private MappingSqlQuery<Field> mFieldsSelect;
 
   public FieldsSql()
@@ -35,6 +36,7 @@ public class FieldsSql extends Mapping
 
     mFieldUpsert = newBatchUpdate(inDataSource, "UPSERT");
     mFieldsUpsert = newBatchUpdate(inDataSource, "UPSERT_FIELDS");
+    mFieldsDelete = newBatchUpdate(inDataSource, "DELETE_FIELDS");
 
     Statement select = mStmts.getStatement("SELECT");
     mFieldSelect = new MappingSqlQuery<Field>(inDataSource, select.getSql())
@@ -162,5 +164,17 @@ public class FieldsSql extends Mapping
     List<Field> list = new ArrayList<>();
     list.add(inField);
     upsert(list);
+  }
+
+  public void delete(Fields inFields)
+  {
+    mFieldsDelete.reset();
+    for (Field value : inFields.getFields())
+    {
+      Long id = value.getId();
+      mFieldsDelete.update(params(inFields.fgg(), id));
+    }
+    mFieldsDelete.flush();
+    mFieldsDelete.reset();
   }
 }
