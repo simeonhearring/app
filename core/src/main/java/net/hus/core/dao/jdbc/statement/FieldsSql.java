@@ -79,7 +79,7 @@ public class FieldsSql extends Mapping
       @Override
       protected Object[] mapRow(ResultSet inRs, int inRowNum) throws SQLException
       {
-        return mapField(new Object[2], inRs);
+        return mapField(new Object[3], inRs);
       }
     };
     mFieldsAllSelect.compile();

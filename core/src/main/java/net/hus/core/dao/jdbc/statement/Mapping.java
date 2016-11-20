@@ -49,6 +49,7 @@ public class Mapping extends AbstractSqlJdbc
   {
     inOut[0] = inRs.getString("mGroup");
     inOut[1] = inRs.getLong("mFieldId");
+    inOut[2] = inRs.getString("mGrpDspl");
     return inOut;
   }
 
