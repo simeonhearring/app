@@ -1,5 +1,6 @@
 package net.hus.core.client.ui.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
@@ -93,8 +94,7 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
     }
     else if (mSave1.equals(inEvent.getSource()))
     {
-      notify("Save");
-      // TODO save mAction.save(getFields());
+      mAction.saveFields(mFgg.getText(), mName.getText(), fieldIds());
     }
   }
 
@@ -111,6 +111,20 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
       mGroups.add(field);
     }
     mGroups.refresh();
+  }
+
+  private List<Long> fieldIds()
+  {
+    List<Long> ret = new ArrayList<>();
+    for (int i = 0; i < mFields.getWidgetCount(); i++)
+    {
+      CheckBox box = (CheckBox) mFields.getWidget(i);
+      if (box.getValue())
+      {
+        ret.add(toLong(box.getFormValue()));
+      }
+    }
+    return ret;
   }
 
   @Override

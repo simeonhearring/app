@@ -197,6 +197,7 @@ public class CoreJdbc implements CoreDao
     lookups().upsert(lookups);
   }
 
+  @Override
   public void fields2lookup()
   {
     Map<String, StringBuilder> data = new HashMap<>();
@@ -219,7 +220,8 @@ public class CoreJdbc implements CoreDao
       lookup.setGroup(Group.FIELD_GROUP);
       lookup.setName(value.getKey());
 
-      lookup.setDisplay(StringUtil.toTitle(value.getKey()));
+   // TODO over writting.
+      lookup.setDisplay(StringUtil.toTitle(value.getKey())); 
       lookup.setAltId(null);
       lookup.setAbbreviation(null);
       lookup.setDescription(value.getValue().toString());
