@@ -23,7 +23,10 @@
 	</Statement>
 	<Statement>
 		<Key>SELECT_GROUP_ALL</Key>
-		<Sql>select * from FIELD_GROUP</Sql>
+		<Sql>select g.*,l.mDisplay as mGrpDspl
+			from FIELD_GROUP g
+			left join LOOKUP l on g.mGroup=l.mName
+		</Sql>
 	</Statement>
 	<Statement>
 		<Key>DELETE_FIELDS</Key>
