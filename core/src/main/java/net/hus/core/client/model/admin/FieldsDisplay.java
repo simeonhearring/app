@@ -28,6 +28,8 @@ public interface FieldsDisplay extends PageDisplay
     void updateArray(String[] inLabels);
   }
 
+  void setAction(Action inAction);
+
   void addFields(String inType, List<Lookup> inFields);
 
   void refreshFields();
@@ -35,8 +37,6 @@ public interface FieldsDisplay extends PageDisplay
   void clearFields();
 
   void set(Field inField);
-
-  void setAction(Action inAction);
 
   void addLookup(List<String> inLookupGroups);
 }

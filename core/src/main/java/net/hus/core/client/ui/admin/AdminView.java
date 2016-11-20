@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.AdminDisplay;
+import net.hus.core.client.model.admin.FieldGroupsDisplay;
 import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.ui.page.AbstractRowView;
 import net.hus.core.shared.model.Page.Section;
@@ -30,6 +31,9 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   @UiField
   FieldsView mFields;
 
+  @UiField
+  FieldGroupsView mGroups;
+
   public AdminView()
   {
     initWidget(BINDER.createAndBindUi(this));
@@ -40,9 +44,9 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   public Row[] getRow()
   {
     Row[] ret =
-    {
-        mRow0
-    };
+      {
+          mRow0
+      };
     return ret;
   }
 
@@ -50,5 +54,11 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   public FieldsDisplay getFields()
   {
     return mFields;
+  }
+
+  @Override
+  public FieldGroupsDisplay getGroups()
+  {
+    return mGroups;
   }
 }

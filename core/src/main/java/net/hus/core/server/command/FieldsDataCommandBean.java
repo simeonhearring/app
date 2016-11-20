@@ -20,6 +20,9 @@ public class FieldsDataCommandBean extends AbstractCommandBean<FieldsDataCommand
       case SINGLE:
         addField(data, inCommand.getFieldId());
         break;
+      case GROUPS:
+        addFieldGroup(data);
+        break;
       default:
         break;
     }
@@ -34,11 +37,23 @@ public class FieldsDataCommandBean extends AbstractCommandBean<FieldsDataCommand
     inData.setField(mCoreDao.fields().select(inFieldId));
   }
 
+  private void addFieldGroup(FieldsData inData)
+  {
+    inData.setFieldGroup(mCoreDao.lookups().select(Group.FIELD_GROUP.name()));
+  }
+
+  private void addLookupGroups(FieldsData inData)
+  {
+    inData.setLookupGroups(mCoreDao.lookups().selectGrps());
+  }
+
   private void addFields(FieldsData data)
   {
     data.setFields(mCoreDao.lookups().select(Group.FIELD.name()));
-    data.setLookupGroups(mCoreDao.lookups().selectGrps());
     Long fieldId = data.getFields().get(0).getAltId();
+
     addField(data, fieldId);
+    addLookupGroups(data);
+    addFieldGroup(data);
   }
 }

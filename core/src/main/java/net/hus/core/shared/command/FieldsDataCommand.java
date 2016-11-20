@@ -34,6 +34,7 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
   public enum Type
   {
     ALL,
-    SINGLE;
+    SINGLE,
+    GROUPS;
   }
 }
