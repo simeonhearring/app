@@ -23,5 +23,5 @@ public interface FieldGroupsDisplay extends PageDisplay
 
   void addFieldGroup(Fields inFieldGroup);
 
-  void setGroupName(String inGroup, String inDisplay);
+  void setGroupName(String inFgg, String inName);
 }

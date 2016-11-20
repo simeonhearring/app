@@ -2,8 +2,10 @@ package net.hus.core.client.ui.admin;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
@@ -35,13 +37,16 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   Select mGroups;
 
   @UiField
-  Input mAddGroup, mDisplay;
+  Input mAddGroup, mName;
 
   @UiField
-  Span mName;
+  FlowPanel mFields;
 
   @UiField
-  Icon mAdd0;
+  Span mFgg;
+
+  @UiField
+  Icon mAdd0, mSave1;
 
   private Action mAction;
 
@@ -78,12 +83,18 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   @UiHandler(
       {
         "mAdd0",
+        "mSave1"
       })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
       mAction.addGroup(mAddGroup.getText());
+    }
+    else if (mSave1.equals(inEvent.getSource()))
+    {
+      notify("Save");
+      // TODO save mAction.save(getFields());
     }
   }
 
@@ -105,18 +116,30 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   @Override
   public void addFields(List<Lookup> inFields)
   {
+    for (Lookup value : inFields)
+    {
+      CheckBox box = new CheckBox();
+      box.setText(value.getDisplay() + " (" + value.getAbbreviation().toLowerCase() + ")");
+      box.setFormValue(value.getAltId() + "");
+      mFields.add(box);
+    }
   }
 
   @Override
   public void addFieldGroup(Fields inFieldGroup)
   {
-    // mName.setText(inFieldGroup.fgg());
+    for (int i = 0; i < mFields.getWidgetCount(); i++)
+    {
+      CheckBox box = (CheckBox) mFields.getWidget(i);
+      Long id = toLong(box.getFormValue());
+      box.setValue(inFieldGroup.contains(id));
+    }
   }
 
   @Override
-  public void setGroupName(String inGroup, String inDisplay)
+  public void setGroupName(String inFgg, String inName)
   {
-    mName.setText(inGroup);
-    mDisplay.setText(inDisplay);
+    mFgg.setText(inFgg);
+    mName.setText(inName);
   }
 }
