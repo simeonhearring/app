@@ -18,9 +18,12 @@ public class FieldsData implements Serializable
 
   private List<String> mUnique;
 
+  private Fields mFieldGroup;
+
   private Field mField;
 
-  public void setFieldGroup(List<Lookup> inFieldGroups)
+
+  public void setFieldGroups(List<Lookup> inFieldGroups)
   {
     mFieldGroups = inFieldGroups;
   }
@@ -88,5 +91,15 @@ public class FieldsData implements Serializable
   public void setLookupGroups(List<String> inLookupGroups)
   {
     mLookupGroups = inLookupGroups;
+  }
+
+  public void setFieldGroup(Fields inFields)
+  {
+    mFieldGroup = inFields;
+  }
+
+  public Fields getFieldGroup()
+  {
+    return mFieldGroup;
   }
 }

@@ -43,7 +43,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
       case ALL:
         addFields(mData.data(), mData.getField(), mData.getLookupGroups());
         break;
-      case SINGLE:
+      case FIELD:
         addField(mData.getField());
         break;
       default:
@@ -67,7 +67,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   @Override
   public void refreshFields()
   {
-    Global.fire(new FieldsDataCommand(Type.ALL, null), this);
+    Global.fire(new FieldsDataCommand(Type.ALL), this);
   }
 
   @Override
@@ -100,7 +100,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
   @Override
   public void select(Long inFieldId)
   {
-    Global.fire(new FieldsDataCommand(Type.SINGLE, inFieldId), this);
+    Global.fire(new FieldsDataCommand(Type.FIELD, inFieldId), this);
   }
 
   @Override
@@ -143,9 +143,9 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements A
       mDisplay.addFields(value.getKey(), value.getValue());
     }
     mDisplay.refreshFields();
-  
+
     addField(inField);
-  
+
     mDisplay.addLookup(inLookupGroups);
   }
 }

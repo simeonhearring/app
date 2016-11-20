@@ -10,15 +10,27 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
 
   private Type mType;
   private Long mFieldId;
+  private String mGroup;
 
   FieldsDataCommand()
   {
+  }
+
+  public FieldsDataCommand(Type inType)
+  {
+    mType = inType;
   }
 
   public FieldsDataCommand(Type inType, Long inFieldId)
   {
     mType = inType;
     mFieldId = inFieldId;
+  }
+
+  public FieldsDataCommand(Type inType, String inGroup)
+  {
+    mType = inType;
+    mGroup = inGroup;
   }
 
   public Long getFieldId()
@@ -31,10 +43,16 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
     return mType;
   }
 
+  public String getGroup()
+  {
+    return mGroup;
+  }
+
   public enum Type
   {
     ALL,
-    SINGLE,
-    GROUPS;
+    FIELD,
+    GROUPS,
+    GROUP;
   }
 }

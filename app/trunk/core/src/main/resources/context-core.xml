@@ -73,4 +73,8 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
+	<bean id="LookupSaveCommand" class="net.hus.core.server.command.LookupSaveCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
+
 </beans>
