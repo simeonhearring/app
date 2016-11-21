@@ -4,5 +4,6 @@ public enum EventType
 {
   ALL,
   FIELD,
-  FIELDS;
+  FIELDS,
+  LOOKUP;
 }

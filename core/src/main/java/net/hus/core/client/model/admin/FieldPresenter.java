@@ -136,7 +136,7 @@ implements Action, AdminEvent.Handler
   }
 
   private void addFields(Map<String, List<Lookup>> inData, Field inField,
-      List<String> inLookupGroups)
+      List<Lookup> inLookupGroups)
   {
     mDisplay.clearFields();
     for (Entry<String, List<Lookup>> value : inData.entrySet())

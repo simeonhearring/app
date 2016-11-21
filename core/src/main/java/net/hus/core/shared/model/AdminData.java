@@ -12,13 +12,15 @@ public class AdminData implements Serializable
 
   private List<Lookup> mFields;
 
-  private List<String> mLookupGroups;
+  private List<Lookup> mLookupGroups;
 
   private List<Lookup> mFieldGroups;
 
   private Fields mFieldGroup;
 
   private Field mField;
+
+  private List<Lookup> mLookupGroup;
 
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
@@ -82,12 +84,12 @@ public class AdminData implements Serializable
   // return mUnique.contains(Field.officialName(inName));
   // }
 
-  public List<String> getLookupGroups()
+  public List<Lookup> getLookupGroups()
   {
     return mLookupGroups;
   }
 
-  public void setLookupGroups(List<String> inLookupGroups)
+  public void setLookupGroups(List<Lookup> inLookupGroups)
   {
     mLookupGroups = inLookupGroups;
   }
@@ -100,5 +102,15 @@ public class AdminData implements Serializable
   public Fields getFieldGroup()
   {
     return mFieldGroup;
+  }
+
+  public void setLookupGroup(List<Lookup> inLookupGroup)
+  {
+    mLookupGroup = inLookupGroup;
+  }
+
+  public List<Lookup> getLookupGroup()
+  {
+    return mLookupGroup;
   }
 }

@@ -7,4 +7,6 @@ public interface AdminDisplay extends PageDisplay
   FieldDisplay getField();
 
   FieldsDisplay getFields();
+
+  LookupDisplay getLookup();
 }

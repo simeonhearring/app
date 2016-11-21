@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.model.admin.AdminDisplay;
 import net.hus.core.client.model.admin.FieldDisplay;
 import net.hus.core.client.model.admin.FieldsDisplay;
+import net.hus.core.client.model.admin.LookupDisplay;
 import net.hus.core.client.ui.page.AbstractRowView;
 import net.hus.core.shared.model.Page.Section;
 
@@ -33,6 +34,9 @@ public class AdminView extends AbstractRowView implements AdminDisplay
 
   @UiField
   FieldsView mFields;
+
+  @UiField
+  LookupView mLookup;
 
   public AdminView()
   {
@@ -60,5 +64,11 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   public FieldsDisplay getFields()
   {
     return mFields;
+  }
+
+  @Override
+  public LookupDisplay getLookup()
+  {
+    return mLookup;
   }
 }

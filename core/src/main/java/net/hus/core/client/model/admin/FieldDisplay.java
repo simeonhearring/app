@@ -38,5 +38,5 @@ public interface FieldDisplay extends PageDisplay
 
   void set(Field inField);
 
-  void addLookup(List<String> inLookupGroups);
+  void addLookup(List<Lookup> inLookupGroups);
 }

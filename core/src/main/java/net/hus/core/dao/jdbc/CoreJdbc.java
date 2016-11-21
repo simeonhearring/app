@@ -23,6 +23,7 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.util.StringUtil;
 
 public class CoreJdbc implements CoreDao
 {
@@ -171,6 +172,23 @@ public class CoreJdbc implements CoreDao
 
       lookup.setAltId(value.getId());
       lookup.setDisplay(value.getDisplay());
+      lookup.setSort(0);
+      lookups.add(lookup);
+    }
+    lookups().upsert(lookups);
+  }
+
+  public void lookup2lookup()
+  {
+    List<Lookup> lookups = new ArrayList<>();
+    for (String value : lookups().selectGrps())
+    {
+      Lookup lookup = new Lookup();
+      lookup.setGroup(Group.LOOKUP);
+      lookup.setName(value);
+
+      lookup.setAltId(null);
+      lookup.setDisplay(StringUtil.toTitle(value.replaceAll("_", " ")));
       lookup.setSort(0);
       lookups.add(lookup);
     }

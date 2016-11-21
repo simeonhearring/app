@@ -40,7 +40,7 @@
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba2">
 						<b:FormGroup>
-							<b:FormLabel text="Lookups" />
+							<a:LookupView ui:field="mLookup" styleName="{style.padaround}" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba3">
