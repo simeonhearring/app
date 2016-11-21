@@ -12,6 +12,8 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
   {
     AdminData data = new AdminData();
 
+    // for (EventType value : inCommand.getType())
+    // {
     switch (inCommand.getType())
     {
       case ALL:
@@ -32,6 +34,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
       default:
         break;
     }
+    // }
 
     inCommand.setData(data);
 

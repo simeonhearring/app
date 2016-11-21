@@ -62,7 +62,7 @@ public class FieldsPresenter extends RpcCallback<AdminDataCommand>
   public void select(String inFgg, String inName)
   {
     mDisplay.setGroupName(inFgg, inName);
-    Global.fire(new AdminDataCommand(EventType.GROUP, inFgg), this);
+    Global.fire(new AdminDataCommand(inFgg, EventType.GROUP), this);
   }
 
   @Override

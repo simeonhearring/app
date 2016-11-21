@@ -10,6 +10,7 @@ public class AdminDataCommand extends AbstractDataCommand<AdminData>
   private static final long serialVersionUID = -8790279100272573634L;
 
   private EventType mType;
+
   private Long mFieldId;
   private String mFgg;
 
@@ -22,13 +23,13 @@ public class AdminDataCommand extends AbstractDataCommand<AdminData>
     mType = inType;
   }
 
-  public AdminDataCommand(EventType inType, Long inFieldId)
+  public AdminDataCommand(Long inFieldId, EventType inType)
   {
     mType = inType;
     mFieldId = inFieldId;
   }
 
-  public AdminDataCommand(EventType inType, String inFgg)
+  public AdminDataCommand(String inFgg, EventType inType)
   {
     mType = inType;
     mFgg = inFgg;

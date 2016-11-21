@@ -108,7 +108,7 @@ public class FieldPresenter extends RpcCallback<AdminDataCommand>
   @Override
   public void select(Long inFieldId)
   {
-    Global.fire(new AdminDataCommand(EventType.FIELD, inFieldId), this);
+    Global.fire(new AdminDataCommand(inFieldId, EventType.FIELD), this);
   }
 
   @Override
