@@ -51,13 +51,13 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   }
 
   @Override
-  public FieldDisplay getFields()
+  public FieldDisplay getField()
   {
     return mFields;
   }
 
   @Override
-  public FieldsDisplay getGroups()
+  public FieldsDisplay getFields()
   {
     return mGroups;
   }

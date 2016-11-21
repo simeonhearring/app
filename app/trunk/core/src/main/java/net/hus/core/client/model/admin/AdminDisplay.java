@@ -4,7 +4,7 @@ import net.hus.core.client.common.PageDisplay;
 
 public interface AdminDisplay extends PageDisplay
 {
-  FieldDisplay getFields();
+  FieldDisplay getField();
 
-  FieldsDisplay getGroups();
+  FieldsDisplay getFields();
 }
