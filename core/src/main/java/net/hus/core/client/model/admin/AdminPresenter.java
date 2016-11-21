@@ -12,7 +12,7 @@ public class AdminPresenter extends RpcCallback<FieldsDataCommand>
     mDisplay = inDisplay;
 
     new FieldPresenter(mDisplay.getFields());
-    new FieldGroupsPresenter(mDisplay.getGroups());
+    new FieldsPresenter(mDisplay.getGroups());
   }
 
   @Override
