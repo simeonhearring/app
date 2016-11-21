@@ -1,16 +1,16 @@
 package net.hus.core.server.command;
 
-import net.hus.core.shared.command.FieldsDataCommand;
-import net.hus.core.shared.model.FieldsData;
+import net.hus.core.shared.command.AdminDataCommand;
+import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
-public class FieldsDataCommandBean extends AbstractCommandBean<FieldsDataCommand>
+public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 {
   @Override
-  public RpcResponse execute(FieldsDataCommand inCommand)
+  public RpcResponse execute(AdminDataCommand inCommand)
   {
-    FieldsData data = new FieldsData();
+    AdminData data = new AdminData();
 
     switch (inCommand.getType())
     {
@@ -38,32 +38,32 @@ public class FieldsDataCommandBean extends AbstractCommandBean<FieldsDataCommand
     return inCommand;
   }
 
-  private void addField(FieldsData inData, Long inFieldId)
+  private void addField(AdminData inData, Long inFieldId)
   {
     inData.setField(mCoreDao.fields().select(inFieldId));
   }
 
-  private void addGroup(FieldsData inData, String inGroup)
+  private void addGroup(AdminData inData, String inGroup)
   {
     inData.setFieldGroup(mCoreDao.fields().select(inGroup));
   }
 
-  private void addFieldGroups(FieldsData inData)
+  private void addFieldGroups(AdminData inData)
   {
     inData.setFieldGroups(mCoreDao.lookups().select(Group.FIELD_GROUP.name()));
   }
 
-  private void addLookupGroups(FieldsData inData)
+  private void addLookupGroups(AdminData inData)
   {
     inData.setLookupGroups(mCoreDao.lookups().selectGrps());
   }
 
-  private void addFields(FieldsData inData)
+  private void addFields(AdminData inData)
   {
     inData.setFields(mCoreDao.lookups().select(Group.FIELD.name()));
   }
 
-  private void addAll(FieldsData inData)
+  private void addAll(AdminData inData)
   {
     addFields(inData);
     Long fieldId = inData.getFields().get(0).getAltId();

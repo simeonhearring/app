@@ -11,20 +11,20 @@ import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.AdminEvent;
 import net.hus.core.shared.command.FieldSaveCommand;
-import net.hus.core.shared.command.FieldsDataCommand;
+import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
-import net.hus.core.shared.model.FieldsData;
+import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.util.EnumUtil;
 
-public class FieldPresenter extends RpcCallback<FieldsDataCommand>
+public class FieldPresenter extends RpcCallback<AdminDataCommand>
     implements Action, AdminEvent.Handler
 {
   private FieldDisplay mDisplay;
 
-  private FieldsData mData;
+  private AdminData mData;
 
   private Field mField;
 
@@ -42,7 +42,7 @@ public class FieldPresenter extends RpcCallback<FieldsDataCommand>
   }
 
   @Override
-  public void onRpcSuccess(FieldsDataCommand inCommand)
+  public void onRpcSuccess(AdminDataCommand inCommand)
   {
     mData = inCommand.getData();
 
@@ -75,7 +75,7 @@ public class FieldPresenter extends RpcCallback<FieldsDataCommand>
   @Override
   public void refreshFields()
   {
-    Global.fire(new FieldsDataCommand(EventType.ALL), this);
+    Global.fire(new AdminDataCommand(EventType.ALL), this);
   }
 
   @Override
@@ -108,7 +108,7 @@ public class FieldPresenter extends RpcCallback<FieldsDataCommand>
   @Override
   public void select(Long inFieldId)
   {
-    Global.fire(new FieldsDataCommand(EventType.FIELD, inFieldId), this);
+    Global.fire(new AdminDataCommand(EventType.FIELD, inFieldId), this);
   }
 
   @Override

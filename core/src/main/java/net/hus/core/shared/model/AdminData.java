@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FieldsData implements Serializable
+public class AdminData implements Serializable
 {
   private static final long serialVersionUID = 6775535535217948165L;
 
