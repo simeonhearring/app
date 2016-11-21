@@ -10,6 +10,21 @@
 		padding: 5px;
 		border: solid thin;
 	}
+	
+	.columns {
+		-webkit-column-count: 3; /* Chrome, Safari, Opera */
+		-moz-column-count: 3; /* Firefox */
+		column-count: 3;
+		-webkit-column-gap: 20px; /* Chrome, Safari, Opera */
+		-moz-column-gap: 20px; /* Firefox */
+		column-gap: 20px;
+		-webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+		-moz-column-rule-style: solid; /* Firefox */
+		column-rule-style: solid;
+		-webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
+		-moz-column-rule-color: lightblue; /* Firefox */
+		column-rule-color: lightblue;
+	}
 	</ui:style>
 
 	<b:Row addStyleNames="content">
@@ -49,7 +64,7 @@
 										<b.html:Span ui:field="mFgg" />
 									</b:FormGroup>
 									<b:FormGroup>
-										<b:FormLabel text="Name" addStyleNames="{style.pad}" />
+										<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
 										<b:Input ui:field="mName" type="TEXT" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">
@@ -62,14 +77,10 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tabg5">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="FIELDS IN GROUP" />
+									<b.html:Paragraph emphasis="INFO" text="SELECT FIELDS IN GROUP" />
 									<b:FormGroup>
-										<b:FormLabel text="Fields:" addStyleNames="{style.pad}" />
-										<b.gwt:FlowPanel ui:field="mFields" />
-									</b:FormGroup>
-									<b:FormGroup>
-										<b:FormLabel text="Example:" addStyleNames="{style.pad}" />
-										<b.html:Span ui:field="mStorageFormatEx" />
+										<b:FormLabel ui:field="mNameText" />
+										<b.gwt:FlowPanel ui:field="mFields" styleName="{style.columns}" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">
 										<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />

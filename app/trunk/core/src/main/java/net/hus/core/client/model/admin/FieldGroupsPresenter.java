@@ -21,12 +21,13 @@ public class FieldGroupsPresenter extends RpcCallback<FieldsDataCommand> impleme
   {
     mDisplay = inDisplay;
     mDisplay.setAction(this);
-
     refresh();
   }
 
-  private void refresh()
+  @Override
+  public void refresh()
   {
+    mDisplay.reset();
     Global.fire(new FieldsDataCommand(Type.GROUPS), this);
   }
 
@@ -42,43 +43,24 @@ public class FieldGroupsPresenter extends RpcCallback<FieldsDataCommand> impleme
         break;
       }
       case GROUP:
-      {
-        mDisplay.addFieldGroup(inCommand.getData().getFieldGroup());
+        mDisplay.selectFields(inCommand.getData().getFieldGroup());
         break;
-      }
       default:
         break;
     }
   }
 
   @Override
-  public void select(String inGroup, String inDisplay, Long inId)
+  public void select(String inFgg, String inName)
   {
-    mDisplay.setGroupName(inGroup, inDisplay);
-    Global.fire(new FieldsDataCommand(Type.GROUP, inGroup), this);
+    mDisplay.setGroupName(inFgg, inName);
+    Global.fire(new FieldsDataCommand(Type.GROUP, inFgg), this);
   }
 
   @Override
-  public void addGroup(final String inGroup)
+  public void createGroup(String inName)
   {
-    final String name = RandomUtil.random(7);
-
-    Lookup lookup = new Lookup();
-    lookup.setGroup(Group.FIELD_GROUP);
-    lookup.setName(name);
-    lookup.setDisplay(inGroup);
-    lookup.setSort(0);
-
-    Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()
-    {
-      @Override
-      public void onRpcSuccess(LookupSaveCommand inCommand)
-      {
-        mDisplay.notify("Saved ... " + inGroup);
-        refresh();
-        select(name, inGroup, null); // consolidate
-      }
-    });
+    save(RandomUtil.random(7), inName);
   }
 
   @Override
@@ -90,6 +72,32 @@ public class FieldGroupsPresenter extends RpcCallback<FieldsDataCommand> impleme
       public void onRpcSuccess(FieldsSaveCommand inCommand)
       {
         mDisplay.notify("Saved ... " + inName);
+      }
+    });
+  }
+
+  @Override
+  public void saveGroupName(String inFgg, final String inName)
+  {
+    save(inFgg, inName);
+  }
+
+  private void save(final String inFgg, final String inName)
+  {
+    Lookup lookup = new Lookup();
+    lookup.setGroup(Group.FIELD_GROUP);
+    lookup.setName(inFgg);
+    lookup.setDisplay(inName);
+    lookup.setSort(0);
+
+    Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + inName);
+        refresh();
+        select(inFgg, inName); // consolidate refresh & select
       }
     });
   }
