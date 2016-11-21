@@ -29,6 +29,14 @@
 		</Sql>
 	</Statement>
 	<Statement>
+		<Key>SELECT_GROUP_BY_FGG</Key>
+		<Types>VARCHAR</Types>
+		<Sql>select g.*,l.mDisplay as mGrpDspl
+			from FIELD_GROUP g
+			left join LOOKUP l on g.mGroup=l.mName where g.mGroup=?
+		</Sql>
+	</Statement>
+	<Statement>
 		<Key>DELETE_FIELDS</Key>
 		<Types>VARCHAR,NUMERIC</Types>
 		<Sql>delete from FIELD_GROUP where mGroup=? and mFieldId=?</Sql>
@@ -42,7 +50,7 @@
 		</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_FIELDS</Key>
+		<Key>SELECT_FIELDS_BY_GRP</Key>
 		<Types>VARCHAR</Types>
 		<Sql>select f.*,g.mDisplay from FIELD f, FIELD_GROUP g
 			where f.mId=g.mFieldId and g.mGroup=?

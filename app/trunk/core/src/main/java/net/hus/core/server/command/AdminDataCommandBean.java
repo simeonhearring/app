@@ -22,15 +22,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
       case FIELD:
         addField(data, inCommand.getFieldId());
         break;
-      case GROUP:
-        addGroup(data, inCommand.getFgg());
+      case FIELDS:
+        addFields(data, inCommand.getFgg());
         break;
-      case GROUPS:
-      {
-        addFieldGroups(data);
-        addFields(data);
-        break;
-      }
       default:
         break;
     }
@@ -46,9 +40,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setField(mCoreDao.fields().select(inFieldId));
   }
 
-  private void addGroup(AdminData inData, String inGroup)
+  private void addFields(AdminData inData, String inFgg)
   {
-    inData.setFieldGroup(mCoreDao.fields().select(inGroup));
+    inData.setFieldGroup(mCoreDao.fields().select(inFgg));
   }
 
   private void addFieldGroups(AdminData inData)
@@ -72,7 +66,12 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     Long fieldId = inData.getFields().get(0).getAltId();
 
     addField(inData, fieldId);
+
     addLookupGroups(inData);
+
     addFieldGroups(inData);
+    String fgg = inData.getFieldGroups().get(0).getName();
+
+    addFields(inData, fgg);
   }
 }

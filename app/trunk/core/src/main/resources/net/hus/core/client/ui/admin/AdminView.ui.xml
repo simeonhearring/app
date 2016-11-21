@@ -31,11 +31,11 @@
 				</b:NavTabs>
 				<b:TabContent>
 					<b:TabPane fade="true" b:id="taba0" in="true" active="true">
-						<a:FieldsView ui:field="mFields" styleName="{style.padaround}" />
+						<a:FieldView ui:field="mField" styleName="{style.padaround}" />
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba1">
 						<b:FormGroup>
-							<a:FieldGroupsView ui:field="mGroups" styleName="{style.padaround}" />
+							<a:FieldsView ui:field="mFields" styleName="{style.padaround}" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba2">

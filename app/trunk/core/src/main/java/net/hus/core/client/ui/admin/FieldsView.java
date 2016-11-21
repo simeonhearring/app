@@ -160,6 +160,7 @@ public class FieldsView extends AbstractView implements FieldsDisplay
   @Override
   public void selectFields(Fields inFields)
   {
+    setGroupName(inFields.fgg(), inFields.getName());
     for (int i = 0; i < mFields.getWidgetCount(); i++)
     {
       CheckBox box = (CheckBox) mFields.getWidget(i);

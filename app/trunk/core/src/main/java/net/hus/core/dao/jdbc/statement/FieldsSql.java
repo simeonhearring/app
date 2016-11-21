@@ -21,9 +21,10 @@ public class FieldsSql extends Mapping
   private MappingSqlQuery<Field> mFieldByIdSelect;
   private MappingSqlQuery<Field> mFieldAllSelect;
   private MappingSqlQuery<Object[]> mFieldsAllSelect;
+  private MappingSqlQuery<Object[]> mFieldsByFggSelect;
   private BatchSqlUpdate mFieldsUpsert;
   private BatchSqlUpdate mFieldsDelete;
-  private MappingSqlQuery<Field> mFieldsSelect;
+  private MappingSqlQuery<Field> mFieldByGrpSelect;
 
   public FieldsSql()
   {
@@ -84,8 +85,20 @@ public class FieldsSql extends Mapping
     };
     mFieldsAllSelect.compile();
 
-    Statement selectFields = mStmts.getStatement("SELECT_FIELDS");
-    mFieldsSelect = new MappingSqlQuery<Field>(inDataSource, selectFields.getSql())
+    Statement selectFgg = mStmts.getStatement("SELECT_GROUP_BY_FGG");
+    mFieldsByFggSelect = new MappingSqlQuery<Object[]>(inDataSource, selectFgg.getSql())
+    {
+      @Override
+      protected Object[] mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapField(new Object[3], inRs);
+      }
+    };
+    mFieldsByFggSelect.setTypes(selectFgg.types());
+    mFieldsByFggSelect.compile();
+
+    Statement selectFields = mStmts.getStatement("SELECT_FIELDS_BY_GRP");
+    mFieldByGrpSelect = new MappingSqlQuery<Field>(inDataSource, selectFields.getSql())
     {
       @Override
       protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -93,8 +106,8 @@ public class FieldsSql extends Mapping
         return mapFields(new Field(), inRs);
       }
     };
-    mFieldsSelect.setTypes(selectFields.types());
-    mFieldsSelect.compile();
+    mFieldByGrpSelect.setTypes(selectFields.types());
+    mFieldByGrpSelect.compile();
   }
 
   public Field select(String inName, Field.Type inType)
@@ -113,6 +126,12 @@ public class FieldsSql extends Mapping
   {
     List<Object[]> ret = mFieldsAllSelect.execute();
     return ret;
+  }
+
+  public Object[] selectGrp(String inFgg)
+  {
+    List<Object[]> ret = mFieldsByFggSelect.execute(params(inFgg));
+    return first(ret);
   }
 
   public void upsert(List<Field> inFields)
@@ -149,8 +168,10 @@ public class FieldsSql extends Mapping
   public Fields select(String inFgg)
   {
     Fields ret = new Fields();
-    ret.fgg(inFgg);
-    ret.setFields(mFieldsSelect.execute(params(inFgg)));
+    Object[] fgg = selectGrp(inFgg); // TODO go to lookup
+    ret.fgg((String) fgg[0]);
+    ret.setName((String) fgg[2]);
+    ret.setFields(mFieldByGrpSelect.execute(params(inFgg)));
     return ret;
   }
 

@@ -4,6 +4,5 @@ public enum EventType
 {
   ALL,
   FIELD,
-  GROUPS,
-  GROUP;
+  FIELDS;
 }

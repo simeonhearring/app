@@ -9,13 +9,14 @@ import net.hus.core.client.ui.event.AdminEvent;
 import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.command.FieldsSaveCommand;
 import net.hus.core.shared.command.LookupSaveCommand;
-import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.EventType;
+import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.util.RandomUtil;
 
 public class FieldsPresenter extends RpcCallback<AdminDataCommand>
-    implements Action, AdminEvent.Handler
+implements Action, AdminEvent.Handler
 {
   private FieldsDisplay mDisplay;
 
@@ -24,34 +25,40 @@ public class FieldsPresenter extends RpcCallback<AdminDataCommand>
     Global.addHandler(AdminEvent.TYPE, this);
     mDisplay = inDisplay;
     mDisplay.setAction(this);
-    refresh();
   }
 
   @Override
   public void dispatch(AdminEvent inEvent)
   {
+    process(inEvent.getType(), inEvent.getData());
   }
 
   @Override
   public void refresh()
   {
     mDisplay.reset();
-    Global.fire(new AdminDataCommand(EventType.GROUPS), this);
+    Global.fire(new AdminDataCommand(EventType.ALL), this);
   }
 
   @Override
   public void onRpcSuccess(AdminDataCommand inCommand)
   {
-    switch (inCommand.getType())
+    process(inCommand.getType(), inCommand.getData());
+  }
+
+  private void process(EventType inType, AdminData inData)
+  {
+    switch (inType)
     {
-      case GROUPS:
+      case ALL:
       {
-        mDisplay.addGroups(inCommand.getData().getFieldGroups());
-        mDisplay.addFields(inCommand.getData().getFields());
+        mDisplay.addGroups(inData.getFieldGroups());
+        mDisplay.addFields(inData.getFields());
+        mDisplay.selectFields(inData.getFieldGroup());
         break;
       }
-      case GROUP:
-        mDisplay.selectFields(inCommand.getData().getFieldGroup());
+      case FIELDS:
+        mDisplay.selectFields(inData.getFieldGroup());
         break;
       default:
         break;
@@ -61,8 +68,7 @@ public class FieldsPresenter extends RpcCallback<AdminDataCommand>
   @Override
   public void select(String inFgg, String inName)
   {
-    mDisplay.setGroupName(inFgg, inName);
-    Global.fire(new AdminDataCommand(inFgg, EventType.GROUP), this);
+    Global.fire(new AdminDataCommand(inFgg, EventType.FIELDS), this);
   }
 
   @Override
