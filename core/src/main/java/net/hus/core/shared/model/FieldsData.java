@@ -22,7 +22,6 @@ public class FieldsData implements Serializable
 
   private Field mField;
 
-
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
     mFieldGroups = inFieldGroups;

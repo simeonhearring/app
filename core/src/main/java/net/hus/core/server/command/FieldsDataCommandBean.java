@@ -21,7 +21,7 @@ public class FieldsDataCommandBean extends AbstractCommandBean<FieldsDataCommand
         addField(data, inCommand.getFieldId());
         break;
       case GROUP:
-        addGroup(data, inCommand.getGroup());
+        addGroup(data, inCommand.getFgg());
         break;
       case GROUPS:
       {

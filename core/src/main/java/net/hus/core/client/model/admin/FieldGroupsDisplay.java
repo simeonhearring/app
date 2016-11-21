@@ -10,20 +10,26 @@ public interface FieldGroupsDisplay extends PageDisplay
 {
   public interface Action
   {
-    void select(String inGroup, String inDisplay, Long inId);
+    void select(String inFgg, String inName);
 
-    void addGroup(String inGroup);
+    void createGroup(String inName);
 
-    void saveFields(String inText, String inName, List<Long> inFieldIds);
+    void saveFields(String inFgg, String inName, List<Long> inFieldIds);
+
+    void saveGroupName(String inFgg, String inName);
+
+    void refresh();
   }
 
   void setAction(Action inAction);
 
-  void addGroups(List<Lookup> inFieldGroups);
+  void addGroups(List<Lookup> inGroups);
 
   void addFields(List<Lookup> inFields);
 
-  void addFieldGroup(Fields inFieldGroup);
+  void selectFields(Fields inFields);
 
   void setGroupName(String inFgg, String inName);
+
+  void reset();
 }

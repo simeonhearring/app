@@ -17,7 +17,7 @@
 			<b:Row>
 				<b:Column size="SM_3">
 					<b:Well size="LARGE">
-						<b.html:Paragraph emphasis="INFO" text="EDIT FIELD PROPERTIES" />
+						<b.html:Paragraph emphasis="INFO" text="EDIT FIELD" />
 						<b:FormGroup>
 							<b:FormLabel text="Select Field:" addStyleNames="{style.pad}" />
 							<b.select:Select ui:field="mFields" liveSearch="true" visible="true" />

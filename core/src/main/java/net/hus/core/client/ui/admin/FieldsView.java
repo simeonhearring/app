@@ -261,6 +261,8 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 
     // lookup
     addLookup(inField.getLookupParameters(), inField.getLookupLocation(), inField);
+
+    mFields.setValue(null);
   }
 
   @Override
@@ -324,6 +326,7 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   public void refreshFields()
   {
     mFields.refresh();
+    mFields.setValue(null);
   }
 
   private void addArrayLabels(int inSize, boolean inUpdate)

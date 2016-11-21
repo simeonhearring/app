@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
@@ -47,7 +48,10 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   Span mFgg;
 
   @UiField
-  Icon mAdd0, mSave1;
+  FormLabel mNameText;
+
+  @UiField
+  Icon mAdd0, mSave0, mSave1, mRefresh0, mRefresh1;
 
   private Action mAction;
 
@@ -77,24 +81,36 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
     if (mGroups.equals(inEvent.getSource()))
     {
       Option selectedItem = mGroups.getSelectedItem();
-      mAction.select(selectedItem.getValue(), selectedItem.getText(), toLong(selectedItem.getId()));
+      mAction.select(selectedItem.getValue(), selectedItem.getText());
     }
   }
 
   @UiHandler(
       {
         "mAdd0",
-        "mSave1"
+        "mSave0",
+        "mSave1",
+        "mRefresh0",
+        "mRefresh1"
       })
   public void onClickBind(ClickEvent inEvent)
   {
-    if (mAdd0.equals(inEvent.getSource()))
+    Object source = inEvent.getSource();
+    if (mAdd0.equals(source))
     {
-      mAction.addGroup(mAddGroup.getText());
+      mAction.createGroup(mAddGroup.getText());
     }
-    else if (mSave1.equals(inEvent.getSource()))
+    else if (mSave0.equals(source))
     {
-      mAction.saveFields(mFgg.getText(), mName.getText(), fieldIds());
+      mAction.saveGroupName(mFgg.getText(), mName.getText());
+    }
+    else if (mSave1.equals(source))
+    {
+      mAction.saveFields(mFgg.getText(), mName.getText(), selectedFieldIds());
+    }
+    else if (mRefresh0.equals(source) || mRefresh1.equals(source))
+    {
+      mAction.refresh();
     }
   }
 
@@ -111,9 +127,10 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
       mGroups.add(field);
     }
     mGroups.refresh();
+    mGroups.setValue(null);
   }
 
-  private List<Long> fieldIds()
+  private List<Long> selectedFieldIds()
   {
     List<Long> ret = new ArrayList<>();
     for (int i = 0; i < mFields.getWidgetCount(); i++)
@@ -130,6 +147,7 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   @Override
   public void addFields(List<Lookup> inFields)
   {
+    mFields.clear();
     for (Lookup value : inFields)
     {
       CheckBox box = new CheckBox();
@@ -140,14 +158,15 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   }
 
   @Override
-  public void addFieldGroup(Fields inFieldGroup)
+  public void selectFields(Fields inFields)
   {
     for (int i = 0; i < mFields.getWidgetCount(); i++)
     {
       CheckBox box = (CheckBox) mFields.getWidget(i);
       Long id = toLong(box.getFormValue());
-      box.setValue(inFieldGroup.contains(id));
+      box.setValue(inFields.contains(id));
     }
+    mGroups.setValue(null);
   }
 
   @Override
@@ -155,5 +174,12 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
   {
     mFgg.setText(inFgg);
     mName.setText(inName);
+    mNameText.setText(inName);
+  }
+
+  @Override
+  public void reset()
+  {
+    setGroupName(null, null);
   }
 }
