@@ -25,6 +25,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
       case FIELDS:
         addFields(data, inCommand.getFgg());
         break;
+      case LOOKUP:
+        addLookup(data, inCommand.getFgg());
+        break;
       default:
         break;
     }
@@ -50,28 +53,33 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setFieldGroups(mCoreDao.lookups().select(Group.FIELD_GROUP.name()));
   }
 
-  private void addLookupGroups(AdminData inData)
-  {
-    inData.setLookupGroups(mCoreDao.lookups().selectGrps());
-  }
-
   private void addFields(AdminData inData)
   {
     inData.setFields(mCoreDao.lookups().select(Group.FIELD.name()));
+  }
+
+  private void addLookup(AdminData inData)
+  {
+    inData.setLookupGroups(mCoreDao.lookups().select(Group.LOOKUP.name()));
+  }
+
+  private void addLookup(AdminData inData, String inGroup)
+  {
+    inData.setLookupGroup(mCoreDao.lookups().select(inGroup));
   }
 
   private void addAll(AdminData inData)
   {
     addFields(inData);
     Long fieldId = inData.getFields().get(0).getAltId();
-
     addField(inData, fieldId);
 
-    addLookupGroups(inData);
+    addLookup(inData);
+    String grp = inData.getLookupGroups().get(0).getName();
+    addLookup(inData, grp);
 
     addFieldGroups(inData);
     String fgg = inData.getFieldGroups().get(0).getName();
-
     addFields(inData, fgg);
   }
 }

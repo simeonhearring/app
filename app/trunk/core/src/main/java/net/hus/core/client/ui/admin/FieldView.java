@@ -288,12 +288,12 @@ public class FieldView extends AbstractView
   }
 
   @Override
-  public void addLookup(List<String> inLookupGroups)
+  public void addLookup(List<Lookup> inLookupGroups)
   {
     mLookupGroup.clear();
-    for (String value : inLookupGroups)
+    for (Lookup value : inLookupGroups)
     {
-      CheckBox box = new CheckBox(value);
+      CheckBox box = new CheckBox(value.getName());
       box.setWordWrap(false);
       box.addValueChangeHandler(this);
       mLookupGroup.add(box);

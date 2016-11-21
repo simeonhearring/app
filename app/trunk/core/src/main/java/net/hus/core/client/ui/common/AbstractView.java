@@ -3,6 +3,9 @@ package net.hus.core.client.ui.common;
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IndexedPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -80,5 +83,12 @@ public abstract class AbstractView extends Composite
       }
     }
     return ret;
+  }
+
+  public void addHandler(int inEvent, final Element inElement, EventListener inListner)
+  {
+    Event.sinkEvents(inElement, inEvent);
+    Event.setEventListener(inElement, inListner);
+    inElement.setAttribute("contenteditable", "true");
   }
 }
