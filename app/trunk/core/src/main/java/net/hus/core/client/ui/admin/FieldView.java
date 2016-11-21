@@ -33,7 +33,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.model.admin.FieldsDisplay;
+import net.hus.core.client.model.admin.FieldDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
@@ -41,12 +41,12 @@ import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page.Section.Name;
 
-public class FieldsView extends AbstractView
-implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
+public class FieldView extends AbstractView
+    implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
-  interface Binder extends UiBinder<Widget, FieldsView>
+  interface Binder extends UiBinder<Widget, FieldView>
   {
   }
 
@@ -88,7 +88,7 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 
   private Action mAction;
 
-  public FieldsView()
+  public FieldView()
   {
     initWidget(BINDER.createAndBindUi(this));
 
@@ -104,25 +104,25 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   }
 
   @UiHandler(
-      {
-        "mSave0",
-        "mSave1",
-        "mSave2",
-        "mSave3",
-        "mRefresh0",
-        "mRefresh1",
-        "mRefresh2",
-        "mRefresh3",
-        "mAdd0",
-        "mPlus",
-        "mMinus"
-      })
+  {
+      "mSave0",
+      "mSave1",
+      "mSave2",
+      "mSave3",
+      "mRefresh0",
+      "mRefresh1",
+      "mRefresh2",
+      "mRefresh3",
+      "mAdd0",
+      "mPlus",
+      "mMinus"
+  })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
-      mAddNameGrp
-      .setValidationState(mAction.addField(mAddName.getText().trim(), mAddType.getSelectedValue()));
+      mAddNameGrp.setValidationState(
+          mAction.addField(mAddName.getText().trim(), mAddType.getSelectedValue()));
     }
     else if (isSave(inEvent.getSource()))
     {
@@ -155,13 +155,13 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   }
 
   @UiHandler(
-      {
-        "mFields",
-        "mStorageFormat",
-        "mAltEven",
-        "mAltOdd",
-        "mBottomRow"
-      })
+  {
+      "mFields",
+      "mStorageFormat",
+      "mAltEven",
+      "mAltOdd",
+      "mBottomRow"
+  })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
     if (mFields.equals(inEvent.getSource()))
@@ -198,10 +198,10 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   }
 
   @UiHandler(
-      {
-        "mLookupLocation",
-        "mHeadSize"
-      })
+  {
+      "mLookupLocation",
+      "mHeadSize"
+  })
   public void onChangeBind(ChangeEvent inEvent)
   {
     if (mLookupLocation.equals(inEvent.getSource()))
@@ -215,9 +215,9 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   }
 
   @UiHandler(
-      {
-        "mStorageFormat"
-      })
+  {
+      "mStorageFormat"
+  })
   public void onKeyUpBind(KeyUpEvent inEvent)
   {
     formatExample(mStorageFormat, mStorageFormatEx);
@@ -353,20 +353,20 @@ implements FieldsDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     }
   }
 
-  //  private void addSpanHandler(final DataType inType, final Span inSpan)
-  //  {
-  //    Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
-  //    Event.setEventListener(inSpan.getElement(), new EventListener()
-  //    {
-  //      @Override
-  //      public void onBrowserEvent(Event inEvent)
-  //      {
-  //        if (Event.ONBLUR == inEvent.getTypeInt())
-  //        {
-  //          mAction.update(inType, inSpan.getText());
-  //        }
-  //      }
-  //    });
+  // private void addSpanHandler(final DataType inType, final Span inSpan)
+  // {
+  // Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
+  // Event.setEventListener(inSpan.getElement(), new EventListener()
+  // {
+  // @Override
+  // public void onBrowserEvent(Event inEvent)
+  // {
+  // if (Event.ONBLUR == inEvent.getTypeInt())
+  // {
+  // mAction.update(inType, inSpan.getText());
+  // }
+  // }
+  // });
   //
   // inSpan.getElement().setAttribute("contenteditable", "true");
   // }

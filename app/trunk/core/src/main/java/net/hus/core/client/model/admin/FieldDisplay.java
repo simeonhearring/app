@@ -9,7 +9,7 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Lookup;
 
-public interface FieldsDisplay extends PageDisplay
+public interface FieldDisplay extends PageDisplay
 {
   public interface Action
   {

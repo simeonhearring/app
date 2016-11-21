@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 
-import net.hus.core.client.model.admin.FieldsDisplay.Action;
+import net.hus.core.client.model.admin.FieldDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.FieldSaveCommand;
@@ -18,15 +18,15 @@ import net.hus.core.shared.model.FieldsData;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.util.EnumUtil;
 
-public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements Action
+public class FieldPresenter extends RpcCallback<FieldsDataCommand> implements Action
 {
-  private FieldsDisplay mDisplay;
+  private FieldDisplay mDisplay;
 
   private FieldsData mData;
 
   private Field mField;
 
-  public FieldsPresenter(FieldsDisplay inDisplay)
+  public FieldPresenter(FieldDisplay inDisplay)
   {
     mDisplay = inDisplay;
     mDisplay.setAction(this);
