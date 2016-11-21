@@ -65,7 +65,7 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
-	<bean id="FieldsDataCommand" class="net.hus.core.server.command.FieldsDataCommandBean">
+	<bean id="AdminDataCommand" class="net.hus.core.server.command.AdminDataCommandBean">
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 

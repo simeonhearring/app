@@ -6,7 +6,7 @@ import net.hus.core.client.model.admin.FieldsDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.AdminEvent;
-import net.hus.core.shared.command.FieldsDataCommand;
+import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.command.FieldsSaveCommand;
 import net.hus.core.shared.command.LookupSaveCommand;
 import net.hus.core.shared.model.Lookup;
@@ -14,7 +14,7 @@ import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.util.RandomUtil;
 
-public class FieldsPresenter extends RpcCallback<FieldsDataCommand>
+public class FieldsPresenter extends RpcCallback<AdminDataCommand>
     implements Action, AdminEvent.Handler
 {
   private FieldsDisplay mDisplay;
@@ -36,11 +36,11 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand>
   public void refresh()
   {
     mDisplay.reset();
-    Global.fire(new FieldsDataCommand(EventType.GROUPS), this);
+    Global.fire(new AdminDataCommand(EventType.GROUPS), this);
   }
 
   @Override
-  public void onRpcSuccess(FieldsDataCommand inCommand)
+  public void onRpcSuccess(AdminDataCommand inCommand)
   {
     switch (inCommand.getType())
     {
@@ -62,7 +62,7 @@ public class FieldsPresenter extends RpcCallback<FieldsDataCommand>
   public void select(String inFgg, String inName)
   {
     mDisplay.setGroupName(inFgg, inName);
-    Global.fire(new FieldsDataCommand(EventType.GROUP, inFgg), this);
+    Global.fire(new AdminDataCommand(EventType.GROUP, inFgg), this);
   }
 
   @Override
