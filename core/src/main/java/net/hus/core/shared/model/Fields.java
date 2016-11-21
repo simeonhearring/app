@@ -8,9 +8,20 @@ public class Fields extends AbstractModel
   private static final long serialVersionUID = -7554968452692353425L;
 
   private String mGroup; // FGG
+  private String mName;
   private List<Field> mFields;
 
   private List<Long> mUnique;
+
+  public String getName()
+  {
+    return mName;
+  }
+
+  public void setName(String inName)
+  {
+    mName = inName;
+  }
 
   public String fgg()
   {

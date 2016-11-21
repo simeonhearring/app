@@ -10,21 +10,19 @@ import net.hus.core.client.model.admin.FieldDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.AdminEvent;
-import net.hus.core.shared.command.FieldSaveCommand;
 import net.hus.core.shared.command.AdminDataCommand;
+import net.hus.core.shared.command.FieldSaveCommand;
+import net.hus.core.shared.model.AdminData;
+import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
-import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.Lookup;
-import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.util.EnumUtil;
 
 public class FieldPresenter extends RpcCallback<AdminDataCommand>
-    implements Action, AdminEvent.Handler
+implements Action, AdminEvent.Handler
 {
   private FieldDisplay mDisplay;
-
-  private AdminData mData;
 
   private Field mField;
 
@@ -33,26 +31,29 @@ public class FieldPresenter extends RpcCallback<AdminDataCommand>
     Global.addHandler(AdminEvent.TYPE, this);
     mDisplay = inDisplay;
     mDisplay.setAction(this);
-    refreshFields();
   }
 
   @Override
   public void dispatch(AdminEvent inEvent)
   {
+    process(inEvent.getType(), inEvent.getData());
   }
 
   @Override
   public void onRpcSuccess(AdminDataCommand inCommand)
   {
-    mData = inCommand.getData();
+    process(inCommand.getType(), inCommand.getData());
+  }
 
-    switch (inCommand.getType())
+  private void process(EventType inType, AdminData inData)
+  {
+    switch (inType)
     {
       case ALL:
-        addFields(mData.data(), mData.getField(), mData.getLookupGroups());
+        addFields(inData.data(), inData.getField(), inData.getLookupGroups());
         break;
       case FIELD:
-        addField(mData.getField());
+        set(inData.getField());
         break;
       default:
         break;
@@ -85,16 +86,8 @@ public class FieldPresenter extends RpcCallback<AdminDataCommand>
 
     if (!"".equals(inName))
     {
-      if (mData.exists(inName))
-      {
-        ret = ValidationState.ERROR;
-        mDisplay.notify("Field already exists!");
-      }
-      else
-      {
-        addField(new Field(inName, EnumUtil.valueOf(inType, Field.Type.values())));
-        saveField();
-      }
+      set(new Field(inName, EnumUtil.valueOf(inType, Field.Type.values())));
+      saveField();
     }
     else
     {
@@ -136,7 +129,7 @@ public class FieldPresenter extends RpcCallback<AdminDataCommand>
     return mField.getArrayLabel(inPos);
   }
 
-  private void addField(Field inField)
+  private void set(Field inField)
   {
     mField = inField;
     mDisplay.set(mField);
@@ -152,7 +145,7 @@ public class FieldPresenter extends RpcCallback<AdminDataCommand>
     }
     mDisplay.refreshFields();
 
-    addField(inField);
+    set(inField);
 
     mDisplay.addLookup(inLookupGroups);
   }

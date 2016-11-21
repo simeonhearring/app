@@ -1,5 +1,6 @@
 package net.hus.core.client.ui.event;
 
+import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.EventType;
 
 public class AdminEvent extends Event<AdminEvent.Handler>
@@ -11,16 +12,23 @@ public class AdminEvent extends Event<AdminEvent.Handler>
 
   public static final Type<Handler> TYPE = new Type<>();
 
-  private EventType mType;
+  private final EventType mType;
+  private final AdminData mData;
 
-  public AdminEvent(EventType inType)
+  public AdminEvent(EventType inType, AdminData inData)
   {
     mType = inType;
+    mData = inData;
   }
 
   public EventType getType()
   {
     return mType;
+  }
+
+  public AdminData getData()
+  {
+    return mData;
   }
 
   @Override

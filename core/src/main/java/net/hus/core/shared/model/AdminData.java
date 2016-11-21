@@ -16,8 +16,6 @@ public class AdminData implements Serializable
 
   private List<Lookup> mFieldGroups;
 
-  private List<String> mUnique;
-
   private Fields mFieldGroup;
 
   private Field mField;
@@ -68,19 +66,21 @@ public class AdminData implements Serializable
     return ret;
   }
 
-  public boolean exists(String inName)
-  {
-    if (mUnique == null)
-    {
-      mUnique = new ArrayList<>();
-      for (Lookup value : mFields)
-      {
-        mUnique.add(value.getName());
-      }
-    }
-
-    return mUnique.contains(Field.officialName(inName));
-  }
+  // public boolean exists(String inName)
+  // {
+  // private List<String> mUnique;
+  //
+  // if (mUnique == null)
+  // {
+  // mUnique = new ArrayList<>();
+  // for (Lookup value : mFields)
+  // {
+  // mUnique.add(value.getName());
+  // }
+  // }
+  //
+  // return mUnique.contains(Field.officialName(inName));
+  // }
 
   public List<String> getLookupGroups()
   {

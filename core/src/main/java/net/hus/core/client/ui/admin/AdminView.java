@@ -9,8 +9,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.AdminDisplay;
-import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.model.admin.FieldDisplay;
+import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.ui.page.AbstractRowView;
 import net.hus.core.shared.model.Page.Section;
 
@@ -29,10 +29,10 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   Column mL01, mC01, mR01;
 
   @UiField
-  FieldView mFields;
+  FieldView mField;
 
   @UiField
-  FieldsView mGroups;
+  FieldsView mFields;
 
   public AdminView()
   {
@@ -53,12 +53,12 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   @Override
   public FieldDisplay getField()
   {
-    return mFields;
+    return mField;
   }
 
   @Override
   public FieldsDisplay getFields()
   {
-    return mGroups;
+    return mFields;
   }
 }
