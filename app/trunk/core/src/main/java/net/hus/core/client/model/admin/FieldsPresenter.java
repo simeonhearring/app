@@ -2,7 +2,7 @@ package net.hus.core.client.model.admin;
 
 import java.util.List;
 
-import net.hus.core.client.model.admin.FieldGroupsDisplay.Action;
+import net.hus.core.client.model.admin.FieldsDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.FieldsDataCommand;
@@ -13,11 +13,11 @@ import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.util.RandomUtil;
 
-public class FieldGroupsPresenter extends RpcCallback<FieldsDataCommand> implements Action
+public class FieldsPresenter extends RpcCallback<FieldsDataCommand> implements Action
 {
-  private FieldGroupsDisplay mDisplay;
+  private FieldsDisplay mDisplay;
 
-  public FieldGroupsPresenter(FieldGroupsDisplay inDisplay)
+  public FieldsPresenter(FieldsDisplay inDisplay)
   {
     mDisplay = inDisplay;
     mDisplay.setAction(this);

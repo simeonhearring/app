@@ -21,17 +21,17 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-import net.hus.core.client.model.admin.FieldGroupsDisplay;
+import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page.Section.Name;
 
-public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
+public class FieldsView extends AbstractView implements FieldsDisplay
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
-  interface Binder extends UiBinder<Widget, FieldGroupsView>
+  interface Binder extends UiBinder<Widget, FieldsView>
   {
   }
 
@@ -55,7 +55,7 @@ public class FieldGroupsView extends AbstractView implements FieldGroupsDisplay
 
   private Action mAction;
 
-  public FieldGroupsView()
+  public FieldsView()
   {
     initWidget(BINDER.createAndBindUi(this));
   }

@@ -6,7 +6,7 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 
-public interface FieldGroupsDisplay extends PageDisplay
+public interface FieldsDisplay extends PageDisplay
 {
   public interface Action
   {

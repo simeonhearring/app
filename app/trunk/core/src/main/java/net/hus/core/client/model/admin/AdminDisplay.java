@@ -6,5 +6,5 @@ public interface AdminDisplay extends PageDisplay
 {
   FieldDisplay getFields();
 
-  FieldGroupsDisplay getGroups();
+  FieldsDisplay getGroups();
 }
