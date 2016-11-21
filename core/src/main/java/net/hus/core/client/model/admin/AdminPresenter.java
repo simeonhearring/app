@@ -1,7 +1,9 @@
 package net.hus.core.client.model.admin;
 
+import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.shared.command.FieldsDataCommand;
+import net.hus.core.shared.model.EventType;
 
 public class AdminPresenter extends RpcCallback<FieldsDataCommand>
 {
@@ -13,6 +15,8 @@ public class AdminPresenter extends RpcCallback<FieldsDataCommand>
 
     new FieldPresenter(mDisplay.getField());
     new FieldsPresenter(mDisplay.getFields());
+
+    Global.fire(new FieldsDataCommand(EventType.GROUPS), this);
   }
 
   @Override
