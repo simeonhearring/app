@@ -22,12 +22,12 @@
 			<b:Column size="SM_1" />
 			<b:Column size="SM_10">
 				<b:NavTabs>
-					<b:TabListItem dataTarget="#taba0" text="Fields" active="true" ui:field="mNameTab" />
-					<b:TabListItem dataTarget="#taba1" text="Field Groups" />
-					<b:TabListItem dataTarget="#taba2" text="Lookups" />
-					<b:TabListItem dataTarget="#taba3" text="Profiles" />
-					<b:TabListItem dataTarget="#taba4" text="Actions" />
-					<b:TabListItem dataTarget="#taba5" text="Pages" />
+					<b:TabListItem dataTarget="#taba0" text="Field" active="true" />
+					<b:TabListItem dataTarget="#taba1" text="Fields" />
+					<b:TabListItem dataTarget="#taba2" text="Lookup" />
+					<b:TabListItem dataTarget="#taba3" text="Profile" />
+					<b:TabListItem dataTarget="#taba4" text="Action" />
+					<b:TabListItem dataTarget="#taba5" text="Page" />
 				</b:NavTabs>
 				<b:TabContent>
 					<b:TabPane fade="true" b:id="taba0" in="true" active="true">
