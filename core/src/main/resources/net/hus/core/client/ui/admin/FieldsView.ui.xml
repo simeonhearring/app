@@ -178,7 +178,7 @@
 									<b:FormGroup>
 										<b:FormLabel text="Parameters:" addStyleNames="{style.pad}" />
 										<b.html:Span ui:field="mLookupGroupText" />
-										<b.gwt:FlowPanel ui:field="mLookupGroup" />
+										<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">
 										<b:Icon ui:field="mSave3" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
