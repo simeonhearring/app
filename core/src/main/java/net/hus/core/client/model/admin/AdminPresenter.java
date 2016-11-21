@@ -11,8 +11,8 @@ public class AdminPresenter extends RpcCallback<FieldsDataCommand>
   {
     mDisplay = inDisplay;
 
-    new FieldPresenter(mDisplay.getFields());
-    new FieldsPresenter(mDisplay.getGroups());
+    new FieldPresenter(mDisplay.getField());
+    new FieldsPresenter(mDisplay.getFields());
   }
 
   @Override

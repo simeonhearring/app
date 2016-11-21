@@ -1,6 +1,7 @@
 package net.hus.core.shared.command;
 
 import net.hus.core.shared.model.FieldsData;
+import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("FieldsDataCommand")
@@ -8,7 +9,7 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
 {
   private static final long serialVersionUID = -8790279100272573634L;
 
-  private Type mType;
+  private EventType mType;
   private Long mFieldId;
   private String mFgg;
 
@@ -16,18 +17,18 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
   {
   }
 
-  public FieldsDataCommand(Type inType)
+  public FieldsDataCommand(EventType inType)
   {
     mType = inType;
   }
 
-  public FieldsDataCommand(Type inType, Long inFieldId)
+  public FieldsDataCommand(EventType inType, Long inFieldId)
   {
     mType = inType;
     mFieldId = inFieldId;
   }
 
-  public FieldsDataCommand(Type inType, String inFgg)
+  public FieldsDataCommand(EventType inType, String inFgg)
   {
     mType = inType;
     mFgg = inFgg;
@@ -38,7 +39,7 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
     return mFieldId;
   }
 
-  public Type getType()
+  public EventType getType()
   {
     return mType;
   }
@@ -46,13 +47,5 @@ public class FieldsDataCommand extends AbstractDataCommand<FieldsData>
   public String getFgg()
   {
     return mFgg;
-  }
-
-  public enum Type
-  {
-    ALL,
-    FIELD,
-    GROUPS,
-    GROUP;
   }
 }

@@ -9,16 +9,18 @@ import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import net.hus.core.client.model.admin.FieldDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
+import net.hus.core.client.ui.event.AdminEvent;
 import net.hus.core.shared.command.FieldSaveCommand;
 import net.hus.core.shared.command.FieldsDataCommand;
-import net.hus.core.shared.command.FieldsDataCommand.Type;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.FieldsData;
 import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.util.EnumUtil;
 
-public class FieldPresenter extends RpcCallback<FieldsDataCommand> implements Action
+public class FieldPresenter extends RpcCallback<FieldsDataCommand>
+    implements Action, AdminEvent.Handler
 {
   private FieldDisplay mDisplay;
 
@@ -28,9 +30,15 @@ public class FieldPresenter extends RpcCallback<FieldsDataCommand> implements Ac
 
   public FieldPresenter(FieldDisplay inDisplay)
   {
+    Global.addHandler(AdminEvent.TYPE, this);
     mDisplay = inDisplay;
     mDisplay.setAction(this);
     refreshFields();
+  }
+
+  @Override
+  public void dispatch(AdminEvent inEvent)
+  {
   }
 
   @Override
@@ -67,7 +75,7 @@ public class FieldPresenter extends RpcCallback<FieldsDataCommand> implements Ac
   @Override
   public void refreshFields()
   {
-    Global.fire(new FieldsDataCommand(Type.ALL), this);
+    Global.fire(new FieldsDataCommand(EventType.ALL), this);
   }
 
   @Override
@@ -100,7 +108,7 @@ public class FieldPresenter extends RpcCallback<FieldsDataCommand> implements Ac
   @Override
   public void select(Long inFieldId)
   {
-    Global.fire(new FieldsDataCommand(Type.FIELD, inFieldId), this);
+    Global.fire(new FieldsDataCommand(EventType.FIELD, inFieldId), this);
   }
 
   @Override
