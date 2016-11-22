@@ -27,7 +27,7 @@
 						<b.html:Paragraph emphasis="INFO" text="CREATE NEW LOOKUP" />
 						<b:FormGroup>
 							<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
-							<b:Input ui:field="mAddLookup" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+							<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 						</b:FormGroup>
 						<b:Tooltip text="Add New">
 							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
@@ -63,12 +63,29 @@
 							<b:TabPane fade="true" b:id="tabl5">
 								<b:Well size="LARGE">
 									<b.html:Paragraph emphasis="INFO" text="VALUES IN LOOKUP" />
+									<b:Form type="INLINE">
+										<b:FieldSet>
+											<b:Legend>Sample form</b:Legend>
+											<b:FormGroup>
+												<b:Input ui:field="mNewName" type="TEXT" placeholder="Enter name" />
+											</b:FormGroup>
+											<b:FormGroup>
+												<b:Input ui:field="mNewAbbr" type="TEXT" placeholder="Enter abbreviation" />
+											</b:FormGroup>
+											<b:FormGroup>
+												<b:Input ui:field="mNewSort" type="NUMBER" placeholder="Enter sort" />
+												<b:Tooltip text="Save">
+													<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+												</b:Tooltip>
+											</b:FormGroup>
+										</b:FieldSet>
+									</b:Form>
 									<b:FormGroup>
 										<b:FormLabel ui:field="mNameText" />
 										<b.gwt:FlowPanel ui:field="mValues" styleName="core_columns" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">
-										<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+										<b:Icon ui:field="mSave2" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 									</b:Tooltip>
 									<b:Tooltip text="Refresh">
 										<b:Icon ui:field="mRefresh1" type="REFRESH" addStyleNames="pull-right" />

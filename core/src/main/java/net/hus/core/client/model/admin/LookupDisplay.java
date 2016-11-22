@@ -12,7 +12,9 @@ public interface LookupDisplay extends PageDisplay
   {
     void select(String inValue);
 
-    void createLookup(String inName);
+    void createLookups(String inName);
+
+    void createLookup(String inGroup, String inName, String inAbbr, int inSort);
   }
 
   void setAction(Action inAction);
