@@ -61,13 +61,12 @@ public class LookupPresenter extends RpcCallback<AdminDataCommand>
   }
 
   @Override
-  public void createLookup(final String inName)
+  public void createLookups(final String inName)
   {
     Lookup lookup = new Lookup();
     lookup.setGroup(Group.LOOKUP);
     lookup.setName(Field.officialName(inName));
 
-    lookup.setAltId(null);
     lookup.setDisplay(inName);
     lookup.setSort(0);
 
@@ -79,6 +78,29 @@ public class LookupPresenter extends RpcCallback<AdminDataCommand>
         mDisplay.notify("Saved ... " + inName);
         mDisplay.reset();
         Global.fire(new AdminEvent(EventType.REFRESH, null));
+      }
+    });
+  }
+
+  @Override
+  public void createLookup(final String inGroup, final String inName, String inAbbr, int inSort)
+  {
+    Lookup lookup = new Lookup();
+    lookup.setGroup(inGroup);
+    lookup.setName(Field.officialName(inName));
+    lookup.setAbbreviation(inAbbr);
+
+    lookup.setDisplay(inName);
+    lookup.setSort(inSort);
+
+    Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + inName);
+        mDisplay.reset();
+        select(inGroup);
       }
     });
   }

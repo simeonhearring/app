@@ -26,6 +26,7 @@ import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.model.Page.Section.Name;
+import net.hus.core.shared.util.NumberUtil;
 
 public class LookupView extends AbstractView implements LookupDisplay
 {
@@ -42,10 +43,10 @@ public class LookupView extends AbstractView implements LookupDisplay
   FlowPanel mValues;
 
   @UiField
-  Icon mAdd0;
+  Icon mAdd0, mSave0, mSave1, mSave2;
 
   @UiField
-  Input mAddLookup, mDisplay;
+  Input mAddLookups, mDisplay, mNewName, mNewAbbr, mNewSort;
 
   @UiField
   Span mName;
@@ -72,12 +73,21 @@ public class LookupView extends AbstractView implements LookupDisplay
   @UiHandler(
   {
       "mAdd0",
+      "mSave1"
   })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
-      mAction.createLookup(mAddLookup.getText());
+      mAction.createLookups(mAddLookups.getText());
+    }
+    else if (mSave1.equals(inEvent.getSource()))
+    {
+      String grp = mName.getText();
+      String name = mNewName.getText();
+      String abbr = mNewAbbr.getText();
+      int sort = NumberUtil.toInt(mNewSort.getText(), 0);
+      mAction.createLookup(grp, name, abbr, sort);
     }
   }
 
@@ -143,6 +153,6 @@ public class LookupView extends AbstractView implements LookupDisplay
   @Override
   public void reset()
   {
-    mAddLookup.setText(null);
+    mAddLookups.setText(null);
   }
 }
