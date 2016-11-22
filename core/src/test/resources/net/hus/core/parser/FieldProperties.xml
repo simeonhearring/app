@@ -10,7 +10,7 @@
       <string>State</string>
       <string>Zip</string>
     </Labels>
-    <Properties showBottomAtRow="10" isAltRow="true" altEvenColor="#CCC" altOddColor="#FFF" headingSize="H2"/>
+    <Properties maxHeight="500" showBottomAtRow="10" isAltRow="true" altEvenColor="#CCC" altOddColor="#FFF" headingSize="H2"/>
   </Array>
   <DateTime format="yyyy-MM-dd"/>
   <Database oneValue="true"/>

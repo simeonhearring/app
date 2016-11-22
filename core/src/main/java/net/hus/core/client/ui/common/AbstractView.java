@@ -85,7 +85,7 @@ public abstract class AbstractView extends Composite
     return ret;
   }
 
-  public void addHandler(int inEvent, final Element inElement, EventListener inListner)
+  public static void addHandler(int inEvent, final Element inElement, EventListener inListner)
   {
     Event.sinkEvents(inElement, inEvent);
     Event.setEventListener(inElement, inListner);
