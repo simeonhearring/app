@@ -142,7 +142,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   private Array newArray(Integer inSize, String... inLabels)
   {
     Array ret = new Array(inSize, inLabels);
-    ret.setProperties(new Array.Properties(10, true, "#CCC", "#FFF", HeadingSize.H5));
+    ret.setProperties(new Array.Properties(500, 10, true, "#CCC", "#FFF", HeadingSize.H5));
     return ret;
   }
 

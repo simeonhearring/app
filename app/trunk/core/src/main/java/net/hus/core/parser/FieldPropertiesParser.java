@@ -56,6 +56,7 @@ public class FieldPropertiesParser extends XStream implements Parser<Field.Prope
     aliasAttribute(Field.Database.class, "mOneValue", "oneValue");
 
     alias("Array.Properties", Array.Properties.class);
+    aliasAttribute(Array.Properties.class, "mMaxHeight", "maxHeight");
     aliasAttribute(Array.Properties.class, "mShowBottomAtRow", "showBottomAtRow");
     aliasAttribute(Array.Properties.class, "mAltRow", "isAltRow");
     aliasAttribute(Array.Properties.class, "mAltEvenColor", "altEvenColor");

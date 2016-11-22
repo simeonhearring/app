@@ -265,6 +265,7 @@ public class Field extends AbstractModel
     {
       private static final long serialVersionUID = 6023117565338477729L;
 
+      private Integer mMaxHeight;
       private Integer mShowBottomAtRow;
       private Boolean mAltRow;
       private String mAltEvenColor;
@@ -275,9 +276,10 @@ public class Field extends AbstractModel
       {
       }
 
-      public Properties(Integer inShowBottomAtRow, Boolean inAltRow, String inAltEvenColor,
-          String inAltOddColor, HeadingSize inHeadingSize)
+      public Properties(Integer inMaxHeight, Integer inShowBottomAtRow, Boolean inAltRow,
+          String inAltEvenColor, String inAltOddColor, HeadingSize inHeadingSize)
       {
+        mMaxHeight = inMaxHeight;
         mShowBottomAtRow = inShowBottomAtRow;
         mAltRow = inAltRow;
         mAltEvenColor = inAltEvenColor;
@@ -333,6 +335,16 @@ public class Field extends AbstractModel
       public void setHeadingSize(HeadingSize inHeadingSize)
       {
         mHeadingSize = inHeadingSize;
+      }
+
+      public Integer getMaxHeight()
+      {
+        return mMaxHeight;
+      }
+
+      public void setMaxHeight(Integer inMaxHeight)
+      {
+        mMaxHeight = inMaxHeight;
       }
     }
   }

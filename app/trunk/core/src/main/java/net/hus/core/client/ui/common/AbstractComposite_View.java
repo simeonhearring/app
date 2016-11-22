@@ -25,6 +25,11 @@ public abstract class AbstractComposite_View<C extends Widget> extends Composite
   protected Field mField;
   private String mLabel;
 
+  public void notify(String inMessage)
+  {
+    Notify.notify(inMessage);
+  }
+
   @Override
   public void setField(Field inField)
   {
