@@ -2,12 +2,16 @@ package net.hus.core.client.ui.admin;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.Icon;
+import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -20,6 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.model.admin.LookupDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.model.Page.Section.Name;
 
 public class LookupView extends AbstractView implements LookupDisplay
@@ -35,6 +40,15 @@ public class LookupView extends AbstractView implements LookupDisplay
 
   @UiField
   FlowPanel mValues;
+
+  @UiField
+  Icon mAdd0;
+
+  @UiField
+  Input mAddLookup, mDisplay;
+
+  @UiField
+  Span mName;
 
   private Action mAction;
 
@@ -53,6 +67,18 @@ public class LookupView extends AbstractView implements LookupDisplay
   public void add(Name inSection, IsWidget inComponent)
   {
     // do nothing
+  }
+
+  @UiHandler(
+  {
+      "mAdd0",
+  })
+  public void onClickBind(ClickEvent inEvent)
+  {
+    if (mAdd0.equals(inEvent.getSource()))
+    {
+      mAction.createLookup(mAddLookup.getText());
+    }
   }
 
   @UiHandler(
@@ -84,12 +110,14 @@ public class LookupView extends AbstractView implements LookupDisplay
   }
 
   @Override
-  public void addValues(List<Lookup> inLookupGroup)
+  public void addValues(Lookups inLookups)
   {
     mValues.clear();
-    for (Lookup value : inLookupGroup)
+    mName.setText(inLookups.getName());
+    mDisplay.setText(inLookups.getDisplay());
+    for (Lookup value : inLookups.getOptions())
     {
-      Paragraph para = new Paragraph();
+      final Paragraph para = new Paragraph();
 
       para.setText(value.getDisplay());
       para.setId(value.getId().toString());
@@ -102,12 +130,19 @@ public class LookupView extends AbstractView implements LookupDisplay
         {
           if (Event.ONBLUR == inEvent.getTypeInt())
           {
-            LookupView.this.notify("Blur");
+            // TODO
+            LookupView.this.notify("" + para.equals(inEvent.getCurrentEventTarget()));
           }
         }
       };
       addHandler(Event.ONBLUR, para.getElement(), listner);
     }
     mLookups.setValue(null);
+  }
+
+  @Override
+  public void reset()
+  {
+    mAddLookup.setText(null);
   }
 }

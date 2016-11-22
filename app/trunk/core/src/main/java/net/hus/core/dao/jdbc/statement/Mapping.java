@@ -7,6 +7,7 @@ import net.hus.core.parser.FieldPropertiesParser;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.model.Model;
 import net.hus.core.shared.model.Value;
 
@@ -17,6 +18,16 @@ public class Mapping extends AbstractSqlJdbc
     inModel.setId(inRs.getLong("mId"));
     inModel.setCreated(inRs.getTimestamp("mCreated"));
     inModel.setUpdated(inRs.getTimestamp("mUpdated"));
+  }
+
+  protected static Lookups mapLookups(Lookups inOut, ResultSet inRs) throws SQLException
+  {
+    mapModel(inOut, inRs);
+
+    inOut.setName(inRs.getString("mName"));
+    inOut.setDisplay(inRs.getString("mDisplay"));
+
+    return inOut;
   }
 
   protected static Lookup mapLookup(Lookup inOut, ResultSet inRs) throws SQLException

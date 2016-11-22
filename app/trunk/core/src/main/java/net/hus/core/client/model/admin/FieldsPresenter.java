@@ -111,7 +111,7 @@ implements Action, AdminEvent.Handler
       {
         mDisplay.notify("Saved ... " + inName);
         refresh();
-        select(inFgg, inName); // consolidate refresh & select
+        select(inFgg, inName); // TODO consolidate refresh & select
       }
     });
   }

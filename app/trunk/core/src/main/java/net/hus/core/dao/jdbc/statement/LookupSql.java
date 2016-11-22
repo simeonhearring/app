@@ -11,11 +11,13 @@ import org.springframework.jdbc.object.MappingSqlQuery;
 
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
+import net.hus.core.shared.model.Lookups;
 
 public class LookupSql extends Mapping
 {
   private BatchSqlUpdate mBatchUpsert;
-  private MappingSqlQuery<Lookup> mSelect;
+  private MappingSqlQuery<Lookup> mSelectg;
+  private MappingSqlQuery<Lookups> mSelectgn;
 
   private MappingSqlQuery<String> mSelectGrps;
 
@@ -35,7 +37,7 @@ public class LookupSql extends Mapping
     mBatchUpsert = newBatchUpdate(inDataSource, "UPSERT");
 
     Statement select = mStmts.getStatement("SELECT");
-    mSelect = new MappingSqlQuery<Lookup>(inDataSource, select.getSql())
+    mSelectg = new MappingSqlQuery<Lookup>(inDataSource, select.getSql())
     {
       @Override
       protected Lookup mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -43,8 +45,20 @@ public class LookupSql extends Mapping
         return mapLookup(new Lookup(), inRs);
       }
     };
-    mSelect.setTypes(select.types());
-    mSelect.compile();
+    mSelectg.setTypes(select.types());
+    mSelectg.compile();
+
+    Statement selectgn = mStmts.getStatement("SELECT_GN");
+    mSelectgn = new MappingSqlQuery<Lookups>(inDataSource, selectgn.getSql())
+    {
+      @Override
+      protected Lookups mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return mapLookups(new Lookups(), inRs);
+      }
+    };
+    mSelectgn.setTypes(selectgn.types());
+    mSelectgn.compile();
 
     Statement selectGrps = mStmts.getStatement("SELECT_GRPS");
     mSelectGrps = new MappingSqlQuery<String>(inDataSource, selectGrps.getSql())
@@ -86,7 +100,14 @@ public class LookupSql extends Mapping
 
   public List<Lookup> select(String inGroup)
   {
-    List<Lookup> ret = mSelect.execute(params(inGroup));
+    List<Lookup> ret = mSelectg.execute(params(inGroup));
+    return ret;
+  }
+
+  public Lookups select(String inGroup, String inName)
+  {
+    Lookups ret = only(mSelectgn.execute(params(inGroup, inName)));
+    ret.setLookups(select(inName));
     return ret;
   }
 

@@ -20,7 +20,7 @@ public class AdminData implements Serializable
 
   private Field mField;
 
-  private List<Lookup> mLookupGroup;
+  private Lookups mLookups;
 
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
@@ -104,13 +104,13 @@ public class AdminData implements Serializable
     return mFieldGroup;
   }
 
-  public void setLookupGroup(List<Lookup> inLookupGroup)
+  public void setLookupGroup(Lookups inLookups)
   {
-    mLookupGroup = inLookupGroup;
+    mLookups = inLookups;
   }
 
-  public List<Lookup> getLookupGroup()
+  public Lookups getLookups()
   {
-    return mLookupGroup;
+    return mLookups;
   }
 }
