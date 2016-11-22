@@ -65,7 +65,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addLookup(AdminData inData, String inGroup)
   {
-    inData.setLookupGroup(mCoreDao.lookups().select(inGroup));
+    inData.setLookupGroup(mCoreDao.lookups().select(Group.LOOKUP.name(), inGroup));
   }
 
   private void addAll(AdminData inData)
