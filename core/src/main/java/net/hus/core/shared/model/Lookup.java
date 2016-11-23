@@ -3,6 +3,8 @@ package net.hus.core.shared.model;
 import static net.hus.core.shared.model.Lookup.Size.SM;
 import static net.hus.core.shared.model.Lookup.Size.XL;
 
+import net.hus.core.shared.util.EnumUtil;
+
 public class Lookup extends AbstractModel implements TypeaheadOption
 {
   private static final long serialVersionUID = 6439569552175264944L;
@@ -29,6 +31,11 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   public void setGroup(Group inGroup)
   {
     mGroup = inGroup.name();
+  }
+
+  public Group group()
+  {
+    return EnumUtil.valueOf(mGroup, Group.values());
   }
 
   public String getName()
@@ -147,6 +154,11 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     public Size getSize()
     {
       return mSize;
+    }
+
+    public static boolean isXL(Group inGroup)
+    {
+      return inGroup != null && Size.XL.equals(inGroup.mSize);
     }
   }
 }

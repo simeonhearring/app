@@ -11,6 +11,9 @@ public interface ProfileDisplay extends PageDisplay
   public interface Action
   {
     void select(String inValue);
+
+    void saveProfile(String inFirst, String inMiddle, String inLast, String inUserName,
+        String inPassword, String inPage);
   }
 
   void setAction(Action inAction);

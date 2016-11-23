@@ -76,15 +76,14 @@ public class ProfileView extends AbstractView implements ProfileDisplay
       })
   public void onClickBind(ClickEvent inEvent)
   {
-    // if (mAdd0.equals(inEvent.getSource()))
-    // {
-    // }
-    // else if (mSave0.equals(inEvent.getSource()))
-    // {
-    // }
-    // else if (mSave1.equals(inEvent.getSource()))
-    // {
-    // }
+    if (mAdd0.equals(inEvent.getSource()))
+    {
+    }
+    else if (mSave0.equals(inEvent.getSource()))
+    {
+      mAction.saveProfile(mFirst.getText(), mMiddle.getText(), mLast.getText(), mUserName.getText(),
+          mPassword.getText(), mPage.getSelectedValue());
+    }
   }
 
   @UiHandler(

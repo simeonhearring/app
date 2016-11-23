@@ -76,6 +76,51 @@ public class CoreJdbc implements CoreDao
     return ret;
   }
 
+  private <M> String toXml(Parser<M> inParser, M inObj)
+  {
+    String ret = null;
+
+    if (inObj != null)
+    {
+      ret = inParser.toXml(inObj);
+    }
+
+    return ret;
+  }
+
+  public void upsertXL(List<Lookup> inLookups, Object inObj)
+  {
+    for (Lookup value : inLookups)
+    {
+      Group group = value.group();
+      if (Group.isXL(group))
+      {
+        Parser<?> parser = parser(group);
+        // String xml = toXml(parser, inObj);
+      }
+    }
+  }
+
+  private Parser<?> parser(Group inGroup)
+  {
+    Parser<?> ret = null;
+    switch (inGroup)
+    {
+      case APP_PROFILE:
+        ret = mAppProfileParser;
+        break;
+      case PROFILE:
+        ret = mProfileParser;
+        break;
+      case COMPONENTS:
+        ret = mComponentsParser;
+        break;
+      default:
+        break;
+    }
+    return ret;
+  }
+
   @Override
   public AppProfile profile_app(String inName)
   {
