@@ -22,6 +22,8 @@ public class AdminData implements Serializable
 
   private Lookups mLookups;
 
+  private Profile mProfile;
+
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
     mFieldGroups = inFieldGroups;
@@ -112,5 +114,15 @@ public class AdminData implements Serializable
   public Lookups getLookups()
   {
     return mLookups;
+  }
+
+  public void setProfile(Profile inProfile)
+  {
+    mProfile = inProfile;
+  }
+
+  public Profile getProfile()
+  {
+    return mProfile;
   }
 }
