@@ -29,6 +29,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
       case LOOKUP:
         addLookup(data, inCommand.getEventTypeKey());
         break;
+      case PROFILES:
+        addProfiles(data);
+        break;
       case PROFILE:
         addProfile(data, inCommand.getEventTypeKey());
         break;

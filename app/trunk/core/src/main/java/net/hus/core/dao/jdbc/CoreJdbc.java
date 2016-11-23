@@ -155,6 +155,7 @@ public class CoreJdbc implements CoreDao
     lookups().upsert(lookups);
   }
 
+  @Override
   public void profile2lookup()
   {
     List<Profile> profiles = new ArrayList<>();

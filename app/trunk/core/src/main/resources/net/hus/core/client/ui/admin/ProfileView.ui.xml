@@ -28,7 +28,19 @@
 						<b:Legend text="CREATE NEW PROFILE" />
 						<b:FormGroup>
 							<b:FormLabel text="Name:" />
-							<b:Input ui:field="mAddProfiles" placeholder="Enter Profile Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+							<b:Input ui:field="mAddUserName" placeholder="Enter user name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						</b:FormGroup>
+						<b:FormGroup>
+							<b:FormLabel text="First:" />
+							<b:Input ui:field="mAddFirst" placeholder="Enter first name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						</b:FormGroup>
+						<b:FormGroup>
+							<b:FormLabel text="Last:" />
+							<b:Input ui:field="mAddLast" placeholder="Enter last name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						</b:FormGroup>
+						<b:FormGroup>
+							<b:FormLabel text="Landing page:" />
+							<b:ListBox ui:field="mAddPage" />
 						</b:FormGroup>
 						<b:Tooltip text="Add New">
 							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
@@ -102,7 +114,7 @@
 										<b:Column size="SM_4">
 											<b:FormGroup>
 												<b:FormLabel text="User name:" />
-												<b:Input ui:field="mUserName" type="TEXT" />
+												<b.html:Paragraph ui:field="mUserName" />
 											</b:FormGroup>
 										</b:Column>
 										<b:Column size="SM_4">

@@ -9,6 +9,7 @@ public class LookupXLSaveCommandBean extends AbstractCommandBean<LookupXLSaveCom
   public RpcResponse execute(LookupXLSaveCommand inCommand)
   {
     mCoreDao.upsertXL(inCommand.getLookup());
+    mCoreDao.profile2lookup();
     return inCommand;
   }
 }
