@@ -3,6 +3,7 @@ package net.hus.core.server.command;
 import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.Lookup.Group;
+import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
@@ -16,6 +17,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     // {
     switch (inCommand.getType())
     {
+      case REFRESH:
       case ALL:
         addAll(data);
         break;
@@ -28,6 +30,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
       case LOOKUP:
         addLookup(data, inCommand.getFgg());
         break;
+      case PROFILE:
+        addProfile(data, inCommand.getFgg());
+        break;
       default:
         break;
     }
@@ -36,6 +41,11 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inCommand.setData(data);
 
     return inCommand;
+  }
+
+  private void addProfile(AdminData inData, String inFgg)
+  {
+    inData.setProfile(mCoreDao.profile(inFgg));
   }
 
   private void addField(AdminData inData, Long inFieldId)

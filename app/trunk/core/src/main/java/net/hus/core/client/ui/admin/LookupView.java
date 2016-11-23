@@ -2,6 +2,7 @@ package net.hus.core.client.ui.admin;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.html.Span;
@@ -47,6 +48,9 @@ public class LookupView extends AbstractView implements LookupDisplay
 
   @UiField
   Span mName;
+
+  @UiField
+  FormLabel mNameText;
 
   private Action mAction;
 
@@ -138,6 +142,8 @@ public class LookupView extends AbstractView implements LookupDisplay
 
     mName.setText(inLookups.getName());
     mDisplay.setText(inLookups.getDisplay());
+    mNameText.setText(inLookups.getDisplay());
+
     // String[][] cols = new String[inLookups.getOptions().size()][3];
     for (Lookup value : inLookups.getOptions())
     {

@@ -8,7 +8,7 @@
 	}
 	
 	.padaround {
-		padding: 20px;
+		padding: 10px;
 	}
 	</ui:style>
 
@@ -29,18 +29,18 @@
 					<b:TabListItem dataTarget="#taba4" text="Action" />
 					<b:TabListItem dataTarget="#taba5" text="Page" />
 				</b:NavTabs>
-				<b:TabContent>
+				<b:TabContent addStyleNames="{style.padaround}">
 					<b:TabPane fade="true" b:id="taba0" in="true" active="true">
-						<a:FieldView ui:field="mField" styleName="{style.padaround}" />
+						<a:FieldView ui:field="mField" />
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba1">
 						<b:FormGroup>
-							<a:FieldsView ui:field="mFields" styleName="{style.padaround}" />
+							<a:FieldsView ui:field="mFields" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba2">
 						<b:FormGroup>
-							<a:LookupView ui:field="mLookup" styleName="{style.padaround}" />
+							<a:LookupView ui:field="mLookup" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba3">
