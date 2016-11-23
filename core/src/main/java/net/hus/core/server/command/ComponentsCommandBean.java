@@ -6,12 +6,12 @@ import java.util.List;
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.components.ComplexPanel_;
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.LookupOptions;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.rpc.common.RpcResponse;
 

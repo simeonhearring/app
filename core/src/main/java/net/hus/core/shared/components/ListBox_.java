@@ -7,6 +7,7 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.LookupOptions;
+import net.hus.core.shared.model.UIObject_;
 
 public class ListBox_ extends FocusWidget_ implements LookupOptions
 {

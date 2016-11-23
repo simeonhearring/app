@@ -2,6 +2,8 @@ package net.hus.core.shared.components;
 
 import org.gwtbootstrap3.client.ui.constants.Pull;
 
+import net.hus.core.shared.model.UIObject_;
+
 public class AbstractTextWidget_ extends UIObject_
 {
   private static final long serialVersionUID = -2196387944056044191L;

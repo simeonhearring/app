@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.Typeahead_Parser;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Field.Lookup;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.util.ResourceUtil;

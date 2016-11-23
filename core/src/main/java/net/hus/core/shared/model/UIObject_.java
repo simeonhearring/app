@@ -1,4 +1,4 @@
-package net.hus.core.shared.components;
+package net.hus.core.shared.model;
 
 import java.io.Serializable;
 

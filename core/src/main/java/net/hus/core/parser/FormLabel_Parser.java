@@ -3,7 +3,7 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.components.FormLabel_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 
 public class FormLabel_Parser extends AbstractTextWidget_Parser
 {

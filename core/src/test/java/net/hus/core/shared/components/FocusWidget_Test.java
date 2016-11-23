@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.hus.core.shared.model.UIObject_;
+
 public class FocusWidget_Test
 {
   private UIObject_ mObject;

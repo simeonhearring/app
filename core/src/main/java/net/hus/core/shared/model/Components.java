@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.hus.core.shared.components.ComplexPanel_;
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.util.StringUtil;
 
@@ -58,31 +56,6 @@ public class Components implements Serializable
   public List<Value> getValues()
   {
     return mValues;
-  }
-
-  public List<LookupOptions> getLookupOptions()
-  {
-    List<LookupOptions> ret = new ArrayList<>();
-    find(ret, mList);
-    return ret;
-  }
-
-  private static void find(List<LookupOptions> inAddTo, List<UIObject_> inSearchingIn)
-  {
-    if (inSearchingIn != null)
-    {
-      for (UIObject_ value : inSearchingIn)
-      {
-        if (value instanceof ComplexPanel_)
-        {
-          find(inAddTo, ((ComplexPanel_) value).getCollection());
-        }
-        else if (value instanceof LookupOptions)
-        {
-          inAddTo.add((LookupOptions) value);
-        }
-      }
-    }
   }
 
   public FieldTKG getFieldTKG()

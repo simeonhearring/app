@@ -12,7 +12,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.parser.Column_Parser;
 import net.hus.core.shared.components.Column_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class Column_Test
