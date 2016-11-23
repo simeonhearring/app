@@ -16,6 +16,8 @@ public class AdminData implements Serializable
 
   private List<Lookup> mFieldGroups;
 
+  private List<Lookup> mProfiles;
+
   private Fields mFieldGroup;
 
   private Field mField;
@@ -124,5 +126,15 @@ public class AdminData implements Serializable
   public Profile getProfile()
   {
     return mProfile;
+  }
+
+  public List<Lookup> getProfiles()
+  {
+    return mProfiles;
+  }
+
+  public void setProfiles(List<Lookup> inProfiles)
+  {
+    mProfiles = inProfiles;
   }
 }

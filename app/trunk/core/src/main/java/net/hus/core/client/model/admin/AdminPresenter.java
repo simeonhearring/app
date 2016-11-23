@@ -18,6 +18,7 @@ public class AdminPresenter extends RpcCallback<AdminDataCommand> implements Adm
     new FieldPresenter(mDisplay.getField());
     new FieldsPresenter(mDisplay.getFields());
     new LookupPresenter(mDisplay.getLookup());
+    new ProfilePresenter(mDisplay.getProfile());
 
     Global.fire(new AdminDataCommand(EventType.ALL), this);
   }

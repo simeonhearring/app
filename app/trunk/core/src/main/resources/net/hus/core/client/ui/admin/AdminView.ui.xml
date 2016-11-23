@@ -45,7 +45,7 @@
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba3">
 						<b:FormGroup>
-							<b:FormLabel text="Profiles" />
+							<a:ProfileView ui:field="mProfile" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba4">

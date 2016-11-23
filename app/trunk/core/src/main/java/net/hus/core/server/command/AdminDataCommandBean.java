@@ -3,7 +3,6 @@ package net.hus.core.server.command;
 import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.Lookup.Group;
-import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
@@ -43,11 +42,6 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     return inCommand;
   }
 
-  private void addProfile(AdminData inData, String inFgg)
-  {
-    inData.setProfile(mCoreDao.profile(inFgg));
-  }
-
   private void addField(AdminData inData, Long inFieldId)
   {
     inData.setField(mCoreDao.fields().select(inFieldId));
@@ -78,6 +72,16 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setLookupGroup(mCoreDao.lookups().select(Group.LOOKUP.name(), inGroup));
   }
 
+  private void addProfiles(AdminData inData)
+  {
+    inData.setProfiles(mCoreDao.lookups().select(Group.PROFILE.name()));
+  }
+
+  private void addProfile(AdminData inData, String inFgg)
+  {
+    inData.setProfile(mCoreDao.profile(inFgg));
+  }
+
   private void addAll(AdminData inData)
   {
     addFields(inData);
@@ -91,5 +95,8 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     addFieldGroups(inData);
     String fgg = inData.getFieldGroups().get(0).getName();
     addFields(inData, fgg);
+
+    addProfiles(inData);
+
   }
 }

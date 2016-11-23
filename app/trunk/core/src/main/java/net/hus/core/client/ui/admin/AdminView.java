@@ -12,6 +12,7 @@ import net.hus.core.client.model.admin.AdminDisplay;
 import net.hus.core.client.model.admin.FieldDisplay;
 import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.model.admin.LookupDisplay;
+import net.hus.core.client.model.admin.ProfileDisplay;
 import net.hus.core.client.ui.page.AbstractRowView;
 import net.hus.core.shared.model.Page.Section;
 
@@ -37,6 +38,9 @@ public class AdminView extends AbstractRowView implements AdminDisplay
 
   @UiField
   LookupView mLookup;
+
+  @UiField
+  ProfileView mProfile;
 
   public AdminView()
   {
@@ -70,5 +74,11 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   public LookupDisplay getLookup()
   {
     return mLookup;
+  }
+
+  @Override
+  public ProfileDisplay getProfile()
+  {
+    return mProfile;
   }
 }
