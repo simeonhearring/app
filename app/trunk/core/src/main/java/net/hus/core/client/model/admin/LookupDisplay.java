@@ -15,6 +15,8 @@ public interface LookupDisplay extends PageDisplay
     void createLookups(String inName);
 
     void createLookup(String inGroup, String inName, String inAbbr, int inSort);
+
+    void saveLookups(String inName, String inDisplay);
   }
 
   void setAction(Action inAction);

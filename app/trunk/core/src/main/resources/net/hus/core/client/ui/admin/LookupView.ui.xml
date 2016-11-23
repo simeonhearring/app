@@ -56,9 +56,6 @@
 									<b:Tooltip text="Save">
 										<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 									</b:Tooltip>
-									<b:Tooltip text="Refresh">
-										<b:Icon ui:field="mRefresh0" type="REFRESH" addStyleNames="pull-right" />
-									</b:Tooltip>
 								</b:Well>
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tabl5">

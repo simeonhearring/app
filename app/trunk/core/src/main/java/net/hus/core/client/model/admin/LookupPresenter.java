@@ -13,7 +13,7 @@ import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 
 public class LookupPresenter extends RpcCallback<AdminDataCommand>
-    implements Action, AdminEvent.Handler
+implements Action, AdminEvent.Handler
 {
   private LookupDisplay mDisplay;
 
@@ -101,6 +101,30 @@ public class LookupPresenter extends RpcCallback<AdminDataCommand>
         mDisplay.notify("Saved ... " + inName);
         mDisplay.reset();
         select(inGroup);
+      }
+    });
+  }
+
+  @Override
+  public void saveLookups(final String inName, final String inDisplay)
+  {
+    Lookup lookup = new Lookup();
+    lookup.setGroup(Group.LOOKUP);
+    lookup.setName(inName);
+
+    lookup.setDisplay(inDisplay);
+    lookup.setSort(0);
+
+    Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + inDisplay);
+        mDisplay.reset();
+        Global.fire(new AdminEvent(EventType.REFRESH, null));
+        // Global.fire(new AdminDataCommand(inName, EventType.LOOKUP),
+        // LookupPresenter.this);
       }
     });
   }
