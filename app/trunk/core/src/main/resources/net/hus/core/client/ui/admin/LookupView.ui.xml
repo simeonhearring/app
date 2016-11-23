@@ -44,7 +44,7 @@
 						<b:TabContent>
 							<b:TabPane fade="true" in="true" active="true" b:id="tabl4">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="LOOKUP NAME" />
+									<b:Legend text="LOOKUP NAME" />
 									<b:FormGroup>
 										<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
 										<b.html:Span ui:field="mName" />
