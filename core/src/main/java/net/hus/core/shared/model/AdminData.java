@@ -6,25 +6,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.shared.components.Components;
+
 public class AdminData implements Serializable
 {
   private static final long serialVersionUID = 6775535535217948165L;
 
   private List<Lookup> mFields;
-
-  private List<Lookup> mLookupGroups;
-
-  private List<Lookup> mFieldGroups;
-
-  private List<Lookup> mProfiles;
-
-  private Fields mFieldGroup;
-
   private Field mField;
 
+  private List<Lookup> mLookupGroups;
   private Lookups mLookups;
 
+  private List<Lookup> mFieldGroups;
+  private Fields mFieldGroup;
+
+  private List<Lookup> mProfiles;
   private Profile mProfile;
+
+  private List<Lookup> mPages;
+  private Components mPage;
 
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
@@ -71,22 +72,6 @@ public class AdminData implements Serializable
     }
     return ret;
   }
-
-  // public boolean exists(String inName)
-  // {
-  // private List<String> mUnique;
-  //
-  // if (mUnique == null)
-  // {
-  // mUnique = new ArrayList<>();
-  // for (Lookup value : mFields)
-  // {
-  // mUnique.add(value.getName());
-  // }
-  // }
-  //
-  // return mUnique.contains(Field.officialName(inName));
-  // }
 
   public List<Lookup> getLookupGroups()
   {
@@ -136,5 +121,25 @@ public class AdminData implements Serializable
   public void setProfiles(List<Lookup> inProfiles)
   {
     mProfiles = inProfiles;
+  }
+
+  public void setPages(List<Lookup> inPages)
+  {
+    mPages = inPages;
+  }
+
+  public List<Lookup> getPages()
+  {
+    return mPages;
+  }
+
+  public void setPage(Components inComponents)
+  {
+    mPage = inComponents;
+  }
+
+  public Components getPage()
+  {
+    return mPage;
   }
 }

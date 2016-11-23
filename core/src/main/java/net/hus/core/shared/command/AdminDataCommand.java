@@ -49,4 +49,9 @@ public class AdminDataCommand extends AbstractDataCommand<AdminData>
   {
     return mFgg;
   }
+
+  public String getEventTypeKey()
+  {
+    return mFgg;
+  }
 }

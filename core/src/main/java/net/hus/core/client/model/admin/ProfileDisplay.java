@@ -18,4 +18,6 @@ public interface ProfileDisplay extends PageDisplay
   void addProfile(Profile inProfile);
 
   void addProfiles(List<Lookup> inProfiles);
+
+  void addPages(List<Lookup> inPages);
 }
