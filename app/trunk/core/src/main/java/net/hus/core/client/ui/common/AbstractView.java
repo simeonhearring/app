@@ -1,9 +1,12 @@
 package net.hus.core.client.ui.common;
 
+import java.util.Date;
+
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Composite;
@@ -16,6 +19,28 @@ import net.hus.core.shared.model.EnumDisplay;
 
 public abstract class AbstractView extends Composite
 {
+  public static int getSelectedIndex(ListBox inListBox, String inValue)
+  {
+    int ret = 0;
+    for (int i = 0; i < inListBox.getItemCount(); i++)
+    {
+      if (inListBox.getValue(i).equals(inValue))
+      {
+        ret = i;
+      }
+    }
+    return ret;
+  }
+
+  public static String format(String inPattern, Date inDate)
+  {
+    if (inDate == null)
+    {
+      return "";
+    }
+    return DateTimeFormat.getFormat(inPattern).format(inDate);
+  }
+
   public static String toString(Long inId)
   {
     return String.valueOf(inId);

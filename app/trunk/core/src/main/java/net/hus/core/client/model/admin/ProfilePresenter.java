@@ -39,6 +39,7 @@ implements Action, AdminEvent.Handler
       case ALL:
       {
         mDisplay.addProfiles(inData.getProfiles());
+        mDisplay.addPages(inData.getPages());
         break;
       }
       case PROFILE:

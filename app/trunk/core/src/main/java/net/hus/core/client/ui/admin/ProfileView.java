@@ -2,6 +2,10 @@ package net.hus.core.client.ui.admin;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.Icon;
+import org.gwtbootstrap3.client.ui.Input;
+import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
@@ -31,15 +35,18 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   @UiField
   Select mProfiles;
 
-  // @UiField
-  // Icon mAdd0, mSave0, mSave1;
+  @UiField
+  Icon mAdd0, mSave0;
 
-  // @UiField
-  // Input mAddLookups, mDisplay, mNewName, mNewAbbr, mNewSort;
+  @UiField
+  Input mFirst, mMiddle, mLast, mUserName, mPassword;
 
-  // @UiField
-  // Span mName;
-  //
+  @UiField
+  Paragraph mId, mCreated, mUpdated, mName;
+
+  @UiField
+  ListBox mPage;
+
   // @UiField
   // FormLabel mNameText;
 
@@ -65,8 +72,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   @UiHandler(
       {
         "mAdd0",
-        "mSave0",
-        "mSave1",
+        "mSave0"
       })
   public void onClickBind(ClickEvent inEvent)
   {
@@ -96,13 +102,24 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   @Override
   public void addProfile(Profile inProfile)
   {
-    notify("Got profile");
+    mId.setText(inProfile.getId().toString());
+    mCreated.setText(format("yyyy-MM-dd hh:mm", inProfile.getCreated()));
+    mUpdated.setText(format("yyyy-MM-dd hh:mm", inProfile.getUpdated()));
+
+    mName.setText(inProfile.getName());
+
+    mFirst.setText(inProfile.getFirst());
+    mMiddle.setText(inProfile.getMiddle());
+    mLast.setText(inProfile.getLast());
+
+    mUserName.setText(inProfile.getUserName());
+    mPassword.setText(inProfile.getPassword());
+    mPage.setSelectedIndex(getSelectedIndex(mPage, inProfile.getPage().getComponentsName()));
   }
 
   @Override
   public void addProfiles(List<Lookup> inProfiles)
   {
-    notify("size: " + inProfiles.size());
     mProfiles.clear();
     for (Lookup value : inProfiles)
     {
@@ -114,5 +131,15 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     }
     mProfiles.refresh();
     mProfiles.setValue(null);
+  }
+
+  @Override
+  public void addPages(List<Lookup> inPages)
+  {
+    mPage.clear();
+    for (Lookup value : inPages)
+    {
+      mPage.addItem(value.getDisplay(), value.getName());
+    }
   }
 }

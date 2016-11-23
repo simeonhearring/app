@@ -24,13 +24,16 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
         addField(data, inCommand.getFieldId());
         break;
       case FIELDS:
-        addFields(data, inCommand.getFgg());
+        addFields(data, inCommand.getEventTypeKey());
         break;
       case LOOKUP:
-        addLookup(data, inCommand.getFgg());
+        addLookup(data, inCommand.getEventTypeKey());
         break;
       case PROFILE:
-        addProfile(data, inCommand.getFgg());
+        addProfile(data, inCommand.getEventTypeKey());
+        break;
+      case PAGE:
+        addPage(data, inCommand.getEventTypeKey());
         break;
       default:
         break;
@@ -67,9 +70,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setLookupGroups(mCoreDao.lookups().select(Group.LOOKUP.name()));
   }
 
-  private void addLookup(AdminData inData, String inGroup)
+  private void addLookup(AdminData inData, String inGroupName)
   {
-    inData.setLookupGroup(mCoreDao.lookups().select(Group.LOOKUP.name(), inGroup));
+    inData.setLookupGroup(mCoreDao.lookups().select(Group.LOOKUP.name(), inGroupName));
   }
 
   private void addProfiles(AdminData inData)
@@ -77,9 +80,19 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setProfiles(mCoreDao.lookups().select(Group.PROFILE.name()));
   }
 
-  private void addProfile(AdminData inData, String inFgg)
+  private void addProfile(AdminData inData, String inUserName)
   {
-    inData.setProfile(mCoreDao.profile(inFgg));
+    inData.setProfile(mCoreDao.profile(inUserName));
+  }
+
+  private void addPages(AdminData inData)
+  {
+    inData.setPages(mCoreDao.lookups().select(Group.COMPONENTS.name()));
+  }
+
+  private void addPage(AdminData inData, String inComponentName)
+  {
+    inData.setPage(mCoreDao.components(inComponentName));
   }
 
   private void addAll(AdminData inData)
@@ -98,5 +111,6 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
     addProfiles(inData);
 
+    addPages(inData);
   }
 }

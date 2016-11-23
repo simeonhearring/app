@@ -7,5 +7,6 @@ public enum EventType
   FIELD,
   FIELDS,
   LOOKUP,
-  PROFILE;
+  PROFILE,
+  PAGE;
 }
