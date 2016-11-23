@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 
 import org.junit.Assert;
 
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ServerErrorUtil;
 
 public class SerializationTest

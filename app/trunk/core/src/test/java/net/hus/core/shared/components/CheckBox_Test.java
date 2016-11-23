@@ -8,7 +8,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.parser.CheckBox_Parser;
 import net.hus.core.shared.components.CheckBox_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class CheckBox_Test

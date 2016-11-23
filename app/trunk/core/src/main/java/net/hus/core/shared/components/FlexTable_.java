@@ -1,5 +1,6 @@
 package net.hus.core.shared.components;
 
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Field.Array;
 
 public class FlexTable_ extends UIObject_

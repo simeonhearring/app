@@ -8,7 +8,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.parser.FieldSet_Parser;
 import net.hus.core.shared.components.FieldSet_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class FieldSet_Test

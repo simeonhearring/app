@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import net.hus.core.parser.Button_Parser;
 import net.hus.core.shared.components.Button_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class Button_Test

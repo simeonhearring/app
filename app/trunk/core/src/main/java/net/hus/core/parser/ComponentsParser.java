@@ -2,9 +2,9 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
-import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.UIObject_;
 
 public class ComponentsParser extends XStream implements Parser<Components>
 {

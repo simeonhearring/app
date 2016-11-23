@@ -6,6 +6,8 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.hus.core.shared.model.UIObject_;
+
 public class ComplexWidget_Test
 {
   private UIObject_ mObject;

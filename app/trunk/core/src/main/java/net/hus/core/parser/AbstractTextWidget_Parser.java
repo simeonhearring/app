@@ -3,7 +3,7 @@ package net.hus.core.parser;
 import com.thoughtworks.xstream.XStream;
 
 import net.hus.core.shared.components.AbstractTextWidget_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 
 public class AbstractTextWidget_Parser extends UIObject_Parser<UIObject_>
 {

@@ -6,6 +6,8 @@ import org.gwtbootstrap3.client.ui.constants.InputSize;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.hus.core.shared.model.UIObject_;
+
 public class ValueBoxBase_Test
 {
   private UIObject_ mObject;

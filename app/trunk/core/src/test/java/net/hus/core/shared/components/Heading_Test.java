@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import net.hus.core.parser.Heading_Parser;
 import net.hus.core.shared.components.Heading_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class Heading_Test

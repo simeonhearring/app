@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.hus.core.parser.TextBox_Parser;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class TextBox_Test

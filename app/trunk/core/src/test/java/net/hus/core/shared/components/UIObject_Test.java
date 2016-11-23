@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Page.Section;
 
 public class UIObject_Test

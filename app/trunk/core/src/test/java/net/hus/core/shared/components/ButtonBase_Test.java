@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.hus.core.shared.components.ButtonBase_;
-import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.UIObject_;
 
 public class ButtonBase_Test
 {

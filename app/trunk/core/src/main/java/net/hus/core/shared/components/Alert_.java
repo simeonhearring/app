@@ -3,6 +3,8 @@ package net.hus.core.shared.components;
 import org.gwtbootstrap3.client.ui.constants.AlertType;
 import org.gwtbootstrap3.client.ui.constants.Styles;
 
+import net.hus.core.shared.model.UIObject_;
+
 public class Alert_ extends UIObject_
 {
   private static final long serialVersionUID = -9041794932112504422L;
