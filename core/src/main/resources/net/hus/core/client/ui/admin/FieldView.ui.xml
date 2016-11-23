@@ -17,14 +17,14 @@
 			<b:Row>
 				<b:Column size="SM_3">
 					<b:Well size="LARGE">
-						<b.html:Paragraph emphasis="INFO" text="EDIT FIELD" />
+						<b:Legend text="EDIT FIELD" />
 						<b:FormGroup>
 							<b:FormLabel text="Select Field:" addStyleNames="{style.pad}" />
 							<b.select:Select ui:field="mFields" liveSearch="true" visible="true" />
 						</b:FormGroup>
 					</b:Well>
 					<b:Well size="LARGE">
-						<b.html:Paragraph emphasis="INFO" text="CREATE NEW FIELD" />
+						<b:Legend text="CREATE NEW FIELD" />
 						<b:FormGroup ui:field="mAddNameGrp">
 							<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
 							<b:Input ui:field="mAddName" placeholder="Enter Field Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
@@ -50,7 +50,7 @@
 						<b:TabContent>
 							<b:TabPane fade="true" in="true" active="true" b:id="tab4">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="FIELD NAME" />
+									<b:Legend text="FIELD NAME" />
 									<b:FormGroup>
 										<b:FormLabel text="ID:" addStyleNames="{style.pad}" />
 										<b.html:Span ui:field="mId" />
@@ -67,7 +67,7 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab5">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="FIELD DISPLAY" />
+									<b:Legend text="FIELD DISPLAY" />
 									<b:FormGroup>
 										<b:FormLabel text="Long:" addStyleNames="{style.pad}" />
 										<b:Input ui:field="mLong" type="TEXT" />
@@ -86,7 +86,7 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab6">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="FIELD DATE" />
+									<b:Legend text="FIELD DATE" />
 									<b:FormGroup>
 										<b:FormLabel text="Storage format:" addStyleNames="{style.pad}" />
 										<b:Input ui:field="mStorageFormat" type="TEXT" />
@@ -105,7 +105,7 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab7">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="FIELD ARRAY" />
+									<b:Legend text="FIELD ARRAY" />
 									<b:Row>
 										<b:Column size="SM_6">
 											<b:FormGroup>
@@ -170,7 +170,7 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tab8">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="FIELD LOOKUP" />
+									<b:Legend text="FIELD LOOKUP" />
 									<b:FormGroup>
 										<b:FormLabel text="Location:" addStyleNames="{style.pad}" />
 										<b:ListBox ui:field="mLookupLocation" />

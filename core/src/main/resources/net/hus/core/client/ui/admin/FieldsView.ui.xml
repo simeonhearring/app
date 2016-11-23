@@ -17,14 +17,14 @@
 			<b:Row>
 				<b:Column size="SM_3">
 					<b:Well size="LARGE">
-						<b.html:Paragraph emphasis="INFO" text="EDIT GROUP" />
+						<b:Legend text="EDIT GROUP" />
 						<b:FormGroup>
 							<b:FormLabel text="Select Group:" addStyleNames="{style.pad}" />
 							<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
 						</b:FormGroup>
 					</b:Well>
 					<b:Well size="LARGE">
-						<b.html:Paragraph emphasis="INFO" text="CREATE NEW GROUP" />
+						<b:Legend text="CREATE NEW GROUP" />
 						<b:FormGroup ui:field="mAddNameGrp">
 							<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
 							<b:Input ui:field="mAddGroup" placeholder="Enter Group Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
@@ -43,7 +43,7 @@
 						<b:TabContent>
 							<b:TabPane fade="true" in="true" active="true" b:id="tabg4">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="GROUP NAME" />
+									<b:Legend text="GROUP NAME" />
 									<b:FormGroup>
 										<b:FormLabel text="FGG:" addStyleNames="{style.pad}" />
 										<b.html:Span ui:field="mFgg" />
@@ -62,10 +62,12 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tabg5">
 								<b:Well size="LARGE">
-									<b.html:Paragraph emphasis="INFO" text="SELECT FIELDS IN GROUP" />
+									<b:Legend text="SELECT FIELDS IN GROUP" />
 									<b:FormGroup>
 										<b:FormLabel ui:field="mNameText" />
-										<b.gwt:FlowPanel ui:field="mFields" styleName="core_columns" />
+										<g:ScrollPanel ui:field="mScroll" height="400px">
+											<b.gwt:FlowPanel ui:field="mFields" styleName="core_columns" />
+										</g:ScrollPanel>
 									</b:FormGroup>
 									<b:Tooltip text="Save">
 										<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />

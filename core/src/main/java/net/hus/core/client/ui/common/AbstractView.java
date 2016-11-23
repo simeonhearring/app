@@ -8,6 +8,8 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IndexedPanel;
+import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.model.EnumDisplay;
@@ -90,5 +92,25 @@ public abstract class AbstractView extends Composite
     Event.sinkEvents(inElement, inEvent);
     Event.setEventListener(inElement, inListner);
     inElement.setAttribute("contenteditable", "true");
+  }
+
+  public static void setScrollHeight(ScrollPanel inScroll, UIObject inOffset, int inMaxHeight)
+  {
+    inScroll.setHeight(getScrollHeight(inOffset.getOffsetHeight(), inMaxHeight));
+  }
+
+  public static String getScrollHeight(int inOffsetHeight, int inMaxHeight)
+  {
+    String height = null;
+    if (inOffsetHeight > inMaxHeight)
+    {
+      height = inMaxHeight + "px";
+    }
+    else
+    {
+      height = inOffsetHeight + "px";
+    }
+    Notify.notify("" + height + " " + inOffsetHeight + " " + "");
+    return height;
   }
 }

@@ -1,7 +1,7 @@
 .core_columns {
-	-webkit-column-count: 3; /* Chrome, Safari, Opera */
-	-moz-column-count: 3; /* Firefox */
-	column-count: 3;
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+	-moz-column-count: 2; /* Firefox */
+	column-count: 2;
 	-webkit-column-gap: 20px; /* Chrome, Safari, Opera */
 	-moz-column-gap: 20px; /* Firefox */
 	column-gap: 20px;
@@ -11,4 +11,8 @@
 	-webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
 	-moz-column-rule-color: lightblue; /* Firefox */
 	column-rule-color: lightblue;
+}
+
+legend {
+	font-size: 15px;
 }
