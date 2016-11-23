@@ -11,4 +11,6 @@ public interface AdminDisplay extends PageDisplay
   LookupDisplay getLookup();
 
   ProfileDisplay getProfile();
+
+  ComponentDisplay getComponent();
 }
