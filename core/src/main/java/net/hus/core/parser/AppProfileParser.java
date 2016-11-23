@@ -40,6 +40,8 @@ public class AppProfileParser extends XStream implements Parser<AppProfile>
 
     PageParser.xs(inXs);
 
+    inXs.omitField(AbstractModel.class, "mCreated");
+    inXs.omitField(AbstractModel.class, "mUpdated");
     inXs.omitField(AbstractModel.class, "mDelete");
     inXs.omitField(AbstractModel.class, "mDirty");
   }

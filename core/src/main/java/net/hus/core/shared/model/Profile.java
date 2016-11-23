@@ -1,6 +1,8 @@
 package net.hus.core.shared.model;
 
-public class Profile extends AbstractModel implements ComponentsQuery
+import net.hus.core.shared.model.Lookup.Group;
+
+public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
 {
   private static final long serialVersionUID = -2062686028848352428L;
 
@@ -88,5 +90,23 @@ public class Profile extends AbstractModel implements ComponentsQuery
   {
     // TODO should this format be in configurable?
     return mLast + ", " + mFirst + " " + mMiddle;
+  }
+
+  @Override
+  public Group groupXL()
+  {
+    return Group.PROFILE;
+  }
+
+  @Override
+  public String nameXL()
+  {
+    return mUserName;
+  }
+
+  @Override
+  public String displayXL()
+  {
+    return getName();
   }
 }
