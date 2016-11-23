@@ -7,11 +7,14 @@ import net.hus.core.client.ui.event.AdminEvent;
 import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.EventType;
+import net.hus.core.shared.model.Profile;
 
 public class ProfilePresenter extends RpcCallback<AdminDataCommand>
 implements Action, AdminEvent.Handler
 {
   private ProfileDisplay mDisplay;
+
+  private Profile mProfile;
 
   public ProfilePresenter(ProfileDisplay inDisplay)
   {
@@ -43,16 +46,35 @@ implements Action, AdminEvent.Handler
         break;
       }
       case PROFILE:
-        mDisplay.addProfile(inData.getProfile());
+        addProfile(inData.getProfile());
         break;
       default:
         break;
     }
   }
 
+  private void addProfile(Profile inProfile)
+  {
+    mProfile = inProfile;
+    mDisplay.addProfile(mProfile);
+  }
+
   @Override
   public void select(String inProfile)
   {
     Global.fire(new AdminDataCommand(inProfile, EventType.PROFILE), this);
+  }
+
+  @Override
+  public void saveProfile(String inFirst, String inMiddle, String inLast, String inUserName,
+      String inPassword, String inPage)
+  {
+    mProfile.setFirst(inFirst);
+    mProfile.setMiddle(inMiddle);
+    mProfile.setLast(inLast);
+    mProfile.setUserName(inUserName);
+    mProfile.setPassword(inPassword);
+    mProfile.getPage().setComponentsName(inPage);
+
   }
 }
