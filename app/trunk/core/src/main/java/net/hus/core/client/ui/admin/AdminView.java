@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.AdminDisplay;
+import net.hus.core.client.model.admin.ComponentDisplay;
 import net.hus.core.client.model.admin.FieldDisplay;
 import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.model.admin.LookupDisplay;
@@ -41,6 +42,9 @@ public class AdminView extends AbstractRowView implements AdminDisplay
 
   @UiField
   ProfileView mProfile;
+
+  @UiField
+  ComponentView mComponent;
 
   public AdminView()
   {
@@ -80,5 +84,11 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   public ProfileDisplay getProfile()
   {
     return mProfile;
+  }
+
+  @Override
+  public ComponentDisplay getComponent()
+  {
+    return mComponent;
   }
 }
