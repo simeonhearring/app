@@ -18,11 +18,12 @@ import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.model.AppProfile;
 import net.hus.core.shared.model.Components;
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
+import net.hus.core.shared.model.LookupXL;
 import net.hus.core.shared.model.Profile;
-import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.util.StringUtil;
 
 public class CoreJdbc implements CoreDao
@@ -76,44 +77,34 @@ public class CoreJdbc implements CoreDao
     return ret;
   }
 
-  private <M> String toXml(Parser<M> inParser, M inObj)
+  @Override
+  public void upsertXL(LookupXL inLookupXL)
+  {
+    Lookup lookUp = new Lookup();
+    lookUp.setGroup(inLookupXL.groupXL());
+    lookUp.setName(inLookupXL.nameXL());
+    lookUp.setDisplay(inLookupXL.displayXL());
+    lookUp.setXL(toXml(inLookupXL));
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(lookUp);
+
+    lookups().upsertXL(list);
+  }
+
+  private String toXml(LookupXL inLookupXL)
   {
     String ret = null;
-
-    if (inObj != null)
-    {
-      ret = inParser.toXml(inObj);
-    }
-
-    return ret;
-  }
-
-  public void upsertXL(List<Lookup> inLookups, Object inObj)
-  {
-    for (Lookup value : inLookups)
-    {
-      Group group = value.group();
-      if (Group.isXL(group))
-      {
-        Parser<?> parser = parser(group);
-        // String xml = toXml(parser, inObj);
-      }
-    }
-  }
-
-  private Parser<?> parser(Group inGroup)
-  {
-    Parser<?> ret = null;
-    switch (inGroup)
+    switch (inLookupXL.groupXL())
     {
       case APP_PROFILE:
-        ret = mAppProfileParser;
+        ret = mAppProfileParser.toXml((AppProfile) inLookupXL);
         break;
       case PROFILE:
-        ret = mProfileParser;
+        ret = mProfileParser.toXml((Profile) inLookupXL);
         break;
       case COMPONENTS:
-        ret = mComponentsParser;
+        ret = mComponentsParser.toXml((Components) inLookupXL);
         break;
       default:
         break;

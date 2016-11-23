@@ -5,6 +5,7 @@ import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.AdminEvent;
 import net.hus.core.shared.command.AdminDataCommand;
+import net.hus.core.shared.command.LookupXLSaveCommand;
 import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.Profile;
@@ -76,5 +77,13 @@ implements Action, AdminEvent.Handler
     mProfile.setPassword(inPassword);
     mProfile.getPage().setComponentsName(inPage);
 
+    Global.fire(new LookupXLSaveCommand(mProfile), new RpcCallback<LookupXLSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupXLSaveCommand inCommand)
+      {
+        mDisplay.notify("saved");
+      }
+    });
   }
 }

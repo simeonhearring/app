@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.util.StringUtil;
 
@@ -20,7 +21,7 @@ import net.hus.core.shared.util.StringUtil;
  * @author simeonhearring
  * @since October 2016
  */
-public class Components implements Serializable
+public class Components implements Serializable, LookupXL
 {
   private static final long serialVersionUID = 1058892144882503748L;
 
@@ -63,7 +64,7 @@ public class Components implements Serializable
     return mFieldTKGs.get(0);
   }
 
-  public enum Type
+  public enum Type implements EnumDisplay
   {
     ALERT,
     BADGE,
@@ -88,6 +89,7 @@ public class Components implements Serializable
     TEXT_BOX,
     TYPEAHEAD;
 
+    @Override
     public String display()
     {
       return StringUtil.toTitle(name().replaceAll("_", " ")).replaceAll(" ", "");
@@ -97,5 +99,25 @@ public class Components implements Serializable
   public List<UIObject_> getList()
   {
     return mList;
+  }
+
+  @Override
+  public Group groupXL()
+  {
+    return Group.COMPONENTS;
+  }
+
+  @Override
+  public String nameXL()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public String displayXL()
+  {
+    // TODO Auto-generated method stub
+    return null;
   }
 }
