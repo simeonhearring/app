@@ -1,4 +1,4 @@
-package net.hus.core.shared.components;
+package net.hus.core.shared.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,10 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.hus.core.shared.model.FieldTKG;
-import net.hus.core.shared.model.LookupOptions;
+import net.hus.core.shared.components.ComplexPanel_;
+import net.hus.core.shared.components.UIObject_;
 import net.hus.core.shared.model.Page.Section;
-import net.hus.core.shared.model.Value;
 import net.hus.core.shared.util.StringUtil;
 
 /**
@@ -120,5 +119,10 @@ public class Components implements Serializable
     {
       return StringUtil.toTitle(name().replaceAll("_", " ")).replaceAll(" ", "");
     }
+  }
+
+  public List<UIObject_> getList()
+  {
+    return mList;
   }
 }
