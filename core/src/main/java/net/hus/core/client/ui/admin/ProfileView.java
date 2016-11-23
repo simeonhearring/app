@@ -39,13 +39,16 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   Icon mAdd0, mSave0;
 
   @UiField
-  Input mFirst, mMiddle, mLast, mUserName, mPassword;
+  Input mFirst, mMiddle, mLast, mPassword;
 
   @UiField
-  Paragraph mId, mCreated, mUpdated, mName;
+  Input mAddUserName, mAddFirst, mAddLast;
 
   @UiField
-  ListBox mPage;
+  Paragraph mId, mCreated, mUpdated, mName, mUserName;
+
+  @UiField
+  ListBox mAddPage, mPage;
 
   // @UiField
   // FormLabel mNameText;
@@ -70,26 +73,28 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   }
 
   @UiHandler(
-      {
-        "mAdd0",
-        "mSave0"
-      })
+  {
+      "mAdd0",
+      "mSave0"
+  })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
+      mAction.createProfile(mAddUserName.getText(), mAddFirst.getText(), mAddLast.getText(),
+          mAddPage.getSelectedValue());
     }
     else if (mSave0.equals(inEvent.getSource()))
     {
-      mAction.saveProfile(mFirst.getText(), mMiddle.getText(), mLast.getText(), mUserName.getText(),
-          mPassword.getText(), mPage.getSelectedValue());
+      mAction.saveProfile(mFirst.getText(), mMiddle.getText(), mLast.getText(), mPassword.getText(),
+          mPage.getSelectedValue());
     }
   }
 
   @UiHandler(
-      {
-        "mProfiles"
-      })
+  {
+      "mProfiles"
+  })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
     if (mProfiles.equals(inEvent.getSource()))
@@ -106,14 +111,16 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mUpdated.setText(format("yyyy-MM-dd hh:mm", inProfile.getUpdated()));
 
     mName.setText(inProfile.getName());
+    mUserName.setText(inProfile.getUserName());
 
     mFirst.setText(inProfile.getFirst());
     mMiddle.setText(inProfile.getMiddle());
     mLast.setText(inProfile.getLast());
 
-    mUserName.setText(inProfile.getUserName());
     mPassword.setText(inProfile.getPassword());
     mPage.setSelectedIndex(getSelectedIndex(mPage, inProfile.getPage().getComponentsName()));
+
+    mProfiles.setValue(null);
   }
 
   @Override
@@ -136,9 +143,11 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   public void addPages(List<Lookup> inPages)
   {
     mPage.clear();
+    mAddPage.clear();
     for (Lookup value : inPages)
     {
       mPage.addItem(value.getDisplay(), value.getName());
+      mAddPage.addItem(value.getDisplay(), value.getName());
     }
   }
 }
