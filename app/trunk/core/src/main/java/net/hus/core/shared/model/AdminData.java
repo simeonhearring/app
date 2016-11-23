@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.hus.core.shared.components.Components;
-
 public class AdminData implements Serializable
 {
   private static final long serialVersionUID = 6775535535217948165L;

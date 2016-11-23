@@ -1,6 +1,6 @@
 package net.hus.core.shared.command;
 
-import net.hus.core.shared.components.Components;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.ComponentsQuery;
 import net.hus.core.shared.rpc.CommandName;
 

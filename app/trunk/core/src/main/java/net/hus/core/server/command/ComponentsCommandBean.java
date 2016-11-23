@@ -1,10 +1,13 @@
 package net.hus.core.server.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
-import net.hus.core.shared.components.Components;
+import net.hus.core.shared.components.ComplexPanel_;
+import net.hus.core.shared.components.UIObject_;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Lookup;
@@ -36,7 +39,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
 
   private void addLookups(Components inComponents)
   {
-    for (LookupOptions value : inComponents.getLookupOptions())
+    for (LookupOptions value : getLookupOptions(inComponents.getList()))
     {
       if (Field.Lookup.Location.TABLE.equals(value.getLocation()))
       {
@@ -47,6 +50,31 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
           {
             value.add(lookup);
           }
+        }
+      }
+    }
+  }
+
+  private List<LookupOptions> getLookupOptions(List<UIObject_> inList)
+  {
+    List<LookupOptions> ret = new ArrayList<>();
+    find(ret, inList);
+    return ret;
+  }
+
+  private static void find(List<LookupOptions> inAddTo, List<UIObject_> inSearchingIn)
+  {
+    if (inSearchingIn != null)
+    {
+      for (UIObject_ value : inSearchingIn)
+      {
+        if (value instanceof ComplexPanel_)
+        {
+          find(inAddTo, ((ComplexPanel_) value).getCollection());
+        }
+        else if (value instanceof LookupOptions)
+        {
+          inAddTo.add((LookupOptions) value);
         }
       }
     }

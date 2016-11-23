@@ -16,13 +16,13 @@ import net.hus.core.parser.AppProfileParser;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
-import net.hus.core.shared.components.Components;
-import net.hus.core.shared.components.Components.Type;
 import net.hus.core.shared.model.AppProfile;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.util.StringUtil;
 
 public class CoreJdbc implements CoreDao
