@@ -18,6 +18,7 @@ public class ComponentPresenter extends RpcCallback<AdminDataCommand>
 implements Action, AdminEvent.Handler
 {
   private ComponentDisplay mDisplay;
+  private Components mPage;
 
   public ComponentPresenter(ComponentDisplay inDisplay)
   {
@@ -50,11 +51,17 @@ implements Action, AdminEvent.Handler
         break;
       }
       case PAGE:
-        mDisplay.addPage(inData.getPage());
+        addPage(inData);
         break;
       default:
         break;
     }
+  }
+
+  private void addPage(AdminData inData)
+  {
+    mPage = inData.getPage();
+    mDisplay.addPage(mPage);
   }
 
   @Override
@@ -67,7 +74,7 @@ implements Action, AdminEvent.Handler
   public void createPage(final String inName, String inFvt, String inFgg, String inPage)
   {
     Components c = new Components();
-    c.setName(RandomUtil.random(8));
+    c.setName(RandomUtil.authCode(8));
     c.setDisplay(inName);
 
     FieldTKG tkg = c.initTKG();
@@ -82,6 +89,39 @@ implements Action, AdminEvent.Handler
       public void onRpcSuccess(LookupXLSaveCommand inCommand)
       {
         mDisplay.notify("Saved ... " + inName);
+      }
+    });
+  }
+
+  @Override
+  public void savePage(String inDisplay)
+  {
+    mPage.setDisplay(inDisplay);
+
+    Global.fire(new LookupXLSaveCommand(mPage), new RpcCallback<LookupXLSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupXLSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + mPage.getDisplay());
+      }
+    });
+  }
+
+  @Override
+  public void savePage(String inFvt, String inFgg, String inPage)
+  {
+    FieldTKG tkg = mPage.getFieldTKG();
+    tkg.setFvt(inFvt);
+    tkg.setFgg(inFgg);
+    tkg.setPage(EnumUtil.valueOf(inPage, Page.Name.values()));
+
+    Global.fire(new LookupXLSaveCommand(mPage), new RpcCallback<LookupXLSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupXLSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + mPage.getDisplay());
       }
     });
   }

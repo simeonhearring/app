@@ -17,6 +17,9 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
     omitField(Components.class, "mName");
     omitField(Components.class, "mDisplay");
+    omitField(AbstractModel.class, "mId");
+    omitField(AbstractModel.class, "mCreated");
+    omitField(AbstractModel.class, "mUpdated");
     omitField(AbstractModel.class, "mDelete");
     omitField(AbstractModel.class, "mDirty");
 

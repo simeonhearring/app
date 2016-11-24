@@ -13,6 +13,10 @@ public interface ComponentDisplay extends PageDisplay
     void select(String inName);
 
     void createPage(String inName, String inFvt, String inFgg, String inPage);
+
+    void savePage(String inDisplay);
+
+    void savePage(String inFvt, String inFgg, String inPage);
   }
 
   void setAction(Action inAction);
