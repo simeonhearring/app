@@ -32,6 +32,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
       case PROFILES:
         addProfiles(data);
         break;
+      case TABLES:
+        addTables(data);
+        break;
       case PROFILE:
         addProfile(data, inCommand.getEventTypeKey());
         break;
@@ -98,6 +101,11 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setPage(mCoreDao.components(inComponentName));
   }
 
+  private void addTables(AdminData inData)
+  {
+    inData.setTables(mCoreDao.lookups().select(Group.TABLE.name()));
+  }
+
   private void addAll(AdminData inData)
   {
     addFields(inData);
@@ -115,5 +123,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     addProfiles(inData);
 
     addPages(inData);
+
+    addTables(inData);
   }
 }

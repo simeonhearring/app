@@ -38,12 +38,22 @@ implements Action, AdminEvent.Handler
     {
       case ALL:
       {
+        mDisplay.addTables(inData.getTables());
+        mDisplay.addFieldGroups(inData.getFieldGroups());
+        mDisplay.addPages(inData.getPages());
         break;
       }
-      case LOOKUP:
+      case PAGE:
+        mDisplay.addPage(inData.getPage());
         break;
       default:
         break;
     }
+  }
+
+  @Override
+  public void select(String inName)
+  {
+    Global.fire(new AdminDataCommand(inName, EventType.PAGE), this);
   }
 }

@@ -2,14 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui" xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt"
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui">
 	<ui:style>
-	.pad {
-		padding-right: 5px;
-	}
 	
-	.spanformat {
-		padding: 5px;
-		border: solid thin;
-	}
 	</ui:style>
 
 	<b:Row addStyleNames="content">
@@ -19,18 +12,18 @@
 					<b:Well size="LARGE">
 						<b:Legend text="EDIT GROUP" />
 						<b:FormGroup>
-							<b:FormLabel text="Select Group:" addStyleNames="{style.pad}" />
+							<b:FormLabel text="Select Group:" />
 							<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
 						</b:FormGroup>
 					</b:Well>
 					<b:Well size="LARGE">
 						<b:Legend text="CREATE NEW GROUP" />
 						<b:FormGroup ui:field="mAddNameGrp">
-							<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
+							<b:FormLabel text="Name:" />
 							<b:Input ui:field="mAddGroup" placeholder="Enter Group Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 						</b:FormGroup>
 						<b:Tooltip text="Add New">
-							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
+							<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
 						</b:Tooltip>
 					</b:Well>
 				</b:Column>
@@ -45,11 +38,11 @@
 								<b:Well size="LARGE">
 									<b:Legend text="GROUP NAME" />
 									<b:FormGroup>
-										<b:FormLabel text="FGG:" addStyleNames="{style.pad}" />
+										<b:FormLabel text="FGG:" />
 										<b.html:Span ui:field="mFgg" />
 									</b:FormGroup>
 									<b:FormGroup>
-										<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
+										<b:FormLabel text="Name:" />
 										<b:Input ui:field="mName" type="TEXT" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">

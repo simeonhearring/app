@@ -3,14 +3,7 @@
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui"
 	xmlns:c="urn:import:net.hus.core.client.ui.components">
 	<ui:style>
-	.pad {
-		padding-right: 5px;
-	}
 	
-	.spanformat {
-		padding: 5px;
-		border: solid thin;
-	}
 	</ui:style>
 
 	<b:Row addStyleNames="content">
@@ -20,14 +13,14 @@
 					<b:Well size="LARGE">
 						<b:Legend text="EDIT LOOKUP" />
 						<b:FormGroup>
-							<b:FormLabel text="Select Lookup:" addStyleNames="{style.pad}" />
+							<b:FormLabel text="Select Lookup:" />
 							<b.select:Select ui:field="mLookups" liveSearch="true" visible="true" />
 						</b:FormGroup>
 					</b:Well>
 					<b:Well size="LARGE">
 						<b:Legend text="CREATE NEW LOOKUP" />
 						<b:FormGroup>
-							<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
+							<b:FormLabel text="Name:" />
 							<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 						</b:FormGroup>
 						<b:Tooltip text="Add New">
@@ -46,11 +39,11 @@
 								<b:Well size="LARGE">
 									<b:Legend text="LOOKUP NAME" />
 									<b:FormGroup>
-										<b:FormLabel text="Name:" addStyleNames="{style.pad}" />
+										<b:FormLabel text="Name:" />
 										<b.html:Span ui:field="mName" />
 									</b:FormGroup>
 									<b:FormGroup>
-										<b:FormLabel text="Display:" addStyleNames="{style.pad}" />
+										<b:FormLabel text="Display:" />
 										<b:Input ui:field="mDisplay" type="TEXT" />
 									</b:FormGroup>
 									<b:Tooltip text="Save">
