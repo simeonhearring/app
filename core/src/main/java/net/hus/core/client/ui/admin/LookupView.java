@@ -5,7 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
-import org.gwtbootstrap3.client.ui.html.Span;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
@@ -47,7 +47,7 @@ public class LookupView extends AbstractView implements LookupDisplay
   Input mAddLookups, mDisplay, mNewName, mNewAbbr, mNewSort;
 
   @UiField
-  Span mName;
+  Paragraph mName;
 
   @UiField
   FormLabel mNameText;
@@ -73,11 +73,11 @@ public class LookupView extends AbstractView implements LookupDisplay
   }
 
   @UiHandler(
-  {
-      "mAdd0",
-      "mSave0",
-      "mSave1",
-  })
+      {
+        "mAdd0",
+        "mSave0",
+        "mSave1",
+      })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
@@ -99,9 +99,9 @@ public class LookupView extends AbstractView implements LookupDisplay
   }
 
   @UiHandler(
-  {
-      "mLookups"
-  })
+      {
+        "mLookups"
+      })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
     if (mLookups.equals(inEvent.getSource()))
@@ -131,11 +131,11 @@ public class LookupView extends AbstractView implements LookupDisplay
   {
     mValues.clear();
     String[] head =
-    {
-        "Name",
-        "Abbr",
-        "Sort",
-    };
+      {
+          "Name",
+          "Abbr",
+          "Sort",
+      };
 
     mValues.addHeaders(head);
     mValues.setWidth("100%");
@@ -148,11 +148,11 @@ public class LookupView extends AbstractView implements LookupDisplay
     for (Lookup value : inLookups.getOptions())
     {
       String[] values =
-      {
-          value.getDisplay(),
-          value.getAbbreviation(),
-          value.getSort().toString()
-      };
+        {
+            value.getDisplay(),
+            value.getAbbreviation(),
+            value.getSort().toString()
+        };
 
       mValues.addRow(head.length, values);
     }
