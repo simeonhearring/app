@@ -3,6 +3,7 @@ package net.hus.core.shared.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
@@ -16,6 +17,12 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
   private Field.Lookup mLookup;
   private Boolean mMultipleSelect;
   private List<Item> mItems;
+
+  @Override
+  public Type cType()
+  {
+    return Type.LIST_BOX;
+  }
 
   public Boolean getMultipleSelect()
   {
@@ -109,6 +116,12 @@ public class ListBox_ extends FocusWidget_ implements LookupOptions
     {
       this(inText, inValueId);
       mSelected = inSelected;
+    }
+
+    @Override
+    public Type cType()
+    {
+      return Type.ITEM;
     }
 
     public boolean isSelected()

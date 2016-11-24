@@ -3,6 +3,7 @@ package net.hus.core.shared.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
@@ -16,6 +17,12 @@ public class Typeahead_ extends ValueBoxBase_ implements LookupOptions
   private String mValue;
   private Field.Lookup mLookup;
   private List<TypeaheadOption> mOptions;
+
+  @Override
+  public Type cType()
+  {
+    return Type.TYPEAHEAD;
+  }
 
   public String getValue()
   {

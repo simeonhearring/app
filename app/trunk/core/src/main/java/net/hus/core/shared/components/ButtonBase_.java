@@ -1,6 +1,6 @@
 package net.hus.core.shared.components;
 
-public class ButtonBase_ extends FocusWidget_
+public abstract class ButtonBase_ extends FocusWidget_
 {
   private static final long serialVersionUID = 5671128013752424777L;
 

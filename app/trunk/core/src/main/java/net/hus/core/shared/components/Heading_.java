@@ -4,6 +4,8 @@ import org.gwtbootstrap3.client.ui.constants.Alignment;
 import org.gwtbootstrap3.client.ui.constants.Emphasis;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 
+import net.hus.core.shared.model.Components.Type;
+
 public class Heading_ extends ComplexWidget_
 {
   private static final long serialVersionUID = 7843526312913858982L;
@@ -13,6 +15,12 @@ public class Heading_ extends ComplexWidget_
   private Alignment mAlignment;
   private String mText;
   private String mSubText;
+
+  @Override
+  public Type cType()
+  {
+    return Type.HEADING;
+  }
 
   public HeadingSize getSize()
   {

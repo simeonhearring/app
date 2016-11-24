@@ -3,6 +3,7 @@ package net.hus.core.shared.components;
 import org.gwtbootstrap3.client.ui.constants.AlertType;
 import org.gwtbootstrap3.client.ui.constants.Styles;
 
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.UIObject_;
 
 public class Alert_ extends UIObject_
@@ -37,6 +38,12 @@ public class Alert_ extends UIObject_
     this(inText, inType);
     mDismissable = inDiss;
     mFade = inFade;
+  }
+
+  @Override
+  public Type cType()
+  {
+    return Type.ALERT;
   }
 
   public String getText()

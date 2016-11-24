@@ -2,6 +2,8 @@ package net.hus.core.shared.components;
 
 import org.gwtbootstrap3.client.ui.constants.InputType;
 
+import net.hus.core.shared.model.Components.Type;
+
 public class Input_ extends ValueBoxBase_
 {
   private static final long serialVersionUID = -5284956640088592314L;
@@ -10,6 +12,12 @@ public class Input_ extends ValueBoxBase_
   private String mMax;
   private InputType mType;
   private String mValue;
+
+  @Override
+  public Type cType()
+  {
+    return Type.INPUT;
+  }
 
   public String getValue()
   {

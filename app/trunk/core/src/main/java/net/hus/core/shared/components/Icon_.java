@@ -6,6 +6,8 @@ import org.gwtbootstrap3.client.ui.constants.IconRotate;
 import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 
+import net.hus.core.shared.model.Components.Type;
+
 public class Icon_ extends ComplexWidget_
 {
   private static final long serialVersionUID = -7178558740092056147L;
@@ -16,6 +18,12 @@ public class Icon_ extends ComplexWidget_
   private IconFlip mFlip;
   private Emphasis mEmphasis;
   private Boolean mBorder, mSpin, mPulse, mInverse, mStackTop, mStackBase, mFixedWidth;
+
+  @Override
+  public Type cType()
+  {
+    return Type.ICON;
+  }
 
   public IconType getType()
   {
