@@ -5,7 +5,7 @@
 	
 	</ui:style>
 
-	<b:Row addStyleNames="content">
+	<b:Row>
 		<b:Column size="SM_12" addStyleNames="text-left">
 			<b:Row>
 				<b:Column size="SM_3">
