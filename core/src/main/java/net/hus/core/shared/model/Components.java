@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.shared.components.ComplexPanel_;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.util.StringUtil;
@@ -50,6 +51,47 @@ public class Components extends AbstractModel implements Serializable, LookupXL
       }
     }
     return ret;
+  }
+
+  public String toJson()
+  {
+    StringBuilder sb = new StringBuilder();
+    json(getList(), sb);
+    return sb.toString();
+  }
+
+  private void json(List<UIObject_> inList, StringBuilder inSb)
+  {
+    inSb.append("[");
+
+    boolean notFirst = false;
+
+    for (UIObject_ value : inList)
+    {
+      String simpleName = value.getClass().getSimpleName();
+
+      if (notFirst)
+      {
+        inSb.append(",");
+      }
+      notFirst = true;
+
+      inSb.append("{\"text\":").append(" \"" + simpleName + "\"");
+
+      if (value instanceof ComplexPanel_)
+      {
+        List<UIObject_> collection = ((ComplexPanel_) value).getCollection();
+
+        if (collection != null && collection.size() != 0)
+        {
+          inSb.append(",\"nodes\": ");
+          json(collection, inSb);
+        }
+      }
+      inSb.append("}");
+    }
+
+    inSb.append("]");
   }
 
   public void setValues(List<Value> inValues)

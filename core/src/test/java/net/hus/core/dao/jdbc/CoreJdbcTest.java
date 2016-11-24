@@ -160,7 +160,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     list.add(lookup(group, "Junit", "JT", 1, "Used for junit testing"));
     list.add(lookup(group, "Person", "PER", 2, "Used to store person information."));
 
-    lookup(group, list, 2);
+    lookup(group, list, 4);
   }
 
   @Test

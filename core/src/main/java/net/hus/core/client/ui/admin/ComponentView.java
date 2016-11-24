@@ -5,6 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
@@ -51,14 +52,20 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   @UiField
   ListBox mAddFvt, mAddFgg, mAddPageName;
 
+  @UiField
+  FlowPanel mFlow;
+
   private Action mAction;
 
   public ComponentView()
   {
     initWidget(BINDER.createAndBindUi(this));
 
+    mFlow.getElement().setAttribute("id", "tree");
     addEnumToListBox(Page.Name.values(), mPageName);
     addEnumToListBox(Page.Name.values(), mAddPageName);
+
+    exportNodeSelected();
   }
 
   @Override
@@ -134,6 +141,35 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     mFvt.setSelectedIndex(getSelectedIndex(mFvt, inPage.getFieldTKG().getFvt()));
     mFgg.setSelectedIndex(getSelectedIndex(mFgg, inPage.getFieldTKG().getFgg()));
     setEnumValueToListBox(inPage.getFieldTKG().getPage(), mPageName);
+
+    tree(inPage.toJson());
+  }
+
+  private static native void tree(String inJson)
+  /*-{
+        var that = this;
+        $wnd.$('#tree').treeview(
+        {
+          data: inJson,
+          onNodeSelected: function(event, node)
+          {
+            $wnd.nodeSelected(node.nodeId);
+          }
+        });
+    }-*/;
+
+  private native void exportNodeSelected()
+  /*-{
+        var that = this;
+        $wnd.nodeSelected = $entry(function(inNodeId)
+        {
+          that.@net.hus.core.client.ui.admin.ComponentView::nodeSelected(I)(inNodeId);
+        });
+  }-*/;
+
+  private void nodeSelected(int inNodeId)
+  {
+    notify("Something selected " + inNodeId);
   }
 
   @Override

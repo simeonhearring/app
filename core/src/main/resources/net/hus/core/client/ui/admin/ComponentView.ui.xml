@@ -66,7 +66,7 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tabc5">
 								<b:Well size="LARGE">
-									<b:Legend text="COMPONENTS IN PAGE" />
+									<b:Legend text="Field TKG" />
 									<b:FormGroup>
 										<b:FormLabel text="FVT:" />
 										<b:ListBox ui:field="mFvt" />
@@ -85,6 +85,8 @@
 								</b:Well>
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tabc6">
+								<b:Legend text="COMPONENTS IN PAGE" />
+								<b.gwt:FlowPanel ui:field="mFlow" />
 							</b:TabPane>
 						</b:TabContent>
 						<b.html:ClearFix />

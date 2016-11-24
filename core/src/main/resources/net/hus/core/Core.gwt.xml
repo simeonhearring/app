@@ -15,8 +15,15 @@
 
 	<inherits name='org.gwtbootstrap3.extras.positionedtabs.PositionedTabs' />
 
+	<script src="js/jquery-2.2.4.min.js" />
+	<script src="js/bootstrap-treeview.min.js" />
+
+	<stylesheet src='css/bootstrap-treeview.min.css' />
+
 	<stylesheet src='css/core.css' />
 	<stylesheet src='css/bandtheme.css' />
+
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 
 	<source path='client' />
 	<source path='shared' />

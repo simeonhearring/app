@@ -46,6 +46,12 @@ public class ComponentsParser extends XStream implements Parser<Components>
     return super.toXML(inObj);
   }
 
+  public String toJson(Components inObj)
+  {
+    return inObj.toJson();
+  }
+
+
   @Override
   public void xs(Parser<Components> inParser)
   {
