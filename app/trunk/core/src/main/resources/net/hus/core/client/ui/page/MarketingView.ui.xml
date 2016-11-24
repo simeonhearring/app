@@ -12,14 +12,14 @@
 	<g:HTMLPanel>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow1" addStyleNames="content">
+		<b:Row ui:field="mRow1">
 			<b:Column ui:field="mMarR1L01" size="SM_8" />
 			<b:Column ui:field="mMarR1C01" size="SM_4" />
 		</b:Row>
 	</b:Container>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow2" addStyleNames="content">
+		<b:Row ui:field="mRow2">
 			<b:Column ui:field="mMarR201" size="SM_3" />
 			<b:Column ui:field="mMarR202" size="SM_3" />
 			<b:Column ui:field="mMarR203" size="SM_3" />
@@ -28,7 +28,7 @@
 	</b:Container>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow3" addStyleNames="content">
+		<b:Row ui:field="mRow3">
 			<b:Column ui:field="mMarR301" size="SM_2" />
 			<b:Column ui:field="mMarR302" size="SM_2" />
 			<b:Column ui:field="mMarR303" size="SM_2" />

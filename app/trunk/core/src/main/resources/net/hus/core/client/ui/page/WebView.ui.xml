@@ -5,7 +5,7 @@
 	</ui:style>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow" addStyleNames="content">
+		<b:Row ui:field="mRow">
 			<b:Column ui:field="mL01" size="SM_1" />
 			<b:Column ui:field="mC01" size="SM_10" addStyleNames="text-left" />
 			<b:Column ui:field="mR01" size="SM_1" />

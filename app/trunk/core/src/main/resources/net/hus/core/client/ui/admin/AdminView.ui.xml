@@ -13,12 +13,12 @@
 	</ui:style>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow0" addStyleNames="content">
+		<b:Row ui:field="mRow0">
 			<b:Column ui:field="mL01" size="SM_1" />
 			<b:Column ui:field="mC01" size="SM_10" addStyleNames="text-center" />
 			<b:Column ui:field="mR01" size="SM_1" />
 		</b:Row>
-		<b:Row addStyleNames="content">
+		<b:Row>
 			<b:Column size="SM_1" />
 			<b:Column size="SM_10">
 				<b:NavTabs>
