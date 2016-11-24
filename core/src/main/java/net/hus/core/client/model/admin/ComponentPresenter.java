@@ -11,6 +11,7 @@ import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Page;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.util.EnumUtil;
 import net.hus.core.shared.util.RandomUtil;
 
@@ -65,7 +66,7 @@ implements Action, AdminEvent.Handler
   }
 
   @Override
-  public void select(String inName)
+  public void selectPage(String inName)
   {
     Global.fire(new AdminDataCommand(inName, EventType.PAGE), this);
   }
@@ -124,5 +125,12 @@ implements Action, AdminEvent.Handler
         mDisplay.notify("Saved ... " + mPage.getDisplay());
       }
     });
+  }
+
+  @Override
+  public void selectComponent(int inNodeId)
+  {
+    UIObject_ uiobject = mPage.get(inNodeId);
+    mDisplay.notify("Something selected " + inNodeId + " " + uiobject.getClass().getSimpleName());
   }
 }

@@ -32,6 +32,9 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
   private List<Value> mValues;
 
+  private Map<Integer, UIObject_> mJsonMap;
+  private int mJsonCount;
+
   private String mName;
   private String mDisplay;
 
@@ -55,9 +58,16 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
   public String toJson()
   {
+    mJsonCount = 0;
+    mJsonMap = new HashMap<>();
     StringBuilder sb = new StringBuilder();
     json(getList(), sb);
     return sb.toString();
+  }
+
+  public UIObject_ get(int inNodeId)
+  {
+    return mJsonMap.get(inNodeId);
   }
 
   private void json(List<UIObject_> inList, StringBuilder inSb)
@@ -69,6 +79,7 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     for (UIObject_ value : inList)
     {
       String simpleName = value.getClass().getSimpleName();
+      mJsonMap.put(mJsonCount++, value);
 
       if (notFirst)
       {
@@ -84,9 +95,18 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
         if (collection != null && collection.size() != 0)
         {
+          inSb.append(",\"tags\": [\"").append(collection.size()).append("\"]");
           inSb.append(",\"nodes\": ");
           json(collection, inSb);
         }
+        else
+        {
+          inSb.append(",\"tags\": [\"0\"]");
+        }
+      }
+      else
+      {
+        inSb.append(",\"tags\": [\"0\"]");
       }
       inSb.append("}");
     }
@@ -150,6 +170,10 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
   public List<UIObject_> getList()
   {
+    if (mList == null)
+    {
+      mList = new ArrayList<>();
+    }
     return mList;
   }
 
