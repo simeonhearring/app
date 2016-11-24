@@ -88,9 +88,12 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     }
     else if (mSave0.equals(inEvent.getSource()))
     {
+      mAction.savePage(mDisplay.getText());
     }
     else if (mSave1.equals(inEvent.getSource()))
     {
+      mAction.savePage(mFvt.getSelectedValue(), mFgg.getSelectedValue(),
+          mPageName.getSelectedValue());
     }
   }
 
