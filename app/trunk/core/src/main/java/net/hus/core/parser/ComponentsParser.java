@@ -2,6 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
+import net.hus.core.shared.model.AbstractModel;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.UIObject_;
@@ -13,6 +14,11 @@ public class ComponentsParser extends XStream implements Parser<Components>
     alias("Components", Components.class);
     addImplicitCollection(Components.class, "mList", null, UIObject_.class);
     addImplicitCollection(Components.class, "mFieldTKGs", null, FieldTKG.class);
+
+    omitField(Components.class, "mName");
+    omitField(Components.class, "mDisplay");
+    omitField(AbstractModel.class, "mDelete");
+    omitField(AbstractModel.class, "mDirty");
 
     FieldTKG_Parser.xs(this);
 

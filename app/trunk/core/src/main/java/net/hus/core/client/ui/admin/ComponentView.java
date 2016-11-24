@@ -5,7 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
-import org.gwtbootstrap3.client.ui.html.Span;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
@@ -43,7 +43,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   Input mAddPage, mDisplay;
 
   @UiField
-  Span mName;
+  Paragraph mName;
 
   @UiField
   ListBox mFvt, mFgg, mPageName;
@@ -125,7 +125,6 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     mFvt.setSelectedIndex(getSelectedIndex(mFvt, inPage.getFieldTKG().getFvt()));
     mFgg.setSelectedIndex(getSelectedIndex(mFgg, inPage.getFieldTKG().getFgg()));
     setEnumValueToListBox(inPage.getFieldTKG().getPage(), mPageName);
-    notify("Page: " + inPage.getFieldTKG().getFvt() + " " + inPage.getFieldTKG().getFgg());
   }
 
   @Override
