@@ -136,7 +136,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
 
   private Lookup fields()
   {
-    return new Lookup(Location.TABLE, "BLANK,FIELD_GROUP,");
+    return new Lookup(Location.TABLE, "BLANK,FGG,");
   }
 
   private Array newArray(Integer inSize, String... inLabels)

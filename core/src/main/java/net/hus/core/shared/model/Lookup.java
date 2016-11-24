@@ -133,7 +133,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     FVT(SM),
     FIELD(SM),
     LOOKUP(SM),
-    FIELD_GROUP(SM),
+    FGG(SM),
     COMPONENT(SM),
     UNKNOWN(SM),
     DAYSOFWEEK(SM),

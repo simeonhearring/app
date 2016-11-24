@@ -99,7 +99,7 @@ implements Action, AdminEvent.Handler
   private void save(final String inFgg, final String inName)
   {
     Lookup lookup = new Lookup();
-    lookup.setGroup(Group.FIELD_GROUP);
+    lookup.setGroup(Group.FGG);
     lookup.setName(inFgg);
     lookup.setDisplay(inName);
     lookup.setSort(0);

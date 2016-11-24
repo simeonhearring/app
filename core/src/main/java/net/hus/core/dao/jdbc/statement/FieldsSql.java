@@ -156,8 +156,8 @@ public class FieldsSql extends Mapping
     for (Field value : inFields.getFields())
     {
       Long id = value.getId();
-      String display = null; // remove from db FIELD_GROUP table
-      Integer sort = null; // remove from db FIELD_GROUP table
+      String display = null; // remove from db FGG table
+      Integer sort = null; // remove from db FGG table
 
       mFieldsUpsert.update(params(fgg, id, display, sort, display, sort));
     }

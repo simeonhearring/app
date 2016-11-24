@@ -284,7 +284,7 @@ public class CoreJdbc implements CoreDao
     for (Entry<String, StringBuilder> value : data.entrySet())
     {
       Lookup lookup = new Lookup();
-      lookup.setGroup(Group.FIELD_GROUP);
+      lookup.setGroup(Group.FGG);
       lookup.setName(value.getKey());
 
       lookup.setDisplay(data2.get(value.getKey()));
