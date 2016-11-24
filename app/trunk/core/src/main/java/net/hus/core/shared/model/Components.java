@@ -67,6 +67,13 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     return mFieldTKGs.get(0);
   }
 
+  public FieldTKG initTKG()
+  {
+    FieldTKG ret = new FieldTKG();
+    mFieldTKGs.add(ret);
+    return ret;
+  }
+
   public enum Type implements EnumDisplay
   {
     ALERT,

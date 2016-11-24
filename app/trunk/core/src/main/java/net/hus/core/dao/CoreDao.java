@@ -28,5 +28,7 @@ public interface CoreDao
 
   void profile2lookup();
 
+  void components2lookup();
+
   void upsertXL(LookupXL inLookupXL);
 }

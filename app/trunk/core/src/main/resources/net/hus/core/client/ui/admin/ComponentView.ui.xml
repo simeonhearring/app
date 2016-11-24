@@ -23,8 +23,20 @@
 							<b:FormLabel text="Name:" />
 							<b:Input ui:field="mAddPage" placeholder="Enter page name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 						</b:FormGroup>
+						<b:FormGroup>
+							<b:FormLabel text="FVT:" />
+							<b:ListBox ui:field="mAddFvt" />
+						</b:FormGroup>
+						<b:FormGroup>
+							<b:FormLabel text="FGG:" />
+							<b:ListBox ui:field="mAddFgg" />
+						</b:FormGroup>
+						<b:FormGroup>
+							<b:FormLabel text="Page layout:" />
+							<b:ListBox ui:field="mAddPageName" />
+						</b:FormGroup>
 						<b:Tooltip text="Add New">
-							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
+							<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
 						</b:Tooltip>
 					</b:Well>
 				</b:Column>
