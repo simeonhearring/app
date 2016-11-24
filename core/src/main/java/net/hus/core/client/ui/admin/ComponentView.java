@@ -45,7 +45,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   Input mAddPage, mDisplay;
 
   @UiField
-  Paragraph mName;
+  Paragraph mName, mPageNameC, mPageNameF, mComponentName;
 
   @UiField
   ListBox mFvt, mFgg, mPageName;
@@ -137,6 +137,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   {
     mName.setText(inPage.getName());
     mDisplay.setText(inPage.getDisplay());
+    mPageNameC.setText(inPage.getDisplay());
+    mPageNameF.setText(inPage.getDisplay());
 
     mFvt.setSelectedIndex(getSelectedIndex(mFvt, inPage.getFieldTKG().getFvt()));
     mFgg.setSelectedIndex(getSelectedIndex(mFgg, inPage.getFieldTKG().getFgg()));
@@ -199,6 +201,6 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   @Override
   public void addComponent(UIObject_ inUiobject)
   {
-
+    mComponentName.setText(inUiobject.getClass().getSimpleName());
   }
 }

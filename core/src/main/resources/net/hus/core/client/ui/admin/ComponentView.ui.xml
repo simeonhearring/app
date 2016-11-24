@@ -18,7 +18,7 @@
 				<b:Legend text="CREATE NEW PAGE" />
 				<b:FormGroup>
 					<b:FormLabel text="Name:" />
-					<b:Input ui:field="mAddPage" placeholder="Enter page name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+					<b:Input ui:field="mAddPage" placeholder="Enter Page Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 				</b:FormGroup>
 				<b:FormGroup>
 					<b:FormLabel text="FVT:" />
@@ -63,7 +63,8 @@
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tabc5">
 						<b:Well size="LARGE">
-							<b:Legend text="Field TKG" />
+							<b:Legend text="FIELD TKG" />
+							<b.html:Paragraph ui:field="mPageNameF" />
 							<b:FormGroup>
 								<b:FormLabel text="FVT:" />
 								<b:ListBox ui:field="mFvt" />
@@ -82,28 +83,32 @@
 						</b:Well>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tabc6">
-						<b:PanelGroup b:id="accordion">
-							<b:Panel>
-								<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseOne">
-									<b:Heading size="H5" text="COMPONENTS IN PAGE" />
-								</b:PanelHeader>
-								<b:PanelCollapse b:id="collapseOne">
-									<b:PanelBody>
-										<b.gwt:FlowPanel ui:field="mTree" />
-									</b:PanelBody>
-								</b:PanelCollapse>
-							</b:Panel>
-							<b:Panel>
-								<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseTwo">
-									<b:Heading size="H5" text="COMPONENT DETAIL" />
-								</b:PanelHeader>
-								<b:PanelCollapse b:id="collapseTwo">
-									<b:PanelBody>
-										<b:FormLabel text="Page layout:" />
-									</b:PanelBody>
-								</b:PanelCollapse>
-							</b:Panel>
-						</b:PanelGroup>
+						<b:Well size="LARGE">
+							<b:Legend text="COMPONENTS" />
+							<b.html:Paragraph ui:field="mPageNameC" />
+							<b:PanelGroup b:id="accordion">
+								<b:Panel>
+									<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseOne">
+										<b:Heading size="H5" text="IN PAGE" />
+									</b:PanelHeader>
+									<b:PanelCollapse b:id="collapseOne">
+										<b:PanelBody>
+											<b.gwt:FlowPanel ui:field="mTree" />
+										</b:PanelBody>
+									</b:PanelCollapse>
+								</b:Panel>
+								<b:Panel>
+									<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseTwo">
+										<b:Heading size="H5" text="DETAIL" />
+									</b:PanelHeader>
+									<b:PanelCollapse b:id="collapseTwo">
+										<b:PanelBody>
+											<b.html:Paragraph ui:field="mComponentName" />
+										</b:PanelBody>
+									</b:PanelCollapse>
+								</b:Panel>
+							</b:PanelGroup>
+						</b:Well>
 					</b:TabPane>
 				</b:TabContent>
 				<b.html:ClearFix />
