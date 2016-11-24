@@ -3,14 +3,7 @@
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui"
 	xmlns:c="urn:import:net.hus.core.client.ui.components">
 	<ui:style>
-	.pad {
-		padding-right: 5px;
-	}
 	
-	.spanformat {
-		padding: 5px;
-		border: solid thin;
-	}
 	</ui:style>
 
 	<b:Row addStyleNames="content">
@@ -43,7 +36,7 @@
 							<b:ListBox ui:field="mAddPage" />
 						</b:FormGroup>
 						<b:Tooltip text="Add New">
-							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
+							<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
 						</b:Tooltip>
 					</b:Well>
 				</b:Column>

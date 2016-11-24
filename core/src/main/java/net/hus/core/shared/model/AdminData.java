@@ -25,6 +25,8 @@ public class AdminData implements Serializable
   private List<Lookup> mPages;
   private Components mPage;
 
+  private List<Lookup> mTables;
+
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
     mFieldGroups = inFieldGroups;
@@ -139,5 +141,15 @@ public class AdminData implements Serializable
   public Components getPage()
   {
     return mPage;
+  }
+
+  public List<Lookup> getTables()
+  {
+    return mTables;
+  }
+
+  public void setTables(List<Lookup> inTables)
+  {
+    mTables = inTables;
   }
 }

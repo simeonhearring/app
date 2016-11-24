@@ -9,5 +9,6 @@ public enum EventType
   LOOKUP,
   PROFILES,
   PROFILE,
-  PAGE;
+  PAGE,
+  TABLES;
 }
