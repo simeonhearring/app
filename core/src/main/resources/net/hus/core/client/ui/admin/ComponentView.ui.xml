@@ -5,100 +5,95 @@
 	<ui:style>
 	
 	</ui:style>
-
 	<b:Row>
-		<b:Column size="SM_12" addStyleNames="text-left">
-			<b:Row>
-				<b:Column size="SM_3">
-					<b:Well size="LARGE">
-						<b:Legend text="EDIT PAGE" />
-						<b:FormGroup>
-							<b:FormLabel text="Select Page:" />
-							<b.select:Select ui:field="mPages" liveSearch="true" visible="true" />
-						</b:FormGroup>
-					</b:Well>
-					<b:Well size="LARGE">
-						<b:Legend text="CREATE NEW PAGE" />
-						<b:FormGroup>
-							<b:FormLabel text="Name:" />
-							<b:Input ui:field="mAddPage" placeholder="Enter page name" allowBlank="false" validateOnBlur="true" type="TEXT" />
-						</b:FormGroup>
-						<b:FormGroup>
-							<b:FormLabel text="FVT:" />
-							<b:ListBox ui:field="mAddFvt" />
-						</b:FormGroup>
-						<b:FormGroup>
-							<b:FormLabel text="FGG:" />
-							<b:ListBox ui:field="mAddFgg" />
-						</b:FormGroup>
-						<b:FormGroup>
-							<b:FormLabel text="Page layout:" />
-							<b:ListBox ui:field="mAddPageName" />
-						</b:FormGroup>
-						<b:Tooltip text="Add New">
-							<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
-						</b:Tooltip>
-					</b:Well>
-				</b:Column>
-				<b:Column size="SM_9">
-					<b:TabPanel tabPosition="LEFT">
-						<b:NavTabs>
-							<b:TabListItem dataTarget="#tabc4" text="Name" active="true" />
-							<b:TabListItem dataTarget="#tabc5" text="Page" />
-							<b:TabListItem dataTarget="#tabc6" text="Components" />
-						</b:NavTabs>
-						<b:TabContent>
-							<b:TabPane fade="true" in="true" active="true" b:id="tabc4">
+		<b:Column size="SM_3">
+			<b:Well size="LARGE">
+				<b:Legend text="EDIT PAGE" />
+				<b:FormGroup>
+					<b:FormLabel text="Select Page:" />
+					<b.select:Select ui:field="mPages" liveSearch="true" visible="true" />
+				</b:FormGroup>
+			</b:Well>
+			<b:Well size="LARGE">
+				<b:Legend text="CREATE NEW PAGE" />
+				<b:FormGroup>
+					<b:FormLabel text="Name:" />
+					<b:Input ui:field="mAddPage" placeholder="Enter page name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="FVT:" />
+					<b:ListBox ui:field="mAddFvt" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="FGG:" />
+					<b:ListBox ui:field="mAddFgg" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="Page layout:" />
+					<b:ListBox ui:field="mAddPageName" />
+				</b:FormGroup>
+				<b:Tooltip text="Add New">
+					<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
+				</b:Tooltip>
+			</b:Well>
+		</b:Column>
+		<b:Column size="SM_9">
+			<b:TabPanel tabPosition="LEFT">
+				<b:NavTabs>
+					<b:TabListItem dataTarget="#tabc4" text="Name" active="true" />
+					<b:TabListItem dataTarget="#tabc5" text="Page" />
+					<b:TabListItem dataTarget="#tabc6" text="Components" />
+				</b:NavTabs>
+				<b:TabContent>
+					<b:TabPane fade="true" in="true" active="true" b:id="tabc4">
+						<b:Well size="LARGE">
+							<b:Legend text="PAGE NAME" />
+							<b:FormGroup>
+								<b:FormLabel text="Name:" />
+								<b.html:Paragraph ui:field="mName" />
+							</b:FormGroup>
+							<b:FormGroup>
+								<b:FormLabel text="Display:" />
+								<b:Input ui:field="mDisplay" type="TEXT" />
+							</b:FormGroup>
+							<b:Tooltip text="Save">
+								<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
+							</b:Tooltip>
+						</b:Well>
+					</b:TabPane>
+					<b:TabPane fade="true" b:id="tabc5">
+						<b:Well size="LARGE">
+							<b:Legend text="Field TKG" />
+							<b:FormGroup>
+								<b:FormLabel text="FVT:" />
+								<b:ListBox ui:field="mFvt" />
+							</b:FormGroup>
+							<b:FormGroup>
+								<b:FormLabel text="FGG:" />
+								<b:ListBox ui:field="mFgg" />
+							</b:FormGroup>
+							<b:FormGroup>
+								<b:FormLabel text="Page layout:" />
+								<b:ListBox ui:field="mPageName" />
+							</b:FormGroup>
+							<b:Tooltip text="Save">
+								<b:Icon ui:field="mSave1" type="SAVE" addStyleNames="pull-right" />
+							</b:Tooltip>
+						</b:Well>
+					</b:TabPane>
+					<b:TabPane fade="true" b:id="tabc6">
+						<b:Legend text="COMPONENTS IN PAGE" />
+						<b:Row>
+							<b:Column size="SM_12">
 								<b:Well size="LARGE">
-									<b:Legend text="PAGE NAME" />
-									<b:FormGroup>
-										<b:FormLabel text="Name:" />
-										<b.html:Paragraph ui:field="mName" />
-									</b:FormGroup>
-									<b:FormGroup>
-										<b:FormLabel text="Display:" />
-										<b:Input ui:field="mDisplay" type="TEXT" />
-									</b:FormGroup>
-									<b:Tooltip text="Save">
-										<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
-									</b:Tooltip>
+									<b.gwt:FlowPanel ui:field="mTree" />
 								</b:Well>
-							</b:TabPane>
-							<b:TabPane fade="true" b:id="tabc5">
-								<b:Well size="LARGE">
-									<b:Legend text="Field TKG" />
-									<b:FormGroup>
-										<b:FormLabel text="FVT:" />
-										<b:ListBox ui:field="mFvt" />
-									</b:FormGroup>
-									<b:FormGroup>
-										<b:FormLabel text="FGG:" />
-										<b:ListBox ui:field="mFgg" />
-									</b:FormGroup>
-									<b:FormGroup>
-										<b:FormLabel text="Page layout:" />
-										<b:ListBox ui:field="mPageName" />
-									</b:FormGroup>
-									<b:Tooltip text="Save">
-										<b:Icon ui:field="mSave1" type="SAVE" addStyleNames="pull-right" />
-									</b:Tooltip>
-								</b:Well>
-							</b:TabPane>
-							<b:TabPane fade="true" b:id="tabc6">
-								<b:Legend text="COMPONENTS IN PAGE" />
-								<b:Row>
-									<b:Column size="SM_12">
-										<b:Well size="LARGE">
-											<b.gwt:FlowPanel ui:field="mTree" />
-										</b:Well>
-									</b:Column>
-								</b:Row>
-							</b:TabPane>
-						</b:TabContent>
-						<b.html:ClearFix />
-					</b:TabPanel>
-				</b:Column>
-			</b:Row>
+							</b:Column>
+						</b:Row>
+					</b:TabPane>
+				</b:TabContent>
+				<b.html:ClearFix />
+			</b:TabPanel>
 		</b:Column>
 	</b:Row>
 </ui:UiBinder>
