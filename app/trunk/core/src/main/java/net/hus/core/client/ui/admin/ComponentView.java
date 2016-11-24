@@ -145,6 +145,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     setEnumValueToListBox(inPage.getFieldTKG().getPage(), mPageName);
 
     addTree(inPage.toJson());
+
+    resetComponent();
   }
 
   private native void addTree(String inJson)
@@ -202,5 +204,10 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   public void addComponent(UIObject_ inUiobject)
   {
     mComponentName.setText(inUiobject.getClass().getSimpleName());
+  }
+
+  private void resetComponent()
+  {
+    mComponentName.setText(null);
   }
 }
