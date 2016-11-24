@@ -8,7 +8,7 @@ import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-import org.gwtbootstrap3.client.ui.html.Span;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
@@ -49,7 +49,7 @@ public class FieldsView extends AbstractView implements FieldsDisplay
   FlowPanel mFields;
 
   @UiField
-  Span mFgg;
+  Paragraph mFgg;
 
   @UiField
   FormLabel mNameText;

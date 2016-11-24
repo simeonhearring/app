@@ -13,6 +13,7 @@ import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.form.validator.BlankValidator;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.extras.select.client.ui.OptGroup;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
@@ -42,7 +43,7 @@ import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page.Section.Name;
 
 public class FieldView extends AbstractView
-    implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
+implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -54,10 +55,13 @@ public class FieldView extends AbstractView
   Select mFields;
 
   @UiField
-  Span mId, mName, mType;
+  Paragraph mId, mName, mType;
 
   @UiField
-  Span mSize, mStorageFormatEx, mLookupGroupText;
+  Span mSize;
+
+  @UiField
+  Paragraph mStorageFormatEx, mLookupGroupText;
 
   @UiField
   Input mLong, mShort, mAddName, mStorageFormat;
@@ -104,19 +108,19 @@ public class FieldView extends AbstractView
   }
 
   @UiHandler(
-  {
-      "mSave0",
-      "mSave1",
-      "mSave2",
-      "mSave3",
-      "mRefresh0",
-      "mRefresh1",
-      "mRefresh2",
-      "mRefresh3",
-      "mAdd0",
-      "mPlus",
-      "mMinus"
-  })
+      {
+        "mSave0",
+        "mSave1",
+        "mSave2",
+        "mSave3",
+        "mRefresh0",
+        "mRefresh1",
+        "mRefresh2",
+        "mRefresh3",
+        "mAdd0",
+        "mPlus",
+        "mMinus"
+      })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
@@ -155,13 +159,13 @@ public class FieldView extends AbstractView
   }
 
   @UiHandler(
-  {
-      "mFields",
-      "mStorageFormat",
-      "mAltEven",
-      "mAltOdd",
-      "mBottomRow"
-  })
+      {
+        "mFields",
+        "mStorageFormat",
+        "mAltEven",
+        "mAltOdd",
+        "mBottomRow"
+      })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
     if (mFields.equals(inEvent.getSource()))
@@ -198,10 +202,10 @@ public class FieldView extends AbstractView
   }
 
   @UiHandler(
-  {
-      "mLookupLocation",
-      "mHeadSize"
-  })
+      {
+        "mLookupLocation",
+        "mHeadSize"
+      })
   public void onChangeBind(ChangeEvent inEvent)
   {
     if (mLookupLocation.equals(inEvent.getSource()))
@@ -215,9 +219,9 @@ public class FieldView extends AbstractView
   }
 
   @UiHandler(
-  {
-      "mStorageFormat"
-  })
+      {
+        "mStorageFormat"
+      })
   public void onKeyUpBind(KeyUpEvent inEvent)
   {
     formatExample(mStorageFormat, mStorageFormatEx);
@@ -381,9 +385,9 @@ public class FieldView extends AbstractView
     return ret;
   }
 
-  private void formatExample(Input inText, Span inSpan)
+  private void formatExample(Input inText, Paragraph inPar)
   {
-    inSpan.setText(DateTimeFormat.getFormat(inText.getText()).format(new Date()));
+    inPar.setText(DateTimeFormat.getFormat(inText.getText()).format(new Date()));
   }
 
   private void addLookup(String inLookupParameters, Location inLocation, Field inField)

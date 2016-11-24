@@ -37,7 +37,7 @@
 							<b:Legend text="LOOKUP NAME" />
 							<b:FormGroup>
 								<b:FormLabel text="Name:" />
-								<b.html:Span ui:field="mName" />
+								<b.html:Paragraph ui:field="mName" />
 							</b:FormGroup>
 							<b:FormGroup>
 								<b:FormLabel text="Display:" />

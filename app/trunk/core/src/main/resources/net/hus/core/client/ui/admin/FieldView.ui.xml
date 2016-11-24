@@ -43,15 +43,15 @@
 							<b:Legend text="FIELD NAME" />
 							<b:FormGroup>
 								<b:FormLabel text="ID:" />
-								<b.html:Span ui:field="mId" />
+								<b.html:Paragraph ui:field="mId" />
 							</b:FormGroup>
 							<b:FormGroup>
 								<b:FormLabel text="Name:" />
-								<b.html:Span ui:field="mName" />
+								<b.html:Paragraph ui:field="mName" />
 							</b:FormGroup>
 							<b:FormGroup>
 								<b:FormLabel text="Type:" />
-								<b.html:Span ui:field="mType" />
+								<b.html:Paragraph ui:field="mType" />
 							</b:FormGroup>
 						</b:Well>
 					</b:TabPane>
@@ -83,7 +83,7 @@
 							</b:FormGroup>
 							<b:FormGroup>
 								<b:FormLabel text="Example:" />
-								<b.html:Span ui:field="mStorageFormatEx" />
+								<b.html:Paragraph ui:field="mStorageFormatEx" />
 							</b:FormGroup>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
@@ -133,7 +133,7 @@
 							<b:Row>
 								<b:Column size="SM_3">
 									<b:FormGroup>
-										<b:FormLabel text="Size:" />
+										<b:FormLabel text="Size:&nbsp;" />
 										<b.html:Span ui:field="mSize" />
 										<b:Tooltip text="Add">
 											<b:Icon ui:field="mPlus" type="PLUS" paddingLeft="10" paddingRight="10" />
@@ -167,7 +167,7 @@
 							</b:FormGroup>
 							<b:FormGroup>
 								<b:FormLabel text="Parameters:" />
-								<b.html:Span ui:field="mLookupGroupText" />
+								<b.html:Paragraph ui:field="mLookupGroupText" />
 								<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />
 							</b:FormGroup>
 							<b:Tooltip text="Save">
