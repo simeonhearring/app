@@ -11,11 +11,12 @@ import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Page;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.util.EnumUtil;
 import net.hus.core.shared.util.RandomUtil;
 
 public class ComponentPresenter extends RpcCallback<AdminDataCommand>
-implements Action, AdminEvent.Handler
+    implements Action, AdminEvent.Handler
 {
   private ComponentDisplay mDisplay;
   private Components mPage;
@@ -129,6 +130,7 @@ implements Action, AdminEvent.Handler
   @Override
   public void selectComponent(int inNodeId)
   {
-    mDisplay.addComponent(mPage.get(inNodeId));
+    UIObject_ uiObject = mPage.get(inNodeId);
+    mDisplay.addComponent(mDisplay.getDisplay(uiObject));
   }
 }
