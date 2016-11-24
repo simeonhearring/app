@@ -82,14 +82,28 @@
 						</b:Well>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tabc6">
-						<b:Legend text="COMPONENTS IN PAGE" />
-						<b:Row>
-							<b:Column size="SM_12">
-								<b:Well size="LARGE">
-									<b.gwt:FlowPanel ui:field="mTree" />
-								</b:Well>
-							</b:Column>
-						</b:Row>
+						<b:PanelGroup b:id="accordion">
+							<b:Panel>
+								<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseOne">
+									<b:Heading size="H5" text="COMPONENTS IN PAGE" />
+								</b:PanelHeader>
+								<b:PanelCollapse b:id="collapseOne">
+									<b:PanelBody>
+										<b.gwt:FlowPanel ui:field="mTree" />
+									</b:PanelBody>
+								</b:PanelCollapse>
+							</b:Panel>
+							<b:Panel>
+								<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseTwo">
+									<b:Heading size="H5" text="COMPONENT DETAIL" />
+								</b:PanelHeader>
+								<b:PanelCollapse b:id="collapseTwo">
+									<b:PanelBody>
+										<b:FormLabel text="Page layout:" />
+									</b:PanelBody>
+								</b:PanelCollapse>
+							</b:Panel>
+						</b:PanelGroup>
 					</b:TabPane>
 				</b:TabContent>
 				<b.html:ClearFix />
