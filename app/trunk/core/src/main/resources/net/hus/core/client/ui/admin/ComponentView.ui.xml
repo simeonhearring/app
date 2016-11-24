@@ -103,7 +103,7 @@
 									</b:PanelHeader>
 									<b:PanelCollapse b:id="collapseTwo">
 										<b:PanelBody>
-											<b.html:Paragraph ui:field="mComponentName" />
+											<b.gwt:FlowPanel ui:field="mDetail" />
 										</b:PanelBody>
 									</b:PanelCollapse>
 								</b:Panel>
