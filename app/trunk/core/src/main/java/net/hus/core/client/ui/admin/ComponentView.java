@@ -45,7 +45,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   Input mAddPage, mDisplay;
 
   @UiField
-  Paragraph mName, mPageNameC, mPageNameF, mComponentName;
+  Paragraph mName, mPageNameC, mPageNameF;
 
   @UiField
   ListBox mFvt, mFgg, mPageName;
@@ -54,7 +54,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   ListBox mAddFvt, mAddFgg, mAddPageName;
 
   @UiField
-  FlowPanel mTree;
+  FlowPanel mTree, mDetail;
 
   private Action mAction;
 
@@ -149,6 +149,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     resetComponent();
   }
 
+  // http://jonmiles.github.io/bootstrap-treeview/
+  // https://github.com/jonmiles/bootstrap-treeview
   private native void addTree(String inJson)
   /*-{
         $wnd.$('#tree').treeview(
@@ -201,13 +203,30 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   }
 
   @Override
-  public void addComponent(UIObject_ inUiobject)
+  public void addComponent(IsWidget inDisplay)
   {
-    mComponentName.setText(inUiobject.getClass().getSimpleName());
+    resetComponent();
+    mDetail.add(inDisplay);
   }
 
   private void resetComponent()
   {
-    mComponentName.setText(null);
+    mDetail.clear();
+  }
+
+  @Override
+  public IsWidget getDisplay(UIObject_ inUiObject)
+  {
+    IsWidget ret = null;
+    switch (inUiObject.cType())
+    {
+      case FORM_GROUP:
+        ret = new FormGroupView(inUiObject);
+        break;
+      default:
+        ret = new FormGroupView(inUiObject);
+        break;
+    }
+    return ret;
   }
 }

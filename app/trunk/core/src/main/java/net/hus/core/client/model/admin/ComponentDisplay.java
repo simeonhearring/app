@@ -2,6 +2,8 @@ package net.hus.core.client.model.admin;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.IsWidget;
+
 import net.hus.core.client.common.PageDisplay;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Lookup;
@@ -32,5 +34,7 @@ public interface ComponentDisplay extends PageDisplay
 
   void addTables(List<Lookup> inTables);
 
-  void addComponent(UIObject_ inUiobject);
+  void addComponent(IsWidget inDisplay);
+
+  IsWidget getDisplay(UIObject_ inUIObject);
 }
