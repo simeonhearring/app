@@ -1,39 +1,9 @@
 package net.hus.core.shared.components;
 
-import java.io.IOException;
-
 import org.gwtbootstrap3.client.ui.constants.Pull;
-import org.junit.Before;
-import org.junit.Test;
-
-import net.hus.core.shared.components.AbstractTextWidget_;
-import net.hus.core.shared.model.UIObject_;
 
 public class AbstractTextWidget_Test
 {
-  private UIObject_ mObject;
-
-  @Before
-  public void before()
-  {
-    mObject = newAbstractTextWidget();
-  }
-
-  @Test
-  public void canSerialize() throws IOException, ClassNotFoundException
-  {
-    SerializationTest.canSerializeObj(mObject);
-  }
-
-  public static AbstractTextWidget_ newAbstractTextWidget()
-  {
-    AbstractTextWidget_ ret = new AbstractTextWidget_();
-
-    initAbstractTextWidget(ret);
-
-    return ret;
-  }
-
   public static void initAbstractTextWidget(AbstractTextWidget_ inOut)
   {
     inOut.setText("Text");

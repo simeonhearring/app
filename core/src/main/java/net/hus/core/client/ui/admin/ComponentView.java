@@ -25,6 +25,7 @@ import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Page.Section.Name;
+import net.hus.core.shared.model.UIObject_;
 
 public class ComponentView extends AbstractView implements ComponentDisplay
 {
@@ -193,5 +194,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay
       mFvt.addItem(value.getDisplay(), value.getName());
       mAddFvt.addItem(value.getDisplay(), value.getName());
     }
+  }
+
+  @Override
+  public void addComponent(UIObject_ inUiobject)
+  {
+
   }
 }

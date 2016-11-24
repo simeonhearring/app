@@ -5,6 +5,7 @@ import java.util.List;
 import net.hus.core.client.common.PageDisplay;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.UIObject_;
 
 public interface ComponentDisplay extends PageDisplay
 {
@@ -30,4 +31,6 @@ public interface ComponentDisplay extends PageDisplay
   void addFieldGroups(List<Lookup> inFieldGroups);
 
   void addTables(List<Lookup> inTables);
+
+  void addComponent(UIObject_ inUiobject);
 }

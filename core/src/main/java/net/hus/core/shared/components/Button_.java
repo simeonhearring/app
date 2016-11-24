@@ -10,6 +10,7 @@ import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.rpc.HasCommandName;
 
 public class Button_ extends ComplexWidget_ implements HasCommandName
@@ -42,6 +43,12 @@ public class Button_ extends ComplexWidget_ implements HasCommandName
 
   //
   private String mCommandName;
+
+  @Override
+  public Type cType()
+  {
+    return Type.BUTTON;
+  }
 
   public String getText()
   {

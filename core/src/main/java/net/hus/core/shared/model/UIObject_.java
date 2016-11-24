@@ -19,6 +19,8 @@ public abstract class UIObject_ implements Serializable
   private String mStyleName;
   private String mStylePrimaryName;
 
+  public abstract Components.Type cType();
+
   public String getHeight()
   {
     return mHeight;

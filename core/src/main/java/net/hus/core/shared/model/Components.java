@@ -159,7 +159,9 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     PANEL_HEADER,
     ROW,
     TEXT_BOX,
-    TYPEAHEAD;
+    TYPEAHEAD,
+    CONTAINER,
+    ITEM;
 
     @Override
     public String display()

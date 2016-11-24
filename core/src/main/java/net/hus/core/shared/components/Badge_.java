@@ -1,5 +1,6 @@
 package net.hus.core.shared.components;
 
+import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.UIObject_;
 
 public class Badge_ extends UIObject_
@@ -15,6 +16,12 @@ public class Badge_ extends UIObject_
   public Badge_(String inText)
   {
     mText = inText;
+  }
+
+  @Override
+  public Type cType()
+  {
+    return Type.BADGE;
   }
 
   public String getText()
