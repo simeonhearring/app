@@ -130,7 +130,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   public enum Group
   {
     BLANK(SM),
-    TABLE(SM),
+    FVT(SM),
     FIELD(SM),
     LOOKUP(SM),
     FIELD_GROUP(SM),

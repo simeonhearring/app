@@ -152,15 +152,15 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupTables()
+  public void setupFVT()
   {
-    Group group = Group.TABLE;
+    Group group = Group.FVT;
 
     List<Lookup> list = new ArrayList<>();
     list.add(lookup(group, "Junit", "JT", 1, "Used for junit testing"));
     list.add(lookup(group, "Person", "PER", 2, "Used to store person information."));
 
-    lookup(group, list, 4);
+    lookup(group, list, 5);
   }
 
   @Test

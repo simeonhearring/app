@@ -103,7 +103,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addTables(AdminData inData)
   {
-    inData.setTables(mCoreDao.lookups().select(Group.TABLE.name()));
+    inData.setTables(mCoreDao.lookups().select(Group.FVT.name()));
   }
 
   private void addAll(AdminData inData)
