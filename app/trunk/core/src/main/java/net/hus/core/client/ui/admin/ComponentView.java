@@ -53,7 +53,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   ListBox mAddFvt, mAddFgg, mAddPageName;
 
   @UiField
-  FlowPanel mFlow;
+  FlowPanel mTree;
 
   private Action mAction;
 
@@ -61,10 +61,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   {
     initWidget(BINDER.createAndBindUi(this));
 
-    mFlow.getElement().setAttribute("id", "tree");
+    mTree.getElement().setAttribute("id", "tree");
     addEnumToListBox(Page.Name.values(), mPageName);
     addEnumToListBox(Page.Name.values(), mAddPageName);
-
     exportNodeSelected();
   }
 
@@ -112,7 +111,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   {
     if (mPages.equals(inEvent.getSource()))
     {
-      mAction.select(mPages.getSelectedItem().getValue());
+      mAction.selectPage(mPages.getSelectedItem().getValue());
     }
   }
 
@@ -142,19 +141,19 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     mFgg.setSelectedIndex(getSelectedIndex(mFgg, inPage.getFieldTKG().getFgg()));
     setEnumValueToListBox(inPage.getFieldTKG().getPage(), mPageName);
 
-    tree(inPage.toJson());
+    addTree(inPage.toJson());
   }
 
-  private static native void tree(String inJson)
+  private native void addTree(String inJson)
   /*-{
-        var that = this;
         $wnd.$('#tree').treeview(
         {
-          data: inJson,
+          showTags: true,
           onNodeSelected: function(event, node)
           {
             $wnd.nodeSelected(node.nodeId);
-          }
+          },
+          data: inJson
         });
     }-*/;
 
@@ -169,7 +168,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
 
   private void nodeSelected(int inNodeId)
   {
-    notify("Something selected " + inNodeId);
+    mAction.selectComponent(inNodeId);
   }
 
   @Override

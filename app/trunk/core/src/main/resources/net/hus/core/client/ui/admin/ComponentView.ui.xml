@@ -86,7 +86,13 @@
 							</b:TabPane>
 							<b:TabPane fade="true" b:id="tabc6">
 								<b:Legend text="COMPONENTS IN PAGE" />
-								<b.gwt:FlowPanel ui:field="mFlow" />
+								<b:Row>
+									<b:Column size="SM_12">
+										<b:Well size="LARGE">
+											<b.gwt:FlowPanel ui:field="mTree" />
+										</b:Well>
+									</b:Column>
+								</b:Row>
 							</b:TabPane>
 						</b:TabContent>
 						<b.html:ClearFix />

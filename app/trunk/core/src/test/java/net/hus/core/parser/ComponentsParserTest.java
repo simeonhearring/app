@@ -34,6 +34,9 @@ public class ComponentsParserTest
 
     String json = ResourceUtil.contents("net/hus/core/parser/Components.json");
 
-    Assert.assertEquals(parser.toJson(model), json.replaceAll("\n", "").replaceAll("\t", ""));
+    String expected = json.replaceAll("\n", "").replaceAll("\t", "");
+    String actual = parser.toJson(model);
+    System.out.println(actual);
+    Assert.assertEquals(expected, actual);
   }
 }

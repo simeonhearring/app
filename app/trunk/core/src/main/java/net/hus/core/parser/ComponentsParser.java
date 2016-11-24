@@ -15,6 +15,8 @@ public class ComponentsParser extends XStream implements Parser<Components>
     addImplicitCollection(Components.class, "mList", null, UIObject_.class);
     addImplicitCollection(Components.class, "mFieldTKGs", null, FieldTKG.class);
 
+    omitField(Components.class, "mJsonMap");
+    omitField(Components.class, "mJsonCount");
     omitField(Components.class, "mName");
     omitField(Components.class, "mDisplay");
     omitField(AbstractModel.class, "mId");

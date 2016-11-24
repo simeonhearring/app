@@ -1,37 +1,67 @@
 [
 	{
-		"text": "Heading_"
+		"text": "Heading_",
+		"tags": [
+			"0"
+		]
 	},
 	{
 		"text": "FieldSet_",
+		"tags": [
+			"3"
+		],
 		"nodes": [
 			{
 				"text": "FormGroup_",
+				"tags": [
+					"2"
+				],
 				"nodes": [
 					{
-						"text": "FormLabel_"
+						"text": "FormLabel_",
+						"tags": [
+							"0"
+						]
 					},
 					{
-						"text": "Input_"
+						"text": "Input_",
+						"tags": [
+							"0"
+						]
 					}
 				]
 			},
 			{
 				"text": "FormGroup_",
+				"tags": [
+					"2"
+				],
 				"nodes": [
 					{
-						"text": "FormLabel_"
+						"text": "FormLabel_",
+						"tags": [
+							"0"
+						]
 					},
 					{
-						"text": "Input_"
+						"text": "Input_",
+						"tags": [
+							"0"
+						]
 					}
 				]
 			},
 			{
 				"text": "FormGroup_",
+				"tags": [
+					"1"
+				],
 				"nodes": [
 					{
-						"text": "Button_"
+						"text": "Button_",
+						"tags": [
+							"0"
+						]
 					}
 				]
 			}
