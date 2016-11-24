@@ -48,6 +48,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   @UiField
   ListBox mFvt, mFgg, mPageName;
 
+  @UiField
+  ListBox mAddFvt, mAddFgg, mAddPageName;
+
   private Action mAction;
 
   public ComponentView()
@@ -55,6 +58,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     initWidget(BINDER.createAndBindUi(this));
 
     addEnumToListBox(Page.Name.values(), mPageName);
+    addEnumToListBox(Page.Name.values(), mAddPageName);
   }
 
   @Override
@@ -79,6 +83,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   {
     if (mAdd0.equals(inEvent.getSource()))
     {
+      mAction.createPage(mAddPage.getText(), mAddFvt.getSelectedValue(), mAddFgg.getSelectedValue(),
+          mAddPageName.getSelectedValue());
     }
     else if (mSave0.equals(inEvent.getSource()))
     {
@@ -131,9 +137,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   public void addFieldGroups(List<Lookup> inFieldGroups)
   {
     mFgg.clear();
+    mAddFgg.clear();
     for (Lookup value : inFieldGroups)
     {
       mFgg.addItem(value.getDisplay(), value.getName());
+      mAddFgg.addItem(value.getDisplay(), value.getName());
     }
   }
 
@@ -141,9 +149,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   public void addTables(List<Lookup> inTables)
   {
     mFvt.clear();
+    mAddFvt.clear();
     for (Lookup value : inTables)
     {
       mFvt.addItem(value.getDisplay(), value.getName());
+      mAddFvt.addItem(value.getDisplay(), value.getName());
     }
   }
 }

@@ -11,6 +11,8 @@ public interface ComponentDisplay extends PageDisplay
   public interface Action
   {
     void select(String inName);
+
+    void createPage(String inName, String inFvt, String inFgg, String inPage);
   }
 
   void setAction(Action inAction);
