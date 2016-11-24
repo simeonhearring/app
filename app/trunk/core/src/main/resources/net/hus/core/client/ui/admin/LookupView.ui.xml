@@ -5,82 +5,77 @@
 	<ui:style>
 	
 	</ui:style>
-
 	<b:Row>
-		<b:Column size="SM_12" addStyleNames="text-left">
-			<b:Row>
-				<b:Column size="SM_3">
-					<b:Well size="LARGE">
-						<b:Legend text="EDIT LOOKUP" />
-						<b:FormGroup>
-							<b:FormLabel text="Select Lookup:" />
-							<b.select:Select ui:field="mLookups" liveSearch="true" visible="true" />
-						</b:FormGroup>
-					</b:Well>
-					<b:Well size="LARGE">
-						<b:Legend text="CREATE NEW LOOKUP" />
-						<b:FormGroup>
-							<b:FormLabel text="Name:" />
-							<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
-						</b:FormGroup>
-						<b:Tooltip text="Add New">
-							<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
-						</b:Tooltip>
-					</b:Well>
-				</b:Column>
-				<b:Column size="SM_9">
-					<b:TabPanel tabPosition="LEFT">
-						<b:NavTabs>
-							<b:TabListItem dataTarget="#tabl4" text="Name" active="true" />
-							<b:TabListItem dataTarget="#tabl5" text="Values" />
-						</b:NavTabs>
-						<b:TabContent>
-							<b:TabPane fade="true" in="true" active="true" b:id="tabl4">
-								<b:Well size="LARGE">
-									<b:Legend text="LOOKUP NAME" />
+		<b:Column size="SM_3">
+			<b:Well size="LARGE">
+				<b:Legend text="EDIT LOOKUP" />
+				<b:FormGroup>
+					<b:FormLabel text="Select Lookup:" />
+					<b.select:Select ui:field="mLookups" liveSearch="true" visible="true" />
+				</b:FormGroup>
+			</b:Well>
+			<b:Well size="LARGE">
+				<b:Legend text="CREATE NEW LOOKUP" />
+				<b:FormGroup>
+					<b:FormLabel text="Name:" />
+					<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+				</b:FormGroup>
+				<b:Tooltip text="Add New">
+					<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
+				</b:Tooltip>
+			</b:Well>
+		</b:Column>
+		<b:Column size="SM_9">
+			<b:TabPanel tabPosition="LEFT">
+				<b:NavTabs>
+					<b:TabListItem dataTarget="#tabl4" text="Name" active="true" />
+					<b:TabListItem dataTarget="#tabl5" text="Values" />
+				</b:NavTabs>
+				<b:TabContent>
+					<b:TabPane fade="true" in="true" active="true" b:id="tabl4">
+						<b:Well size="LARGE">
+							<b:Legend text="LOOKUP NAME" />
+							<b:FormGroup>
+								<b:FormLabel text="Name:" />
+								<b.html:Span ui:field="mName" />
+							</b:FormGroup>
+							<b:FormGroup>
+								<b:FormLabel text="Display:" />
+								<b:Input ui:field="mDisplay" type="TEXT" />
+							</b:FormGroup>
+							<b:Tooltip text="Save">
+								<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+							</b:Tooltip>
+						</b:Well>
+					</b:TabPane>
+					<b:TabPane fade="true" b:id="tabl5">
+						<b:Well size="LARGE">
+							<b:Legend text="VALUES IN LOOKUP" />
+							<b:Form type="INLINE">
+								<b:FieldSet>
 									<b:FormGroup>
-										<b:FormLabel text="Name:" />
-										<b.html:Span ui:field="mName" />
+										<b:Input ui:field="mNewName" type="TEXT" placeholder="Enter name" />
 									</b:FormGroup>
 									<b:FormGroup>
-										<b:FormLabel text="Display:" />
-										<b:Input ui:field="mDisplay" type="TEXT" />
+										<b:Input ui:field="mNewAbbr" type="TEXT" placeholder="Enter abbreviation" />
 									</b:FormGroup>
-									<b:Tooltip text="Save">
-										<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
-									</b:Tooltip>
-								</b:Well>
-							</b:TabPane>
-							<b:TabPane fade="true" b:id="tabl5">
-								<b:Well size="LARGE">
-									<b:Legend text="VALUES IN LOOKUP" />
-									<b:Form type="INLINE">
-										<b:FieldSet>
-											<b:FormGroup>
-												<b:Input ui:field="mNewName" type="TEXT" placeholder="Enter name" />
-											</b:FormGroup>
-											<b:FormGroup>
-												<b:Input ui:field="mNewAbbr" type="TEXT" placeholder="Enter abbreviation" />
-											</b:FormGroup>
-											<b:FormGroup>
-												<b:Input ui:field="mNewSort" type="NUMBER" placeholder="Enter sort" />
-											</b:FormGroup>
-										</b:FieldSet>
-									</b:Form>
-									<b:Tooltip text="Save">
-										<b:Icon ui:field="mSave1" type="SAVE" paddingTop="10" addStyleNames="pull-right" />
-									</b:Tooltip>
 									<b:FormGroup>
-										<b:FormLabel ui:field="mNameText" />
-										<c:FlexTable_View ui:field="mValues" />
+										<b:Input ui:field="mNewSort" type="NUMBER" placeholder="Enter sort" />
 									</b:FormGroup>
-								</b:Well>
-							</b:TabPane>
-						</b:TabContent>
-						<b.html:ClearFix />
-					</b:TabPanel>
-				</b:Column>
-			</b:Row>
+								</b:FieldSet>
+							</b:Form>
+							<b:Tooltip text="Save">
+								<b:Icon ui:field="mSave1" type="SAVE" paddingTop="10" addStyleNames="pull-right" />
+							</b:Tooltip>
+							<b:FormGroup>
+								<b:FormLabel ui:field="mNameText" />
+								<c:FlexTable_View ui:field="mValues" />
+							</b:FormGroup>
+						</b:Well>
+					</b:TabPane>
+				</b:TabContent>
+				<b.html:ClearFix />
+			</b:TabPanel>
 		</b:Column>
 	</b:Row>
 </ui:UiBinder>

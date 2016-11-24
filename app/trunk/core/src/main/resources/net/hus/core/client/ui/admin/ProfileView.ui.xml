@@ -5,134 +5,129 @@
 	<ui:style>
 	
 	</ui:style>
-
 	<b:Row>
-		<b:Column size="SM_12" addStyleNames="text-left">
-			<b:Row>
-				<b:Column size="SM_3">
-					<b:Well size="LARGE">
-						<b:Legend text="EDIT PROFILE" />
-						<b:FormGroup>
-							<b:FormLabel text="Select Profile:" />
-							<b.select:Select ui:field="mProfiles" liveSearch="true" visible="true" />
-						</b:FormGroup>
-					</b:Well>
-					<b:Well size="LARGE">
-						<b:Legend text="CREATE NEW PROFILE" />
-						<b:FormGroup>
-							<b:FormLabel text="Name:" />
-							<b:Input ui:field="mAddUserName" placeholder="Enter user name" allowBlank="false" validateOnBlur="true" type="TEXT" />
-						</b:FormGroup>
-						<b:FormGroup>
-							<b:FormLabel text="First:" />
-							<b:Input ui:field="mAddFirst" placeholder="Enter first name" allowBlank="false" validateOnBlur="true" type="TEXT" />
-						</b:FormGroup>
-						<b:FormGroup>
-							<b:FormLabel text="Last:" />
-							<b:Input ui:field="mAddLast" placeholder="Enter last name" allowBlank="false" validateOnBlur="true" type="TEXT" />
-						</b:FormGroup>
-						<b:FormGroup>
-							<b:FormLabel text="Landing page:" />
-							<b:ListBox ui:field="mAddPage" />
-						</b:FormGroup>
-						<b:Tooltip text="Add New">
-							<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
-						</b:Tooltip>
-					</b:Well>
-				</b:Column>
-				<b:Column size="SM_9">
-					<b:TabPanel tabPosition="LEFT">
-						<b:NavTabs>
-							<b:TabListItem dataTarget="#tabp4" text="Name" active="true" />
-							<b:TabListItem dataTarget="#tabp5" text="Values" />
-						</b:NavTabs>
-						<b:TabContent>
-							<b:TabPane fade="true" in="true" active="true" b:id="tabp4">
-								<b:Well size="LARGE">
-									<b:Legend text="PROFILE INFO" />
-									<b:Row>
-										<b:Column size="SM_6">
-											<b:FormGroup>
-												<b:FormLabel text="Created:" />
-												<b.html:Paragraph ui:field="mCreated" />
-											</b:FormGroup>
-										</b:Column>
-										<b:Column size="SM_6">
-											<b:FormGroup>
-												<b:FormLabel text="Updated:" />
-												<b.html:Paragraph ui:field="mUpdated" />
-											</b:FormGroup>
-										</b:Column>
-									</b:Row>
-									<b:Row>
-										<b:Column size="SM_2">
-											<b:FormGroup>
-												<b:FormLabel text="ID:" />
-												<b.html:Paragraph ui:field="mId" />
-											</b:FormGroup>
-										</b:Column>
-										<b:Column size="SM_10">
-											<b:FormGroup>
-												<b:FormLabel text="Name:" />
-												<b.html:Paragraph ui:field="mName" />
-											</b:FormGroup>
-										</b:Column>
-									</b:Row>
-								</b:Well>
-							</b:TabPane>
-							<b:TabPane fade="true" b:id="tabp5">
-								<b:Well size="LARGE">
-									<b:Legend text="PROFILE DETAIL" />
-									<b:Row>
-										<b:Column size="SM_4">
-											<b:FormGroup>
-												<b:FormLabel text="First:" />
-												<b:Input ui:field="mFirst" type="TEXT" />
-											</b:FormGroup>
-										</b:Column>
-										<b:Column size="SM_4">
-											<b:FormGroup>
-												<b:FormLabel text="Middle:" />
-												<b:Input ui:field="mMiddle" type="TEXT" />
-											</b:FormGroup>
-										</b:Column>
-										<b:Column size="SM_4">
-											<b:FormGroup>
-												<b:FormLabel text="Last:" />
-												<b:Input ui:field="mLast" type="TEXT" />
-											</b:FormGroup>
-										</b:Column>
-									</b:Row>
-									<b:Row>
-										<b:Column size="SM_4">
-											<b:FormGroup>
-												<b:FormLabel text="User name:" />
-												<b.html:Paragraph ui:field="mUserName" />
-											</b:FormGroup>
-										</b:Column>
-										<b:Column size="SM_4">
-											<b:FormGroup>
-												<b:FormLabel text="Password:" />
-												<b:Input ui:field="mPassword" type="TEXT" />
-											</b:FormGroup>
-										</b:Column>
-										<b:Column size="SM_4">
-											<b:FormGroup>
-												<b:FormLabel text="Landing page:" />
-												<b:ListBox ui:field="mPage" />
-											</b:FormGroup>
-										</b:Column>
-									</b:Row>
-									<b:Tooltip text="Save">
-										<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
-									</b:Tooltip>
-								</b:Well>
-							</b:TabPane>
-						</b:TabContent>
-						<b.html:ClearFix />
-					</b:TabPanel>
-				</b:Column>
-			</b:Row>
+		<b:Column size="SM_3">
+			<b:Well size="LARGE">
+				<b:Legend text="EDIT PROFILE" />
+				<b:FormGroup>
+					<b:FormLabel text="Select Profile:" />
+					<b.select:Select ui:field="mProfiles" liveSearch="true" visible="true" />
+				</b:FormGroup>
+			</b:Well>
+			<b:Well size="LARGE">
+				<b:Legend text="CREATE NEW PROFILE" />
+				<b:FormGroup>
+					<b:FormLabel text="Name:" />
+					<b:Input ui:field="mAddUserName" placeholder="Enter user name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="First:" />
+					<b:Input ui:field="mAddFirst" placeholder="Enter first name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="Last:" />
+					<b:Input ui:field="mAddLast" placeholder="Enter last name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="Landing page:" />
+					<b:ListBox ui:field="mAddPage" />
+				</b:FormGroup>
+				<b:Tooltip text="Add New">
+					<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
+				</b:Tooltip>
+			</b:Well>
+		</b:Column>
+		<b:Column size="SM_9">
+			<b:TabPanel tabPosition="LEFT">
+				<b:NavTabs>
+					<b:TabListItem dataTarget="#tabp4" text="Name" active="true" />
+					<b:TabListItem dataTarget="#tabp5" text="Values" />
+				</b:NavTabs>
+				<b:TabContent>
+					<b:TabPane fade="true" in="true" active="true" b:id="tabp4">
+						<b:Well size="LARGE">
+							<b:Legend text="PROFILE INFO" />
+							<b:Row>
+								<b:Column size="SM_6">
+									<b:FormGroup>
+										<b:FormLabel text="Created:" />
+										<b.html:Paragraph ui:field="mCreated" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_6">
+									<b:FormGroup>
+										<b:FormLabel text="Updated:" />
+										<b.html:Paragraph ui:field="mUpdated" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
+							<b:Row>
+								<b:Column size="SM_2">
+									<b:FormGroup>
+										<b:FormLabel text="ID:" />
+										<b.html:Paragraph ui:field="mId" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_10">
+									<b:FormGroup>
+										<b:FormLabel text="Name:" />
+										<b.html:Paragraph ui:field="mName" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
+						</b:Well>
+					</b:TabPane>
+					<b:TabPane fade="true" b:id="tabp5">
+						<b:Well size="LARGE">
+							<b:Legend text="PROFILE DETAIL" />
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup>
+										<b:FormLabel text="First:" />
+										<b:Input ui:field="mFirst" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup>
+										<b:FormLabel text="Middle:" />
+										<b:Input ui:field="mMiddle" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup>
+										<b:FormLabel text="Last:" />
+										<b:Input ui:field="mLast" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup>
+										<b:FormLabel text="User name:" />
+										<b.html:Paragraph ui:field="mUserName" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup>
+										<b:FormLabel text="Password:" />
+										<b:Input ui:field="mPassword" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup>
+										<b:FormLabel text="Landing page:" />
+										<b:ListBox ui:field="mPage" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
+							<b:Tooltip text="Save">
+								<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
+							</b:Tooltip>
+						</b:Well>
+					</b:TabPane>
+				</b:TabContent>
+				<b.html:ClearFix />
+			</b:TabPanel>
 		</b:Column>
 	</b:Row>
 </ui:UiBinder>
