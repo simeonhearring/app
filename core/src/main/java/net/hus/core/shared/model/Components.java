@@ -21,7 +21,7 @@ import net.hus.core.shared.util.StringUtil;
  * @author simeonhearring
  * @since October 2016
  */
-public class Components implements Serializable, LookupXL
+public class Components extends AbstractModel implements Serializable, LookupXL
 {
   private static final long serialVersionUID = 1058892144882503748L;
 
@@ -30,6 +30,9 @@ public class Components implements Serializable, LookupXL
   private List<UIObject_> mList = new ArrayList<>();
 
   private List<Value> mValues;
+
+  private String mName;
+  private String mDisplay;
 
   public Map<Section.Name, List<UIObject_>> components()
   {
@@ -110,26 +113,32 @@ public class Components implements Serializable, LookupXL
   @Override
   public String nameXL()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return getName();
   }
 
   @Override
   public String displayXL()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return getDisplay();
   }
 
   public String getName()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return mName;
+  }
+
+  public void setName(String inName)
+  {
+    mName = inName;
   }
 
   public String getDisplay()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return mDisplay;
+  }
+
+  public void setDisplay(String inDisplay)
+  {
+    mDisplay = inDisplay;
   }
 }

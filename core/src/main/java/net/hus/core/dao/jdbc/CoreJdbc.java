@@ -123,8 +123,7 @@ public class CoreJdbc implements CoreDao
   public Profile profile(String inName)
   {
     Lookup lookup = lookups().selectXL(Group.PROFILE, inName);
-    String xml = lookup.getXL();
-    Profile ret = parse(mProfileParser, xml);
+    Profile ret = parse(mProfileParser, lookup.getXL());
     ret.setCreated(lookup.getCreated());
     ret.setUpdated(lookup.getUpdated());
     ret.setId(lookup.getId());
@@ -134,8 +133,14 @@ public class CoreJdbc implements CoreDao
   @Override
   public Components components(String inComponentName)
   {
-    String xml = lookups().selectXL(Group.COMPONENTS, inComponentName).getXL();
-    return parse(mComponentsParser, xml);
+    Lookup lookup = lookups().selectXL(Group.COMPONENTS, inComponentName);
+    Components ret = parse(mComponentsParser, lookup.getXL());
+    ret.setCreated(lookup.getCreated());
+    ret.setUpdated(lookup.getUpdated());
+    ret.setId(lookup.getId());
+    ret.setName(lookup.getName());
+    ret.setDisplay(lookup.getDisplay());
+    return ret;
   }
 
   public void component2lookup()
