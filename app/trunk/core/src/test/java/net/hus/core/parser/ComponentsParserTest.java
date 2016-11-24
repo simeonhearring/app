@@ -1,13 +1,9 @@
 package net.hus.core.parser;
 
-import java.util.List;
-
 import org.junit.Test;
 
 import junit.framework.Assert;
-import net.hus.core.shared.components.ComplexPanel_;
 import net.hus.core.shared.model.Components;
-import net.hus.core.shared.model.UIObject_;
 import net.hus.core.util.ResourceUtil;
 
 public class ComponentsParserTest
@@ -36,45 +32,8 @@ public class ComponentsParserTest
     String xml = ResourceUtil.contents("Components1.xml");
     Components model = parser.fromXml(xml);
 
-    StringBuilder sb = new StringBuilder();
-    add(model.getList(), sb);
+    String json = ResourceUtil.contents("net/hus/core/parser/Components.json");
 
-    System.out.println("[" + sb.toString() + "]");
-  }
-
-  private void add(List<UIObject_> inList, StringBuilder inSb)
-  {
-    if (inList != null)
-    {
-      boolean notFirst = false;
-
-      for (UIObject_ value : inList)
-      {
-        String simpleName = value.getClass().getSimpleName();
-
-        if (notFirst)
-        {
-          inSb.append(",");
-        }
-        notFirst = true;
-
-        inSb.append("\n{ \n\"text\":").append(" \"" + simpleName + "\"");
-
-        if (value instanceof ComplexPanel_)
-        {
-          List<UIObject_> collection = ((ComplexPanel_) value).getCollection();
-
-          if (collection != null && collection.size() != 0)
-          {
-            inSb.append(",\n\"nodes\": [");
-
-            add(collection, inSb);
-
-            inSb.append("]");
-          }
-        }
-        inSb.append("}");
-      }
-    }
+    Assert.assertEquals(parser.toJson(model), json.replaceAll("\n", "").replaceAll("\t", ""));
   }
 }
