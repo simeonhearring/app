@@ -55,10 +55,10 @@ public class InputView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(InputType.values(), mType);
   }
 
-  public InputView(UIObject_ inUiObject, Fields inFields, boolean inParent, Name inPage)
+  public InputView(UIObject_ inUiObject, Fields inFields, boolean inChild, Name inPage)
   {
     this();
-    mUIObject.setParent(inParent, inPage);
+    mUIObject.setUpSection(inChild, inPage);
     mUIObject.setFields(Field.Component.FV00_, inFields);
     set((Input_) inUiObject);
   }
