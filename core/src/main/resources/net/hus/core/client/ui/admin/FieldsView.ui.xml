@@ -8,14 +8,14 @@
 		<b:Column size="SM_3">
 			<b:Well size="LARGE">
 				<b:Legend text="EDIT FGG" />
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Select FGG:" />
 					<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
 				</b:FormGroup>
 			</b:Well>
 			<b:Well size="LARGE">
 				<b:Legend text="CREATE NEW FGG" />
-				<b:FormGroup ui:field="mAddNameGrp">
+				<b:FormGroup size="SMALL" ui:field="mAddNameGrp">
 					<b:FormLabel text="Name:" />
 					<b:Input ui:field="mAddGroup" placeholder="Enter FGG Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 				</b:FormGroup>
@@ -34,11 +34,11 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabg4">
 						<b:Well size="LARGE">
 							<b:Legend text="FGG NAME" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="FGG:" />
 								<b.html:Paragraph ui:field="mFgg" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Name:" />
 								<b:Input ui:field="mName" type="TEXT" />
 							</b:FormGroup>
@@ -53,7 +53,7 @@
 					<b:TabPane fade="true" b:id="tabg5">
 						<b:Well size="LARGE">
 							<b:Legend text="SELECT FIELDS IN FGG" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel ui:field="mNameText" />
 								<g:ScrollPanel ui:field="mScroll" height="400px">
 									<b.gwt:FlowPanel ui:field="mFields" styleName="core_columns" />

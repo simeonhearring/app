@@ -229,6 +229,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay
       case INPUT:
         ret = new InputView(inUiObject);
         break;
+      case FORM_LABEL:
+        ret = new FormLabelView(inUiObject);
+        break;
       default:
         ret = new DefaultView(inUiObject);
         break;

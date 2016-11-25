@@ -8,18 +8,18 @@
 		<b:Column size="SM_3">
 			<b:Well size="LARGE">
 				<b:Legend text="EDIT FIELD" />
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Select Field:" />
 					<b.select:Select ui:field="mFields" liveSearch="true" visible="true" />
 				</b:FormGroup>
 			</b:Well>
 			<b:Well size="LARGE">
 				<b:Legend text="CREATE NEW FIELD" />
-				<b:FormGroup ui:field="mAddNameGrp">
+				<b:FormGroup size="SMALL" ui:field="mAddNameGrp">
 					<b:FormLabel text="Name:" />
 					<b:Input ui:field="mAddName" placeholder="Enter Field Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Type:" />
 					<b:ListBox ui:field="mAddType" />
 				</b:FormGroup>
@@ -41,15 +41,15 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tab4">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD NAME" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="ID:" />
 								<b.html:Paragraph ui:field="mId" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Name:" />
 								<b.html:Paragraph ui:field="mName" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Type:" />
 								<b.html:Paragraph ui:field="mType" />
 							</b:FormGroup>
@@ -58,11 +58,11 @@
 					<b:TabPane fade="true" b:id="tab5">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD DISPLAY" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Long:" />
 								<b:Input ui:field="mLong" type="TEXT" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Short:" />
 								<b:Input ui:field="mShort" type="TEXT" />
 							</b:FormGroup>
@@ -77,11 +77,11 @@
 					<b:TabPane fade="true" b:id="tab6">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD DATE" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Storage format:" />
 								<b:Input ui:field="mStorageFormat" type="TEXT" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Example:" />
 								<b.html:Paragraph ui:field="mStorageFormatEx" />
 							</b:FormGroup>
@@ -98,13 +98,13 @@
 							<b:Legend text="FIELD ARRAY" />
 							<b:Row>
 								<b:Column size="SM_6">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Header Size:" />
 										<b:ListBox ui:field="mHeadSize" />
 									</b:FormGroup>
 								</b:Column>
 								<b:Column size="SM_6">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Show Bottom Icons At Row:" />
 										<b:Input ui:field="mBottomRow" type="NUMBER" />
 									</b:FormGroup>
@@ -112,19 +112,19 @@
 							</b:Row>
 							<b:Row>
 								<b:Column size="SM_4">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Alternate Color:" />
 										<b.toggle:ToggleSwitch ui:field="mAltColor" size="MINI" />
 									</b:FormGroup>
 								</b:Column>
 								<b:Column size="SM_4">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Alternate Color Even:" />
 										<b:Input ui:field="mAltEven" type="COLOR" />
 									</b:FormGroup>
 								</b:Column>
 								<b:Column size="SM_4">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Alternate Color Odd:" />
 										<b:Input ui:field="mAltOdd" type="COLOR" />
 									</b:FormGroup>
@@ -132,7 +132,7 @@
 							</b:Row>
 							<b:Row>
 								<b:Column size="SM_3">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Size:&nbsp;" />
 										<b.html:Span ui:field="mSize" />
 										<b:Tooltip text="Add">
@@ -144,7 +144,7 @@
 									</b:FormGroup>
 								</b:Column>
 								<b:Column size="SM_9">
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Headers:" />
 										<b.gwt:FlowPanel ui:field="mArrayLabel" />
 									</b:FormGroup>
@@ -161,11 +161,11 @@
 					<b:TabPane fade="true" b:id="tab8">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD LOOKUP" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Location:" />
 								<b:ListBox ui:field="mLookupLocation" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Parameters:" />
 								<b.html:Paragraph ui:field="mLookupGroupText" />
 								<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />

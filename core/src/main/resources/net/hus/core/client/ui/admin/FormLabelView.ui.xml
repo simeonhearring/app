@@ -11,9 +11,10 @@
 		<b:Row>
 			<b:Column size="SM_6">
 				<b:FormGroup size="SMALL">
-					<b:FormLabel text="Size" />
-					<b:ListBox ui:field="mSize" />
+					<b:FormLabel text="Show Required Indicator" />
+					<b:ListBox ui:field="mShowRequiredIndicator" />
 				</b:FormGroup>
+				<a:AbstractTextWidgetView ui:field="mAbstractTextWidget" />
 			</b:Column>
 			<b:Column size="SM_6">
 				<a:UIObjectView ui:field="mUIObject" />

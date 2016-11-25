@@ -9,26 +9,26 @@
 		<b:Column size="SM_3">
 			<b:Well size="LARGE">
 				<b:Legend text="EDIT PAGE" />
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Select Page:" />
 					<b.select:Select ui:field="mPages" liveSearch="true" visible="true" />
 				</b:FormGroup>
 			</b:Well>
 			<b:Well size="LARGE">
 				<b:Legend text="CREATE NEW PAGE" />
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Name:" />
 					<b:Input ui:field="mAddPage" placeholder="Enter Page Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="FVT:" />
 					<b:ListBox ui:field="mAddFvt" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="FGG:" />
 					<b:ListBox ui:field="mAddFgg" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Page layout:" />
 					<b:ListBox ui:field="mAddPageName" />
 				</b:FormGroup>
@@ -48,11 +48,11 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabc4">
 						<b:Well size="LARGE">
 							<b:Legend text="PAGE NAME" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Name:" />
 								<b.html:Paragraph ui:field="mName" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Display:" />
 								<b:Input ui:field="mDisplay" type="TEXT" />
 							</b:FormGroup>
@@ -65,15 +65,15 @@
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD TKG" />
 							<b.html:Paragraph ui:field="mPageNameF" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="FVT:" />
 								<b:ListBox ui:field="mFvt" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="FGG:" />
 								<b:ListBox ui:field="mFgg" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Page layout:" />
 								<b:ListBox ui:field="mPageName" />
 							</b:FormGroup>

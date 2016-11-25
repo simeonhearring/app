@@ -34,27 +34,27 @@
 						<a:FieldView ui:field="mField" />
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba1">
-						<b:FormGroup>
+						<b:FormGroup size="SMALL">
 							<a:FieldsView ui:field="mFields" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba2">
-						<b:FormGroup>
+						<b:FormGroup size="SMALL">
 							<a:LookupView ui:field="mLookup" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba3">
-						<b:FormGroup>
+						<b:FormGroup size="SMALL">
 							<a:ProfileView ui:field="mProfile" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba4">
-						<b:FormGroup>
+						<b:FormGroup size="SMALL">
 							<b:FormLabel text="Actions" />
 						</b:FormGroup>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="taba5">
-						<b:FormGroup>
+						<b:FormGroup size="SMALL">
 							<a:ComponentView ui:field="mComponent" />
 						</b:FormGroup>
 					</b:TabPane>
