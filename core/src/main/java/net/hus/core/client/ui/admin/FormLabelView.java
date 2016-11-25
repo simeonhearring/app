@@ -71,7 +71,7 @@ public class FormLabelView extends AbstractView implements UIObjectDisplay
     mUiObject = inUiObject;
 
     mName.setText(mUiObject.getClass().getSimpleName());
-    setEnumValueToListBox(mShowRequiredIndicator,
+    setSelectedIndex(mShowRequiredIndicator,
         YesNoNull.value(mUiObject.getShowRequiredIndicator()));
 
     mAbstractTextWidget.set(mUiObject);

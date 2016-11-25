@@ -75,9 +75,9 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
     mUiObject = inUiObject;
     mName.setText(mUiObject.getClass().getSimpleName());
 
-    setEnumValueToListBox(mSize, mUiObject.getSize());
-    setEnumValueToListBox(mEmphasis, mUiObject.getEmphasis());
-    setEnumValueToListBox(mAlignment, mUiObject.getAlignment());
+    setSelectedIndex(mSize, mUiObject.getSize());
+    setSelectedIndex(mEmphasis, mUiObject.getEmphasis());
+    setSelectedIndex(mAlignment, mUiObject.getAlignment());
 
     mText.setText(mUiObject.getText());
     mSubText.setText(mUiObject.getSubText());

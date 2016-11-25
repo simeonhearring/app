@@ -75,7 +75,7 @@ public class AbstractTextWidgetView extends AbstractView implements UIObjectDisp
 
     mHtml.setValue(mUiObject.isHtml());
 
-    setEnumValueToListBox(mPull, mUiObject.getPull());
+    setSelectedIndex(mPull, mUiObject.getPull());
   }
 
   @UiHandler(
