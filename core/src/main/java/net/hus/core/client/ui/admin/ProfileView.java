@@ -124,6 +124,32 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   }
 
   @Override
+  public void reset()
+  {
+    mId.setText(null);
+    mCreated.setText(null);
+    mUpdated.setText(null);
+
+    mName.setText(null);
+    mUserName.setText(null);
+
+    mFirst.setText(null);
+    mMiddle.setText(null);
+    mLast.setText(null);
+
+    mPassword.setText(null);
+    setSelectedIndex(mPage, null);
+
+    mAddUserName.setText(null);
+    mAddFirst.setText(null);
+    mAddLast.setText(null);
+
+    setSelectedIndex(mAddPage, null);
+
+    mProfiles.setValue(null);
+  }
+
+  @Override
   public void addProfiles(List<Lookup> inProfiles)
   {
     mProfiles.clear();

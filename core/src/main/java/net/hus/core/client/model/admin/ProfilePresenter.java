@@ -44,6 +44,7 @@ implements Action, AdminEvent.Handler
     {
       case ALL:
       {
+        mDisplay.reset();
         mDisplay.addProfiles(inData.getProfiles());
         mDisplay.addPages(inData.getPages());
         break;

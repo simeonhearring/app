@@ -39,4 +39,6 @@ public interface ComponentDisplay extends PageDisplay
   void addComponent(IsWidget inDisplay);
 
   IsWidget getDisplay(UIObject_ inUIObject, Fields inFields, boolean inChild, Page.Name inPage);
+
+  void reset();
 }

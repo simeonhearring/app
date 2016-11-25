@@ -57,7 +57,7 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
     mStyleName.setText(mUiObject.getStyleName());
     mStylePrimaryName.setText(mUiObject.getStylePrimaryName());
 
-    setEnumValueToListBox(mUiObject.getSection(), mSection);
+    setEnumValueToListBox(mSection, mUiObject.getSection());
     setSelectedIndex(mKey, mUiObject.getKey());
   }
 

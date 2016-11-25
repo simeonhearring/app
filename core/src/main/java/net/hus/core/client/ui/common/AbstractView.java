@@ -101,7 +101,7 @@ public abstract class AbstractView extends Composite
     }
   }
 
-  public static void setEnumValueToListBox(Enum<?> inValue, ListBox inListBox)
+  public static void setEnumValueToListBox(ListBox inListBox, Enum<?> inValue)
   {
     if (inValue == null)
     {
