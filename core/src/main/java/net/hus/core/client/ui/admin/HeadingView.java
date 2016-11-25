@@ -15,11 +15,13 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.Heading_;
 import net.hus.core.shared.model.Page.Name;
 import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.util.StringUtil;
 
 public class HeadingView extends AbstractView implements UIObjectDisplay
 {
@@ -52,6 +54,13 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(HeadingSize.values(), mSize);
     addEnumToListBox(Emphasis.values(), mEmphasis);
     addEnumToListBox(Alignment.values(), mAlignment);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
+    mAction0.setCallback(inCallback);
+    mAction1.setCallback(inCallback);
   }
 
   public HeadingView(UIObject_ inUiObject, boolean inChild, Name inPage)
@@ -96,7 +105,7 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
       })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
-    mUiObject.setText(mText.getText());
-    mUiObject.setSubText(mSubText.getText());
+    mUiObject.setText(StringUtil.nullIfEmpty(mText.getText()));
+    mUiObject.setSubText(StringUtil.nullIfEmpty(mSubText.getText()));
   }
 }

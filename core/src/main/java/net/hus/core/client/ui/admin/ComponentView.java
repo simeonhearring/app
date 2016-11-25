@@ -19,6 +19,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.model.admin.ComponentDisplay;
 import net.hus.core.client.ui.common.AbstractView;
@@ -29,7 +30,7 @@ import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Page.Section.Name;
 import net.hus.core.shared.model.UIObject_;
 
-public class ComponentView extends AbstractView implements ComponentDisplay
+public class ComponentView extends AbstractView implements ComponentDisplay, Callback<Boolean>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -241,6 +242,19 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   }
 
   @Override
+  public void onDone(Boolean inValue)
+  {
+    if (inValue)
+    {
+      mAction.savePage();
+    }
+    else
+    {
+      mAction.refresh();
+    }
+  }
+
+  @Override
   public IsWidget getDisplay(UIObject_ inUiObject, Fields inFields, boolean inParent,
       Page.Name inPage)
   {
@@ -263,6 +277,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
         ret = new DefaultView(inUiObject);
         break;
     }
+    ret.setCallback(this);
     return ret;
   }
 }

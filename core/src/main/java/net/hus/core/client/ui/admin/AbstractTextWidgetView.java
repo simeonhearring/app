@@ -13,6 +13,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.AbstractTextWidget_;
@@ -50,6 +51,11 @@ public class AbstractTextWidgetView extends AbstractView implements UIObjectDisp
   {
     this();
     set((AbstractTextWidget_) inUiObject);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
   }
 
   public void set(AbstractTextWidget_ inUiObject)

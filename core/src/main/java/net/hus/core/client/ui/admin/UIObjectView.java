@@ -11,6 +11,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Field;
@@ -45,6 +46,11 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
   {
     this();
     set(inUiObject);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
   }
 
   public void set(UIObject_ inUiObject)

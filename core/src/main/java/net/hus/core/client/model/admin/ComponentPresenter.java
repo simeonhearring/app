@@ -99,6 +99,19 @@ implements Action, AdminEvent.Handler
   }
 
   @Override
+  public void savePage()
+  {
+    Global.fire(new LookupXLSaveCommand(mPage), new RpcCallback<LookupXLSaveCommand>()
+    {
+      @Override
+      public void onRpcSuccess(LookupXLSaveCommand inCommand)
+      {
+        mDisplay.notify("Saved ... " + mPage.getDisplay());
+      }
+    });
+  }
+
+  @Override
   public void savePage(String inDisplay)
   {
     mPage.setDisplay(inDisplay);
@@ -138,5 +151,11 @@ implements Action, AdminEvent.Handler
     UIObject_ uiObject = mPage.get(inNodeId);
     Page.Name page = mPage.getFieldTKG().getPage();
     mDisplay.addComponent(mDisplay.getDisplay(uiObject, mFields, child, page));
+  }
+
+  @Override
+  public void refresh()
+  {
+    Global.fire(new AdminDataCommand((String) null, EventType.ALL), this);
   }
 }

@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.FormLabel_;
@@ -56,6 +57,13 @@ public class FormLabelView extends AbstractView implements UIObjectDisplay
     mUIObject.setUpSection(inChild, inPage);
     mUIObject.setFields(Field.Component.FL00_, inFields);
     set((FormLabel_) inUiObject);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
+    mAction0.setCallback(inCallback);
+    mAction1.setCallback(inCallback);
   }
 
   public void set(FormLabel_ inUiObject)
