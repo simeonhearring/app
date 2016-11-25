@@ -54,10 +54,10 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(Alignment.values(), mAlignment);
   }
 
-  public HeadingView(UIObject_ inUiObject, boolean inParent, Name inPage)
+  public HeadingView(UIObject_ inUiObject, boolean inChild, Name inPage)
   {
     this();
-    mUIObject.setParent(inParent, inPage);
+    mUIObject.setUpSection(inChild, inPage);
     set((Heading_) inUiObject);
   }
 

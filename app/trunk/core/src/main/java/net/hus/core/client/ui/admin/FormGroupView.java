@@ -48,7 +48,7 @@ public class FormGroupView extends AbstractView implements UIObjectDisplay
   public FormGroupView(UIObject_ inUiObject, boolean inChild, Page.Name inPage)
   {
     this();
-    mUIObject.setParent(inChild, inPage);
+    mUIObject.setUpSection(inChild, inPage);
     set((FormGroup_) inUiObject);
   }
 

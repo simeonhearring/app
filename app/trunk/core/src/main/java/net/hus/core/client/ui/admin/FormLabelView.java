@@ -50,10 +50,10 @@ public class FormLabelView extends AbstractView implements UIObjectDisplay
     addEnumDToListBox(YesNoNull.values(), mShowRequiredIndicator);
   }
 
-  public FormLabelView(UIObject_ inUiObject, Fields inFields, boolean inParent, Name inPage)
+  public FormLabelView(UIObject_ inUiObject, Fields inFields, boolean inChild, Name inPage)
   {
     this();
-    mUIObject.setParent(inParent, inPage);
+    mUIObject.setUpSection(inChild, inPage);
     mUIObject.setFields(Field.Component.FL00_, inFields);
     set((FormLabel_) inUiObject);
   }
