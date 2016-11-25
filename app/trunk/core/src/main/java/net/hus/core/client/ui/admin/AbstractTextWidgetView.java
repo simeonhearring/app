@@ -29,8 +29,8 @@ public class AbstractTextWidgetView extends AbstractView implements UIObjectDisp
   }
 
   @UiField
-  Input mColor, mMarginBottom, mMarginLeft, mMarginRight, mMarginTop, mPaddingBottom, mPaddingLeft,
-  mPaddingRight, mPaddingTop;
+  Input mText, mColor, mMarginBottom, mMarginLeft, mMarginRight, mMarginTop, mPaddingBottom,
+  mPaddingLeft, mPaddingRight, mPaddingTop;
 
   @UiField
   ListBox mPull;
@@ -56,6 +56,7 @@ public class AbstractTextWidgetView extends AbstractView implements UIObjectDisp
   {
     mUiObject = inUiObject;
 
+    mText.setText(mUiObject.getText());
     mColor.setText(mUiObject.getColor());
     mMarginBottom.setText(StringUtil.toString(mUiObject.getMarginBottom()));
     mMarginLeft.setText(StringUtil.toString(mUiObject.getMarginLeft()));
@@ -91,6 +92,7 @@ public class AbstractTextWidgetView extends AbstractView implements UIObjectDisp
 
   @UiHandler(
       {
+        "mText",
         "mColor",
         "mMarginBottom",
         "mMarginLeft",
@@ -103,6 +105,7 @@ public class AbstractTextWidgetView extends AbstractView implements UIObjectDisp
       })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
+    mUiObject.setText(mText.getText());
     mUiObject.setColor(mColor.getText());
     mUiObject.setMarginBottom(NumberUtil.toDouble(mMarginBottom.getText()));
     mUiObject.setMarginLeft(NumberUtil.toDouble(mMarginLeft.getText()));

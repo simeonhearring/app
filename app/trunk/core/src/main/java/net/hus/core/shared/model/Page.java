@@ -1,6 +1,8 @@
 package net.hus.core.shared.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Page implements Serializable
 {
@@ -86,6 +88,25 @@ public class Page implements Serializable
       private Name(Page.Name inPage)
       {
         mPage = inPage;
+      }
+
+      public static Page.Section.Name[] values(Page.Name inPage)
+      {
+        List<Name> list = new ArrayList<>();
+        for (Name value : values())
+        {
+          if (inPage.equals(value.mPage))
+          {
+            list.add(value);
+          }
+        }
+
+        Name[] ret = new Name[list.size()];
+        for (int i = 0; i < ret.length; i++)
+        {
+          ret[i] = list.get(i);
+        }
+        return ret;
       }
     }
   }

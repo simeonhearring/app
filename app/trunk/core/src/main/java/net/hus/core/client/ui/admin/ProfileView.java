@@ -73,10 +73,10 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   }
 
   @UiHandler(
-  {
-      "mAdd0",
-      "mSave0"
-  })
+      {
+        "mAdd0",
+        "mSave0"
+      })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mAdd0.equals(inEvent.getSource()))
@@ -92,9 +92,9 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   }
 
   @UiHandler(
-  {
-      "mProfiles"
-  })
+      {
+        "mProfiles"
+      })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
     if (mProfiles.equals(inEvent.getSource()))
@@ -118,7 +118,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mLast.setText(inProfile.getLast());
 
     mPassword.setText(inProfile.getPassword());
-    mPage.setSelectedIndex(getSelectedIndex(mPage, inProfile.getPage().getComponentsName()));
+    setSelectedIndex(mPage, inProfile.getPage().getComponentsName());
 
     mProfiles.setValue(null);
   }

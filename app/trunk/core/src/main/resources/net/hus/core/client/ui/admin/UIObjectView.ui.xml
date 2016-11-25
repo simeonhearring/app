@@ -6,31 +6,31 @@
 	</ui:style>
 	<b.gwt:FlowPanel>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Key" />
-			<b:ListBox ui:field="mKey" />
+			<b:FormLabel text="Field:" />
+			<b:ListBox ui:field="mKey" enabled="false" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Section" />
+			<b:FormLabel text="Section:" />
 			<b:ListBox ui:field="mSection" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Height" />
+			<b:FormLabel text="Height:" />
 			<b:Input ui:field="mHeight" type="TEXT" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Width" />
+			<b:FormLabel text="Width:" />
 			<b:Input ui:field="mWidth" type="TEXT" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Title" />
+			<b:FormLabel text="Title:" />
 			<b:Input ui:field="mTitle" type="TEXT" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Style Name" />
+			<b:FormLabel text="Style Name:" />
 			<b:Input ui:field="mStyleName" type="TEXT" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Style Primary Name" />
+			<b:FormLabel text="Style Primary Name:" />
 			<b:Input ui:field="mStylePrimaryName" type="TEXT" />
 		</b:FormGroup>
 	</b.gwt:FlowPanel>

@@ -6,7 +6,9 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 import net.hus.core.client.common.PageDisplay;
 import net.hus.core.shared.model.Components;
+import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
+import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.UIObject_;
 
 public interface ComponentDisplay extends PageDisplay
@@ -21,7 +23,7 @@ public interface ComponentDisplay extends PageDisplay
 
     void savePage(String inFvt, String inFgg, String inPage);
 
-    void selectComponent(int inNodeId);
+    void selectComponent(int inNodeId, int inParentId);
   }
 
   void setAction(Action inAction);
@@ -36,5 +38,5 @@ public interface ComponentDisplay extends PageDisplay
 
   void addComponent(IsWidget inDisplay);
 
-  IsWidget getDisplay(UIObject_ inUIObject);
+  IsWidget getDisplay(UIObject_ inUIObject, Fields inFields, boolean inChild, Page.Name inPage);
 }

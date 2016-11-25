@@ -13,6 +13,9 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.FormLabel_;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Fields;
+import net.hus.core.shared.model.Page.Name;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.YesNoNull;
 
@@ -47,9 +50,11 @@ public class FormLabelView extends AbstractView implements UIObjectDisplay
     addEnumDToListBox(YesNoNull.values(), mShowRequiredIndicator);
   }
 
-  public FormLabelView(UIObject_ inUiObject)
+  public FormLabelView(UIObject_ inUiObject, Fields inFields, boolean inParent, Name inPage)
   {
     this();
+    mUIObject.setParent(inParent, inPage);
+    mUIObject.setFields(Field.Component.FL00_, inFields);
     set((FormLabel_) inUiObject);
   }
 

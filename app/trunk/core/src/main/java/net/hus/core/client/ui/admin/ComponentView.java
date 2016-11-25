@@ -19,9 +19,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.model.admin.ComponentDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Components;
+import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Page.Section.Name;
@@ -140,8 +142,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay
     mPageNameC.setText(inPage.getDisplay());
     mPageNameF.setText(inPage.getDisplay());
 
-    mFvt.setSelectedIndex(getSelectedIndex(mFvt, inPage.getFieldTKG().getFvt()));
-    mFgg.setSelectedIndex(getSelectedIndex(mFgg, inPage.getFieldTKG().getFgg()));
+    setSelectedIndex(mFvt, inPage.getFieldTKG().getFvt());
+    setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
     setEnumValueToListBox(inPage.getFieldTKG().getPage(), mPageName);
 
     addTree(inPage.toJson());
@@ -158,7 +160,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay
           showTags: true,
           onNodeSelected: function(event, node)
           {
-            $wnd.nodeSelected(node.nodeId);
+            $wnd.nodeSelected(node.nodeId,node.parentId);
           },
           data: inJson
         });
@@ -167,15 +169,15 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   private native void exportNodeSelected()
   /*-{
         var that = this;
-        $wnd.nodeSelected = $entry(function(inNodeId)
+        $wnd.nodeSelected = $entry(function(inNodeId,inParentId)
         {
-          that.@net.hus.core.client.ui.admin.ComponentView::nodeSelected(I)(inNodeId);
+          that.@net.hus.core.client.ui.admin.ComponentView::nodeSelected(II)(inNodeId,inParentId);
         });
   }-*/;
 
-  private void nodeSelected(int inNodeId)
+  private void nodeSelected(int inNodeId, int inParentId)
   {
-    mAction.selectComponent(inNodeId);
+    mAction.selectComponent(inNodeId, inParentId);
   }
 
   @Override
@@ -215,22 +217,23 @@ public class ComponentView extends AbstractView implements ComponentDisplay
   }
 
   @Override
-  public IsWidget getDisplay(UIObject_ inUiObject)
+  public IsWidget getDisplay(UIObject_ inUiObject, Fields inFields, boolean inParent,
+      Page.Name inPage)
   {
-    IsWidget ret = null;
+    UIObjectDisplay ret = null;
     switch (inUiObject.cType())
     {
       case FORM_GROUP:
-        ret = new FormGroupView(inUiObject);
+        ret = new FormGroupView(inUiObject, inParent, inPage);
         break;
       case HEADING:
-        ret = new HeadingView(inUiObject);
+        ret = new HeadingView(inUiObject, inParent, inPage);
         break;
       case INPUT:
-        ret = new InputView(inUiObject);
+        ret = new InputView(inUiObject, inFields, inParent, inPage);
         break;
       case FORM_LABEL:
-        ret = new FormLabelView(inUiObject);
+        ret = new FormLabelView(inUiObject, inFields, inParent, inPage);
         break;
       default:
         ret = new DefaultView(inUiObject);

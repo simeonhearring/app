@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.Heading_;
+import net.hus.core.shared.model.Page.Name;
 import net.hus.core.shared.model.UIObject_;
 
 public class HeadingView extends AbstractView implements UIObjectDisplay
@@ -53,21 +54,25 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(Alignment.values(), mAlignment);
   }
 
-  public HeadingView(UIObject_ inUiObject)
+  public HeadingView(UIObject_ inUiObject, boolean inParent, Name inPage)
   {
     this();
-    set(inUiObject);
+    mUIObject.setParent(inParent, inPage);
+    set((Heading_) inUiObject);
   }
 
-  public void set(UIObject_ inUiObject)
+  public void set(Heading_ inUiObject)
   {
-    mUiObject = (Heading_) inUiObject;
+    mUiObject = inUiObject;
     mName.setText(mUiObject.getClass().getSimpleName());
+
     setEnumValueToListBox(mUiObject.getSize(), mSize);
     setEnumValueToListBox(mUiObject.getEmphasis(), mEmphasis);
     setEnumValueToListBox(mUiObject.getAlignment(), mAlignment);
+
     mText.setText(mUiObject.getText());
     mSubText.setText(mUiObject.getSubText());
+
     mUIObject.set(mUiObject);
   }
 
