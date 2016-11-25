@@ -6,23 +6,23 @@
 	</ui:style>
 	<b.gwt:FlowPanel>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Size" />
+			<b:FormLabel text="Size:" />
 			<b:ListBox ui:field="mSize" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Placeholder" />
+			<b:FormLabel text="Placeholder:" />
 			<b:Input ui:field="mPlaceholder" type="TEXT" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Max Length" />
+			<b:FormLabel text="Max Length:" />
 			<b:Input ui:field="mMaxLength" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Allow Blank" />
+			<b:FormLabel text="Allow Blank:" />
 			<b:ListBox ui:field="mAllowBlank" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Auto Complete" />
+			<b:FormLabel text="Auto Complete:" />
 			<b:ListBox ui:field="mAutoComplete" />
 		</b:FormGroup>
 	</b.gwt:FlowPanel>

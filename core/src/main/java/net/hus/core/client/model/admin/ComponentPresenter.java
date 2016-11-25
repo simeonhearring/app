@@ -10,16 +10,18 @@ import net.hus.core.shared.model.AdminData;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.FieldTKG;
+import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.util.EnumUtil;
 import net.hus.core.shared.util.RandomUtil;
 
 public class ComponentPresenter extends RpcCallback<AdminDataCommand>
-    implements Action, AdminEvent.Handler
+implements Action, AdminEvent.Handler
 {
   private ComponentDisplay mDisplay;
   private Components mPage;
+  private Fields mFields;
 
   public ComponentPresenter(ComponentDisplay inDisplay)
   {
@@ -62,6 +64,7 @@ public class ComponentPresenter extends RpcCallback<AdminDataCommand>
   private void addPage(AdminData inData)
   {
     mPage = inData.getPage();
+    mFields = inData.getFieldGroup();
     mDisplay.addPage(mPage);
   }
 
@@ -128,9 +131,11 @@ public class ComponentPresenter extends RpcCallback<AdminDataCommand>
   }
 
   @Override
-  public void selectComponent(int inNodeId)
+  public void selectComponent(int inNodeId, int inParentId)
   {
+    boolean child = inParentId >= 0;
     UIObject_ uiObject = mPage.get(inNodeId);
-    mDisplay.addComponent(mDisplay.getDisplay(uiObject));
+    Page.Name page = mPage.getFieldTKG().getPage();
+    mDisplay.addComponent(mDisplay.getDisplay(uiObject, mFields, child, page));
   }
 }

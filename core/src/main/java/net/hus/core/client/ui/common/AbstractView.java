@@ -25,17 +25,17 @@ public abstract class AbstractView extends Composite
     return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
   }
 
-  public static int getSelectedIndex(ListBox inListBox, String inValue)
+  public static void setSelectedIndex(ListBox inListBox, String inValue)
   {
-    int ret = 0;
+    int index = 0;
     for (int i = 0; i < inListBox.getItemCount(); i++)
     {
       if (inListBox.getValue(i).equals(inValue))
       {
-        ret = i;
+        index = i;
       }
     }
-    return ret;
+    inListBox.setSelectedIndex(index);
   }
 
   public static String format(String inPattern, Date inDate)

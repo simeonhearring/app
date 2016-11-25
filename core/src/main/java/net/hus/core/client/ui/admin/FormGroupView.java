@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.FormGroup_;
+import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.UIObject_;
 
 public class FormGroupView extends AbstractView implements UIObjectDisplay
@@ -44,17 +45,20 @@ public class FormGroupView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(FormGroupSize.values(), mSize);
   }
 
-  public FormGroupView(UIObject_ inUiObject)
+  public FormGroupView(UIObject_ inUiObject, boolean inChild, Page.Name inPage)
   {
     this();
+    mUIObject.setParent(inChild, inPage);
     set((FormGroup_) inUiObject);
   }
 
   public void set(FormGroup_ inUiObject)
   {
     mUiObject = inUiObject;
+
     mName.setText(mUiObject.getClass().getSimpleName());
     setEnumValueToListBox(mUiObject.getSize(), mSize);
+
     mUIObject.set(mUiObject);
   }
 

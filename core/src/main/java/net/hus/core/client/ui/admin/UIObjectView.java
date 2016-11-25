@@ -1,7 +1,5 @@
 package net.hus.core.client.ui.admin;
 
-import java.util.List;
-
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
 
@@ -15,7 +13,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
-import net.hus.core.shared.model.ItemValue;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Fields;
+import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.model.UIObject_;
 
@@ -50,12 +50,15 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
   public void set(UIObject_ inUiObject)
   {
     mUiObject = inUiObject;
+
     mHeight.setText(mUiObject.getHeight());
     mWidth.setText(mUiObject.getWidth());
     mTitle.setText(mUiObject.getTitle());
     mStyleName.setText(mUiObject.getStyleName());
     mStylePrimaryName.setText(mUiObject.getStylePrimaryName());
+
     setEnumValueToListBox(mUiObject.getSection(), mSection);
+    setSelectedIndex(mKey, mUiObject.getKey());
   }
 
   @UiHandler(
@@ -86,11 +89,19 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
     mUiObject.setStylePrimaryName(mStylePrimaryName.getText());
   }
 
-  public void addKeys(List<ItemValue<?>> inList)
+  public void setFields(Field.Component inComponent, Fields inFields)
   {
-    for (ItemValue<?> value : inList)
+    mKey.setEnabled(true);
+    mKey.addItem("Select One", "");
+    for (Field value : inFields.getFields())
     {
-      mKey.addItem(value.display(), value.name());
+      mKey.addItem(value.getDisplayLong(), inComponent.name() + value.getId());
     }
+  }
+
+  public void setParent(boolean inChild, Page.Name inPage)
+  {
+    addEnumToListBox(Section.Name.values(inPage), mSection, true);
+    mSection.setEnabled(!inChild);
   }
 }

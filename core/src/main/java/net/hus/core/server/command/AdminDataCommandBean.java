@@ -99,6 +99,8 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
   private void addPage(AdminData inData, String inComponentName)
   {
     inData.setPage(mCoreDao.components(inComponentName));
+    String fgg = inData.getPage().getFieldTKG().getFgg();
+    addFields(inData, fgg);
   }
 
   private void addTables(AdminData inData)

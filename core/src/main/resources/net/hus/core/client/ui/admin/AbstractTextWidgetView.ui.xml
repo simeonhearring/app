@@ -6,47 +6,51 @@
 	</ui:style>
 	<b.gwt:FlowPanel>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Is Html" />
+			<b:FormLabel text="Text:" />
+			<b:Input ui:field="mText" type="TEXT" />
+		</b:FormGroup>
+		<b:FormGroup size="SMALL">
+			<b:FormLabel text="Is Html:&nbsp;" />
 			<b.toggle:ToggleSwitch ui:field="mHtml" size="MINI" onText="Yes" offText="No" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Pull" />
+			<b:FormLabel text="Pull:" />
 			<b:ListBox ui:field="mPull" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Color" />
+			<b:FormLabel text="Color:" />
 			<b:Input ui:field="mColor" type="COLOR" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Margin Bottom" />
+			<b:FormLabel text="Margin Bottom:" />
 			<b:Input ui:field="mMarginBottom" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Margin Left" />
+			<b:FormLabel text="Margin Left:" />
 			<b:Input ui:field="mMarginLeft" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Margin Right" />
+			<b:FormLabel text="Margin Right:" />
 			<b:Input ui:field="mMarginRight" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Margin Top" />
+			<b:FormLabel text="Margin Top:" />
 			<b:Input ui:field="mMarginTop" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Padding Bottom" />
+			<b:FormLabel text="Padding Bottom:" />
 			<b:Input ui:field="mPaddingBottom" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Padding Left" />
+			<b:FormLabel text="Padding Left:" />
 			<b:Input ui:field="mPaddingLeft" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Padding Right" />
+			<b:FormLabel text="Padding Right:" />
 			<b:Input ui:field="mPaddingRight" type="NUMBER" />
 		</b:FormGroup>
 		<b:FormGroup size="SMALL">
-			<b:FormLabel text="Padding Top" />
+			<b:FormLabel text="Padding Top:" />
 			<b:Input ui:field="mPaddingTop" type="NUMBER" />
 		</b:FormGroup>
 	</b.gwt:FlowPanel>

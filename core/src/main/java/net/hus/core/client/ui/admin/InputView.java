@@ -16,6 +16,9 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.Input_;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Fields;
+import net.hus.core.shared.model.Page.Name;
 import net.hus.core.shared.model.UIObject_;
 
 public class InputView extends AbstractView implements UIObjectDisplay
@@ -52,9 +55,11 @@ public class InputView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(InputType.values(), mType);
   }
 
-  public InputView(UIObject_ inUiObject)
+  public InputView(UIObject_ inUiObject, Fields inFields, boolean inParent, Name inPage)
   {
     this();
+    mUIObject.setParent(inParent, inPage);
+    mUIObject.setFields(Field.Component.FV00_, inFields);
     set((Input_) inUiObject);
   }
 
