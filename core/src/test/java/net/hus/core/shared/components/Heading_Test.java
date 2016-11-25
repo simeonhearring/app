@@ -48,7 +48,7 @@ public class Heading_Test
     Heading_ ret = new Heading_();
     ret.setText("Text");
     ret.setSubText("SubText");
-    ret.setHeadingSize(HeadingSize.H1);
+    ret.setSize(HeadingSize.H1);
     ret.setAlignment(Alignment.LEFT);
     ret.setEmphasis(Emphasis.INFO);
 

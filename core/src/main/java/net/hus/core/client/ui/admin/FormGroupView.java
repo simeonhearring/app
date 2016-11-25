@@ -1,14 +1,19 @@
 package net.hus.core.client.ui.admin;
 
+import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.constants.FormGroupSize;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
+import net.hus.core.shared.components.FormGroup_;
 import net.hus.core.shared.model.UIObject_;
 
 public class FormGroupView extends AbstractView implements UIObjectDisplay
@@ -22,14 +27,43 @@ public class FormGroupView extends AbstractView implements UIObjectDisplay
   @UiField
   Paragraph mName;
 
-  // private FormGroup_ mUiObject;
+  @UiField
+  ListBox mSize;
+
+  @UiField
+  UIObjectView mUIObject;
+
+  @UiField
+  ActionView mAction0, mAction1;
+
+  private FormGroup_ mUiObject;
+
+  public FormGroupView()
+  {
+    initWidget(BINDER.createAndBindUi(this));
+    addEnumToListBox(FormGroupSize.values(), mSize);
+  }
 
   public FormGroupView(UIObject_ inUiObject)
   {
-    initWidget(BINDER.createAndBindUi(this));
+    this();
+    set(inUiObject);
+  }
 
-    mName.setText(inUiObject.getClass().getSimpleName());
+  public void set(UIObject_ inUiObject)
+  {
+    mUiObject = (FormGroup_) inUiObject;
+    mName.setText(mUiObject.getClass().getSimpleName());
+    setEnumValueToListBox(mUiObject.getSize(), mSize);
+    mUIObject.set(mUiObject);
+  }
 
-    // mUiObject = (FormGroup_) inUiObject;
+  @UiHandler(
+      {
+        "mSize"
+      })
+  public void onChangeBind(ChangeEvent inEvent)
+  {
+    mUiObject.setSize(getEnumValueFromListBox(FormGroupSize.values(), mSize));
   }
 }

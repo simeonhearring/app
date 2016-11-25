@@ -16,9 +16,15 @@ import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.shared.model.EnumDisplay;
+import net.hus.core.shared.util.EnumUtil;
 
 public abstract class AbstractView extends Composite
 {
+  public static <E extends Enum<?>> E getEnumValueFromListBox(E[] inValues, ListBox inListBox)
+  {
+    return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
+  }
+
   public static int getSelectedIndex(ListBox inListBox, String inValue)
   {
     int ret = 0;
@@ -58,7 +64,17 @@ public abstract class AbstractView extends Composite
 
   public static void addEnumDToListBox(EnumDisplay[] inValues, ListBox inListBox)
   {
+    addEnumDToListBox(inValues, inListBox, false);
+  }
+
+  public static void addEnumDToListBox(EnumDisplay[] inValues, ListBox inListBox,
+      boolean inSelectOne)
+  {
     inListBox.clear();
+    if (inSelectOne)
+    {
+      inListBox.addItem("Select One", "");
+    }
     for (EnumDisplay value : inValues)
     {
       inListBox.addItem(value.display(), value.name());
@@ -67,7 +83,18 @@ public abstract class AbstractView extends Composite
 
   public static void addEnumToListBox(Enum<?>[] inValues, ListBox inListBox)
   {
+    addEnumToListBox(inValues, inListBox, false);
+  }
+
+  public static void addEnumToListBox(Enum<?>[] inValues, ListBox inListBox, boolean inSelectOne)
+  {
     inListBox.clear();
+
+    if (inSelectOne)
+    {
+      inListBox.addItem("Select One", "");
+    }
+
     for (Enum<?> value : inValues)
     {
       inListBox.addItem(value.name(), value.name());

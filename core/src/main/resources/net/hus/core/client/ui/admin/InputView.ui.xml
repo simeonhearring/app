@@ -11,9 +11,18 @@
 		<b:Row>
 			<b:Column size="SM_6">
 				<b:FormGroup>
-					<b:FormLabel text="Size" />
-					<b:ListBox ui:field="mSize" />
+					<b:FormLabel text="Type" />
+					<b:ListBox ui:field="mType" />
 				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="Min" />
+					<b:Input ui:field="mMin" type="TEXT" />
+				</b:FormGroup>
+				<b:FormGroup>
+					<b:FormLabel text="Max" />
+					<b:Input ui:field="mMax" type="TEXT" />
+				</b:FormGroup>
+				<a:ValueBoxBaseView ui:field="mValueBoxBase" />
 			</b:Column>
 			<b:Column size="SM_6">
 				<a:UIObjectView ui:field="mUIObject" />
