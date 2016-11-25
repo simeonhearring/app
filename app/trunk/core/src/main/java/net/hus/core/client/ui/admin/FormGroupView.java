@@ -11,6 +11,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.FormGroup_;
@@ -50,6 +51,13 @@ public class FormGroupView extends AbstractView implements UIObjectDisplay
     this();
     mUIObject.setUpSection(inChild, inPage);
     set((FormGroup_) inUiObject);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
+    mAction0.setCallback(inCallback);
+    mAction1.setCallback(inCallback);
   }
 
   public void set(FormGroup_ inUiObject)

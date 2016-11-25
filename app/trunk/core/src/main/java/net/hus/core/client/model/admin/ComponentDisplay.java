@@ -19,11 +19,15 @@ public interface ComponentDisplay extends PageDisplay
 
     void createPage(String inName, String inFvt, String inFgg, String inPage);
 
+    void savePage();
+
     void savePage(String inDisplay);
 
     void savePage(String inFvt, String inFgg, String inPage);
 
     void selectComponent(int inNodeId, int inParentId);
+
+    void refresh();
   }
 
   void setAction(Action inAction);

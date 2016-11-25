@@ -8,4 +8,5 @@ package net.hus.core.client.common;
  */
 public interface UIObjectDisplay extends Display
 {
+  void setCallback(Callback<Boolean> inCallback);
 }

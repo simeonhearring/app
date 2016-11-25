@@ -12,6 +12,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.ValueBoxBase_;
@@ -43,6 +44,11 @@ public class ValueBoxBaseView extends AbstractView implements UIObjectDisplay
 
     addEnumDToListBox(YesNoNull.values(), mAllowBlank);
     addEnumDToListBox(YesNoNull.values(), mAutoComplete);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
   }
 
   public ValueBoxBaseView(UIObject_ inUiObject)

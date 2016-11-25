@@ -13,6 +13,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.Input_;
@@ -61,6 +62,13 @@ public class InputView extends AbstractView implements UIObjectDisplay
     mUIObject.setUpSection(inChild, inPage);
     mUIObject.setFields(Field.Component.FV00_, inFields);
     set((Input_) inUiObject);
+  }
+
+  @Override
+  public void setCallback(Callback<Boolean> inCallback)
+  {
+    mAction0.setCallback(inCallback);
+    mAction1.setCallback(inCallback);
   }
 
   public void set(Input_ inUiObject)
