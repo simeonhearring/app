@@ -16,3 +16,7 @@
 legend {
 	font-size: 15px;
 }
+
+label, p {
+	font-size: 12px;
+}

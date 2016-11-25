@@ -10,23 +10,23 @@
 		<a:ActionView ui:field="mAction0" />
 		<b:Row>
 			<b:Column size="SM_6">
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Size" />
 					<b:ListBox ui:field="mSize" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Emphasis" />
 					<b:ListBox ui:field="mEmphasis" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Alignment" />
 					<b:ListBox ui:field="mAlignment" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Text" />
 					<b:Input ui:field="mText" type="TEXT" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="SubText" />
 					<b:Input ui:field="mSubText" type="TEXT" />
 				</b:FormGroup>

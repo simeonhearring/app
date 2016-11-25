@@ -10,15 +10,15 @@
 		<a:ActionView ui:field="mAction0" />
 		<b:Row>
 			<b:Column size="SM_6">
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Type" />
 					<b:ListBox ui:field="mType" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Min" />
 					<b:Input ui:field="mMin" type="TEXT" />
 				</b:FormGroup>
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Max" />
 					<b:Input ui:field="mMax" type="TEXT" />
 				</b:FormGroup>

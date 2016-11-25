@@ -9,14 +9,14 @@
 		<b:Column size="SM_3">
 			<b:Well size="LARGE">
 				<b:Legend text="EDIT LOOKUP" />
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Select Lookup:" />
 					<b.select:Select ui:field="mLookups" liveSearch="true" visible="true" />
 				</b:FormGroup>
 			</b:Well>
 			<b:Well size="LARGE">
 				<b:Legend text="CREATE NEW LOOKUP" />
-				<b:FormGroup>
+				<b:FormGroup size="SMALL">
 					<b:FormLabel text="Name:" />
 					<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 				</b:FormGroup>
@@ -35,11 +35,11 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabl4">
 						<b:Well size="LARGE">
 							<b:Legend text="LOOKUP NAME" />
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Name:" />
 								<b.html:Paragraph ui:field="mName" />
 							</b:FormGroup>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel text="Display:" />
 								<b:Input ui:field="mDisplay" type="TEXT" />
 							</b:FormGroup>
@@ -53,13 +53,13 @@
 							<b:Legend text="VALUES IN LOOKUP" />
 							<b:Form type="INLINE">
 								<b:FieldSet>
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:Input ui:field="mNewName" type="TEXT" placeholder="Enter name" />
 									</b:FormGroup>
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:Input ui:field="mNewAbbr" type="TEXT" placeholder="Enter abbreviation" />
 									</b:FormGroup>
-									<b:FormGroup>
+									<b:FormGroup size="SMALL">
 										<b:Input ui:field="mNewSort" type="NUMBER" placeholder="Enter sort" />
 									</b:FormGroup>
 								</b:FieldSet>
@@ -67,7 +67,7 @@
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave1" type="SAVE" paddingTop="10" addStyleNames="pull-right" />
 							</b:Tooltip>
-							<b:FormGroup>
+							<b:FormGroup size="SMALL">
 								<b:FormLabel ui:field="mNameText" />
 								<c:FlexTable_View ui:field="mValues" />
 							</b:FormGroup>
