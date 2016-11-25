@@ -77,7 +77,7 @@ public class InputView extends AbstractView implements UIObjectDisplay
     mName.setText(mUiObject.getClass().getSimpleName());
     mMin.setText(mUiObject.getMin());
     mMax.setText(mUiObject.getMax());
-    setEnumValueToListBox(mType, mUiObject.getType());
+    setSelectedIndex(mType, mUiObject.getType());
 
     mValueBoxBase.set(mUiObject);
     mUIObject.set(mUiObject);

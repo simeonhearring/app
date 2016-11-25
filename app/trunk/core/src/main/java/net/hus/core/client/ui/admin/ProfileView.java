@@ -138,13 +138,13 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mLast.setText(null);
 
     mPassword.setText(null);
-    setSelectedIndex(mPage, null);
+    setSelectedIndex(mPage, (String) null);
 
     mAddUserName.setText(null);
     mAddFirst.setText(null);
     mAddLast.setText(null);
 
-    setSelectedIndex(mAddPage, null);
+    setSelectedIndex(mAddPage, (String) null);
 
     mProfiles.setValue(null);
   }

@@ -63,9 +63,9 @@ public class ValueBoxBaseView extends AbstractView implements UIObjectDisplay
     mPlaceholder.setText(mUiObject.getPlaceholder());
     mMaxLength.setText(StringUtil.toValue(mUiObject.getMaxLength()));
 
-    setEnumValueToListBox(mSize, mUiObject.getSize());
-    setEnumValueToListBox(mAllowBlank, YesNoNull.value(mUiObject.getAllowBlank()));
-    setEnumValueToListBox(mAutoComplete, YesNoNull.value(mUiObject.getAutoComplete()));
+    setSelectedIndex(mSize, mUiObject.getSize());
+    setSelectedIndex(mAllowBlank, YesNoNull.value(mUiObject.getAllowBlank()));
+    setSelectedIndex(mAutoComplete, YesNoNull.value(mUiObject.getAutoComplete()));
   }
 
   @UiHandler(

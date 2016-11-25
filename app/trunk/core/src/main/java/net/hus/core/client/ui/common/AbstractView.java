@@ -20,24 +20,6 @@ import net.hus.core.shared.util.EnumUtil;
 
 public abstract class AbstractView extends Composite
 {
-  public static <E extends Enum<?>> E getEnumValueFromListBox(E[] inValues, ListBox inListBox)
-  {
-    return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
-  }
-
-  public static void setSelectedIndex(ListBox inListBox, String inValue)
-  {
-    int index = 0;
-    for (int i = 0; i < inListBox.getItemCount(); i++)
-    {
-      if (inListBox.getValue(i).equals(inValue))
-      {
-        index = i;
-      }
-    }
-    inListBox.setSelectedIndex(index);
-  }
-
   public static String format(String inPattern, Date inDate)
   {
     if (inDate == null)
@@ -94,14 +76,27 @@ public abstract class AbstractView extends Composite
     {
       inListBox.addItem("Select One", "");
     }
-
     for (Enum<?> value : inValues)
     {
       inListBox.addItem(value.name(), value.name());
     }
   }
 
-  public static void setEnumValueToListBox(ListBox inListBox, Enum<?> inValue)
+  public static void setSelectedIndex(ListBox inListBox, String inValue)
+  {
+    int index = 0;
+    for (int i = 0; i < inListBox.getItemCount(); i++)
+    {
+      if (inListBox.getValue(i).equals(inValue))
+      {
+        index = i;
+        break;
+      }
+    }
+    inListBox.setSelectedIndex(index);
+  }
+
+  public static void setSelectedIndex(ListBox inListBox, Enum<?> inValue)
   {
     if (inValue == null)
     {
@@ -109,15 +104,13 @@ public abstract class AbstractView extends Composite
     }
     else
     {
-      for (int i = 0; i < inListBox.getItemCount(); i++)
-      {
-        String value = inListBox.getValue(i);
-        if (value.equals(inValue.name()))
-        {
-          inListBox.setSelectedIndex(i);
-        }
-      }
+      setSelectedIndex(inListBox, inValue.name());
     }
+  }
+
+  public static <E extends Enum<?>> E getEnumValueFromListBox(E[] inValues, ListBox inListBox)
+  {
+    return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
   }
 
   public static Widget find(String inId, IndexedPanel... inPanel)

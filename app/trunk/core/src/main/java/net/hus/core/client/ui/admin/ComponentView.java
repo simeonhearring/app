@@ -145,7 +145,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
 
     setSelectedIndex(mFvt, inPage.getFieldTKG().getFvt());
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
-    setEnumValueToListBox(mPageName, inPage.getFieldTKG().getPage());
+    setSelectedIndex(mPageName, inPage.getFieldTKG().getPage());
 
     removeTree();
 
@@ -162,9 +162,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mPageNameC.setText(null);
     mPageNameF.setText(null);
 
-    setSelectedIndex(mFvt, null);
-    setSelectedIndex(mFgg, null);
-    setEnumValueToListBox(mPageName, null);
+    setSelectedIndex(mFvt, (String) null);
+    setSelectedIndex(mFgg, (String) null);
+    setSelectedIndex(mPageName, (String) null);
 
     removeTree();
 
@@ -272,6 +272,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
         break;
       case FORM_LABEL:
         ret = new FormLabelView(inUiObject, inFields, inParent, inPage);
+        break;
+      case BUTTON:
+        ret = new ButtonView(inUiObject, inFields, inParent, inPage);
         break;
       default:
         ret = new DefaultView(inUiObject);

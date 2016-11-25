@@ -94,8 +94,8 @@ import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.components.TextBox_;
 import net.hus.core.shared.components.Typeahead_;
 import net.hus.core.shared.components.ValueBoxBase_;
-import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Field.Lookup.Location;
+import net.hus.core.shared.model.UIObject_;
 
 /**
  * Responsible for creating UI Objects from Model UI Objects without any values.
