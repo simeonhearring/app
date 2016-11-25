@@ -257,7 +257,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 
     // array
     addArrayLabels(inField.getArraySize(), false);
-    setEnumValueToListBox(inField.getArrayHeadSize(), mHeadSize);
+    setEnumValueToListBox(mHeadSize, inField.getArrayHeadSize());
     mAltEven.setValue(inField.getArrayAltEven());
     mAltOdd.setValue(inField.getArrayAltOdd());
     mAltColor.setValue(inField.isArrayAlt());
@@ -392,7 +392,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 
   private void addLookup(String inLookupParameters, Location inLocation, Field inField)
   {
-    setEnumValueToListBox(inLocation, mLookupLocation);
+    setEnumValueToListBox(mLookupLocation, inLocation);
 
     mLookupGroupText.setText(null);
 

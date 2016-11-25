@@ -48,6 +48,7 @@ implements Action, AdminEvent.Handler
     {
       case ALL:
       {
+        mDisplay.reset();
         mDisplay.addTables(inData.getTables());
         mDisplay.addFieldGroups(inData.getFieldGroups());
         mDisplay.addPages(inData.getPages());

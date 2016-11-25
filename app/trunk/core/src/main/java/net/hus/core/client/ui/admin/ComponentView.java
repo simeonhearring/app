@@ -144,9 +144,28 @@ public class ComponentView extends AbstractView implements ComponentDisplay
 
     setSelectedIndex(mFvt, inPage.getFieldTKG().getFvt());
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
-    setEnumValueToListBox(inPage.getFieldTKG().getPage(), mPageName);
+    setEnumValueToListBox(mPageName, inPage.getFieldTKG().getPage());
+
+    removeTree();
 
     addTree(inPage.toJson());
+
+    resetComponent();
+  }
+
+  @Override
+  public void reset()
+  {
+    mName.setText(null);
+    mDisplay.setText(null);
+    mPageNameC.setText(null);
+    mPageNameF.setText(null);
+
+    setSelectedIndex(mFvt, null);
+    setSelectedIndex(mFgg, null);
+    setEnumValueToListBox(mPageName, null);
+
+    removeTree();
 
     resetComponent();
   }
@@ -164,6 +183,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay
           },
           data: inJson
         });
+    }-*/;
+
+  private native void removeTree()
+  /*-{
+        $wnd.$('#tree').treeview('remove');
     }-*/;
 
   private native void exportNodeSelected()
