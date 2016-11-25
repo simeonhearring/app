@@ -5,20 +5,14 @@
 	<ui:style>
 	
 	</ui:style>
-	<b.gwt:FlowPanel>
-		<b.html:Paragraph ui:field="mName" />
-		<a:ActionView ui:field="mAction0" />
-		<b:Row>
-			<b:Column size="SM_6">
-				<b:FormGroup>
-					<b:FormLabel text="Size" />
-					<b:ListBox ui:field="mSize" />
-				</b:FormGroup>
-			</b:Column>
-			<b:Column size="SM_6">
-				<a:UIObjectView ui:field="mUIObject" />
-			</b:Column>
-		</b:Row>
-		<a:ActionView ui:field="mAction1" />
-	</b.gwt:FlowPanel>
+	<b:Row>
+		<b:Column size="SM_12">
+			<b:Tooltip text="Save">
+				<b:Icon ui:field="mSave" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+			</b:Tooltip>
+			<b:Tooltip text="Refresh">
+				<b:Icon ui:field="mRefresh" type="REFRESH" addStyleNames="pull-right" />
+			</b:Tooltip>
+		</b:Column>
+	</b:Row>
 </ui:UiBinder>

@@ -54,27 +54,39 @@ public class Page implements Serializable
 
     public enum Name
     {
-      MARR1L01,
-      MARR1C01,
-      MARR201,
-      MARR202,
-      MARR203,
-      MARR204,
-      MARR301,
-      MARR302,
-      MARR303,
-      MARR304,
-      MARR305,
-      MARR306,
-      BLOGL01,
-      BLOGC01,
-      WEBL01,
-      WEBC01,
-      WEBR01,
-      LOGINL01,
-      LOGINC01,
-      LOGINR01,
-      ADMINC01,
+      // TODO remove as enum. make lookup.
+      MARR1L01(Page.Name.MARKET),
+      MARR1C01(Page.Name.MARKET),
+      MARR201(Page.Name.MARKET),
+      MARR202(Page.Name.MARKET),
+      MARR203(Page.Name.MARKET),
+      MARR204(Page.Name.MARKET),
+      MARR301(Page.Name.MARKET),
+      MARR302(Page.Name.MARKET),
+      MARR303(Page.Name.MARKET),
+      MARR304(Page.Name.MARKET),
+      MARR305(Page.Name.MARKET),
+      MARR306(Page.Name.MARKET),
+
+      BLOGL01(Page.Name.BLOG),
+      BLOGC01(Page.Name.BLOG),
+
+      WEBL01(Page.Name.WEB),
+      WEBC01(Page.Name.WEB),
+      WEBR01(Page.Name.WEB),
+
+      LOGINL01(Page.Name.LOGIN),
+      LOGINC01(Page.Name.LOGIN),
+      LOGINR01(Page.Name.LOGIN),
+
+      ADMINC01(Page.Name.ADMIN);
+
+      Page.Name mPage;
+
+      private Name(Page.Name inPage)
+      {
+        mPage = inPage;
+      }
     }
   }
 }

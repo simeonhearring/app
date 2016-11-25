@@ -1,0 +1,92 @@
+package net.hus.core.client.ui.admin;
+
+import org.gwtbootstrap3.client.ui.Input;
+import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.constants.InputType;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Widget;
+
+import net.hus.core.client.common.UIObjectDisplay;
+import net.hus.core.client.ui.common.AbstractView;
+import net.hus.core.shared.components.Input_;
+import net.hus.core.shared.model.UIObject_;
+
+public class InputView extends AbstractView implements UIObjectDisplay
+{
+  private static final Binder BINDER = GWT.create(Binder.class);
+
+  interface Binder extends UiBinder<Widget, InputView>
+  {
+  }
+
+  @UiField
+  Paragraph mName;
+
+  @UiField
+  ListBox mType;
+
+  @UiField
+  Input mMin, mMax;
+
+  @UiField
+  ValueBoxBaseView mValueBoxBase;
+
+  @UiField
+  UIObjectView mUIObject;
+
+  @UiField
+  ActionView mAction0, mAction1;
+
+  private Input_ mUiObject;
+
+  public InputView()
+  {
+    initWidget(BINDER.createAndBindUi(this));
+    addEnumToListBox(InputType.values(), mType);
+  }
+
+  public InputView(UIObject_ inUiObject)
+  {
+    this();
+    set((Input_) inUiObject);
+  }
+
+  public void set(Input_ inUiObject)
+  {
+    mUiObject = inUiObject;
+    mName.setText(mUiObject.getClass().getSimpleName());
+    mMin.setText(mUiObject.getMin());
+    mMax.setText(mUiObject.getMax());
+    setEnumValueToListBox(mUiObject.getType(), mType);
+
+    mValueBoxBase.set(mUiObject);
+    mUIObject.set(mUiObject);
+  }
+
+  @UiHandler(
+      {
+        "mType"
+      })
+  public void onChangeBind(ChangeEvent inEvent)
+  {
+    mUiObject.setType(getEnumValueFromListBox(InputType.values(), mType));
+  }
+
+  @UiHandler(
+      {
+        "mMin",
+        "mMax"
+      })
+  public void onValueChangeBind(ValueChangeEvent<String> inEvent)
+  {
+    mUiObject.setMin(mMin.getText());
+    mUiObject.setMax(mMax.getText());
+  }
+}

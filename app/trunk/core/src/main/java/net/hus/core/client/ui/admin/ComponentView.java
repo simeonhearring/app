@@ -223,8 +223,14 @@ public class ComponentView extends AbstractView implements ComponentDisplay
       case FORM_GROUP:
         ret = new FormGroupView(inUiObject);
         break;
+      case HEADING:
+        ret = new HeadingView(inUiObject);
+        break;
+      case INPUT:
+        ret = new InputView(inUiObject);
+        break;
       default:
-        ret = new FormGroupView(inUiObject);
+        ret = new DefaultView(inUiObject);
         break;
     }
     return ret;

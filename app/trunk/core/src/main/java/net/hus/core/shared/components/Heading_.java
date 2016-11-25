@@ -27,7 +27,7 @@ public class Heading_ extends ComplexWidget_
     return mSize;
   }
 
-  public void setHeadingSize(HeadingSize inSize)
+  public void setSize(HeadingSize inSize)
   {
     mSize = inSize;
   }
