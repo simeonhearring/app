@@ -139,7 +139,7 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
     USER;
   }
 
-  public enum Name
+  public enum UserName
   {
     login
   }

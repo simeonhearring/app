@@ -17,8 +17,6 @@ public interface CoreDao
 
   Profile profile(String inName);
 
-  Profile profile_app(String inName);
-
   Components components(String inComponentName);
 
   void field2lookup();

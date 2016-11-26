@@ -33,7 +33,7 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    profile(Profile.Name.login.name());
+    profile(Profile.UserName.login.name());
   }
 
   private void profile(String inName)

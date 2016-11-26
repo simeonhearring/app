@@ -27,6 +27,6 @@ public class ProfileCommand extends AbstractDataCommand<ComponentsQuery>
 
   public boolean isLogin()
   {
-    return Profile.Name.login.equals(mUserName);
+    return Profile.UserName.login.name().equals(mUserName);
   }
 }

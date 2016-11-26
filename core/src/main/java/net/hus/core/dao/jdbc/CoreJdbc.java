@@ -106,13 +106,6 @@ public class CoreJdbc implements CoreDao
   }
 
   @Override
-  public Profile profile_app(String inName)
-  {
-    String xml = lookups().selectXL(Group.PROFILE, inName).getXL();
-    return parse(mProfileParser, xml);
-  }
-
-  @Override
   public Profile profile(String inName)
   {
     Lookup lookup = lookups().selectXL(Group.PROFILE, inName);
