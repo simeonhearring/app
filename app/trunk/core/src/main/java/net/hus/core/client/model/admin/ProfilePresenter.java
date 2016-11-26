@@ -102,6 +102,7 @@ implements Action, AdminEvent.Handler
   public void createProfile(String inUserName, String inFirst, String inLast, String inPage)
   {
     final Profile p = new Profile();
+    p.setType(Profile.Type.USER);
     p.setUserName(inUserName);
     p.setFirst(inFirst);
     p.setLast(inLast);

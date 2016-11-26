@@ -10,17 +10,12 @@ public class ProfileCommandBean extends AbstractCommandBean<ProfileCommand>
   @Override
   public RpcResponse execute(ProfileCommand inCommand)
   {
-    Profile profile = null;
+    Profile profile = mCoreDao.profile(inCommand.getUserName());
+    profile.setPassword(null);
 
     if (inCommand.isLogin())
     {
-      profile = mCoreDao.profile_app(inCommand.getUserName());
       profile.setFvk(inCommand.getIpAddress() + "." + RandomUtil.random(5));
-    }
-    else
-    {
-      profile = mCoreDao.profile(inCommand.getUserName());
-      profile.setPassword(null);
     }
 
     inCommand.setData(profile);
