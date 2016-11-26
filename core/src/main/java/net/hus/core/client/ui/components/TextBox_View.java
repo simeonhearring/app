@@ -18,8 +18,9 @@ public class TextBox_View extends Abstract_View<TextBox> implements ValueChangeH
   @Override
   public void addChangeHandler()
   {
-    mComponent.addValueChangeHandler(this);
-    mComponent.addClickHandler(this);
+    clearRegistration();
+    add(mComponent.addValueChangeHandler(this));
+    add(mComponent.addClickHandler(this));
   }
 
   @Override

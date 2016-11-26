@@ -2,11 +2,11 @@ package net.hus.core.client.model.admin;
 
 import java.util.List;
 
-import net.hus.core.client.common.PageDisplay;
+import net.hus.core.client.common.Display;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookups;
 
-public interface LookupDisplay extends PageDisplay
+public interface LookupDisplay extends Display
 {
   public interface Action
   {

@@ -31,6 +31,7 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     return inCommand;
   }
 
+  // needs to be able to be done separately.
   private void addValues(Components inComponents, String inFvk)
   {
     FieldTKG fieldTKG = inComponents.getFieldTKG();

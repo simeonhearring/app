@@ -9,6 +9,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.page.WebDisplay;
+import net.hus.core.client.model.select.SelectFVKDisplay;
+import net.hus.core.client.ui.select.SelectFVKView;
 import net.hus.core.shared.model.Page.Section;
 
 public class WebView extends AbstractRowView implements WebDisplay
@@ -18,6 +20,9 @@ public class WebView extends AbstractRowView implements WebDisplay
   interface Binder extends UiBinder<Widget, WebView>
   {
   }
+
+  @UiField
+  SelectFVKView mSelect;
 
   @UiField
   Row mRow;
@@ -32,6 +37,12 @@ public class WebView extends AbstractRowView implements WebDisplay
     mL01.setId(Section.Name.WEBL01.name());
     mC01.setId(Section.Name.WEBC01.name());
     mR01.setId(Section.Name.WEBR01.name());
+  }
+
+  @Override
+  public SelectFVKDisplay getSelect()
+  {
+    return mSelect;
   }
 
   @Override

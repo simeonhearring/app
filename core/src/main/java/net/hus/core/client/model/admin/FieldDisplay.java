@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 
-import net.hus.core.client.common.PageDisplay;
+import net.hus.core.client.common.Display;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Lookup;
 
-public interface FieldDisplay extends PageDisplay
+public interface FieldDisplay extends Display
 {
   public interface Action
   {
