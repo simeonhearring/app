@@ -90,7 +90,7 @@ public class RpcServiceImpl extends RemoteServiceServlet implements RpcService
       }
       catch (Exception e)
       {
-        ret = new NotifyResponse(null, e.getMessage());
+        ret = new NotifyResponse(NotifyType.DANGER, e.getMessage());
         e.printStackTrace();
         LOGGER.error("Error executing rpc command " + bean, e);
       }

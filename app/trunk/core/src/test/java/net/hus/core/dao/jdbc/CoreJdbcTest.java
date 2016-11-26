@@ -152,6 +152,18 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void setupCommand()
+  {
+    Group group = Group.COMMAND;
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(lookup(group, "LoginCommand", "Login", 1, null));
+    list.add(lookup(group, "PageCommand", "Page", 2, null));
+
+    lookup(group, list, 2);
+  }
+
+  @Test
   public void setupFVT()
   {
     Group group = Group.FVT;

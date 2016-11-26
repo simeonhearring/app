@@ -27,6 +27,8 @@ public class AdminData implements Serializable
 
   private List<Lookup> mTables;
 
+  private List<Lookup> mCommands;
+
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
     mFieldGroups = inFieldGroups;
@@ -133,9 +135,9 @@ public class AdminData implements Serializable
     return mPages;
   }
 
-  public void setPage(Components inComponents)
+  public void setPage(Components inPages)
   {
-    mPage = inComponents;
+    mPage = inPages;
   }
 
   public Components getPage()
@@ -151,5 +153,30 @@ public class AdminData implements Serializable
   public void setTables(List<Lookup> inTables)
   {
     mTables = inTables;
+  }
+
+  public void setCommands(List<Lookup> inCommands)
+  {
+    mCommands = inCommands;
+  }
+
+  public List<Lookup> getCommands()
+  {
+    return mCommands;
+  }
+
+  public String getDefaultFieldGroup()
+  {
+    return mFieldGroups.get(0).getName();
+  }
+
+  public String getDefaultLookupGroup()
+  {
+    return mLookupGroups.get(0).getName();
+  }
+
+  public Long getDefaultField()
+  {
+    return mFields.get(0).getAltId();
   }
 }
