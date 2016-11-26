@@ -3,7 +3,6 @@ package net.hus.core.server.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.components.ComplexPanel_;
 import net.hus.core.shared.model.Components;
@@ -12,11 +11,12 @@ import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.LookupOptions;
 import net.hus.core.shared.model.UIObject_;
-import net.hus.core.shared.model.Value;
 import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand>
 {
+  private ValuesCommandBean mValuesCommand;
+
   @Override
   public RpcResponse execute(ComponentsCommand inCommand)
   {
@@ -31,11 +31,11 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     return inCommand;
   }
 
-  // needs to be able to be done separately.
   private void addValues(Components inComponents, String inFvk)
   {
     FieldTKG fieldTKG = inComponents.getFieldTKG();
-    inComponents.setValues(getValues(fieldTKG, inFvk));
+    fieldTKG.setFvk(inFvk);
+    inComponents.setValues(mValuesCommand.getValues(fieldTKG));
   }
 
   private void addLookups(Components inComponents)
@@ -81,22 +81,8 @@ public class ComponentsCommandBean extends AbstractCommandBean<ComponentsCommand
     }
   }
 
-  private List<Value> getValues(FieldTKG inFieldTKG, String inFvk)
+  public void setValuesCommand(ValuesCommandBean inValuesCommand)
   {
-    inFieldTKG.setFvk(inFvk);
-    return checkForArrays(mCoreDao.values().selectLast(inFieldTKG));
-  }
-
-  private static List<Value> checkForArrays(List<Value> inOut)
-  {
-    Table_Parser parser = new Table_Parser();
-    for (Value value : inOut)
-    {
-      if (value.getField().isArray() && value.getValue() != null)
-      {
-        value.setTable(parser.fromXml(value.getValue()));
-      }
-    }
-    return inOut;
+    mValuesCommand = inValuesCommand;
   }
 }

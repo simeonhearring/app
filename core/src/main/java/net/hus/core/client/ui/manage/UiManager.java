@@ -70,13 +70,17 @@ public class UiManager extends UiConverter
    */
   public void update(List<Value> inValues, FieldTKG inFieldTKG)
   {
-    for (Value value : inValues)
+    if (inValues != null)
     {
-      update(value, inFieldTKG);
+      for (Value value : inValues)
+      {
+        update(value, inFieldTKG);
+      }
     }
   }
 
-  // TODO does makeSaveable need to be called each time Value is set?
+  // TODO does makeSaveable need to be called each time Value is set? remember
+  // each field WILL have a value.
   private void update(Value inValue, FieldTKG inFieldTKG)
   {
     Field field = inValue.getField();

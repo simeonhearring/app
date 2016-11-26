@@ -23,7 +23,7 @@ public class ValuesCommandBean extends AbstractCommandBean<ValuesCommand>
     return inCommand;
   }
 
-  private List<Value> getValues(FieldTKG inFieldTKG)
+  protected List<Value> getValues(FieldTKG inFieldTKG)
   {
     return checkForArrays(mCoreDao.values().selectLast(inFieldTKG));
   }

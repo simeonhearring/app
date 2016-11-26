@@ -47,6 +47,7 @@
 
 	<bean id="ComponentsCommand" class="net.hus.core.server.command.ComponentsCommandBean">
 		<property name="coreDao" ref="CoreDao" />
+		<property name="valuesCommand" ref="ValuesCommand" />
 	</bean>
 
 	<bean id="ValuesCommand" class="net.hus.core.server.command.ValuesCommandBean">
