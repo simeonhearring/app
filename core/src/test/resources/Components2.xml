@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<FieldTKG fvt="JUNIT" fgg="JGRP1" page.name="WEB" />
+	<FieldTKG fvt="PERSON" fgg="JGRP1" page.name="WEB" />
 	<Heading SECTION="WEBC01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Text>Contact Information</Text>

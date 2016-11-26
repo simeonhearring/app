@@ -108,24 +108,32 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setTables(mCoreDao.lookups().select(Group.FVT.name()));
   }
 
+  private void addCommands(AdminData inData)
+  {
+    inData.setCommands(mCoreDao.lookups().select(Group.COMMAND.name()));
+  }
+
   private void addAll(AdminData inData)
   {
     addFields(inData);
-    Long fieldId = inData.getFields().get(0).getAltId();
-    addField(inData, fieldId);
+    addField(inData, inData.getDefaultField());
 
     addLookup(inData);
-    String grp = inData.getLookupGroups().get(0).getName();
-    addLookup(inData, grp);
+    addLookup(inData, inData.getDefaultLookupGroup());
 
     addFieldGroups(inData);
-    String fgg = inData.getFieldGroups().get(0).getName();
-    addFields(inData, fgg);
+    addFields(inData, inData.getDefaultFieldGroup());
 
     addProfiles(inData);
+    // no default
 
     addPages(inData);
+    // no default
 
     addTables(inData);
+    // no default
+
+    addCommands(inData);
+    // no default
   }
 }

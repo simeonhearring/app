@@ -140,6 +140,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     MONTHSOFYEAR(SM),
     YESNO(SM),
     GENDER(SM),
+    COMMAND(SM),
     APP_PROFILE(XL),
     PROFILE(XL),
     COMPONENTS(XL);
