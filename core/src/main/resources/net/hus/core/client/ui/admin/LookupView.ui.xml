@@ -17,7 +17,7 @@
 			<b:Well size="LARGE">
 				<b:Legend text="CREATE NEW LOOKUP" />
 				<b:FormGroup size="SMALL">
-					<b:FormLabel text="Name:" />
+					<b:FormLabel text="Lookup Name:" />
 					<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 				</b:FormGroup>
 				<b:Tooltip text="Add New">
@@ -44,14 +44,14 @@
 								<b:Input ui:field="mDisplay" type="TEXT" />
 							</b:FormGroup>
 							<b:Tooltip text="Save">
-								<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+								<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
 							</b:Tooltip>
 						</b:Well>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tabl5">
 						<b:Well size="LARGE">
 							<b:Legend text="VALUES IN LOOKUP" />
-							<b:Form type="INLINE">
+							<b:Form type="INLINE" ui:field="mQuickEdit">
 								<b:FieldSet>
 									<b:FormGroup size="SMALL">
 										<b:Input ui:field="mNewName" type="TEXT" placeholder="Enter name" />

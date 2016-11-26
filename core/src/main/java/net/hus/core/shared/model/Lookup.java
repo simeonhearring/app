@@ -3,6 +3,8 @@ package net.hus.core.shared.model;
 import static net.hus.core.shared.model.Lookup.Size.SM;
 import static net.hus.core.shared.model.Lookup.Size.XL;
 
+import java.util.Comparator;
+
 import net.hus.core.shared.util.EnumUtil;
 
 public class Lookup extends AbstractModel implements TypeaheadOption
@@ -130,16 +132,14 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   public enum Group
   {
     BLANK(SM),
-    FVT(SM),
-    FIELD(SM),
-    LOOKUP(SM),
-    FGG(SM),
-    COMPONENT(SM),
     UNKNOWN(SM),
-    DAYSOFWEEK(SM),
-    MONTHSOFYEAR(SM),
     YESNO(SM),
     GENDER(SM),
+    FVT(SM),
+    FGG(SM),
+    FIELD(SM),
+    LOOKUP(SM),
+    COMPONENT(SM),
     COMMAND(SM),
     APP_PROFILE(XL),
     PROFILE(XL),
@@ -157,9 +157,27 @@ public class Lookup extends AbstractModel implements TypeaheadOption
       return mSize;
     }
 
+    public static boolean isApp(String inGroup)
+    {
+      Group group = EnumUtil.valueOf(inGroup, values());
+      return group != null;
+    }
+
     public static boolean isXL(Group inGroup)
     {
       return inGroup != null && Size.XL.equals(inGroup.mSize);
     }
+  }
+
+  public static Comparator<Lookup> sortDisplay()
+  {
+    return new Comparator<Lookup>()
+    {
+      @Override
+      public int compare(Lookup inO1, Lookup inO2)
+      {
+        return inO1.mDisplay.compareToIgnoreCase(inO2.mDisplay);
+      }
+    };
   }
 }

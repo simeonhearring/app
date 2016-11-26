@@ -3,6 +3,7 @@ package net.hus.core.client.ui.common;
 import java.util.Date;
 
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import com.google.gwt.dom.client.Element;
@@ -42,6 +43,16 @@ public abstract class AbstractView extends Composite
   public void notify(String inMessage)
   {
     Notify.notify(inMessage);
+  }
+
+  public void warn(String inMessage)
+  {
+    Notify.notify(inMessage, NotifyType.WARNING);
+  }
+
+  public void danger(String inMessage)
+  {
+    Notify.notify(inMessage, NotifyType.DANGER);
   }
 
   public static void addEnumDToListBox(EnumDisplay[] inValues, ListBox inListBox)

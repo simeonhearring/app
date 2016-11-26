@@ -69,7 +69,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupDaysOfWeek()
   {
-    Group group = Group.DAYSOFWEEK;
+    String group = "DAYSOFWEEK";
 
     List<Lookup> list = new ArrayList<>();
     list.add(lookup(group, "Sunday", "Sun", 2, null));
@@ -86,7 +86,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupMonthsOfYear()
   {
-    Group group = Group.MONTHSOFYEAR;
+    String group = "MONTHSOFYEAR";
 
     List<Lookup> list = new ArrayList<>();
     list.add(lookup(group, "January", "Jan", 1, null));

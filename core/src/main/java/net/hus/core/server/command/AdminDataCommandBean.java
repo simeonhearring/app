@@ -119,7 +119,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     addField(inData, inData.getDefaultField());
 
     addLookup(inData);
-    addLookup(inData, inData.getDefaultLookupGroup());
+    // no default
 
     addFieldGroups(inData);
     addFields(inData, inData.getDefaultFieldGroup());

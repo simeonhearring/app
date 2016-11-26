@@ -2,10 +2,12 @@ package net.hus.core.client.ui.admin;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.Form;
 import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.extras.select.client.ui.OptGroup;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
@@ -49,6 +51,9 @@ public class LookupView extends AbstractView implements LookupDisplay
 
   @UiField
   FormLabel mNameText;
+
+  @UiField
+  Form mQuickEdit;
 
   private Action mAction;
 
@@ -103,19 +108,33 @@ public class LookupView extends AbstractView implements LookupDisplay
   }
 
   @Override
-  public void addLookupGroups(List<Lookup> inLookupGroups)
+  public void clearLookupGroups()
   {
     mLookups.clear();
+  }
+
+  @Override
+  public void refreshLookupGroups()
+  {
+    mLookups.refresh();
+    mLookups.setValue(null);
+  }
+
+  @Override
+  public void addLookupGroups(String inType, List<Lookup> inLookupGroups)
+  {
+    OptGroup type = new OptGroup();
+    type.setLabel(inType);
+
     for (Lookup value : inLookupGroups)
     {
       Option field = new Option();
       field.setText(value.getDisplay());
       field.setValue(value.getName());
       field.setId(value.getId().toString());
-      mLookups.add(field);
+      type.add(field);
     }
-    mLookups.refresh();
-    mLookups.setValue(null);
+    mLookups.add(type);
   }
 
   @Override
@@ -132,11 +151,16 @@ public class LookupView extends AbstractView implements LookupDisplay
     mValues.addHeaders(head);
     mValues.setWidth("100%");
 
+    boolean notsys = !Lookup.Group.isApp(inLookups.getName());
+    mQuickEdit.setVisible(notsys);
+    mSave0.setVisible(notsys);
+    mSave1.setVisible(notsys);
+    mDisplay.setEnabled(notsys);
+
     mName.setText(inLookups.getName());
     mDisplay.setText(inLookups.getDisplay());
     mNameText.setText(inLookups.getDisplay());
 
-    // String[][] cols = new String[inLookups.getOptions().size()][3];
     for (Lookup value : inLookups.getOptions())
     {
       String[] values =
@@ -148,8 +172,19 @@ public class LookupView extends AbstractView implements LookupDisplay
 
       mValues.addRow(head.length, values);
     }
+    // TODO doesn't show when tab is not active
     mValues.handlePanelHeight();
     mLookups.setValue(null);
+  }
+
+  @Override
+  public void setUp()
+  {
+    clearLookupGroups();
+    reset();
+    mValues.clear();
+    mDisplay.setText(null);
+    mNameText.setText(null);
   }
 
   @Override
