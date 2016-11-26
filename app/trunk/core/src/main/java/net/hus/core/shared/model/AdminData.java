@@ -13,7 +13,7 @@ public class AdminData implements Serializable
   private List<Lookup> mFields;
   private Field mField;
 
-  private List<Lookup> mLookupGroups;
+  private List<Lookup> mLookupGroups;// TODO should be Lookups
   private Lookups mLookups;
 
   private List<Lookup> mFieldGroups;

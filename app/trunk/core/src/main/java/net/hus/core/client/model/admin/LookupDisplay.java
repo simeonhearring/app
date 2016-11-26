@@ -21,9 +21,15 @@ public interface LookupDisplay extends Display
 
   void setAction(Action inAction);
 
-  void addLookupGroups(List<Lookup> inLookupGroups);
+  void setUp();
+
+  void reset();
 
   void addValues(Lookups inLookups);
 
-  void reset();
+  void refreshLookupGroups();
+
+  void clearLookupGroups();
+
+  void addLookupGroups(String inType, List<Lookup> inLookupGroups);
 }

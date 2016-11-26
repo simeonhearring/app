@@ -68,6 +68,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     addEnumToListBox(Page.Name.values(), mPageName);
     addEnumToListBox(Page.Name.values(), mAddPageName);
     exportNodeSelected();
+    defaultTree();
   }
 
   @Override
@@ -140,6 +141,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
     setSelectedIndex(mPageName, inPage.getFieldTKG().getPage());
 
+    // should not call first time. maybe have default.
     removeTree();
 
     addTree(inPage.toJson());
@@ -159,6 +161,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     setSelectedIndex(mFgg, (String) null);
     setSelectedIndex(mPageName, (String) null);
 
+    defaultTree();
     removeTree();
 
     resetComponent();
@@ -178,6 +181,12 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
           data: inJson
         });
     }-*/;
+
+  private void defaultTree()
+  {
+    String djson = "[ { \"text\": \"Nothing\" } ]";
+    addTree(djson);
+  }
 
   private native void removeTree()
   /*-{
