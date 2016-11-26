@@ -225,7 +225,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     String xl = ResourceUtil.contents("Profile0.xml");
 
     Lookup l1 = new Lookup();
-    l1.setGroup(Group.APP_PROFILE);
+    l1.setGroup(Group.PROFILE);
     l1.setName("login");
 
     l1.setDisplay("Login Profile");

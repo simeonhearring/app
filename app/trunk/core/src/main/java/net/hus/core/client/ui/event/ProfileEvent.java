@@ -12,12 +12,10 @@ public class ProfileEvent extends Event<ProfileEvent.Handler>
   public static final Type<Handler> TYPE = new Type<>();
 
   private final String mName;
-  private final boolean mApp;
 
   public ProfileEvent(String inName)
   {
     mName = inName;
-    mApp = false;
   }
 
   public ProfileEvent(Response inResponse)
@@ -41,10 +39,5 @@ public class ProfileEvent extends Event<ProfileEvent.Handler>
   public String getName()
   {
     return mName;
-  }
-
-  public boolean isApp()
-  {
-    return mApp;
   }
 }

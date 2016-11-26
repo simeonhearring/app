@@ -12,11 +12,9 @@ import net.hus.core.dao.CoreDao;
 import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
-import net.hus.core.parser.AppProfileParser;
 import net.hus.core.parser.ComponentsParser;
 import net.hus.core.parser.Parser;
 import net.hus.core.parser.ProfileParser;
-import net.hus.core.shared.model.AppProfile;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
@@ -33,7 +31,6 @@ public class CoreJdbc implements CoreDao
   private ValuesSql mValues;
 
   private ProfileParser mProfileParser;
-  private AppProfileParser mAppProfileParser;
   private ComponentsParser mComponentsParser;
 
   public void setDataSource(DataSource inDataSource)
@@ -42,7 +39,6 @@ public class CoreJdbc implements CoreDao
     mLookups = new LookupSql(inDataSource);
     mValues = new ValuesSql(inDataSource);
 
-    mAppProfileParser = new AppProfileParser();
     mProfileParser = new ProfileParser();
     mComponentsParser = new ComponentsParser();
   }
@@ -97,9 +93,6 @@ public class CoreJdbc implements CoreDao
     String ret = null;
     switch (inLookupXL.groupXL())
     {
-      case APP_PROFILE:
-        ret = mAppProfileParser.toXml((AppProfile) inLookupXL);
-        break;
       case PROFILE:
         ret = mProfileParser.toXml((Profile) inLookupXL);
         break;
@@ -113,10 +106,10 @@ public class CoreJdbc implements CoreDao
   }
 
   @Override
-  public AppProfile profile_app(String inName)
+  public Profile profile_app(String inName)
   {
-    String xml = lookups().selectXL(Group.APP_PROFILE, inName).getXL();
-    return parse(mAppProfileParser, xml);
+    String xml = lookups().selectXL(Group.PROFILE, inName).getXL();
+    return parse(mProfileParser, xml);
   }
 
   @Override
@@ -174,30 +167,6 @@ public class CoreJdbc implements CoreDao
     {
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.PROFILE);
-      lookup.setName(value.getUserName());
-
-      lookup.setAltId(value.getId());
-      lookup.setDisplay(value.getName());
-      lookup.setSort(0);
-      lookups.add(lookup);
-    }
-    lookups().upsert(lookups);
-  }
-
-  // TODO
-  public void appprofile2lookup()
-  {
-    List<Profile> profiles = new ArrayList<>();
-    for (Lookup value : lookups().selectXL(Group.APP_PROFILE.name()))
-    {
-      profiles.add(parse(mProfileParser, value.getXL()));
-    }
-
-    List<Lookup> lookups = new ArrayList<>();
-    for (Profile value : profiles)
-    {
-      Lookup lookup = new Lookup();
-      lookup.setGroup(Group.APP_PROFILE);
       lookup.setName(value.getUserName());
 
       lookup.setAltId(value.getId());
