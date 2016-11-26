@@ -4,14 +4,14 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-import net.hus.core.client.common.PageDisplay;
+import net.hus.core.client.common.Display;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.UIObject_;
 
-public interface ComponentDisplay extends PageDisplay
+public interface ComponentDisplay extends Display
 {
   public interface Action
   {

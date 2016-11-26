@@ -176,6 +176,18 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void setupFVK()
+  {
+    String group = "PERSON";
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(lookup(group, "simeonhearring", "Hearring, Simeon L", "Simeon", 1, null, 3L));
+    list.add(lookup(group, "nadiahearring", "Hearring, Nadia L", "Nadia", 2, null, 6L));
+
+    lookup(group, list, 2);
+  }
+
+  @Test
   public void setupComponents1()
   {
     component("Components1", "Login", "Components1.xml");
@@ -279,17 +291,33 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
   private void lookup(Group inGroup, List<Lookup> inList, int inExpectedSize)
   {
+    lookup(inGroup.name(), inList, inExpectedSize);
+  }
+
+  private void lookup(String inGroup, List<Lookup> inList, int inExpectedSize)
+  {
     mJdbc.lookups().upsert(inList);
-    Assert.assertEquals(inExpectedSize, mJdbc.lookups().select(inGroup.name()).size());
+    Assert.assertEquals(inExpectedSize, mJdbc.lookups().select(inGroup).size());
   }
 
   private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)
   {
-    return lookup(inGroup, inName.toUpperCase(), inName, inAbbr, inSort, inDesc);
+    return lookup(inGroup.name(), inName, inAbbr, inSort, inDesc);
+  }
+
+  private Lookup lookup(String inGroup, String inName, String inAbbr, int inSort, String inDesc)
+  {
+    return lookup(inGroup, inName.toUpperCase(), inName, inAbbr, inSort, inDesc, null);
   }
 
   private Lookup lookup(Group inGroup, String inName, String inDisplay, String inAbbr, int inSort,
       String inDesc)
+  {
+    return lookup(inGroup.name(), inName, inDisplay, inAbbr, inSort, inDesc, null);
+  }
+
+  private Lookup lookup(String inGroup, String inName, String inDisplay, String inAbbr, int inSort,
+      String inDesc, Long inAltId)
   {
     Lookup ret = new Lookup();
     ret.setGroup(inGroup);
@@ -299,6 +327,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     ret.setAbbreviation(inAbbr);
     ret.setDescription(inDesc);
     ret.setSort(inSort);
+    ret.setAltId(inAltId);
     return ret;
   }
 }

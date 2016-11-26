@@ -40,8 +40,9 @@ implements TypeaheadSelectedHandler<TypeaheadOption>
   @Override
   public void addChangeHandler()
   {
-    mComponent.addTypeaheadSelectedHandler(this);
-    mComponent.addClickHandler(this);
+    clearRegistration();
+    add(mComponent.addTypeaheadSelectedHandler(this));
+    add(mComponent.addClickHandler(this));
   }
 
   @Override

@@ -31,7 +31,6 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.FieldDisplay;
@@ -40,7 +39,6 @@ import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Lookup;
-import net.hus.core.shared.model.Page.Section.Name;
 
 public class FieldView extends AbstractView
 implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
@@ -422,11 +420,5 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     {
       mLookupGroupText.setText(mLookupGroupText.getText().replaceAll(inOption, ""));
     }
-  }
-
-  @Override
-  public void add(Name inSection, IsWidget inComponent)
-  {
-    // do nothing
   }
 }

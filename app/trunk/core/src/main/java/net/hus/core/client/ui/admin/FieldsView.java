@@ -18,7 +18,6 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -26,7 +25,6 @@ import net.hus.core.client.model.admin.FieldsDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
-import net.hus.core.shared.model.Page.Section.Name;
 
 public class FieldsView extends AbstractView implements FieldsDisplay
 {
@@ -68,12 +66,6 @@ public class FieldsView extends AbstractView implements FieldsDisplay
   public void setAction(Action inAction)
   {
     mAction = inAction;
-  }
-
-  @Override
-  public void add(Name inSection, IsWidget inComponent)
-  {
-    // do nothing
   }
 
   @UiHandler(

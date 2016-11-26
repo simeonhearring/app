@@ -15,7 +15,6 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.LookupDisplay;
@@ -23,7 +22,6 @@ import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.client.ui.components.FlexTable_View;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookups;
-import net.hus.core.shared.model.Page.Section.Name;
 import net.hus.core.shared.util.NumberUtil;
 
 public class LookupView extends AbstractView implements LookupDisplay
@@ -64,12 +62,6 @@ public class LookupView extends AbstractView implements LookupDisplay
   public void setAction(Action inAction)
   {
     mAction = inAction;
-  }
-
-  @Override
-  public void add(Name inSection, IsWidget inComponent)
-  {
-    // do nothing
   }
 
   @UiHandler(

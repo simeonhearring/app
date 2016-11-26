@@ -49,6 +49,10 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
+	<bean id="ValuesCommand" class="net.hus.core.server.command.ValuesCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
+
 	<bean id="ValueInsertCommand" class="net.hus.core.server.command.ValueInsertCommandBean">
 		<property name="coreDao" ref="CoreDao" />
 	</bean>

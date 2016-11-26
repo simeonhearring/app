@@ -19,7 +19,8 @@ public class ListBox_View extends Abstract_View<ListBox> implements ChangeHandle
   @Override
   public void addChangeHandler()
   {
-    mComponent.addChangeHandler(this);
+    clearRegistration();
+    add(mComponent.addChangeHandler(this));
   }
 
   @Override

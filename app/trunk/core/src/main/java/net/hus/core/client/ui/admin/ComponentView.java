@@ -27,7 +27,6 @@ import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page;
-import net.hus.core.shared.model.Page.Section.Name;
 import net.hus.core.shared.model.UIObject_;
 
 public class ComponentView extends AbstractView implements ComponentDisplay, Callback<Boolean>
@@ -75,12 +74,6 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   public void setAction(Action inAction)
   {
     mAction = inAction;
-  }
-
-  @Override
-  public void add(Name inSection, IsWidget inComponent)
-  {
-    // do nothing
   }
 
   @UiHandler(

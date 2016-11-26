@@ -37,7 +37,8 @@ implements ValueChangeHandler<Date>
   @Override
   public void addChangeHandler()
   {
-    mComponent.addValueChangeHandler(this);
+    clearRegistration();
+    add(mComponent.addValueChangeHandler(this));
   }
 
   @Override

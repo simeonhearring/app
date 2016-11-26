@@ -18,8 +18,9 @@ public class Input_View extends Abstract_View<Input> implements ValueChangeHandl
   @Override
   public void addChangeHandler()
   {
-    mComponent.addValueChangeHandler(this);
-    mComponent.addClickHandler(this);
+    clearRegistration();
+    add(mComponent.addValueChangeHandler(this));
+    add(mComponent.addClickHandler(this));
   }
 
   @Override

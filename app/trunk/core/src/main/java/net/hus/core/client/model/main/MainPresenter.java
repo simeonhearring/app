@@ -7,15 +7,18 @@ import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
 import net.hus.core.client.ui.event.ProfileEvent;
+import net.hus.core.client.ui.event.ValuesEvent;
 import net.hus.core.client.ui.manage.UiManager;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.ComponentsQuery;
-import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Page.Section;
+import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.model.Value;
 
-public class MainPresenter implements ProfileEvent.Handler
+public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
 {
   private MainDisplay mDisplay;
 
@@ -24,6 +27,7 @@ public class MainPresenter implements ProfileEvent.Handler
   public MainPresenter(MainDisplay inDisplay)
   {
     Global.addHandler(ProfileEvent.TYPE, this);
+    Global.addHandler(ValuesEvent.TYPE, this);
 
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
@@ -56,7 +60,7 @@ public class MainPresenter implements ProfileEvent.Handler
 
         addComponentsToPage(components, page);
 
-        addValuesToComponents(components);
+        addValuesToComponents(components.getFieldTKG(), components.getValues());
 
         addFieldTKGToButtons(components);
       }
@@ -65,7 +69,7 @@ public class MainPresenter implements ProfileEvent.Handler
 
   private PageDisplay addPageToMain(Components inComponents)
   {
-    PageDisplay ret = PageLocater.page(mDisplay, inComponents.getFieldTKG().getPage());
+    PageDisplay ret = PageLocater.page(mDisplay, inComponents.getFieldTKG());
     mDisplay.clear();
     mDisplay.add(ret);
     return ret;
@@ -85,9 +89,9 @@ public class MainPresenter implements ProfileEvent.Handler
     mManager.manage(inComponents.getFieldTKG(), inComponents.getValues());
   }
 
-  private void addValuesToComponents(Components inComponents)
+  private void addValuesToComponents(FieldTKG inFieldTKG, List<Value> inValues)
   {
-    mManager.update(inComponents.getValues(), inComponents.getFieldTKG());
+    mManager.update(inValues, inFieldTKG);
   }
 
   private void addFieldTKGToButtons(Components inComponents)
@@ -99,5 +103,11 @@ public class MainPresenter implements ProfileEvent.Handler
   public void dispatch(ProfileEvent inEvent)
   {
     profile(inEvent.getName(), inEvent.isApp());
+  }
+
+  @Override
+  public void dispatch(ValuesEvent inEvent)
+  {
+    addValuesToComponents(inEvent.getTKG(), inEvent.getValues().getValues());
   }
 }

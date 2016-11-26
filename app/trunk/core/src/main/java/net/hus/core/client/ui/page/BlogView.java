@@ -37,8 +37,8 @@ public class BlogView extends AbstractRowView implements BlogDisplay
   public Row[] getRow()
   {
     return new Row[]
-    {
-        mRow
-    };
+        {
+            mRow
+        };
   }
 }
