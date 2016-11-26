@@ -141,7 +141,6 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     LOOKUP(SM),
     COMPONENT(SM),
     COMMAND(SM),
-    APP_PROFILE(XL),
     PROFILE(XL),
     COMPONENTS(XL);
 

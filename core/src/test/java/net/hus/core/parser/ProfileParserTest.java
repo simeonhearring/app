@@ -6,6 +6,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.model.Profile.Type;
 import net.hus.core.util.ResourceUtil;
 
 public class ProfileParserTest
@@ -19,10 +20,26 @@ public class ProfileParserTest
   }
 
   @Test
-  public void test3()
+  public void testAppProfile()
+  {
+    Profile model = new Profile();
+    model.setPage(new Page(null, "Components1"));
+    model.setUserName("login");
+    model.setFvk("abcd");
+    model.setType(Type.APP);
+
+    String xml = ResourceUtil.contents("Profile0.xml");
+    xml = xml.replaceAll("\t", "  ");
+
+    Assert.assertEquals(xml, mParser.toXml(model));
+  }
+
+  @Test
+  public void testProfile()
   {
     Profile model = new Profile();
     model.setId(3L);
+    model.setType(Type.USER);
     model.setFirst("Simeon");
     model.setLast("Hearring");
     model.setMiddle("L");

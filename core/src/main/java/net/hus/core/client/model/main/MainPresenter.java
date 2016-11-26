@@ -15,6 +15,7 @@ import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.ComponentsQuery;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Page.Section;
+import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Value;
 
@@ -32,12 +33,12 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    profile("login", true);
+    profile(Profile.Name.login.name());
   }
 
-  private void profile(String inName, boolean inApp)
+  private void profile(String inName)
   {
-    Global.fire(new ProfileCommand(inName, inApp), new RpcCallback<ProfileCommand>()
+    Global.fire(new ProfileCommand(inName), new RpcCallback<ProfileCommand>()
     {
       @Override
       public void onRpcSuccess(ProfileCommand inCommand)
@@ -102,7 +103,7 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
   @Override
   public void dispatch(ProfileEvent inEvent)
   {
-    profile(inEvent.getName(), inEvent.isApp());
+    profile(inEvent.getName());
   }
 
   @Override

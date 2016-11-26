@@ -6,6 +6,7 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
 {
   private static final long serialVersionUID = -2062686028848352428L;
 
+  private Type mType;
   private Page mPage;
 
   private String mUserName;
@@ -13,6 +14,8 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
   private String mMiddle;
   private String mLast;
   private String mPassword;
+
+  private String mFvk;
 
   public Page getPage()
   {
@@ -77,7 +80,7 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
   @Override
   public String fvk()
   {
-    return getId() + "";
+    return mFvk != null ? mFvk : getId() + "";
   }
 
   @Override
@@ -108,5 +111,36 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
   public String displayXL()
   {
     return getName();
+  }
+
+  public String getFvk()
+  {
+    return mFvk;
+  }
+
+  public void setFvk(String inFvk)
+  {
+    mFvk = inFvk;
+  }
+
+  public Type getType()
+  {
+    return mType;
+  }
+
+  public void setType(Type inType)
+  {
+    mType = inType;
+  }
+
+  public enum Type
+  {
+    APP,
+    USER;
+  }
+
+  public enum Name
+  {
+    login
   }
 }

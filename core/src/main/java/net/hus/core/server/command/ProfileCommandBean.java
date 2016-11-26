@@ -1,7 +1,6 @@
 package net.hus.core.server.command;
 
 import net.hus.core.shared.command.ProfileCommand;
-import net.hus.core.shared.model.AppProfile;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.rpc.common.RpcResponse;
 import net.hus.core.shared.util.RandomUtil;
@@ -11,18 +10,21 @@ public class ProfileCommandBean extends AbstractCommandBean<ProfileCommand>
   @Override
   public RpcResponse execute(ProfileCommand inCommand)
   {
-    if (inCommand.isApp())
+    Profile profile = null;
+
+    if (inCommand.isLogin())
     {
-      AppProfile profile_app = mCoreDao.profile_app(inCommand.getUserName());
-      profile_app.setFvk(inCommand.getIpAddress() + "." + RandomUtil.random(5));
-      inCommand.setData(profile_app);
+      profile = mCoreDao.profile_app(inCommand.getUserName());
+      profile.setFvk(inCommand.getIpAddress() + "." + RandomUtil.random(5));
     }
     else
     {
-      Profile profile = mCoreDao.profile(inCommand.getUserName());
+      profile = mCoreDao.profile(inCommand.getUserName());
       profile.setPassword(null);
-      inCommand.setData(profile);
     }
+
+    inCommand.setData(profile);
+
     return inCommand;
   }
 }
