@@ -42,7 +42,7 @@ public interface ComponentDisplay extends Display
 
   void addComponent(IsWidget inDisplay);
 
-  IsWidget getDisplay(UIObject_ inUIObject, Fields inFields, boolean inChild, Page.Name inPage);
+  IsWidget getDisplay(UIObject_ inUIObject, Fields inFields, boolean inChild, Page.Layout inPage);
 
   void reset();
 }

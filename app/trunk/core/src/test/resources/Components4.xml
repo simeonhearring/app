@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<FieldTKG fvt="ADMIN" fgg="k^Gc5yb" page.name="HOME" />
+	<FieldTKG fvt="ADMIN" fgg="k^Gc5yb" page.layout="HOME" />
 </Components>

@@ -35,6 +35,6 @@ public class FieldTKG_Parser extends XStream implements Parser<FieldTKG>
     inXs.aliasAttribute(FieldTKG.class, "mFvt", "fvt");
     inXs.aliasAttribute(FieldTKG.class, "mFvk", "fvk");
     inXs.aliasAttribute(FieldTKG.class, "mFgg", "fgg");
-    inXs.aliasAttribute(FieldTKG.class, "mPage", "page.name");
+    inXs.aliasAttribute(FieldTKG.class, "mLayout", "page.layout");
   }
 }

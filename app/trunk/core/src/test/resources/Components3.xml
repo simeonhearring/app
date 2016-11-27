@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<FieldTKG fvt="ADMIN" fgg="k^Gc5yb" page.name="ADMIN" />
+	<FieldTKG fvt="ADMIN" fgg="k^Gc5yb" page.layout="ADMIN" />
 	<Heading SECTION="ADMINC01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Administration</Title>
 		<Text>Administration</Text>

@@ -26,7 +26,7 @@ public class FieldTKG implements Serializable
 
   private String mFgg;
 
-  private Page.Name mPage;
+  private Page.Layout mLayout;
 
   FieldTKG()
   {
@@ -69,13 +69,13 @@ public class FieldTKG implements Serializable
     mFgg = inFgg;
   }
 
-  public Page.Name getPage()
+  public Page.Layout getLayout()
   {
-    return mPage;
+    return mLayout;
   }
 
-  public void setPage(Page.Name inPage)
+  public void setLayout(Page.Layout inLayout)
   {
-    mPage = inPage;
+    mLayout = inLayout;
   }
 }

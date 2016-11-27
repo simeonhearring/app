@@ -19,7 +19,7 @@ import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.Input_;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Fields;
-import net.hus.core.shared.model.Page.Name;
+import net.hus.core.shared.model.Page.Layout;
 import net.hus.core.shared.model.UIObject_;
 
 public class InputView extends AbstractView implements UIObjectDisplay
@@ -56,7 +56,7 @@ public class InputView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(InputType.values(), mType);
   }
 
-  public InputView(UIObject_ inUiObject, Fields inFields, boolean inChild, Name inPage)
+  public InputView(UIObject_ inUiObject, Fields inFields, boolean inChild, Layout inPage)
   {
     this();
     mUIObject.setUpSection(inChild, inPage);

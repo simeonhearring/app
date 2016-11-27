@@ -8,7 +8,7 @@ public class Page implements Serializable
 {
   private static final long serialVersionUID = -1612041487406778530L;
 
-  public enum Name
+  public enum Layout
   {
     BLOG,
     WEB,
@@ -18,27 +18,27 @@ public class Page implements Serializable
     LOGIN;
   }
 
-  private Name mName;
+  private Layout mLayout;
   private String mComponentsName;
 
   Page()
   {
   }
 
-  public Page(Name inName, String inComponentName)
+  public Page(Layout inLayout, String inComponentName)
   {
-    mName = inName;
+    mLayout = inLayout;
     mComponentsName = inComponentName;
   }
 
-  public Name getName()
+  public Layout getLayout()
   {
-    return mName;
+    return mLayout;
   }
 
-  public void setName(Name inName)
+  public void setLayout(Layout inLayout)
   {
-    mName = inName;
+    mLayout = inLayout;
   }
 
   public String getComponentsName()
@@ -58,45 +58,45 @@ public class Page implements Serializable
     public enum Name
     {
       // TODO remove as enum. make lookup.
-      MARR1L01(Page.Name.MARKET),
-      MARR1C01(Page.Name.MARKET),
-      MARR201(Page.Name.MARKET),
-      MARR202(Page.Name.MARKET),
-      MARR203(Page.Name.MARKET),
-      MARR204(Page.Name.MARKET),
-      MARR301(Page.Name.MARKET),
-      MARR302(Page.Name.MARKET),
-      MARR303(Page.Name.MARKET),
-      MARR304(Page.Name.MARKET),
-      MARR305(Page.Name.MARKET),
-      MARR306(Page.Name.MARKET),
+      MARR1L01(Page.Layout.MARKET),
+      MARR1C01(Page.Layout.MARKET),
+      MARR201(Page.Layout.MARKET),
+      MARR202(Page.Layout.MARKET),
+      MARR203(Page.Layout.MARKET),
+      MARR204(Page.Layout.MARKET),
+      MARR301(Page.Layout.MARKET),
+      MARR302(Page.Layout.MARKET),
+      MARR303(Page.Layout.MARKET),
+      MARR304(Page.Layout.MARKET),
+      MARR305(Page.Layout.MARKET),
+      MARR306(Page.Layout.MARKET),
 
-      BLOGL01(Page.Name.BLOG),
-      BLOGC01(Page.Name.BLOG),
+      BLOGL01(Page.Layout.BLOG),
+      BLOGC01(Page.Layout.BLOG),
 
-      WEBL01(Page.Name.WEB),
-      WEBC01(Page.Name.WEB),
-      WEBR01(Page.Name.WEB),
+      WEBL01(Page.Layout.WEB),
+      WEBC01(Page.Layout.WEB),
+      WEBR01(Page.Layout.WEB),
 
-      LOGINL01(Page.Name.LOGIN),
-      LOGINC01(Page.Name.LOGIN),
-      LOGINR01(Page.Name.LOGIN),
+      LOGINL01(Page.Layout.LOGIN),
+      LOGINC01(Page.Layout.LOGIN),
+      LOGINR01(Page.Layout.LOGIN),
 
-      ADMINC01(Page.Name.ADMIN);
+      ADMINC01(Page.Layout.ADMIN);
 
-      Page.Name mPage;
+      Page.Layout mLayout;
 
-      private Name(Page.Name inPage)
+      private Name(Page.Layout inLayout)
       {
-        mPage = inPage;
+        mLayout = inLayout;
       }
 
-      public static Page.Section.Name[] values(Page.Name inPage)
+      public static Page.Section.Name[] values(Page.Layout inLayout)
       {
         List<Name> list = new ArrayList<>();
         for (Name value : values())
         {
-          if (inPage.equals(value.mPage))
+          if (inLayout.equals(value.mLayout))
           {
             list.add(value);
           }

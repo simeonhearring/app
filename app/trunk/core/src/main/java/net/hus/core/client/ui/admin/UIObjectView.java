@@ -105,7 +105,7 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
     }
   }
 
-  public void setUpSection(boolean inChild, Page.Name inPage)
+  public void setUpSection(boolean inChild, Page.Layout inPage)
   {
     addEnumToListBox(Section.Name.values(inPage), mSection, true);
     mSection.setEnabled(!inChild);
