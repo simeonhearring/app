@@ -205,6 +205,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     component("Components3", "Admin page", "Components3.xml");
   }
 
+  @Test
+  public void setupComponents4()
+  {
+    component("Components4", "Home page", "Components4.xml");
+  }
+
   private void component(String inName, String inDisplay, String inResource)
   {
     String xl = ResourceUtil.contents(inResource);
@@ -220,15 +226,45 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupProfile0()
+  public void setupProfile_login()
   {
-    String xl = ResourceUtil.contents("Profile0.xml");
+    String xl = ResourceUtil.contents("Profile_login.xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
     l1.setName("login");
 
     l1.setDisplay("Login Profile");
+    l1.setXL(xl);
+
+    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+  }
+
+  @Test
+  public void setupProfile_admin()
+  {
+    String xl = ResourceUtil.contents("Profile_admin.xml");
+
+    Lookup l1 = new Lookup();
+    l1.setGroup(Group.PROFILE);
+    l1.setName("admin");
+
+    l1.setDisplay("Admin Profile");
+    l1.setXL(xl);
+
+    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+  }
+
+  @Test
+  public void setupProfile_home()
+  {
+    String xl = ResourceUtil.contents("Profile_home.xml");
+
+    Lookup l1 = new Lookup();
+    l1.setGroup(Group.PROFILE);
+    l1.setName("home");
+
+    l1.setDisplay("Home Profile");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getName());

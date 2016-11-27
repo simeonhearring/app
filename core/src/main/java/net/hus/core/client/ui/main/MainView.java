@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Widget;
 import net.hus.core.client.common.Display;
 import net.hus.core.client.common.UiCreate;
 import net.hus.core.client.model.admin.AdminDisplay;
+import net.hus.core.client.model.home.HomeDisplay;
 import net.hus.core.client.model.main.MainDisplay;
 import net.hus.core.client.model.page.BlogDisplay;
 import net.hus.core.client.model.page.LoginDisplay;
@@ -19,6 +20,7 @@ import net.hus.core.client.model.page.WebDisplay;
 import net.hus.core.client.ui.admin.AdminView;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.client.ui.common.GwtUiCreate;
+import net.hus.core.client.ui.home.HomeView;
 import net.hus.core.client.ui.page.BlogView;
 import net.hus.core.client.ui.page.LoginView;
 import net.hus.core.client.ui.page.MarketingView;
@@ -31,6 +33,9 @@ public class MainView extends AbstractView implements MainDisplay
   interface Binder extends UiBinder<Widget, MainView>
   {
   }
+
+  @UiField
+  NavbarView mNav;
 
   @UiField
   FlowPanel mMain;
@@ -92,5 +97,11 @@ public class MainView extends AbstractView implements MainDisplay
   public AdminDisplay getAdmin()
   {
     return new AdminView();
+  }
+
+  @Override
+  public HomeDisplay geHome()
+  {
+    return new HomeView();
   }
 }

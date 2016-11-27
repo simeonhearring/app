@@ -26,6 +26,9 @@ public class PageLocater
       case MARKET:
         ret = inDisplay.getMarketing();
         break;
+      case HOME:
+        ret = inDisplay.geHome();
+        break;
       case ADMIN:
         ret = new AdminPresenter(inDisplay.getAdmin()).getDisplay();
         break;

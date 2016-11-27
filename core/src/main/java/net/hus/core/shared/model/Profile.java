@@ -2,7 +2,7 @@ package net.hus.core.shared.model;
 
 import net.hus.core.shared.model.Lookup.Group;
 
-public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
+public class Profile extends AbstractModel implements PageQuery, LookupXL
 {
   private static final long serialVersionUID = -2062686028848352428L;
 
@@ -91,8 +91,17 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
 
   public String getName()
   {
-    // TODO should this format be in configurable?
-    return mLast + ", " + mFirst + " " + mMiddle;
+    String ret = null;
+    if (Type.APP.equals(mType))
+    {
+      ret = mUserName;
+    }
+    else
+    {
+      // TODO should this format be in configurable?
+      ret = mLast + ", " + mFirst + " " + mMiddle;
+    }
+    return ret;
   }
 
   @Override
@@ -141,6 +150,9 @@ public class Profile extends AbstractModel implements ComponentsQuery, LookupXL
 
   public enum UserName
   {
-    login
+    home,
+    login,
+    register,
+    admin
   }
 }

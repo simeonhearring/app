@@ -47,10 +47,6 @@ public class UiManager extends UiConverter
     return ret;
   }
 
-  public void manage(FieldTKG inFieldTKG, List<Value> inValues)
-  {
-  }
-
   /*
    * updates buttons.
    */

@@ -6,9 +6,10 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IndexedPanel;
@@ -16,11 +17,24 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.ui.event.Event;
 import net.hus.core.shared.model.EnumDisplay;
 import net.hus.core.shared.util.EnumUtil;
 
 public abstract class AbstractView extends Composite
 {
+  public void fireDeferred(final Event<?> inEvent)
+  {
+    Scheduler.get().scheduleDeferred(new ScheduledCommand()
+    {
+      @Override
+      public void execute()
+      {
+        Global.fire(inEvent);
+      }
+    });
+  }
+
   public static String format(String inPattern, Date inDate)
   {
     if (inDate == null)
@@ -145,8 +159,8 @@ public abstract class AbstractView extends Composite
 
   public static void addHandler(int inEvent, final Element inElement, EventListener inListner)
   {
-    Event.sinkEvents(inElement, inEvent);
-    Event.setEventListener(inElement, inListner);
+    com.google.gwt.user.client.Event.sinkEvents(inElement, inEvent);
+    com.google.gwt.user.client.Event.setEventListener(inElement, inListner);
     inElement.setAttribute("contenteditable", "true");
   }
 
