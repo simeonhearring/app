@@ -16,7 +16,6 @@
 				<b:NavbarNav pull="RIGHT">
 					<b:AnchorListItem ui:field="mHome" text="Home" visible="true" />
 					<b:AnchorListItem ui:field="mAbout" text="About" visible="true" />
-					<b:AnchorListItem ui:field="mProfile" text="Profile" visible="false" />
 					<b:AnchorListItem ui:field="mLogout" text="Logout" visible="false" />
 					<b:AnchorListItem ui:field="mLogin" text="Login" visible="true" />
 					<b:AnchorListItem ui:field="mRegister" text="Register" visible="true" />

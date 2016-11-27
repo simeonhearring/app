@@ -9,7 +9,7 @@
 
 	<b.gwt:FlowPanel>
 
-		<m:NavbarView />
+		<m:NavbarView ui:field="mNav" />
 
 		<b.gwt:FlowPanel ui:field="mMain" styleName="{style.pad}" />
 

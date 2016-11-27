@@ -6,20 +6,21 @@ import java.util.Map.Entry;
 import net.hus.core.client.common.PageDisplay;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
+import net.hus.core.client.ui.event.PageEvent;
 import net.hus.core.client.ui.event.ProfileEvent;
 import net.hus.core.client.ui.event.ValuesEvent;
 import net.hus.core.client.ui.manage.UiManager;
 import net.hus.core.shared.command.ComponentsCommand;
 import net.hus.core.shared.command.ProfileCommand;
 import net.hus.core.shared.model.Components;
-import net.hus.core.shared.model.ComponentsQuery;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Page.Section;
+import net.hus.core.shared.model.PageQuery;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Value;
 
-public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
+public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler, PageEvent.Handler
 {
   private MainDisplay mDisplay;
 
@@ -28,12 +29,13 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
   public MainPresenter(MainDisplay inDisplay)
   {
     Global.addHandler(ProfileEvent.TYPE, this);
+    Global.addHandler(PageEvent.TYPE, this);
     Global.addHandler(ValuesEvent.TYPE, this);
 
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    profile(Profile.UserName.login.name());
+    mDisplay.fireDeferred(new ProfileEvent(Profile.UserName.home));
   }
 
   private void profile(String inName)
@@ -43,12 +45,12 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
       @Override
       public void onRpcSuccess(ProfileCommand inCommand)
       {
-        components(inCommand.getData());
+        Global.fire(new PageEvent(inCommand.getData()));
       }
     });
   }
 
-  private void components(ComponentsQuery inQuery)
+  private void components(PageQuery inQuery)
   {
     Global.fire(new ComponentsCommand(inQuery), new RpcCallback<ComponentsCommand>()
     {
@@ -86,8 +88,6 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
         inPage.add(section, mManager.match(uivalue));
       }
     }
-
-    mManager.manage(inComponents.getFieldTKG(), inComponents.getValues());
   }
 
   private void addValuesToComponents(FieldTKG inFieldTKG, List<Value> inValues)
@@ -110,5 +110,11 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler
   public void dispatch(ValuesEvent inEvent)
   {
     addValuesToComponents(inEvent.getTKG(), inEvent.getValues().getValues());
+  }
+
+  @Override
+  public void dispatch(PageEvent inEvent)
+  {
+    components(inEvent.getPageQuery());
   }
 }

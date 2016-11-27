@@ -1,7 +1,7 @@
 package net.hus.core.shared.command;
 
 import net.hus.core.shared.model.Components;
-import net.hus.core.shared.model.ComponentsQuery;
+import net.hus.core.shared.model.PageQuery;
 import net.hus.core.shared.rpc.CommandName;
 
 @CommandName("ComponentsCommand")
@@ -16,7 +16,7 @@ public class ComponentsCommand extends AbstractDataCommand<Components>
   {
   }
 
-  public ComponentsCommand(ComponentsQuery inQuery)
+  public ComponentsCommand(PageQuery inQuery)
   {
     mComponentsName = inQuery.componentsName();
     mFvk = inQuery.fvk();

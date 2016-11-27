@@ -1,6 +1,6 @@
 package net.hus.core.shared.model;
 
-public interface ComponentsQuery
+public interface PageQuery
 {
   String componentsName();
 

@@ -13,6 +13,7 @@ public class Page implements Serializable
     BLOG,
     WEB,
     MARKET,
+    HOME,
     ADMIN,
     LOGIN;
   }

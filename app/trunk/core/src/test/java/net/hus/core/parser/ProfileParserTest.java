@@ -28,7 +28,7 @@ public class ProfileParserTest
     model.setFvk("abcd");
     model.setType(Type.APP);
 
-    String xml = ResourceUtil.contents("Profile0.xml");
+    String xml = ResourceUtil.contents("Profile_login.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));

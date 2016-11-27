@@ -2,6 +2,8 @@ package net.hus.core.client.common;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
+import net.hus.core.client.ui.event.Event;
+
 /**
  * Parent for all pages.
  *
@@ -15,4 +17,6 @@ public interface Display extends IsWidget
   void warn(String inMessage);
 
   void danger(String inMessage);
+
+  void fireDeferred(Event<?> inEvent);
 }
