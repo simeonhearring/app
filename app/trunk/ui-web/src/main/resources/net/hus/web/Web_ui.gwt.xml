@@ -2,20 +2,7 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0-rc3//EN"
   'http://gwtproject.org/doctype/2.7.0/gwt-module.dtd'>
 <module rename-to='web_ui'>
-
-	<inherits name='com.google.gwt.user.User' />
-
-	<inherits name='org.gwtbootstrap3.GwtBootstrap3' />
-
-	<inherits name='org.gwtbootstrap3.extras.notify.Notify' />
-
-	<inherits name='com.googlecode.gwt.crypto.Crypto' />
-
-	<inherits name="com.google.gwt.json.JSON" />
-
 	<inherits name='net.hus.core.Core' />
-
-	<stylesheet src='css/bootstrap-3.3.6.min.cache.css' />
 
 	<entry-point class='net.hus.web.client.MyEntryPoint' />
 
