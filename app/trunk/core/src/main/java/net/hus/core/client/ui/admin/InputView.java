@@ -74,7 +74,7 @@ public class InputView extends AbstractView implements UIObjectDisplay
   public void set(Input_ inUiObject)
   {
     mUiObject = inUiObject;
-    mName.setText(mUiObject.getClass().getSimpleName());
+    mName.setText(mUiObject.getSimpleName());
     mMin.setText(mUiObject.getMin());
     mMax.setText(mUiObject.getMax());
     setSelectedIndex(mType, mUiObject.getType());

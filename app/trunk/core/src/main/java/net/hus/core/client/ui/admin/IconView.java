@@ -83,7 +83,7 @@ public class IconView extends AbstractView implements UIObjectDisplay
   public void set(Icon_ inUiObject)
   {
     mUiObject = inUiObject;
-    mName.setText(mUiObject.getClass().getSimpleName());
+    mName.setText(mUiObject.getSimpleName());
 
     setSelectedIndex(mType, mUiObject.getType());
     setSelectedIndex(mSize, mUiObject.getSize());

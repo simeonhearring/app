@@ -253,6 +253,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
     {
       Heading heading = new Heading(mHeadSize, value);
       heading.getElement().getStyle().setTextDecoration(TextDecoration.UNDERLINE);
+      // heading.getElement().getStyle().setPaddingLeft(5, Unit.PX);
       mComponent.setWidget(0, col++, heading);
     }
   }

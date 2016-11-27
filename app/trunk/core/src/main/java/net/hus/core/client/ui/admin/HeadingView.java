@@ -73,7 +73,7 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
   public void set(Heading_ inUiObject)
   {
     mUiObject = inUiObject;
-    mName.setText(mUiObject.getClass().getSimpleName());
+    mName.setText(mUiObject.getSimpleName());
 
     setSelectedIndex(mSize, mUiObject.getSize());
     setSelectedIndex(mEmphasis, mUiObject.getEmphasis());

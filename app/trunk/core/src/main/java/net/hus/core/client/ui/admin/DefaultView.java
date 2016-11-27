@@ -30,7 +30,7 @@ public class DefaultView extends AbstractView implements UIObjectDisplay
   public DefaultView(UIObject_ inUiObject)
   {
     initWidget(BINDER.createAndBindUi(this));
-    mName.setText(inUiObject.getClass().getSimpleName());
+    mName.setText(inUiObject.getSimpleName());
   }
 
   @Override
