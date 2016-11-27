@@ -9,6 +9,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.page.MarketingDisplay;
+import net.hus.core.client.model.select.SelectFVKDisplay;
+import net.hus.core.client.ui.select.SelectFVKView;
 
 public class MarketingView extends AbstractRowView implements MarketingDisplay
 {
@@ -17,6 +19,9 @@ public class MarketingView extends AbstractRowView implements MarketingDisplay
   interface Binder extends UiBinder<Widget, MarketingView>
   {
   }
+
+  @UiField
+  SelectFVKView mSelect;
 
   @UiField
   Row mRow1;
@@ -29,7 +34,7 @@ public class MarketingView extends AbstractRowView implements MarketingDisplay
 
   @UiField
   Column mMarR1L01, mMarR1C01, mMarR201, mMarR202, mMarR203, mMarR204, mMarR301, mMarR302, mMarR303,
-      mMarR304, mMarR305, mMarR306;
+  mMarR304, mMarR305, mMarR306;
 
   public MarketingView()
   {
@@ -53,10 +58,16 @@ public class MarketingView extends AbstractRowView implements MarketingDisplay
   public Row[] getRow()
   {
     return new Row[]
-    {
-        mRow1,
-        mRow2,
-        mRow3
-    };
+        {
+            mRow1,
+            mRow2,
+            mRow3
+        };
+  }
+
+  @Override
+  public SelectFVKDisplay getSelect()
+  {
+    return mSelect;
   }
 }

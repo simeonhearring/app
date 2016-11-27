@@ -1,5 +1,6 @@
 package net.hus.core.client.model.select;
 
+import net.hus.core.client.model.page.FVKDisplay;
 import net.hus.core.client.model.select.SelectFVKDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
@@ -11,12 +12,14 @@ import net.hus.core.shared.model.FieldTKG;
 public class SelectFVKPresenter extends RpcCallback<LookupCommand> implements Action
 {
   private FieldTKG mTKG;
+  private FVKDisplay mFVKDisplay;
   private SelectFVKDisplay mDisplay;
 
-  public SelectFVKPresenter(FieldTKG inTKG, SelectFVKDisplay inDisplay)
+  public SelectFVKPresenter(FieldTKG inTKG, FVKDisplay inDisplay)
   {
     mTKG = inTKG;
-    mDisplay = inDisplay;
+    mFVKDisplay = inDisplay;
+    mDisplay = mFVKDisplay.getSelect();
     mDisplay.setAction(this);
 
     setLookupGroup(mTKG.getFvt());
@@ -46,5 +49,10 @@ public class SelectFVKPresenter extends RpcCallback<LookupCommand> implements Ac
         Global.fire(new ValuesEvent(mTKG, inCommand.getValues()));
       }
     });
+  }
+
+  public FVKDisplay getDisplay()
+  {
+    return mFVKDisplay;
   }
 }
