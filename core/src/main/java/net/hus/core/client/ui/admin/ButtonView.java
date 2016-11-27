@@ -83,7 +83,7 @@ public class ButtonView extends AbstractView implements UIObjectDisplay
   {
     mUiObject = inUiObject;
 
-    mName.setText(mUiObject.getClass().getSimpleName());
+    mName.setText(mUiObject.getSimpleName());
     setSelectedIndex(mType, mUiObject.getButtonType());
     setSelectedIndex(mSize, mUiObject.getButtonSize());
     setSelectedIndex(mDataToggle, mUiObject.getDataToggle());

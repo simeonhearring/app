@@ -70,7 +70,7 @@ public class FormLabelView extends AbstractView implements UIObjectDisplay
   {
     mUiObject = inUiObject;
 
-    mName.setText(mUiObject.getClass().getSimpleName());
+    mName.setText(mUiObject.getSimpleName());
     setSelectedIndex(mShowRequiredIndicator,
         YesNoNull.value(mUiObject.getShowRequiredIndicator()));
 

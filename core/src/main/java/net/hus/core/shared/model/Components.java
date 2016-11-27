@@ -78,7 +78,7 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
     for (UIObject_ value : inList)
     {
-      String simpleName = value.getClass().getSimpleName();
+      String simpleName = value.getSimpleName();
       mJsonMap.put(mJsonCount++, value);
 
       if (notFirst)

@@ -130,4 +130,9 @@ public abstract class UIObject_ implements Serializable
   {
     mSection = inSection;
   }
+
+  public String getSimpleName()
+  {
+    return this.getClass().getSimpleName().replaceAll("_", "");
+  }
 }

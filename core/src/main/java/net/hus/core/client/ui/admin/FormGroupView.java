@@ -64,7 +64,7 @@ public class FormGroupView extends AbstractView implements UIObjectDisplay
   {
     mUiObject = inUiObject;
 
-    mName.setText(mUiObject.getClass().getSimpleName());
+    mName.setText(mUiObject.getSimpleName());
     setSelectedIndex(mSize, mUiObject.getSize());
 
     mUIObject.set(mUiObject);
