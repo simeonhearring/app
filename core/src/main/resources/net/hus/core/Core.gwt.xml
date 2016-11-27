@@ -15,12 +15,17 @@
 
 	<inherits name='org.gwtbootstrap3.extras.positionedtabs.PositionedTabs' />
 
+	<inherits name='org.gwtbootstrap3.extras.notify.Notify' />
+
+	<inherits name='com.googlecode.gwt.crypto.Crypto' />
+
+	<inherits name="com.google.gwt.json.JSON" />
+
 	<stylesheet src='css/bootstrap-treeview.min.css' />
+	<stylesheet src='css/bootstrap-3.3.6.min.cache.css' />
 
 	<stylesheet src='css/core.css' />
 	<stylesheet src='css/bandtheme.css' />
-
-	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 
 	<source path='client' />
 	<source path='shared' />
