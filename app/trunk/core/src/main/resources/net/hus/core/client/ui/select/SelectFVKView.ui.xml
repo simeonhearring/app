@@ -4,5 +4,11 @@
 	<ui:style>
 	
 	</ui:style>
-	<b.select:Select ui:field="mSelect" liveSearch="true" visible="true" />
+	<b:Row>
+		<b:Column size="SM_1" />
+		<b:Column size="SM_10">
+			<b.select:Select ui:field="mSelect" liveSearch="true" visible="true" />
+		</b:Column>
+		<b:Column size="SM_1" />
+	</b:Row>
 </ui:UiBinder>

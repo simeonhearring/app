@@ -6,13 +6,7 @@
 	</ui:style>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row>
-			<b:Column size="SM_1" />
-			<b:Column size="SM_10">
-				<s:SelectFVKView ui:field="mSelect" />
-			</b:Column>
-			<b:Column size="SM_1" />
-		</b:Row>
+		<s:SelectFVKView ui:field="mSelect" />
 		<b:Row ui:field="mRow">
 			<b:Column ui:field="mL01" size="SM_1" />
 			<b:Column ui:field="mC01" size="SM_10" />

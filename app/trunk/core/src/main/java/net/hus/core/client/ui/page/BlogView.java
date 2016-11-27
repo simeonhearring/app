@@ -9,6 +9,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.page.BlogDisplay;
+import net.hus.core.client.model.select.SelectFVKDisplay;
+import net.hus.core.client.ui.select.SelectFVKView;
 import net.hus.core.shared.model.Page.Section;
 
 public class BlogView extends AbstractRowView implements BlogDisplay
@@ -18,6 +20,9 @@ public class BlogView extends AbstractRowView implements BlogDisplay
   interface Binder extends UiBinder<Widget, BlogView>
   {
   }
+
+  @UiField
+  SelectFVKView mSelect;
 
   @UiField
   Row mRow;
@@ -40,5 +45,11 @@ public class BlogView extends AbstractRowView implements BlogDisplay
         {
             mRow
         };
+  }
+
+  @Override
+  public SelectFVKDisplay getSelect()
+  {
+    return mSelect;
   }
 }
