@@ -19,24 +19,38 @@
 				<Collection>
 					<FieldSet enabled="true">
 						<Collection>
-							<FormGroup>
-								<Collection>
-									<FormLabel KEY="FL00_1" isHtml="false" />
-									<Input KEY="FV00_1" type="TEXT" />
-								</Collection>
-							</FormGroup>
-							<FormGroup>
-								<Collection>
-									<FormLabel KEY="FL00_2" isHtml="false" />
-									<Input KEY="FV00_2" type="TEXT" />
-								</Collection>
-							</FormGroup>
-							<FormGroup>
-								<Collection>
-									<FormLabel KEY="FL00_3" isHtml="false" />
-									<TextBox KEY="FV00_3" />
-								</Collection>
-							</FormGroup>
+							<Row>
+								<Column size="SM_4">
+									<Collection>
+										<FormGroup>
+											<Collection>
+												<FormLabel KEY="FL00_1" isHtml="false" />
+												<Input KEY="FV00_1" type="TEXT" />
+											</Collection>
+										</FormGroup>
+									</Collection>
+								</Column>
+								<Column size="SM_4">
+									<Collection>
+										<FormGroup>
+											<Collection>
+												<FormLabel KEY="FL00_2" isHtml="false" />
+												<Input KEY="FV00_2" type="TEXT" />
+											</Collection>
+										</FormGroup>
+									</Collection>
+								</Column>
+								<Column size="SM_4">
+									<Collection>
+										<FormGroup>
+											<Collection>
+												<FormLabel KEY="FL00_3" isHtml="false" />
+												<TextBox KEY="FV00_3" />
+											</Collection>
+										</FormGroup>
+									</Collection>
+								</Column>
+							</Row>
 							<FormGroup>
 								<Collection>
 									<FormLabel KEY="FL00_4" isHtml="false" />
@@ -48,6 +62,14 @@
 									<FormLabel KEY="FL00_16" isHtml="false" />
 									<Typeahead KEY="FV00_16">
 										<Lookup loc="RPC" params="BLANK,PROFILE" />
+									</Typeahead>
+								</Collection>
+							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_22" isHtml="false" />
+									<Typeahead KEY="FV00_22">
+										<Lookup loc="TABLE" params="BLANK,COMPONENTS" />
 									</Typeahead>
 								</Collection>
 							</FormGroup>

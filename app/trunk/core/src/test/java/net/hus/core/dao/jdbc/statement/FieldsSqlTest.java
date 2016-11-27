@@ -6,6 +6,7 @@ import static net.hus.core.shared.model.Field.Fid.FIRST_NAME;
 import static net.hus.core.shared.model.Field.Fid.GENDER;
 import static net.hus.core.shared.model.Field.Fid.LAST_NAME;
 import static net.hus.core.shared.model.Field.Fid.MIDDLE_NAME;
+import static net.hus.core.shared.model.Field.Fid.PAGE;
 import static net.hus.core.shared.model.Field.Fid.PASSWORD;
 import static net.hus.core.shared.model.Field.Fid.PROFILE;
 import static net.hus.core.shared.model.Field.Fid.USERNAME;
@@ -44,6 +45,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     List<Field> list = new ArrayList<>();
     list.add(newField(USERNAME.type(), USERNAME.name(), "User Name", "UserNme"));
     list.add(newField(PASSWORD.type(), PASSWORD.name(), "Password", "Pswd"));
+    list.add(newField(PAGE.type(), PAGE.name(), "Page", "Page", page()));
     list.add(newField(FIRST_NAME.type(), FIRST_NAME.name(), "First name", "First", true));
     list.add(newField(LAST_NAME.type(), LAST_NAME.name(), "Last name", "Last", true));
     list.add(newField(MIDDLE_NAME.type(), MIDDLE_NAME.name(), "Middle name", "Middle", true));
@@ -81,6 +83,7 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     fields.add(new Field(16L));
     fields.add(new Field(17L));
     fields.add(new Field(18L));
+    fields.add(new Field(22L));
 
     mSql.upsert(fields);
 
@@ -127,6 +130,11 @@ public class FieldsSqlTest extends MySqlCoreDsTest
   private Lookup profile()
   {
     return new Lookup(Location.RPC, "BLANK,PROFILE,");
+  }
+
+  private Lookup page()
+  {
+    return new Lookup(Location.TABLE, "BLANK,COMPONENTS,");
   }
 
   private Lookup field()

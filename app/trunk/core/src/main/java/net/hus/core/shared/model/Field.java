@@ -446,6 +446,7 @@ public class Field extends AbstractModel
 
   public enum Fid
   {
+    PAGE(22L, Type.LOOKUP),
     USERNAME(14L, Type.STRING),
     PASSWORD(15L, Type.STRING),
     FIELD(17L, Type.LOOKUP),
