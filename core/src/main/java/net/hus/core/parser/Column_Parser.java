@@ -26,7 +26,7 @@ public class Column_Parser extends ComplexWidget_Parser<Column_>
   public static void xs(XStream inXs)
   {
     inXs.alias("Column", Column_.class);
-    inXs.aliasAttribute(Column_.class, "mSize", "columnsize");
+    inXs.aliasAttribute(Column_.class, "mSize", "size");
 
     inXs.addImplicitArray(Column_.class, "mOtherSize");
     inXs.addImplicitArray(Column_.class, "mPull");

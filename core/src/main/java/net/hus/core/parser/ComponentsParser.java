@@ -61,6 +61,10 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
   public static void xs(XStream inXs)
   {
+    Column_Parser.xs(inXs);
+
+    Row_Parser.xs(inXs);
+
     Panel_Parser.xs(inXs);
 
     Typeahead_Parser.xs(inXs);

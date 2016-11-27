@@ -449,6 +449,16 @@ public abstract class UiConverter
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
 
+    List<Column_> columns = inUiO.getColumn();
+
+    if (columns != null)
+    {
+      for (Column_ uiObject_ : columns)
+      {
+        ret.add(match(uiObject_));
+      }
+    }
+
     return ret;
   }
 

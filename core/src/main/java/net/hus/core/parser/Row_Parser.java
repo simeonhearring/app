@@ -2,6 +2,7 @@ package net.hus.core.parser;
 
 import com.thoughtworks.xstream.XStream;
 
+import net.hus.core.shared.components.Column_;
 import net.hus.core.shared.components.Row_;
 
 public class Row_Parser extends ComplexWidget_Parser<Row_>
@@ -21,5 +22,6 @@ public class Row_Parser extends ComplexWidget_Parser<Row_>
   public static void xs(XStream inXs)
   {
     inXs.alias("Row", Row_.class);
+    inXs.addImplicitCollection(Row_.class, "mColumn", null, Column_.class);
   }
 }

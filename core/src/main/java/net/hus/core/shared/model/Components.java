@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.hus.core.shared.components.Column_;
 import net.hus.core.shared.components.ComplexPanel_;
+import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.util.StringUtil;
@@ -70,7 +72,7 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     return mJsonMap.get(inNodeId);
   }
 
-  private void json(List<UIObject_> inList, StringBuilder inSb)
+  private <C extends UIObject_> void json(List<C> inList, StringBuilder inSb)
   {
     inSb.append("[");
 
@@ -89,20 +91,15 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
       inSb.append("{\"text\":").append(" \"" + simpleName + "\"");
 
-      if (value instanceof ComplexPanel_)
+      if (value instanceof Row_)
+      {
+        List<Column_> collection = ((Row_) value).getColumn();
+        collection(inSb, collection);
+      }
+      else if (value instanceof ComplexPanel_)
       {
         List<UIObject_> collection = ((ComplexPanel_) value).getCollection();
-
-        if (collection != null && collection.size() != 0)
-        {
-          inSb.append(",\"tags\": [\"").append(collection.size()).append("\"]");
-          inSb.append(",\"nodes\": ");
-          json(collection, inSb);
-        }
-        else
-        {
-          inSb.append(",\"tags\": [\"0\"]");
-        }
+        collection(inSb, collection);
       }
       else
       {
@@ -112,6 +109,20 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     }
 
     inSb.append("]");
+  }
+
+  private <C extends UIObject_> void collection(StringBuilder inSb, List<C> inCollection)
+  {
+    if (inCollection != null && inCollection.size() != 0)
+    {
+      inSb.append(",\"tags\": [\"").append(inCollection.size()).append("\"]");
+      inSb.append(",\"nodes\": ");
+      json(inCollection, inSb);
+    }
+    else
+    {
+      inSb.append(",\"tags\": [\"0\"]");
+    }
   }
 
   public void setValues(List<Value> inValues)
