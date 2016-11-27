@@ -46,7 +46,7 @@ public class FormGroupView extends AbstractView implements UIObjectDisplay
     addEnumToListBox(FormGroupSize.values(), mSize);
   }
 
-  public FormGroupView(UIObject_ inUiObject, boolean inChild, Page.Name inPage)
+  public FormGroupView(UIObject_ inUiObject, boolean inChild, Page.Layout inPage)
   {
     this();
     mUIObject.setUpSection(inChild, inPage);

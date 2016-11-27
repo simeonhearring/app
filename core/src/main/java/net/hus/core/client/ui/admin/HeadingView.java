@@ -19,7 +19,7 @@ import net.hus.core.client.common.Callback;
 import net.hus.core.client.common.UIObjectDisplay;
 import net.hus.core.client.ui.common.AbstractView;
 import net.hus.core.shared.components.Heading_;
-import net.hus.core.shared.model.Page.Name;
+import net.hus.core.shared.model.Page.Layout;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.util.StringUtil;
 
@@ -63,7 +63,7 @@ public class HeadingView extends AbstractView implements UIObjectDisplay
     mAction1.setCallback(inCallback);
   }
 
-  public HeadingView(UIObject_ inUiObject, boolean inChild, Name inPage)
+  public HeadingView(UIObject_ inUiObject, boolean inChild, Layout inPage)
   {
     this();
     mUIObject.setUpSection(inChild, inPage);

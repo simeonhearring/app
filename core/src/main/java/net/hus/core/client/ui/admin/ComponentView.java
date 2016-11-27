@@ -65,8 +65,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     initWidget(BINDER.createAndBindUi(this));
 
     mTree.getElement().setAttribute("id", "tree");
-    addEnumToListBox(Page.Name.values(), mPageName);
-    addEnumToListBox(Page.Name.values(), mAddPageName);
+    addEnumToListBox(Page.Layout.values(), mPageName);
+    addEnumToListBox(Page.Layout.values(), mAddPageName);
     exportNodeSelected();
     defaultTree();
   }
@@ -139,7 +139,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
 
     setSelectedIndex(mFvt, inPage.getFieldTKG().getFvt());
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
-    setSelectedIndex(mPageName, inPage.getFieldTKG().getPage());
+    setSelectedIndex(mPageName, inPage.getFieldTKG().getLayout());
 
     // should not call first time. maybe have default.
     removeTree();
@@ -258,7 +258,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
 
   @Override
   public IsWidget getDisplay(UIObject_ inUiObject, Fields inFields, boolean inParent,
-      Page.Name inPage)
+      Page.Layout inPage)
   {
     UIObjectDisplay ret = null;
     switch (inUiObject.cType())

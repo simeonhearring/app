@@ -11,7 +11,7 @@ public class PageLocater
   {
     PageDisplay ret = null;
 
-    switch (inTKG.getPage())
+    switch (inTKG.getLayout())
     {
       case HOME:
         ret = inDisplay.geHome();

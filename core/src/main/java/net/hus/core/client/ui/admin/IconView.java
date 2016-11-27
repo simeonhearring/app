@@ -66,7 +66,7 @@ public class IconView extends AbstractView implements UIObjectDisplay
     // TODO complex widget
   }
 
-  public IconView(UIObject_ inUiObject, boolean inChild, Page.Name inPage)
+  public IconView(UIObject_ inUiObject, boolean inChild, Page.Layout inPage)
   {
     this();
     mUIObject.setUpSection(inChild, inPage);

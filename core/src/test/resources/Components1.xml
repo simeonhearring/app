@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<FieldTKG fvt="LOGIN" fgg="LOGIN" page.name="LOGIN" />
+	<FieldTKG fvt="LOGIN" fgg="LOGIN" page.layout="LOGIN" />
 	<Heading SECTION="LOGINC01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Login</Title>
 		<Text>Login</Text>

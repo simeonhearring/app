@@ -32,7 +32,7 @@ public class PageParser extends XStream implements Parser<Page>
   public static void xs(XStream inXs)
   {
     inXs.alias("Page", Page.class);
-    inXs.aliasAttribute(Page.class, "mName", "name");
+    inXs.aliasAttribute(Page.class, "mLayout", "layout");
     inXs.aliasAttribute(Page.class, "mComponentsName", "components.name");
   }
 }

@@ -86,7 +86,7 @@ implements Action, AdminEvent.Handler
 
     tkg.setFvt(inFvt);
     tkg.setFgg(inFgg);
-    tkg.setPage(EnumUtil.valueOf(inPage, Page.Name.values()));
+    tkg.setLayout(EnumUtil.valueOf(inPage, Page.Layout.values()));
 
     Global.fire(new LookupXLSaveCommand(c), new RpcCallback<LookupXLSaveCommand>()
     {
@@ -132,7 +132,7 @@ implements Action, AdminEvent.Handler
     FieldTKG tkg = mPage.getFieldTKG();
     tkg.setFvt(inFvt);
     tkg.setFgg(inFgg);
-    tkg.setPage(EnumUtil.valueOf(inPage, Page.Name.values()));
+    tkg.setLayout(EnumUtil.valueOf(inPage, Page.Layout.values()));
 
     Global.fire(new LookupXLSaveCommand(mPage), new RpcCallback<LookupXLSaveCommand>()
     {
@@ -149,7 +149,7 @@ implements Action, AdminEvent.Handler
   {
     boolean child = inParentId >= 0;
     UIObject_ uiObject = mPage.get(inNodeId);
-    Page.Name page = mPage.getFieldTKG().getPage();
+    Page.Layout page = mPage.getFieldTKG().getLayout();
     mDisplay.addComponent(mDisplay.getDisplay(uiObject, mFields, child, page));
   }
 

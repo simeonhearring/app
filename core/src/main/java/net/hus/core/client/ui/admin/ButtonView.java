@@ -65,7 +65,7 @@ public class ButtonView extends AbstractView implements UIObjectDisplay
     addEnumDToListBox(YesNoNull.values(), mEnabled);
   }
 
-  public ButtonView(UIObject_ inUiObject, Fields inFields, boolean inChild, Page.Name inPage)
+  public ButtonView(UIObject_ inUiObject, Fields inFields, boolean inChild, Page.Layout inPage)
   {
     this();
     mUIObject.setUpSection(inChild, inPage);
