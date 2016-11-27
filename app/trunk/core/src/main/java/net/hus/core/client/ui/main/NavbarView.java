@@ -25,10 +25,12 @@ public class NavbarView extends AbstractView implements NavbarDisplay
   }
 
   @UiField
-  AnchorListItem mHome, mAbout, mLogin, mLogout, mRegister;
+  AnchorListItem mHome, mAbout, mLoginout, mRegister;
 
   @UiField
   NavbarBrand mCompany;
+
+  private boolean mLogin = true;
 
   public NavbarView()
   {
@@ -38,24 +40,33 @@ public class NavbarView extends AbstractView implements NavbarDisplay
   @UiHandler(
       {
         "mHome",
-        "mLogin",
-        "mLogout"
+        "mLoginout"
       })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mHome.getWidget(0).equals(inEvent.getSource()))
     {
-      Global.fire(new ProfileEvent(Profile.UserName.home));
+      mLogin = false;
+      logInOut();
     }
-    else if (mLogout.getWidget(0).equals(inEvent.getSource()))
+    else if (mLoginout.getWidget(0).equals(inEvent.getSource()))
     {
-      notify("Logging out... (bye)");
-      Global.fire(new ProfileEvent(Profile.UserName.home));
+      logInOut();
     }
-    else if (mLogin.getWidget(0).equals(inEvent.getSource()))
+  }
+
+  private void logInOut()
+  {
+    mLoginout.setText(mLogin ? "Logout" : "Login");
+    if (mLogin)
     {
       Global.fire(new ProfileEvent(Profile.UserName.login));
     }
+    else
+    {
+      Global.fire(new ProfileEvent(Profile.UserName.home));
+    }
+    mLogin = !mLogin;
   }
 
   @Override
@@ -63,8 +74,7 @@ public class NavbarView extends AbstractView implements NavbarDisplay
   {
     mHome.setActive(false);
     mAbout.setActive(false);
-    mLogin.setActive(false);
-    mLogout.setActive(false);
+    mLoginout.setActive(false);
     mRegister.setActive(false);
   }
 }
