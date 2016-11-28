@@ -47,10 +47,10 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   Input mAddPage, mDisplay;
 
   @UiField
-  Paragraph mName, mPageNameC, mPageNameF;
+  Paragraph mName, mPageNameC, mPageNameF, mPageNameD;
 
   @UiField
-  ListBox mFvt, mFgg, mPageName;
+  ListBox mFvt, mFgg, mPageName, mComponents;
 
   @UiField
   ListBox mAddFvt, mAddFgg, mAddPageName;
@@ -136,6 +136,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mDisplay.setText(inPage.getDisplay());
     mPageNameC.setText(inPage.getDisplay());
     mPageNameF.setText(inPage.getDisplay());
+    mPageNameD.setText(inPage.getDisplay());
 
     setSelectedIndex(mFvt, inPage.getFieldTKG().getFvt());
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
@@ -156,6 +157,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mDisplay.setText(null);
     mPageNameC.setText(null);
     mPageNameF.setText(null);
+    mPageNameD.setText(null);
 
     setSelectedIndex(mFvt, (String) null);
     setSelectedIndex(mFgg, (String) null);
@@ -216,6 +218,16 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     {
       mFgg.addItem(value.getDisplay(), value.getName());
       mAddFgg.addItem(value.getDisplay(), value.getName());
+    }
+  }
+
+  @Override
+  public void addComponents(List<Lookup> inComponents)
+  {
+    mComponents.clear();
+    for (Lookup value : inComponents)
+    {
+      mComponents.addItem(value.getDisplay(), value.getName());
     }
   }
 

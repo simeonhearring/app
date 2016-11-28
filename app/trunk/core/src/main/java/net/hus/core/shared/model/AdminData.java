@@ -29,6 +29,8 @@ public class AdminData implements Serializable
 
   private List<Lookup> mCommands;
 
+  private List<Lookup> mComponents;
+
   public void setFieldGroups(List<Lookup> inFieldGroups)
   {
     mFieldGroups = inFieldGroups;
@@ -178,5 +180,15 @@ public class AdminData implements Serializable
   public Long getDefaultField()
   {
     return mFields.get(0).getAltId();
+  }
+
+  public List<Lookup> getComponents()
+  {
+    return mComponents;
+  }
+
+  public void setComponents(List<Lookup> inComponents)
+  {
+    mComponents = inComponents;
   }
 }

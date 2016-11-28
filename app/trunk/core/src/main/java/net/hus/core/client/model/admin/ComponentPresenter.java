@@ -52,6 +52,7 @@ implements Action, AdminEvent.Handler
         mDisplay.addTables(inData.getTables());
         mDisplay.addFieldGroups(inData.getFieldGroups());
         mDisplay.addPages(inData.getPages());
+        mDisplay.addComponents(inData.getComponents());
         break;
       }
       case PAGE:
