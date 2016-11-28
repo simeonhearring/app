@@ -7,10 +7,12 @@ import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.FontWeight;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -47,7 +49,10 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   Input mAddPage, mDisplay;
 
   @UiField
-  Paragraph mName, mPageNameC, mPageNameF, mPageNameA;
+  Paragraph mName, mPageNameC, mPageNameF;
+
+  @UiField
+  Span mPageNameA;
 
   @UiField
   ListBox mFvt, mFgg, mPageName, mComponents;
@@ -69,6 +74,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     addEnumToListBox(Page.Layout.values(), mAddPageName);
     exportNodeSelected();
     defaultTree();
+
+    mPageNameA.getElement().getStyle().setFontWeight(FontWeight.BOLD);
   }
 
   @Override
