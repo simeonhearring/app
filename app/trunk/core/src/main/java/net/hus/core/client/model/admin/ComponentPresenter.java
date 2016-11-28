@@ -13,7 +13,6 @@ import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.HasCollection;
-import net.hus.core.shared.model.HasColumn;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.util.EnumUtil;
@@ -153,10 +152,15 @@ implements Action, AdminEvent.Handler
   public void selectComponent(int inNodeId, int inParentId)
   {
     boolean child = inParentId >= 0;
+    selectComponent(inNodeId, child);
+  }
+
+  private void selectComponent(int inNodeId, boolean inChild)
+  {
     mNodeId = inNodeId;
     UIObject_ uiObject = mPage.get(mNodeId);
     Page.Layout page = mPage.getFieldTKG().getLayout();
-    mDisplay.addComponent(mDisplay.getDisplay(uiObject, mFields, child, page));
+    mDisplay.addComponent(mDisplay.getDisplay(uiObject, mFields, inChild, page));
   }
 
   @Override
@@ -165,42 +169,23 @@ implements Action, AdminEvent.Handler
     Global.fire(new AdminDataCommand((String) null, EventType.ALL), this);
   }
 
-  @SuppressWarnings(
-      {
-        "unchecked",
-        "rawtypes"
-      })
-  @Override // TODO clean up
+  @Override
   public void addComponent(Components.Type inComponentType)
   {
-    UIObject_ uiObject = mPage.get(mNodeId);
+    UIObject_ parent = mPage.get(mNodeId);
 
-    if (Components.Type.ROW.equals(inComponentType))
+    if (parent instanceof HasCollection<?>)
     {
-      if (uiObject instanceof HasColumn<?>)
-      {
-        UIObject_ create = new Ui_Create().create(inComponentType);
-        ((HasColumn) uiObject).getColumn().add(create);
+      UIObject_ child = new Ui_Create().create(inComponentType);
 
-        updateTree(uiObject, create);
+      if (((HasCollection<?>) parent).add(child))
+      {
+        updateTree(parent, child);
       }
       else
       {
-        mDisplay.notify("Only 'Column' can be added to 'Row'" );
-      }
-    }
-    else
-    {
-      if (uiObject instanceof HasCollection<?>)
-      {
-        UIObject_ create = new Ui_Create().create(inComponentType);
-        ((HasCollection) uiObject).getCollection().add(create);
-
-        updateTree(uiObject, create);
-      }
-      else
-      {
-        mDisplay.notify("Can add child objects to this parent");
+        mDisplay.warn(
+            "Can not add '" + child.getSimpleName() + "' to '" + parent.getSimpleName() + "'");
       }
     }
   }
@@ -208,11 +193,12 @@ implements Action, AdminEvent.Handler
   private void updateTree(UIObject_ inParent, UIObject_ inChild)
   {
     mDisplay.addPage(mPage);
-    mDisplay.notify("Adding ... " + inChild.getSimpleName() + " to " + inParent.getSimpleName());
+    mDisplay
+        .notify("Adding '" + inChild.getSimpleName() + "' to '" + inParent.getSimpleName() + "'");
 
     inChild.setKey(RandomUtil.random(5));
     int newNodeId = mPage.get(inChild.getKey());
     inChild.setKey(null);
-    selectComponent(newNodeId, 2);
+    selectComponent(newNodeId, true);
   }
 }

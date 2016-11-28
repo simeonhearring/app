@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.HasColumn;
+import net.hus.core.shared.model.UIObject_;
 
 public class Row_ extends ComplexWidget_ implements HasColumn<Column_>
 {
@@ -15,6 +16,17 @@ public class Row_ extends ComplexWidget_ implements HasColumn<Column_>
   public Type cType()
   {
     return Type.ROW;
+  }
+
+  @Override
+  public boolean add(UIObject_ inUiObject)
+  {
+    if (inUiObject instanceof Column_)
+    {
+      mColumn.add((Column_) inUiObject);
+      return true;
+    }
+    return false;
   }
 
   @Override
