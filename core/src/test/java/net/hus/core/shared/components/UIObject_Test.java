@@ -7,7 +7,7 @@ public class UIObject_Test
 {
   public static void initUIObject(UIObject_ inOut)
   {
-    inOut.setSection(Section.Name.WEBC01);
+    inOut.setSection(Section.Name.CENTER_01);
     inOut.setKey("KEYLOCATER");
     inOut.setVisible(true);
     inOut.setTitle("Title");

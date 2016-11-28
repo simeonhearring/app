@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
+import net.hus.core.shared.model.Page;
+import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.util.StringUtil;
 import net.hus.core.util.ResourceUtil;
 
 public class CoreJdbcTest extends MySqlCoreDsTest
@@ -161,6 +165,47 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     list.add(lookup(group, "PageCommand", "Page", 2, null));
 
     lookup(group, list, 2);
+  }
+
+  @Test
+  public void setupLayout()
+  {
+    Group group = Group.LAYOUT;
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(lookup(group, Page.Layout.WEB));
+    list.add(lookup(group, Page.Layout.LOGIN));
+    list.add(lookup(group, Page.Layout.ADMIN));
+
+    lookup(group, list, 3);
+  }
+
+  @Test
+  @Ignore
+  public void setupSection()
+  {
+    Group group = Group.SECTION;
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(lookup(group, Section.Name.LEFT_01));
+    list.add(lookup(group, Section.Name.LEFT_02));
+    list.add(lookup(group, Section.Name.LEFT_03));
+    list.add(lookup(group, Section.Name.LEFT_04));
+    list.add(lookup(group, Section.Name.LEFT_05));
+
+    list.add(lookup(group, Section.Name.CENTER_01));
+    list.add(lookup(group, Section.Name.CENTER_02));
+    list.add(lookup(group, Section.Name.CENTER_03));
+    list.add(lookup(group, Section.Name.CENTER_04));
+    list.add(lookup(group, Section.Name.CENTER_05));
+
+    list.add(lookup(group, Section.Name.RIGHT_01));
+    list.add(lookup(group, Section.Name.RIGHT_02));
+    list.add(lookup(group, Section.Name.RIGHT_03));
+    list.add(lookup(group, Section.Name.RIGHT_04));
+    list.add(lookup(group, Section.Name.RIGHT_05));
+
+    lookup(group, list, 15);
   }
 
   @Test
@@ -334,6 +379,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   {
     mJdbc.lookups().upsert(inList);
     Assert.assertEquals(inExpectedSize, mJdbc.lookups().select(inGroup).size());
+  }
+
+  private Lookup lookup(Group inGroup, Enum<?> inName)
+  {
+    return lookup(inGroup.name(), inName.name().toUpperCase(),
+        StringUtil.toTitle(inName.name().replaceAll("_", " ")), null, 0, null, null);
   }
 
   private Lookup lookup(Group inGroup, String inName, String inAbbr, int inSort, String inDesc)

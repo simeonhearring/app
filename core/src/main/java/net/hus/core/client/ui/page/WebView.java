@@ -34,9 +34,9 @@ public class WebView extends AbstractRowView implements WebDisplay
   {
     initWidget(BINDER.createAndBindUi(this));
 
-    mL01.setId(Section.Name.WEBL01.name());
-    mC01.setId(Section.Name.WEBC01.name());
-    mR01.setId(Section.Name.WEBR01.name());
+    mL01.setId(Section.Name.LEFT_01.name());
+    mC01.setId(Section.Name.CENTER_01.name());
+    mR01.setId(Section.Name.RIGHT_01.name());
   }
 
   @Override

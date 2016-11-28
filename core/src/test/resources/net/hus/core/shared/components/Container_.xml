@@ -1,4 +1,4 @@
-<Container KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT" fluid="true">
+<Container KEY="KEYLOCATER" SECTION="CENTER_01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" color="red" marginBottom="10.0" marginLeft="10.0" marginRight="10.0" marginTop="10.0" paddingBottom="10.0" paddingLeft="10.0" paddingRight="10.0" paddingTop="10.0" pull="LEFT" fluid="true">
   <Title>Title</Title>
   <Collection/>
 </Container>

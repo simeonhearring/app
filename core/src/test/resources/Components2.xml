@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
 	<FieldTKG fvt="PERSON" fgg="JGRP1" page.layout="WEB" />
-	<Heading SECTION="WEBC01" size="H1" emphasis="INFO" alignment="LEFT">
+	<Heading SECTION="CENTER_01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Text>Contact Information</Text>
 		<SubText>Including address</SubText>
 	</Heading>
-	<Panel SECTION="WEBC01" type="DEFAULT">
+	<Panel SECTION="CENTER_01" type="DEFAULT">
 		<Collection>
 			<PanelHeader>
 				<Collection>
@@ -94,7 +94,7 @@
 			</PanelFooter>
 		</Collection>
 	</Panel>
-	<Panel SECTION="WEBC01" type="DEFAULT">
+	<Panel SECTION="CENTER_01" type="DEFAULT">
 		<Collection>
 			<PanelHeader>
 				<Collection>
@@ -130,10 +130,10 @@
 			</PanelFooter>
 		</Collection>
 	</Panel>
-	<Icon SECTION="WEBL01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
+	<Icon SECTION="LEFT_01" pull="LEFT" type="AMAZON" size="LARGE" border="true" spin="false" pulse="false" inverse="false">
 		<Title>Title</Title>
 	</Icon>
-	<Badge SECTION="WEBR01">
+	<Badge SECTION="RIGHT_01">
 		<Title>Title</Title>
 		<Text>Text</Text>
 	</Badge>

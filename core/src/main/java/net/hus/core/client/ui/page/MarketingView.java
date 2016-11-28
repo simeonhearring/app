@@ -39,19 +39,6 @@ public class MarketingView extends AbstractRowView implements MarketingDisplay
   public MarketingView()
   {
     initWidget(BINDER.createAndBindUi(this));
-
-    mMarR1L01.setId("MARR1L01");
-    mMarR1C01.setId("MARR1C01");
-    mMarR201.setId("MARR201");
-    mMarR202.setId("MARR202");
-    mMarR203.setId("MARR203");
-    mMarR204.setId("MARR204");
-    mMarR301.setId("MARR301");
-    mMarR302.setId("MARR302");
-    mMarR303.setId("MARR303");
-    mMarR304.setId("MARR304");
-    mMarR305.setId("MARR305");
-    mMarR306.setId("MARR306");
   }
 
   @Override

@@ -1,4 +1,4 @@
-<Input KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE" min="MIN" max="MAX" type="TEXT">
+<Input KEY="KEYLOCATER" SECTION="CENTER_01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" allowBlank="true" autoComplete="true" maxLength="10" size="LARGE" min="MIN" max="MAX" type="TEXT">
   <Title>Title</Title>
   <Placeholder>placeholder</Placeholder>
   <Value>Value</Value>
