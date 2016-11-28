@@ -20,13 +20,7 @@
 		</b:Row>
 		<b:Row ui:field="mRow0" addStyleNames="header-info bg-1" height="100%">
 			<b:Column ui:field="mL01" size="SM_2" />
-			<b:Column ui:field="mC01" size="SM_8" addStyleNames="text-center animated fadeIn">
-				<b:Heading size="H1" text="TELL US WHAT YOU NEED!" />
-				<b.html:Hr />
-				<b:Heading size="H2" addStyleNames="white" text="'Let him do hard work, doing good work with his hands, so that he may have something to share with someone in need.'" />
-				<b.html:Br />
-				<b.html:Br />
-			</b:Column>
+			<b:Column ui:field="mC01" size="SM_8" addStyleNames="text-center animated fadeIn" />
 			<b:Column ui:field="mR01" size="SM_2" />
 		</b:Row>
 	</b:Container>
