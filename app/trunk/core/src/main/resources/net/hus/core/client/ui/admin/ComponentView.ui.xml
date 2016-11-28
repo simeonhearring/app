@@ -133,7 +133,7 @@
 												<b:ListBox ui:field="mComponents" />
 											</b:FormGroup>
 											<b:Tooltip text="Add To">
-												<b:Icon ui:field="mAdd1" type="SAVE" addStyleNames="pull-right" />
+												<b:Icon ui:field="mAdd1" type="PLUS" addStyleNames="pull-right" />
 											</b:Tooltip>
 										</b:PanelBody>
 									</b:PanelCollapse>
