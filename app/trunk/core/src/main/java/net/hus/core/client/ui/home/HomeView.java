@@ -32,7 +32,7 @@ public class HomeView extends AbstractRowView implements HomeDisplay
   public HomeView()
   {
     initWidget(BINDER.createAndBindUi(this));
-    mC01.setId(Section.Name.ADMINC01.name());
+    mC01.setId(Section.Name.CENTER_01.name());
 
     // about
     // mCarousel.mImg1.setUrl("img/header3.jpg");

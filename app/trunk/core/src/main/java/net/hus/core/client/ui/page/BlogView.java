@@ -34,8 +34,8 @@ public class BlogView extends AbstractRowView implements BlogDisplay
   {
     initWidget(BINDER.createAndBindUi(this));
 
-    mBlogL01.setId(Section.Name.BLOGL01.name());
-    mBlogC01.setId(Section.Name.BLOGC01.name());
+    mBlogL01.setId(Section.Name.LEFT_01.name());
+    mBlogC01.setId(Section.Name.CENTER_01.name());
   }
 
   @Override

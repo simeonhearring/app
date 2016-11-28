@@ -29,9 +29,9 @@ public class LoginView extends AbstractRowView implements LoginDisplay
   {
     initWidget(BINDER.createAndBindUi(this));
 
-    mL01.setId(Section.Name.LOGINL01.name());
-    mC01.setId(Section.Name.LOGINC01.name());
-    mR01.setId(Section.Name.LOGINR01.name());
+    mL01.setId(Section.Name.LEFT_01.name());
+    mC01.setId(Section.Name.CENTER_01.name());
+    mR01.setId(Section.Name.RIGHT_01.name());
   }
 
   @Override

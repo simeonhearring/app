@@ -39,7 +39,6 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
   public UIObjectView()
   {
     initWidget(BINDER.createAndBindUi(this));
-    addEnumToListBox(Section.Name.values(), mSection, true);
   }
 
   public UIObjectView(UIObject_ inUiObject)
@@ -105,9 +104,9 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
     }
   }
 
-  public void setUpSection(boolean inChild, Page.Layout inPage)
+  public void setUpSection(boolean inChild, Page.Layout inLayout)
   {
-    addEnumToListBox(Section.Name.values(inPage), mSection, true);
+    addEnumDToListBox(Section.Name.values(inLayout), mSection, true);
     mSection.setEnabled(!inChild);
   }
 }

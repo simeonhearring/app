@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+import org.gwtbootstrap3.extras.notify.client.ui.NotifySettings;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -88,6 +89,9 @@ public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handl
   public void onSuccess(ClientDataCommand inCommand)
   {
     Global.setIpAddress(inCommand.getData());
-    Notify.notify(Global.getIpAddress());
+    NotifySettings settings = NotifySettings.newSettings();
+    settings.setAllowDismiss(true);
+    settings.setOffset(200, 140);
+    Notify.notify(Global.getIpAddress(), settings);
   }
 }

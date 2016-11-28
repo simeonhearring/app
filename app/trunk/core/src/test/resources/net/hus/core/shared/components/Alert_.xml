@@ -1,4 +1,4 @@
-<Alert KEY="KEYLOCATER" SECTION="WEBC01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" type="WARNING" dismissable="true" fade="true">
+<Alert KEY="KEYLOCATER" SECTION="CENTER_01" id="ID" visible="true" height="15px" width="10px" styleName="style" stylePrimaryName="primaryStyle" type="WARNING" dismissable="true" fade="true">
   <Title>Title</Title>
   <Text>Text</Text>
 </Alert>

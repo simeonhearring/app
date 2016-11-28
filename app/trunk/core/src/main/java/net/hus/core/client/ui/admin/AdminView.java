@@ -58,7 +58,7 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   public AdminView()
   {
     initWidget(BINDER.createAndBindUi(this));
-    mC01.setId(Section.Name.ADMINC01.name());
+    mC01.setId(Section.Name.CENTER_01.name());
   }
 
   @UiHandler(
