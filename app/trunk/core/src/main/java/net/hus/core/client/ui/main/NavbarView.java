@@ -38,10 +38,11 @@ public class NavbarView extends AbstractView implements NavbarDisplay
   }
 
   @UiHandler(
-      {
-        "mHome",
-        "mLoginout"
-      })
+  {
+      "mHome",
+      "mLoginout",
+      "mRegister"
+  })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mHome.getWidget(0).equals(inEvent.getSource()))
@@ -52,6 +53,10 @@ public class NavbarView extends AbstractView implements NavbarDisplay
     else if (mLoginout.getWidget(0).equals(inEvent.getSource()))
     {
       logInOut();
+    }
+    else if (mRegister.getWidget(0).equals(inEvent.getSource()))
+    {
+      Global.fire(new ProfileEvent(Profile.UserName.admin));
     }
   }
 

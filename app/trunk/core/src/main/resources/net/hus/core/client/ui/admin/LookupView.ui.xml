@@ -26,7 +26,7 @@
 			</b:Well>
 		</b:Column>
 		<b:Column size="SM_9">
-			<b:TabPanel tabPosition="LEFT">
+			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tabl4" text="Name" active="true" />
 					<b:TabListItem dataTarget="#tabl5" text="Values" />
@@ -35,14 +35,20 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabl4">
 						<b:Well size="LARGE">
 							<b:Legend text="LOOKUP NAME" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Name:" />
-								<b.html:Paragraph ui:field="mName" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Display:" />
-								<b:Input ui:field="mDisplay" type="TEXT" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_2">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Name:" />
+										<b.html:Paragraph ui:field="mName" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Display:" />
+										<b:Input ui:field="mDisplay" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
 							</b:Tooltip>
