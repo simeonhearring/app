@@ -117,24 +117,27 @@
 									</b:PanelHeader>
 									<b:PanelCollapse b:id="collapseTwo">
 										<b:PanelBody>
+											<b:Row>
+												<b:Column size="SM_3">
+													<b.html:Span text="Add Component ..." />
+												</b:Column>
+												<b:Column size="SM_5">
+													<b:FormGroup size="SMALL">
+														<b:ListBox ui:field="mComponents" />
+													</b:FormGroup>
+												</b:Column>
+												<b:Column size="SM_2">
+													<b.html:Span text="&nbsp;to&nbsp;" />
+													<b.html:Span ui:field="mPageNameA" />
+												</b:Column>
+												<b:Column size="SM_2">
+													<b:Tooltip text="Add To">
+														<b:Icon ui:field="mAdd1" type="PLUS" />
+													</b:Tooltip>
+												</b:Column>
+											</b:Row>
+											<b.html:Hr />
 											<b.gwt:FlowPanel ui:field="mDetail" />
-										</b:PanelBody>
-									</b:PanelCollapse>
-								</b:Panel>
-								<b:Panel>
-									<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseThree">
-										<b:Heading size="H5" text="ADD" />
-									</b:PanelHeader>
-									<b:PanelCollapse b:id="collapseThree">
-										<b:PanelBody>
-											<b.html:Paragraph ui:field="mPageNameA" />
-											<b:FormGroup size="SMALL">
-												<b:FormLabel text="Component:" />
-												<b:ListBox ui:field="mComponents" />
-											</b:FormGroup>
-											<b:Tooltip text="Add To">
-												<b:Icon ui:field="mAdd1" type="PLUS" addStyleNames="pull-right" />
-											</b:Tooltip>
 										</b:PanelBody>
 									</b:PanelCollapse>
 								</b:Panel>
