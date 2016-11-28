@@ -47,7 +47,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   Input mAddPage, mDisplay;
 
   @UiField
-  Paragraph mName, mPageNameC, mPageNameF, mPageNameD;
+  Paragraph mName, mPageNameC, mPageNameF, mPageNameA;
 
   @UiField
   ListBox mFvt, mFgg, mPageName, mComponents;
@@ -136,7 +136,6 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mDisplay.setText(inPage.getDisplay());
     mPageNameC.setText(inPage.getDisplay());
     mPageNameF.setText(inPage.getDisplay());
-    mPageNameD.setText(inPage.getDisplay());
 
     setSelectedIndex(mFvt, inPage.getFieldTKG().getFvt());
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
@@ -157,7 +156,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mDisplay.setText(null);
     mPageNameC.setText(null);
     mPageNameF.setText(null);
-    mPageNameD.setText(null);
+    mPageNameA.setText(null);
 
     setSelectedIndex(mFvt, (String) null);
     setSelectedIndex(mFgg, (String) null);
@@ -273,6 +272,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
       Page.Layout inPage)
   {
     UIObjectDisplay ret = null;
+    mPageNameA.setText(inUiObject.getSimpleName());
     switch (inUiObject.cType())
     {
       case FORM_GROUP:
