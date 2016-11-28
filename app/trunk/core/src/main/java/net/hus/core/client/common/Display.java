@@ -18,5 +18,7 @@ public interface Display extends IsWidget
 
   void danger(String inMessage);
 
+  boolean confirm(String inMessage);
+
   void fireDeferred(Event<?> inEvent);
 }

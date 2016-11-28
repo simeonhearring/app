@@ -1,5 +1,7 @@
 package net.hus.core.client.common;
 
+import org.gwtbootstrap3.client.ui.constants.IconType;
+
 /**
  *
  *
@@ -8,5 +10,5 @@ package net.hus.core.client.common;
  */
 public interface UIObjectDisplay extends Display
 {
-  void setCallback(Callback<Boolean> inCallback);
+  void setCallback(Callback<IconType> inCallback);
 }

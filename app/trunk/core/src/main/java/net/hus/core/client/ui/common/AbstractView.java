@@ -11,6 +11,7 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IndexedPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -57,6 +58,11 @@ public abstract class AbstractView extends Composite
   public void notify(String inMessage)
   {
     Notify.notify(inMessage);
+  }
+
+  public boolean confirm(String inMessage)
+  {
+    return Window.confirm(inMessage);
   }
 
   public void warn(String inMessage)

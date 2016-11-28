@@ -30,6 +30,10 @@ public interface ComponentDisplay extends Display
     void refresh();
 
     void addComponent(Components.Type inComponent);
+
+    void remove();
+
+    void refreshComponent();
   }
 
   void setAction(Action inAction);

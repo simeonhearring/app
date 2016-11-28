@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page.Section;
+import net.hus.core.shared.util.RandomUtil;
 import net.hus.core.shared.util.StringUtil;
 
 /**
@@ -34,6 +35,7 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
   private Map<Integer, UIObject_> mJsonMap;
   private int mJsonCount;
+  private Map<String, List<UIObject_>> mParentLocator;
 
   private String mName;
   private String mDisplay;
@@ -60,8 +62,11 @@ public class Components extends AbstractModel implements Serializable, LookupXL
   {
     mJsonCount = 0;
     mJsonMap = new HashMap<>();
+    mParentLocator = new HashMap<>();
     StringBuilder sb = new StringBuilder();
+
     json(getList(), sb);
+
     return sb.toString();
   }
 
@@ -98,6 +103,9 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     {
       String simpleName = value.getSimpleName();
       mJsonMap.put(mJsonCount++, value);
+
+      value.setTempLocator(RandomUtil.random(10));
+      mParentLocator.put(value.getTempLocator(), (List<UIObject_>) inList);
 
       if (notFirst)
       {
@@ -136,6 +144,36 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     else
     {
       inSb.append(",\"tags\": [\"0\"]");
+    }
+  }
+
+  public void addLocators()
+  {
+    mParentLocator = new HashMap<>();
+    templocators(mList);
+  }
+
+  public void remove(UIObject_ inUiObject)
+  {
+    mParentLocator.get(inUiObject.getTempLocator()).remove(inUiObject);
+  }
+
+  @SuppressWarnings("unchecked")
+  private <C extends UIObject_> void templocators(List<C> inList)
+  {
+    for (C value : inList)
+    {
+      value.setTempLocator(RandomUtil.random(10));
+      mParentLocator.put(value.getTempLocator(), (List<UIObject_>) inList);
+
+      if (value instanceof HasColumn<?>)
+      {
+        templocators(((HasColumn<C>) value).getColumn());
+      }
+      else if (value instanceof HasCollection<?>)
+      {
+        templocators(((HasCollection<C>) value).getCollection());
+      }
     }
   }
 
