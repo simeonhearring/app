@@ -21,6 +21,8 @@ import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
+import org.gwtbootstrap3.client.ui.html.Br;
+import org.gwtbootstrap3.client.ui.html.Hr;
 
 import com.google.gwt.user.client.ui.FlexTable;
 
@@ -146,5 +148,17 @@ public class GwtUiCreate implements UiCreate
   public PanelFooter newPanelFooter()
   {
     return new PanelFooter();
+  }
+
+  @Override
+  public Br newBr()
+  {
+    return new Br();
+  }
+
+  @Override
+  public Hr newHr()
+  {
+    return new Hr();
   }
 }

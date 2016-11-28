@@ -21,6 +21,8 @@ import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
+import org.gwtbootstrap3.client.ui.html.Br;
+import org.gwtbootstrap3.client.ui.html.Hr;
 
 import com.google.gwt.user.client.ui.FlexTable;
 
@@ -67,6 +69,10 @@ public interface UiCreate
   Panel newPanel();
 
   PanelHeader newPanelHeader();
+
+  Br newBr();
+
+  Hr newHr();
 
   PanelBody newPanelBody();
 

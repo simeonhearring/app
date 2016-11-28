@@ -21,6 +21,8 @@ import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
+import org.gwtbootstrap3.client.ui.html.Br;
+import org.gwtbootstrap3.client.ui.html.Hr;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -147,5 +149,17 @@ public class MockUiCreate implements UiCreate
   public PanelFooter newPanelFooter()
   {
     return GWT.create(PanelFooter.class);
+  }
+
+  @Override
+  public Br newBr()
+  {
+    return GWT.create(Br.class);
+  }
+
+  @Override
+  public Hr newHr()
+  {
+    return GWT.create(Hr.class);
   }
 }
