@@ -24,6 +24,8 @@
 			<xs:element name="Panel" type="Panel_Type" minOccurs="0"></xs:element>
 			<xs:element name="PanelHeader" type="PanelHeader_Type" minOccurs="0"></xs:element>
 			<xs:element name="PanelBody" type="PanelBody_Type" minOccurs="0"></xs:element>
+			<xs:element name="Hr" type="ComplexWidget_Type" minOccurs="0"></xs:element>
+			<xs:element name="Br" type="ComplexWidget_Type" minOccurs="0"></xs:element>
 			<xs:element name="PanelFooter" type="PanelFooter_Type" minOccurs="0"></xs:element>
 			<xs:element name="Row" type="Row_Type" minOccurs="0"></xs:element>
 			<xs:element name="Column" type="Column_Type" minOccurs="0"></xs:element>
@@ -58,6 +60,9 @@
 		<xs:sequence>
 			<xs:element name="Column" type="Column_Type" minOccurs="1" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
+		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
+	</xs:complexType>
+	<xs:complexType name="ComplexWidget_Type">
 		<xs:attributeGroup ref="attr_ComplexWidget"></xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="Column_Type">
@@ -192,8 +197,8 @@
 		<xs:attribute name="visible" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="height" type="xs:string" use="optional"></xs:attribute>
 		<xs:attribute name="width" type="xs:string" use="optional"></xs:attribute>
-		<xs:attribute name="style" type="xs:string" use="optional"></xs:attribute>
-		<xs:attribute name="stylePrimary" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="styleName" type="xs:string" use="optional"></xs:attribute>
+		<xs:attribute name="stylePrimaryName" type="xs:string" use="optional"></xs:attribute>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="attr_ValueBoxBase">
 		<xs:attribute name="allowBlank" type="xs:string" use="optional"></xs:attribute>

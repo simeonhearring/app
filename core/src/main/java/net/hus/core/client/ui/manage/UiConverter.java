@@ -44,6 +44,8 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import org.gwtbootstrap3.client.ui.gwt.ButtonBase;
+import org.gwtbootstrap3.client.ui.html.Br;
+import org.gwtbootstrap3.client.ui.html.Hr;
 import org.gwtbootstrap3.extras.datepicker.client.ui.base.DatePickerBase;
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
@@ -67,6 +69,7 @@ import net.hus.core.client.ui.components.Typeahead_View;
 import net.hus.core.shared.components.AbstractTextWidget_;
 import net.hus.core.shared.components.Alert_;
 import net.hus.core.shared.components.Badge_;
+import net.hus.core.shared.components.Br_;
 import net.hus.core.shared.components.ButtonBase_;
 import net.hus.core.shared.components.Button_;
 import net.hus.core.shared.components.CheckBox_;
@@ -82,6 +85,7 @@ import net.hus.core.shared.components.FocusWidget_;
 import net.hus.core.shared.components.FormGroup_;
 import net.hus.core.shared.components.FormLabel_;
 import net.hus.core.shared.components.Heading_;
+import net.hus.core.shared.components.Hr_;
 import net.hus.core.shared.components.Icon_;
 import net.hus.core.shared.components.Input_;
 import net.hus.core.shared.components.ListBox_;
@@ -127,6 +131,26 @@ public abstract class UiConverter
   public IsWidget convert(PanelHeader_ inUiO)
   {
     PanelHeader ret = mUiCreate.newPanelHeader();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    return ret;
+  }
+
+  public IsWidget convert(Br_ inUiO)
+  {
+    Br ret = mUiCreate.newBr();
+
+    create((UIObject) ret, (UIObject_) inUiO);
+    create(ret, inUiO);
+
+    return ret;
+  }
+
+  public IsWidget convert(Hr_ inUiO)
+  {
+    Hr ret = mUiCreate.newHr();
 
     create((UIObject) ret, (UIObject_) inUiO);
     create(ret, inUiO);
@@ -973,6 +997,14 @@ public abstract class UiConverter
     else if (inUiO instanceof PanelFooter_)
     {
       ret = convert((PanelFooter_) inUiO);
+    }
+    else if (inUiO instanceof Hr_)
+    {
+      ret = convert((Hr_) inUiO);
+    }
+    else if (inUiO instanceof Br_)
+    {
+      ret = convert((Br_) inUiO);
     }
     else
     {

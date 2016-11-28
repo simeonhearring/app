@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
 	<FieldTKG fvt="ADMIN" fgg="k^Gc5yb" page.layout="HOME" />
+	<Heading SECTION="CENTER_01" size="H1" emphasis="INFO" alignment="LEFT">
+		<Text>TELL US WHAT YOU NEED!</Text>
+	</Heading>
+	<Hr SECTION="CENTER_01"></Hr>
+	<Heading SECTION="CENTER_01" size="H2" emphasis="INFO" alignment="LEFT" styleName="white">
+		<Text>'Let him do hard work, doing good work with his hands, so that he may have something to share with someone in need.'</Text>
+	</Heading>
+	<Br SECTION="CENTER_01"></Br>
+	<Br SECTION="CENTER_01"></Br>
 </Components>

@@ -168,6 +168,8 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     PANEL_BODY,
     PANEL_FOOTER,
     PANEL_HEADER,
+    HR,
+    BR,
     ROW,
     TEXT_BOX,
     TYPEAHEAD,

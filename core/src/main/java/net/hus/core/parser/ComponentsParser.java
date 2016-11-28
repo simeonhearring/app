@@ -61,6 +61,10 @@ public class ComponentsParser extends XStream implements Parser<Components>
 
   public static void xs(XStream inXs)
   {
+    Hr_Parser.xs(inXs);
+
+    Br_Parser.xs(inXs);
+
     Column_Parser.xs(inXs);
 
     Row_Parser.xs(inXs);
