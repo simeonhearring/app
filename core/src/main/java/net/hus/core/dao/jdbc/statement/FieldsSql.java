@@ -122,6 +122,7 @@ public class FieldsSql extends Mapping
     return ret;
   }
 
+  @Deprecated
   public List<Object[]> selectGrp()
   {
     List<Object[]> ret = mFieldsAllSelect.execute();
@@ -165,14 +166,20 @@ public class FieldsSql extends Mapping
     mFieldsUpsert.reset();
   }
 
+  @Deprecated
   public Fields select(String inFgg)
   {
     Fields ret = new Fields();
-    Object[] fgg = selectGrp(inFgg); // TODO go to lookup
-    ret.fgg((String) fgg[0]);
-    ret.setName((String) fgg[2]);
-    ret.setFields(mFieldByGrpSelect.execute(params(inFgg)));
+//    Object[] fgg = selectGrp(inFgg);
+//    ret.fgg((String) fgg[0]);
+//    ret.setName((String) fgg[2]);
+    ret.setFields(selectByFgg(inFgg));
     return ret;
+  }
+
+  public List<Field> selectByFgg(String inFgg)
+  {
+    return mFieldByGrpSelect.execute(params(inFgg));
   }
 
   public Field select(Long inFieldId)

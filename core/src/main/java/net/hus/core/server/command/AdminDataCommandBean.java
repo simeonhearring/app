@@ -58,7 +58,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addFields(AdminData inData, String inFgg)
   {
-    inData.setFieldGroup(mCoreDao.fields().select(inFgg));
+    inData.setFieldGroup(mCoreDao.fields(inFgg));
   }
 
   private void addFieldGroups(AdminData inData)

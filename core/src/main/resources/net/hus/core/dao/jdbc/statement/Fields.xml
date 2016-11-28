@@ -26,6 +26,7 @@
 		<Sql>select g.*,l.mDisplay as mGrpDspl
 			from FIELD_GROUP g
 			left join LOOKUP l on g.mGroup=l.mName
+			where l.mGroup =  'FGG'
 		</Sql>
 	</Statement>
 	<Statement>

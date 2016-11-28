@@ -25,12 +25,12 @@ public class PageLocater
       case WEB:
         ret = new SelectFVKPresenter(inTKG, inDisplay.getWeb()).getDisplay();
         break;
-      case BLOG:
-        ret = inDisplay.getBlog();
-        break;
-      case MARKET:
-        ret = inDisplay.getMarketing();
-        break;
+      // case BLOG:
+      // ret = inDisplay.getBlog();
+      // break;
+      // case MARKET:
+      // ret = inDisplay.getMarketing();
+      // break;
       default:
         ret = inDisplay.geHome();
         break;
