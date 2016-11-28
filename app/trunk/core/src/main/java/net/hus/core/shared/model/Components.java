@@ -6,9 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.hus.core.shared.components.Column_;
-import net.hus.core.shared.components.ComplexPanel_;
-import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.util.StringUtil;
@@ -72,6 +69,11 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     return mJsonMap.get(inNodeId);
   }
 
+  @SuppressWarnings(
+  {
+    "unchecked",
+    "rawtypes"
+  })
   private <C extends UIObject_> void json(List<C> inList, StringBuilder inSb)
   {
     inSb.append("[");
@@ -91,15 +93,13 @@ public class Components extends AbstractModel implements Serializable, LookupXL
 
       inSb.append("{\"text\":").append(" \"" + simpleName + "\"");
 
-      if (value instanceof Row_)
+      if (value instanceof HasColumn<?>)
       {
-        List<Column_> collection = ((Row_) value).getColumn();
-        collection(inSb, collection);
+        collection(inSb, ((HasColumn) value).getColumn());
       }
-      else if (value instanceof ComplexPanel_)
+      else if (value instanceof HasCollection<?>)
       {
-        List<UIObject_> collection = ((ComplexPanel_) value).getCollection();
-        collection(inSb, collection);
+        collection(inSb, ((HasCollection) value).getCollection());
       }
       else
       {

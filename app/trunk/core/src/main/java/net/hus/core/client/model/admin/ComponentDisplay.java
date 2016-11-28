@@ -28,6 +28,8 @@ public interface ComponentDisplay extends Display
     void selectComponent(int inNodeId, int inParentId);
 
     void refresh();
+
+    void addComponent(Components.Type inComponent);
   }
 
   void setAction(Action inAction);

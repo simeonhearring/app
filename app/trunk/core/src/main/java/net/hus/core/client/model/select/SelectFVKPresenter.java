@@ -1,6 +1,5 @@
 package net.hus.core.client.model.select;
 
-import net.hus.core.client.model.page.FVKDisplay;
 import net.hus.core.client.model.select.SelectFVKDisplay.Action;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.RpcCallback;
