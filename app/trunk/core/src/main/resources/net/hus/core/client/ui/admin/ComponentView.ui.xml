@@ -127,7 +127,7 @@
 									</b:PanelHeader>
 									<b:PanelCollapse b:id="collapseThree">
 										<b:PanelBody>
-											<b.html:Paragraph ui:field="mPageNameD" />
+											<b.html:Paragraph ui:field="mPageNameA" />
 											<b:FormGroup size="SMALL">
 												<b:FormLabel text="Component:" />
 												<b:ListBox ui:field="mComponents" />
