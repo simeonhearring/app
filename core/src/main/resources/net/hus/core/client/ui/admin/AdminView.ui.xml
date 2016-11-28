@@ -3,13 +3,7 @@
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui"
 	xmlns:a="urn:import:net.hus.core.client.ui.admin">
 	<ui:style>
-	.pad {
-		padding-right: 5px;
-	}
 	
-	.padaround {
-		padding: 10px;
-	}
 	</ui:style>
 
 	<b:Container fluid="true" addStyleNames="text-Center">
@@ -38,7 +32,7 @@
 					<b:TabListItem dataTarget="#taba4" text="Action" />
 					<b:TabListItem dataTarget="#taba5" text="Page" />
 				</b:NavTabs>
-				<b:TabContent addStyleNames="{style.padaround}">
+				<b:TabContent>
 					<b:TabPane fade="true" b:id="taba0" in="true" active="true">
 						<a:FieldView ui:field="mField" />
 					</b:TabPane>

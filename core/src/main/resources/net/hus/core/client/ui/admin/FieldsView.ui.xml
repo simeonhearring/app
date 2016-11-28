@@ -25,7 +25,7 @@
 			</b:Well>
 		</b:Column>
 		<b:Column size="SM_9">
-			<b:TabPanel tabPosition="LEFT">
+			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tabg4" text="Name" active="true" />
 					<b:TabListItem dataTarget="#tabg5" text="Fields" />
@@ -34,14 +34,20 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabg4">
 						<b:Well size="LARGE">
 							<b:Legend text="FGG NAME" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="FGG:" />
-								<b.html:Paragraph ui:field="mFgg" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Name:" />
-								<b:Input ui:field="mName" type="TEXT" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_2">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="FGG:" />
+										<b.html:Paragraph ui:field="mFgg" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Name:" />
+										<b:Input ui:field="mName" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 							</b:Tooltip>

@@ -38,7 +38,7 @@
 			</b:Well>
 		</b:Column>
 		<b:Column size="SM_9">
-			<b:TabPanel tabPosition="LEFT">
+			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tabc4" text="Name" active="true" />
 					<b:TabListItem dataTarget="#tabc5" text="Page" />
@@ -48,14 +48,20 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabc4">
 						<b:Well size="LARGE">
 							<b:Legend text="PAGE NAME" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Name:" />
-								<b.html:Paragraph ui:field="mName" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Display:" />
-								<b:Input ui:field="mDisplay" type="TEXT" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_2">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Name:" />
+										<b.html:Paragraph ui:field="mName" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Display:" />
+										<b:Input ui:field="mDisplay" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
 							</b:Tooltip>
@@ -65,18 +71,26 @@
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD TKG" />
 							<b.html:Paragraph ui:field="mPageNameF" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="FVT:" />
-								<b:ListBox ui:field="mFvt" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="FGG:" />
-								<b:ListBox ui:field="mFgg" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Page layout:" />
-								<b:ListBox ui:field="mPageName" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="FVT:" />
+										<b:ListBox ui:field="mFvt" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="FGG:" />
+										<b:ListBox ui:field="mFgg" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Page layout:" />
+										<b:ListBox ui:field="mPageName" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave1" type="SAVE" addStyleNames="pull-right" />
 							</b:Tooltip>

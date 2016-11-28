@@ -29,7 +29,7 @@
 			</b:Well>
 		</b:Column>
 		<b:Column size="SM_9">
-			<b:TabPanel tabPosition="LEFT">
+			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tab4" text="Name" active="true" ui:field="mNameTab" />
 					<b:TabListItem dataTarget="#tab5" text="Display" />
@@ -41,31 +41,45 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tab4">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD NAME" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="ID:" />
-								<b.html:Paragraph ui:field="mId" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Name:" />
-								<b.html:Paragraph ui:field="mName" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Type:" />
-								<b.html:Paragraph ui:field="mType" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_2">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="ID:" />
+										<b.html:Paragraph ui:field="mId" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_2">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Name:" />
+										<b.html:Paragraph ui:field="mName" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_2">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Type:" />
+										<b.html:Paragraph ui:field="mType" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 						</b:Well>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tab5">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD DISPLAY" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Long:" />
-								<b:Input ui:field="mLong" type="TEXT" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Short:" />
-								<b:Input ui:field="mShort" type="TEXT" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Long:" />
+										<b:Input ui:field="mLong" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Short:" />
+										<b:Input ui:field="mShort" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 							</b:Tooltip>
@@ -77,14 +91,20 @@
 					<b:TabPane fade="true" b:id="tab6">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD DATE" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Storage format:" />
-								<b:Input ui:field="mStorageFormat" type="TEXT" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Example:" />
-								<b.html:Paragraph ui:field="mStorageFormatEx" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Storage format:" />
+										<b:Input ui:field="mStorageFormat" type="TEXT" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Example:" />
+										<b.html:Paragraph ui:field="mStorageFormatEx" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 							</b:Tooltip>
@@ -97,13 +117,13 @@
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD ARRAY" />
 							<b:Row>
-								<b:Column size="SM_6">
+								<b:Column size="SM_4">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Header Size:" />
 										<b:ListBox ui:field="mHeadSize" />
 									</b:FormGroup>
 								</b:Column>
-								<b:Column size="SM_6">
+								<b:Column size="SM_4">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Show Bottom Icons At Row:" />
 										<b:Input ui:field="mBottomRow" type="NUMBER" />
@@ -111,19 +131,19 @@
 								</b:Column>
 							</b:Row>
 							<b:Row>
-								<b:Column size="SM_4">
+								<b:Column size="SM_2">
 									<b:FormGroup size="SMALL">
-										<b:FormLabel text="Alternate Color:" />
+										<b:FormLabel text="Alternate Color:&nbsp;" />
 										<b.toggle:ToggleSwitch ui:field="mAltColor" size="MINI" />
 									</b:FormGroup>
 								</b:Column>
-								<b:Column size="SM_4">
+								<b:Column size="SM_3">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Alternate Color Even:" />
 										<b:Input ui:field="mAltEven" type="COLOR" />
 									</b:FormGroup>
 								</b:Column>
-								<b:Column size="SM_4">
+								<b:Column size="SM_3">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Alternate Color Odd:" />
 										<b:Input ui:field="mAltOdd" type="COLOR" />
@@ -131,7 +151,7 @@
 								</b:Column>
 							</b:Row>
 							<b:Row>
-								<b:Column size="SM_3">
+								<b:Column size="SM_2">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Size:&nbsp;" />
 										<b.html:Span ui:field="mSize" />
@@ -143,7 +163,7 @@
 										</b:Tooltip>
 									</b:FormGroup>
 								</b:Column>
-								<b:Column size="SM_9">
+								<b:Column size="SM_6">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Headers:" />
 										<b.gwt:FlowPanel ui:field="mArrayLabel" />
@@ -161,15 +181,25 @@
 					<b:TabPane fade="true" b:id="tab8">
 						<b:Well size="LARGE">
 							<b:Legend text="FIELD LOOKUP" />
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Location:" />
-								<b:ListBox ui:field="mLookupLocation" />
-							</b:FormGroup>
-							<b:FormGroup size="SMALL">
-								<b:FormLabel text="Parameters:" />
-								<b.html:Paragraph ui:field="mLookupGroupText" />
-								<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />
-							</b:FormGroup>
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Location:" />
+										<b:ListBox ui:field="mLookupLocation" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Parameters:" />
+										<b.html:Paragraph ui:field="mLookupGroupText" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
+							<b:Row>
+								<b:Column size="SM_12">
+									<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave3" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 							</b:Tooltip>
