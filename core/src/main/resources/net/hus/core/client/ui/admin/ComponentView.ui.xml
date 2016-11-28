@@ -127,7 +127,7 @@
 													</b:FormGroup>
 												</b:Column>
 												<b:Column size="SM_2">
-													<b.html:Span text="&nbsp;to&nbsp;" />
+													<b.html:Span text="to&nbsp;" />
 													<b.html:Span ui:field="mPageNameA" />
 												</b:Column>
 												<b:Column size="SM_2">
