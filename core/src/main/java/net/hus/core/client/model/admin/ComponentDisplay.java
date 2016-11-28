@@ -38,6 +38,8 @@ public interface ComponentDisplay extends Display
 
   void addFieldGroups(List<Lookup> inFieldGroups);
 
+  void addComponents(List<Lookup> inComponents);
+
   void addTables(List<Lookup> inTables);
 
   void addComponent(IsWidget inDisplay);

@@ -121,6 +121,20 @@
 										</b:PanelBody>
 									</b:PanelCollapse>
 								</b:Panel>
+								<b:Panel>
+									<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseThree">
+										<b:Heading size="H5" text="ADD" />
+									</b:PanelHeader>
+									<b:PanelCollapse b:id="collapseThree">
+										<b:PanelBody>
+											<b.html:Paragraph ui:field="mPageNameD" />
+											<b:FormGroup size="SMALL">
+												<b:FormLabel text="Component:" />
+												<b:ListBox ui:field="mComponents" />
+											</b:FormGroup>
+										</b:PanelBody>
+									</b:PanelCollapse>
+								</b:Panel>
 							</b:PanelGroup>
 						</b:Well>
 					</b:TabPane>

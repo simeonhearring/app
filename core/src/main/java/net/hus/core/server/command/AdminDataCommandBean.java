@@ -108,6 +108,11 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     inData.setTables(mCoreDao.lookups().select(Group.FVT.name()));
   }
 
+  private void addComponents(AdminData inData)
+  {
+    inData.setComponents(mCoreDao.lookups().select(Group.COMPONENT.name()));
+  }
+
   private void addCommands(AdminData inData)
   {
     inData.setCommands(mCoreDao.lookups().select(Group.COMMAND.name()));
@@ -134,6 +139,9 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     // no default
 
     addCommands(inData);
+    // no default
+
+    addComponents(inData);
     // no default
   }
 }
