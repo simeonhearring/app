@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page.Section;
@@ -69,11 +70,24 @@ public class Components extends AbstractModel implements Serializable, LookupXL
     return mJsonMap.get(inNodeId);
   }
 
-  @SuppressWarnings(
+  public int get(String inKey)
   {
-    "unchecked",
-    "rawtypes"
-  })
+    int ret = 0;
+    for (Entry<Integer, UIObject_> value : mJsonMap.entrySet())
+    {
+      if (inKey.equals(value.getValue().getKey()))
+      {
+        ret = value.getKey().intValue();
+      }
+    }
+    return ret;
+  }
+
+  @SuppressWarnings(
+      {
+        "unchecked",
+        "rawtypes"
+      })
   private <C extends UIObject_> void json(List<C> inList, StringBuilder inSb)
   {
     inSb.append("[");
