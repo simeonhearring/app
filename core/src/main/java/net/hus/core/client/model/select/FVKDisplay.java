@@ -1,7 +1,6 @@
-package net.hus.core.client.model.page;
+package net.hus.core.client.model.select;
 
 import net.hus.core.client.common.PageDisplay;
-import net.hus.core.client.model.select.SelectFVKDisplay;
 
 public interface FVKDisplay extends PageDisplay
 {

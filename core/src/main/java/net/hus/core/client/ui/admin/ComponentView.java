@@ -41,7 +41,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   Select mPages;
 
   @UiField
-  Icon mAdd0, mSave0, mSave1;
+  Icon mAdd0, mAdd1, mSave0, mSave1;
 
   @UiField
   Input mAddPage, mDisplay;
@@ -80,6 +80,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   @UiHandler(
       {
         "mAdd0",
+        "mAdd1",
         "mSave0",
         "mSave1",
       })
@@ -89,6 +90,10 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     {
       mAction.createPage(mAddPage.getText(), mAddFvt.getSelectedValue(), mAddFgg.getSelectedValue(),
           mAddPageName.getSelectedValue());
+    }
+    else if (mAdd1.equals(inEvent.getSource()))
+    {
+      mAction.addComponent(getEnumValueFromListBox(Components.Type.values(), mComponents));
     }
     else if (mSave0.equals(inEvent.getSource()))
     {

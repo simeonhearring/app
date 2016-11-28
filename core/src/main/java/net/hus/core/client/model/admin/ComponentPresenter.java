@@ -159,4 +159,10 @@ implements Action, AdminEvent.Handler
   {
     Global.fire(new AdminDataCommand((String) null, EventType.ALL), this);
   }
+
+  @Override
+  public void addComponent(Components.Type inComponentType)
+  {
+    mDisplay.notify(inComponentType.name());
+  }
 }
