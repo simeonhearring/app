@@ -5,6 +5,7 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.constants.BadgePosition;
 import org.gwtbootstrap3.client.ui.constants.ButtonSize;
 import org.gwtbootstrap3.client.ui.constants.ButtonType;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 
@@ -73,7 +74,7 @@ public class ButtonView extends AbstractView implements UIObjectDisplay
   }
 
   @Override
-  public void setCallback(Callback<Boolean> inCallback)
+  public void setCallback(Callback<IconType> inCallback)
   {
     mAction0.setCallback(inCallback);
     mAction1.setCallback(inCallback);

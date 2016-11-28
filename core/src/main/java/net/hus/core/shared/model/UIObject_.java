@@ -19,6 +19,8 @@ public abstract class UIObject_ implements Serializable
   private String mStyleName;
   private String mStylePrimaryName;
 
+  private String mTempLocator;
+
   public abstract Components.Type cType();
 
   public String getHeight()
@@ -134,5 +136,15 @@ public abstract class UIObject_ implements Serializable
   public String getSimpleName()
   {
     return this.getClass().getSimpleName().replaceAll("_", "");
+  }
+
+  public String getTempLocator()
+  {
+    return mTempLocator;
+  }
+
+  public void setTempLocator(String inTempLocator)
+  {
+    mTempLocator = inTempLocator;
   }
 }

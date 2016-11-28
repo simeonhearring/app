@@ -2,6 +2,7 @@ package net.hus.core.client.ui.admin;
 
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -48,7 +49,7 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
   }
 
   @Override
-  public void setCallback(Callback<Boolean> inCallback)
+  public void setCallback(Callback<IconType> inCallback)
   {
   }
 

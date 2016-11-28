@@ -11,7 +11,10 @@
 				<b:Icon ui:field="mSave" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
 			</b:Tooltip>
 			<b:Tooltip text="Refresh">
-				<b:Icon ui:field="mRefresh" type="REFRESH" addStyleNames="pull-right" />
+				<b:Icon ui:field="mRefresh" type="REFRESH" paddingLeft="10" addStyleNames="pull-right" />
+			</b:Tooltip>
+			<b:Tooltip text="Remove">
+				<b:Icon ui:field="mRemove" type="MINUS" addStyleNames="pull-right" />
 			</b:Tooltip>
 		</b:Column>
 	</b:Row>

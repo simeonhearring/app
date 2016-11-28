@@ -1,6 +1,7 @@
 package net.hus.core.client.ui.admin;
 
 import org.gwtbootstrap3.client.ui.Icon;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -22,9 +23,9 @@ public class ActionView extends AbstractView implements ActionDisplay
   }
 
   @UiField
-  Icon mSave, mRefresh;
+  Icon mSave, mRemove, mRefresh;
 
-  private Callback<Boolean> mCallback;
+  private Callback<IconType> mCallback;
 
   public ActionView()
   {
@@ -34,22 +35,27 @@ public class ActionView extends AbstractView implements ActionDisplay
   @UiHandler(
       {
         "mSave",
+        "mRemove",
         "mRefresh"
       })
   public void onClickBind(ClickEvent inEvent)
   {
     if (mSave.equals(inEvent.getSource()))
     {
-      mCallback.onDone(true);
+      mCallback.onDone(mSave.getType());
     }
     else if (mRefresh.equals(inEvent.getSource()))
     {
-      mCallback.onDone(false);
+      mCallback.onDone(mRefresh.getType());
+    }
+    else if (mRemove.equals(inEvent.getSource()))
+    {
+      mCallback.onDone(mRemove.getType());
     }
   }
 
   @Override
-  public void setCallback(Callback<Boolean> inCallback)
+  public void setCallback(Callback<IconType> inCallback)
   {
     mCallback = inCallback;
   }

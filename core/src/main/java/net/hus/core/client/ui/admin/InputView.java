@@ -2,6 +2,7 @@ package net.hus.core.client.ui.admin;
 
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 
@@ -65,7 +66,7 @@ public class InputView extends AbstractView implements UIObjectDisplay
   }
 
   @Override
-  public void setCallback(Callback<Boolean> inCallback)
+  public void setCallback(Callback<IconType> inCallback)
   {
     mAction0.setCallback(inCallback);
     mAction1.setCallback(inCallback);

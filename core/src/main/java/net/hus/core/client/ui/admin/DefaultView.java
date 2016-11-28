@@ -1,5 +1,6 @@
 package net.hus.core.client.ui.admin;
 
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 
 import com.google.gwt.core.client.GWT;
@@ -34,7 +35,7 @@ public class DefaultView extends AbstractView implements UIObjectDisplay
   }
 
   @Override
-  public void setCallback(Callback<Boolean> inCallback)
+  public void setCallback(Callback<IconType> inCallback)
   {
   }
 }

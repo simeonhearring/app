@@ -184,8 +184,8 @@ implements Action, AdminEvent.Handler
       }
       else
       {
-        mDisplay.warn(
-            "Can not add '" + child.getSimpleName() + "' to '" + parent.getSimpleName() + "'");
+        String msg = "Can not add '" + child.getSimpleName() + "' to '" + parent.getSimpleName() + "'";
+        mDisplay.warn(msg);
       }
     }
   }
@@ -193,12 +193,29 @@ implements Action, AdminEvent.Handler
   private void updateTree(UIObject_ inParent, UIObject_ inChild)
   {
     mDisplay.addPage(mPage);
-    mDisplay
-        .notify("Adding '" + inChild.getSimpleName() + "' to '" + inParent.getSimpleName() + "'");
+    String msg = "Adding '" + inChild.getSimpleName() + "' to '" + inParent.getSimpleName() + "'";
+    mDisplay.notify(msg);
 
     inChild.setKey(RandomUtil.random(5));
     int newNodeId = mPage.get(inChild.getKey());
     inChild.setKey(null);
     selectComponent(newNodeId, true);
+  }
+
+  @Override
+  public void remove()
+  {
+    if (mDisplay.confirm("Are you sure you want to remove this component and it's children?"))
+    {
+      mPage.remove(mPage.get(mNodeId));
+      mDisplay.addPage(mPage);
+    }
+  }
+
+  @Override
+  public void refreshComponent()
+  {
+    // can this just refresh the current component?
+    refresh();
   }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.client.ui.html.Span;
@@ -31,7 +32,7 @@ import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.UIObject_;
 
-public class ComponentView extends AbstractView implements ComponentDisplay, Callback<Boolean>
+public class ComponentView extends AbstractView implements ComponentDisplay, Callback<IconType>
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -267,15 +268,21 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   }
 
   @Override
-  public void onDone(Boolean inValue)
+  public void onDone(IconType inValue)
   {
-    if (inValue)
+    switch (inValue)
     {
-      mAction.savePage();
-    }
-    else
-    {
-      mAction.refresh();
+      case SAVE:
+        mAction.savePage();
+        break;
+      case REFRESH:
+        mAction.refreshComponent();
+        break;
+      case MINUS:
+        mAction.remove();
+        break;
+      default:
+        break;
     }
   }
 

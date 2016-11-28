@@ -74,7 +74,7 @@ public class IconView extends AbstractView implements UIObjectDisplay
   }
 
   @Override
-  public void setCallback(Callback<Boolean> inCallback)
+  public void setCallback(Callback<IconType> inCallback)
   {
     mAction0.setCallback(inCallback);
     mAction1.setCallback(inCallback);
