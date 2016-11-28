@@ -59,19 +59,19 @@ public class Page implements Serializable
 
     public enum Name implements EnumDisplay
     {
-      LEFT_01(Page.Layout.LOGIN, Page.Layout.WEB),
+      LEFT_01(Page.Layout.LOGIN, Page.Layout.HOME, Page.Layout.WEB),
       LEFT_02(),
       LEFT_03(),
       LEFT_04(),
       LEFT_05(),
 
-      CENTER_01(Page.Layout.LOGIN, Page.Layout.WEB, Page.Layout.ADMIN),
+      CENTER_01(Page.Layout.LOGIN, Page.Layout.HOME, Page.Layout.WEB, Page.Layout.ADMIN),
       CENTER_02(),
       CENTER_03(),
       CENTER_04(),
       CENTER_05(),
 
-      RIGHT_01(Page.Layout.LOGIN, Page.Layout.WEB),
+      RIGHT_01(Page.Layout.LOGIN, Page.Layout.HOME, Page.Layout.WEB),
       RIGHT_02(),
       RIGHT_03(),
       RIGHT_04(),
