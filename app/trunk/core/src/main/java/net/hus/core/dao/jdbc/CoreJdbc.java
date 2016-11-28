@@ -18,9 +18,11 @@ import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.LookupXL;
+import net.hus.core.shared.model.Lookups;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.util.StringUtil;
 
@@ -129,6 +131,22 @@ public class CoreJdbc implements CoreDao
     return ret;
   }
 
+  @Override
+  public Fields fields(String inFgg)
+  {
+    Lookups lookup = lookups().select(Group.FGG.name(), inFgg);
+
+    Fields ret = new Fields();
+    ret.fgg(lookup.getName());
+    ret.setName(lookup.getDisplay());
+    ret.setCreated(lookup.getCreated());
+    ret.setUpdated(lookup.getUpdated());
+    ret.setId(lookup.getId());
+    ret.setFields(fields().selectByFgg(inFgg));
+
+    return ret;
+  }
+
   public void component2lookup()
   {
     List<Lookup> lookups = new ArrayList<>();
@@ -225,6 +243,7 @@ public class CoreJdbc implements CoreDao
   }
 
   @Override
+  @Deprecated // is this needed?
   public void fields2lookup()
   {
     Map<String, StringBuilder> data = new HashMap<>();

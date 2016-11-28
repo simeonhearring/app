@@ -12,12 +12,12 @@ public class Page implements Serializable
 
   public enum Layout
   {
-    BLOG,
-    WEB,
-    MARKET,
+    // BLOG,
+    // MARKET,
     HOME,
+    LOGIN,
     ADMIN,
-    LOGIN;
+    WEB;
   }
 
   private Layout mLayout;

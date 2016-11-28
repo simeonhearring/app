@@ -12,6 +12,7 @@ import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page;
+import net.hus.core.shared.model.Page.Layout;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.util.StringUtil;
@@ -26,6 +27,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   {
     mJdbc = new CoreJdbc();
     mJdbc.setDataSource(mDataSource);
+  }
+
+  @Test
+  public void quickTest()
+  {
+    // Fields f = mJdbc.fields("+G$FI$W");
   }
 
   @Test
@@ -173,11 +180,13 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     Group group = Group.LAYOUT;
 
     List<Lookup> list = new ArrayList<>();
-    list.add(lookup(group, Page.Layout.WEB));
-    list.add(lookup(group, Page.Layout.LOGIN));
-    list.add(lookup(group, Page.Layout.ADMIN));
+    Assert.assertEquals(4, Page.Layout.values().length);
+    for (Layout value : Page.Layout.values())
+    {
+      list.add(lookup(group, value));
 
-    lookup(group, list, 3);
+    }
+    lookup(group, list, 4);
   }
 
   @Test

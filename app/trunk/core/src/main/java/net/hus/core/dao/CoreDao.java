@@ -4,6 +4,7 @@ import net.hus.core.dao.jdbc.statement.FieldsSql;
 import net.hus.core.dao.jdbc.statement.LookupSql;
 import net.hus.core.dao.jdbc.statement.ValuesSql;
 import net.hus.core.shared.model.Components;
+import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.LookupXL;
 import net.hus.core.shared.model.Profile;
 
@@ -19,6 +20,8 @@ public interface CoreDao
 
   Components components(String inComponentName);
 
+  Fields fields(String inFgg);
+
   void field2lookup();
 
   void fields2lookup();
@@ -28,4 +31,5 @@ public interface CoreDao
   void components2lookup();
 
   void upsertXL(LookupXL inLookupXL);
+
 }
