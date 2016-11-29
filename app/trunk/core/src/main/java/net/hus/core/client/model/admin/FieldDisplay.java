@@ -30,6 +30,10 @@ public interface FieldDisplay extends Display
     void updateArray(String[] inLabels);
 
     void updateTable(Long[] inTableFields);
+
+    List<Lookup> getFields();
+
+    boolean isTable();
   }
 
   void setAction(Action inAction);
@@ -40,7 +44,7 @@ public interface FieldDisplay extends Display
 
   void clearFields();
 
-  void set(Field inField, List<Lookup> inFields);
+  void set(Field inField);
 
   void addLookup(List<Lookup> inLookupGroups);
 }

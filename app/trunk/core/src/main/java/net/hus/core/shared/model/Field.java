@@ -93,11 +93,16 @@ public class Field extends AbstractModel
     TIMESTAMP,
     ARRAY,
     LOOKUP,
-    TABLE; // do we need?
+    TABLE;
 
     public static boolean isArray(Type inType)
     {
       return Type.ARRAY.equals(inType) || Type.TABLE.equals(inType);
+    }
+
+    public static boolean isTable(Type inType)
+    {
+      return Type.TABLE.equals(inType);
     }
 
     @Override
@@ -274,10 +279,14 @@ public class Field extends AbstractModel
 
     public void setFields(String[] inFields)
     {
-      Long[] ret = new Long[inFields.length];
-      for (int i = 0; i < ret.length; i++)
+      Long[] ret = null;
+      if (inFields != null && inFields.length != 0)
       {
-        ret[i] = NumberUtil.toLong(inFields[i]);
+        ret = new Long[inFields.length];
+        for (int i = 0; i < ret.length; i++)
+        {
+          ret[i] = NumberUtil.toLong(inFields[i]);
+        }
       }
       mFields = ret;
     }
@@ -514,6 +523,11 @@ public class Field extends AbstractModel
   public boolean isArray()
   {
     return Type.isArray(getType());
+  }
+
+  public boolean isTable()
+  {
+    return Type.isTable(getType());
   }
 
   public boolean isOneValue()

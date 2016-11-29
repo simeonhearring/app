@@ -170,7 +170,7 @@
 									</b:FormGroup>
 								</b:Column>
 								<b:Column size="SM_3">
-									<b:FormGroup size="SMALL">
+									<b:FormGroup size="SMALL" ui:field="mTableFieldsGrp">
 										<b:FormLabel text="Table Fields:" />
 										<b.gwt:FlowPanel ui:field="mTableFields" />
 									</b:FormGroup>

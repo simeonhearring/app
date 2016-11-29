@@ -74,7 +74,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   ListBox mAddType, mLookupLocation, mHeadSize;
 
   @UiField
-  FormGroup mAddNameGrp;
+  FormGroup mAddNameGrp, mTableFieldsGrp;
 
   @UiField
   TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
@@ -136,11 +136,15 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     }
     else if (mPlus.equals(inEvent.getSource()))
     {
-      addArrayLabels(mArrayLabel.getWidgetCount() + 1, true);
+      int size = mArrayLabel.getWidgetCount() + 1;
+      addArrayLabels(size, true);
+      addTableFields(size, true);
     }
     else if (mMinus.equals(inEvent.getSource()))
     {
-      addArrayLabels(mArrayLabel.getWidgetCount() - 1, true);
+      int size = mArrayLabel.getWidgetCount() - 1;
+      addArrayLabels(size, true);
+      addTableFields(size, true);
     }
   }
 
@@ -232,7 +236,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   }
 
   @Override
-  public void set(Field inField, List<Lookup> inFields)
+  public void set(Field inField)
   {
     mNameTab.showTab();
 
@@ -262,7 +266,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     mBottomRow.setValue(inField.getArrayBottomRow());
 
     // table
-    addFieldsInTable(inField.getArraySize(), false, inFields);
+    addTableFields(inField.getArraySize(), false);
 
     // lookup
     addLookup(inField.getLookupParameters(), inField.getLookupLocation(), inField);
@@ -273,9 +277,11 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   @Override
   public void onChange(ChangeEvent inEvent)
   {
-    // TODO is array or table
     mAction.updateArray(getArrayLabels());
-    mAction.updateTable(getTableFields());
+    if (mTableFieldsGrp.isVisible())
+    {
+      mAction.updateTable(getTableFields());
+    }
   }
 
   @Override
@@ -360,43 +366,27 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     }
   }
 
-  private void addFieldsInTable(int inSize, boolean inUpdate, List<Lookup> inFields)
+  private void addTableFields(int inSize, boolean inUpdate)
   {
-    // mSize.setText(String.valueOf(inSize));
-
-    mTableFields.clear();
-    for (int i = 0; i < inSize; i++)
+    if (mAction.isTable())
     {
-      ListBox box = new ListBox();
-      addLookupToListBox(box, inFields);
-      setListBoxSelected(box, String.valueOf(mAction.fieldId(i)));
-      box.addChangeHandler(this);
-      mTableFields.add(box);
-    }
+      mTableFields.clear();
+      for (int i = 0; i < inSize; i++)
+      {
+        ListBox box = new ListBox();
+        addLookupToListBox(box, mAction.getFields());
+        setListBoxSelected(box, String.valueOf(mAction.fieldId(i)));
+        box.addChangeHandler(this);
+        mTableFields.add(box);
+      }
 
-    if (inUpdate)
-    {
-      mAction.updateTable(getTableFields());
+      if (inUpdate)
+      {
+        mAction.updateTable(getTableFields());
+      }
     }
+    mTableFieldsGrp.setVisible(mAction.isTable());
   }
-
-  // private void addSpanHandler(final DataType inType, final Span inSpan)
-  // {
-  // Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
-  // Event.setEventListener(inSpan.getElement(), new EventListener()
-  // {
-  // @Override
-  // public void onBrowserEvent(Event inEvent)
-  // {
-  // if (Event.ONBLUR == inEvent.getTypeInt())
-  // {
-  // mAction.update(inType, inSpan.getText());
-  // }
-  // }
-  // });
-  //
-  // inSpan.getElement().setAttribute("contenteditable", "true");
-  // }
 
   private String[] getArrayLabels()
   {
