@@ -8,6 +8,7 @@ public class Value extends AbstractModel
 
   private FieldTKG mFieldTKG;
   private String mValue;
+  private int mPos = 0;
   private Long mValueId;
   private Date mAsOf;
   private Field mField;
@@ -82,5 +83,15 @@ public class Value extends AbstractModel
   public void setValueId(Long inValueId)
   {
     mValueId = inValueId;
+  }
+
+  public int getPos()
+  {
+    return mPos;
+  }
+
+  public void setPos(int inPos)
+  {
+    mPos = inPos;
   }
 }

@@ -215,6 +215,7 @@ public class Field extends AbstractModel
 
     private Integer mSize;
     private String[] mLabels;
+    private Long[] mFields; // TABLE ONLY
     private Properties mProperties;
 
     public Array()
@@ -259,6 +260,26 @@ public class Field extends AbstractModel
     public void setProperties(Properties inProperties)
     {
       mProperties = inProperties;
+    }
+
+    public Long[] getFields()
+    {
+      return mFields;
+    }
+
+    public void setFields(Long[] inFields)
+    {
+      mFields = inFields;
+    }
+
+    public void setFields(String[] inFields)
+    {
+      Long[] ret = new Long[inFields.length];
+      for (int i = 0; i < ret.length; i++)
+      {
+        ret[i] = NumberUtil.toLong(inFields[i]);
+      }
+      mFields = ret;
     }
 
     public static class Properties implements Serializable
@@ -532,6 +553,9 @@ public class Field extends AbstractModel
       case ARRAY_LABELS:
         mProperties.getArray().setLabels(inValue.split(","));
         break;
+      case ARRAY_FIELDS:
+        mProperties.getArray().setFields(inValue.split(","));
+        break;
       case ARRAY_SIZE:
         mProperties.getArray().setSize(NumberUtil.toInteger(inValue));
         break;
@@ -565,6 +589,7 @@ public class Field extends AbstractModel
     LOOKUP_LOCATION,
     ARRAY_SIZE,
     ARRAY_LABELS,
+    ARRAY_FIELDS,
     ARRAY_HEADING_SIZE,
     ARRAY_ALTERNATE_COLOR_ODD,
     ARRAY_ALTERNATE_COLOR_EVEN,
@@ -666,6 +691,20 @@ public class Field extends AbstractModel
     if (ret == null)
     {
       ret = "--enter label--";
+    }
+    return ret;
+  }
+
+  public Long getFieldId(int inPos)
+  {
+    Long ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mFields != null)
+    {
+      Long[] fields = mProperties.mArray.mFields;
+      if (fields.length > inPos)
+      {
+        ret = fields[inPos];
+      }
     }
     return ret;
   }

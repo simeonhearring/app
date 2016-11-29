@@ -1,6 +1,7 @@
 package net.hus.core.client.ui.common;
 
 import java.util.Date;
+import java.util.List;
 
 import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.extras.notify.client.constants.NotifyType;
@@ -20,7 +21,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.ui.event.Event;
 import net.hus.core.shared.model.EnumDisplay;
+import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.util.EnumUtil;
+import net.hus.core.shared.util.NumberUtil;
 
 public abstract class AbstractView extends Composite
 {
@@ -142,6 +145,30 @@ public abstract class AbstractView extends Composite
   public static <E extends Enum<?>> E getEnumValueFromListBox(E[] inValues, ListBox inListBox)
   {
     return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
+  }
+
+  public void addLookupToListBox(ListBox inBox, List<Lookup> inFields)
+  {
+    for (Lookup value : inFields)
+    {
+      inBox.addItem(value.getDisplay(), value.getAltId().toString());
+    }
+  }
+
+  public void setListBoxSelected(ListBox inBox, String inValue)
+  {
+    for (int i = 0; i < inBox.getItemCount(); i++)
+    {
+      if (inBox.getValue(i).equals(inValue))
+      {
+        inBox.setSelectedIndex(i);
+      }
+    }
+  }
+
+  public Long getListBoxLongValue(ListBox inBox)
+  {
+    return NumberUtil.toLong(inBox.getSelectedValue());
   }
 
   public static Widget find(String inId, IndexedPanel... inPanel)

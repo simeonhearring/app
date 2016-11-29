@@ -80,7 +80,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
 
   @UiField
-  FlowPanel mLookupGroup, mArrayLabel;
+  FlowPanel mLookupGroup, mArrayLabel, mTableFields;
 
   @UiField
   Input mBottomRow, mAltEven, mAltOdd;
@@ -232,7 +232,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   }
 
   @Override
-  public void set(Field inField)
+  public void set(Field inField, List<Lookup> inFields)
   {
     mNameTab.showTab();
 
@@ -261,6 +261,9 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     mAltColor.setValue(inField.isArrayAlt());
     mBottomRow.setValue(inField.getArrayBottomRow());
 
+    // table
+    addFieldsInTable(inField.getArraySize(), false, inFields);
+
     // lookup
     addLookup(inField.getLookupParameters(), inField.getLookupLocation(), inField);
 
@@ -270,7 +273,9 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   @Override
   public void onChange(ChangeEvent inEvent)
   {
+    // TODO is array or table
     mAction.updateArray(getArrayLabels());
+    mAction.updateTable(getTableFields());
   }
 
   @Override
@@ -355,6 +360,26 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     }
   }
 
+  private void addFieldsInTable(int inSize, boolean inUpdate, List<Lookup> inFields)
+  {
+    // mSize.setText(String.valueOf(inSize));
+
+    mTableFields.clear();
+    for (int i = 0; i < inSize; i++)
+    {
+      ListBox box = new ListBox();
+      addLookupToListBox(box, inFields);
+      setListBoxSelected(box, String.valueOf(mAction.fieldId(i)));
+      box.addChangeHandler(this);
+      mTableFields.add(box);
+    }
+
+    if (inUpdate)
+    {
+      mAction.updateTable(getTableFields());
+    }
+  }
+
   // private void addSpanHandler(final DataType inType, final Span inSpan)
   // {
   // Event.sinkEvents(inSpan.getElement(), Event.ONBLUR);
@@ -379,6 +404,16 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     for (int i = 0; i < ret.length; i++)
     {
       ret[i] = ((Input) mArrayLabel.getWidget(i)).getText();
+    }
+    return ret;
+  }
+
+  private Long[] getTableFields()
+  {
+    Long[] ret = new Long[mTableFields.getWidgetCount()];
+    for (int i = 0; i < ret.length; i++)
+    {
+      ret[i] = getListBoxLongValue((ListBox) mTableFields.getWidget(i));
     }
     return ret;
   }
