@@ -134,7 +134,7 @@ implements Action, AdminEvent.Handler
   private void set(Field inField)
   {
     mField = inField;
-    mDisplay.set(mField, mFields);
+    mDisplay.set(mField);
   }
 
   private void addFields(Map<String, List<Lookup>> inData, Field inField,
@@ -169,5 +169,17 @@ implements Action, AdminEvent.Handler
       sb.append(value).append(",");
     }
     update(DataType.ARRAY_FIELDS, sb.toString());
+  }
+
+  @Override
+  public List<Lookup> getFields()
+  {
+    return mFields;
+  }
+
+  @Override
+  public boolean isTable()
+  {
+    return mField.isTable();
   }
 }
