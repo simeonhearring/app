@@ -6,8 +6,17 @@
 	</ui:style>
 	<b:Row>
 		<b:Column size="SM_1" />
-		<b:Column size="SM_10">
-			<b.select:Select ui:field="mSelect" liveSearch="true" visible="true" />
+		<b:Column size="SM_5">
+			<b:FormGroup size="SMALL">
+				<b:FormLabel text="Select Field:" />
+				<b.select:Select ui:field="mSelect" liveSearch="true" visible="true" />
+			</b:FormGroup>
+		</b:Column>
+		<b:Column size="SM_5">
+			<b:FormGroup size="SMALL">
+				<b:FormLabel text="Select Field:" />
+				<b.select:Select ui:field="mTKG" liveSearch="true" visible="true" />
+			</b:FormGroup>
 		</b:Column>
 		<b:Column size="SM_1" />
 	</b:Row>
