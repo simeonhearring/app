@@ -25,7 +25,11 @@ public interface FieldDisplay extends Display
 
     String arrayLabel(int inPos);
 
+    Long fieldId(int inPos);
+
     void updateArray(String[] inLabels);
+
+    void updateTable(Long[] inTableFields);
   }
 
   void setAction(Action inAction);
@@ -36,7 +40,7 @@ public interface FieldDisplay extends Display
 
   void clearFields();
 
-  void set(Field inField);
+  void set(Field inField, List<Lookup> inFields);
 
   void addLookup(List<Lookup> inLookupGroups);
 }

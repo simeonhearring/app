@@ -28,6 +28,7 @@ public class FieldPropertiesParserTest
 
     prop.getArray().setSize(5);
     prop.getArray().setLabels("Street A,Street B,City,State,Zip".split(","));
+    prop.getArray().setFields("1,2,3,4,5".split(","));
 
     prop.getArray()
         .setProperties(new Array.Properties(500, 10, true, "#CCC", "#FFF", HeadingSize.H2));
@@ -35,7 +36,6 @@ public class FieldPropertiesParserTest
     prop.getDatabase().setOneValue(true);
 
     prop.getDateTime().setFormat("yyyy-MM-dd");
-
 
     String xml = ResourceUtil.contents("net/hus/core/parser/FieldProperties.xml");
 

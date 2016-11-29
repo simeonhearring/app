@@ -2,7 +2,6 @@ package net.hus.core.dao.jdbc.statement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,11 +15,9 @@ import net.hus.core.shared.model.Value;
 
 public class ValuesSql extends Mapping
 {
-  private BatchSqlUpdate mBatchInsert;
-  private BatchSqlUpdate mBatchUpdate;
-  private MappingSqlQuery<Value> mSelectKey;
-  private MappingSqlQuery<Value> mSelectKeyField;
-  private MappingSqlQuery<Value> mSelectLastKey;
+  private BatchSqlUpdate mInsert;
+  private MappingSqlQuery<Value> mLastKey;
+  private MappingSqlQuery<Value> mLastKeyPos;
 
   public ValuesSql()
   {
@@ -32,27 +29,11 @@ public class ValuesSql extends Mapping
     this();
 
     Statement insert = mStmts.getStatement("INSERT");
-    mBatchInsert = new BatchSqlUpdate(inDataSource, insert.getSql(), insert.types());
-    mBatchInsert.compile();
-
-    Statement update = mStmts.getStatement("UPDATE");
-    mBatchUpdate = new BatchSqlUpdate(inDataSource, update.getSql(), update.types());
-    mBatchUpdate.compile();
-
-    Statement key = mStmts.getStatement("SELECT_KEY");
-    mSelectKey = new MappingSqlQuery<Value>(inDataSource, key.getSql())
-    {
-      @Override
-      protected Value mapRow(ResultSet inRs, int inRowNum) throws SQLException
-      {
-        return mapValue(new Value(), inRs);
-      }
-    };
-    mSelectKey.setTypes(key.types());
-    mSelectKey.compile();
+    mInsert = new BatchSqlUpdate(inDataSource, insert.getSql(), insert.types());
+    mInsert.compile();
 
     Statement lastKey = mStmts.getStatement("SELECT_LAST_KEY");
-    mSelectLastKey = new MappingSqlQuery<Value>(inDataSource, lastKey.getSql())
+    mLastKey = new MappingSqlQuery<Value>(inDataSource, lastKey.getSql())
     {
       @Override
       protected Value mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -60,11 +41,11 @@ public class ValuesSql extends Mapping
         return mapValue(new Value(), inRs);
       }
     };
-    mSelectLastKey.setTypes(lastKey.types());
-    mSelectLastKey.compile();
+    mLastKey.setTypes(lastKey.types());
+    mLastKey.compile();
 
-    Statement keyField = mStmts.getStatement("SELECT_KEY_FIELD");
-    mSelectKeyField = new MappingSqlQuery<Value>(inDataSource, keyField.getSql())
+    Statement lastKeyPos = mStmts.getStatement("SELECT_LAST_KEY_POS");
+    mLastKeyPos = new MappingSqlQuery<Value>(inDataSource, lastKeyPos.getSql())
     {
       @Override
       protected Value mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -72,97 +53,37 @@ public class ValuesSql extends Mapping
         return mapValue(new Value(), inRs);
       }
     };
-    mSelectKeyField.setTypes(keyField.types());
-    mSelectKeyField.compile();
-  }
-
-  // TODO handle oneValue
-  public void insertUpdate(List<Value> inList)
-  {
-    mBatchUpdate.reset();
-    mBatchInsert.reset();
-    for (Value value : inList)
-    {
-      String table = value.getFieldTKG().getFvt();
-      String key = value.getFieldTKG().getFvk();
-      String valueText = value.getValue();
-      Long valueId = value.getValueId();
-      Long fieldId = value.getField().getId();
-      Date asOf = value.getAsOf();
-      if (value.getField().isOneValue())
-      {
-        mBatchUpdate.update(params(valueText, valueId, asOf, table, key, fieldId));
-      }
-      else
-      {
-        mBatchInsert.update(params(table, key, valueText, valueId, fieldId, asOf));
-      }
-    }
-    mBatchInsert.flush();
-    mBatchInsert.reset();
-    mBatchUpdate.flush();
-    mBatchUpdate.reset();
+    mLastKeyPos.setTypes(lastKeyPos.types());
+    mLastKeyPos.compile();
   }
 
   public void insert(List<Value> inList)
   {
-    mBatchInsert.reset();
+    mInsert.reset();
     for (Value value : inList)
-    {
-      String table = value.getFieldTKG().getFvt();
-      String key = value.getFieldTKG().getFvk();
-      String valueText = value.getValue();
-      Long valueId = value.getValueId();
-      Long fieldId = value.getField().getId();
-      Date asOf = value.getAsOf();
-      mBatchInsert.update(params(table, key, valueText, valueId, fieldId, asOf));
-    }
-    mBatchInsert.flush();
-    mBatchInsert.reset();
-  }
-
-  public void update(List<Value> inValues)
-  {
-    mBatchUpdate.reset();
-    for (Value value : inValues)
     {
       String fvt = value.getFieldTKG().getFvt();
       String fvk = value.getFieldTKG().getFvk();
+      int pos = value.getPos();
       String valueText = value.getValue();
       Long valueId = value.getValueId();
       Long fieldId = value.getField().getId();
       Date asOf = value.getAsOf();
-      mBatchUpdate.update(params(valueText, valueId, asOf, fvt, fvk, fieldId));
+      mInsert.update(params(fvt, fvk, pos, valueText, valueId, fieldId, asOf));
     }
-    mBatchUpdate.flush();
-    mBatchUpdate.reset();
-  }
-
-  protected List<Value> select(FieldTKG inTk)
-  {
-    List<Value> ret = mSelectKey.execute(params(inTk.getFvt(), inTk.getFvk()));
-    return ret;
+    mInsert.flush();
+    mInsert.reset();
   }
 
   public List<Value> selectLast(FieldTKG inTk)
   {
-    List<Value> ret = mSelectLastKey.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
+    List<Value> ret = mLastKey.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
     return ret;
   }
 
-  protected List<Value> selectLast(List<FieldTKG> inTks)
+  public List<Value> selectLastPos(FieldTKG inTk)
   {
-    List<Value> ret = new ArrayList<>();
-    for (FieldTKG value : inTks)
-    {
-      ret.addAll(mSelectLastKey.execute(params(value.getFvt(), value.getFvk(), value.getFgg())));
-    }
-    return ret;
-  }
-
-  protected List<Value> select(FieldTKG inTk, Long inFieldId)
-  {
-    List<Value> ret = mSelectKeyField.execute(params(inTk.getFvt(), inTk.getFvk(), inFieldId));
+    List<Value> ret = mLastKeyPos.execute(params(inTk.getFvt(), inTk.getFvk(), inTk.getFgg()));
     return ret;
   }
 }

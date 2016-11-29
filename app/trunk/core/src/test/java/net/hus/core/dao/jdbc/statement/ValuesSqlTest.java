@@ -10,7 +10,9 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Fid;
 import net.hus.core.shared.model.Value;
+import net.hus.core.shared.model.Values;
 
 public class ValuesSqlTest extends MySqlCoreDsTest
 {
@@ -20,22 +22,6 @@ public class ValuesSqlTest extends MySqlCoreDsTest
   public void before()
   {
     mSql = new ValuesSql(mDataSource);
-  }
-
-  @Test
-  public void testSelectKey()
-  {
-    List<Value> i = mSql.select(TK);
-    Assert.assertEquals(VALUE_TABLE, i.get(0).getFieldTKG().getFvt());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getFieldTKG().getFvk());
-  }
-
-  @Test
-  public void testSelectKeyField()
-  {
-    List<Value> i = mSql.select(TK, 1L);
-    Assert.assertEquals(VALUE_TABLE, i.get(0).getFieldTKG().getFvt());
-    Assert.assertEquals(VALUE_KEY, i.get(0).getFieldTKG().getFvk());
   }
 
   @Test
@@ -55,7 +41,7 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     value.setFieldTKG(TK);
     value.setValue("Simeon-JUNIT");
     value.setValueId(-1L);
-    value.setField(new Field(1L));
+    value.setField(new Field(Fid.FIRST_NAME.fid()));
     Date asOf = new Date();
     value.setAsOf(asOf);
 
@@ -63,28 +49,21 @@ public class ValuesSqlTest extends MySqlCoreDsTest
 
     mSql.insert(list);
 
-    List<Value> results = mSql.select(TK, 1L);
+    Values values = new Values();
+    values.setValues(mSql.selectLast(TK));
+
+    Value v1 = values.get(Fid.FIRST_NAME);
+
     String expected = String.valueOf(asOf.getTime()).substring(0, 10);
-    String actual = String.valueOf(results.get(0).getAsOf().getTime()).substring(0, 10);
+    String actual = String.valueOf(v1.getAsOf().getTime()).substring(0, 10);
     Assert.assertEquals(expected, actual);
-  }
 
-  @Test
-  public void testUpdate()
-  {
-    List<Value> list = new ArrayList<>();
+    values.setValues(mSql.selectLastPos(TK));
 
-    Value value = new Value();
-    value.setFieldTKG(TK);
-    value.setField(new Field());
-    value.getField().setId(1L);
-    Date asOf = new Date();
-    value.setAsOf(asOf);
+    v1 = values.get(Fid.FIRST_NAME);
 
-    value.setValue("Simeon-JUNIT--");
-
-    list.add(value);
-
-    mSql.update(list);
+    expected = String.valueOf(asOf.getTime()).substring(0, 10);
+    actual = String.valueOf(v1.getAsOf().getTime()).substring(0, 10);
+    Assert.assertEquals(expected, actual);
   }
 }

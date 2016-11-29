@@ -163,10 +163,16 @@
 										</b:Tooltip>
 									</b:FormGroup>
 								</b:Column>
-								<b:Column size="SM_6">
+								<b:Column size="SM_3">
 									<b:FormGroup size="SMALL">
 										<b:FormLabel text="Headers:" />
 										<b.gwt:FlowPanel ui:field="mArrayLabel" />
+									</b:FormGroup>
+								</b:Column>
+								<b:Column size="SM_3">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Table Fields:" />
+										<b.gwt:FlowPanel ui:field="mTableFields" />
 									</b:FormGroup>
 								</b:Column>
 							</b:Row>

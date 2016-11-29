@@ -94,6 +94,7 @@ public class Mapping extends AbstractSqlJdbc
         new FieldTKG(inRs.getString("mTable"), inRs.getString("mKey"), inRs.getString("mGroup")));
     inOut.setValue(inRs.getString("mValue"));
     inOut.setValueId((Long) inRs.getObject("mValueId"));
+    inOut.setPos(inRs.getInt("mPos"));
     inOut.setAsOf(inRs.getTimestamp("mAsOf"));
 
     Field field = new Field();

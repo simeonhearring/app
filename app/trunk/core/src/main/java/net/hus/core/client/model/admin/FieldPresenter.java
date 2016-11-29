@@ -26,6 +26,8 @@ implements Action, AdminEvent.Handler
 
   private Field mField;
 
+  private List<Lookup> mFields;
+
   public FieldPresenter(FieldDisplay inDisplay)
   {
     Global.addHandler(AdminEvent.TYPE, this);
@@ -50,7 +52,7 @@ implements Action, AdminEvent.Handler
     switch (inType)
     {
       case ALL:
-        addFields(inData.data(), inData.getField(), inData.getLookupGroups());
+        addFields(inData.data(), inData.getField(), inData.getLookupGroups(), inData.getFields());
         break;
       case FIELD:
         set(inData.getField());
@@ -132,12 +134,14 @@ implements Action, AdminEvent.Handler
   private void set(Field inField)
   {
     mField = inField;
-    mDisplay.set(mField);
+    mDisplay.set(mField, mFields);
   }
 
   private void addFields(Map<String, List<Lookup>> inData, Field inField,
-      List<Lookup> inLookupGroups)
+      List<Lookup> inLookupGroups, List<Lookup> inFields)
   {
+    mFields = inFields;
+
     mDisplay.clearFields();
     for (Entry<String, List<Lookup>> value : inData.entrySet())
     {
@@ -148,5 +152,22 @@ implements Action, AdminEvent.Handler
     set(inField);
 
     mDisplay.addLookup(inLookupGroups);
+  }
+
+  @Override
+  public Long fieldId(int inPos)
+  {
+    return mField.getFieldId(inPos);
+  }
+
+  @Override
+  public void updateTable(Long[] inTableFields)
+  {
+    StringBuilder sb = new StringBuilder();
+    for (Long value : inTableFields)
+    {
+      sb.append(value).append(",");
+    }
+    update(DataType.ARRAY_FIELDS, sb.toString());
   }
 }

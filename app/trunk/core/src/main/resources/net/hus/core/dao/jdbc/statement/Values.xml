@@ -1,39 +1,25 @@
 <Statements>
 	<Statement>
 		<Key>INSERT</Key>
-		<Types>VARCHAR,VARCHAR,VARCHAR,NUMERIC,NUMERIC,TIMESTAMP</Types>
-		<Sql>INSERT INTO FIELD_VALUE (mUpdated,mTable,mKey,mValue,mValueId,mFieldId,mAsOf) VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?)</Sql>
-	</Statement>
-	<Statement>
-		<Key>UPDATE</Key>
-		<Types>VARCHAR,NUMERIC,TIMESTAMP,VARCHAR,VARCHAR,NUMERIC</Types>
-		<Sql>UPDATE FIELD_VALUE SET mUpdated=CURRENT_TIMESTAMP,mValue=?,mValueId=?,mAsOf=? WHERE mTable=? AND mKey=? AND mFieldId=?</Sql>
-	</Statement>
-		<Statement>
-		<Key>SELECT_KEY</Key>
-		<Types>VARCHAR,VARCHAR</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
-			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=?
-			order by v.mCreated desc
-		</Sql>
-	</Statement>
-	<Statement>
-		<Key>SELECT_KEY_FIELD</Key>
-		<Types>VARCHAR,VARCHAR,NUMERIC</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
-			from FIELD_VALUE v, FIELD f, FIELD_GROUP g
-			where f.mId=v.mFieldId and f.mId=g.mFieldId and mTable=? and mKey=? and
-			v.mFieldId=?
-			order by v.mCreated desc
-		</Sql>
+		<Types>VARCHAR,VARCHAR,NUMERIC,VARCHAR,NUMERIC,NUMERIC,TIMESTAMP</Types>
+		<Sql>INSERT INTO FIELD_VALUE (mUpdated,mTable,mKey,mPos,mValue,mValueId,mFieldId,mAsOf) VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?,?)</Sql>
 	</Statement>
 	<Statement>
 		<Key>SELECT_LAST_KEY</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR</Types>
 		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
 			from FIELD_GROUP g
-			left join FIELD_VALUE v on g.mFieldId=v.mFieldId and v.mTable=? and v.mKey=? and v.mId IN (select max(mId) from FIELD_VALUE group by mKey,mFieldId)
+			left join FIELD_VALUE v on g.mFieldId=v.mFieldId and v.mTable=? and v.mKey=? and v.mPos=0 and v.mId IN (select max(mId) from FIELD_VALUE group by mKey,mFieldId)
+			left join FIELD f on g.mFieldId=f.mId
+			where g.mGroup=?
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT_LAST_KEY_POS</Key>
+		<Types>VARCHAR,VARCHAR,VARCHAR</Types>
+		<Sql>select v.*,f.mName,f.mType,f.mProperties,g.mDisplay,g.mSort,g.mGroup,g.mFieldId as mFId
+			from FIELD_GROUP g
+			left join FIELD_VALUE v on g.mFieldId=v.mFieldId and v.mTable=? and v.mKey=? and v.mId IN (select max(mId) from FIELD_VALUE group by mKey,mFieldId,mPos)
 			left join FIELD f on g.mFieldId=f.mId
 			where g.mGroup=?
 		</Sql>
