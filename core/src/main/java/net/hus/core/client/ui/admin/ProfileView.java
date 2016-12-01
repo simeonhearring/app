@@ -25,6 +25,7 @@ import net.hus.core.client.ui.event.CssChangeEvent;
 import net.hus.core.shared.model.CssFileName;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Profile;
+import net.hus.core.shared.util.EnumUtil;
 
 public class ProfileView extends AbstractView implements ProfileDisplay
 {
@@ -108,6 +109,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
       String css = mCss.getSelectedValue();
       if (!"".equals(css))
       {
+        css = EnumUtil.valueOf(mCss.getSelectedValue(), CssFileName.values()).getFileName();
         Global.fire(new CssChangeEvent(css));
       }
     }
