@@ -82,7 +82,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     else if (mSave0.equals(inEvent.getSource()))
     {
       mAction.saveProfile(mFirst.getText(), mMiddle.getText(), mLast.getText(), mPassword.getText(),
-          mPage.getSelectedValue(), mCss.getSelectedValue());
+          mPage.getSelectedValue(), css());
     }
   }
 
@@ -106,13 +106,17 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   {
     if (mCss.equals(inEvent.getSource()))
     {
-      String css = mCss.getSelectedValue();
-      if (!"".equals(css))
+      String css = css();
+      if (css != null)
       {
-        css = EnumUtil.valueOf(mCss.getSelectedValue(), CssFileName.values()).getFileName();
         Global.fire(new CssChangeEvent(css));
       }
     }
+  }
+
+  private String css()
+  {
+    return EnumUtil.valueOf(mCss.getSelectedValue(), CssFileName.values()).getFileName();
   }
 
   @Override
@@ -132,7 +136,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mPassword.setText(inProfile.getPassword());
 
     setSelectedIndex(mPage, inProfile.getPage().getComponentsName());
-    setSelectedIndex(mCss, inProfile.getCss());
+    setSelectedIndex(mCss, CssFileName.css(inProfile.getCss()));
 
     mProfiles.setValue(null);
   }
