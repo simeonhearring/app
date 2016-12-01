@@ -3,6 +3,9 @@ package net.hus.core.client.ui.main;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.RepeatingCommand;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -19,14 +22,17 @@ import net.hus.core.client.model.page.MarketingDisplay;
 import net.hus.core.client.model.page.WebDisplay;
 import net.hus.core.client.ui.admin.AdminView;
 import net.hus.core.client.ui.common.AbstractView;
+import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.common.GwtUiCreate;
+import net.hus.core.client.ui.event.CssChangeEvent;
 import net.hus.core.client.ui.home.HomeView;
 import net.hus.core.client.ui.page.BlogView;
 import net.hus.core.client.ui.page.LoginView;
 import net.hus.core.client.ui.page.MarketingView;
 import net.hus.core.client.ui.page.WebView;
+import net.hus.core.shared.util.NumberUtil;
 
-public class MainView extends AbstractView implements MainDisplay
+public class MainView extends AbstractView implements MainDisplay, CssChangeEvent.Handler
 {
   private static final Binder BINDER = GWT.create(Binder.class);
 
@@ -43,6 +49,7 @@ public class MainView extends AbstractView implements MainDisplay
   public MainView()
   {
     initWidget(BINDER.createAndBindUi(this));
+    Global.addHandler(CssChangeEvent.TYPE, this);
   }
 
   @Override
@@ -104,4 +111,24 @@ public class MainView extends AbstractView implements MainDisplay
   {
     return new HomeView();
   }
+
+  @Override
+  public void dispatch(CssChangeEvent inEvent)
+  {
+    Scheduler.get().scheduleFixedDelay(new RepeatingCommand()
+    {
+      @Override
+      public boolean execute()
+      {
+        double padTop = NumberUtil.todouble(getProperty().replaceAll("px", ""));
+        mMain.getElement().getStyle().setPaddingTop(padTop, Unit.PX);
+        return false;
+      }
+    }, 1000);
+  }
+
+  private static native String getProperty()
+  /*-{
+        return $wnd.$("a").css("height");
+  }-*/;
 }
