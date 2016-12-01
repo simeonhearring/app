@@ -1,3 +1,7 @@
+.main-top-pad {
+	padding-top: 50px;
+}
+
 .core_columns {
 	-webkit-column-count: 4; /* Chrome, Safari, Opera */
 	-moz-column-count: 4; /* Firefox */
@@ -8,9 +12,9 @@
 	-webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
 	-moz-column-rule-style: solid; /* Firefox */
 	column-rule-style: solid;
-	-webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
-	-moz-column-rule-color: lightblue; /* Firefox */
-	column-rule-color: lightblue;
+	-webkit-column-rule-color: #2fa4e7; /* Chrome, Safari, Opera */
+	-moz-column-rule-color: #2fa4e7; /* Firefox */
+	column-rule-color: #2fa4e7;
 }
 
 legend {
@@ -24,3 +28,14 @@ label, p {
 .tab-content {
 	padding: 10px;
 }
+
+footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	height: 25px;
+	width: 100%;
+	background: aliceblue;
+	padding-top: 5px;
+}
+

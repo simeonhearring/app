@@ -14,6 +14,7 @@ public class Profile extends AbstractModel implements PageQuery, LookupXL
   private String mMiddle;
   private String mLast;
   private String mPassword;
+  private String mCss;
 
   private String mFvk;
 
@@ -140,6 +141,21 @@ public class Profile extends AbstractModel implements PageQuery, LookupXL
   public void setType(Type inType)
   {
     mType = inType;
+  }
+
+  public String getCss()
+  {
+    return mCss;
+  }
+
+  public void setCss(String inCss)
+  {
+    mCss = inCss;
+  }
+
+  public void setCss(CssFileName inCss)
+  {
+    mCss = inCss.name();
   }
 
   public enum Type

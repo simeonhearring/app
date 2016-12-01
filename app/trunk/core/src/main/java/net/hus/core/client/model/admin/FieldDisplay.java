@@ -5,6 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.constants.ValidationState;
 
 import net.hus.core.client.common.Display;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Lookup;
@@ -21,7 +22,7 @@ public interface FieldDisplay extends Display
 
     void select(Long inFieldId);
 
-    void update(DataType inType, String inValue);
+    void update(DataType inType, Object inValue);
 
     String arrayLabel(int inPos);
 
@@ -34,6 +35,10 @@ public interface FieldDisplay extends Display
     List<Lookup> getFields();
 
     boolean isTable();
+
+    Components.Type cType(int inPos);
+
+    void updateCTypes(Components.Type[] inCTypes);
   }
 
   void setAction(Action inAction);

@@ -13,7 +13,7 @@ public interface ProfileDisplay extends Display
     void select(String inValue);
 
     void saveProfile(String inFirst, String inMiddle, String inLast, String inPassword,
-        String inPage);
+        String inPage, String inCss);
 
     void createProfile(String inUserName, String inFirst, String inLast, String inPage);
   }

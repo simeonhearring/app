@@ -10,6 +10,7 @@ import org.gwtbootstrap3.extras.select.client.ui.Option;
 import org.gwtbootstrap3.extras.select.client.ui.Select;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -19,6 +20,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.ProfileDisplay;
 import net.hus.core.client.ui.common.AbstractView;
+import net.hus.core.client.ui.common.Global;
+import net.hus.core.client.ui.event.CssChangeEvent;
+import net.hus.core.shared.model.CssFileName;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Profile;
 
@@ -46,16 +50,14 @@ public class ProfileView extends AbstractView implements ProfileDisplay
   Paragraph mId, mCreated, mUpdated, mName, mUserName;
 
   @UiField
-  ListBox mAddPage, mPage;
-
-  // @UiField
-  // FormLabel mNameText;
+  ListBox mAddPage, mPage, mCss;
 
   private Action mAction;
 
   public ProfileView()
   {
     initWidget(BINDER.createAndBindUi(this));
+    addEnumDToListBox(CssFileName.values(), mCss, true);
   }
 
   @Override
@@ -79,7 +81,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     else if (mSave0.equals(inEvent.getSource()))
     {
       mAction.saveProfile(mFirst.getText(), mMiddle.getText(), mLast.getText(), mPassword.getText(),
-          mPage.getSelectedValue());
+          mPage.getSelectedValue(), mCss.getSelectedValue());
     }
   }
 
@@ -92,6 +94,22 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     if (mProfiles.equals(inEvent.getSource()))
     {
       mAction.select(mProfiles.getSelectedItem().getValue());
+    }
+  }
+
+  @UiHandler(
+      {
+        "mCss"
+      })
+  public void onChangeBind(ChangeEvent inEvent)
+  {
+    if (mCss.equals(inEvent.getSource()))
+    {
+      String css = mCss.getSelectedValue();
+      if (!"".equals(css))
+      {
+        Global.fire(new CssChangeEvent(css));
+      }
     }
   }
 
@@ -110,7 +128,9 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mLast.setText(inProfile.getLast());
 
     mPassword.setText(inProfile.getPassword());
+
     setSelectedIndex(mPage, inProfile.getPage().getComponentsName());
+    setSelectedIndex(mCss, inProfile.getCss());
 
     mProfiles.setValue(null);
   }
@@ -137,6 +157,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mAddLast.setText(null);
 
     setSelectedIndex(mAddPage, (String) null);
+    setSelectedIndex(mCss, (String) null);
 
     mProfiles.setValue(null);
   }

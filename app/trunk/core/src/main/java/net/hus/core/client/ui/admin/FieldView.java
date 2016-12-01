@@ -35,6 +35,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.model.admin.FieldDisplay;
 import net.hus.core.client.ui.common.AbstractView;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
 import net.hus.core.shared.model.Field.Lookup.Location;
@@ -74,13 +75,13 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   ListBox mAddType, mLookupLocation, mHeadSize;
 
   @UiField
-  FormGroup mAddNameGrp, mTableFieldsGrp;
+  FormGroup mAddNameGrp, mTableFieldsGrp, mCTypesGrp;
 
   @UiField
   TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
 
   @UiField
-  FlowPanel mLookupGroup, mArrayLabel, mTableFields;
+  FlowPanel mLookupGroup, mArrayLabel, mTableFields, mCTypes;
 
   @UiField
   Input mBottomRow, mAltEven, mAltOdd;
@@ -139,12 +140,14 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       int size = mArrayLabel.getWidgetCount() + 1;
       addArrayLabels(size, true);
       addTableFields(size, true);
+      addCTypes(size, true);
     }
     else if (mMinus.equals(inEvent.getSource()))
     {
       int size = mArrayLabel.getWidgetCount() - 1;
       addArrayLabels(size, true);
       addTableFields(size, true);
+      addCTypes(size, true);
     }
   }
 
@@ -258,18 +261,19 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     formatExample(mStorageFormat, mStorageFormatEx);
 
     // array
-    addArrayLabels(inField.getArraySize(), false);
-    setSelectedIndex(mHeadSize, inField.getArrayHeadSize());
+    addArrayLabels(inField.arraySize(), false);
+    setSelectedIndex(mHeadSize, inField.arrayHeadSize());
     mAltEven.setValue(inField.getArrayAltEven());
     mAltOdd.setValue(inField.getArrayAltOdd());
     mAltColor.setValue(inField.isArrayAlt());
     mBottomRow.setValue(inField.getArrayBottomRow());
 
     // table
-    addTableFields(inField.getArraySize(), false);
+    addTableFields(inField.arraySize(), false);
+    addCTypes(inField.arraySize(), false);
 
     // lookup
-    addLookup(inField.getLookupParameters(), inField.getLookupLocation(), inField);
+    addLookup(inField.lookupParameters(), inField.lookupLocation(), inField);
 
     mFields.setValue(null);
   }
@@ -281,6 +285,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     if (mTableFieldsGrp.isVisible())
     {
       mAction.updateTable(getTableFields());
+      mAction.updateCTypes(getCTypes());
     }
   }
 
@@ -375,7 +380,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       {
         ListBox box = new ListBox();
         addLookupToListBox(box, mAction.getFields());
-        setListBoxSelected(box, String.valueOf(mAction.fieldId(i)));
+        setSelectedIndex(box, String.valueOf(mAction.fieldId(i)));
         box.addChangeHandler(this);
         mTableFields.add(box);
       }
@@ -386,6 +391,28 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       }
     }
     mTableFieldsGrp.setVisible(mAction.isTable());
+  }
+
+  private void addCTypes(int inSize, boolean inUpdate)
+  {
+    if (mAction.isTable())
+    {
+      mCTypes.clear();
+      for (int i = 0; i < inSize; i++)
+      {
+        ListBox box = new ListBox();
+        addEnumDToListBox(Components.Type.values(), box);
+        setSelectedIndex(box, mAction.cType(i));
+        box.addChangeHandler(this);
+        mCTypes.add(box);
+      }
+
+      if (inUpdate)
+      {
+        mAction.updateCTypes(getCTypes());
+      }
+    }
+    mCTypesGrp.setVisible(mAction.isTable());
   }
 
   private String[] getArrayLabels()
@@ -404,6 +431,16 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     for (int i = 0; i < ret.length; i++)
     {
       ret[i] = getListBoxLongValue((ListBox) mTableFields.getWidget(i));
+    }
+    return ret;
+  }
+
+  private Components.Type[] getCTypes()
+  {
+    Components.Type[] ret = new Components.Type[mCTypes.getWidgetCount()];
+    for (int i = 0; i < ret.length; i++)
+    {
+      ret[i] = getEnumValueFromListBox(Components.Type.values(), (ListBox) mCTypes.getWidget(i));
     }
     return ret;
   }

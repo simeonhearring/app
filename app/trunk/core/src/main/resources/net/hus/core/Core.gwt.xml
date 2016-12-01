@@ -22,10 +22,9 @@
 	<inherits name="com.google.gwt.json.JSON" />
 
 	<stylesheet src='css/bootstrap-treeview.min.css' />
-	<stylesheet src='css/bootstrap-3.3.6.min.cache.css' />
 
+	<stylesheet src='dcss/cerulean.bootstrap.min.css' />
 	<stylesheet src='css/core.css' />
-	<stylesheet src='css/bandtheme.css' />
 
 	<source path='client' />
 	<source path='shared' />

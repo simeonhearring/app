@@ -9,7 +9,9 @@
 
 			<b:NavbarHeader>
 				<b:NavbarCollapseButton dataTarget="#navbar-collapse" />
-				<b:NavbarBrand ui:field="mCompany">HU SOFTWARE</b:NavbarBrand>
+					<b:Image type="ROUNDED" url="img/husoftwarelogo.png" />
+								<b:NavbarBrand ui:field="mCompany">
+				</b:NavbarBrand>
 			</b:NavbarHeader>
 
 			<b:NavbarCollapse b:id="navbar-collapse">

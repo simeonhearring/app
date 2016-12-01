@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.Assert;
+import net.hus.core.shared.model.CssFileName;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.model.Profile.Type;
@@ -46,6 +47,7 @@ public class ProfileParserTest
     model.setPage(new Page(null, "Components3"));
     model.setUserName("simeonhearring");
     model.setPassword("abc123");
+    model.setCss(CssFileName.united);
 
     String xml = ResourceUtil.contents("Profile3.xml");
     xml = xml.replaceAll("\t", "  ");

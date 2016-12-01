@@ -13,6 +13,7 @@ import net.hus.core.client.ui.event.AdminEvent;
 import net.hus.core.shared.command.AdminDataCommand;
 import net.hus.core.shared.command.FieldSaveCommand;
 import net.hus.core.shared.model.AdminData;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.DataType;
@@ -107,7 +108,7 @@ implements Action, AdminEvent.Handler
   }
 
   @Override
-  public void update(DataType inType, String inValue)
+  public void update(DataType inType, Object inValue)
   {
     mField.update(inType, inValue);
     mDisplay.notify("Updated ... " + inType.display() + " [" + inValue + "].");
@@ -128,7 +129,7 @@ implements Action, AdminEvent.Handler
   @Override
   public String arrayLabel(int inPos)
   {
-    return mField.getArrayLabel(inPos);
+    return mField.arrayLabel(inPos);
   }
 
   private void set(Field inField)
@@ -157,7 +158,7 @@ implements Action, AdminEvent.Handler
   @Override
   public Long fieldId(int inPos)
   {
-    return mField.getFieldId(inPos);
+    return mField.fieldId(inPos);
   }
 
   @Override
@@ -181,5 +182,17 @@ implements Action, AdminEvent.Handler
   public boolean isTable()
   {
     return mField.isTable();
+  }
+
+  @Override
+  public Components.Type cType(int inPos)
+  {
+    return mField.cType(inPos);
+  }
+
+  @Override
+  public void updateCTypes(Components.Type[] inCTypes)
+  {
+    update(DataType.ARRAY_CTYPES, inCTypes);
   }
 }

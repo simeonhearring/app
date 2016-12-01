@@ -9,6 +9,9 @@ import org.gwtbootstrap3.extras.notify.client.ui.NotifySettings;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -16,6 +19,7 @@ import net.hus.core.client.service.rpc.RpcService;
 import net.hus.core.client.service.rpc.RpcServiceAsync;
 import net.hus.core.client.ui.common.Global;
 import net.hus.core.client.ui.event.AlertEvent;
+import net.hus.core.client.ui.event.CssChangeEvent;
 import net.hus.core.client.ui.event.LoadMainEvent;
 import net.hus.core.client.ui.event.ReportEvent;
 import net.hus.core.client.ui.service.bus.GwtEventBus;
@@ -26,7 +30,8 @@ import net.hus.core.shared.util.EntryPointUtil;
 import net.hus.core.shared.util.JsniUtil;
 
 public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handler,
-    ReportEvent.Handler, LoadMainEvent.Handler, AsyncCallback<ClientDataCommand>
+ReportEvent.Handler, LoadMainEvent.Handler, CssChangeEvent.Handler,
+AsyncCallback<ClientDataCommand>
 {
   @Override
   public void onModuleLoad()
@@ -47,6 +52,7 @@ public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handl
     Global.addHandler(AlertEvent.TYPE, this);
     Global.addHandler(ReportEvent.TYPE, this);
     Global.addHandler(LoadMainEvent.TYPE, this);
+    Global.addHandler(CssChangeEvent.TYPE, this);
 
     Global.fire(new ClientDataCommand(), this);
 
@@ -93,5 +99,34 @@ public abstract class AbstractEntryPoint implements EntryPoint, AlertEvent.Handl
     settings.setAllowDismiss(true);
     settings.setOffset(200, 140);
     Notify.notify(Global.getIpAddress(), settings);
+  }
+
+  @Override
+  public void dispatch(CssChangeEvent inEvent)
+  {
+    NodeList<Element> links =
+        Document.get().getElementsByTagName("head").getItem(0).getElementsByTagName("link");
+
+    for (int i = 0; i < links.getLength(); i++)
+    {
+      Element link = links.getItem(i);
+
+      String attr = link.getAttribute("href");
+      int start = attr.indexOf("dcss/");
+      if (start != -1)
+      {
+        String newCss = null;
+        if (inEvent.isExternal())
+        {
+          newCss = inEvent.getCssFileName() + ".css";
+        }
+        else
+        {
+          newCss = attr.substring(0, start + 5) + inEvent.getCssFileName();
+        }
+        link.setAttribute("href", newCss);
+        Notify.notify("Changing theme!");
+      }
+    }
   }
 }

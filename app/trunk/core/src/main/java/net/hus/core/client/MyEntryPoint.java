@@ -1,5 +1,6 @@
 package net.hus.core.client;
 
+import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -23,7 +24,7 @@ import net.hus.core.shared.command.LoggerCommand.Level;
 import net.hus.core.shared.command.ServerInfoDataCommand;
 
 public class MyEntryPoint extends RpcCallback<ServerInfoDataCommand> implements
-com.google.gwt.core.client.EntryPoint, ClickHandler, AlertEvent.Handler
+    EntryPoint, ClickHandler, AlertEvent.Handler
 {
   @Override
   public void onModuleLoad()
