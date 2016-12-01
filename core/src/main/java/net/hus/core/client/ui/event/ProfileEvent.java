@@ -1,6 +1,5 @@
 package net.hus.core.client.ui.event;
 
-import net.hus.core.shared.components.Response;
 import net.hus.core.shared.model.Profile.UserName;
 
 public class ProfileEvent extends Event<ProfileEvent.Handler>
@@ -22,12 +21,6 @@ public class ProfileEvent extends Event<ProfileEvent.Handler>
   public ProfileEvent(UserName inUserName)
   {
     this(inUserName.name());
-  }
-
-  public ProfileEvent(Response inResponse)
-  {
-    // 0 See LoginCommandBean.java
-    this(inResponse.getData()[0]);
   }
 
   @Override

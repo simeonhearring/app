@@ -116,7 +116,8 @@ public class Field extends AbstractModel
   {
     private static final long serialVersionUID = 4839256266085591075L;
 
-    private Type mType;
+    private Field.Type mType;
+    private Components.Type mCType;
     private Display mDisplay;
     private Lookup mLookup;
     private Array mArray;
@@ -190,6 +191,16 @@ public class Field extends AbstractModel
       }
       return mDateTime;
     }
+
+    public Components.Type getCType()
+    {
+      return mCType;
+    }
+
+    public void setCType(Components.Type inCType)
+    {
+      mCType = inCType;
+    }
   }
 
   public static class Database implements Serializable
@@ -220,7 +231,8 @@ public class Field extends AbstractModel
 
     private Integer mSize;
     private String[] mLabels;
-    private Long[] mFields; // TABLE ONLY
+    private Long[] mFields; // TABLE only
+    private Components.Type[] mCTypes; // TABLE only
     private Properties mProperties;
 
     public Array()
@@ -289,6 +301,30 @@ public class Field extends AbstractModel
         }
       }
       mFields = ret;
+    }
+
+    public Components.Type[] getCTypes()
+    {
+      return mCTypes;
+    }
+
+    public void setCTypes(Components.Type... inCTypes)
+    {
+      mCTypes = inCTypes;
+    }
+
+    public void setCTypes(String[] inCTypes)
+    {
+      Components.Type[] ret = null;
+      if (inCTypes != null && inCTypes.length != 0)
+      {
+        ret = new Components.Type[inCTypes.length];
+        for (int i = 0; i < ret.length; i++)
+        {
+          ret[i] = EnumUtil.valueOf(inCTypes[i], Components.Type.values());
+        }
+      }
+      mCTypes = ret;
     }
 
     public static class Properties implements Serializable
@@ -547,47 +583,57 @@ public class Field extends AbstractModel
 
   public void update(DataType inType, String inValue)
   {
+    update(inType, (Object) inValue);
+  }
+
+  public void update(DataType inType, Object inValue)
+  {
     switch (inType)
     {
       case DISPLAY_LONG:
-        mProperties.mDisplay.setLong(inValue);
+        mProperties.mDisplay.setLong((String) inValue);
         break;
       case DISPLAY_SHORT:
-        mProperties.mDisplay.setShort(inValue);
+        mProperties.mDisplay.setShort((String) inValue);
         break;
       case DATE_STORAGE_FORMAT:
-        mProperties.getDateTime().setFormat(inValue);
+        mProperties.getDateTime().setFormat((String) inValue);
         break;
       case LOOKUP_PARAMETERS:
-        mProperties.getLookup().setParameters(inValue);
+        mProperties.getLookup().setParameters((String) inValue);
         break;
       case LOOKUP_LOCATION:
-        mProperties.getLookup().setLocation(EnumUtil.valueOf(inValue, Lookup.Location.values()));
+        mProperties.getLookup()
+        .setLocation(EnumUtil.valueOf((String) inValue, Lookup.Location.values()));
         break;
       case ARRAY_LABELS:
-        mProperties.getArray().setLabels(inValue.split(","));
+        mProperties.getArray().setLabels(((String) inValue).split(","));
         break;
       case ARRAY_FIELDS:
-        mProperties.getArray().setFields(inValue.split(","));
+        mProperties.getArray().setFields(((String) inValue).split(","));
+        break;
+      case ARRAY_CTYPES:
+        mProperties.getArray().setCTypes((Components.Type[]) inValue);
         break;
       case ARRAY_SIZE:
-        mProperties.getArray().setSize(NumberUtil.toInteger(inValue));
+        mProperties.getArray().setSize(NumberUtil.toInteger((String) inValue));
         break;
       case ARRAY_HEADING_SIZE:
         mProperties.getArray().getProperties()
-        .setHeadingSize(EnumUtil.valueOf(inValue, HeadingSize.values()));
+        .setHeadingSize(EnumUtil.valueOf((String) inValue, HeadingSize.values()));
         break;
       case ARRAY_ALTERNATE_COLOR:
-        mProperties.getArray().getProperties().setAltRow(Boolean.valueOf(inValue));
+        mProperties.getArray().getProperties().setAltRow(Boolean.valueOf((String) inValue));
         break;
       case ARRAY_ALTERNATE_COLOR_EVEN:
-        mProperties.getArray().getProperties().setAltEvenColor(inValue);
+        mProperties.getArray().getProperties().setAltEvenColor((String) inValue);
         break;
       case ARRAY_ALTERNATE_COLOR_ODD:
-        mProperties.getArray().getProperties().setAltOddColor(inValue);
+        mProperties.getArray().getProperties().setAltOddColor((String) inValue);
         break;
       case ARRAY_BOTTOM_ROW_AT:
-        mProperties.getArray().getProperties().setShowBottomAtRow(NumberUtil.toInteger(inValue));
+        mProperties.getArray().getProperties()
+        .setShowBottomAtRow(NumberUtil.toInteger((String) inValue));
         break;
       default:
         break;
@@ -604,6 +650,7 @@ public class Field extends AbstractModel
     ARRAY_SIZE,
     ARRAY_LABELS,
     ARRAY_FIELDS,
+    ARRAY_CTYPES,
     ARRAY_HEADING_SIZE,
     ARRAY_ALTERNATE_COLOR_ODD,
     ARRAY_ALTERNATE_COLOR_EVEN,
@@ -660,7 +707,7 @@ public class Field extends AbstractModel
     mProperties.mLookup = inLookup;
   }
 
-  public String getLookupParameters()
+  public String lookupParameters()
   {
     String ret = null;
     if (mProperties != null && mProperties.mLookup != null)
@@ -670,7 +717,7 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  public Location getLookupLocation()
+  public Location lookupLocation()
   {
     Location ret = null;
     if (mProperties != null && mProperties.mLookup != null)
@@ -680,7 +727,7 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  public int getArraySize()
+  public int arraySize()
   {
     int ret = 1;
     if (mProperties != null && mProperties.mArray != null)
@@ -690,7 +737,7 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  public String getArrayLabel(int inPos)
+  public String arrayLabel(int inPos)
   {
     String ret = null;
     if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mLabels != null)
@@ -709,7 +756,7 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  public Long getFieldId(int inPos)
+  public Long fieldId(int inPos)
   {
     Long ret = null;
     if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mFields != null)
@@ -723,7 +770,21 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  public HeadingSize getArrayHeadSize()
+  public Components.Type cType(int inPos)
+  {
+    Components.Type ret = null;
+    if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mCTypes != null)
+    {
+      Components.Type[] cType = mProperties.mArray.mCTypes;
+      if (cType.length > inPos)
+      {
+        ret = cType[inPos];
+      }
+    }
+    return ret;
+  }
+
+  public HeadingSize arrayHeadSize()
   {
     HeadingSize ret = null;
     if (mProperties != null && mProperties.mArray != null && mProperties.mArray.mProperties != null)

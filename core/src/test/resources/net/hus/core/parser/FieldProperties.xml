@@ -17,6 +17,10 @@
       <long>4</long>
       <long>5</long>
     </Fields>
+    <cTypes>
+      <cType>ALERT</cType>
+      <cType>BADGE</cType>
+    </cTypes>
     <Properties maxHeight="500" showBottomAtRow="10" isAltRow="true" altEvenColor="#CCC" altOddColor="#FFF" headingSize="H2"/>
   </Array>
   <DateTime format="yyyy-MM-dd"/>

@@ -13,6 +13,7 @@ public class ProfileParser extends XStream implements Parser<Profile>
     aliasAttribute(Profile.class, "mType", "type");
     aliasAttribute(Profile.class, "mUserName", "userName");
     aliasAttribute(Profile.class, "mPassword", "password");
+    aliasAttribute(Profile.class, "mCss", "css");
     aliasField("First", Profile.class, "mFirst");
     aliasField("Middle", Profile.class, "mMiddle");
     aliasField("Last", Profile.class, "mLast");

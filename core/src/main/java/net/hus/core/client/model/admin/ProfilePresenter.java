@@ -11,6 +11,7 @@ import net.hus.core.shared.model.EventType;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Profile;
 import net.hus.core.shared.util.RandomUtil;
+import net.hus.core.shared.util.StringUtil;
 
 public class ProfilePresenter extends RpcCallback<AdminDataCommand>
 implements Action, AdminEvent.Handler
@@ -79,13 +80,14 @@ implements Action, AdminEvent.Handler
 
   @Override
   public void saveProfile(String inFirst, String inMiddle, String inLast, String inPassword,
-      String inPage)
+      String inPage, String inCss)
   {
     mProfile.setFirst(inFirst);
     mProfile.setMiddle(inMiddle);
     mProfile.setLast(inLast);
     mProfile.setPassword(inPassword);
     mProfile.getPage().setComponentsName(inPage);
+    mProfile.setCss(StringUtil.nullIfEmpty(inCss));
 
     Global.fire(new LookupXLSaveCommand(mProfile), new RpcCallback<LookupXLSaveCommand>()
     {

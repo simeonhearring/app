@@ -20,6 +20,7 @@ import net.hus.core.client.ui.common.AbstractComposite_View;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Table;
 import net.hus.core.shared.model.Value;
+import net.hus.core.shared.model.Values;
 import net.hus.core.shared.util.StringUtil;
 
 public class FlexTable_View extends AbstractComposite_View<FlexTable>
@@ -120,6 +121,15 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
       }
       handlePanelHeight();
     }
+  }
+
+  public void setValues(Values inValues)
+  {
+    clear();
+
+    setProperties(inValues.getField().getArray().getProperties());
+    addHeaders(inValues.getField().getArray().getLabels());
+
   }
 
   public void clear()

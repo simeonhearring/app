@@ -29,7 +29,8 @@ public class LoginCommandBean extends AbstractCommandBean<RequestCommand>
       return new NotifyResponse(NotifyType.WARNING, "Sorry! That did't work out!");
     }
 
-    inCommand.setData(new Response(userName));
+    // See EventLocater.java
+    inCommand.setData(new Response(userName, profile.getCss()));
 
     return inCommand;
   }

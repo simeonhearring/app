@@ -9,6 +9,7 @@ public class Values implements Serializable
 {
   private static final long serialVersionUID = 1175600124812185604L;
 
+  private Field mField;
   private List<Value> mValues;
 
   public List<Value> getValues()
@@ -23,15 +24,39 @@ public class Values implements Serializable
 
   public Value get(Fid inFid)
   {
+    // Value ret = null;
+    // for (Value value : mValues)
+    // {
+    // if (inFid.fid().equals(value.getFid()))
+    // {
+    // ret = value;
+    // break;
+    // }
+    // }
+    return get(inFid.fid(), 0);
+  }
+
+  public Value get(Long inFid, int inPos)
+  {
     Value ret = null;
     for (Value value : mValues)
     {
-      if (inFid.fid().equals(value.getFid()))
+      if (inFid.equals(value.getFid()) && value.getPos() == inPos)
       {
         ret = value;
         break;
       }
     }
     return ret;
+  }
+
+  public Field getField()
+  {
+    return mField;
+  }
+
+  public void setField(Field inField)
+  {
+    mField = inField;
   }
 }

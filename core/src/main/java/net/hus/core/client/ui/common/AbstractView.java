@@ -116,20 +116,6 @@ public abstract class AbstractView extends Composite
     }
   }
 
-  public static void setSelectedIndex(ListBox inListBox, String inValue)
-  {
-    int index = 0;
-    for (int i = 0; i < inListBox.getItemCount(); i++)
-    {
-      if (inListBox.getValue(i).equals(inValue))
-      {
-        index = i;
-        break;
-      }
-    }
-    inListBox.setSelectedIndex(index);
-  }
-
   public static void setSelectedIndex(ListBox inListBox, Enum<?> inValue)
   {
     if (inValue == null)
@@ -142,12 +128,24 @@ public abstract class AbstractView extends Composite
     }
   }
 
+  public static void setSelectedIndex(ListBox inBox, String inValue)
+  {
+    for (int i = 0; i < inBox.getItemCount(); i++)
+    {
+      if (inBox.getValue(i).equals(inValue))
+      {
+        inBox.setSelectedIndex(i);
+        break;
+      }
+    }
+  }
+
   public static <E extends Enum<?>> E getEnumValueFromListBox(E[] inValues, ListBox inListBox)
   {
     return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
   }
 
-  public void addLookupToListBox(ListBox inBox, List<Lookup> inFields)
+  public static void addLookupToListBox(ListBox inBox, List<Lookup> inFields)
   {
     for (Lookup value : inFields)
     {
@@ -155,18 +153,7 @@ public abstract class AbstractView extends Composite
     }
   }
 
-  public void setListBoxSelected(ListBox inBox, String inValue)
-  {
-    for (int i = 0; i < inBox.getItemCount(); i++)
-    {
-      if (inBox.getValue(i).equals(inValue))
-      {
-        inBox.setSelectedIndex(i);
-      }
-    }
-  }
-
-  public Long getListBoxLongValue(ListBox inBox)
+  public static Long getListBoxLongValue(ListBox inBox)
   {
     return NumberUtil.toLong(inBox.getSelectedValue());
   }

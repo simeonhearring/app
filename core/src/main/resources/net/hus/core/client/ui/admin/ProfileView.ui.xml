@@ -118,6 +118,14 @@
 									</b:FormGroup>
 								</b:Column>
 							</b:Row>
+							<b:Row>
+								<b:Column size="SM_4">
+									<b:FormGroup size="SMALL">
+										<b:FormLabel text="Theme:" />
+										<b:ListBox ui:field="mCss" />
+									</b:FormGroup>
+								</b:Column>
+							</b:Row>
 							<b:Tooltip text="Save">
 								<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
 							</b:Tooltip>
