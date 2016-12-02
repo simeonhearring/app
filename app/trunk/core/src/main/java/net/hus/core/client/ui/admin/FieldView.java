@@ -244,7 +244,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     mNameTab.showTab();
 
     mDateTab.setVisible(inField.isDate());
-    mArrayTab.setVisible(inField.isArray());
+    mArrayTab.setVisible(inField.isArray() || inField.isTable());
     mLookupTab.setVisible(inField.isLookup());
 
     // name

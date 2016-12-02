@@ -21,10 +21,14 @@ import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
+import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.html.Br;
 import org.gwtbootstrap3.client.ui.html.Hr;
 
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.IsWidget;
+
+import net.hus.core.shared.model.Components;
 
 /**
  * Contract for creation of all UI Objects.
@@ -62,6 +66,8 @@ public interface UiCreate
 
   Input newInput();
 
+  Input newInput(InputType inType);
+
   Badge newBadge();
 
   Alert newAlert();
@@ -77,4 +83,6 @@ public interface UiCreate
   PanelBody newPanelBody();
 
   PanelFooter newPanelFooter();
+
+  IsWidget create(Components.Type inCType);
 }

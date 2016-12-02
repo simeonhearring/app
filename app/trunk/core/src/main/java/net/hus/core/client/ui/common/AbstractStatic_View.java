@@ -46,4 +46,9 @@ public abstract class AbstractStatic_View<C extends Widget> implements View
   {
     return mComponent;
   }
+
+  @Override
+  public void setPos(int inPos)
+  {
+  }
 }
