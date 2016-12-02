@@ -176,7 +176,7 @@ implements Action, AdminEvent.Handler
 
     if (parent instanceof HasCollection<?>)
     {
-      UIObject_ child = new Ui_Create().create(inComponentType);
+      UIObject_ child = Ui_Create.create(inComponentType);
 
       if (((HasCollection<?>) parent).add(child))
       {

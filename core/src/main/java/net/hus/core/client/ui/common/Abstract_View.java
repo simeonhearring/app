@@ -26,6 +26,7 @@ public abstract class Abstract_View<C extends Widget> implements View, ClickHand
   protected C mComponent;
   protected Field mField;
   private String mLabel;
+  private int mPos;
 
   private List<HandlerRegistration> mRegistration = new ArrayList<>();
 
@@ -67,12 +68,14 @@ public abstract class Abstract_View<C extends Widget> implements View, ClickHand
 
   private Value newValue(String inValue, Long inValueId)
   {
+    // duplicated See AbstractComposite_View.java
     Value value = new Value();
     value.setValue(inValue);
     value.setValueId(inValueId);
-    value.setFieldTKG(mFieldTKG);
     value.setAsOf(new Date());
+    value.setFieldTKG(mFieldTKG);
     value.setField(mField);
+    value.setPos(mPos);
     return value;
   }
 
@@ -92,7 +95,7 @@ public abstract class Abstract_View<C extends Widget> implements View, ClickHand
       @Override
       public void onRpcSuccess(ValueInsertCommand inResult)
       {
-        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
+        Notify.notify("Saved... '" + mLabel + "' [" + mPos + "] to " + inDisplay);
       }
     });
   }
@@ -106,7 +109,7 @@ public abstract class Abstract_View<C extends Widget> implements View, ClickHand
       @Override
       public void onRpcSuccess(ValueInsertCommand inResult)
       {
-        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
+        Notify.notify("Saved... '" + mLabel + "' [" + mPos + "] to " + inDisplay);
       }
     });
   }
@@ -146,5 +149,11 @@ public abstract class Abstract_View<C extends Widget> implements View, ClickHand
       value.removeHandler();
     }
     mRegistration.clear();
+  }
+
+  @Override
+  public void setPos(int inPos)
+  {
+    mPos = inPos;
   }
 }

@@ -27,6 +27,7 @@ implements View, ClickHandler
   protected FieldTKG mFieldTKG;
   protected Field mField;
   private String mLabel;
+  private int mPos;
 
   private List<HandlerRegistration> mRegistration = new ArrayList<>();
 
@@ -55,12 +56,14 @@ implements View, ClickHandler
 
   private Value newValue(String inValue, Long inValueId)
   {
+    // duplicated See Abstract_View.java
     Value value = new Value();
     value.setValue(inValue);
     value.setValueId(inValueId);
     value.setAsOf(new Date());
     value.setFieldTKG(mFieldTKG);
     value.setField(mField);
+    value.setPos(mPos);
     return value;
   }
 
@@ -80,7 +83,7 @@ implements View, ClickHandler
       @Override
       public void onRpcSuccess(ValueInsertCommand inResult)
       {
-        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
+        Notify.notify("Saved... '" + mLabel + "' [" + mPos + "] to " + inDisplay);
       }
     });
   }
@@ -94,7 +97,7 @@ implements View, ClickHandler
       @Override
       public void onRpcSuccess(ValueInsertCommand inResult)
       {
-        Notify.notify("Saved... '" + mLabel + "' to " + inDisplay);
+        Notify.notify("Saved... '" + mLabel + "' [" + mPos + "] to " + inDisplay);
       }
     });
   }
@@ -134,5 +137,11 @@ implements View, ClickHandler
       value.removeHandler();
     }
     mRegistration.clear();
+  }
+
+  @Override
+  public void setPos(int inPos)
+  {
+    mPos = inPos;
   }
 }

@@ -25,6 +25,8 @@ public interface View extends IsWidget
 
   void setField(Field inField);
 
+  void setPos(int inPos);
+
   void addChangeHandler();
 
   IsWidget getComponent();
