@@ -49,7 +49,7 @@ implements Action, AdminEvent.Handler
         addLookupGroups(inData);
         break;
       case LOOKUP:
-        mDisplay.addValues(inData.getLookups());
+        mDisplay.addValues(inData.getLookup());
         break;
       default:
         break;
@@ -61,7 +61,7 @@ implements Action, AdminEvent.Handler
     mDisplay.setUp();
 
     Lookups lookups = new Lookups();
-    lookups.setLookups(inData.getLookupGroups());
+    lookups.setLookups(inData.getLookups());
 
     mDisplay.clearLookupGroups();
 

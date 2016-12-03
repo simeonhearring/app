@@ -52,13 +52,13 @@ implements Action, AdminEvent.Handler
     {
       case ALL:
       {
-        mDisplay.addGroups(inData.getFieldGroups());
+        mDisplay.addGroups(inData.getFggs());
         mDisplay.addFields(inData.getFields());
-        mDisplay.selectFields(inData.getFieldGroup());
+        mDisplay.selectFields(inData.getFgg());
         break;
       }
       case FIELDS:
-        mDisplay.selectFields(inData.getFieldGroup());
+        mDisplay.selectFields(inData.getFgg());
         break;
       default:
         break;

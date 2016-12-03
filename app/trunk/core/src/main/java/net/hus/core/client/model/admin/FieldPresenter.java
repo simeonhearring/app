@@ -28,7 +28,7 @@ implements Action, AdminEvent.Handler
   private Field mField;
 
   private List<Lookup> mFields;
-  private List<Lookup> mFvts;
+  private List<Lookup> mFvts, mFggs;
 
   public FieldPresenter(FieldDisplay inDisplay)
   {
@@ -54,8 +54,8 @@ implements Action, AdminEvent.Handler
     switch (inType)
     {
       case ALL:
-        addFields(inData.data(), inData.getField(), inData.getLookupGroups(), inData.getFields(),
-            inData.getFvts());
+        addFields(inData.data(), inData.getField(), inData.getLookups(), inData.getFields(),
+            inData.getFvts(), inData.getFggs());
         break;
       case FIELD:
         set(inData.getField());
@@ -141,11 +141,11 @@ implements Action, AdminEvent.Handler
   }
 
   private void addFields(Map<String, List<Lookup>> inData, Field inField,
-      List<Lookup> inLookupGroups, List<Lookup> inFields, List<Lookup> inFvts)
+      List<Lookup> inLookupGroups, List<Lookup> inFields, List<Lookup> inFvts, List<Lookup> inFggs)
   {
     mFields = inFields;
-
     mFvts = inFvts;
+    mFggs = inFggs;
 
     mDisplay.clearFields();
     for (Entry<String, List<Lookup>> value : inData.entrySet())
@@ -204,5 +204,11 @@ implements Action, AdminEvent.Handler
   public List<Lookup> getFvt()
   {
     return mFvts;
+  }
+
+  @Override
+  public List<Lookup> getFgg()
+  {
+    return mFggs;
   }
 }

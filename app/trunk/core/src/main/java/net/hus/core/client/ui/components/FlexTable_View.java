@@ -22,6 +22,7 @@ import net.hus.core.shared.components.Ui_Create;
 import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
+import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Table;
 import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Value;
@@ -159,6 +160,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
     Type[] cTypes = mField.getArray().getCTypes();
     Long[] fieldIds = mField.getArray().getFields();
     String[] labels = mField.getArray().getLabels();
+    FieldTKG tkg = mFieldTKG.change(mField.getArrayFvt(), mField.getArrayFgg());
 
     int maxrow = inValues.getMaxRows();
     for (int col = 0; col < fieldIds.length; col++)
@@ -172,7 +174,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
         UIObject_ uiobject = Ui_Create.create(type, fieldId, pos);
         String key = uiobject.getKey();
         mComponent.setWidget(pos + 1, col, mUiManage.match(uiobject));
-        mUiManage.addField(key, label, mFieldTKG, new Field(fieldId), pos); // NEED different TKG for table.  from field definition.
+        mUiManage.addField(key, label, tkg, new Field(fieldId), pos);
         mUiManage.makeSavable(key);
       }
     }
@@ -181,11 +183,12 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
 
   private void addTableRow()
   {
-    int pos = mComponent.getRowCount();
+    int pos = mComponent.getRowCount() - 1;
 
     Type[] cTypes = mField.getArray().getCTypes();
     Long[] fieldIds = mField.getArray().getFields();
     String[] labels = mField.getArray().getLabels();
+    FieldTKG tkg = mFieldTKG.change(mField.getArrayFvt(), mField.getArrayFgg());
 
     for (int col = 0; col < fieldIds.length; col++)
     {
@@ -195,10 +198,9 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
 
       UIObject_ uiobject = Ui_Create.create(type, fieldId, pos);
       String key = uiobject.getKey();
-      mComponent.setWidget(pos, col, mUiManage.match(uiobject));
-      mUiManage.addField(key, label, mFieldTKG, new Field(fieldId), pos);
+      mComponent.setWidget(pos + 1, col, mUiManage.match(uiobject));
+      mUiManage.addField(key, label, tkg, new Field(fieldId), pos);
       mUiManage.makeSavable(key);
-      // TODO not saving.
       notify("field: " + fieldId + " key: " + key);
     }
   }

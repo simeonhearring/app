@@ -3,7 +3,7 @@
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui">
 	<ui:with field="msg" type="net.hus.core.client.resource.Messages" />
 	<ui:style>
-
+	
 	</ui:style>
 	<b:Row>
 		<b:Column size="SM_3">
@@ -173,10 +173,18 @@
 											<b:Input ui:field="mAltOdd" type="COLOR" />
 										</b:FormGroup>
 									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL" ui:field="mFvtGrp">
+								</b:Row>
+								<b:Row ui:field="mTKGRow">
+									<b:Column size="SM_3" offset="SM_2">
+										<b:FormGroup size="SMALL">
 											<b:FormLabel text="FVT:" />
 											<b:ListBox ui:field="mFvt" />
+										</b:FormGroup>
+									</b:Column>
+									<b:Column size="SM_3">
+										<b:FormGroup size="SMALL">
+											<b:FormLabel text="FGG:" />
+											<b:ListBox ui:field="mFgg" />
 										</b:FormGroup>
 									</b:Column>
 								</b:Row>

@@ -9,6 +9,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Type;
+import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 
 public class ValuesCommandBeanTest
@@ -35,7 +36,7 @@ public class ValuesCommandBeanTest
     list.add(newValue(Type.STRING, 11L, 0));
     list.add(newValue(Type.STRING, 4L, 0));
 
-    List<Value> results = mBean.checkForArrays(list);
+    List<Value> results = mBean.checkForArrays(list, new FieldTKG("P1", "6", "FG1"));
 
     Assert.assertEquals(4, results.size());
     Assert.assertEquals(4, list.get(2).getValues().getValues().size());
@@ -51,7 +52,7 @@ public class ValuesCommandBeanTest
     list.add(newValue(Type.TABLE, 3L, 0));
     list.add(newValue(Type.STRING, 4L, 0));
 
-    List<Value> results = mBean.checkForArrays(list);
+    List<Value> results = mBean.checkForArrays(list, new FieldTKG("P1", "6", "FG1"));
 
     Assert.assertEquals(4, results.size());
     Assert.assertEquals(0, list.get(2).getValues().getValues().size());
@@ -62,6 +63,7 @@ public class ValuesCommandBeanTest
     Value value = new Value();
     value.setField(new Field(inFieldId));
     value.getField().getProperties().getArray().setFields(10L, 11L, 12L);
+    value.getField().getProperties().getArray().setFvt("P1");
     value.getField().setType(inType);
     value.setPos(inPos);
     return value;
