@@ -1,13 +1,17 @@
 package net.hus.core.shared.model;
 
+import static net.hus.core.shared.util.NumberUtil.toInt;
+import static net.hus.core.shared.util.NumberUtil.toInteger;
+import static net.hus.core.shared.util.NumberUtil.toLong;
+import static net.hus.core.shared.util.StringUtil.toTitle;
+import static net.hus.core.shared.util.StringUtil.toValue;
+
 import java.io.Serializable;
 
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.util.EnumUtil;
-import net.hus.core.shared.util.NumberUtil;
-import net.hus.core.shared.util.StringUtil;
 
 public class Field extends AbstractModel
 {
@@ -108,7 +112,7 @@ public class Field extends AbstractModel
     @Override
     public String display()
     {
-      return StringUtil.toTitle(name());
+      return toTitle(name());
     }
   }
 
@@ -233,6 +237,7 @@ public class Field extends AbstractModel
     private String[] mLabels;
     private Long[] mFields; // TABLE only
     private Components.Type[] mCTypes; // TABLE only
+    private String mFvt; // TABLE only
     private Properties mProperties;
 
     public Array()
@@ -243,20 +248,6 @@ public class Field extends AbstractModel
     {
       mSize = inSize;
       mLabels = inLabels;
-    }
-
-    public int getCol(Long inFieldId)
-    {
-      int ret = 0;
-      for (int i = 0; i < mFields.length; i++)
-      {
-        if (inFieldId.equals(mFields[0]))
-        {
-          ret = i;
-          break;
-        }
-      }
-      return ret;
     }
 
     public Integer getSize()
@@ -311,7 +302,7 @@ public class Field extends AbstractModel
         ret = new Long[inFields.length];
         for (int i = 0; i < ret.length; i++)
         {
-          ret[i] = NumberUtil.toLong(inFields[i]);
+          ret[i] = toLong(inFields[i]);
         }
       }
       mFields = ret;
@@ -327,18 +318,14 @@ public class Field extends AbstractModel
       mCTypes = inCTypes;
     }
 
-    public void setCTypes(String[] inCTypes)
+    public String getFvt()
     {
-      Components.Type[] ret = null;
-      if (inCTypes != null && inCTypes.length != 0)
-      {
-        ret = new Components.Type[inCTypes.length];
-        for (int i = 0; i < ret.length; i++)
-        {
-          ret[i] = EnumUtil.valueOf(inCTypes[i], Components.Type.values());
-        }
-      }
-      mCTypes = ret;
+      return mFvt;
+    }
+
+    public void setFvt(String inFvt)
+    {
+      mFvt = inFvt;
     }
 
     public static class Properties implements Serializable
@@ -471,7 +458,7 @@ public class Field extends AbstractModel
       @Override
       public String display()
       {
-        return StringUtil.toTitle(name());
+        return toTitle(name());
       }
     }
 
@@ -630,7 +617,7 @@ public class Field extends AbstractModel
         mProperties.getArray().setCTypes((Components.Type[]) inValue);
         break;
       case ARRAY_SIZE:
-        mProperties.getArray().setSize(NumberUtil.toInteger((String) inValue));
+        mProperties.getArray().setSize(toInteger((String) inValue));
         break;
       case ARRAY_HEADING_SIZE:
         mProperties.getArray().getProperties()
@@ -647,7 +634,10 @@ public class Field extends AbstractModel
         break;
       case ARRAY_BOTTOM_ROW_AT:
         mProperties.getArray().getProperties()
-        .setShowBottomAtRow(NumberUtil.toInteger((String) inValue));
+        .setShowBottomAtRow(toInteger((String) inValue));
+        break;
+      case ARRAY_FVK:
+        mProperties.getArray().setFvt((String) inValue);
         break;
       default:
         break;
@@ -669,12 +659,13 @@ public class Field extends AbstractModel
     ARRAY_ALTERNATE_COLOR_ODD,
     ARRAY_ALTERNATE_COLOR_EVEN,
     ARRAY_ALTERNATE_COLOR,
-    ARRAY_BOTTOM_ROW_AT;
+    ARRAY_BOTTOM_ROW_AT,
+    ARRAY_FVK;
 
     @Override
     public String display()
     {
-      return StringUtil.toTitle(name().replaceAll("_", " "));
+      return toTitle(name().replaceAll("_", " "));
     }
   }
 
@@ -746,7 +737,7 @@ public class Field extends AbstractModel
     int ret = 1;
     if (mProperties != null && mProperties.mArray != null)
     {
-      ret = NumberUtil.toInt(mProperties.mArray.mSize, 1);
+      ret = toInt(mProperties.mArray.mSize, 1);
     }
     return ret;
   }
@@ -855,7 +846,17 @@ public class Field extends AbstractModel
     {
       ret = mProperties.mArray.mProperties.mShowBottomAtRow;
     }
-    return StringUtil.toValue(ret);
+    return toValue(ret);
+  }
+
+  public String getArrayFvt()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mArray != null)
+    {
+      ret = mProperties.mArray.mFvt;
+    }
+    return ret;
   }
 
   public boolean isPartOfTable(Long inFid)
@@ -869,4 +870,5 @@ public class Field extends AbstractModel
     }
     return false;
   }
+
 }

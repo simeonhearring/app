@@ -1,5 +1,6 @@
 package net.hus.core.client.ui.common;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.Window;
@@ -27,6 +29,22 @@ import net.hus.core.shared.util.NumberUtil;
 
 public abstract class AbstractView extends Composite
 {
+  private List<HandlerRegistration> mRegistration = new ArrayList<>();
+
+  protected void add(HandlerRegistration inRegistration)
+  {
+    mRegistration.add(inRegistration);
+  }
+
+  protected void clearRegistration()
+  {
+    for (HandlerRegistration value : mRegistration)
+    {
+      value.removeHandler();
+    }
+    mRegistration.clear();
+  }
+
   public void fireDeferred(final Event<?> inEvent)
   {
     Scheduler.get().scheduleDeferred(new ScheduledCommand()
@@ -145,11 +163,19 @@ public abstract class AbstractView extends Composite
     return EnumUtil.valueOf(inListBox.getSelectedValue(), inValues);
   }
 
-  public static void addLookupToListBox(ListBox inBox, List<Lookup> inFields)
+  public static void addLookupAltToListBox(ListBox inBox, List<Lookup> inLookups)
   {
-    for (Lookup value : inFields)
+    for (Lookup value : inLookups)
     {
       inBox.addItem(value.getDisplay(), value.getAltId().toString());
+    }
+  }
+
+  public static void addLookupNameToListBox(ListBox inBox, List<Lookup> inLookups)
+  {
+    for (Lookup value : inLookups)
+    {
+      inBox.addItem(value.getDisplay(), value.getName());
     }
   }
 

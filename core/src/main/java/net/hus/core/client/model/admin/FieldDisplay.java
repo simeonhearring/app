@@ -39,6 +39,8 @@ public interface FieldDisplay extends Display
     Components.Type cType(int inPos);
 
     void updateCTypes(Components.Type[] inCTypes);
+
+    List<Lookup> getFvt();
   }
 
   void setAction(Action inAction);

@@ -13,16 +13,17 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import net.hus.core.client.common.UiManage;
 import net.hus.core.client.ui.common.AbstractComposite_View;
+import net.hus.core.shared.components.Ui_Create;
 import net.hus.core.shared.model.Components.Type;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Table;
+import net.hus.core.shared.model.UIObject_;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.model.Values;
 import net.hus.core.shared.util.StringUtil;
@@ -166,14 +167,12 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
       Type type = cTypes[col];
       String label = labels[col];
 
-      String valueKey = Field.Component.FV00_.name() + fieldId;
-
       for (int pos = 0; pos < maxrow; pos++)
       {
-        IsWidget w = mUiManage.match(type, valueKey, pos);
-        mComponent.setWidget(pos + 1, col, w);
-        String key = valueKey + "_" + pos;
-        mUiManage.addField(key, label, mFieldTKG, new Field(fieldId), pos);
+        UIObject_ uiobject = Ui_Create.create(type, fieldId, pos);
+        String key = uiobject.getKey();
+        mComponent.setWidget(pos + 1, col, mUiManage.match(uiobject));
+        mUiManage.addField(key, label, mFieldTKG, new Field(fieldId), pos); // NEED different TKG for table.  from field definition.
         mUiManage.makeSavable(key);
       }
     }
@@ -194,14 +193,13 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
       Type type = cTypes[col];
       String label = labels[col];
 
-      String valueKey = Field.Component.FV00_.name() + fieldId + "_" + pos;
-
-      IsWidget w = mUiManage.match(type, valueKey, pos);
-      mComponent.setWidget(pos, col, w);
-      mUiManage.addField(valueKey, label, mFieldTKG, new Field(fieldId), pos);
-      mUiManage.makeSavable(valueKey);
+      UIObject_ uiobject = Ui_Create.create(type, fieldId, pos);
+      String key = uiobject.getKey();
+      mComponent.setWidget(pos, col, mUiManage.match(uiobject));
+      mUiManage.addField(key, label, mFieldTKG, new Field(fieldId), pos);
+      mUiManage.makeSavable(key);
       // TODO not saving.
-      notify("field: " + fieldId + " key: " + valueKey);
+      notify("field: " + fieldId + " key: " + key);
     }
   }
 

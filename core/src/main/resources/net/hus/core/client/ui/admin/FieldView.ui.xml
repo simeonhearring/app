@@ -173,6 +173,12 @@
 											<b:Input ui:field="mAltOdd" type="COLOR" />
 										</b:FormGroup>
 									</b:Column>
+									<b:Column size="SM_3">
+										<b:FormGroup size="SMALL" ui:field="mFvtGrp">
+											<b:FormLabel text="FVT:" />
+											<b:ListBox ui:field="mFvt" />
+										</b:FormGroup>
+									</b:Column>
 								</b:Row>
 								<b:Row>
 									<b:Column size="SM_2">
