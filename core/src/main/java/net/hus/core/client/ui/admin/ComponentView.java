@@ -63,7 +63,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   ListBox mAddFvt, mAddFgg, mAddPageName;
 
   @UiField
-  FlowPanel mTree, mDetail;
+  FlowPanel mTree, mDetail, mAdd;
 
   @UiField
   Panel mDetailPanel;
@@ -226,11 +226,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   }
 
   @Override
-  public void addFieldGroups(List<Lookup> inFieldGroups)
+  public void addFieldGroups(List<Lookup> inFggs)
   {
     mFgg.clear();
     mAddFgg.clear();
-    for (Lookup value : inFieldGroups)
+    for (Lookup value : inFggs)
     {
       mFgg.addItem(value.getDisplay(), value.getName());
       mAddFgg.addItem(value.getDisplay(), value.getName());
@@ -248,11 +248,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   }
 
   @Override
-  public void addTables(List<Lookup> inTables)
+  public void addTables(List<Lookup> inFvts)
   {
     mFvt.clear();
     mAddFvt.clear();
-    for (Lookup value : inTables)
+    for (Lookup value : inFvts)
     {
       mFvt.addItem(value.getDisplay(), value.getName());
       mAddFvt.addItem(value.getDisplay(), value.getName());
@@ -321,5 +321,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     }
     ret.setCallback(this);
     return ret;
+  }
+
+  @Override
+  public void showAdd(boolean inShow)
+  {
+    mAdd.setVisible(inShow);
   }
 }

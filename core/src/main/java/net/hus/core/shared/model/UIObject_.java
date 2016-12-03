@@ -22,6 +22,11 @@ public abstract class UIObject_ implements Serializable
   private String mTempLocator;
   private int mPos;
 
+  public boolean isAdd()
+  {
+    return false;
+  }
+
   public abstract Components.Type cType();
 
   public String getHeight()

@@ -161,6 +161,7 @@ implements Action, AdminEvent.Handler
     UIObject_ uiObject = mPage.get(mNodeId);
     Page.Layout page = mPage.getFieldTKG().getLayout();
     mDisplay.addComponent(mDisplay.getDisplay(uiObject, mFields, inChild, page));
+    mDisplay.showAdd(uiObject.isAdd());
   }
 
   @Override
