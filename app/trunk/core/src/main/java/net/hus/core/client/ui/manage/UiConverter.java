@@ -98,9 +98,7 @@ import net.hus.core.shared.components.Panel_;
 import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.components.TextBox_;
 import net.hus.core.shared.components.Typeahead_;
-import net.hus.core.shared.components.Ui_Create;
 import net.hus.core.shared.components.ValueBoxBase_;
-import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.UIObject_;
 
@@ -912,11 +910,6 @@ public abstract class UiConverter implements UiManage
   }
 
   @Override
-  public IsWidget match(Components.Type inCType, String inKey, int inPos)
-  {
-    return match(Ui_Create.create(inCType, inKey, inPos));
-  }
-
   public IsWidget match(UIObject_ inUiO)
   {
     IsWidget ret = null;

@@ -72,10 +72,10 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   Icon mAdd0, mPlus, mMinus;
 
   @UiField
-  ListBox mAddType, mLookupLocation, mHeadSize;
+  ListBox mAddType, mLookupLocation, mHeadSize, mFvt;
 
   @UiField
-  FormGroup mAddNameGrp, mTableFieldsGrp, mCTypesGrp;
+  FormGroup mAddNameGrp, mTableFieldsGrp, mCTypesGrp, mFvtGrp;
 
   @UiField
   TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
@@ -209,7 +209,8 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   @UiHandler(
       {
         "mLookupLocation",
-        "mHeadSize"
+        "mHeadSize",
+        "mFvt"
       })
   public void onChangeBind(ChangeEvent inEvent)
   {
@@ -220,6 +221,13 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     else if (mHeadSize.equals(inEvent.getSource()))
     {
       mAction.update(DataType.ARRAY_HEADING_SIZE, mHeadSize.getSelectedValue());
+    }
+    else if (mFvt.equals(inEvent.getSource()))
+    {
+      if (mAction.isTable())
+      {
+        mAction.update(DataType.ARRAY_FVK, mFvt.getSelectedValue());
+      }
     }
   }
 
@@ -271,6 +279,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     // table
     addTableFields(inField.arraySize(), false);
     addCTypes(inField.arraySize(), false);
+    addFvt(mAction.getFvt(), inField.getArrayFvt());
 
     // lookup
     addLookup(inField.lookupParameters(), inField.lookupLocation(), inField);
@@ -316,6 +325,17 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       box.addValueChangeHandler(this);
       mLookupGroup.add(box);
     }
+  }
+
+  public void addFvt(List<Lookup> inLookup, String inFvt)
+  {
+    mFvt.clear();
+    if (mAction.isTable())
+    {
+      addLookupNameToListBox(mFvt, inLookup);
+      setSelectedIndex(mFvt, inFvt);
+    }
+    mFvtGrp.setVisible(mAction.isTable());
   }
 
   @Override
@@ -379,7 +399,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       for (int i = 0; i < inSize; i++)
       {
         ListBox box = new ListBox();
-        addLookupToListBox(box, mAction.getFields());
+        addLookupAltToListBox(box, mAction.getFields());
         setSelectedIndex(box, String.valueOf(mAction.fieldId(i)));
         box.addChangeHandler(this);
         mTableFields.add(box);

@@ -3,14 +3,16 @@ package net.hus.core.shared.components;
 import org.gwtbootstrap3.client.ui.constants.InputType;
 
 import net.hus.core.shared.model.Components;
+import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.UIObject_;
 
 public class Ui_Create
 {
-  public static UIObject_ create(Components.Type inType, String inKey, int inPos)
+  public static UIObject_ create(Components.Type inType, Long inFieldId, int inPos)
   {
     UIObject_ ret = create(inType);
-    ret.setKey(inKey);
+
+    ret.setKey(Field.Component.FV00_.name() + inFieldId);
     ret.setPos(inPos);
 
     return ret;

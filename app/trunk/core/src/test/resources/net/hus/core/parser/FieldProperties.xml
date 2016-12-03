@@ -2,7 +2,7 @@
   <Type>NUMBER</Type>
   <Display long="Name" short="Nme"/>
   <Lookup loc="TABLE" params="GENDER"/>
-  <Array size="5">
+  <Array size="5" fvt="ADDRESS">
     <Labels>
       <string>Street A</string>
       <string>Street B</string>
