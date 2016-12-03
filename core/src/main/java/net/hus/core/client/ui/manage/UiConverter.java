@@ -55,6 +55,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.UIObject;
 
 import net.hus.core.client.common.UiCreate;
+import net.hus.core.client.common.UiManage;
 import net.hus.core.client.ui.components.Alert_View;
 import net.hus.core.client.ui.components.Badge_View;
 import net.hus.core.client.ui.components.Button_View;
@@ -97,7 +98,9 @@ import net.hus.core.shared.components.Panel_;
 import net.hus.core.shared.components.Row_;
 import net.hus.core.shared.components.TextBox_;
 import net.hus.core.shared.components.Typeahead_;
+import net.hus.core.shared.components.Ui_Create;
 import net.hus.core.shared.components.ValueBoxBase_;
+import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.UIObject_;
 
@@ -107,7 +110,7 @@ import net.hus.core.shared.model.UIObject_;
  * @author simeonhearring
  * @since October 2016
  */
-public abstract class UiConverter
+public abstract class UiConverter implements UiManage
 {
   private UiCreate mUiCreate;
 
@@ -329,6 +332,8 @@ public abstract class UiConverter
   public IsWidget convert(FlexTable_ inUiO)
   {
     FlexTable_View ret = new FlexTable_View();
+
+    ret.setUiManage(this);
 
     create(ret.getComponent(), inUiO);
 
@@ -904,6 +909,12 @@ public abstract class UiConverter
     {
       inUiO.setStyleName(styleName);
     }
+  }
+
+  @Override
+  public IsWidget match(Components.Type inCType, String inKey, int inPos)
+  {
+    return match(Ui_Create.create(inCType, inKey, inPos));
   }
 
   public IsWidget match(UIObject_ inUiO)

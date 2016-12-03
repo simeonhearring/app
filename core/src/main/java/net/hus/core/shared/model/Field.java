@@ -97,7 +97,7 @@ public class Field extends AbstractModel
 
     public static boolean isArray(Type inType)
     {
-      return Type.ARRAY.equals(inType) || Type.TABLE.equals(inType);
+      return Type.ARRAY.equals(inType);
     }
 
     public static boolean isTable(Type inType)
@@ -245,6 +245,20 @@ public class Field extends AbstractModel
       mLabels = inLabels;
     }
 
+    public int getCol(Long inFieldId)
+    {
+      int ret = 0;
+      for (int i = 0; i < mFields.length; i++)
+      {
+        if (inFieldId.equals(mFields[0]))
+        {
+          ret = i;
+          break;
+        }
+      }
+      return ret;
+    }
+
     public Integer getSize()
     {
       return mSize;
@@ -284,7 +298,7 @@ public class Field extends AbstractModel
       return mFields;
     }
 
-    public void setFields(Long[] inFields)
+    public void setFields(Long... inFields)
     {
       mFields = inFields;
     }
@@ -842,5 +856,17 @@ public class Field extends AbstractModel
       ret = mProperties.mArray.mProperties.mShowBottomAtRow;
     }
     return StringUtil.toValue(ret);
+  }
+
+  public boolean isPartOfTable(Long inFid)
+  {
+    for (Long value : getArray().mFields)
+    {
+      if (inFid.equals(value))
+      {
+        return true;
+      }
+    }
+    return false;
   }
 }

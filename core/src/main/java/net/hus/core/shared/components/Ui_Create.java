@@ -1,11 +1,22 @@
 package net.hus.core.shared.components;
 
+import org.gwtbootstrap3.client.ui.constants.InputType;
+
 import net.hus.core.shared.model.Components;
 import net.hus.core.shared.model.UIObject_;
 
 public class Ui_Create
 {
-  public UIObject_ create(Components.Type inType)
+  public static UIObject_ create(Components.Type inType, String inKey, int inPos)
+  {
+    UIObject_ ret = create(inType);
+    ret.setKey(inKey);
+    ret.setPos(inPos);
+
+    return ret;
+  }
+
+  public static UIObject_ create(Components.Type inType)
   {
     UIObject_ ret = null;
 
@@ -59,9 +70,21 @@ public class Ui_Create
       case INPUT:
         ret = new Input_();
         break;
-        // case ITEM:
-        // ret = new item();
-        // break;
+      case INPUT_COLOR:
+        ret = new Input_(InputType.COLOR);
+        break;
+      case INPUT_DATE:
+        ret = new Input_(InputType.DATE);
+        break;
+      case INPUT_NUMBER:
+        ret = new Input_(InputType.NUMBER);
+        break;
+      case INPUT_PASSWORD:
+        ret = new Input_(InputType.PASSWORD);
+        break;
+      case INPUT_TEXT:
+        ret = new Input_(InputType.TEXT);
+        break;
       case LABEL:
         ret = new Label_();
         break;
@@ -89,13 +112,15 @@ public class Ui_Create
       case TYPEAHEAD:
         ret = new Typeahead_();
         break;
+      case ITEM:
+        break;
       default:
         break;
     }
 
     if (ret == null)
     {
-      throw new RuntimeException("Missing component type: " + inType);
+      throw new RuntimeException("Missing component type in Ui_Create: " + inType);
     }
 
     return ret;

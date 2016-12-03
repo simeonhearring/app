@@ -11,7 +11,7 @@ import net.hus.core.shared.model.Value;
 
 public interface UiManage
 {
-  IsWidget create(String inKey, int inPos, Type inCType);
+  IsWidget match(Type inCType, String inKey, int inPos);
 
   void update(List<Value> inValues, FieldTKG inFieldTKG);
 

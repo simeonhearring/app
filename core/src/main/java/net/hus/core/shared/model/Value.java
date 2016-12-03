@@ -13,7 +13,8 @@ public class Value extends AbstractModel
   private Date mAsOf;
   private Field mField;
 
-  private Table mTable;
+  private Table mTable;// TODO rename to Array
+  private Values mValues; // TODO rename to Table
 
   public String getValue()
   {
@@ -93,5 +94,15 @@ public class Value extends AbstractModel
   public void setPos(int inPos)
   {
     mPos = inPos;
+  }
+
+  public Values getValues()
+  {
+    return mValues;
+  }
+
+  public void setValues(Values inValues)
+  {
+    mValues = inValues;
   }
 }

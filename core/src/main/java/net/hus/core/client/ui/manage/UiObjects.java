@@ -33,13 +33,21 @@ public class UiObjects
     }
   }
 
-  public void makeSaveable(String inFieldName, FieldTKG inFieldTKG, Field inField)
+  public void addField(String inFieldName, FieldTKG inFieldTKG, Field inField, int inPos)
   {
     for (View value : mComponents)
     {
       value.setLabel(inFieldName);
       value.setFieldTKG(inFieldTKG);
       value.setField(inField);
+      value.setPos(inPos);
+    }
+  }
+
+  public void makeSaveable()
+  {
+    for (View value : mComponents)
+    {
       value.addChangeHandler();
     }
   }

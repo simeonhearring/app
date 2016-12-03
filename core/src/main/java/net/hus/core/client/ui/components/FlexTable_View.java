@@ -13,10 +13,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import net.hus.core.client.common.UiManage;
 import net.hus.core.client.ui.common.AbstractComposite_View;
+import net.hus.core.shared.model.Components.Type;
+import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Table;
 import net.hus.core.shared.model.Value;
@@ -51,9 +55,16 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
   private String mAltEven = "#CCC";
   private HeadingSize mHeadSize = HeadingSize.H5;
 
+  private UiManage mUiManage;
+
   public FlexTable_View()
   {
     initWidget(BINDER.createAndBindUi(this));
+  }
+
+  public void setUiManage(UiManage inUiManage)
+  {
+    mUiManage = inUiManage;
   }
 
   @Override
@@ -80,7 +91,14 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
   {
     if (mAdd0.equals(inEvent.getSource()) || mAdd1.equals(inEvent.getSource()))
     {
-      addRow(mComponent.getCellCount(0), "--Enter info--");
+      if (mField.isTable())
+      {
+        addTableRow();
+      }
+      else
+      {
+        addRow(mComponent.getCellCount(0), "--Enter info--");
+      }
       handlePanelHeight();
     }
     else if (mSave0.equals(inEvent.getSource()) || mSave1.equals(inEvent.getSource()))
@@ -110,26 +128,81 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
     setProperties(inValue.getField().getArray().getProperties());
     addHeaders(inValue.getField().getArray().getLabels());
 
-    Table table = inValue.getTable();
-    if (table != null && table.getTable() != null)
+    if (inValue.getField().isTable())
     {
-      int headColCt = mComponent.getCellCount(0);
-
-      for (String[] value : table.getTable())
+      setValues(inValue.getValues());
+    }
+    else
+    {
+      Table table = inValue.getTable();
+      if (table != null && table.getTable() != null)
       {
-        addRow(headColCt, value);
+        int headColCt = mComponent.getCellCount(0);
+
+        for (String[] value : table.getTable())
+        {
+          addRow(headColCt, value);
+        }
+        handlePanelHeight();
       }
-      handlePanelHeight();
     }
   }
 
-  public void setValues(Values inValues)
+  private void setValues(Values inValues)
   {
     clear();
 
-    setProperties(inValues.getField().getArray().getProperties());
-    addHeaders(inValues.getField().getArray().getLabels());
+    setProperties(mField.getArray().getProperties());
+    addHeaders(mField.getArray().getLabels());
 
+    Type[] cTypes = mField.getArray().getCTypes();
+    Long[] fieldIds = mField.getArray().getFields();
+    String[] labels = mField.getArray().getLabels();
+
+    int maxrow = inValues.getMaxRows();
+    for (int col = 0; col < fieldIds.length; col++)
+    {
+      Long fieldId = fieldIds[col];
+      Type type = cTypes[col];
+      String label = labels[col];
+
+      String valueKey = Field.Component.FV00_.name() + fieldId;
+
+      for (int pos = 0; pos < maxrow; pos++)
+      {
+        IsWidget w = mUiManage.match(type, valueKey, pos);
+        mComponent.setWidget(pos + 1, col, w);
+        String key = valueKey + "_" + pos;
+        mUiManage.addField(key, label, mFieldTKG, new Field(fieldId), pos);
+        mUiManage.makeSavable(key);
+      }
+    }
+    mUiManage.update(inValues.getValues(), mFieldTKG);
+  }
+
+  private void addTableRow()
+  {
+    int pos = mComponent.getRowCount();
+
+    Type[] cTypes = mField.getArray().getCTypes();
+    Long[] fieldIds = mField.getArray().getFields();
+    String[] labels = mField.getArray().getLabels();
+
+    for (int col = 0; col < fieldIds.length; col++)
+    {
+      Long fieldId = fieldIds[col];
+      Type type = cTypes[col];
+      String label = labels[col];
+
+      String valueKey = Field.Component.FV00_.name() + fieldId + "_" + pos;
+
+      IsWidget w = mUiManage.match(type, valueKey, pos);
+      mComponent.setWidget(pos, col, w);
+      mUiManage.addField(valueKey, label, mFieldTKG, new Field(fieldId), pos);
+      mUiManage.makeSavable(valueKey);
+      // TODO not saving.
+      notify("field: " + fieldId + " key: " + valueKey);
+    }
   }
 
   public void clear()
@@ -183,18 +256,6 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
     mAdd1.setVisible(mAdd0.isVisible() && row >= mShowBottomAtRow);
     mSave1.setVisible(mSave0.isVisible() && row >= mShowBottomAtRow);
 
-    // EventListener listner = new EventListener()
-    // {
-    // @Override
-    // public void onBrowserEvent(Event inEvent)
-    // {
-    // if (Event.ONBLUR == inEvent.getTypeInt())
-    // {
-    // FlexTable_View.this.notify("blur");
-    // }
-    // }
-    // };
-
     if (inValues != null)
     {
       for (String val : inValues)
@@ -203,8 +264,6 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
         span.setText(val);
         span.getElement().setAttribute("contenteditable", "true");
         mComponent.setWidget(row, col++, span);
-
-        // AbstractView.addHandler(Event.ONBLUR, span.getElement(), listner);
       }
     }
 

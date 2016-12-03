@@ -35,6 +35,7 @@ public class UIObject_Parser<T> extends XStream implements Parser<T>
     inXs.alias("UIObject", UIObject_.class);
     inXs.aliasField("Title", UIObject_.class, "mTitle");
     inXs.omitField(UIObject_.class, "mTempLocator");
+    inXs.omitField(UIObject_.class, "mPos");
     inXs.aliasAttribute(UIObject_.class, "mSection", "SECTION");
     inXs.aliasAttribute(UIObject_.class, "mKey", "KEY");
     inXs.aliasAttribute(UIObject_.class, "mId", "id");

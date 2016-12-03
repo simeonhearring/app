@@ -1,6 +1,10 @@
 package net.hus.core.server.command;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ValuesCommand;
@@ -11,6 +15,13 @@ import net.hus.core.shared.rpc.common.RpcResponse;
 
 public class ValuesCommandBean extends AbstractCommandBean<ValuesCommand>
 {
+  private Table_Parser mParser;
+
+  public ValuesCommandBean()
+  {
+    mParser = new Table_Parser();
+  }
+
   @Override
   public RpcResponse execute(ValuesCommand inCommand)
   {
@@ -25,19 +36,48 @@ public class ValuesCommandBean extends AbstractCommandBean<ValuesCommand>
 
   protected List<Value> getValues(FieldTKG inFieldTKG)
   {
-    return checkForArrays(mCoreDao.values().selectLast(inFieldTKG));
+    return checkForArrays(mCoreDao.values().selectLastPos(inFieldTKG));
   }
 
-  private static List<Value> checkForArrays(List<Value> inOut)
+  protected List<Value> checkForArrays(List<Value> inList)
   {
-    Table_Parser parser = new Table_Parser();
-    for (Value value : inOut)
+    Map<Long, Value> tables = new HashMap<>();
+
+    for (Value value : inList)
     {
-      if (value.getField().isArray() && value.getValue() != null)
+      if (value.getField().isTable())
       {
-        value.setTable(parser.fromXml(value.getValue()));
+        if (!tables.containsKey(value.getFid()))
+        {
+          value.setValues(new Values(value.getField(), new ArrayList<Value>()));
+          tables.put(value.getFid(), value);
+        }
+      }
+      else if (value.getField().isArray() && value.getValue() != null)
+      {
+        value.setTable(mParser.fromXml(value.getValue()));
       }
     }
-    return inOut;
+
+    List<Value> ret = new ArrayList<>();
+
+    for (Value value : inList)
+    {
+      boolean add = true;
+      for (Entry<Long, Value> table : tables.entrySet())
+      {
+        if (table.getValue().getField().isPartOfTable(value.getFid()))
+        {
+          add = false;
+          table.getValue().getValues().add(value);
+        }
+      }
+      if (add)
+      {
+        ret.add(value);
+      }
+    }
+
+    return ret;
   }
 }

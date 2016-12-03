@@ -1,4 +1,4 @@
-<Profile id="6" type="USER" userName="nadiahearring" password="abc123">
+<Profile id="6" type="USER" userName="nadiahearring" password="abc123" css="readable">
 	<Page components.name="Components2"/>
 	<First>Nadia</First>
 	<Middle>E</Middle>

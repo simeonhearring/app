@@ -20,6 +20,7 @@ public abstract class UIObject_ implements Serializable
   private String mStylePrimaryName;
 
   private String mTempLocator;
+  private int mPos;
 
   public abstract Components.Type cType();
 
@@ -115,7 +116,7 @@ public abstract class UIObject_ implements Serializable
 
   public String getKey()
   {
-    return mKey;
+    return mKey + "_" + mPos;
   }
 
   public void setKey(String inKey)
@@ -146,5 +147,15 @@ public abstract class UIObject_ implements Serializable
   public void setTempLocator(String inTempLocator)
   {
     mTempLocator = inTempLocator;
+  }
+
+  public int getPos()
+  {
+    return mPos;
+  }
+
+  public void setPos(int inPos)
+  {
+    mPos = inPos;
   }
 }

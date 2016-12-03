@@ -31,12 +31,10 @@
 						<b:FormLabel text="Type:" />
 						<b:ListBox ui:field="mAddType" />
 					</b:FormGroup>
-				</b:PanelBody>
-				<b:PanelFooter>
 					<b:Tooltip text="Add New">
 						<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
 					</b:Tooltip>
-				</b:PanelFooter>
+				</b:PanelBody>
 			</b:Panel>
 		</b:Column>
 		<b:Column size="SM_9">

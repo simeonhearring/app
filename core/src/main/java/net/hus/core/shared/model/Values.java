@@ -12,6 +12,16 @@ public class Values implements Serializable
   private Field mField;
   private List<Value> mValues;
 
+  public Values()
+  {
+  }
+
+  public Values(Field inField, List<Value> inList)
+  {
+    mField = inField;
+    mValues = inList;
+  }
+
   public List<Value> getValues()
   {
     return mValues;
@@ -24,15 +34,6 @@ public class Values implements Serializable
 
   public Value get(Fid inFid)
   {
-    // Value ret = null;
-    // for (Value value : mValues)
-    // {
-    // if (inFid.fid().equals(value.getFid()))
-    // {
-    // ret = value;
-    // break;
-    // }
-    // }
     return get(inFid.fid(), 0);
   }
 
@@ -58,5 +59,23 @@ public class Values implements Serializable
   public void setField(Field inField)
   {
     mField = inField;
+  }
+
+  public void add(Value inValue)
+  {
+    mValues.add(inValue);
+  }
+
+  public int getMaxRows()
+  {
+    int ret = 0;
+    for (Value value : mValues)
+    {
+      if (value.getPos() > ret)
+      {
+        ret = value.getPos();
+      }
+    }
+    return ret + 1;
   }
 }
