@@ -198,7 +198,7 @@ public abstract class UiConverter implements UiManage
       ret.setLookupGroups(inUiO.getLookupGroups());
     }
 
-    add(inUiO.getKey(), ret);
+    add(inUiO.getKeyPos(), ret);
 
     return ret;
   }
@@ -210,7 +210,7 @@ public abstract class UiConverter implements UiManage
     create((UIObject) ret.getComponent(), (UIObject_) inUiO);
     create(ret.getComponent(), inUiO);
 
-    add(inUiO.getKey(), ret);
+    add(inUiO.getKeyPos(), ret);
 
     return ret;
   }
@@ -318,7 +318,7 @@ public abstract class UiConverter implements UiManage
       ret.setSize(buttonSize);
     }
 
-    add(inUiO.getKey(), new Button_View(ret, inUiO.commandName()));
+    add(inUiO.getKeyPos(), new Button_View(ret, inUiO.commandName()));
 
     return ret;
   }
@@ -335,7 +335,7 @@ public abstract class UiConverter implements UiManage
 
     create(ret.getComponent(), inUiO);
 
-    add(inUiO.getKey(), ret);
+    add(inUiO.getKeyPos(), ret);
 
     return ret;
   }
@@ -519,7 +519,7 @@ public abstract class UiConverter implements UiManage
       ret.setValue(value);
     }
 
-    add(inUiO.getKey(), new CheckBox_View(ret));
+    add(inUiO.getKeyPos(), new CheckBox_View(ret));
 
     return ret;
   }
@@ -544,7 +544,7 @@ public abstract class UiConverter implements UiManage
       }
     }
 
-    add(inUiO.getKey(), new ListBox_View(ret));
+    add(inUiO.getKeyPos(), new ListBox_View(ret));
 
     return ret;
   }
@@ -562,7 +562,7 @@ public abstract class UiConverter implements UiManage
       ret.setValue(value);
     }
 
-    add(inUiO.getKey(), new TextBox_View(ret));
+    add(inUiO.getKeyPos(), new TextBox_View(ret));
 
     return ret;
   }
@@ -580,7 +580,7 @@ public abstract class UiConverter implements UiManage
       ret.setShowRequiredIndicator(showRequiredIndicator);
     }
 
-    add(inUiO.getKey(), new FormLabel_View(ret));
+    add(inUiO.getKeyPos(), new FormLabel_View(ret));
 
     return ret;
   }
@@ -643,7 +643,7 @@ public abstract class UiConverter implements UiManage
       ret.setMax(max);
     }
 
-    add(inUiO.getKey(), new Input_View(ret));
+    add(inUiO.getKeyPos(), new Input_View(ret));
 
     return ret;
   }
@@ -656,7 +656,7 @@ public abstract class UiConverter implements UiManage
 
     ret.setText(inUiO.getText());
 
-    add(inUiO.getKey(), new Badge_View(ret));
+    add(inUiO.getKeyPos(), new Badge_View(ret));
 
     return ret;
   }
@@ -672,7 +672,7 @@ public abstract class UiConverter implements UiManage
     ret.setDismissable(inUiO.isDismissable());
     ret.setFade(inUiO.isFade());
 
-    add(inUiO.getKey(), new Alert_View(ret));
+    add(inUiO.getKeyPos(), new Alert_View(ret));
 
     return ret;
   }

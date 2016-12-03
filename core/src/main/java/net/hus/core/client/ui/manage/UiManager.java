@@ -28,17 +28,17 @@ public class UiManager extends UiConverter
   }
 
   @Override
-  public void add(String inUiObjectKey, IsWidget inUiO)
+  public void add(String inUiOKeyPos, IsWidget inUiO)
   {
-    mContent.put(inUiObjectKey, inUiO);
+    mContent.put(inUiOKeyPos, inUiO);
   }
 
-  protected UiObjects get(String... inUiObjectKey)
+  protected UiObjects get(String... inUiOKeyPos)
   {
     UiObjects ret = new UiObjects();
-    for (String uiobjectkey : inUiObjectKey)
+    for (String uiokeypos : inUiOKeyPos)
     {
-      IsWidget uiobject = mContent.get(uiobjectkey);
+      IsWidget uiobject = mContent.get(uiokeypos);
       if (uiobject != null && uiobject instanceof View)
       {
         ret.add((View) uiobject);

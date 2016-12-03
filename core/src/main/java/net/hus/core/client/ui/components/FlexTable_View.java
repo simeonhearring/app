@@ -172,7 +172,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
       for (int pos = 0; pos < maxrow; pos++)
       {
         UIObject_ uiobject = Ui_Create.create(type, fieldId, pos);
-        String key = uiobject.getKey();
+        String key = uiobject.getKeyPos();
         mComponent.setWidget(pos + 1, col, mUiManage.match(uiobject));
         mUiManage.addField(key, label, tkg, new Field(fieldId), pos);
         mUiManage.makeSavable(key);
@@ -197,7 +197,7 @@ public class FlexTable_View extends AbstractComposite_View<FlexTable>
       String label = labels[col];
 
       UIObject_ uiobject = Ui_Create.create(type, fieldId, pos);
-      String key = uiobject.getKey();
+      String key = uiobject.getKeyPos();
       mComponent.setWidget(pos + 1, col, mUiManage.match(uiobject));
       mUiManage.addField(key, label, tkg, new Field(fieldId), pos);
       mUiManage.makeSavable(key);
