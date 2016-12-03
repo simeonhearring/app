@@ -24,4 +24,10 @@ public abstract class ComplexPanel_ extends UIObject_ implements HasCollection<U
     mCollection.add(inUiObject);
     return true;
   }
+
+  @Override
+  public boolean isAdd()
+  {
+    return true;
+  }
 }

@@ -42,15 +42,17 @@ public interface ComponentDisplay extends Display
 
   void addPage(Components inPage);
 
-  void addFieldGroups(List<Lookup> inFieldGroups);
+  void addFieldGroups(List<Lookup> inFggs);
 
   void addComponents(List<Lookup> inComponents);
 
-  void addTables(List<Lookup> inTables);
+  void addTables(List<Lookup> inFvts);
 
   void addComponent(IsWidget inDisplay);
 
   IsWidget getDisplay(UIObject_ inUIObject, Fields inFields, boolean inChild, Page.Layout inPage);
 
   void reset();
+
+  void showAdd(boolean inAllow);
 }

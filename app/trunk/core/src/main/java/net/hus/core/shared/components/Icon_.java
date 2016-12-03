@@ -8,7 +8,7 @@ import org.gwtbootstrap3.client.ui.constants.IconType;
 
 import net.hus.core.shared.model.Components.Type;
 
-public class Icon_ extends ComplexWidget_
+public class Icon_ extends ComplexWidget_NoAdd
 {
   private static final long serialVersionUID = -7178558740092056147L;
 
