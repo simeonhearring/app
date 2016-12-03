@@ -1,7 +1,6 @@
 package net.hus.core.client.ui.main;
 
 import org.gwtbootstrap3.client.ui.AnchorListItem;
-import org.gwtbootstrap3.client.ui.NavbarBrand;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -26,9 +25,6 @@ public class NavbarView extends AbstractView implements NavbarDisplay
 
   @UiField
   AnchorListItem mHome, mAbout, mLoginout, mRegister;
-
-  @UiField
-  NavbarBrand mCompany;
 
   private boolean mLogin = true;
 

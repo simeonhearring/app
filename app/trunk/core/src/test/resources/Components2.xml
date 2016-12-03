@@ -81,6 +81,16 @@
 									</ListBox>
 								</Collection>
 							</FormGroup>
+							<FormGroup>
+								<Collection>
+									<FormLabel KEY="FL00_23" isHtml="false">
+										<Text>account:</Text>
+									</FormLabel>
+									<FlexTable KEY="FV00_23">
+										<Title>Title</Title>
+									</FlexTable>
+								</Collection>
+							</FormGroup>
 						</Collection>
 					</FieldSet>
 				</Collection>

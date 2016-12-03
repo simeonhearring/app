@@ -211,7 +211,8 @@ public class GwtUiCreate implements UiCreate
         ret = newCheckBox();
         break;
       case COLUMN:
-        ret = newColumn(ColumnSize.SM_3); // TODO this should not have a hard coded default.
+        ret = newColumn(ColumnSize.SM_3); // TODO this should not have a hard
+        // coded default.
         break;
       case CONTAINER:
         ret = newContainer();
@@ -232,7 +233,8 @@ public class GwtUiCreate implements UiCreate
         ret = newFormLabel();
         break;
       case HEADING:
-        ret = newHeading(HeadingSize.H4, ""); // TODO this should not have a hard coded default.
+        ret = newHeading(HeadingSize.H4, ""); // TODO this should not have a
+        // hard coded default.
         break;
       case HR:
         ret = newHr();
@@ -292,9 +294,9 @@ public class GwtUiCreate implements UiCreate
         break;
     }
 
-    if (ret== null)
+    if (ret == null)
     {
-      throw new RuntimeException("Missing resource in GwtUiCreate");
+      throw new RuntimeException("Missing component type in GwtUiCreate: " + inCType);
     }
 
     return ret;

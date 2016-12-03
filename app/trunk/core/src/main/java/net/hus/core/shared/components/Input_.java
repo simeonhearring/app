@@ -13,6 +13,16 @@ public class Input_ extends ValueBoxBase_
   private InputType mType;
   private String mValue;
 
+  public Input_()
+  {
+    mType = InputType.TEXT;
+  }
+
+  public Input_(InputType inType)
+  {
+    mType = inType;
+  }
+
   @Override
   public Type cType()
   {

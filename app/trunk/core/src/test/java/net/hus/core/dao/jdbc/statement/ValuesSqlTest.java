@@ -11,6 +11,7 @@ import junit.framework.Assert;
 import net.hus.core.dao.jdbc.MySqlCoreDsTest;
 import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.Field.Fid;
+import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.model.Values;
 
@@ -65,5 +66,24 @@ public class ValuesSqlTest extends MySqlCoreDsTest
     expected = String.valueOf(asOf.getTime()).substring(0, 10);
     actual = String.valueOf(v1.getAsOf().getTime()).substring(0, 10);
     Assert.assertEquals(expected, actual);
+  }
+
+  // @Test
+  public void table()
+  {
+    List<Value> list = new ArrayList<>();
+
+    Value value = new Value();
+    value.setFieldTKG(new FieldTKG("PERSON", "6", "JGRP1"));
+    value.setValue("Sr");
+    value.setValueId(null);
+    value.setField(new Field(20L));
+    Date asOf = new Date();
+    value.setAsOf(asOf);
+    value.setPos(1);
+
+    list.add(value);
+
+    mSql.insert(list);
   }
 }

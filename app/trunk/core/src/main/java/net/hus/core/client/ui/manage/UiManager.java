@@ -48,22 +48,9 @@ public class UiManager extends UiConverter
   }
 
   /*
-   * updates buttons.
-   */
-  public void update(FieldTKG inFieldTKG)
-  {
-    for (String value : mContent.keySet())
-    {
-      if (value != null && value.startsWith(Field.Component.BTN00_.name()))
-      {
-        get(value).makeClickable(inFieldTKG);
-      }
-    }
-  }
-
-  /*
    * updates field Label & field Value. add Field, TKG, & save label.
    */
+  @Override
   public void update(List<Value> inValues, FieldTKG inFieldTKG)
   {
     if (inValues != null)
@@ -81,13 +68,44 @@ public class UiManager extends UiConverter
   {
     Field field = inValue.getField();
 
-    String labelKey = Field.Component.FL00_.name() + field.getId();
+    String labelKey = Field.Component.FL00_.name() + field.getId() + "_" + inValue.getPos();
     get(labelKey).setValue(inValue);
 
-    String valueKey = Field.Component.FV00_.name() + field.getId();
+    String valueKey = Field.Component.FV00_.name() + field.getId() + "_" + inValue.getPos();
 
-    // TODO should field be set first for Array/FlexTable?
+    get(valueKey).addField(inValue.getLabel(), inFieldTKG, field, inValue.getPos());
     get(valueKey).setValue(inValue);
-    get(valueKey).makeSaveable(inValue.getLabel(), inFieldTKG, field);
+    get(valueKey).makeSaveable();
+  }
+
+  public void setValue(String inKey, Value inValue)
+  {
+    get(inKey).setValue(inValue);
+  }
+
+  @Override
+  public void addField(String inValueKey, String inLabel, FieldTKG inTKG, Field inField, int inPos)
+  {
+    get(inValueKey).addField(inLabel, inTKG, inField, inPos);
+  }
+
+  @Override
+  public void makeSavable(String inKey)
+  {
+    get(inKey).makeSaveable();
+  }
+
+  /*
+   * updates buttons.
+   */
+  public void update(FieldTKG inFieldTKG)
+  {
+    for (String value : mContent.keySet())
+    {
+      if (value != null && value.startsWith(Field.Component.BTN00_.name()))
+      {
+        get(value).makeClickable(inFieldTKG);
+      }
+    }
   }
 }
