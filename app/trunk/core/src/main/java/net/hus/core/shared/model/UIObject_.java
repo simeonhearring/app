@@ -121,6 +121,11 @@ public abstract class UIObject_ implements Serializable
 
   public String getKey()
   {
+    return mKey;
+  }
+
+  public String getKeyPos()
+  {
     return mKey + "_" + mPos;
   }
 
