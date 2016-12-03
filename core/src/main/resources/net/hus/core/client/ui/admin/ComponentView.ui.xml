@@ -4,7 +4,7 @@
 	xmlns:c="urn:import:net.hus.core.client.ui.components">
 	<ui:with field="msg" type="net.hus.core.client.resource.Messages" />
 	<ui:style>
-
+	
 	</ui:style>
 	<b:Row>
 		<b:Column size="SM_3">
@@ -121,9 +121,9 @@
 							<b:PanelBody>
 								<b.html:Paragraph ui:field="mPageNameC" />
 								<b:PanelGroup b:id="accordion">
-									<b:Panel>
+									<b:Panel type="PRIMARY">
 										<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseOne">
-											<b:Heading size="H5" text="IN PAGE" />
+											<b:Heading size="H5" text="Hierarchy" />
 										</b:PanelHeader>
 										<b:PanelCollapse b:id="collapseOne">
 											<b:PanelBody>
@@ -131,9 +131,9 @@
 											</b:PanelBody>
 										</b:PanelCollapse>
 									</b:Panel>
-									<b:Panel>
+									<b:Panel type="PRIMARY" ui:field="mDetailPanel" visible="false">
 										<b:PanelHeader dataToggle="COLLAPSE" dataParent="#accordion2" dataTarget="#collapseTwo">
-											<b:Heading size="H5" text="DETAIL" />
+											<b:Heading size="H5" text="Detail" />
 										</b:PanelHeader>
 										<b:PanelCollapse b:id="collapseTwo">
 											<b:PanelBody>

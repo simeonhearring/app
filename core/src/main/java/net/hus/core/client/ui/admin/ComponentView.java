@@ -5,6 +5,7 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Panel;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
@@ -63,6 +64,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
 
   @UiField
   FlowPanel mTree, mDetail;
+
+  @UiField
+  Panel mDetailPanel;
 
   private Action mAction;
 
@@ -260,11 +264,13 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   {
     resetComponent();
     mDetail.add(inDisplay);
+    mDetailPanel.setVisible(true);
   }
 
   private void resetComponent()
   {
     mDetail.clear();
+    mDetailPanel.setVisible(false);
   }
 
   @Override
