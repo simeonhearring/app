@@ -8,6 +8,7 @@ import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.TabListItem;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.InputType;
@@ -72,10 +73,13 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   Icon mAdd0, mPlus, mMinus;
 
   @UiField
-  ListBox mAddType, mLookupLocation, mHeadSize, mFvt;
+  ListBox mAddType, mLookupLocation, mHeadSize, mFvt, mFgg;
 
   @UiField
-  FormGroup mAddNameGrp, mTableFieldsGrp, mCTypesGrp, mFvtGrp;
+  FormGroup mAddNameGrp, mTableFieldsGrp, mCTypesGrp;
+
+  @UiField
+  Row mTKGRow;
 
   @UiField
   TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
@@ -210,7 +214,8 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       {
         "mLookupLocation",
         "mHeadSize",
-        "mFvt"
+        "mFvt",
+        "mFgg"
       })
   public void onChangeBind(ChangeEvent inEvent)
   {
@@ -227,6 +232,13 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       if (mAction.isTable())
       {
         mAction.update(DataType.ARRAY_FVK, mFvt.getSelectedValue());
+      }
+    }
+    else if (mFgg.equals(inEvent.getSource()))
+    {
+      if (mAction.isTable())
+      {
+        mAction.update(DataType.ARRAY_FGG, mFgg.getSelectedValue());
       }
     }
   }
@@ -280,6 +292,8 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     addTableFields(inField.arraySize(), false);
     addCTypes(inField.arraySize(), false);
     addFvt(mAction.getFvt(), inField.getArrayFvt());
+    addFgg(mAction.getFgg(), inField.getArrayFgg());
+    mTKGRow.setVisible(mAction.isTable());
 
     // lookup
     addLookup(inField.lookupParameters(), inField.lookupLocation(), inField);
@@ -335,7 +349,16 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
       addLookupNameToListBox(mFvt, inLookup);
       setSelectedIndex(mFvt, inFvt);
     }
-    mFvtGrp.setVisible(mAction.isTable());
+  }
+
+  public void addFgg(List<Lookup> inLookup, String inFgg)
+  {
+    mFgg.clear();
+    if (mAction.isTable())
+    {
+      addLookupNameToListBox(mFgg, inLookup);
+      setSelectedIndex(mFgg, inFgg);
+    }
   }
 
   @Override

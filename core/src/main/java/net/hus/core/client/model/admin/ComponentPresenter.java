@@ -53,7 +53,7 @@ implements Action, AdminEvent.Handler
       {
         mDisplay.reset();
         mDisplay.addTables(inData.getFvts());
-        mDisplay.addFieldGroups(inData.getFieldGroups());
+        mDisplay.addFieldGroups(inData.getFggs());
         mDisplay.addPages(inData.getPages());
         mDisplay.addComponents(inData.getComponents());
         break;
@@ -69,7 +69,7 @@ implements Action, AdminEvent.Handler
   private void addPage(AdminData inData)
   {
     mPage = inData.getPage();
-    mFields = inData.getFieldGroup();
+    mFields = inData.getFgg();
     mDisplay.addPage(mPage);
   }
 

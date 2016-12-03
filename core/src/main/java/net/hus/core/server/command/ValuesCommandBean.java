@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import net.hus.core.parser.Table_Parser;
 import net.hus.core.shared.command.ValuesCommand;
+import net.hus.core.shared.model.Field;
 import net.hus.core.shared.model.FieldTKG;
 import net.hus.core.shared.model.Value;
 import net.hus.core.shared.model.Values;
@@ -36,10 +37,10 @@ public class ValuesCommandBean extends AbstractCommandBean<ValuesCommand>
 
   protected List<Value> getValues(FieldTKG inFieldTKG)
   {
-    return checkForArrays(mCoreDao.values().selectLastPos(inFieldTKG));
+    return checkForArrays(mCoreDao.values().selectLastPos(inFieldTKG), inFieldTKG);
   }
 
-  protected List<Value> checkForArrays(List<Value> inList)
+  protected List<Value> checkForArrays(List<Value> inList, FieldTKG inTKG)
   {
     Map<Long, Value> tables = new HashMap<>();
 
@@ -64,14 +65,27 @@ public class ValuesCommandBean extends AbstractCommandBean<ValuesCommand>
     for (Value value : inList)
     {
       boolean add = true;
+
       for (Entry<Long, Value> table : tables.entrySet())
       {
-        if (table.getValue().getField().isPartOfTable(value.getFid()))
+        Value tvalue = table.getValue();
+        Field field = tvalue.getField();
+
+        if (field.isPartOfTable(value.getFid()))
         {
+          if (!inTKG.isFvt(field.getArrayFvt()))
+          {
+            FieldTKG tkg = inTKG.change(field.getArrayFvt(), field.getArrayFgg());
+            tvalue.getValues().setValues(mCoreDao.values().selectLastPos(tkg));
+          }
+          else
+          {
+            tvalue.getValues().add(value);
+          }
           add = false;
-          table.getValue().getValues().add(value);
         }
       }
+
       if (add)
       {
         ret.add(value);

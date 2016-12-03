@@ -58,12 +58,12 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addFields(AdminData inData, String inFgg)
   {
-    inData.setFieldGroup(mCoreDao.fields(inFgg));
+    inData.setFgg(mCoreDao.fields(inFgg));
   }
 
   private void addFieldGroups(AdminData inData)
   {
-    inData.setFieldGroups(mCoreDao.lookups().select(Group.FGG.name()));
+    inData.setFggs(mCoreDao.lookups().select(Group.FGG.name()));
   }
 
   private void addFields(AdminData inData)
@@ -73,7 +73,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addLookup(AdminData inData)
   {
-    inData.setLookupGroups(mCoreDao.lookups().select(Group.LOOKUP.name()));
+    inData.setLookups(mCoreDao.lookups().select(Group.LOOKUP.name()));
   }
 
   private void addLookup(AdminData inData, String inGroupName)
@@ -127,7 +127,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
     // no default
 
     addFieldGroups(inData);
-    addFields(inData, inData.getDefaultFieldGroup());
+    addFields(inData, inData.getDefaultFgg());
 
     addProfiles(inData);
     // no default

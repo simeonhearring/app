@@ -13,11 +13,11 @@ public class AdminData implements Serializable
   private List<Lookup> mFields;
   private Field mField;
 
-  private List<Lookup> mLookupGroups;// TODO should be Lookups
-  private Lookups mLookups;
+  private List<Lookup> mLookups;
+  private Lookups mLookup;
 
-  private List<Lookup> mFieldGroups;
-  private Fields mFieldGroup;
+  private List<Lookup> mFggs;
+  private Fields mFgg;
 
   private List<Lookup> mProfiles;
   private Profile mProfile;
@@ -31,14 +31,14 @@ public class AdminData implements Serializable
 
   private List<Lookup> mComponents;
 
-  public void setFieldGroups(List<Lookup> inFieldGroups)
+  public void setFggs(List<Lookup> inFggs)
   {
-    mFieldGroups = inFieldGroups;
+    mFggs = inFggs;
   }
 
-  public List<Lookup> getFieldGroups()
+  public List<Lookup> getFggs()
   {
-    return mFieldGroups;
+    return mFggs;
   }
 
   public void setFields(List<Lookup> inFields)
@@ -77,34 +77,34 @@ public class AdminData implements Serializable
     return ret;
   }
 
-  public List<Lookup> getLookupGroups()
+  public List<Lookup> getLookups()
   {
-    return mLookupGroups;
+    return mLookups;
   }
 
-  public void setLookupGroups(List<Lookup> inLookupGroups)
-  {
-    mLookupGroups = inLookupGroups;
-  }
-
-  public void setFieldGroup(Fields inFields)
-  {
-    mFieldGroup = inFields;
-  }
-
-  public Fields getFieldGroup()
-  {
-    return mFieldGroup;
-  }
-
-  public void setLookupGroup(Lookups inLookups)
+  public void setLookups(List<Lookup> inLookups)
   {
     mLookups = inLookups;
   }
 
-  public Lookups getLookups()
+  public void setFgg(Fields inFgg)
   {
-    return mLookups;
+    mFgg = inFgg;
+  }
+
+  public Fields getFgg()
+  {
+    return mFgg;
+  }
+
+  public void setLookupGroup(Lookups inLookup)
+  {
+    mLookup = inLookup;
+  }
+
+  public Lookups getLookup()
+  {
+    return mLookup;
   }
 
   public void setProfile(Profile inProfile)
@@ -167,14 +167,9 @@ public class AdminData implements Serializable
     return mCommands;
   }
 
-  public String getDefaultFieldGroup()
+  public String getDefaultFgg()
   {
-    return mFieldGroups.get(0).getName();
-  }
-
-  public String getDefaultLookupGroup()
-  {
-    return mLookupGroups.get(0).getName();
+    return mFggs.get(0).getName();
   }
 
   public Long getDefaultField()

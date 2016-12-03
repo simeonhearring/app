@@ -32,11 +32,11 @@ public class FieldTKG implements Serializable
   {
   }
 
-  public FieldTKG(String inTable, String inFvk, String inGroup)
+  public FieldTKG(String inFvt, String inFvk, String inFgg)
   {
-    mFvt = inTable;
+    mFvt = inFvt;
     mFvk = inFvk;
-    mFgg = inGroup;
+    mFgg = inFgg;
   }
 
   public String getFvt()
@@ -77,5 +77,15 @@ public class FieldTKG implements Serializable
   public void setLayout(Page.Layout inLayout)
   {
     mLayout = inLayout;
+  }
+
+  public boolean isFvt(String inFvt)
+  {
+    return mFvt.equals(inFvt);
+  }
+
+  public FieldTKG change(String inFvt, String inFgg)
+  {
+    return new FieldTKG(inFvt, mFvk, inFgg);
   }
 }

@@ -237,7 +237,7 @@ public class Field extends AbstractModel
     private String[] mLabels;
     private Long[] mFields; // TABLE only
     private Components.Type[] mCTypes; // TABLE only
-    private String mFvt; // TABLE only
+    private String mFvt, mFgg; // TABLE only
     private Properties mProperties;
 
     public Array()
@@ -326,6 +326,16 @@ public class Field extends AbstractModel
     public void setFvt(String inFvt)
     {
       mFvt = inFvt;
+    }
+
+    public String getFgg()
+    {
+      return mFgg;
+    }
+
+    public void setFgg(String inFgg)
+    {
+      mFgg = inFgg;
     }
 
     public static class Properties implements Serializable
@@ -639,6 +649,9 @@ public class Field extends AbstractModel
       case ARRAY_FVK:
         mProperties.getArray().setFvt((String) inValue);
         break;
+      case ARRAY_FGG:
+        mProperties.getArray().setFgg((String) inValue);
+        break;
       default:
         break;
     }
@@ -660,7 +673,8 @@ public class Field extends AbstractModel
     ARRAY_ALTERNATE_COLOR_EVEN,
     ARRAY_ALTERNATE_COLOR,
     ARRAY_BOTTOM_ROW_AT,
-    ARRAY_FVK;
+    ARRAY_FVK,
+    ARRAY_FGG;
 
     @Override
     public String display()
@@ -855,6 +869,16 @@ public class Field extends AbstractModel
     if (mProperties != null && mProperties.mArray != null)
     {
       ret = mProperties.mArray.mFvt;
+    }
+    return ret;
+  }
+
+  public String getArrayFgg()
+  {
+    String ret = null;
+    if (mProperties != null && mProperties.mArray != null)
+    {
+      ret = mProperties.mArray.mFgg;
     }
     return ret;
   }
