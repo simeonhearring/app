@@ -32,6 +32,7 @@ public class FieldPropertiesParserTest
     prop.getArray().setFields("1,2,3,4,5".split(","));
     prop.getArray().setCTypes(Components.Type.ALERT, Components.Type.BADGE);
     prop.getArray().setFvt("ADDRESS");
+    prop.getArray().setFgg("g5EgXSd");
 
     prop.getArray()
     .setProperties(new Array.Properties(500, 10, true, "#CCC", "#FFF", HeadingSize.H2));

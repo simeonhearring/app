@@ -60,7 +60,7 @@ public abstract class AbstractCommand implements RpcCommand, RpcResponse
   @Override
   public boolean isEncryptRequired()
   {
-    return true;
+    return false;
   }
 
   @Override
