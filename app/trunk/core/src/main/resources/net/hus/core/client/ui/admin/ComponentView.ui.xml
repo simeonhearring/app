@@ -50,7 +50,7 @@
 			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tabc4" text="Name" active="true" />
-					<b:TabListItem dataTarget="#tabc5" text="Page" />
+					<b:TabListItem dataTarget="#tabc5" text="TKG" />
 					<b:TabListItem dataTarget="#tabc6" text="Components" />
 				</b:NavTabs>
 				<b:TabContent>
@@ -63,13 +63,13 @@
 								<b:Row>
 									<b:Column size="SM_2">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Name:" />
+											<b:FormLabel text="ID:" />
 											<b.html:Paragraph ui:field="mName" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Display:" />
+											<b:FormLabel text="Name:" />
 											<b:Input ui:field="mDisplay" type="TEXT" />
 										</b:FormGroup>
 									</b:Column>
@@ -83,7 +83,7 @@
 					<b:TabPane fade="true" b:id="tabc5">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Field TKG" />
+								<b:Heading size="H4" text="Page Field TKG" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b.html:Paragraph ui:field="mPageNameF" />
@@ -116,7 +116,7 @@
 					<b:TabPane fade="true" b:id="tabc6">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Components" />
+								<b:Heading size="H4" text="Page Components" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b.html:Paragraph ui:field="mPageNameC" />
