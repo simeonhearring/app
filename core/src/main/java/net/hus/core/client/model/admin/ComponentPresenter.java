@@ -71,6 +71,9 @@ implements Action, AdminEvent.Handler
     mPage = inData.getPage();
     mFields = inData.getFgg();
     mDisplay.addPage(mPage);
+    mDisplay.showAdd(mPage.getList().isEmpty());
+    mDisplay.showDetail(mPage.getList().isEmpty());
+    mDisplay.showAddTo(!mPage.getList().isEmpty());
   }
 
   @Override
@@ -171,30 +174,41 @@ implements Action, AdminEvent.Handler
   }
 
   @Override
-  public void addComponent(Components.Type inComponentType)
+  public void addComponent(Components.Type inComponentType, boolean inRoot)
   {
-    UIObject_ parent = mPage.get(mNodeId);
-
-    if (parent instanceof HasCollection<?>)
+    if (inRoot)
     {
       UIObject_ child = Ui_Create.create(inComponentType);
+      mPage.getList().add(child);
+      updateTree("Root", child);
+    }
+    else
+    {
+      UIObject_ parent = mPage.get(mNodeId);
 
-      if (((HasCollection<?>) parent).add(child))
+      if (parent instanceof HasCollection<?>)
       {
-        updateTree(parent, child);
-      }
-      else
-      {
-        String msg = "Can not add '" + child.getSimpleName() + "' to '" + parent.getSimpleName() + "'";
-        mDisplay.warn(msg);
+        UIObject_ child = Ui_Create.create(inComponentType);
+
+        String parentName = parent.getSimpleName();
+
+        if (((HasCollection<?>) parent).add(child))
+        {
+          updateTree(parentName, child);
+        }
+        else
+        {
+          String msg = "Can not add '" + child.getSimpleName() + "' to '" + parentName + "'";
+          mDisplay.warn(msg);
+        }
       }
     }
   }
 
-  private void updateTree(UIObject_ inParent, UIObject_ inChild)
+  private void updateTree(String inParentName, UIObject_ inChild)
   {
     mDisplay.addPage(mPage);
-    String msg = "Adding '" + inChild.getSimpleName() + "' to '" + inParent.getSimpleName() + "'";
+    String msg = "Adding '" + inChild.getSimpleName() + "' to '" + inParentName + "'";
     mDisplay.notify(msg);
 
     inChild.setKey(RandomUtil.random(5));
