@@ -24,6 +24,9 @@ public class DefaultView extends AbstractView implements UIObjectDisplay
   @UiField
   Paragraph mName;
 
+  @UiField
+  ActionView mAction0;
+
   public DefaultView()
   {
   }
@@ -37,5 +40,6 @@ public class DefaultView extends AbstractView implements UIObjectDisplay
   @Override
   public void setCallback(Callback<IconType> inCallback)
   {
+    mAction0.setCallback(inCallback);
   }
 }

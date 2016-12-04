@@ -1,5 +1,6 @@
 package net.hus.core.shared.components;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.hus.core.shared.model.Components.Type;
@@ -23,10 +24,19 @@ public class Row_ extends ComplexWidget_ implements HasColumn<Column_>
   {
     if (inUiObject instanceof Column_)
     {
-      mColumn.add((Column_) inUiObject);
+      add((Column_) inUiObject);
       return true;
     }
     return false;
+  }
+
+  private void add(Column_ inUiObject)
+  {
+    if (mColumn == null)
+    {
+      mColumn = new ArrayList<>();
+    }
+    mColumn.add(inUiObject);
   }
 
   @Override

@@ -38,3 +38,7 @@ footer {
 	background: aliceblue;
 	padding-top: 5px;
 }
+
+.nowrap {
+	white-space: nowrap;
+}

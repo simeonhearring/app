@@ -29,7 +29,7 @@ public interface ComponentDisplay extends Display
 
     void refresh();
 
-    void addComponent(Components.Type inComponent);
+    void addComponent(Components.Type inComponent, boolean inRoot);
 
     void remove();
 
@@ -54,5 +54,9 @@ public interface ComponentDisplay extends Display
 
   void reset();
 
-  void showAdd(boolean inAllow);
+  void showAdd(boolean inShow);
+
+  void showDetail(boolean inShow);
+
+  void showAddTo(boolean inShow);
 }

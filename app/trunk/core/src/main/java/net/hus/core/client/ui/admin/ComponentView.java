@@ -2,6 +2,7 @@ package net.hus.core.client.ui.admin;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
@@ -45,7 +46,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   Select mPages;
 
   @UiField
-  Icon mAdd0, mAdd1, mSave0, mSave1;
+  Icon mAdd0, mAdd1, mAdd2, mSave0, mSave1;
 
   @UiField
   Input mAddPage, mDisplay;
@@ -54,7 +55,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   Paragraph mName, mPageNameC, mPageNameF;
 
   @UiField
-  Span mPageNameA;
+  Span mPageNameA, mRoot;
 
   @UiField
   ListBox mFvt, mFgg, mPageName, mComponents;
@@ -67,6 +68,9 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
 
   @UiField
   Panel mDetailPanel;
+
+  @UiField
+  Column mAddToCol;
 
   private Action mAction;
 
@@ -81,6 +85,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     defaultTree();
 
     mPageNameA.getElement().getStyle().setFontWeight(FontWeight.BOLD);
+    mRoot.getElement().getStyle().setFontWeight(FontWeight.BOLD);
   }
 
   @Override
@@ -93,6 +98,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
       {
         "mAdd0",
         "mAdd1",
+        "mAdd2",
         "mSave0",
         "mSave1",
       })
@@ -105,7 +111,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     }
     else if (mAdd1.equals(inEvent.getSource()))
     {
-      mAction.addComponent(getEnumValueFromListBox(Components.Type.values(), mComponents));
+      mAction.addComponent(getEnumValueFromListBox(Components.Type.values(), mComponents), false);
+    }
+    else if (mAdd2.equals(inEvent.getSource()))
+    {
+      mAction.addComponent(getEnumValueFromListBox(Components.Type.values(), mComponents), true);
     }
     else if (mSave0.equals(inEvent.getSource()))
     {
@@ -158,7 +168,6 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     setSelectedIndex(mFgg, inPage.getFieldTKG().getFgg());
     setSelectedIndex(mPageName, inPage.getFieldTKG().getLayout());
 
-    // should not call first time. maybe have default.
     removeTree();
 
     addTree(inPage.toJson());
@@ -267,6 +276,12 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mDetailPanel.setVisible(true);
   }
 
+  @Override
+  public void showDetail(boolean inShow)
+  {
+    mDetailPanel.setVisible(inShow);
+  }
+
   private void resetComponent()
   {
     mDetail.clear();
@@ -327,5 +342,11 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
   public void showAdd(boolean inShow)
   {
     mAdd.setVisible(inShow);
+  }
+
+  @Override
+  public void showAddTo(boolean inShow)
+  {
+    mAddToCol.setVisible(inShow);
   }
 }
