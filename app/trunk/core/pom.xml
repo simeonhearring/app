@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.hus</groupId>
@@ -7,6 +6,12 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>core</artifactId>
+	<properties>
+		<core.db.name>simeon_app</core.db.name>
+		<ds.app.url>jdbc:mysql://localhost:3306/${core.db.name}?autoReconnect=true</ds.app.url>
+		<ds.app.user>simeon_app</ds.app.user>
+		<ds.app.pass>Mt2pWCaStI32lKV10k</ds.app.pass>
+	</properties>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
@@ -15,6 +20,7 @@
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
 			</resource>
 			<resource>
 				<directory>src/main/webapp</directory>
@@ -28,6 +34,17 @@
 		</testResources>
 	</build>
 	<profiles>
+		<profile>
+			<id>server</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/config/local</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
 		<profile>
 			<id>dbskip</id>
 			<build>

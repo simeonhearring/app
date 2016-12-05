@@ -10,7 +10,6 @@ import org.mockito.Mockito;
 import com.google.gwtmockito.GwtMockitoTestRunner;
 
 import net.hus.core.client.ui.common.MockUiCreate;
-import net.hus.core.client.ui.manage.UiManager;
 import net.hus.core.shared.components.TextBox_Test;
 import net.hus.core.shared.model.Field;
 
@@ -33,7 +32,7 @@ public class UiManagerImplTest
 
     TextBox uiobject = (TextBox) mManager.match(TextBox_Test.newTextBox(key));
 
-    UiObjects views = mManager.get(key);
+    UiObjects views = mManager.get(key + "_0");
     Assert.assertEquals(1, views.getComponents().size());
     Assert.assertEquals(uiobject, views.getComponents().get(0).getComponent());
 

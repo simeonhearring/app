@@ -50,7 +50,7 @@ public class ComponentsParserTest
 
     String expected = json.replaceAll("\n", "").replaceAll("\t", "");
     String actual = parser.toJson(model);
-    System.out.println(actual);
+    // System.out.println(actual);
     Assert.assertEquals(expected, actual);
   }
 
@@ -65,7 +65,7 @@ public class ComponentsParserTest
 
     String expected = json.replaceAll("\n", "").replaceAll("\t", "");
     String actual = parser.toJson(model);
-    System.out.println(actual);
+    // System.out.println(actual);
     Assert.assertEquals(expected, actual);
   }
 }
