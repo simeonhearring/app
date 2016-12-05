@@ -83,8 +83,10 @@ public class FieldsSqlTest extends MySqlCoreDsTest
     fields.add(new Field(16L));
     fields.add(new Field(17L));
     fields.add(new Field(18L));
+    fields.add(new Field(20L));
     fields.add(new Field(22L));
     fields.add(new Field(23L));
+    fields.add(new Field(24L));
     mSql.upsert(fields);
 
     Fields ret = mSql.select(fields.fgg());

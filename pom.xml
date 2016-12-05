@@ -34,12 +34,14 @@
 			<groupId>com.sun</groupId>
 			<artifactId>tools</artifactId>
 			<version>1.5.0</version>
+			<scope>${jar.scope}</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20160810</version>
+			<scope>${jar.scope}</scope>
 		</dependency>
 
 		<!-- SPRING -->
@@ -126,13 +128,11 @@
 			<groupId>org.gwtbootstrap3</groupId>
 			<artifactId>gwtbootstrap3</artifactId>
 			<version>${gwtbootstrap.version}</version>
-			<scope>${jar.scope}</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gwtbootstrap3</groupId>
 			<artifactId>gwtbootstrap3-extras</artifactId>
 			<version>${gwtbootstrap.version}</version>
-			<scope>${jar.scope}</scope>
 		</dependency>
 
 		<dependency>

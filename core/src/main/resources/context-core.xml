@@ -4,15 +4,6 @@
 
 	<import resource="contextDs-core.xml" />
 
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:core.properties</value>
-			</list>
-		</property>
-		<property name="ignoreUnresolvablePlaceholders" value="true" />
-	</bean>
-
 	<!-- DAOS -->
 
 	<bean id="CoreDao" class="net.hus.core.dao.jdbc.CoreJdbc">

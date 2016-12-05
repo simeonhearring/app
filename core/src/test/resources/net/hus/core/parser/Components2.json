@@ -34,7 +34,7 @@
 					{
 						"text": "FieldSet",
 						"tags": [
-							"5"
+							"6"
 						],
 						"nodes": [
 							{
@@ -203,6 +203,26 @@
 									},
 									{
 										"text": "ListBox",
+										"tags": [
+											"0"
+										]
+									}
+								]
+							},
+							{
+								"text": "FormGroup",
+								"tags": [
+									"2"
+								],
+								"nodes": [
+									{
+										"text": "FormLabel",
+										"tags": [
+											"0"
+										]
+									},
+									{
+										"text": "FlexTable",
 										"tags": [
 											"0"
 										]
