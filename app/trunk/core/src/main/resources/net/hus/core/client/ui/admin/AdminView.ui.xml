@@ -4,7 +4,7 @@
 	xmlns:a="urn:import:net.hus.core.client.ui.admin">
 	<ui:with field="msg" type="net.hus.core.client.resource.Messages" />
 	<ui:style>
-
+	
 	</ui:style>
 	<b:Container fluid="true" addStyleNames="text-Center">
 		<b:Row ui:field="mRow0">
@@ -24,44 +24,47 @@
 		<b:Row>
 			<b:Column size="SM_1" />
 			<b:Column size="SM_10">
-				<b:NavTabs>
-					<b:TabListItem dataTarget="#taba0" text="Field" active="true" />
-					<b:TabListItem dataTarget="#taba1" text="Fields" />
-					<b:TabListItem dataTarget="#taba2" text="Lookup" />
-					<b:TabListItem dataTarget="#taba3" text="Profile" />
-					<b:TabListItem dataTarget="#taba4" text="Action" />
-					<b:TabListItem dataTarget="#taba5" text="Page" />
-				</b:NavTabs>
-				<b:TabContent>
-					<b:TabPane fade="true" b:id="taba0" in="true" active="true">
-						<a:FieldView ui:field="mField" />
-					</b:TabPane>
-					<b:TabPane fade="true" b:id="taba1">
-						<b:FormGroup size="SMALL">
-							<a:FieldsView ui:field="mFields" />
-						</b:FormGroup>
-					</b:TabPane>
-					<b:TabPane fade="true" b:id="taba2">
-						<b:FormGroup size="SMALL">
-							<a:LookupView ui:field="mLookup" />
-						</b:FormGroup>
-					</b:TabPane>
-					<b:TabPane fade="true" b:id="taba3">
-						<b:FormGroup size="SMALL">
-							<a:ProfileView ui:field="mProfile" />
-						</b:FormGroup>
-					</b:TabPane>
-					<b:TabPane fade="true" b:id="taba4">
-						<b:FormGroup size="SMALL">
-							<b:FormLabel text="Actions" />
-						</b:FormGroup>
-					</b:TabPane>
-					<b:TabPane fade="true" b:id="taba5">
-						<b:FormGroup size="SMALL">
-							<a:ComponentView ui:field="mComponent" />
-						</b:FormGroup>
-					</b:TabPane>
-				</b:TabContent>
+				<b:TabPanel tabPosition="LEFT">
+					<b:NavTabs>
+						<b:TabListItem dataTarget="#taba0" text="Fields" active="true" />
+						<b:TabListItem dataTarget="#taba1" text="Tables" />
+						<b:TabListItem dataTarget="#taba2" text="Lookups" />
+						<b:TabListItem dataTarget="#taba3" text="Profiles" />
+						<b:TabListItem dataTarget="#taba4" text="Actions" />
+						<b:TabListItem dataTarget="#taba5" text="Pages" />
+					</b:NavTabs>
+					<b:TabContent>
+						<b:TabPane fade="true" b:id="taba0" in="true" active="true">
+							<a:FieldView ui:field="mField" />
+						</b:TabPane>
+						<b:TabPane fade="true" b:id="taba1">
+							<b:FormGroup size="SMALL">
+								<a:FieldsView ui:field="mFields" />
+							</b:FormGroup>
+						</b:TabPane>
+						<b:TabPane fade="true" b:id="taba2">
+							<b:FormGroup size="SMALL">
+								<a:LookupView ui:field="mLookup" />
+							</b:FormGroup>
+						</b:TabPane>
+						<b:TabPane fade="true" b:id="taba3">
+							<b:FormGroup size="SMALL">
+								<a:ProfileView ui:field="mProfile" />
+							</b:FormGroup>
+						</b:TabPane>
+						<b:TabPane fade="true" b:id="taba4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="Actions" />
+							</b:FormGroup>
+						</b:TabPane>
+						<b:TabPane fade="true" b:id="taba5">
+							<b:FormGroup size="SMALL">
+								<a:ComponentView ui:field="mComponent" />
+							</b:FormGroup>
+						</b:TabPane>
+					</b:TabContent>
+					<b.html:ClearFix />
+				</b:TabPanel>
 			</b:Column>
 			<b:Column size="SM_1" />
 		</b:Row>

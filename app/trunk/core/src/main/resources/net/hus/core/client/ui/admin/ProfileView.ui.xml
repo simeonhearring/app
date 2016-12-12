@@ -10,37 +10,37 @@
 		<b:Column size="SM_3">
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
-					<b:Heading size="H4" text="Edit Profile" />
+					<b:Heading size="H4" text="{msg.p1}" />
 				</b:PanelHeader>
 				<b:PanelBody>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Select Profile:" />
+						<b:FormLabel text="{msg.p2}" />
 						<b.select:Select ui:field="mProfiles" liveSearch="true" visible="true" />
 					</b:FormGroup>
 				</b:PanelBody>
 			</b:Panel>
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
-					<b:Heading size="H4" text="Create New Profile" />
+					<b:Heading size="H4" text="{msg.p3}" />
 				</b:PanelHeader>
 				<b:PanelBody>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Name:" />
-						<b:Input ui:field="mAddUserName" placeholder="Enter user name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						<b:FormLabel text="{msg.p4}" />
+						<b:Input ui:field="mAddUserName" placeholder="{msg.p5}" allowBlank="false" validateOnBlur="true" type="TEXT" />
 					</b:FormGroup>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="First:" />
-						<b:Input ui:field="mAddFirst" placeholder="Enter first name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						<b:FormLabel text="{msg.p6}" />
+						<b:Input ui:field="mAddFirst" placeholder="{msg.p7}" allowBlank="false" validateOnBlur="true" type="TEXT" />
 					</b:FormGroup>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Last:" />
-						<b:Input ui:field="mAddLast" placeholder="Enter last name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						<b:FormLabel text="{msg.p8}" />
+						<b:Input ui:field="mAddLast" placeholder="{msg.p9}" allowBlank="false" validateOnBlur="true" type="TEXT" />
 					</b:FormGroup>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Landing page:" />
+						<b:FormLabel text="{msg.p10}" />
 						<b:ListBox ui:field="mAddPage" />
 					</b:FormGroup>
-					<b:Tooltip text="Add New">
+					<b:Tooltip text="{msg.p11}">
 						<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
 					</b:Tooltip>
 				</b:PanelBody>
@@ -49,38 +49,38 @@
 		<b:Column size="SM_9">
 			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
-					<b:TabListItem dataTarget="#tabp4" text="Name" active="true" />
-					<b:TabListItem dataTarget="#tabp5" text="Detail" />
+					<b:TabListItem dataTarget="#tabp4" text="{msg.p12}" active="true" />
+					<b:TabListItem dataTarget="#tabp5" text="{msg.p13}" />
 				</b:NavTabs>
 				<b:TabContent>
 					<b:TabPane fade="true" in="true" active="true" b:id="tabp4">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Profile Info" />
+								<b:Heading size="H4" text="{msg.p14}" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:Row>
 									<b:Column size="SM_3">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Created:" />
+											<b:FormLabel text="{msg.p15}" />
 											<b.html:Paragraph ui:field="mCreated" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_3">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Updated:" />
+											<b:FormLabel text="{msg.p16}" />
 											<b.html:Paragraph ui:field="mUpdated" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_2">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="ID:" />
+											<b:FormLabel text="{msg.p17}" />
 											<b.html:Paragraph ui:field="mId" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Name:" />
+											<b:FormLabel text="{msg.p18}" />
 											<b.html:Paragraph ui:field="mName" />
 										</b:FormGroup>
 									</b:Column>
@@ -91,25 +91,25 @@
 					<b:TabPane fade="true" b:id="tabp5">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Profile Detail" />
+								<b:Heading size="H4" text="{msg.p19}" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:Row>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="First:" />
+											<b:FormLabel text="{msg.p20}" />
 											<b:Input ui:field="mFirst" type="TEXT" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Middle:" />
+											<b:FormLabel text="{msg.p21}" />
 											<b:Input ui:field="mMiddle" type="TEXT" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Last:" />
+											<b:FormLabel text="{msg.p22}" />
 											<b:Input ui:field="mLast" type="TEXT" />
 										</b:FormGroup>
 									</b:Column>
@@ -117,19 +117,19 @@
 								<b:Row>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="User name:" />
+											<b:FormLabel text="{msg.p23}" />
 											<b.html:Paragraph ui:field="mUserName" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Password:" />
+											<b:FormLabel text="{msg.p24}" />
 											<b:Input ui:field="mPassword" type="TEXT" />
 										</b:FormGroup>
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Landing page:" />
+											<b:FormLabel text="{msg.p25}" />
 											<b:ListBox ui:field="mPage" />
 										</b:FormGroup>
 									</b:Column>
@@ -137,12 +137,12 @@
 								<b:Row>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Theme:" />
+											<b:FormLabel text="{msg.p26}" />
 											<b:ListBox ui:field="mCss" />
 										</b:FormGroup>
 									</b:Column>
 								</b:Row>
-								<b:Tooltip text="Save">
+								<b:Tooltip text="{msg.p27}">
 									<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
 								</b:Tooltip>
 							</b:PanelBody>

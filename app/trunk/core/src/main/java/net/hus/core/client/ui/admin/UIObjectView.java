@@ -20,6 +20,7 @@ import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Page;
 import net.hus.core.shared.model.Page.Section;
 import net.hus.core.shared.model.UIObject_;
+import net.hus.core.shared.util.StringUtil;
 
 public class UIObjectView extends AbstractView implements UIObjectDisplay
 {
@@ -88,11 +89,11 @@ public class UIObjectView extends AbstractView implements UIObjectDisplay
       })
   public void onValueChangeBind(ValueChangeEvent<String> inEvent)
   {
-    mUiObject.setHeight(mHeight.getText());
-    mUiObject.setWidth(mWidth.getText());
-    mUiObject.setTitle(mTitle.getText());
-    mUiObject.setStyleName(mStyleName.getText());
-    mUiObject.setStylePrimaryName(mStylePrimaryName.getText());
+    mUiObject.setHeight(StringUtil.nullIfEmpty(mHeight.getText()));
+    mUiObject.setWidth(StringUtil.nullIfEmpty(mWidth.getText()));
+    mUiObject.setTitle(StringUtil.nullIfEmpty(mTitle.getText()));
+    mUiObject.setStyleName(StringUtil.nullIfEmpty(mStyleName.getText()));
+    mUiObject.setStylePrimaryName(StringUtil.nullIfEmpty(mStylePrimaryName.getText()));
   }
 
   public void setFields(Field.Component inComponent, Fields inFields)

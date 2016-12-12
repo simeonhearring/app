@@ -32,6 +32,8 @@
 
 	<bean id="LoggerCommand" class="net.hus.core.server.command.LoggerCommandBean" />
 
+	<bean id="JavacCommand" class="net.hus.core.server.command.JavacCommandBean" />
+
 	<!-- REQUESTCOMMANDS BEGIN -->
 
 	<bean id="LoginCommand" class="net.hus.core.server.command.LoginCommandBean">

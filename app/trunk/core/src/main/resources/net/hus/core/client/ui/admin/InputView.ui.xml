@@ -12,15 +12,15 @@
 		<b:Row>
 			<b:Column size="SM_6">
 				<b:FormGroup size="SMALL">
-					<b:FormLabel text="Type" />
+					<b:FormLabel text="{msg.i1}" />
 					<b:ListBox ui:field="mType" />
 				</b:FormGroup>
 				<b:FormGroup size="SMALL">
-					<b:FormLabel text="Min" />
+					<b:FormLabel text="{msg.i2}" />
 					<b:Input ui:field="mMin" type="TEXT" />
 				</b:FormGroup>
 				<b:FormGroup size="SMALL">
-					<b:FormLabel text="Max" />
+					<b:FormLabel text="{msg.i3}" />
 					<b:Input ui:field="mMax" type="TEXT" />
 				</b:FormGroup>
 				<a:ValueBoxBaseView ui:field="mValueBoxBase" />
