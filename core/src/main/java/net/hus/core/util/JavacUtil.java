@@ -64,19 +64,34 @@ public final class JavacUtil
   {
     try
     {
-      ((Runnable) loadClass(inClassName).newInstance()).run();
+      ((Runnable) instance(inClassName)).run();
     }
     catch (Exception e)
     {
-      throw new RuntimeException("JAVAC EXCEPTION", e);
+      throw new RuntimeException("JAVAC RUN EXCEPTION", e);
     }
+  }
+
+  public static Object instance(String inClassName)
+  {
+    Object ret = null;
+    try
+    {
+      Class<?> clazz = loadClass(inClassName);
+      ret = clazz.newInstance();
+    }
+    catch (Exception e)
+    {
+      throw new RuntimeException("JAVAC INSTANCE EXCEPTION", e);
+    }
+    return ret;
   }
 
   private static Class<?> loadClass(String inClassName) throws IOException
   {
-    URLClassLoader loader = null;
     Class<?> ret = null;
 
+    URLClassLoader loader = null;
     try
     {
       loader = new URLClassLoader(new URL[]

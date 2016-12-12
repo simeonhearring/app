@@ -8,8 +8,8 @@ import org.gwtbootstrap3.client.ui.FormGroup;
 import org.gwtbootstrap3.client.ui.Icon;
 import org.gwtbootstrap3.client.ui.Input;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Panel;
 import org.gwtbootstrap3.client.ui.Row;
-import org.gwtbootstrap3.client.ui.TabListItem;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.InputType;
 import org.gwtbootstrap3.client.ui.form.validator.BlankValidator;
@@ -82,7 +82,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   Row mTKGRow;
 
   @UiField
-  TabListItem mNameTab, mDateTab, mArrayTab, mLookupTab;
+  Panel mNameSec, mDateSec, mArraySec, mLookupSec;
 
   @UiField
   FlowPanel mLookupGroup, mArrayLabel, mTableFields, mCTypes;
@@ -261,11 +261,11 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
   @Override
   public void set(Field inField)
   {
-    mNameTab.showTab();
+    // mNameSec.showTab();
 
-    mDateTab.setVisible(inField.isDate());
-    mArrayTab.setVisible(inField.isArray() || inField.isTable());
-    mLookupTab.setVisible(inField.isLookup());
+    mDateSec.setVisible(inField.isDate());
+    mArraySec.setVisible(inField.isArray() || inField.isTable());
+    mLookupSec.setVisible(inField.isLookup());
 
     // name
     mId.setText(String.valueOf(inField.getId()));

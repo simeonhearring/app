@@ -3,21 +3,10 @@
 	xmlns:b.html="urn:import:org.gwtbootstrap3.client.ui.html" xmlns:b.select="urn:import:org.gwtbootstrap3.extras.select.client.ui" xmlns:b.toggle="urn:import:org.gwtbootstrap3.extras.toggleswitch.client.ui">
 	<ui:with field="msg" type="net.hus.core.client.resource.Messages" />
 	<ui:style>
-
+	
 	</ui:style>
 	<b:Row>
 		<b:Column size="SM_3">
-			<b:Panel type="PRIMARY">
-				<b:PanelHeader>
-					<b:Heading size="H4" text="Select Table" />
-				</b:PanelHeader>
-				<b:PanelBody>
-					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Table:" />
-						<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
-					</b:FormGroup>
-				</b:PanelBody>
-			</b:Panel>
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
 					<b:Heading size="H4" text="Create New Table" />
@@ -34,6 +23,17 @@
 			</b:Panel>
 		</b:Column>
 		<b:Column size="SM_9">
+			<b:Panel type="PRIMARY">
+				<b:PanelHeader>
+					<b:Heading size="H4" text="Select Table" />
+				</b:PanelHeader>
+				<b:PanelBody>
+					<b:FormGroup size="SMALL">
+						<b:FormLabel text="Table:" />
+						<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
+					</b:FormGroup>
+				</b:PanelBody>
+			</b:Panel>
 			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tabg4" text="Name" active="true" />
