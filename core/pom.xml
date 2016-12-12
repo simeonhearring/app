@@ -39,7 +39,7 @@
 			<build>
 				<resources>
 					<resource>
-						<directory>src/main/config/local</directory>
+						<directory>src/main/config/server</directory>
 						<filtering>true</filtering>
 					</resource>
 				</resources>

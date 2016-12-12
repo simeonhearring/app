@@ -6,17 +6,179 @@
 	<ui:style>
 	
 	</ui:style>
+	<g:HTMLPanel>
+		<b:Container fluid="true" addStyleNames="text-Center">
+			<b:Row>
+				<b:Column size="MD_13">
+					<h:CarouselView ui:field="mCarousel" uniqueId="home" />
+				</b:Column>
+			</b:Row>
+			<b:Row ui:field="mRow0" addStyleNames="header-info bg-1 navbar-default" height="100%">
+				<b:Column ui:field="mL01" size="SM_2" />
+				<b:Column ui:field="mC01" size="SM_8" addStyleNames="text-center animated fadeIn" />
+				<b:Column ui:field="mR01" size="SM_2" />
+			</b:Row>
+		</b:Container>
+		<g:HTMLPanel styleName="text-Center container-fluid">
+			<div class="row text-center" style="padding: 20px">
 
-	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row>
-			<b:Column size="MD_13">
-				<h:CarouselView ui:field="mCarousel" uniqueId="home" />
-			</b:Column>
-		</b:Row>
-		<b:Row ui:field="mRow0" addStyleNames="header-info bg-1" height="100%">
-			<b:Column ui:field="mL01" size="SM_2" />
-			<b:Column ui:field="mC01" size="SM_8" addStyleNames="text-center animated fadeIn" />
-			<b:Column ui:field="mR01" size="SM_2" />
-		</b:Row>
-	</b:Container>
+				<!--Section -->
+				<a class="col-link" href="#">
+					<div class="col-sm-4 margin-30 animated fadeIn delay1">
+						<i class="fa fa-compress fa-4x home-icons"></i>
+						<h3>Built Responsive</h3>
+						<p></p>
+					</div>
+				</a>
+
+				<!--Section -->
+				<a class="col-link" href="#">
+					<div class="col-sm-4 margin-30 animated fadeIn delay2">
+						<i class="fa fa-code fa-4x home-icons"></i>
+						<h3>Clean Code</h3>
+						<p></p>
+					</div>
+				</a>
+
+				<!--Section -->
+				<a class="col-link" href="#">
+					<div class="col-sm-4 margin-30 animated fadeIn delay3">
+						<i class="fa fa-gear fa-4x home-icons"></i>
+						<h3>Unlimited Support</h3>
+						<p></p>
+					</div>
+				</a>
+
+			</div>
+		</g:HTMLPanel>
+		<g:HTMLPanel styleName="text-Center container-fluid">
+			<div class="row margin-30">
+				<div class="col-sm-12 text-center">
+					<h2>Kind Words</h2>
+				</div>
+			</div>
+
+			<div class="row text-center" style="padding: 50px">
+				<div id="kind-words" class="carousel slide">
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+
+						<div class="item">
+							<div class="row margin-30">
+								<div class="col-sm-8 col-sm-offset-2">
+									<div class="row margin-30">
+										<div class="col-sm-3 text-center">
+											<img class="img-circle img-responsive" src="img/testimonial2.jpg" alt="Title" />
+											<h5>Kathryn,</h5>
+											<small title="Source Title">
+												<em>
+													Director |
+													<a href="#" class="more">Digital Properties at United Stationers</a>
+												</em>
+											</small>
+										</div>
+										<div class="col-sm-9 text-center">
+											<h3>“Very conscientious and persistent!”</h3>
+											<hr />
+											<p>... often going the extra mile to deliver a quality product to his customers. Works very hard, and is always looking for ways to add
+												that extra something to whatever it is being worked
+												on.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End Item -->
+
+						<div class="item">
+							<div class="row margin-30">
+								<div class="col-sm-8 col-sm-offset-2">
+									<div class="row margin-30">
+										<div class="col-sm-3 text-center">
+											<img class="img-circle img-responsive" src="img/testimonial4.jpg" alt="Title" />
+											<h5>Jignesh,</h5>
+											<small title="Source Title">
+												<em>
+													Sr. Solution Consultant |
+													<a href="#" class="more">TIBCO</a>
+												</em>
+											</small>
+										</div>
+										<div class="col-sm-9 text-center">
+											<h3>“Makes difficult things look effortless”</h3>
+											<hr />
+											<p>Very detail-oriented. Developed highly effective resolutions as a result of blending his own and others' past experiences. Makes
+												difficult things look effortless through effectively
+												negotiating around problems. Recognized and used the appropriate skill and
+												contribution levels to exceed expectations.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End Item -->
+
+						<div class="item active">
+							<!-- class of active since it's the first item -->
+							<div class="row margin-30">
+								<div class="col-sm-8 col-sm-offset-2">
+									<div class="row margin-30">
+										<div class="col-sm-3 text-center">
+											<img class="img-circle img-responsive" src="img/testimonial1.jpg" alt="Title" />
+											<h5>LeShaunte,</h5>
+											<small title="Source Title">
+												<em>
+													Senior Account Manager |
+													<a href="#" class="more"></a>
+												</em>
+											</small>
+										</div>
+										<div class="col-sm-9 text-center">
+											<h3>“Work is remarkable and unprecedented”</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End Item -->
+
+						<div class="item">
+							<div class="row margin-30">
+								<div class="col-sm-8 col-sm-offset-2">
+									<div class="row margin-30">
+										<div class="col-sm-3 text-center">
+											<img class="img-circle img-responsive" src="img/testimonial3.jpg" alt="Title" />
+											<h5>Jerry,</h5>
+											<small title="Source Title">
+												<em>
+													Director of Talent Acquisition |
+													<a href="#" class="more">SLG Innovation</a>
+												</em>
+											</small>
+										</div>
+										<div class="col-sm-9 text-center">
+											<h3>“Excellent resource for application design, development and tech lead!”</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--End Item -->
+
+					</div>
+
+					<!-- Controls -->
+					<a class="carousel-control left" href="#kind-words" data-slide="prev" style="margin: -50px">
+						<span class="icon-prev"></span>
+					</a>
+					<a class="carousel-control right" href="#kind-words" data-slide="next" style="margin: -50px">
+						<span class="icon-next"></span>
+					</a>
+				</div>
+			</div>
+			<!--End Row -->
+
+		</g:HTMLPanel>
+	</g:HTMLPanel>
 </ui:UiBinder>

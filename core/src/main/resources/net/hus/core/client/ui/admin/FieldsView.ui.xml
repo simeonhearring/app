@@ -9,23 +9,23 @@
 		<b:Column size="SM_3">
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
-					<b:Heading size="H4" text="Select FGG" />
+					<b:Heading size="H4" text="Select Table" />
 				</b:PanelHeader>
 				<b:PanelBody>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="FGG:" />
+						<b:FormLabel text="Table:" />
 						<b.select:Select ui:field="mGroups" liveSearch="true" visible="true" />
 					</b:FormGroup>
 				</b:PanelBody>
 			</b:Panel>
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
-					<b:Heading size="H4" text="Create New FGG" />
+					<b:Heading size="H4" text="Create New Table" />
 				</b:PanelHeader>
 				<b:PanelBody>
 					<b:FormGroup size="SMALL" ui:field="mAddNameGrp">
 						<b:FormLabel text="Name:" />
-						<b:Input ui:field="mAddGroup" placeholder="Enter FGG Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						<b:Input ui:field="mAddGroup" placeholder="Enter Table Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
 					</b:FormGroup>
 					<b:Tooltip text="Add New">
 						<b:Icon ui:field="mAdd0" type="SAVE" addStyleNames="pull-right" />
@@ -43,13 +43,13 @@
 					<b:TabPane fade="true" in="true" active="true" b:id="tabg4">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="FGG Name" />
+								<b:Heading size="H4" text="Table Name" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:Row>
 									<b:Column size="SM_2">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="FGG:" />
+											<b:FormLabel text="Table" />
 											<b.html:Paragraph ui:field="mFgg" />
 										</b:FormGroup>
 									</b:Column>
@@ -72,7 +72,7 @@
 					<b:TabPane fade="true" b:id="tabg5">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Select Fields In FGG" />
+								<b:Heading size="H4" text="Select Fields In Table" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:FormGroup size="SMALL">

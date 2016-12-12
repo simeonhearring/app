@@ -17,15 +17,13 @@ public class LookupSaveCommand extends AbstractCommand
   {
   }
 
-  public LookupSaveCommand(Lookup inLookup)
+  public LookupSaveCommand(Lookup... inLookup)
   {
-    this(new ArrayList<Lookup>());
-    mLookups.add(inLookup);
-  }
-
-  public LookupSaveCommand(List<Lookup> inLookups)
-  {
-    mLookups = inLookups;
+    mLookups = new ArrayList<>();
+    for (Lookup value : inLookup)
+    {
+      mLookups.add(value);
+    }
   }
 
   public List<Lookup> getLookups()

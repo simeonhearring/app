@@ -10,23 +10,23 @@
 		<b:Column size="SM_3">
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
-					<b:Heading size="H4" text="Edit Lookup" />
+					<b:Heading size="H4" text="{msg.l1}" />
 				</b:PanelHeader>
 				<b:PanelBody>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Select Lookup:" />
+						<b:FormLabel text="{msg.l2}" />
 						<b.select:Select ui:field="mLookups" liveSearch="true" visible="true" />
 					</b:FormGroup>
 				</b:PanelBody>
 			</b:Panel>
 			<b:Panel type="PRIMARY">
 				<b:PanelHeader>
-					<b:Heading size="H4" text="Creat New Lookup" />
+					<b:Heading size="H4" text="{msg.l3}" />
 				</b:PanelHeader>
 				<b:PanelBody>
 					<b:FormGroup size="SMALL">
-						<b:FormLabel text="Lookup Name:" />
-						<b:Input ui:field="mAddLookups" placeholder="Enter Lookup Name" allowBlank="false" validateOnBlur="true" type="TEXT" />
+						<b:FormLabel text="{msg.l4}" />
+						<b:Input ui:field="mAddLookups" placeholder="{msg.l24}" allowBlank="false" validateOnBlur="true" type="TEXT" />
 					</b:FormGroup>
 					<b:Tooltip text="Add New">
 						<b:Icon ui:field="mAdd0" type="SAVE" paddingLeft="15" addStyleNames="pull-right" />
@@ -37,14 +37,14 @@
 		<b:Column size="SM_9">
 			<b:TabPanel tabPosition="TOP">
 				<b:NavTabs>
-					<b:TabListItem dataTarget="#tabl4" text="Name" active="true" />
-					<b:TabListItem dataTarget="#tabl5" text="Values" />
+					<b:TabListItem dataTarget="#tabl4" text="{msg.l5}" active="true" />
+					<b:TabListItem dataTarget="#tabl5" text="{msg.l6}" />
 				</b:NavTabs>
 				<b:TabContent>
 					<b:TabPane fade="true" in="true" active="true" b:id="tabl4">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Lookup name" />
+								<b:Heading size="H4" text="{msg.l7}" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:Row>
@@ -56,12 +56,12 @@
 									</b:Column>
 									<b:Column size="SM_4">
 										<b:FormGroup size="SMALL">
-											<b:FormLabel text="Display:" />
+											<b:FormLabel text="{msg.l8}" />
 											<b:Input ui:field="mDisplay" type="TEXT" />
 										</b:FormGroup>
 									</b:Column>
 								</b:Row>
-								<b:Tooltip text="Save">
+								<b:Tooltip text="{msg.l9}">
 									<b:Icon ui:field="mSave0" type="SAVE" addStyleNames="pull-right" />
 								</b:Tooltip>
 							</b:PanelBody>
@@ -70,19 +70,19 @@
 					<b:TabPane fade="true" b:id="tabl5">
 						<b:Panel type="PRIMARY">
 							<b:PanelHeader>
-								<b:Heading size="H4" text="Values In Lookup" />
+								<b:Heading size="H4" text="{msg.l20}" />
 							</b:PanelHeader>
 							<b:PanelBody>
 								<b:Form type="INLINE" ui:field="mQuickEdit">
 									<b:FieldSet>
 										<b:FormGroup size="SMALL">
-											<b:Input ui:field="mNewName" type="TEXT" placeholder="Enter name" />
+											<b:Input ui:field="mNewName" type="TEXT" placeholder="{msg.l21}" />
 										</b:FormGroup>
 										<b:FormGroup size="SMALL">
-											<b:Input ui:field="mNewAbbr" type="TEXT" placeholder="Enter abbreviation" />
+											<b:Input ui:field="mNewAbbr" type="TEXT" placeholder="{msg.l22}" />
 										</b:FormGroup>
 										<b:FormGroup size="SMALL">
-											<b:Input ui:field="mNewSort" type="NUMBER" placeholder="Enter sort" />
+											<b:Input ui:field="mNewSort" type="NUMBER" placeholder="{msg.l23}" />
 										</b:FormGroup>
 									</b:FieldSet>
 								</b:Form>
