@@ -35,7 +35,7 @@ public class AdminView extends AbstractRowView implements AdminDisplay
   Row mRow0;
 
   @UiField
-  Column mL01, mC01, mR01;
+  Column mC01;
 
   @UiField
   Icon mRefresh;

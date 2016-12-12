@@ -162,15 +162,15 @@ public interface Text
 
   String f7();
 
-  String f8();
+  String f8(); // delete
 
-  String f9();
+  String f9(); // delete
 
-  String f10();
+  String f10(); // delete
 
-  String f11();
+  String f11(); // delete
 
-  String f12();
+  String f12(); // delete
 
   String f13();
 

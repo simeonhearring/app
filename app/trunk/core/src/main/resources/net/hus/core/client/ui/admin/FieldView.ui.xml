@@ -6,8 +6,8 @@
 	
 	</ui:style>
 	<b:Row>
-		<b:Column size="SM_3">
-			<b:Panel type="PRIMARY">
+		<b:Column size="SM_12">
+			<b:Panel type="PRIMARY" ui:field="mNameSec">
 				<b:PanelHeader>
 					<b:Heading size="H4" text="{msg.f1}" />
 				</b:PanelHeader>
@@ -18,7 +18,34 @@
 					</b:FormGroup>
 				</b:PanelBody>
 			</b:Panel>
-			<b:Panel type="PRIMARY">
+			<b:Panel type="PRIMARY" ui:field="mDisplaySec">
+				<b:PanelHeader>
+					<b:Heading size="H4" text="{msg.f13}" />
+				</b:PanelHeader>
+				<b:PanelBody>
+					<b:Row>
+						<b:Column size="SM_2">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f14}" />
+								<b.html:Paragraph ui:field="mId" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_2">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f15}" />
+								<b.html:Paragraph ui:field="mName" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_2">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f16}" />
+								<b.html:Paragraph ui:field="mType" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+				</b:PanelBody>
+			</b:Panel>
+			<b:Panel type="PRIMARY" ui:field="mCreateSec">
 				<b:PanelHeader>
 					<b:Heading size="H4" text="{msg.f3}" />
 				</b:PanelHeader>
@@ -36,9 +63,186 @@
 					</b:Tooltip>
 				</b:PanelBody>
 			</b:Panel>
-		</b:Column>
-		<b:Column size="SM_9">
-			<b:TabPanel tabPosition="TOP">
+			<b:Panel type="PRIMARY">
+				<b:PanelHeader>
+					<b:Heading size="H4" text="{msg.f17}" />
+				</b:PanelHeader>
+				<b:PanelBody>
+					<b:Row>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f18}" />
+								<b:Input ui:field="mLong" type="TEXT" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f19}" />
+								<b:Input ui:field="mShort" type="TEXT" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Tooltip text="{msg.f20}">
+						<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+					</b:Tooltip>
+					<b:Tooltip text="{msg.f21}">
+						<b:Icon ui:field="mRefresh0" type="REFRESH" addStyleNames="pull-right" />
+					</b:Tooltip>
+				</b:PanelBody>
+			</b:Panel>
+			<b:Panel type="PRIMARY" ui:field="mDateSec">
+				<b:PanelHeader>
+					<b:Heading size="H4" text="{msg.f22}" />
+				</b:PanelHeader>
+				<b:PanelBody>
+					<b:Row>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f23}:" />
+								<b:Input ui:field="mStorageFormat" type="TEXT" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f24}" />
+								<b.html:Paragraph ui:field="mStorageFormatEx" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Tooltip text="{msg.f25}">
+						<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+					</b:Tooltip>
+					<b:Tooltip text="{msg.f26}">
+						<b:Icon ui:field="mRefresh1" type="REFRESH" addStyleNames="pull-right" />
+					</b:Tooltip>
+				</b:PanelBody>
+			</b:Panel>
+			<b:Panel type="PRIMARY" ui:field="mArraySec">
+				<b:PanelHeader>
+					<b:Heading size="H4" text="{msg.f27}" />
+				</b:PanelHeader>
+				<b:PanelBody>
+					<b:Row>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f28}" />
+								<b:ListBox ui:field="mHeadSize" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f29}" />
+								<b:Input ui:field="mBottomRow" type="NUMBER" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Row>
+						<b:Column size="SM_2">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel HTML="{msg.f30}" />
+								<b.toggle:ToggleSwitch ui:field="mAltColor" size="MINI" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_3">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f31}" />
+								<b:Input ui:field="mAltEven" type="COLOR" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_3">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f32}" />
+								<b:Input ui:field="mAltOdd" type="COLOR" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Row ui:field="mTKGRow">
+						<b:Column size="SM_3" offset="SM_2">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f33}" />
+								<b:ListBox ui:field="mFvt" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_3">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f34}" />
+								<b:ListBox ui:field="mFgg" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Row>
+						<b:Column size="SM_2">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel HTML="{msg.f35}" />
+								<b.html:Span ui:field="mSize" />
+								<b:Tooltip text="{msg.f36}">
+									<b:Icon ui:field="mPlus" type="PLUS" paddingLeft="10" paddingRight="10" />
+								</b:Tooltip>
+								<b:Tooltip text="{msg.f37}">
+									<b:Icon ui:field="mMinus" type="MINUS" />
+								</b:Tooltip>
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_3">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f38}" />
+								<b.gwt:FlowPanel ui:field="mArrayLabel" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_3">
+							<b:FormGroup size="SMALL" ui:field="mTableFieldsGrp">
+								<b:FormLabel text="{msg.f39}" />
+								<b.gwt:FlowPanel ui:field="mTableFields" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_3">
+							<b:FormGroup size="SMALL" ui:field="mCTypesGrp">
+								<b:FormLabel text="{msg.f40}" />
+								<b.gwt:FlowPanel ui:field="mCTypes" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Tooltip text="{msg.f41}">
+						<b:Icon ui:field="mSave2" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+					</b:Tooltip>
+					<b:Tooltip text="{msg.f42}">
+						<b:Icon ui:field="mRefresh2" type="REFRESH" addStyleNames="pull-right" />
+					</b:Tooltip>
+				</b:PanelBody>
+			</b:Panel>
+			<b:Panel type="PRIMARY" ui:field="mLookupSec">
+				<b:PanelHeader>
+					<b:Heading size="H4" text="{msg.f43}" />
+				</b:PanelHeader>
+				<b:PanelBody>
+					<b:Row>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f44}" />
+								<b:ListBox ui:field="mLookupLocation" />
+							</b:FormGroup>
+						</b:Column>
+						<b:Column size="SM_4">
+							<b:FormGroup size="SMALL">
+								<b:FormLabel text="{msg.f45}" />
+								<b.html:Paragraph ui:field="mLookupGroupText" />
+							</b:FormGroup>
+						</b:Column>
+					</b:Row>
+					<b:Row>
+						<b:Column size="SM_12">
+							<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />
+						</b:Column>
+					</b:Row>
+					<b:Tooltip text="{msg.f46}">
+						<b:Icon ui:field="mSave3" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
+					</b:Tooltip>
+					<b:Tooltip text="{msg.f47}">
+						<b:Icon ui:field="mRefresh3" type="REFRESH" addStyleNames="pull-right" />
+					</b:Tooltip>
+				</b:PanelBody>
+			</b:Panel>
+			<b:TabPanel tabPosition="TOP" visible="false">
 				<b:NavTabs>
 					<b:TabListItem dataTarget="#tab4" text="{msg.f8}" active="true" ui:field="mNameTab" />
 					<b:TabListItem dataTarget="#tab5" text="{msg.f9}" />
@@ -48,220 +252,14 @@
 				</b:NavTabs>
 				<b:TabContent>
 					<b:TabPane fade="true" in="true" active="true" b:id="tab4">
-						<b:Panel type="PRIMARY">
-							<b:PanelHeader>
-								<b:Heading size="H4" text="{msg.f13}" />
-							</b:PanelHeader>
-							<b:PanelBody>
-								<b:Row>
-									<b:Column size="SM_2">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f14}" />
-											<b.html:Paragraph ui:field="mId" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_2">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f15}" />
-											<b.html:Paragraph ui:field="mName" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_2">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f16}" />
-											<b.html:Paragraph ui:field="mType" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-							</b:PanelBody>
-						</b:Panel>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tab5">
-						<b:Panel type="PRIMARY">
-							<b:PanelHeader>
-								<b:Heading size="H4" text="{msg.f17}" />
-							</b:PanelHeader>
-							<b:PanelBody>
-								<b:Row>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f18}" />
-											<b:Input ui:field="mLong" type="TEXT" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f19}" />
-											<b:Input ui:field="mShort" type="TEXT" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Tooltip text="{msg.f20}">
-									<b:Icon ui:field="mSave0" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
-								</b:Tooltip>
-								<b:Tooltip text="{msg.f21}">
-									<b:Icon ui:field="mRefresh0" type="REFRESH" addStyleNames="pull-right" />
-								</b:Tooltip>
-							</b:PanelBody>
-						</b:Panel>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tab6">
-						<b:Panel type="PRIMARY">
-							<b:PanelHeader>
-								<b:Heading size="H4" text="{msg.f22}" />
-							</b:PanelHeader>
-							<b:PanelBody>
-								<b:Row>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f23}:" />
-											<b:Input ui:field="mStorageFormat" type="TEXT" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f24}" />
-											<b.html:Paragraph ui:field="mStorageFormatEx" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Tooltip text="{msg.f25}">
-									<b:Icon ui:field="mSave1" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
-								</b:Tooltip>
-								<b:Tooltip text="{msg.f26}">
-									<b:Icon ui:field="mRefresh1" type="REFRESH" addStyleNames="pull-right" />
-								</b:Tooltip>
-							</b:PanelBody>
-						</b:Panel>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tab7">
-						<b:Panel type="PRIMARY">
-							<b:PanelHeader>
-								<b:Heading size="H4" text="{msg.f27}" />
-							</b:PanelHeader>
-							<b:PanelBody>
-								<b:Row>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f28}" />
-											<b:ListBox ui:field="mHeadSize" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f29}" />
-											<b:Input ui:field="mBottomRow" type="NUMBER" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Row>
-									<b:Column size="SM_2">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel HTML="{msg.f30}" />
-											<b.toggle:ToggleSwitch ui:field="mAltColor" size="MINI" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f31}" />
-											<b:Input ui:field="mAltEven" type="COLOR" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f32}" />
-											<b:Input ui:field="mAltOdd" type="COLOR" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Row ui:field="mTKGRow">
-									<b:Column size="SM_3" offset="SM_2">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f33}" />
-											<b:ListBox ui:field="mFvt" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f34}" />
-											<b:ListBox ui:field="mFgg" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Row>
-									<b:Column size="SM_2">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel HTML="{msg.f35}" />
-											<b.html:Span ui:field="mSize" />
-											<b:Tooltip text="{msg.f36}">
-												<b:Icon ui:field="mPlus" type="PLUS" paddingLeft="10" paddingRight="10" />
-											</b:Tooltip>
-											<b:Tooltip text="{msg.f37}">
-												<b:Icon ui:field="mMinus" type="MINUS" />
-											</b:Tooltip>
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f38}" />
-											<b.gwt:FlowPanel ui:field="mArrayLabel" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL" ui:field="mTableFieldsGrp">
-											<b:FormLabel text="{msg.f39}" />
-											<b.gwt:FlowPanel ui:field="mTableFields" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_3">
-										<b:FormGroup size="SMALL" ui:field="mCTypesGrp">
-											<b:FormLabel text="{msg.f40}" />
-											<b.gwt:FlowPanel ui:field="mCTypes" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Tooltip text="{msg.f41}">
-									<b:Icon ui:field="mSave2" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
-								</b:Tooltip>
-								<b:Tooltip text="{msg.f42}">
-									<b:Icon ui:field="mRefresh2" type="REFRESH" addStyleNames="pull-right" />
-								</b:Tooltip>
-							</b:PanelBody>
-						</b:Panel>
 					</b:TabPane>
 					<b:TabPane fade="true" b:id="tab8">
-						<b:Panel type="PRIMARY">
-							<b:PanelHeader>
-								<b:Heading size="H4" text="{msg.f43}" />
-							</b:PanelHeader>
-							<b:PanelBody>
-								<b:Row>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f44}" />
-											<b:ListBox ui:field="mLookupLocation" />
-										</b:FormGroup>
-									</b:Column>
-									<b:Column size="SM_4">
-										<b:FormGroup size="SMALL">
-											<b:FormLabel text="{msg.f45}" />
-											<b.html:Paragraph ui:field="mLookupGroupText" />
-										</b:FormGroup>
-									</b:Column>
-								</b:Row>
-								<b:Row>
-									<b:Column size="SM_12">
-										<b.gwt:FlowPanel ui:field="mLookupGroup" styleName="core_columns" />
-									</b:Column>
-								</b:Row>
-								<b:Tooltip text="{msg.f46}">
-									<b:Icon ui:field="mSave3" type="SAVE" paddingLeft="10" addStyleNames="pull-right" />
-								</b:Tooltip>
-								<b:Tooltip text="{msg.f47}">
-									<b:Icon ui:field="mRefresh3" type="REFRESH" addStyleNames="pull-right" />
-								</b:Tooltip>
-							</b:PanelBody>
-						</b:Panel>
 					</b:TabPane>
 				</b:TabContent>
 				<b.html:ClearFix />

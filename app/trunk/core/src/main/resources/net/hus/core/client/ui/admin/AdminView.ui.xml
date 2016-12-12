@@ -6,25 +6,27 @@
 	<ui:style>
 	
 	</ui:style>
-	<b:Container fluid="true" addStyleNames="text-Center">
-		<b:Row ui:field="mRow0">
-			<b:Column ui:field="mL01" size="SM_1" />
-			<b:Column ui:field="mC01" size="SM_10" addStyleNames="text-center" />
-			<b:Column ui:field="mR01" size="SM_1" />
-		</b:Row>
+	<b:Container fluid="true">
 		<b:Row>
 			<b:Column size="SM_1" />
-			<b:Column size="SM_10" addStyleNames="text-center">
+			<b:Column size="SM_10" addStyleNames="wrapper">
+				<b:Row>
+					<b:Column size="SM_3">
+						<b:VerticalButtonGroup>
+							<b:Button>1</b:Button>
+							<b:Button>2</b:Button>
+							<b:Button>3</b:Button>
+							<b:Button>4</b:Button>
+						</b:VerticalButtonGroup>
+					</b:Column>
+					<b:Column size="SM_9">
+					</b:Column>
+				</b:Row>
+				<b:Heading text="Administration" size="H3" />
 				<b:Tooltip text="Refresh">
 					<b:Icon ui:field="mRefresh" type="REFRESH" addStyleNames="pull-right" />
 				</b:Tooltip>
-			</b:Column>
-			<b:Column size="SM_1" />
-		</b:Row>
-		<b:Row>
-			<b:Column size="SM_1" />
-			<b:Column size="SM_10">
-				<b:TabPanel tabPosition="LEFT">
+				<b:TabPanel tabPosition="TOP">
 					<b:NavTabs>
 						<b:TabListItem dataTarget="#taba0" text="Fields" active="true" />
 						<b:TabListItem dataTarget="#taba1" text="Tables" />
@@ -35,7 +37,9 @@
 					</b:NavTabs>
 					<b:TabContent>
 						<b:TabPane fade="true" b:id="taba0" in="true" active="true">
-							<a:FieldView ui:field="mField" />
+							<b:FormGroup size="SMALL">
+								<a:FieldView ui:field="mField" />
+							</b:FormGroup>
 						</b:TabPane>
 						<b:TabPane fade="true" b:id="taba1">
 							<b:FormGroup size="SMALL">
@@ -67,6 +71,11 @@
 				</b:TabPanel>
 			</b:Column>
 			<b:Column size="SM_1" />
+		</b:Row>
+		<b:Row ui:field="mRow0">
+			<b:Column ui:field="mL01" size="SM_1" />
+			<b:Column ui:field="mC01" size="SM_10" />
+			<b:Column ui:field="mR01" size="SM_1" />
 		</b:Row>
 	</b:Container>
 </ui:UiBinder>
