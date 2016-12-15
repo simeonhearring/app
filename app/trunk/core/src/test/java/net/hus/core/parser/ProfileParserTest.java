@@ -21,10 +21,10 @@ public class ProfileParserTest
   }
 
   @Test
-  public void testAppProfile()
+  public void testpLOGIN()
   {
     Profile model = new Profile();
-    model.setPage(new Page(null, Profile.Name.pLOGIN.name()));
+    model.setPage(new Page(null, "cLOGIN"));
     model.setUserName("login");
     model.setFvk("abcd");
     model.setType(Type.APP);
@@ -36,7 +36,37 @@ public class ProfileParserTest
   }
 
   @Test
-  public void testProfile()
+  public void testpADMIN()
+  {
+    Profile model = new Profile();
+    model.setPage(new Page(null, "cADMIN"));
+    model.setUserName("admin");
+    model.setFvk("abcd");
+    model.setType(Type.APP);
+
+    String xml = ResourceUtil.contents("pADMIN.xml");
+    xml = xml.replaceAll("\t", "  ");
+
+    Assert.assertEquals(xml, mParser.toXml(model));
+  }
+
+  @Test
+  public void testpHOME()
+  {
+    Profile model = new Profile();
+    model.setPage(new Page(null, "cHOME"));
+    model.setUserName("home");
+    model.setFvk("abcd");
+    model.setType(Type.APP);
+
+    String xml = ResourceUtil.contents("pHOME.xml");
+    xml = xml.replaceAll("\t", "  ");
+
+    Assert.assertEquals(xml, mParser.toXml(model));
+  }
+
+  @Test
+  public void testProfile3()
   {
     Profile model = new Profile();
     model.setId(3L);
@@ -50,6 +80,28 @@ public class ProfileParserTest
     model.setCss(CssFileName.united);
 
     String xml = ResourceUtil.contents("Profile3.xml");
+    xml = xml.replaceAll("\t", "  ");
+
+    Assert.assertEquals(xml, mParser.toXml(model));
+
+    Assert.assertEquals(model, mParser.fromXml(xml));
+  }
+
+  @Test
+  public void testProfile6()
+  {
+    Profile model = new Profile();
+    model.setId(6L);
+    model.setType(Type.USER);
+    model.setFirst("Nadia");
+    model.setLast("Hearring");
+    model.setMiddle("E");
+    model.setPage(new Page(null, "cLAND"));
+    model.setUserName("nadiahearring");
+    model.setPassword("abc123");
+    model.setCss(CssFileName.superhero);
+
+    String xml = ResourceUtil.contents("Profile6.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));

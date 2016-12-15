@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<FieldTKG fvt="ADMIN" fgg="k^Gc5yb" page.layout="HOME" />
+	<FieldTKG fvt="ADMIN" fgg="ADMIN" page.layout="HOME" />
 	<Heading SECTION="CENTER_01" styleName="white" size="H1" alignment="CENTER">
 		<Title></Title>
 		<Text>TELL US WHAT YOU NEED!</Text>

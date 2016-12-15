@@ -524,7 +524,8 @@ public class Field extends AbstractModel
   public enum Table
   {
     PERSON,
-    JUNIT
+    JUNIT,
+    LOGIN
   }
 
   public enum Fid
