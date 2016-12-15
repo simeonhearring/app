@@ -521,6 +521,12 @@ public class Field extends AbstractModel
     }
   }
 
+  public enum Table
+  {
+    PERSON,
+    JUNIT
+  }
+
   public enum Fid
   {
     USERNAME(-1L, Type.STRING),
