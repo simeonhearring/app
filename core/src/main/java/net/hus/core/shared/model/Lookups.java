@@ -12,7 +12,7 @@ public class Lookups extends AbstractModel implements Serializable
 {
   private static final long serialVersionUID = 2580002478293381780L;
 
-  private String mCode; // ? mGroup
+  private String mCode;
   private String mName;
   private List<Lookup> mLookups;
 
