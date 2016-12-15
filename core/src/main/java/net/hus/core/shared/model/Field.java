@@ -523,18 +523,22 @@ public class Field extends AbstractModel
 
   public enum Fid
   {
-    PAGE(22L, Type.LOOKUP),
-    USERNAME(14L, Type.STRING),
-    PASSWORD(15L, Type.STRING),
-    FIELD(17L, Type.LOOKUP),
-    FIELD_GROUP(18L, Type.LOOKUP),
-    PROFILE(16L, Type.LOOKUP),
+    USERNAME(-1L, Type.STRING),
+    PASSWORD(-2L, Type.STRING),
 
-    FIRST_NAME(1L, Type.STRING),
-    LAST_NAME(2L, Type.STRING),
-    MIDDLE_NAME(3L, Type.STRING),
-    ADDRESS(13L, Type.ARRAY),
-    GENDER(12L, Type.LOOKUP),
+    EMAIL(-3L, Type.STRING),
+    FIRST_NAME(-4L, Type.STRING),
+    LAST_NAME(-5L, Type.STRING),
+    MIDDLE_NAME(-6L, Type.STRING),
+    GENDER(-7L, Type.LOOKUP),
+
+    PAGE(-8L, Type.LOOKUP),
+    FIELD(-9L, Type.LOOKUP),
+    FIELD_TABLE(-10L, Type.LOOKUP),
+    PROFILE(-11L, Type.LOOKUP),
+    BIRTH_DATE(-12L, Type.DATE),
+
+    // ADDRESS(13L, Type.ARRAY),
     ;
 
     private Long mFid;

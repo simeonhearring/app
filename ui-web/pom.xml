@@ -6,6 +6,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>ui-web</artifactId>
+	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>hus</groupId>
@@ -74,58 +75,6 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
-					<!-- 
-					<execution>
-						<id>jaspercopy</id>
-						<phase>process-classes</phase>
-						<configuration>
-							<tasks>
-								<echo>copying compiled jasper report files to src</echo>
-								<copy todir="src/main/jasperreports/reports">
-									<fileset dir="target/classes/reports" includes="**/*" />
-								</copy>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>gwtclean</id>
-						<phase>process-classes</phase>
-						<configuration>
-							<tasks unless="gwt.compiler.skip">
-								<echo>removing gwt files under webapp</echo>
-								<delete dir="src/main/webapp/secretary" />
-								<delete dir="src/main/webapp/WEB-INF/deploy" />
-								<echo>inserting build number ${buildNumber}</echo>
-								<replace value="${buildNumber}" token="@BUILD_NUMBER@" dir="target/classes/com/hus/secretary/client/resource" />
-								<replace value="${project.version}" token="@VERSION@" dir="target/classes/com/hus/secretary/client/resource" />
-								<replace value="${hus.environment}" token="@ENVIRONMENT@" dir="target/classes/com/hus/secretary/client/resource" />
-								<replace value="${gwt.version}" token="@GWT_VERSION@" dir="target/classes/com/hus/secretary/client/resource" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>gwtversion</id>
-						<phase>prepare-package</phase>
-						<configuration>
-							<tasks unless="gwt.compiler.skip">
-								<echo>inserting build number ${buildNumber} to ${war.finalName}</echo>
-								<replace value="${buildNumber}" token="@BUILD_NUMBER@" dir="target/${war.finalName}/secretary" />
-								<replace value="${project.version}" token="@VERSION@" dir="target/${war.finalName}/secretary" />
-								<replace value="${hus.environment}" token="@ENVIRONMENT@" dir="target/${war.finalName}/secretary" />
-								<replace value="${gwt.version}" token="@GWT_VERSION@" dir="target/${war.finalName}/secretary" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					 -->
 				</executions>
 			</plugin>
 		</plugins>
@@ -138,5 +87,4 @@
 			</properties>
 		</profile>
 	</profiles>
-	<packaging>war</packaging>
 </project>

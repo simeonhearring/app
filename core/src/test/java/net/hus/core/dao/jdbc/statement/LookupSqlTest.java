@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import junit.framework.Assert;
@@ -21,6 +22,7 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
+  @Ignore
   public void testUpsertAndSelect()
   {
     String text = "PROFILE_" + System.currentTimeMillis();
@@ -43,6 +45,7 @@ public class LookupSqlTest extends MySqlCoreDsTest
   }
 
   @Test
+  @Ignore
   public void testSelecGroups()
   {
     List<String> results = mSql.selectGrps();

@@ -24,12 +24,12 @@ public class ProfileParserTest
   public void testAppProfile()
   {
     Profile model = new Profile();
-    model.setPage(new Page(null, "Components1"));
+    model.setPage(new Page(null, Profile.Name.pLOGIN.name()));
     model.setUserName("login");
     model.setFvk("abcd");
     model.setType(Type.APP);
 
-    String xml = ResourceUtil.contents("Profile_login.xml");
+    String xml = ResourceUtil.contents("pLOGIN.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));
@@ -44,7 +44,7 @@ public class ProfileParserTest
     model.setFirst("Simeon");
     model.setLast("Hearring");
     model.setMiddle("L");
-    model.setPage(new Page(null, "Components3"));
+    model.setPage(new Page(null, "cADMIN"));
     model.setUserName("simeonhearring");
     model.setPassword("abc123");
     model.setCss(CssFileName.united);

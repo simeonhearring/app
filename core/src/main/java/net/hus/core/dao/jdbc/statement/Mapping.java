@@ -56,14 +56,6 @@ public class Mapping extends AbstractSqlJdbc
     return inOut;
   }
 
-  public static Object[] mapField(Object[] inOut, ResultSet inRs) throws SQLException
-  {
-    inOut[0] = inRs.getString("mGroup");
-    inOut[1] = inRs.getLong("mFieldId");
-    inOut[2] = inRs.getString("mGrpDspl");
-    return inOut;
-  }
-
   protected static Field mapField(Field inOut, ResultSet inRs) throws SQLException
   {
     mapModel(inOut, inRs);
@@ -91,7 +83,7 @@ public class Mapping extends AbstractSqlJdbc
     mapModel(inOut, inRs);
 
     inOut.setFieldTKG(
-        new FieldTKG(inRs.getString("mTable"), inRs.getString("mKey"), inRs.getString("mGroup")));
+        new FieldTKG(inRs.getString("mTable"), inRs.getString("mKey"), inRs.getString("mFTable")));
     inOut.setValue(inRs.getString("mValue"));
     inOut.setValueId((Long) inRs.getObject("mValueId"));
     inOut.setPos(inRs.getInt("mPos"));

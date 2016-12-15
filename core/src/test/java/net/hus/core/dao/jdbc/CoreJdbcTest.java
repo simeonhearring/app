@@ -1,5 +1,17 @@
 package net.hus.core.dao.jdbc;
 
+import static net.hus.core.shared.model.Field.Fid.BIRTH_DATE;
+import static net.hus.core.shared.model.Field.Fid.EMAIL;
+import static net.hus.core.shared.model.Field.Fid.FIELD;
+import static net.hus.core.shared.model.Field.Fid.FIRST_NAME;
+import static net.hus.core.shared.model.Field.Fid.GENDER;
+import static net.hus.core.shared.model.Field.Fid.LAST_NAME;
+import static net.hus.core.shared.model.Field.Fid.MIDDLE_NAME;
+import static net.hus.core.shared.model.Field.Fid.PAGE;
+import static net.hus.core.shared.model.Field.Fid.PASSWORD;
+import static net.hus.core.shared.model.Field.Fid.PROFILE;
+import static net.hus.core.shared.model.Field.Fid.USERNAME;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +21,10 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 import net.hus.core.parser.ProfileParser;
+import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Fid;
+import net.hus.core.shared.model.Field.Lookup.Location;
+import net.hus.core.shared.model.Fields;
 import net.hus.core.shared.model.Lookup;
 import net.hus.core.shared.model.Lookup.Group;
 import net.hus.core.shared.model.Page;
@@ -36,6 +52,75 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void appfields()
+  {
+    List<Field> list = new ArrayList<>();
+    list.add(newField(USERNAME, "User Name", "UserNme", null));
+    list.add(newField(PASSWORD, "Password", "Pswd", null));
+    list.add(newField(PAGE, "Page", "Page", page()));
+    list.add(newField(FIRST_NAME, "First name", "First", null));
+    list.add(newField(LAST_NAME, "Last name", "Last", null));
+    list.add(newField(MIDDLE_NAME, "Middle name", "Middle", null));
+    list.add(newField(GENDER, "Gender", "Sex", gender()));
+    list.add(newField(PROFILE, "Profile", "User", profile()));
+    list.add(newField(FIELD, "eMail", "eMail", field()));
+    list.add(newField(EMAIL, "Field", "FLD", null));
+    list.add(newField(BIRTH_DATE, "Birth", "Dob", null));
+    list.add(newField(Fid.FIELD_TABLE, "Table", "TBL", fields()));
+
+    mJdbc.fields().upsertapp(list);
+
+    for (Field value : list)
+    {
+      Field field = mJdbc.fields().select(value.getName(), value.getType());
+      Assert.assertEquals(field.getId(), field.getId());
+    }
+  }
+
+  @Test
+  public void apptable_person()
+  {
+    Fields fields = new Fields();
+    fields.setFields(new ArrayList<Field>());
+
+    fields.fgg("PERSON");
+    fields.add(new Field(Field.Fid.FIRST_NAME.fid()));
+    fields.add(new Field(Field.Fid.LAST_NAME.fid()));
+    fields.add(new Field(Field.Fid.MIDDLE_NAME.fid()));
+    fields.add(new Field(Field.Fid.EMAIL.fid()));
+    fields.add(new Field(Field.Fid.BIRTH_DATE.fid()));
+    fields.add(new Field(Field.Fid.GENDER.fid()));
+    // fields.add(new Field(13L)); // address
+    fields.add(new Field(Field.Fid.PROFILE.fid()));
+    fields.add(new Field(Field.Fid.FIELD.fid()));
+    fields.add(new Field(Field.Fid.FIELD_TABLE.fid()));
+    // fields.add(new Field(20L)); // suffix
+    fields.add(new Field(Field.Fid.PAGE.fid()));
+    // fields.add(new Field(23L)); // accounts
+    // fields.add(new Field(24L)); // color
+    mJdbc.fields().upsert(fields);
+
+    List<Field> ret = mJdbc.fields().selectByFgg(fields.fgg());
+    Assert.assertEquals(fields.getFields().size(), ret.size());
+  }
+
+  @Test
+  public void apptable_login()
+  {
+    Fields fields = new Fields();
+    fields.setFields(new ArrayList<Field>());
+
+    fields.fgg("LOGIN");
+    fields.clear();
+    fields.add(new Field(Field.Fid.USERNAME.fid()));
+    fields.add(new Field(Field.Fid.PASSWORD.fid()));
+    mJdbc.fields().upsert(fields);
+
+    List<Field> ret = mJdbc.fields().selectByFgg(fields.fgg());
+    Assert.assertEquals(fields.getFields().size(), ret.size());
+  }
+
+  @Test
   public void profile2lookup()
   {
     mJdbc.profile2lookup();
@@ -46,13 +131,6 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   public void field2lookup()
   {
     mJdbc.field2lookup();
-    Assert.assertTrue(true); // no fail
-  }
-
-  @Test
-  public void fields2lookup()
-  {
-    mJdbc.fields2lookup();
     Assert.assertTrue(true); // no fail
   }
 
@@ -220,13 +298,15 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupFVT()
   {
-    Group group = Group.FVT;
-
-    List<Lookup> list = new ArrayList<>();
-    list.add(lookup(group, "Junit", "JT", 1, "Used for junit testing"));
-    list.add(lookup(group, "Person", "PER", 2, "Used to store person information."));
-
-    lookup(group, list, 5);
+    mJdbc.table2lookup();
+    // Group group = Group.TABLE;
+    //
+    // List<Lookup> list = new ArrayList<>();
+    // list.add(lookup(group, "Junit", "JT", 1, "Used for junit testing"));
+    // list.add(lookup(group, "Person", "PER", 2, "Used to store person
+    // information."));
+    //
+    // lookup(group, list, 5);
   }
 
   @Test
@@ -242,27 +322,27 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupComponents1()
+  public void setupcLOGIN()
   {
-    component("Components1", "Login", "Components1.xml");
+    component("cLOGIN", "Login page", "cLOGIN.xml");
   }
 
   @Test
-  public void setupComponents2()
+  public void setupcLAND()
   {
-    component("Components2", "Landing page", "Components2.xml");
+    component("cLAND", "Landing page", "cLAND.xml");
   }
 
   @Test
-  public void setupComponents3()
+  public void setupcADMIN()
   {
-    component("Components3", "Admin page", "Components3.xml");
+    component("cADMIN", "Admin page", "cADMIN.xml");
   }
 
   @Test
-  public void setupComponents4()
+  public void setupcHOME()
   {
-    component("Components4", "Home page", "Components4.xml");
+    component("cHOME", "Home page", "cHOME.xml");
   }
 
   private void component(String inName, String inDisplay, String inResource)
@@ -280,13 +360,13 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupProfile_login()
+  public void setuppLOGIN()
   {
-    String xl = ResourceUtil.contents("Profile_login.xml");
+    String xl = ResourceUtil.contents("pLOGIN.xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName("login");
+    l1.setName("pLOGIN");
 
     l1.setDisplay("Login Profile");
     l1.setXL(xl);
@@ -295,13 +375,13 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupProfile_admin()
+  public void setuppADMIN()
   {
-    String xl = ResourceUtil.contents("Profile_admin.xml");
+    String xl = ResourceUtil.contents("pADMIN.xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName("admin");
+    l1.setName("pADMIN");
 
     l1.setDisplay("Admin Profile");
     l1.setXL(xl);
@@ -310,13 +390,13 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupProfile_home()
+  public void setuppHOME()
   {
-    String xl = ResourceUtil.contents("Profile_home.xml");
+    String xl = ResourceUtil.contents("pHOME.xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName("home");
+    l1.setName("pHOME");
 
     l1.setDisplay("Home Profile");
     l1.setXL(xl);
@@ -424,6 +504,44 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     ret.setDescription(inDesc);
     ret.setSort(inSort);
     ret.setAltId(inAltId);
+    return ret;
+  }
+
+  private Field.Lookup gender()
+  {
+    return new Field.Lookup(Location.TABLE, "BLANK,GENDER,UNKNOWN,");
+  }
+
+  private Field.Lookup profile()
+  {
+    return new Field.Lookup(Location.RPC, "BLANK,PROFILE,");
+  }
+
+  private Field.Lookup page()
+  {
+    return new Field.Lookup(Location.TABLE, "BLANK,COMPONENTS,");
+  }
+
+  private Field.Lookup field()
+  {
+    return new Field.Lookup(Location.TABLE, "BLANK,FIELD,");
+  }
+
+  private Field.Lookup fields()
+  {
+    return new Field.Lookup(Location.TABLE, "BLANK,TABLE,");
+  }
+
+  private Field newField(Fid inFid, String inLong, String inShort, Field.Lookup inLookup)
+  {
+    Field ret = new Field();
+    ret.setName(inFid.name());
+    ret.setType(inFid.type());
+    ret.getProperties().setType(inFid.type());
+    ret.getProperties().getDisplay().setLong(inLong);
+    ret.getProperties().getDisplay().setShort(inShort);
+    ret.setLookup(inLookup);
+    ret.setId(inFid.fid());
     return ret;
   }
 }

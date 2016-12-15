@@ -25,8 +25,8 @@ public class MySqlCoreDsTest
 {
   public static final String VALUE_TABLE = "JUNIT";
   public static final String VALUE_KEY = "-1";
-  public static final String FIELD_GROUP = "JGRP1";
-  public static final FieldTKG TK = new FieldTKG(VALUE_TABLE, VALUE_KEY, FIELD_GROUP);
+  public static final String FIELD_TABLE = "JGRP1";
+  public static final FieldTKG TK = new FieldTKG(VALUE_TABLE, VALUE_KEY, FIELD_TABLE);
 
   private static final String CONTEXT = "contextDs-core.xml";
   private static final String CORE_DS = "CoreDs";

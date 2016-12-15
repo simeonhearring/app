@@ -12,7 +12,6 @@ public class FieldsSaveCommandBean extends AbstractCommandBean<FieldsSaveCommand
     Fields fields = mCoreDao.fields(inCommand.getFgg());
     mCoreDao.fields().upsert(fields.upsert(inCommand.getFgg(), inCommand.getFieldIds()));
     mCoreDao.fields().delete(fields.delete(inCommand.getFgg(), inCommand.getFieldIds()));
-    mCoreDao.fields2lookup();
     return inCommand;
   }
 }

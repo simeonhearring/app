@@ -16,15 +16,20 @@ import net.hus.core.shared.model.Fields;
 
 public class FieldsSql extends Mapping
 {
+  // FIELD
+  private BatchSqlUpdate mFieldAppUpsert;
   private BatchSqlUpdate mFieldUpsert;
-  private MappingSqlQuery<Field> mFieldSelect;
-  private MappingSqlQuery<Field> mFieldByIdSelect;
-  private MappingSqlQuery<Field> mFieldAllSelect;
-  private MappingSqlQuery<Object[]> mFieldsAllSelect;
-  private MappingSqlQuery<Object[]> mFieldsByFggSelect;
-  private BatchSqlUpdate mFieldsUpsert;
-  private BatchSqlUpdate mFieldsDelete;
-  private MappingSqlQuery<Field> mFieldByGrpSelect;
+  private BatchSqlUpdate mFieldDelete;
+
+  private MappingSqlQuery<Field> mField;
+  private MappingSqlQuery<Field> mFieldById;
+  private MappingSqlQuery<Field> mFieldByNameType;
+
+  // FIELD_TABLE
+  private BatchSqlUpdate mTableUpsert;
+  private BatchSqlUpdate mTableDelete;
+  private MappingSqlQuery<Field> mTableByTable;
+  private MappingSqlQuery<String> mTables;
 
   public FieldsSql()
   {
@@ -35,12 +40,14 @@ public class FieldsSql extends Mapping
   {
     this();
 
-    mFieldUpsert = newBatchUpdate(inDataSource, "UPSERT");
-    mFieldsUpsert = newBatchUpdate(inDataSource, "UPSERT_FIELDS");
-    mFieldsDelete = newBatchUpdate(inDataSource, "DELETE_FIELDS");
+    mFieldAppUpsert = newBatchUpdate(inDataSource, "UPSERT_APP_FIELD");
+    mFieldUpsert = newBatchUpdate(inDataSource, "UPSERT_FIELD");
+    mTableUpsert = newBatchUpdate(inDataSource, "UPSERT_TABLE");
+    mFieldDelete = newBatchUpdate(inDataSource, "DELETE_FIELD");
+    mTableDelete = newBatchUpdate(inDataSource, "DELETE_TABLE");
 
-    Statement select = mStmts.getStatement("SELECT");
-    mFieldSelect = new MappingSqlQuery<Field>(inDataSource, select.getSql())
+    Statement fieldByNameType = mStmts.getStatement("SELECT_FIELD_BY_NAMETYPE");
+    mFieldByNameType = new MappingSqlQuery<Field>(inDataSource, fieldByNameType.getSql())
     {
       @Override
       protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -48,11 +55,11 @@ public class FieldsSql extends Mapping
         return mapField(new Field(), inRs);
       }
     };
-    mFieldSelect.setTypes(select.types());
-    mFieldSelect.compile();
+    mFieldByNameType.setTypes(fieldByNameType.types());
+    mFieldByNameType.compile();
 
-    Statement selectById = mStmts.getStatement("SELECT_BY_ID");
-    mFieldByIdSelect = new MappingSqlQuery<Field>(inDataSource, selectById.getSql())
+    Statement fieldById = mStmts.getStatement("SELECT_FIELD_BY_ID");
+    mFieldById = new MappingSqlQuery<Field>(inDataSource, fieldById.getSql())
     {
       @Override
       protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -60,11 +67,11 @@ public class FieldsSql extends Mapping
         return mapField(new Field(), inRs);
       }
     };
-    mFieldByIdSelect.setTypes(selectById.types());
-    mFieldByIdSelect.compile();
+    mFieldById.setTypes(fieldById.types());
+    mFieldById.compile();
 
-    Statement selectAll = mStmts.getStatement("SELECT_ALL");
-    mFieldAllSelect = new MappingSqlQuery<Field>(inDataSource, selectAll.getSql())
+    Statement field = mStmts.getStatement("SELECT_FIELD");
+    mField = new MappingSqlQuery<Field>(inDataSource, field.getSql())
     {
       @Override
       protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -72,33 +79,10 @@ public class FieldsSql extends Mapping
         return mapField(new Field(), inRs);
       }
     };
-    mFieldAllSelect.compile();
+    mField.compile();
 
-    Statement selectfAll = mStmts.getStatement("SELECT_GROUP_ALL");
-    mFieldsAllSelect = new MappingSqlQuery<Object[]>(inDataSource, selectfAll.getSql())
-    {
-      @Override
-      protected Object[] mapRow(ResultSet inRs, int inRowNum) throws SQLException
-      {
-        return mapField(new Object[3], inRs);
-      }
-    };
-    mFieldsAllSelect.compile();
-
-    Statement selectFgg = mStmts.getStatement("SELECT_GROUP_BY_FGG");
-    mFieldsByFggSelect = new MappingSqlQuery<Object[]>(inDataSource, selectFgg.getSql())
-    {
-      @Override
-      protected Object[] mapRow(ResultSet inRs, int inRowNum) throws SQLException
-      {
-        return mapField(new Object[3], inRs);
-      }
-    };
-    mFieldsByFggSelect.setTypes(selectFgg.types());
-    mFieldsByFggSelect.compile();
-
-    Statement selectFields = mStmts.getStatement("SELECT_FIELDS_BY_GRP");
-    mFieldByGrpSelect = new MappingSqlQuery<Field>(inDataSource, selectFields.getSql())
+    Statement tableByTable = mStmts.getStatement("SELECT_TABLE_BY_TABLE");
+    mTableByTable = new MappingSqlQuery<Field>(inDataSource, tableByTable.getSql())
     {
       @Override
       protected Field mapRow(ResultSet inRs, int inRowNum) throws SQLException
@@ -106,33 +90,32 @@ public class FieldsSql extends Mapping
         return mapFields(new Field(), inRs);
       }
     };
-    mFieldByGrpSelect.setTypes(selectFields.types());
-    mFieldByGrpSelect.compile();
+    mTableByTable.setTypes(tableByTable.types());
+    mTableByTable.compile();
+
+    Statement table = mStmts.getStatement("SELECT_TABLE");
+    mTables = new MappingSqlQuery<String>(inDataSource, table.getSql())
+    {
+      @Override
+      protected String mapRow(ResultSet inRs, int inRowNum) throws SQLException
+      {
+        return inRs.getString("mTable");
+      }
+    };
+    mTables.setTypes(table.types());
+    mTables.compile();
   }
 
   public Field select(String inName, Field.Type inType)
   {
-    List<Field> ret = mFieldSelect.execute(params(inName, inType.name()));
+    List<Field> ret = mFieldByNameType.execute(params(inName, inType.name()));
     return only(ret);
   }
 
   public List<Field> select()
   {
-    List<Field> ret = mFieldAllSelect.execute();
+    List<Field> ret = mField.execute();
     return ret;
-  }
-
-  @Deprecated
-  public List<Object[]> selectGrp()
-  {
-    List<Object[]> ret = mFieldsAllSelect.execute();
-    return ret;
-  }
-
-  public Object[] selectGrp(String inFgg)
-  {
-    List<Object[]> ret = mFieldsByFggSelect.execute(params(inFgg));
-    return first(ret);
   }
 
   public void upsert(List<Field> inFields)
@@ -150,9 +133,25 @@ public class FieldsSql extends Mapping
     mFieldUpsert.reset();
   }
 
+  public void upsertapp(List<Field> inFields)
+  {
+    mFieldAppUpsert.reset();
+    for (Field value : inFields)
+    {
+      Long id = value.getId();
+      String name = value.getName();
+      String type = value.getType().name();
+      String properties = valueOf(value.getProperties(), new FieldPropertiesParser());
+
+      mFieldAppUpsert.update(params(id, name, type, properties, id, properties));
+    }
+    mFieldAppUpsert.flush();
+    mFieldAppUpsert.reset();
+  }
+
   public void upsert(Fields inFields)
   {
-    mFieldsUpsert.reset();
+    mTableUpsert.reset();
     String fgg = inFields.fgg();
     for (Field value : inFields.getFields())
     {
@@ -160,31 +159,25 @@ public class FieldsSql extends Mapping
       String display = null; // remove from db FGG table
       Integer sort = null; // remove from db FGG table
 
-      mFieldsUpsert.update(params(fgg, id, display, sort, display, sort));
+      mTableUpsert.update(params(fgg, id, display, sort, display, sort));
     }
-    mFieldsUpsert.flush();
-    mFieldsUpsert.reset();
-  }
-
-  @Deprecated
-  public Fields select(String inFgg)
-  {
-    Fields ret = new Fields();
-//    Object[] fgg = selectGrp(inFgg);
-//    ret.fgg((String) fgg[0]);
-//    ret.setName((String) fgg[2]);
-    ret.setFields(selectByFgg(inFgg));
-    return ret;
+    mTableUpsert.flush();
+    mTableUpsert.reset();
   }
 
   public List<Field> selectByFgg(String inFgg)
   {
-    return mFieldByGrpSelect.execute(params(inFgg));
+    return mTableByTable.execute(params(inFgg));
+  }
+
+  public List<String> selectTables()
+  {
+    return mTables.execute();
   }
 
   public Field select(Long inFieldId)
   {
-    return only(mFieldByIdSelect.execute(params(inFieldId)));
+    return only(mFieldById.execute(params(inFieldId)));
   }
 
   public void upsert(Field inField)
@@ -194,15 +187,27 @@ public class FieldsSql extends Mapping
     upsert(list);
   }
 
-  public void delete(Fields inFields)
+  public void delete(Fields inTable)
   {
-    mFieldsDelete.reset();
-    for (Field value : inFields.getFields())
+    mTableDelete.reset();
+    for (Field value : inTable.getFields())
     {
       Long id = value.getId();
-      mFieldsDelete.update(params(inFields.fgg(), id));
+      mTableDelete.update(params(inTable.fgg(), id));
     }
-    mFieldsDelete.flush();
-    mFieldsDelete.reset();
+    mTableDelete.flush();
+    mTableDelete.reset();
+  }
+
+  public void delete(List<Field> inFields)
+  {
+    mFieldDelete.reset();
+    for (Field value : inFields)
+    {
+      Long id = value.getId();
+      mFieldDelete.update(params(id));
+    }
+    mFieldDelete.flush();
+    mFieldDelete.reset();
   }
 }

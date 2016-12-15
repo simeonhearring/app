@@ -1,10 +1,7 @@
 package net.hus.core.dao.jdbc;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -134,7 +131,7 @@ public class CoreJdbc implements CoreDao
   @Override
   public Fields fields(String inFgg)
   {
-    Lookups lookup = lookups().select(Group.FGG.name(), inFgg);
+    Lookups lookup = lookups().select(Group.TABLE.name(), inFgg);
 
     Fields ret = new Fields();
     ret.fgg(lookup.getName());
@@ -243,35 +240,15 @@ public class CoreJdbc implements CoreDao
   }
 
   @Override
-  @Deprecated // is this needed?
-  public void fields2lookup()
+  public void table2lookup()
   {
-    Map<String, StringBuilder> data = new HashMap<>();
-    Map<String, String> data2 = new HashMap<>();
-    for (Object[] value : fields().selectGrp())
-    {
-      String grp = (String) value[0];
-      Long id = (Long) value[1];
-
-      if (!data.containsKey(grp))
-      {
-        data2.put(grp, (String) value[2]);
-        data.put(grp, new StringBuilder());
-      }
-      data.get(grp).append(id).append(",");
-    }
-
     List<Lookup> lookups = new ArrayList<>();
-    for (Entry<String, StringBuilder> value : data.entrySet())
+    for (String value : fields().selectTables())
     {
       Lookup lookup = new Lookup();
-      lookup.setGroup(Group.FGG);
-      lookup.setName(value.getKey());
-
-      lookup.setDisplay(data2.get(value.getKey()));
-      lookup.setAltId(null);
-      lookup.setAbbreviation(null);
-      lookup.setDescription(value.getValue().toString());
+      lookup.setGroup(Group.TABLE);
+      lookup.setName(value);
+      lookup.setDisplay(StringUtil.toTitle(value));
       lookup.setSort(0);
       lookups.add(lookup);
     }
