@@ -78,7 +78,7 @@ public class CoreJdbc implements CoreDao
     Lookup lookUp = new Lookup();
     lookUp.setGroup(inLookupXL.groupXL());
     lookUp.setCode(inLookupXL.nameXL());
-    lookUp.setDisplay(inLookupXL.displayXL());
+    lookUp.setName(inLookupXL.displayXL());
     lookUp.setXL(toXml(inLookupXL));
 
     List<Lookup> list = new ArrayList<>();
@@ -124,7 +124,7 @@ public class CoreJdbc implements CoreDao
     ret.setUpdated(lookup.getUpdated());
     ret.setId(lookup.getId());
     ret.setName(lookup.getCode());
-    ret.setDisplay(lookup.getDisplay());
+    ret.setDisplay(lookup.getName());
     return ret;
   }
 
@@ -135,7 +135,7 @@ public class CoreJdbc implements CoreDao
 
     Fields ret = new Fields();
     ret.fgg(lookup.getCode());
-    ret.setName(lookup.getDisplay());
+    ret.setName(lookup.getName());
     ret.setCreated(lookup.getCreated());
     ret.setUpdated(lookup.getUpdated());
     ret.setId(lookup.getId());
@@ -154,7 +154,7 @@ public class CoreJdbc implements CoreDao
       lookup.setCode(value.name());
 
       lookup.setAltId(null);
-      lookup.setDisplay(value.display());
+      lookup.setName(value.display());
       lookup.setSort(0);
       lookups.add(lookup);
     }
@@ -178,7 +178,7 @@ public class CoreJdbc implements CoreDao
       lookup.setCode(value.getUserName());
 
       lookup.setAltId(value.getId());
-      lookup.setDisplay(value.getName());
+      lookup.setName(value.getName());
       lookup.setSort(0);
       lookups.add(lookup);
     }
@@ -196,7 +196,7 @@ public class CoreJdbc implements CoreDao
       lookup.setCode(value.getCode());
 
       lookup.setAltId(value.getId());
-      lookup.setDisplay(value.getDisplay());
+      lookup.setName(value.getName());
       lookup.setSort(0);
       lookups.add(lookup);
     }
@@ -213,7 +213,7 @@ public class CoreJdbc implements CoreDao
       lookup.setCode(value);
 
       lookup.setAltId(null);
-      lookup.setDisplay(StringUtil.toTitle(value.replaceAll("_", " ")));
+      lookup.setName(StringUtil.toTitle(value.replaceAll("_", " ")));
       lookup.setSort(0);
       lookups.add(lookup);
     }
@@ -231,7 +231,7 @@ public class CoreJdbc implements CoreDao
       lookup.setCode(value.getName());
 
       lookup.setAltId(value.getId());
-      lookup.setDisplay(value.getProperties().getDisplay().getLong());
+      lookup.setName(value.getProperties().getDisplay().getLong());
       lookup.setAbbreviation(value.getType().name());
       lookup.setSort(0);
       lookups.add(lookup);
@@ -248,7 +248,7 @@ public class CoreJdbc implements CoreDao
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.TABLE);
       lookup.setCode(value);
-      lookup.setDisplay(StringUtil.toTitle(value));
+      lookup.setName(StringUtil.toTitle(value));
       lookup.setSort(0);
       lookups.add(lookup);
     }

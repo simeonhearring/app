@@ -117,7 +117,7 @@ public class FieldsView extends AbstractView implements FieldsDisplay
     for (Lookup value : inFieldGroups)
     {
       Option field = new Option();
-      field.setText(value.getDisplay());
+      field.setText(value.getName());
       field.setValue(value.getCode());
       field.setId(value.getId().toString());
       mGroups.add(field);
@@ -147,7 +147,7 @@ public class FieldsView extends AbstractView implements FieldsDisplay
     for (Lookup value : inFields)
     {
       CheckBox box = new CheckBox();
-      box.setText(value.getDisplay() + " (" + value.getAbbreviation().toLowerCase() + ")");
+      box.setText(value.getName() + " (" + value.getAbbreviation().toLowerCase() + ")");
       box.setFormValue(value.getAltId() + "");
       mFields.add(box);
     }

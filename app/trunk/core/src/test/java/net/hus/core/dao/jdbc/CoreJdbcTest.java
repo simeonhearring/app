@@ -349,7 +349,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     l1.setGroup(Group.COMPONENTS);
     l1.setCode(inName);
 
-    l1.setDisplay(inDisplay);
+    l1.setName(inDisplay);
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
@@ -364,7 +364,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     l1.setGroup(Group.PROFILE);
     l1.setCode("pLOGIN");
 
-    l1.setDisplay("Login Profile");
+    l1.setName("Login Profile");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
@@ -379,7 +379,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     l1.setGroup(Group.PROFILE);
     l1.setCode("pADMIN");
 
-    l1.setDisplay("Admin Profile");
+    l1.setName("Admin Profile");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
@@ -394,7 +394,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     l1.setGroup(Group.PROFILE);
     l1.setCode("pHOME");
 
-    l1.setDisplay("Home Profile");
+    l1.setName("Home Profile");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
@@ -421,7 +421,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     l1.setGroup(Group.PROFILE);
     l1.setCode(p.getUserName());
 
-    l1.setDisplay(p.getName());
+    l1.setName(p.getName());
     l1.setXL(inXml);
 
     lookupXL(inXml, l1, l1.getGroup(), l1.getCode());
@@ -482,7 +482,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     ret.setGroup(inGroup);
     ret.setCode(inName);
 
-    ret.setDisplay(inDisplay);
+    ret.setName(inDisplay);
     ret.setAbbreviation(inAbbr);
     ret.setDescription(inDesc);
     ret.setSort(inSort);

@@ -107,7 +107,7 @@ implements Action, AdminEvent.Handler
     Lookup fvt = new Lookup();
     fvt.setGroup(Group.TABLE);
     fvt.setCode(inFgg);
-    fvt.setDisplay(inName);
+    fvt.setName(inName);
     fvt.setSort(0);
 
     Global.fire(new LookupSaveCommand(fvt), new RpcCallback<LookupSaveCommand>()

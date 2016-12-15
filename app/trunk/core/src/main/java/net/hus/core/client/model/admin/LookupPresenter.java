@@ -103,7 +103,7 @@ implements Action, AdminEvent.Handler
     lookup.setGroup(Group.LOOKUP);
     lookup.setCode(Field.officialName(inName));
 
-    lookup.setDisplay(inName);
+    lookup.setName(inName);
     lookup.setSort(0);
 
     Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()
@@ -132,7 +132,7 @@ implements Action, AdminEvent.Handler
     lookup.setCode(Field.officialName(inName));
     lookup.setAbbreviation(inAbbr);
 
-    lookup.setDisplay(inName);
+    lookup.setName(inName);
     lookup.setSort(inSort);
 
     Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()
@@ -160,7 +160,7 @@ implements Action, AdminEvent.Handler
     lookup.setGroup(Group.LOOKUP);
     lookup.setCode(inName);
 
-    lookup.setDisplay(inDisplay);
+    lookup.setName(inDisplay);
     lookup.setSort(0);
 
     Global.fire(new LookupSaveCommand(lookup), new RpcCallback<LookupSaveCommand>()

@@ -104,10 +104,10 @@ public class LookupSql extends Mapping
     return ret;
   }
 
-  public Lookups select(String inGroup, String inName)
+  public Lookups select(String inGroup, String inCode)
   {
-    Lookups ret = only(mSelectgn.execute(params(inGroup, inName)));
-    ret.setLookups(select(inName));
+    Lookups ret = only(mSelectgn.execute(params(inGroup, inCode)));
+    ret.setLookups(select(inCode));
     return ret;
   }
 
@@ -118,7 +118,7 @@ public class LookupSql extends Mapping
     {
       String group = value.getGroup();
       String name = value.getCode();
-      String display = value.getDisplay();
+      String display = value.getName();
       String abbr = value.getAbbreviation();
       String desc = value.getDescription();
       Integer sort = value.getSort();
@@ -137,7 +137,7 @@ public class LookupSql extends Mapping
     {
       String group = value.getGroup();
       String name = value.getCode();
-      String display = value.getDisplay();
+      String display = value.getName();
       String xl = value.getXL();
       mBatchUpsertXL.update(params(group, name, display, xl, display, xl));
     }

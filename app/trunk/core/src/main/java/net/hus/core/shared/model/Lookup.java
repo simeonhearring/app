@@ -13,7 +13,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
 
   private String mGroup;
   private String mCode;
-  private String mDisplay;
+  private String mName;
   private String mAbbreviation;
   private String mDescription;
   private Integer mSort;
@@ -60,14 +60,14 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     mAbbreviation = inAbbreviation;
   }
 
-  public String getDisplay()
+  public String getName()
   {
-    return mDisplay;
+    return mName;
   }
 
-  public void setDisplay(String inDisplay)
+  public void setName(String inDisplay)
   {
-    mDisplay = inDisplay;
+    mName = inDisplay;
   }
 
   public Integer getSort()
@@ -113,7 +113,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   @Override
   public String option()
   {
-    return mDisplay;
+    return mName;
   }
 
   @Override
@@ -177,7 +177,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
       @Override
       public int compare(Lookup inO1, Lookup inO2)
       {
-        return inO1.mDisplay.compareToIgnoreCase(inO2.mDisplay);
+        return inO1.mName.compareToIgnoreCase(inO2.mName);
       }
     };
   }

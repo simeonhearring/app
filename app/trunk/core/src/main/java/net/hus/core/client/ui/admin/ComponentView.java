@@ -147,7 +147,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     for (Lookup value : inPages)
     {
       Option field = new Option();
-      field.setText(value.getDisplay());
+      field.setText(value.getName());
       field.setValue(value.getCode());
       field.setId(value.getId().toString());
       mPages.add(field);
@@ -241,8 +241,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mAddFgg.clear();
     for (Lookup value : inFggs)
     {
-      mFgg.addItem(value.getDisplay(), value.getCode());
-      mAddFgg.addItem(value.getDisplay(), value.getCode());
+      mFgg.addItem(value.getName(), value.getCode());
+      mAddFgg.addItem(value.getName(), value.getCode());
     }
   }
 
@@ -252,7 +252,7 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mComponents.clear();
     for (Lookup value : inComponents)
     {
-      mComponents.addItem(value.getDisplay(), value.getCode());
+      mComponents.addItem(value.getName(), value.getCode());
     }
   }
 
@@ -263,8 +263,8 @@ public class ComponentView extends AbstractView implements ComponentDisplay, Cal
     mAddFvt.clear();
     for (Lookup value : inFvts)
     {
-      mFvt.addItem(value.getDisplay(), value.getCode());
-      mAddFvt.addItem(value.getDisplay(), value.getCode());
+      mFvt.addItem(value.getName(), value.getCode());
+      mAddFvt.addItem(value.getName(), value.getCode());
     }
   }
 
