@@ -22,6 +22,7 @@ import org.junit.Test;
 import junit.framework.Assert;
 import net.hus.core.parser.ProfileParser;
 import net.hus.core.shared.model.Field;
+import net.hus.core.shared.model.Field.Array;
 import net.hus.core.shared.model.Field.Fid;
 import net.hus.core.shared.model.Field.Lookup.Location;
 import net.hus.core.shared.model.Fields;
@@ -55,18 +56,18 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   public void appfields()
   {
     List<Field> list = new ArrayList<>();
-    list.add(newField(USERNAME, "User Name", "UserNme", null));
-    list.add(newField(PASSWORD, "Password", "Pswd", null));
-    list.add(newField(PAGE, "Page", "Page", page()));
-    list.add(newField(FIRST_NAME, "First name", "First", null));
-    list.add(newField(LAST_NAME, "Last name", "Last", null));
-    list.add(newField(MIDDLE_NAME, "Middle name", "Middle", null));
-    list.add(newField(GENDER, "Gender", "Sex", gender()));
-    list.add(newField(PROFILE, "Profile", "User", profile()));
-    list.add(newField(FIELD, "eMail", "eMail", field()));
-    list.add(newField(EMAIL, "Field", "FLD", null));
-    list.add(newField(BIRTH_DATE, "Birth", "Dob", null));
-    list.add(newField(Fid.FIELD_TABLE, "Table", "TBL", fields()));
+    list.add(newField(USERNAME, "User Name", "UserNme", null, null));
+    list.add(newField(PASSWORD, "Password", "Pswd", null, null));
+    list.add(newField(PAGE, "Page", "Page", page(), null));
+    list.add(newField(FIRST_NAME, "First name", "First", null, null));
+    list.add(newField(LAST_NAME, "Last name", "Last", null, null));
+    list.add(newField(MIDDLE_NAME, "Middle name", "Middle", null, null));
+    list.add(newField(GENDER, "Gender", "Sex", gender(), null));
+    list.add(newField(PROFILE, "Profile", "User", profile(), null));
+    list.add(newField(FIELD, "eMail", "eMail", field(), null));
+    list.add(newField(EMAIL, "Field", "FLD", null, null));
+    list.add(newField(BIRTH_DATE, "Birth", "Dob", null, null));
+    list.add(newField(Fid.FIELD_TABLE, "Table", "TBL", fields(), null));
 
     mJdbc.fields().upsertapp(list);
 
@@ -83,7 +84,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     Fields fields = new Fields();
     fields.setFields(new ArrayList<Field>());
 
-    fields.fgg("PERSON");
+    fields.fgg(Field.Table.PERSON.name());
     fields.add(new Field(Field.Fid.FIRST_NAME.fid()));
     fields.add(new Field(Field.Fid.LAST_NAME.fid()));
     fields.add(new Field(Field.Fid.MIDDLE_NAME.fid()));
@@ -114,6 +115,21 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     fields.clear();
     fields.add(new Field(Field.Fid.USERNAME.fid()));
     fields.add(new Field(Field.Fid.PASSWORD.fid()));
+    mJdbc.fields().upsert(fields);
+
+    List<Field> ret = mJdbc.fields().selectByFgg(fields.fgg());
+    Assert.assertEquals(fields.getFields().size(), ret.size());
+  }
+
+  @Test
+  public void apptable_junit()
+  {
+    Fields fields = new Fields();
+    fields.setFields(new ArrayList<Field>());
+
+    fields.fgg("JUNIT");
+    fields.clear();
+    fields.add(new Field(Field.Fid.FIRST_NAME.fid()));
     mJdbc.fields().upsert(fields);
 
     List<Field> ret = mJdbc.fields().selectByFgg(fields.fgg());
@@ -299,26 +315,6 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   public void setupFVT()
   {
     mJdbc.table2lookup();
-    // Group group = Group.TABLE;
-    //
-    // List<Lookup> list = new ArrayList<>();
-    // list.add(lookup(group, "Junit", "JT", 1, "Used for junit testing"));
-    // list.add(lookup(group, "Person", "PER", 2, "Used to store person
-    // information."));
-    //
-    // lookup(group, list, 5);
-  }
-
-  @Test
-  public void setupFVK()
-  {
-    String group = "PERSON";
-
-    List<Lookup> list = new ArrayList<>();
-    list.add(lookup(group, "simeonhearring", "Hearring, Simeon L", "Simeon", 1, null, 3L));
-    list.add(lookup(group, "nadiahearring", "Hearring, Nadia L", "Nadia", 2, null, 6L));
-
-    lookup(group, list, 2);
   }
 
   @Test
@@ -405,33 +401,15 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setupProfile3()
+  public void setupProfiles()
   {
     profile(ResourceUtil.contents("Profile3.xml"));
-  }
-
-  @Test
-  public void setupProfile6()
-  {
     profile(ResourceUtil.contents("Profile6.xml"));
-  }
-
-  @Test
-  public void setupProfile7()
-  {
     profile(ResourceUtil.contents("Profile7.xml"));
-  }
-
-  @Test
-  public void setupProfile8()
-  {
     profile(ResourceUtil.contents("Profile8.xml"));
-  }
-
-  @Test
-  public void setupProfile9()
-  {
     profile(ResourceUtil.contents("Profile9.xml"));
+
+    Assert.assertEquals(5, mJdbc.lookups().select(Field.Table.PERSON.name()).size());
   }
 
   private void profile(String inXml)
@@ -447,6 +425,11 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     l1.setXL(inXml);
 
     lookupXL(inXml, l1, l1.getGroup(), l1.getName());
+
+    List<Lookup> list = new ArrayList<>();
+    list.add(lookup(Field.Table.PERSON.name(), p.getUserName(), p.getName(), p.getFirst(), 0, null,
+        p.getId()));
+    mJdbc.lookups().upsert(list);
   }
 
   private void lookupXL(String inXL, Lookup inLookup, String inGroup, String inName)
@@ -532,7 +515,8 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     return new Field.Lookup(Location.TABLE, "BLANK,TABLE,");
   }
 
-  private Field newField(Fid inFid, String inLong, String inShort, Field.Lookup inLookup)
+  private Field newField(Fid inFid, String inLong, String inShort, Field.Lookup inLookup,
+      Array inArray)
   {
     Field ret = new Field();
     ret.setName(inFid.name());
@@ -541,6 +525,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     ret.getProperties().getDisplay().setLong(inLong);
     ret.getProperties().getDisplay().setShort(inShort);
     ret.setLookup(inLookup);
+    ret.setArray(inArray);
     ret.setId(inFid.fid());
     return ret;
   }
