@@ -34,7 +34,7 @@
 					{
 						"text": "FieldSet",
 						"tags": [
-							"6"
+							"5"
 						],
 						"nodes": [
 							{
@@ -90,7 +90,7 @@
 														]
 													},
 													{
-														"text": "Input",
+														"text": "TextBox",
 														"tags": [
 															"0"
 														]
@@ -118,7 +118,7 @@
 														]
 													},
 													{
-														"text": "TextBox",
+														"text": "Input",
 														"tags": [
 															"0"
 														]
@@ -203,98 +203,6 @@
 									},
 									{
 										"text": "ListBox",
-										"tags": [
-											"0"
-										]
-									}
-								]
-							},
-							{
-								"text": "FormGroup",
-								"tags": [
-									"2"
-								],
-								"nodes": [
-									{
-										"text": "FormLabel",
-										"tags": [
-											"0"
-										]
-									},
-									{
-										"text": "FlexTable",
-										"tags": [
-											"0"
-										]
-									}
-								]
-							}
-						]
-					}
-				]
-			},
-			{
-				"text": "PanelFooter",
-				"tags": [
-					"1"
-				],
-				"nodes": [
-					{
-						"text": "Heading",
-						"tags": [
-							"0"
-						]
-					}
-				]
-			}
-		]
-	},
-	{
-		"text": "Panel",
-		"tags": [
-			"3"
-		],
-		"nodes": [
-			{
-				"text": "PanelHeader",
-				"tags": [
-					"1"
-				],
-				"nodes": [
-					{
-						"text": "Heading",
-						"tags": [
-							"0"
-						]
-					}
-				]
-			},
-			{
-				"text": "PanelBody",
-				"tags": [
-					"1"
-				],
-				"nodes": [
-					{
-						"text": "FieldSet",
-						"tags": [
-							"1"
-						],
-						"nodes": [
-							{
-								"text": "FormGroup",
-								"tags": [
-									"2"
-								],
-								"nodes": [
-									{
-										"text": "FormLabel",
-										"tags": [
-											"0"
-										]
-									},
-									{
-										"text": "FlexTable",
 										"tags": [
 											"0"
 										]

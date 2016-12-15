@@ -111,7 +111,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     Fields fields = new Fields();
     fields.setFields(new ArrayList<Field>());
 
-    fields.fgg("LOGIN");
+    fields.fgg(Field.Table.LOGIN.name());
     fields.clear();
     fields.add(new Field(Field.Fid.USERNAME.fid()));
     fields.add(new Field(Field.Fid.PASSWORD.fid()));
@@ -124,10 +124,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void apptable_junit()
   {
+    // TODO should ADMIN have one of these?
+
     Fields fields = new Fields();
     fields.setFields(new ArrayList<Field>());
 
-    fields.fgg("JUNIT");
+    fields.fgg(Field.Table.JUNIT.name());
     fields.clear();
     fields.add(new Field(Field.Fid.FIRST_NAME.fid()));
     mJdbc.fields().upsert(fields);
