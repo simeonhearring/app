@@ -175,7 +175,7 @@ public abstract class AbstractView extends Composite
   {
     for (Lookup value : inLookups)
     {
-      inBox.addItem(value.getDisplay(), value.getName());
+      inBox.addItem(value.getDisplay(), value.getCode());
     }
   }
 

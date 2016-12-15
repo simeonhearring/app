@@ -24,7 +24,7 @@ public class Mapping extends AbstractSqlJdbc
   {
     mapModel(inOut, inRs);
 
-    inOut.setName(inRs.getString("mName"));
+    inOut.setCode(inRs.getString("mCode"));
     inOut.setDisplay(inRs.getString("mDisplay"));
 
     return inOut;
@@ -35,7 +35,7 @@ public class Mapping extends AbstractSqlJdbc
     mapModel(inOut, inRs);
 
     inOut.setGroup(inRs.getString("mGroup"));
-    inOut.setName(inRs.getString("mName"));
+    inOut.setCode(inRs.getString("mCode"));
     inOut.setDisplay(inRs.getString("mDisplay"));
     inOut.setAbbreviation(inRs.getString("mAbbreviation"));
     inOut.setSort((Integer) inRs.getObject("mSort"));
@@ -49,7 +49,7 @@ public class Mapping extends AbstractSqlJdbc
     mapModel(inOut, inRs);
 
     inOut.setGroup(inRs.getString("mGroup"));
-    inOut.setName(inRs.getString("mName"));
+    inOut.setCode(inRs.getString("mCode"));
     inOut.setDisplay(inRs.getString("mDisplay"));
     inOut.setXL(inRs.getString("mXL"));
 

@@ -118,7 +118,7 @@ public class FieldsView extends AbstractView implements FieldsDisplay
     {
       Option field = new Option();
       field.setText(value.getDisplay());
-      field.setValue(value.getName());
+      field.setValue(value.getCode());
       field.setId(value.getId().toString());
       mGroups.add(field);
     }

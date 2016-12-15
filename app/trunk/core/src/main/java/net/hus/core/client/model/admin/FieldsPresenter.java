@@ -106,7 +106,7 @@ implements Action, AdminEvent.Handler
 
     Lookup fvt = new Lookup();
     fvt.setGroup(Group.TABLE);
-    fvt.setName(inFgg);
+    fvt.setCode(inFgg);
     fvt.setDisplay(inName);
     fvt.setSort(0);
 
