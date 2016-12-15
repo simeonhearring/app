@@ -12,8 +12,8 @@ public class Lookups extends AbstractModel implements Serializable
 {
   private static final long serialVersionUID = 2580002478293381780L;
 
-  private String mCode; // mGroup
-  private String mDisplay;
+  private String mCode; // ? mGroup
+  private String mName;
   private List<Lookup> mLookups;
 
   public void setLookups(List<Lookup> inLookups)
@@ -36,14 +36,14 @@ public class Lookups extends AbstractModel implements Serializable
     mCode = inName;
   }
 
-  public String getDisplay()
+  public String getName()
   {
-    return mDisplay;
+    return mName;
   }
 
-  public void setDisplay(String inDisplay)
+  public void setName(String inName)
   {
-    mDisplay = inDisplay;
+    mName = inName;
   }
 
   public Map<Type, List<Lookup>> getGroup()

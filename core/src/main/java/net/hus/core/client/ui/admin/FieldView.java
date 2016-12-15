@@ -376,7 +376,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     for (Lookup value : inFields)
     {
       Option field = new Option();
-      field.setText(value.getDisplay());
+      field.setText(value.getName());
       field.setValue(toString(value.getAltId()));
       type.add(field);
     }

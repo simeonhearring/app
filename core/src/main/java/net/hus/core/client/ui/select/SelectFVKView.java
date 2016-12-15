@@ -60,7 +60,7 @@ public class SelectFVKView extends AbstractView implements SelectFVKDisplay
     for (Lookup value : inKeys)
     {
       Option field = new Option();
-      field.setText(value.getDisplay());
+      field.setText(value.getName());
       field.setSubtext(value.getGroup());
       field.setId(value.getAltId().toString());
       mSelect.add(field);
