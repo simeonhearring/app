@@ -334,7 +334,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
     mLookupGroup.clear();
     for (Lookup value : inLookupGroups)
     {
-      CheckBox box = new CheckBox(value.getName());
+      CheckBox box = new CheckBox(value.getCode());
       box.setWordWrap(false);
       box.addValueChangeHandler(this);
       mLookupGroup.add(box);

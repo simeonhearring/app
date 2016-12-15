@@ -101,7 +101,7 @@ implements Action, AdminEvent.Handler
 
     Lookup lookup = new Lookup();
     lookup.setGroup(Group.LOOKUP);
-    lookup.setName(Field.officialName(inName));
+    lookup.setCode(Field.officialName(inName));
 
     lookup.setDisplay(inName);
     lookup.setSort(0);
@@ -129,7 +129,7 @@ implements Action, AdminEvent.Handler
 
     Lookup lookup = new Lookup();
     lookup.setGroup(inGroup);
-    lookup.setName(Field.officialName(inName));
+    lookup.setCode(Field.officialName(inName));
     lookup.setAbbreviation(inAbbr);
 
     lookup.setDisplay(inName);
@@ -158,7 +158,7 @@ implements Action, AdminEvent.Handler
 
     Lookup lookup = new Lookup();
     lookup.setGroup(Group.LOOKUP);
-    lookup.setName(inName);
+    lookup.setCode(inName);
 
     lookup.setDisplay(inDisplay);
     lookup.setSort(0);

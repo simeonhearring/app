@@ -176,7 +176,7 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     {
       Option field = new Option();
       field.setText(value.getDisplay());
-      field.setValue(value.getName());
+      field.setValue(value.getCode());
       field.setId(value.getId().toString());
       mProfiles.add(field);
     }
@@ -191,8 +191,8 @@ public class ProfileView extends AbstractView implements ProfileDisplay
     mAddPage.clear();
     for (Lookup value : inPages)
     {
-      mPage.addItem(value.getDisplay(), value.getName());
-      mAddPage.addItem(value.getDisplay(), value.getName());
+      mPage.addItem(value.getDisplay(), value.getCode());
+      mAddPage.addItem(value.getDisplay(), value.getCode());
     }
   }
 }

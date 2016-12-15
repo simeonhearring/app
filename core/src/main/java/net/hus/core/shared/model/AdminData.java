@@ -157,7 +157,7 @@ public class AdminData implements Serializable
 
   public String getDefaultFgg()
   {
-    return mFggs.get(0).getName();
+    return mFggs.get(0).getCode();
   }
 
   public Long getDefaultField()

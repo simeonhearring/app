@@ -117,7 +117,7 @@ public class LookupSql extends Mapping
     for (Lookup value : inLookup)
     {
       String group = value.getGroup();
-      String name = value.getName();
+      String name = value.getCode();
       String display = value.getDisplay();
       String abbr = value.getAbbreviation();
       String desc = value.getDescription();
@@ -136,7 +136,7 @@ public class LookupSql extends Mapping
     for (Lookup value : inLookup)
     {
       String group = value.getGroup();
-      String name = value.getName();
+      String name = value.getCode();
       String display = value.getDisplay();
       String xl = value.getXL();
       mBatchUpsertXL.update(params(group, name, display, xl, display, xl));

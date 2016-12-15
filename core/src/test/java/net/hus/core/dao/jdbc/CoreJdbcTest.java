@@ -347,12 +347,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.COMPONENTS);
-    l1.setName(inName);
+    l1.setCode(inName);
 
     l1.setDisplay(inDisplay);
     l1.setXL(xl);
 
-    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+    lookupXL(xl, l1, l1.getGroup(), l1.getCode());
   }
 
   @Test
@@ -362,12 +362,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName("pLOGIN");
+    l1.setCode("pLOGIN");
 
     l1.setDisplay("Login Profile");
     l1.setXL(xl);
 
-    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+    lookupXL(xl, l1, l1.getGroup(), l1.getCode());
   }
 
   @Test
@@ -377,12 +377,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName("pADMIN");
+    l1.setCode("pADMIN");
 
     l1.setDisplay("Admin Profile");
     l1.setXL(xl);
 
-    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+    lookupXL(xl, l1, l1.getGroup(), l1.getCode());
   }
 
   @Test
@@ -392,12 +392,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName("pHOME");
+    l1.setCode("pHOME");
 
     l1.setDisplay("Home Profile");
     l1.setXL(xl);
 
-    lookupXL(xl, l1, l1.getGroup(), l1.getName());
+    lookupXL(xl, l1, l1.getGroup(), l1.getCode());
   }
 
   @Test
@@ -419,12 +419,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setName(p.getUserName());
+    l1.setCode(p.getUserName());
 
     l1.setDisplay(p.getName());
     l1.setXL(inXml);
 
-    lookupXL(inXml, l1, l1.getGroup(), l1.getName());
+    lookupXL(inXml, l1, l1.getGroup(), l1.getCode());
 
     List<Lookup> list = new ArrayList<>();
     list.add(lookup(Field.Table.PERSON.name(), p.getUserName(), p.getName(), p.getFirst(), 0, null,
@@ -480,7 +480,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   {
     Lookup ret = new Lookup();
     ret.setGroup(inGroup);
-    ret.setName(inName);
+    ret.setCode(inName);
 
     ret.setDisplay(inDisplay);
     ret.setAbbreviation(inAbbr);

@@ -12,7 +12,7 @@ public class Lookup extends AbstractModel implements TypeaheadOption
   private static final long serialVersionUID = 6439569552175264944L;
 
   private String mGroup;
-  private String mName;
+  private String mCode;
   private String mDisplay;
   private String mAbbreviation;
   private String mDescription;
@@ -40,14 +40,14 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     return EnumUtil.valueOf(mGroup, Group.values());
   }
 
-  public String getName()
+  public String getCode()
   {
-    return mName;
+    return mCode;
   }
 
-  public void setName(String inName)
+  public void setCode(String inCode)
   {
-    mName = inName;
+    mCode = inCode;
   }
 
   public String getAbbreviation()

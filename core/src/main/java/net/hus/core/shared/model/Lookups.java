@@ -12,7 +12,7 @@ public class Lookups extends AbstractModel implements Serializable
 {
   private static final long serialVersionUID = 2580002478293381780L;
 
-  private String mName; // mGroup
+  private String mCode; // mGroup
   private String mDisplay;
   private List<Lookup> mLookups;
 
@@ -26,14 +26,14 @@ public class Lookups extends AbstractModel implements Serializable
     return mLookups;
   }
 
-  public String getName()
+  public String getCode()
   {
-    return mName;
+    return mCode;
   }
 
-  public void setName(String inName)
+  public void setCode(String inName)
   {
-    mName = inName;
+    mCode = inName;
   }
 
   public String getDisplay()
@@ -52,7 +52,7 @@ public class Lookups extends AbstractModel implements Serializable
 
     for (Lookup value : mLookups)
     {
-      Type sys = Lookup.Group.isApp(value.getName()) ? Type.Application : Type.Custom;
+      Type sys = Lookup.Group.isApp(value.getCode()) ? Type.Application : Type.Custom;
       if (!ret.containsKey(sys))
       {
         ret.put(sys, new ArrayList<Lookup>());

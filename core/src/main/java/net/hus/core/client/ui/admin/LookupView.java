@@ -130,7 +130,7 @@ public class LookupView extends AbstractView implements LookupDisplay
     {
       Option field = new Option();
       field.setText(value.getDisplay());
-      field.setValue(value.getName());
+      field.setValue(value.getCode());
       field.setId(value.getId().toString());
       type.add(field);
     }
@@ -151,13 +151,13 @@ public class LookupView extends AbstractView implements LookupDisplay
     mValues.addHeaders(head);
     mValues.setWidth("100%");
 
-    boolean notsys = !Lookup.Group.isApp(inLookups.getName());
+    boolean notsys = !Lookup.Group.isApp(inLookups.getCode());
     mQuickEdit.setVisible(notsys);
     mSave0.setVisible(notsys);
     mSave1.setVisible(notsys);
     mDisplay.setEnabled(notsys);
 
-    mName.setText(inLookups.getName());
+    mName.setText(inLookups.getCode());
     mDisplay.setText(inLookups.getDisplay());
     mNameText.setText(inLookups.getDisplay());
 
