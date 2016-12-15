@@ -7,7 +7,7 @@
 	<Statement>
 		<Key>SELECT_LAST_KEY</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,t.mDisplay,t.mSort,t.mTable as mFTable,t.mFieldId as mFId
+		<Sql>select v.*,f.mCode,f.mType,f.mProperties,t.mDisplay,t.mSort,t.mTable as mFTable,t.mFieldId as mFId
 			from FIELD_TABLE t
 			left join FIELD_VALUE v on t.mFieldId=v.mFieldId and v.mTable=? and v.mKey=? and v.mPos=0 and v.mId IN (select max(mId) from FIELD_VALUE group by mKey,mFieldId)
 			left join FIELD f on t.mFieldId=f.mId
@@ -17,7 +17,7 @@
 	<Statement>
 		<Key>SELECT_LAST_KEY_POS</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR</Types>
-		<Sql>select v.*,f.mName,f.mType,f.mProperties,t.mDisplay,t.mSort,t.mTable as mFTable,t.mFieldId as mFId
+		<Sql>select v.*,f.mCode,f.mType,f.mProperties,t.mDisplay,t.mSort,t.mTable as mFTable,t.mFieldId as mFId
 			from FIELD_TABLE t
 			left join FIELD_VALUE v on t.mFieldId=v.mFieldId and v.mTable=? and v.mKey=? and v.mId IN (select max(mId) from FIELD_VALUE group by mKey,mFieldId,mPos)
 			left join FIELD f on t.mFieldId=f.mId

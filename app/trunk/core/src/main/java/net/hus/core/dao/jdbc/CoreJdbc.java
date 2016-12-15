@@ -228,7 +228,7 @@ public class CoreJdbc implements CoreDao
     {
       Lookup lookup = new Lookup();
       lookup.setGroup(Group.FIELD);
-      lookup.setCode(value.getName());
+      lookup.setCode(value.getCode());
 
       lookup.setAltId(value.getId());
       lookup.setName(value.getProperties().getDisplay().getLong());

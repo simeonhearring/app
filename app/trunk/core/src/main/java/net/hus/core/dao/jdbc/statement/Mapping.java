@@ -73,7 +73,7 @@ public class Mapping extends AbstractSqlJdbc
 
   private static void mapField_(Field inOut, ResultSet inRs) throws SQLException
   {
-    inOut.setName(inRs.getString("mName"));
+    inOut.setCode(inRs.getString("mCode"));
     inOut.setType(valueOf(inRs.getString("mType"), Field.Type.values()));
     inOut.setProperties(valueOf(inRs.getString("mProperties"), new FieldPropertiesParser()));
   }

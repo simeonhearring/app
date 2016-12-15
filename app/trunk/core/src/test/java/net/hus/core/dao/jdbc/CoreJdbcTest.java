@@ -73,7 +73,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
 
     for (Field value : list)
     {
-      Field field = mJdbc.fields().select(value.getName(), value.getType());
+      Field field = mJdbc.fields().select(value.getCode(), value.getType());
       Assert.assertEquals(field.getId(), field.getId());
     }
   }
@@ -521,7 +521,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
       Array inArray)
   {
     Field ret = new Field();
-    ret.setName(inFid.name());
+    ret.setCode(inFid.name());
     ret.setType(inFid.type());
     ret.getProperties().setType(inFid.type());
     ret.getProperties().getDisplay().setLong(inLong);
