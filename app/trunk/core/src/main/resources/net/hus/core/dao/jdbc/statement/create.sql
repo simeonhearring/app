@@ -1,3 +1,19 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10.7
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost:3306
+-- Generation Time: Dec 15, 2016 at 12:57 PM
+-- Server version: 5.6.33
+-- PHP Version: 5.4.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `simeon_app`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -13,25 +29,25 @@ CREATE TABLE IF NOT EXISTS `FIELD` (
   `mProperties` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`mId`),
   UNIQUE KEY `mName` (`mName`,`mType`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `FIELD_GROUP`
+-- Table structure for table `FIELD_TABLE`
 --
 
-CREATE TABLE IF NOT EXISTS `FIELD_GROUP` (
+CREATE TABLE IF NOT EXISTS `FIELD_TABLE` (
   `mId` bigint(20) NOT NULL AUTO_INCREMENT,
   `mCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mUpdated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `mGroup` varchar(50) NOT NULL,
+  `mTable` varchar(50) NOT NULL,
   `mFieldId` bigint(20) NOT NULL,
   `mDisplay` varchar(50) DEFAULT NULL,
   `mSort` int(11) DEFAULT NULL,
   PRIMARY KEY (`mId`),
-  UNIQUE KEY `mGroup` (`mGroup`,`mFieldId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  UNIQUE KEY `mGroup` (`mTable`,`mFieldId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -43,16 +59,18 @@ CREATE TABLE IF NOT EXISTS `FIELD_VALUE` (
   `mId` bigint(20) NOT NULL AUTO_INCREMENT,
   `mCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mUpdated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `mFieldId` bigint(20) NOT NULL,
   `mTable` varchar(50) NOT NULL,
   `mKey` varchar(1000) NOT NULL,
+  `mPos` int(11) NOT NULL DEFAULT '0',
   `mValue` varchar(4000) NOT NULL,
   `mValueId` bigint(20) DEFAULT NULL,
-  `mFieldId` bigint(20) NOT NULL,
   `mAsOf` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`mId`),
   KEY `mKey` (`mKey`(333)),
-  KEY `mTable` (`mTable`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `mTable` (`mTable`),
+  KEY `mPos` (`mPos`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 -- --------------------------------------------------------
 
@@ -66,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `LOOKUP` (
   `mUpdated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `mGroup` varchar(50) NOT NULL,
   `mName` varchar(100) NOT NULL,
-  `mDisplay` varchar(200) DEFAULT NULL,
+  `mDisplay` varchar(200) NOT NULL,
   `mAbbreviation` varchar(200) DEFAULT NULL,
   `mDescription` varchar(1000) DEFAULT NULL,
   `mSort` int(11) NOT NULL,
@@ -75,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `LOOKUP` (
   UNIQUE KEY `mGroupName` (`mGroup`,`mName`),
   KEY `mGroup` (`mGroup`),
   KEY `mAltId` (`mAltId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 -- --------------------------------------------------------
 
@@ -95,6 +113,4 @@ CREATE TABLE IF NOT EXISTS `LOOKUP_XL` (
   UNIQUE KEY `mGroupName` (`mGroup`,`mName`),
   KEY `mGroup` (`mGroup`),
   KEY `mName` (`mName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;

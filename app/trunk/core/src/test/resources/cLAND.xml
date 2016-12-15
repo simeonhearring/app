@@ -36,10 +36,10 @@
 									<Collection>
 										<FormGroup>
 											<Collection>
-												<FormLabel KEY="FL00_-5" isHtml="false">
-													<Text>last:</Text>
+												<FormLabel KEY="FL00_-6" isHtml="false">
+													<Text>middle:</Text>
 												</FormLabel>
-												<Input KEY="FV00_-5" type="TEXT" />
+												<TextBox KEY="FV00_-6" />
 											</Collection>
 										</FormGroup>
 									</Collection>
@@ -48,10 +48,10 @@
 									<Collection>
 										<FormGroup>
 											<Collection>
-												<FormLabel KEY="FL00_-6" isHtml="false">
-													<Text>middle:</Text>
+												<FormLabel KEY="FL00_-5" isHtml="false">
+													<Text>last:</Text>
 												</FormLabel>
-												<TextBox KEY="FV00_-6" />
+												<Input KEY="FV00_-5" type="TEXT" />
 											</Collection>
 										</FormGroup>
 									</Collection>
