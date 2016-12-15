@@ -269,7 +269,7 @@ implements FieldDisplay, ValueChangeHandler<Boolean>, ChangeHandler
 
     // name
     mId.setText(String.valueOf(inField.getId()));
-    mName.setText(inField.getName());
+    mName.setText(inField.getCode());
     mType.setText(inField.getType().name());
 
     // display

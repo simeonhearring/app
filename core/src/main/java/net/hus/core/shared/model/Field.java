@@ -17,7 +17,7 @@ public class Field extends AbstractModel
 {
   private static final long serialVersionUID = -961088994106006040L;
 
-  private String mName;
+  private String mCode;
   private Type mType;
   private Properties mProperties;
 
@@ -34,17 +34,17 @@ public class Field extends AbstractModel
   /* UI QUICK CREATE */
   public Field(String inName, Field.Type inType)
   {
-    setNameType(inName, inType);
+    setCodeType(inName, inType);
   }
 
-  public String getName()
+  public String getCode()
   {
-    return mName;
+    return mCode;
   }
 
-  public void setName(String inName)
+  public void setCode(String inCode)
   {
-    mName = inName;
+    mCode = inCode;
   }
 
   public Type getType()
@@ -596,7 +596,7 @@ public class Field extends AbstractModel
   public String getInfo()
   {
     StringBuilder ret = new StringBuilder();
-    ret.append(" Name: ").append(getName());
+    ret.append(" Code: ").append(getCode());
     ret.append(" ID: ").append(getId());
     ret.append(" Type: ").append(getType());
     ret.append(mProperties.getInfo());
@@ -714,12 +714,12 @@ public class Field extends AbstractModel
     return ret;
   }
 
-  private void setNameType(String inName, Field.Type inType)
+  private void setCodeType(String inCode, Field.Type inType)
   {
-    mName = officialName(inName);
+    mCode = officialName(inCode);
     mType = inType;
     getProperties().mType = inType;
-    getProperties().getDisplay().mLong = inName;
+    getProperties().getDisplay().mLong = inCode;
   }
 
   public static String officialName(String inName)

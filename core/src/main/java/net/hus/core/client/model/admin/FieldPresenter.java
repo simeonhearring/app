@@ -73,7 +73,7 @@ implements Action, AdminEvent.Handler
       @Override
       public void onRpcSuccess(FieldSaveCommand inCommand)
       {
-        mDisplay.notify("Saved ... " + mField.getName());
+        mDisplay.notify("Saved ... " + mField.getCode());
       }
     });
   }

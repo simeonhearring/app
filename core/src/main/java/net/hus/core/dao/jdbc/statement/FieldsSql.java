@@ -123,11 +123,11 @@ public class FieldsSql extends Mapping
     mFieldUpsert.reset();
     for (Field value : inFields)
     {
-      String name = value.getName();
+      String code = value.getCode();
       String type = value.getType().name();
       String properties = valueOf(value.getProperties(), new FieldPropertiesParser());
 
-      mFieldUpsert.update(params(name, type, properties, properties));
+      mFieldUpsert.update(params(code, type, properties, properties));
     }
     mFieldUpsert.flush();
     mFieldUpsert.reset();
@@ -139,11 +139,11 @@ public class FieldsSql extends Mapping
     for (Field value : inFields)
     {
       Long id = value.getId();
-      String name = value.getName();
+      String code = value.getCode();
       String type = value.getType().name();
       String properties = valueOf(value.getProperties(), new FieldPropertiesParser());
 
-      mFieldAppUpsert.update(params(id, name, type, properties, id, properties));
+      mFieldAppUpsert.update(params(id, code, type, properties, id, properties));
     }
     mFieldAppUpsert.flush();
     mFieldAppUpsert.reset();

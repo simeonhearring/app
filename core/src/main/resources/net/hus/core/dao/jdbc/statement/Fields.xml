@@ -2,7 +2,7 @@
 	<Statement>
 		<Key>UPSERT_APP_FIELD</Key>
 		<Types>NUMERIC,VARCHAR,VARCHAR,VARCHAR,NUMERIC,VARCHAR</Types>
-		<Sql>INSERT INTO FIELD (mUpdated,mId,mName,mType,mProperties)
+		<Sql>INSERT INTO FIELD (mUpdated,mId,mCode,mType,mProperties)
 			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
 			UPDATE mId=?,mProperties=?,mUpdated=CURRENT_TIMESTAMP
 		</Sql>
@@ -10,7 +10,7 @@
 	<Statement>
 		<Key>UPSERT_FIELD</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
-		<Sql>INSERT INTO FIELD (mUpdated,mName,mType,mProperties)
+		<Sql>INSERT INTO FIELD (mUpdated,mCode,mType,mProperties)
 			VALUES (CURRENT_TIMESTAMP,?,?,?) ON DUPLICATE KEY
 			UPDATE mProperties=?,mUpdated=CURRENT_TIMESTAMP
 		</Sql>
@@ -18,7 +18,7 @@
 	<Statement>
 		<Key>SELECT_FIELD_BY_NAMETYPE</Key>
 		<Types>VARCHAR,VARCHAR</Types>
-		<Sql>select * from FIELD where mName=? and mType=?</Sql>
+		<Sql>select * from FIELD where mCode=? and mType=?</Sql>
 	</Statement>
 	<Statement>
 		<Key>SELECT_FIELD_BY_ID</Key>
