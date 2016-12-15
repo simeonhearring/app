@@ -21,6 +21,7 @@ public class ComponentsParserTest
     Components model = parser.fromXml(xml);
 
     Assert.assertEquals(1, model.components().size());
+    Assert.assertEquals(2, model.getList().size());
     Assert.assertEquals("LOGIN", model.getFieldTKG().getFvt());
     Assert.assertEquals("LOGIN", model.getFieldTKG().getFgg());
     Assert.assertEquals("LOGIN", model.getFieldTKG().getLayout().name());
@@ -48,6 +49,7 @@ public class ComponentsParserTest
     Components model = parser.fromXml(xml);
 
     Assert.assertEquals(1, model.components().size());
+    Assert.assertEquals(5, model.getList().size());
     Assert.assertEquals("ADMIN", model.getFieldTKG().getFvt());
     Assert.assertEquals("ADMIN", model.getFieldTKG().getFgg());
     Assert.assertEquals("HOME", model.getFieldTKG().getLayout().name());
@@ -75,6 +77,7 @@ public class ComponentsParserTest
     Components model = parser.fromXml(xml);
 
     Assert.assertEquals(3, model.components().size());
+    Assert.assertEquals(4, model.getList().size());
     Assert.assertEquals("PERSON", model.getFieldTKG().getFvt());
     Assert.assertEquals("PERSON", model.getFieldTKG().getFgg());
     Assert.assertEquals("WEB", model.getFieldTKG().getLayout().name());
@@ -116,5 +119,4 @@ public class ComponentsParserTest
     String jactual = parser.toJson(model);
     Assert.assertEquals(jexpected, jactual);
   }
-
 }
