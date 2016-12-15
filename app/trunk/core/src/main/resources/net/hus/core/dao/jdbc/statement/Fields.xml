@@ -1,6 +1,14 @@
 <Statements>
 	<Statement>
-		<Key>UPSERT</Key>
+		<Key>UPSERT_APP_FIELD</Key>
+		<Types>NUMERIC,VARCHAR,VARCHAR,VARCHAR,NUMERIC,VARCHAR</Types>
+		<Sql>INSERT INTO FIELD (mUpdated,mId,mName,mType,mProperties)
+			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
+			UPDATE mId=?,mProperties=?,mUpdated=CURRENT_TIMESTAMP
+		</Sql>
+	</Statement>
+	<Statement>
+		<Key>UPSERT_FIELD</Key>
 		<Types>VARCHAR,VARCHAR,VARCHAR,VARCHAR</Types>
 		<Sql>INSERT INTO FIELD (mUpdated,mName,mType,mProperties)
 			VALUES (CURRENT_TIMESTAMP,?,?,?) ON DUPLICATE KEY
@@ -8,53 +16,46 @@
 		</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT</Key>
+		<Key>SELECT_FIELD_BY_NAMETYPE</Key>
 		<Types>VARCHAR,VARCHAR</Types>
 		<Sql>select * from FIELD where mName=? and mType=?</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_BY_ID</Key>
+		<Key>SELECT_FIELD_BY_ID</Key>
 		<Types>NUMERIC</Types>
 		<Sql>select * from FIELD where mId=?</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_ALL</Key>
+		<Key>SELECT_FIELD</Key>
 		<Sql>select * from FIELD</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_GROUP_ALL</Key>
-		<Sql>select g.*,l.mDisplay as mGrpDspl
-			from FIELD_GROUP g
-			left join LOOKUP l on g.mGroup=l.mName
-			where l.mGroup = 'FGG'
-		</Sql>
+		<Key>DELETE_FIELD</Key>
+		<Types>NUMERIC</Types>
+		<Sql>delete from FIELD where mId=?</Sql>
 	</Statement>
-	<Statement>
-		<Key>SELECT_GROUP_BY_FGG</Key>
-		<Types>VARCHAR</Types>
-		<Sql>select g.*,l.mDisplay as mGrpDspl
-			from FIELD_GROUP g
-			left join LOOKUP l on g.mGroup=l.mName where g.mGroup=?
-		</Sql>
-	</Statement>
-	<Statement>
-		<Key>DELETE_FIELDS</Key>
+		<Statement>
+		<Key>DELETE_TABLE</Key>
 		<Types>VARCHAR,NUMERIC</Types>
-		<Sql>delete from FIELD_GROUP where mGroup=? and mFieldId=?</Sql>
+		<Sql>delete from FIELD_TABLE where mTable=? and mFieldId=?</Sql>
 	</Statement>
 	<Statement>
-		<Key>UPSERT_FIELDS</Key>
+		<Key>UPSERT_TABLE</Key>
 		<Types>VARCHAR,NUMERIC,VARCHAR,NUMERIC,VARCHAR,NUMERIC</Types>
-		<Sql>INSERT INTO FIELD_GROUP (mUpdated,mGroup,mFieldId,mDisplay,mSort)
+		<Sql>INSERT INTO FIELD_TABLE (mUpdated,mTable,mFieldId,mDisplay,mSort)
 			VALUES (CURRENT_TIMESTAMP,?,?,?,?) ON DUPLICATE KEY
 			UPDATE mDisplay=?,mSort=?,mUpdated=CURRENT_TIMESTAMP
 		</Sql>
 	</Statement>
 	<Statement>
-		<Key>SELECT_FIELDS_BY_GRP</Key>
+		<Key>SELECT_TABLE_BY_TABLE</Key>
 		<Types>VARCHAR</Types>
-		<Sql>select f.*,g.mDisplay from FIELD f, FIELD_GROUP g
-			where f.mId=g.mFieldId and g.mGroup=?
+		<Sql>select f.*,t.mDisplay from FIELD f, FIELD_TABLE t
+			where f.mId=t.mFieldId and t.mTable=?
 		</Sql>
+	</Statement>
+	<Statement>
+		<Key>SELECT_TABLE</Key>
+		<Sql>select distinct mTable from FIELD_TABLE</Sql>
 	</Statement>
 </Statements> 

@@ -135,8 +135,8 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     UNKNOWN(SM),
     YESNO(SM),
     GENDER(SM),
-    FVT(SM),
-    FGG(SM),
+    TABLE(SM),
+    // FGG(SM), // TODO should be TABLE
     FIELD(SM),
     LOOKUP(SM),
     COMPONENT(SM),

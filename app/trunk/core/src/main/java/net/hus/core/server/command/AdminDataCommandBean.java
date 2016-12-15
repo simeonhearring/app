@@ -63,7 +63,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addFieldGroups(AdminData inData)
   {
-    inData.setFggs(mCoreDao.lookups().select(Group.FGG.name()));
+    inData.setFggs(mCoreDao.lookups().select(Group.TABLE.name()));
   }
 
   private void addFields(AdminData inData)
@@ -105,7 +105,7 @@ public class AdminDataCommandBean extends AbstractCommandBean<AdminDataCommand>
 
   private void addTables(AdminData inData)
   {
-    inData.setFvts(mCoreDao.lookups().select(Group.FVT.name()));
+    // inData.setFvts(mCoreDao.lookups().select(Group.TABLE.name()));
   }
 
   private void addComponents(AdminData inData)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
-	<FieldTKG fvt="PERSON" fgg="JGRP1" page.layout="WEB" />
+	<FieldTKG fvt="PERSON" fgg="PERSON" page.layout="WEB" />
 	<Heading SECTION="CENTER_01" size="H1" emphasis="INFO" alignment="LEFT">
 		<Title>Title</Title>
 		<Text>Contact Information</Text>
@@ -24,8 +24,10 @@
 									<Collection>
 										<FormGroup>
 											<Collection>
-												<FormLabel KEY="FL00_1" isHtml="false" />
-												<Input KEY="FV00_1" type="TEXT" />
+												<FormLabel KEY="FL00_-4" isHtml="false">
+													<Text>first:</Text>
+												</FormLabel>
+												<Input KEY="FV00_-4" type="TEXT" />
 											</Collection>
 										</FormGroup>
 									</Collection>
@@ -34,8 +36,10 @@
 									<Collection>
 										<FormGroup>
 											<Collection>
-												<FormLabel KEY="FL00_2" isHtml="false" />
-												<Input KEY="FV00_2" type="TEXT" />
+												<FormLabel KEY="FL00_-5" isHtml="false">
+													<Text>last:</Text>
+												</FormLabel>
+												<Input KEY="FV00_-5" type="TEXT" />
 											</Collection>
 										</FormGroup>
 									</Collection>
@@ -44,8 +48,10 @@
 									<Collection>
 										<FormGroup>
 											<Collection>
-												<FormLabel KEY="FL00_3" isHtml="false" />
-												<TextBox KEY="FV00_3" />
+												<FormLabel KEY="FL00_-6" isHtml="false">
+													<Text>middle:</Text>
+												</FormLabel>
+												<TextBox KEY="FV00_-6" />
 											</Collection>
 										</FormGroup>
 									</Collection>
@@ -53,78 +59,40 @@
 							</Row>
 							<FormGroup>
 								<Collection>
-									<FormLabel KEY="FL00_4" isHtml="false" />
-									<DatePicker KEY="FV00_4" />
+									<FormLabel KEY="FL00_-12" isHtml="false">
+										<Text>dob:</Text>
+									</FormLabel>
+									<DatePicker KEY="FV00_-12" />
 								</Collection>
 							</FormGroup>
 							<FormGroup>
 								<Collection>
-									<FormLabel KEY="FL00_16" isHtml="false" />
-									<Typeahead KEY="FV00_16">
+									<FormLabel KEY="FL00_-11" isHtml="false">
+										<Text>profile:</Text>
+									</FormLabel>
+									<Typeahead KEY="FV00_-11">
 										<Lookup loc="RPC" params="BLANK,PROFILE" />
 									</Typeahead>
 								</Collection>
 							</FormGroup>
 							<FormGroup>
 								<Collection>
-									<FormLabel KEY="FL00_22" isHtml="false" />
-									<Typeahead KEY="FV00_22">
+									<FormLabel KEY="FL00_-8" isHtml="false">
+										<Text>page:</Text>
+									</FormLabel>
+									<Typeahead KEY="FV00_-8">
 										<Lookup loc="TABLE" params="BLANK,COMPONENTS" />
 									</Typeahead>
 								</Collection>
 							</FormGroup>
 							<FormGroup>
 								<Collection>
-									<FormLabel KEY="FL00_12" isHtml="false" />
-									<ListBox KEY="FV00_12" multipleSelect="false">
+									<FormLabel KEY="FL00_-7" isHtml="false">
+										<Text>gender:</Text>
+									</FormLabel>
+									<ListBox KEY="FV00_-7" multipleSelect="false">
 										<Lookup loc="TABLE" params="BLANK,GENDER,UNKNOWN" />
 									</ListBox>
-								</Collection>
-							</FormGroup>
-							<FormGroup>
-								<Collection>
-									<FormLabel KEY="FL00_23" isHtml="false">
-										<Text>account:</Text>
-									</FormLabel>
-									<FlexTable KEY="FV00_23">
-										<Title>Title</Title>
-									</FlexTable>
-								</Collection>
-							</FormGroup>
-						</Collection>
-					</FieldSet>
-				</Collection>
-			</PanelBody>
-			<PanelFooter>
-				<Collection>
-					<Heading color="red" size="H5" emphasis="INFO" alignment="LEFT">
-						<Text>Footer</Text>
-					</Heading>
-				</Collection>
-			</PanelFooter>
-		</Collection>
-	</Panel>
-	<Panel SECTION="CENTER_01" type="DEFAULT">
-		<Collection>
-			<PanelHeader>
-				<Collection>
-					<Heading color="red" size="H5" emphasis="INFO" alignment="LEFT">
-						<Text>Address Information</Text>
-					</Heading>
-				</Collection>
-			</PanelHeader>
-			<PanelBody>
-				<Collection>
-					<FieldSet enabled="true">
-						<Collection>
-							<FormGroup>
-								<Collection>
-									<FormLabel KEY="FL00_13" isHtml="false">
-										<Text>address:</Text>
-									</FormLabel>
-									<FlexTable KEY="FV00_13" width="100%">
-										<Title>Title</Title>
-									</FlexTable>
 								</Collection>
 							</FormGroup>
 						</Collection>

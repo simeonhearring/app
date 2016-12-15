@@ -18,18 +18,17 @@ public interface CoreDao
 
   Profile profile(String inName);
 
-  Components components(String inComponentName);
+  Components components(String inName);
 
   Fields fields(String inFgg);
 
   void field2lookup();
 
-  void fields2lookup();
-
   void profile2lookup();
+
+  void table2lookup();
 
   void components2lookup();
 
   void upsertXL(LookupXL inLookupXL);
-
 }

@@ -13,7 +13,7 @@ public class PageParserTest
   {
     PageParser parser = new PageParser();
 
-    String xml = ResourceUtil.contents("Page.xml");
+    String xml = "<Page layout=\"LOGIN\" components.name=\"cLOGIN\"/>";
 
     Page model = parser.fromXml(xml);
 

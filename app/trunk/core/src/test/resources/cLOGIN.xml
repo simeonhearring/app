@@ -9,14 +9,18 @@
 		<Collection>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_14" isHtml="false" />
-					<Input KEY="FV00_14" type="TEXT" />
+					<FormLabel KEY="FL00_-1" isHtml="false">
+						<Text>user name:</Text>
+					</FormLabel>
+					<Input KEY="FV00_-1" type="TEXT" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<FormLabel KEY="FL00_15" isHtml="false" />
-					<Input KEY="FV00_15" type="PASSWORD" />
+					<FormLabel KEY="FL00_-2" isHtml="false">
+						<Text>password:</Text>
+					</FormLabel>
+					<Input KEY="FV00_-2" type="PASSWORD" />
 				</Collection>
 			</FormGroup>
 			<FormGroup>

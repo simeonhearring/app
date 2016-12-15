@@ -52,7 +52,7 @@ implements Action, AdminEvent.Handler
       case ALL:
       {
         mDisplay.reset();
-        mDisplay.addTables(inData.getFvts());
+        mDisplay.addTables(inData.getFggs());
         mDisplay.addFieldGroups(inData.getFggs());
         mDisplay.addPages(inData.getPages());
         mDisplay.addComponents(inData.getComponents());

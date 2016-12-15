@@ -25,8 +25,6 @@ public class AdminData implements Serializable
   private List<Lookup> mPages;
   private Components mPage;
 
-  private List<Lookup> mFvts;
-
   private List<Lookup> mCommands;
 
   private List<Lookup> mComponents;
@@ -145,16 +143,6 @@ public class AdminData implements Serializable
   public Components getPage()
   {
     return mPage;
-  }
-
-  public List<Lookup> getFvts()
-  {
-    return mFvts;
-  }
-
-  public void setFvts(List<Lookup> inFvts)
-  {
-    mFvts = inFvts;
   }
 
   public void setCommands(List<Lookup> inCommands)

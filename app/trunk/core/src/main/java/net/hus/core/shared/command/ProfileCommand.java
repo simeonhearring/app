@@ -27,6 +27,6 @@ public class ProfileCommand extends AbstractDataCommand<PageQuery>
 
   public boolean isLogin()
   {
-    return Profile.UserName.login.name().equals(mUserName);
+    return Profile.Name.pLOGIN.name().equals(mUserName);
   }
 }

@@ -55,7 +55,7 @@ implements Action, AdminEvent.Handler
     {
       case ALL:
         addFields(inData.data(), inData.getField(), inData.getLookups(), inData.getFields(),
-            inData.getFvts(), inData.getFggs());
+            inData.getFggs(), inData.getFggs());
         break;
       case FIELD:
         set(inData.getField());

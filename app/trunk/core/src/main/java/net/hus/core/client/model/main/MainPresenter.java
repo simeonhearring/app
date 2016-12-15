@@ -35,7 +35,7 @@ public class MainPresenter implements ProfileEvent.Handler, ValuesEvent.Handler,
     mDisplay = inDisplay;
     mManager = new UiManager(mDisplay.getUiCreate());
 
-    mDisplay.fireDeferred(new ProfileEvent(Profile.UserName.home));
+    mDisplay.fireDeferred(new ProfileEvent(Profile.Name.pHOME));
   }
 
   private void profile(String inName)

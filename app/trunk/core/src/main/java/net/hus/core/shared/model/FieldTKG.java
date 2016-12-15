@@ -5,9 +5,9 @@ import java.io.Serializable;
 /**
  * Comes from Components XML in database.
  *
- * Refers to database: FIELD_VALUE.mTable & mKey, FIELD_GROUP.mGroup.
+ * Refers to database: FIELD_VALUE.mTable & mKey, FIELD_TABLE.mTable.
  *
- * Understands how to query FIELD_GROUP for a set of FIELDS to update
+ * Understands how to query FIELD_TABLE for a set of FIELDS to update
  * Components.
  *
  * Understands how to update FIELD_VALUE for a FVK (FIELD_VALUE mKey).
@@ -24,7 +24,7 @@ public class FieldTKG implements Serializable
   private String mFvt;
   private String mFvk;
 
-  private String mFgg;
+  private String mFgg; // TODO same as TABLE
 
   private Page.Layout mLayout;
 

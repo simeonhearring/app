@@ -98,19 +98,19 @@ implements Action, AdminEvent.Handler
 
   private void save(final String inFgg, final String inName)
   {
-    Lookup fgg = new Lookup();
-    fgg.setGroup(Group.FGG);
-    fgg.setName(inFgg);
-    fgg.setDisplay(inName);
-    fgg.setSort(0);
+    // Lookup fgg = new Lookup();
+    // fgg.setGroup(Group.FGG);
+    // fgg.setName(inFgg);
+    // fgg.setDisplay(inName);
+    // fgg.setSort(0);
 
     Lookup fvt = new Lookup();
-    fvt.setGroup(Group.FVT);
+    fvt.setGroup(Group.TABLE);
     fvt.setName(inFgg);
     fvt.setDisplay(inName);
     fvt.setSort(0);
 
-    Global.fire(new LookupSaveCommand(fgg, fvt), new RpcCallback<LookupSaveCommand>()
+    Global.fire(new LookupSaveCommand(fvt), new RpcCallback<LookupSaveCommand>()
     {
       @Override
       public void onRpcSuccess(LookupSaveCommand inCommand)

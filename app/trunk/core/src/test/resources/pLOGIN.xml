@@ -1,3 +1,3 @@
 <Profile type="APP" userName="login">
-	<Page components.name="Components1"/>
+	<Page components.name="cLOGIN"/>
 </Profile>

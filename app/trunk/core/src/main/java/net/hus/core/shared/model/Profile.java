@@ -164,11 +164,10 @@ public class Profile extends AbstractModel implements PageQuery, LookupXL
     USER;
   }
 
-  public enum UserName
+  public enum Name
   {
-    home,
-    login,
-    register,
-    admin
+    pHOME,
+    pLOGIN,
+    pADMIN
   }
 }

@@ -1,5 +1,5 @@
 <Profile id="3" type="USER" userName="simeonhearring" password="abc123" css="united">
-	<Page components.name="Components3"/>
+	<Page components.name="cADMIN"/>
 	<First>Simeon</First>
 	<Middle>L</Middle>
 	<Last>Hearring</Last>
