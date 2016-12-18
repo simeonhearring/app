@@ -3,6 +3,7 @@ package net.hus.core.client.ui.common;
 import net.hus.core.client.ui.event.CssChangeEvent;
 import net.hus.core.client.ui.event.ProfileEvent;
 import net.hus.core.shared.components.Response;
+import net.hus.core.shared.model.CssFileName;
 
 public class EventLocater
 {
@@ -33,6 +34,7 @@ public class EventLocater
     Global.fire(new ProfileEvent(userName));
     if (css != null)
     {
+      css = CssFileName.convert(css);
       Global.fire(new CssChangeEvent(css));
     }
   }

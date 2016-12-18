@@ -1,6 +1,7 @@
 package net.hus.core.dao.jdbc;
 
 import static net.hus.core.shared.model.Field.Fid.BIRTH_DATE;
+import static net.hus.core.shared.model.Field.Fid.APP;
 import static net.hus.core.shared.model.Field.Fid.EMAIL;
 import static net.hus.core.shared.model.Field.Fid.FIELD;
 import static net.hus.core.shared.model.Field.Fid.FIRST_NAME;
@@ -66,6 +67,7 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     list.add(newField(PROFILE, "Profile", "User", profile(), null));
     list.add(newField(FIELD, "eMail", "eMail", field(), null));
     list.add(newField(EMAIL, "Field", "FLD", null, null));
+    list.add(newField(APP, "Application", "App", app(), null));
     list.add(newField(BIRTH_DATE, "Birth", "Dob", null, null));
     list.add(newField(Fid.FIELD_TABLE, "Table", "TBL", fields(), null));
 
@@ -326,6 +328,12 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
+  public void setupcAPP()
+  {
+    component("cAPP", "App page", "cAPP.xml");
+  }
+
+  @Test
   public void setupcLAND()
   {
     component("cLAND", "Landing page", "cLAND.xml");
@@ -358,45 +366,45 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   }
 
   @Test
-  public void setuppLOGIN()
+  public void setupnLOGIN()
   {
-    String xl = ResourceUtil.contents("pLOGIN.xml");
+    String xl = ResourceUtil.contents(Profile.Name.nLOGIN.name() + ".xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setCode("pLOGIN");
+    l1.setCode(Profile.Name.nLOGIN.name());
 
-    l1.setName("Login Profile");
+    l1.setName("Login Nav");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
   }
 
   @Test
-  public void setuppADMIN()
+  public void setupnADMIN()
   {
-    String xl = ResourceUtil.contents("pADMIN.xml");
+    String xl = ResourceUtil.contents(Profile.Name.nADMIN.name() + ".xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setCode("pADMIN");
+    l1.setCode(Profile.Name.nADMIN.name());
 
-    l1.setName("Admin Profile");
+    l1.setName("Admin Nav");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
   }
 
   @Test
-  public void setuppHOME()
+  public void setupnHOME()
   {
-    String xl = ResourceUtil.contents("pHOME.xml");
+    String xl = ResourceUtil.contents(Profile.Name.nHOME.name() + ".xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setCode("pHOME");
+    l1.setCode(Profile.Name.nHOME.name());
 
-    l1.setName("Home Profile");
+    l1.setName("Home Nav");
     l1.setXL(xl);
 
     lookupXL(xl, l1, l1.getGroup(), l1.getCode());
@@ -431,6 +439,15 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     List<Lookup> list = new ArrayList<>();
     list.add(lookup(Field.Table.PERSON.name(), p.getUserName(), p.getName(), p.getFirst(), 0, null,
         p.getId()));
+
+    if (p.getApps() != null)
+    {
+      for (String app : p.getApps())
+      {
+        list.add(lookup(Group.APP, StringUtil.toTitle(app), null, 0, null));
+      }
+    }
+
     mJdbc.lookups().upsert(list);
   }
 
@@ -471,18 +488,18 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     return lookup(inGroup, inName.toUpperCase(), inName, inAbbr, inSort, inDesc, null);
   }
 
-  private Lookup lookup(Group inGroup, String inName, String inDisplay, String inAbbr, int inSort,
+  private Lookup lookup(Group inGroup, String inCode, String inDisplay, String inAbbr, int inSort,
       String inDesc)
   {
-    return lookup(inGroup.name(), inName, inDisplay, inAbbr, inSort, inDesc, null);
+    return lookup(inGroup.name(), inCode, inDisplay, inAbbr, inSort, inDesc, null);
   }
 
-  private Lookup lookup(String inGroup, String inName, String inDisplay, String inAbbr, int inSort,
+  private Lookup lookup(String inGroup, String inCode, String inDisplay, String inAbbr, int inSort,
       String inDesc, Long inAltId)
   {
     Lookup ret = new Lookup();
     ret.setGroup(inGroup);
-    ret.setCode(inName);
+    ret.setCode(inCode);
 
     ret.setName(inDisplay);
     ret.setAbbreviation(inAbbr);
@@ -510,6 +527,11 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   private Field.Lookup field()
   {
     return new Field.Lookup(Location.TABLE, "BLANK,FIELD,");
+  }
+
+  private Field.Lookup app()
+  {
+    return new Field.Lookup(Location.TABLE, "APP,");
   }
 
   private Field.Lookup fields()

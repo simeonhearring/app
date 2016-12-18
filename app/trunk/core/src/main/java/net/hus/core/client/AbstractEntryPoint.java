@@ -125,7 +125,7 @@ AsyncCallback<ClientDataCommand>
           newCss = attr.substring(0, start + 5) + inEvent.getCssFileName();
         }
         link.setAttribute("href", newCss);
-        Notify.notify("Changing theme!");
+        Notify.notify("Changing theme! " + newCss);
       }
     }
   }

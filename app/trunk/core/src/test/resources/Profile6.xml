@@ -1,6 +1,9 @@
 <Profile id="6" type="USER" userName="nadiahearring" password="abc123" css="superhero">
-	<Page components.name="cLAND"/>
+	<Page components.name="cAPP"/>
 	<First>Nadia</First>
 	<Middle>E</Middle>
 	<Last>Hearring</Last>
+	<Apps>
+		<string>PEOPLE</string>
+	</Apps>
 </Profile>
