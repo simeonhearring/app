@@ -16,6 +16,8 @@ public class Profile extends AbstractModel implements PageQuery, LookupXL
   private String mPassword;
   private String mCss;
 
+  private String[] mApps;
+
   private String mFvk;
 
   public Page getPage()
@@ -158,16 +160,27 @@ public class Profile extends AbstractModel implements PageQuery, LookupXL
     mCss = inCss.name();
   }
 
+  public String[] getApps()
+  {
+    return mApps;
+  }
+
+  public void setApps(String[] inApps)
+  {
+    mApps = inApps;
+  }
+
   public enum Type
   {
+    NAV,
     APP,
     USER;
   }
 
   public enum Name
   {
-    pHOME,
-    pLOGIN,
-    pADMIN
+    nHOME,
+    nLOGIN,
+    nADMIN
   }
 }

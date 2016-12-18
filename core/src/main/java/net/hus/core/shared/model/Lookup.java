@@ -143,8 +143,9 @@ public class Lookup extends AbstractModel implements TypeaheadOption
     COMMAND(SM),
     LAYOUT(SM),
     SECTION(SM), // not used?
+    APP(SM),
     PROFILE(XL),
-    COMPONENTS(XL);
+    COMPONENTS(XL),;
 
     private Size mSize;
 

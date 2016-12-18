@@ -27,9 +27,9 @@ public class ProfileParserTest
     model.setPage(new Page(null, "cLOGIN"));
     model.setUserName("login");
     model.setFvk("abcd");
-    model.setType(Type.APP);
+    model.setType(Type.NAV);
 
-    String xml = ResourceUtil.contents("pLOGIN.xml");
+    String xml = ResourceUtil.contents("nLOGIN.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));
@@ -42,9 +42,9 @@ public class ProfileParserTest
     model.setPage(new Page(null, "cADMIN"));
     model.setUserName("admin");
     model.setFvk("abcd");
-    model.setType(Type.APP);
+    model.setType(Type.NAV);
 
-    String xml = ResourceUtil.contents("pADMIN.xml");
+    String xml = ResourceUtil.contents("nADMIN.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));
@@ -57,9 +57,9 @@ public class ProfileParserTest
     model.setPage(new Page(null, "cHOME"));
     model.setUserName("home");
     model.setFvk("abcd");
-    model.setType(Type.APP);
+    model.setType(Type.NAV);
 
-    String xml = ResourceUtil.contents("pHOME.xml");
+    String xml = ResourceUtil.contents("nHOME.xml");
     xml = xml.replaceAll("\t", "  ");
 
     Assert.assertEquals(xml, mParser.toXml(model));
@@ -96,10 +96,11 @@ public class ProfileParserTest
     model.setFirst("Nadia");
     model.setLast("Hearring");
     model.setMiddle("E");
-    model.setPage(new Page(null, "cLAND"));
+    model.setPage(new Page(null, "cAPP"));
     model.setUserName("nadiahearring");
     model.setPassword("abc123");
     model.setCss(CssFileName.superhero);
+    model.setApps("PEOPLE".split(","));
 
     String xml = ResourceUtil.contents("Profile6.xml");
     xml = xml.replaceAll("\t", "  ");

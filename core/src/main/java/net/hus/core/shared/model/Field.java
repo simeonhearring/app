@@ -544,6 +544,7 @@ public class Field extends AbstractModel
     FIELD_TABLE(-10L, Type.LOOKUP),
     PROFILE(-11L, Type.LOOKUP),
     BIRTH_DATE(-12L, Type.DATE),
+    APP(-13L, Type.LOOKUP),
 
     // ADDRESS(13L, Type.ARRAY),
     ;

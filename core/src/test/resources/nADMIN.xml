@@ -1,3 +1,3 @@
-<Profile type="APP" userName="admin">
+<Profile type="NAV" userName="admin">
 	<Page components.name="cADMIN"/>
 </Profile>

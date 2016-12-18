@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Components.xsd">
+	<FieldTKG fvt="APP" fgg="APP" page.layout="LOGIN" />
+	<Heading SECTION="CENTER_01" size="H1" emphasis="INFO" alignment="LEFT">
+		<Text>Choose Application</Text>
+	</Heading>
+	<FieldSet SECTION="CENTER_01" enabled="true">
+		<Collection>
+			<FormGroup>
+				<Collection>
+					<FormLabel KEY="FL00_-13" isHtml="false">
+						<Text>application:</Text>
+					</FormLabel>
+					<ListBox KEY="FV00_-13" multipleSelect="false">
+						<Lookup loc="TABLE" params="APP" />
+					</ListBox>
+				</Collection>
+			</FormGroup>
+			<FormGroup>
+				<Collection>
+					<Button KEY="BTN00_1" buttonType="SUCCESS" command.name="LoginCommand">
+						<Text>Continue</Text>
+					</Button>
+				</Collection>
+			</FormGroup>
+		</Collection>
+	</FieldSet>
+</Components>

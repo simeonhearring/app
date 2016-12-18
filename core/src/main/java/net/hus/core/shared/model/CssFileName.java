@@ -33,8 +33,14 @@ public enum CssFileName implements EnumDisplay
     return StringUtil.toTitle(name());
   }
 
-  public static Enum<?> css(String inCss)
+  public static CssFileName css(String inCss)
   {
     return inCss == null ? null : EnumUtil.valueOf(inCss.replaceAll(SUFFIX, ""), values());
+  }
+
+  public static String convert(String inCss)
+  {
+    CssFileName css = css(inCss);
+    return css != null ? css.getFileName() : null;
   }
 }

@@ -18,6 +18,7 @@ public class ProfileParser extends XStream implements Parser<Profile>
     aliasField("Middle", Profile.class, "mMiddle");
     aliasField("Last", Profile.class, "mLast");
     aliasField("Page", Profile.class, "mPage");
+    aliasField("Apps", Profile.class, "mApps");
 
     omitField(Profile.class, "mFvk");
 
