@@ -1,7 +1,7 @@
 package net.hus.core.dao.jdbc;
 
-import static net.hus.core.shared.model.Field.Fid.BIRTH_DATE;
 import static net.hus.core.shared.model.Field.Fid.APP;
+import static net.hus.core.shared.model.Field.Fid.BIRTH_DATE;
 import static net.hus.core.shared.model.Field.Fid.EMAIL;
 import static net.hus.core.shared.model.Field.Fid.FIELD;
 import static net.hus.core.shared.model.Field.Fid.FIRST_NAME;
@@ -134,6 +134,21 @@ public class CoreJdbcTest extends MySqlCoreDsTest
     fields.fgg(Field.Table.JUNIT.name());
     fields.clear();
     fields.add(new Field(Field.Fid.FIRST_NAME.fid()));
+    mJdbc.fields().upsert(fields);
+
+    List<Field> ret = mJdbc.fields().selectByFgg(fields.fgg());
+    Assert.assertEquals(fields.getFields().size(), ret.size());
+  }
+
+  @Test
+  public void apptable_app()
+  {
+    Fields fields = new Fields();
+    fields.setFields(new ArrayList<Field>());
+
+    fields.fgg(Field.Table.APP.name());
+    fields.clear();
+    fields.add(new Field(Field.Fid.APP.fid()));
     mJdbc.fields().upsert(fields);
 
     List<Field> ret = mJdbc.fields().selectByFgg(fields.fgg());

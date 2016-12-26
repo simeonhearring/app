@@ -18,7 +18,7 @@
 			</FormGroup>
 			<FormGroup>
 				<Collection>
-					<Button KEY="BTN00_1" buttonType="SUCCESS" command.name="LoginCommand">
+					<Button KEY="BTN00_1" buttonType="SUCCESS" command.name="AppCommand">
 						<Text>Continue</Text>
 					</Button>
 				</Collection>

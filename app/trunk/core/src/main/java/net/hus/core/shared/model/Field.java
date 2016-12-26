@@ -525,6 +525,7 @@ public class Field extends AbstractModel
   {
     PERSON,
     JUNIT,
+    APP,
     LOGIN
   }
 
