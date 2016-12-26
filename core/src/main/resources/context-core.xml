@@ -44,6 +44,10 @@
 		<property name="coreDao" ref="CoreDao" />
 	</bean>
 
+	<bean id="AppCommand" class="net.hus.core.server.command.AppCommandBean">
+		<property name="coreDao" ref="CoreDao" />
+	</bean>
+
 	<!-- REQUESTCOMMANDS END -->
 
 	<bean id="ProfileCommand" class="net.hus.core.server.command.ProfileCommandBean">

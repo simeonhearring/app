@@ -9,7 +9,7 @@ import net.hus.core.shared.command.RequestCommand;
 import net.hus.core.shared.model.Value;
 
 public abstract class AbstractCommand_View<C extends Widget & HasClickHandlers>
-extends Abstract_View<C> implements ClickHandler
+    extends Abstract_View<C> implements ClickHandler
 {
   private String mCommandName;
 

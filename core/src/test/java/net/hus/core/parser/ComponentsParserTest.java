@@ -119,4 +119,33 @@ public class ComponentsParserTest
     String jactual = parser.toJson(model);
     Assert.assertEquals(jexpected, jactual);
   }
+
+  @Test
+  public void canParsecAPP()
+  {
+    // xml
+    String xml = ResourceUtil.contents("cAPP.xml");
+
+    ComponentsParser parser = new ComponentsParser();
+    Components model = parser.fromXml(xml);
+
+    Assert.assertEquals(1, model.components().size());
+    Assert.assertEquals(2, model.getList().size());
+    Assert.assertEquals("APP", model.getFieldTKG().getFvt());
+    Assert.assertEquals("APP", model.getFieldTKG().getFgg());
+    Assert.assertEquals("LOGIN", model.getFieldTKG().getLayout().name());
+
+    String xexpected = xml.replaceAll("\t", "  ").replaceAll("\" />", "\"/>");
+    String xactual = XSD + parser.toXml(model).replaceAll("<Components>", "");
+
+    Assert.assertEquals(xexpected, xactual);
+
+    // json
+    String json = ResourceUtil.contents("net/hus/core/parser/cAPP.json");
+
+    String jexpected = json.replaceAll("\n", "").replaceAll("\t", "");
+    String jactual = parser.toJson(model);
+    Assert.assertEquals(jexpected, jactual);
+  }
+
 }

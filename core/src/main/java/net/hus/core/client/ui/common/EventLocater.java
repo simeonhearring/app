@@ -16,6 +16,9 @@ public class EventLocater
         case "LoginCommand":
           pLoginCommandBean(inResponse);
           break;
+        case "AppCommand":
+          pAppCommandBean(inResponse);
+          break;
         default:
           break;
       }
@@ -29,6 +32,23 @@ public class EventLocater
     // 0 See LoginCommandBean.java
     String userName = response[0];
     // 1 See LoginCommandBean.java
+    String css = response[1];
+
+    Global.fire(new ProfileEvent(userName));
+    if (css != null)
+    {
+      css = CssFileName.convert(css);
+      Global.fire(new CssChangeEvent(css));
+    }
+  }
+
+  private static void pAppCommandBean(Response inResponse)
+  {
+    String[] response = inResponse.getData();
+
+    // 0 See AppCommandBean.java
+    String userName = response[0];
+    // 1 See AppCommandBean.java
     String css = response[1];
 
     Global.fire(new ProfileEvent(userName));
