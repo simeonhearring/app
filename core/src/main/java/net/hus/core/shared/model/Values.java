@@ -51,6 +51,17 @@ public class Values implements Serializable
     return ret;
   }
 
+  public String value(Fid inFid)
+  {
+    return value(inFid.fid(), 0);
+  }
+
+  public String value(Long inFid, int inPos)
+  {
+    Value ret = get(inFid, inPos);
+    return ret != null ? ret.getValue() : null;
+  }
+
   public Field getField()
   {
     return mField;

@@ -1,6 +1,6 @@
 package net.hus.core.client.ui.event;
 
-import net.hus.core.shared.model.Profile.Name;
+import net.hus.core.shared.model.Profile.Code;
 
 public class ProfileEvent extends Event<ProfileEvent.Handler>
 {
@@ -18,7 +18,7 @@ public class ProfileEvent extends Event<ProfileEvent.Handler>
     mName = inName;
   }
 
-  public ProfileEvent(Name inName)
+  public ProfileEvent(Code inName)
   {
     this(inName.name());
   }

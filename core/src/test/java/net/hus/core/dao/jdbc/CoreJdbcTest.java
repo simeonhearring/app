@@ -383,11 +383,11 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupnLOGIN()
   {
-    String xl = ResourceUtil.contents(Profile.Name.nLOGIN.name() + ".xml");
+    String xl = ResourceUtil.contents(Profile.Code.nLOGIN.name() + ".xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setCode(Profile.Name.nLOGIN.name());
+    l1.setCode(Profile.Code.nLOGIN.name());
 
     l1.setName("Login Nav");
     l1.setXL(xl);
@@ -398,11 +398,11 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupnADMIN()
   {
-    String xl = ResourceUtil.contents(Profile.Name.nADMIN.name() + ".xml");
+    String xl = ResourceUtil.contents(Profile.Code.nADMIN.name() + ".xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setCode(Profile.Name.nADMIN.name());
+    l1.setCode(Profile.Code.nADMIN.name());
 
     l1.setName("Admin Nav");
     l1.setXL(xl);
@@ -413,11 +413,11 @@ public class CoreJdbcTest extends MySqlCoreDsTest
   @Test
   public void setupnHOME()
   {
-    String xl = ResourceUtil.contents(Profile.Name.nHOME.name() + ".xml");
+    String xl = ResourceUtil.contents(Profile.Code.nHOME.name() + ".xml");
 
     Lookup l1 = new Lookup();
     l1.setGroup(Group.PROFILE);
-    l1.setCode(Profile.Name.nHOME.name());
+    l1.setCode(Profile.Code.nHOME.name());
 
     l1.setName("Home Nav");
     l1.setXL(xl);

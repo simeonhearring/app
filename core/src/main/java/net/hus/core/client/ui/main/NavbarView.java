@@ -52,7 +52,7 @@ public class NavbarView extends AbstractView implements NavbarDisplay
     }
     else if (mRegister.getWidget(0).equals(inEvent.getSource()))
     {
-      Global.fire(new ProfileEvent(Profile.Name.nADMIN));
+      Global.fire(new ProfileEvent(Profile.Code.nADMIN));
     }
   }
 
@@ -61,11 +61,11 @@ public class NavbarView extends AbstractView implements NavbarDisplay
     mLoginout.setText(mLogin ? "Logout" : "Login");
     if (mLogin)
     {
-      Global.fire(new ProfileEvent(Profile.Name.nLOGIN));
+      Global.fire(new ProfileEvent(Profile.Code.nLOGIN));
     }
     else
     {
-      Global.fire(new ProfileEvent(Profile.Name.nHOME));
+      Global.fire(new ProfileEvent(Profile.Code.nHOME));
     }
     mLogin = !mLogin;
   }
