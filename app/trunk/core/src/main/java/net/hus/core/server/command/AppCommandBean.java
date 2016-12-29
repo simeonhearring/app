@@ -14,10 +14,11 @@ public class AppCommandBean extends AbstractCommandBean<RequestCommand>
     Values values = new Values();
     values.setValues(mCoreDao.values().selectLast(inCommand.tkg()));
 
+    String userName = values.value(Field.Fid.USERNAME);
     String app = values.get(Field.Fid.APP).getValue();
 
     // See EventLocater.java
-    inCommand.setData(new Response(app, app));
+    inCommand.setData(new Response(userName, app));
 
     return inCommand;
   }

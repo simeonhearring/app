@@ -177,7 +177,7 @@ public class Profile extends AbstractModel implements PageQuery, LookupXL
     USER;
   }
 
-  public enum Name
+  public enum Code
   {
     nHOME,
     nLOGIN,
